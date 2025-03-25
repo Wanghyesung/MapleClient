@@ -1,0 +1,2126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="LoadScene.h">
+      <Filter>Contents\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="WCaveScene.h">
+      <Filter>Contents\Scene\Cave</Filter>
+    </ClInclude>
+    <ClInclude Include="WCaveStartScene.h">
+      <Filter>Contents\Scene\Cave</Filter>
+    </ClInclude>
+    <ClInclude Include="WLeafreScene.h">
+      <Filter>Contents\Scene\Leafre</Filter>
+    </ClInclude>
+    <ClInclude Include="WMoveScene.h">
+      <Filter>Contents\Scene\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="WMoveScene_2.h">
+      <Filter>Contents\Scene\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="WTempleBossScene.h">
+      <Filter>Contents\Scene\Temple</Filter>
+    </ClInclude>
+    <ClInclude Include="WTempleScene.h">
+      <Filter>Contents\Scene\Temple</Filter>
+    </ClInclude>
+    <ClInclude Include="WTempleScene_2.h">
+      <Filter>Contents\Scene\Temple</Filter>
+    </ClInclude>
+    <ClInclude Include="WTempleStartScene.h">
+      <Filter>Contents\Scene\Temple</Filter>
+    </ClInclude>
+    <ClInclude Include="WValleyScene.h">
+      <Filter>Contents\Scene\Valley</Filter>
+    </ClInclude>
+    <ClInclude Include="WValleyScene_2.h">
+      <Filter>Contents\Scene\Valley</Filter>
+    </ClInclude>
+    <ClInclude Include="WCameraScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="WInterfaceUI.h">
+      <Filter>Contents\UI\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="WChannleBntUI.h">
+      <Filter>Contents\UI\Interface\Channle</Filter>
+    </ClInclude>
+    <ClInclude Include="WSystemUI.h">
+      <Filter>Contents\UI\Interface\System</Filter>
+    </ClInclude>
+    <ClInclude Include="WMenuUI.h">
+      <Filter>Contents\UI\Interface\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="WShopUI.h">
+      <Filter>Contents\UI\Interface\Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="WStarUI.h">
+      <Filter>Contents\UI\Interface\Star</Filter>
+    </ClInclude>
+    <ClInclude Include="WInvenUI.h">
+      <Filter>Contents\UI\Interface\Extra\Inven</Filter>
+    </ClInclude>
+    <ClInclude Include="WEquipUI.h">
+      <Filter>Contents\UI\Interface\Extra\Equip</Filter>
+    </ClInclude>
+    <ClInclude Include="WCharUI.h">
+      <Filter>Contents\UI\Interface\Extra\Char</Filter>
+    </ClInclude>
+    <ClInclude Include="WStatUI.h">
+      <Filter>Contents\UI\Interface\Extra\Stat</Filter>
+    </ClInclude>
+    <ClInclude Include="WQuestUI.h">
+      <Filter>Contents\UI\Interface\Extra\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="WSKillUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="WLevelUI.h">
+      <Filter>Contents\UI\Interface\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="WGaugeUI.h">
+      <Filter>Contents\UI\Interface\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="WInventory.h">
+      <Filter>Contents\UI\Interface\Extra\Inven</Filter>
+    </ClInclude>
+    <ClInclude Include="WItemUI.h">
+      <Filter>Contents\UI\ItemUI</Filter>
+    </ClInclude>
+    <ClInclude Include="WAlixirUI.h">
+      <Filter>Contents\UI\ItemUI\Potion</Filter>
+    </ClInclude>
+    <ClInclude Include="WHP.h">
+      <Filter>Contents\UI\Interface\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="WMP.h">
+      <Filter>Contents\UI\Interface\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="WEXP.h">
+      <Filter>Contents\UI\Interface\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="WCoverGaugeUI.h">
+      <Filter>Contents\UI\Interface\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntailItem.h">
+      <Filter>Contents\UI\Equip</Filter>
+    </ClInclude>
+    <ClInclude Include="WGridScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="WSKillStorage.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\SkillStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="WSKillBox.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\SkillStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillNumber1.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\1\SkillNumber1</Filter>
+    </ClInclude>
+    <ClInclude Include="WSKill.h">
+      <Filter>Contents\UI\Interface\Extra\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="WEquipState.h">
+      <Filter>Contents\UI\Interface\Extra\Equip</Filter>
+    </ClInclude>
+    <ClInclude Include="WEquip.h">
+      <Filter>Contents\UI\Interface\Extra\Equip</Filter>
+    </ClInclude>
+    <ClInclude Include="WStat.h">
+      <Filter>Contents\UI\Interface\Extra\Stat</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillDarkUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\1</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillLuckUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\1</Filter>
+    </ClInclude>
+    <ClInclude Include="WIconUI.h">
+      <Filter>Contents\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="WAutoUI.h">
+      <Filter>Contents\UI\Interface\Extra\Stat</Filter>
+    </ClInclude>
+    <ClInclude Include="WUpBtn.h">
+      <Filter>Contents\UI\Interface\Extra\Stat</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayer.h">
+      <Filter>Contents\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="WInvenPage.h">
+      <Filter>Contents\UI\Interface\Extra\Inven\InvenPage</Filter>
+    </ClInclude>
+    <ClInclude Include="WCharState.h">
+      <Filter>Contents\UI\Interface\Extra\Char</Filter>
+    </ClInclude>
+    <ClInclude Include="WQuestState.h">
+      <Filter>Contents\UI\Interface\Extra\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="WQuestDetail.h">
+      <Filter>Contents\UI\Interface\Extra\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="WNumber.h">
+      <Filter>Contents\UI\Number</Filter>
+    </ClInclude>
+    <ClInclude Include="WHat_10.h">
+      <Filter>Contents\UI\Equip\Equip_10</Filter>
+    </ClInclude>
+    <ClInclude Include="WTop_10.h">
+      <Filter>Contents\UI\Equip\Equip_10</Filter>
+    </ClInclude>
+    <ClInclude Include="WBottom_10.h">
+      <Filter>Contents\UI\Equip\Equip_10</Filter>
+    </ClInclude>
+    <ClInclude Include="WShoes_10.h">
+      <Filter>Contents\UI\Equip\Equip_10</Filter>
+    </ClInclude>
+    <ClInclude Include="WWeapon_10.h">
+      <Filter>Contents\UI\Equip\Equip_10</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillNumber2.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\2</Filter>
+    </ClInclude>
+    <ClInclude Include="WSKillJumpUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\2</Filter>
+    </ClInclude>
+    <ClInclude Include="WSKillSpeedUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\2</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillNumber.h">
+      <Filter>Contents\UI\Interface\Extra\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillNumber3.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\3</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillAvenUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\3</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillShadowUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\3</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillNumber4.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\4</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillQSUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\4</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillRaidUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\4</Filter>
+    </ClInclude>
+    <ClInclude Include="WGround.h">
+      <Filter>Contents\Object\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="WGroundScript.h">
+      <Filter>Contents\Object\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="WCage.h">
+      <Filter>Contents\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="WLadder.h">
+      <Filter>Contents\Object\Ladder</Filter>
+    </ClInclude>
+    <ClInclude Include="WNPC.h">
+      <Filter>Contents\Object\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="WStartScene.h">
+      <Filter>Contents\Scene\Start</Filter>
+    </ClInclude>
+    <ClInclude Include="WSeleteScene.h">
+      <Filter>Contents\Scene\Start</Filter>
+    </ClInclude>
+    <ClInclude Include="WCharScene.h">
+      <Filter>Contents\Scene\Start</Filter>
+    </ClInclude>
+    <ClInclude Include="WStartUI.h">
+      <Filter>Contents\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillBlastUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\5</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillLoadUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\5</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillWindUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\5</Filter>
+    </ClInclude>
+    <ClInclude Include="WServerLayer.h">
+      <Filter>Contents\UI\StartUI</Filter>
+    </ClInclude>
+    <ClInclude Include="WScroll.h">
+      <Filter>Contents\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="WServerUI.h">
+      <Filter>Contents\UI\StartUI</Filter>
+    </ClInclude>
+    <ClInclude Include="WChannel.h">
+      <Filter>Contents\UI\StartUI</Filter>
+    </ClInclude>
+    <ClInclude Include="WChannelNumber.h">
+      <Filter>Contents\UI\StartUI</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerBody.h">
+      <Filter>Contents\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerHead.h">
+      <Filter>Contents\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerArm.h">
+      <Filter>Contents\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="WEyes.h">
+      <Filter>Contents\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerHair.h">
+      <Filter>Contents\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerTop.h">
+      <Filter>Contents\Player\Equip</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerBottom.h">
+      <Filter>Contents\Player\Equip</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerShoes.h">
+      <Filter>Contents\Player\Equip</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerWeapon.h">
+      <Filter>Contents\Player\Equip</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerHat.h">
+      <Filter>Contents\Player\Equip</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerFSM.h">
+      <Filter>Contents\Player\PlayerFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerState.h">
+      <Filter>Contents\Player\PlayerFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerStand.h">
+      <Filter>Contents\Player\PlayerFSM\PlayerStand</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerPronestab.h">
+      <Filter>Contents\Player\PlayerFSM\PlayerPronestab</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerWalk.h">
+      <Filter>Contents\Player\PlayerFSM\PlayerWalk</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerJump.h">
+      <Filter>Contents\Player\PlayerFSM\PlayerJump</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerSwing1.h">
+      <Filter>Contents\Player\PlayerFSM\PlayerSwing1</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerProneAttack.h">
+      <Filter>Contents\Player\PlayerFSM\PlayerPronestab</Filter>
+    </ClInclude>
+    <ClInclude Include="WLadderScript.h">
+      <Filter>Contents\Object\Ladder</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerLadder.h">
+      <Filter>Contents\Player\PlayerFSM\PlayerLadder</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonster.h">
+      <Filter>Contents\Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkelegon.h">
+      <Filter>Contents\Object\Monster\Skelegon</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterFSM.h">
+      <Filter>Contents\Object\Monster\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterState.h">
+      <Filter>Contents\Object\Monster\MonsterState</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterStand.h">
+      <Filter>Contents\Object\Monster\MonsterState\Stand</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterMove.h">
+      <Filter>Contents\Object\Monster\MonsterState\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="WShuriken.h">
+      <Filter>Contents\Player\AttackObject\Shuriken</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterHit.h">
+      <Filter>Contents\Object\Monster\MonsterState\Hit</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterScript.h">
+      <Filter>Contents\Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerAlert.h">
+      <Filter>Contents\Player\PlayerFSM\PlayerAlert</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterAttack.h">
+      <Filter>Contents\Object\Monster\MonsterState\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterAttackObject.h">
+      <Filter>Contents\Object\AttackObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterAttackScript.h">
+      <Filter>Contents\Object\AttackObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerStab.h">
+      <Filter>Contents\Player\PlayerFSM\PlayerStab</Filter>
+    </ClInclude>
+    <ClInclude Include="WAttackScript.h">
+      <Filter>Contents\Player\AttackObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerAttackObject.h">
+      <Filter>Contents\Player\AttackObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerSkill.h">
+      <Filter>Contents\Player\PlayerSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillState.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillLuck.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Luck</Filter>
+    </ClInclude>
+    <ClInclude Include="WEffect.h">
+      <Filter>Contents\Player\PlayerSkill\skilleffect</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillDark.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Dark</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillJump.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillSpeed.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\speed</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillManager.h">
+      <Filter>Contents\Manager\SkillMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="WPortal.h">
+      <Filter>Contents\Object\Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="WPortalScript.h">
+      <Filter>Contents\Object\Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="WStone.h">
+      <Filter>Contents\Object\BossMonster\horntail\horntailStone</Filter>
+    </ClInclude>
+    <ClInclude Include="WStoneScript.h">
+      <Filter>Contents\Object\BossMonster\horntail\horntailStone</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntail.h">
+      <Filter>Contents\Object\BossMonster\horntail</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntailHeadA.h">
+      <Filter>Contents\Object\BossMonster\horntail\headA</Filter>
+    </ClInclude>
+    <ClInclude Include="WBossStand.h">
+      <Filter>Contents\Object\Monster\Horntail</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntailHeadB.h">
+      <Filter>Contents\Object\BossMonster\horntail\headB</Filter>
+    </ClInclude>
+    <ClInclude Include="WThunder.h">
+      <Filter>Contents\Object\BossMonster\horntail\headC\thunder</Filter>
+    </ClInclude>
+    <ClInclude Include="WIce.h">
+      <Filter>Contents\Object\BossMonster\horntail\headA\ice</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntailHeadC.h">
+      <Filter>Contents\Object\BossMonster\horntail\headC</Filter>
+    </ClInclude>
+    <ClInclude Include="WFire.h">
+      <Filter>Contents\Object\BossMonster\horntail\headB\fire</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntailRightHand.h">
+      <Filter>Contents\Object\BossMonster\horntail\RightHand</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntailLeftHand.h">
+      <Filter>Contents\Object\BossMonster\horntail\LeftHand</Filter>
+    </ClInclude>
+    <ClInclude Include="WSpear.h">
+      <Filter>Contents\Object\BossMonster\horntail\LeftHand\spear</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntailLeg.h">
+      <Filter>Contents\Object\BossMonster\horntail\leg</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntailWing.h">
+      <Filter>Contents\Object\BossMonster\horntail\wing</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntailTail.h">
+      <Filter>Contents\Object\BossMonster\horntail\tail</Filter>
+    </ClInclude>
+    <ClInclude Include="WBattleManager.h">
+      <Filter>Contents\Manager\BattleMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="WDamageFont.h">
+      <Filter>Contents\Manager\BattleMgr\DamageFont</Filter>
+    </ClInclude>
+    <ClInclude Include="WEventManager.h">
+      <Filter>Contents\Manager\EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="WAbnormal.h">
+      <Filter>Contents\Object\Abnormal</Filter>
+    </ClInclude>
+    <ClInclude Include="WTemptation.h">
+      <Filter>Contents\Object\Abnormal\temptation</Filter>
+    </ClInclude>
+    <ClInclude Include="WAttackUp.h">
+      <Filter>Contents\Object\BossMonster\buff\attackup</Filter>
+    </ClInclude>
+    <ClInclude Include="WUpStat.h">
+      <Filter>Contents\Object\BossMonster\buff</Filter>
+    </ClInclude>
+    <ClInclude Include="WDefenseUp.h">
+      <Filter>Contents\Object\BossMonster\buff\defenseup</Filter>
+    </ClInclude>
+    <ClInclude Include="WSealSkill.h">
+      <Filter>Contents\Object\Abnormal\sealskill</Filter>
+    </ClInclude>
+    <ClInclude Include="WIgnore.h">
+      <Filter>Contents\Object\BossMonster\buff</Filter>
+    </ClInclude>
+    <ClInclude Include="WFaint.h">
+      <Filter>Contents\Object\Abnormal</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterHP.h">
+      <Filter>Contents\Object\Monster\MonsterHP</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterBackHP.h">
+      <Filter>Contents\Object\Monster\MonsterHP</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterDead.h">
+      <Filter>Contents\Object\Monster\MonsterState\MonsterDead</Filter>
+    </ClInclude>
+    <ClInclude Include="WHorntailDead.h">
+      <Filter>Contents\Object\Monster\FSM\HorntailDead</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterManager.h">
+      <Filter>Contents\Manager\RespawnManager</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillAven.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Aven</Filter>
+    </ClInclude>
+    <ClInclude Include="WAven.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Aven</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillShadow.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Shadow</Filter>
+    </ClInclude>
+    <ClInclude Include="WShadow.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Shadow</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillQuad.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Quadruple</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillRaid.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Raid</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillWind.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Wind</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillLoad.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillBlast.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\blast</Filter>
+    </ClInclude>
+    <ClInclude Include="WBlast.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\blast</Filter>
+    </ClInclude>
+    <ClInclude Include="WLoad.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="WAutoShuriken.h">
+      <Filter>Contents\Player\AttackObject\Shuriken</Filter>
+    </ClInclude>
+    <ClInclude Include="WWind.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Wind</Filter>
+    </ClInclude>
+    <ClInclude Include="WItemObject.h">
+      <Filter>Contents\Object\itemobj</Filter>
+    </ClInclude>
+    <ClInclude Include="WItemManager.h">
+      <Filter>Contents\Manager\ItemManager</Filter>
+    </ClInclude>
+    <ClInclude Include="WItemScript.h">
+      <Filter>Contents\Object\itemobj</Filter>
+    </ClInclude>
+    <ClInclude Include="WSolomon.h">
+      <Filter>Contents\Object\Monster\pinkbean\solomon</Filter>
+    </ClInclude>
+    <ClInclude Include="WSolThunder.h">
+      <Filter>Contents\Object\Monster\pinkbean\solomon\thunder</Filter>
+    </ClInclude>
+    <ClInclude Include="WRex.h">
+      <Filter>Contents\Object\Monster\pinkbean\rex</Filter>
+    </ClInclude>
+    <ClInclude Include="WBossStart.h">
+      <Filter>Contents\Object\Monster\FSM\BossStart</Filter>
+    </ClInclude>
+    <ClInclude Include="WRexThunder.h">
+      <Filter>Contents\Object\Monster\pinkbean\rex\thunder</Filter>
+    </ClInclude>
+    <ClInclude Include="WMunin.h">
+      <Filter>Contents\Object\Monster\pinkbean\munin</Filter>
+    </ClInclude>
+    <ClInclude Include="WMuninStone.h">
+      <Filter>Contents\Object\Monster\pinkbean\munin\stone</Filter>
+    </ClInclude>
+    <ClInclude Include="WAriel.h">
+      <Filter>Contents\Object\Monster\pinkbean\ariel</Filter>
+    </ClInclude>
+    <ClInclude Include="WArielLaser.h">
+      <Filter>Contents\Object\Monster\pinkbean\ariel\laser</Filter>
+    </ClInclude>
+    <ClInclude Include="WArielStone.h">
+      <Filter>Contents\Object\Monster\pinkbean\ariel\stone</Filter>
+    </ClInclude>
+    <ClInclude Include="WPinkBean.h">
+      <Filter>Contents\Object\Monster\pinkbean\PinkBean</Filter>
+    </ClInclude>
+    <ClInclude Include="WPullObject.h">
+      <Filter>Contents\Object\BossMonster\PullObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WPinkbeanStand.h">
+      <Filter>Contents\Object\Monster\FSM\PinkBean</Filter>
+    </ClInclude>
+    <ClInclude Include="WJenesis.h">
+      <Filter>Contents\Object\Monster\pinkbean\PinkBean\jenesis</Filter>
+    </ClInclude>
+    <ClInclude Include="WPinkBeanStone.h">
+      <Filter>Contents\Object\Monster\pinkbean\PinkBean\PinkbeansStone</Filter>
+    </ClInclude>
+    <ClInclude Include="WRoccatBean.h">
+      <Filter>Contents\Object\Monster\pinkbean\PinkBean\RoccatBean</Filter>
+    </ClInclude>
+    <ClInclude Include="WReflex.h">
+      <Filter>Contents\Object\BossMonster\buff\Reflex</Filter>
+    </ClInclude>
+    <ClInclude Include="WConfusion.h">
+      <Filter>Contents\Object\Abnormal\confusion</Filter>
+    </ClInclude>
+    <ClInclude Include="WVariation.h">
+      <Filter>Contents\Object\Abnormal</Filter>
+    </ClInclude>
+    <ClInclude Include="WMiniBean.h">
+      <Filter>Contents\Object\Monster\pinkbean\miniBean</Filter>
+    </ClInclude>
+    <ClInclude Include="WMiniBeanAttack.h">
+      <Filter>Contents\Object\Monster\pinkbean\miniBean\attack</Filter>
+    </ClInclude>
+    <ClInclude Include="WWhiggin.h">
+      <Filter>Contents\Object\Monster\pinkbean\Whiggin</Filter>
+    </ClInclude>
+    <ClInclude Include="WSharHP.h">
+      <Filter>Contents\Object\Monster\MonsterHP\sharHP</Filter>
+    </ClInclude>
+    <ClInclude Include="WMegnus.h">
+      <Filter>Contents\Object\BossMonster\magnus</Filter>
+    </ClInclude>
+    <ClInclude Include="WHelisiumBoss.h">
+      <Filter>Contents\Scene\Helisium</Filter>
+    </ClInclude>
+    <ClInclude Include="WMegnusStone.h">
+      <Filter>Contents\Object\BossMonster\magnus</Filter>
+    </ClInclude>
+    <ClInclude Include="WCloneMegnus.h">
+      <Filter>Contents\Object\BossMonster\magnus\clonemegnus</Filter>
+    </ClInclude>
+    <ClInclude Include="WMobZone.h">
+      <Filter>Contents\Object\BossMonster\magnus\MobZone</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterMoveAttack.h">
+      <Filter>Contents\Object\BossMonster\magnus</Filter>
+    </ClInclude>
+    <ClInclude Include="WMegnusAttack.h">
+      <Filter>Contents\Object\BossMonster\magnus\attack</Filter>
+    </ClInclude>
+    <ClInclude Include="WSlow.h">
+      <Filter>Contents\Object\Abnormal</Filter>
+    </ClInclude>
+    <ClInclude Include="WUndead.h">
+      <Filter>Contents\Object\Abnormal\undead</Filter>
+    </ClInclude>
+    <ClInclude Include="WSleepGas.h">
+      <Filter>Contents\Object\BossMonster\magnus\sleepgas</Filter>
+    </ClInclude>
+    <ClInclude Include="WStop.h">
+      <Filter>Contents\Object\Abnormal\Stop</Filter>
+    </ClInclude>
+    <ClInclude Include="WBossUI.h">
+      <Filter>Contents\UI\Interface\Extra\bossUI</Filter>
+    </ClInclude>
+    <ClInclude Include="WBossTex.h">
+      <Filter>Contents\UI\Interface\Extra\bossUI\monsterTex</Filter>
+    </ClInclude>
+    <ClInclude Include="WBossEnterUI.h">
+      <Filter>Contents\UI\Interface\Extra\bossUI\SceneEnter</Filter>
+    </ClInclude>
+    <ClInclude Include="WMonsterUI.h">
+      <Filter>Contents\UI\Interface\Extra\bossUI\monsterUI</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianScene.h">
+      <Filter>Contents\Scene\Demian</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemian.h">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianExplode.h">
+      <Filter>Contents\Object\BossMonster\Demian\attack0</Filter>
+    </ClInclude>
+    <ClInclude Include="WSpawnMonsterAttack.h">
+      <Filter>Contents\Object\BossMonster\Demian\spawnattack</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianSword.h">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianPhase2.h">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianFire0.h">
+      <Filter>Contents\Object\BossMonster\Demian\DemianFire</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianFire1.h">
+      <Filter>Contents\Object\BossMonster\Demian\DemianFire</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianFire2.h">
+      <Filter>Contents\Object\BossMonster\Demian\DemianFire</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianSpear0.h">
+      <Filter>Contents\Object\BossMonster\Demian\spear</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianSpear1.h">
+      <Filter>Contents\Object\BossMonster\Demian\spear</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianEntireAttack.h">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianVine.h">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClInclude>
+    <ClInclude Include="WWhite.h">
+      <Filter>Contents\Script\fadein</Filter>
+    </ClInclude>
+    <ClInclude Include="WSwordExplode.h">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianKeyAttack.h">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClInclude>
+    <ClInclude Include="WGroggy.h">
+      <Filter>Contents\Object\Abnormal</Filter>
+    </ClInclude>
+    <ClInclude Include="WInputObject.h">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClInclude>
+    <ClInclude Include="WInputBackground.h">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClInclude>
+    <ClInclude Include="WDemianCircle.h">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClInclude>
+    <ClInclude Include="WStigma.h">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClInclude>
+    <ClInclude Include="WStigmaBack.h">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClInclude>
+    <ClInclude Include="WStigmaCount.h">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClInclude>
+    <ClInclude Include="WBottom_40.h">
+      <Filter>Contents\UI\Equip\Equip_40</Filter>
+    </ClInclude>
+    <ClInclude Include="WHat_40.h">
+      <Filter>Contents\UI\Equip\Equip_40</Filter>
+    </ClInclude>
+    <ClInclude Include="WWeapon_25.h">
+      <Filter>Contents\UI\Equip\Equip_40</Filter>
+    </ClInclude>
+    <ClInclude Include="WTop_40.h">
+      <Filter>Contents\UI\Equip\Equip_40</Filter>
+    </ClInclude>
+    <ClInclude Include="WBottom_80.h">
+      <Filter>Contents\UI\Equip\Equip_80</Filter>
+    </ClInclude>
+    <ClInclude Include="WTop_80.h">
+      <Filter>Contents\UI\Equip\Equip_80</Filter>
+    </ClInclude>
+    <ClInclude Include="WHat_80.h">
+      <Filter>Contents\UI\Equip\Equip_80</Filter>
+    </ClInclude>
+    <ClInclude Include="WWeapon_63.h">
+      <Filter>Contents\UI\Equip\Equip_80</Filter>
+    </ClInclude>
+    <ClInclude Include="WShoes_40.h">
+      <Filter>Contents\UI\Equip\Equip_40</Filter>
+    </ClInclude>
+    <ClInclude Include="WShoes_80.h">
+      <Filter>Contents\UI\Equip\Equip_80</Filter>
+    </ClInclude>
+    <ClInclude Include="WUltimateSkill.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClInclude>
+    <ClInclude Include="WUltimateFog.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClInclude>
+    <ClInclude Include="WUltimateBackground.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClInclude>
+    <ClInclude Include="WSpawnUltimate.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClInclude>
+    <ClInclude Include="WUltimateShuriken.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClInclude>
+    <ClInclude Include="WUltimateObject.h">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClInclude>
+    <ClInclude Include="WHairItem.h">
+      <Filter>Contents\UI\cashitem</Filter>
+    </ClInclude>
+    <ClInclude Include="WSKillNumber6.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\1\SkillNumber6</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillNumber5.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\5</Filter>
+    </ClInclude>
+    <ClInclude Include="WSkillUltimateUI.h">
+      <Filter>Contents\UI\Interface\Extra\Skill\1\SkillNumber6</Filter>
+    </ClInclude>
+    <ClInclude Include="WEyeItem.h">
+      <Filter>Contents\UI\cashitem</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerDead.h">
+      <Filter>Contents\Player\PlayerFSM\PlayerDead</Filter>
+    </ClInclude>
+    <ClInclude Include="WObjectPoolManager.h">
+      <Filter>Contents\Manager\ObjectPoolManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="WPlayScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="WCaveScene.cpp">
+      <Filter>Contents\Scene\Cave</Filter>
+    </ClCompile>
+    <ClCompile Include="WCaveStartScene.cpp">
+      <Filter>Contents\Scene\Cave</Filter>
+    </ClCompile>
+    <ClCompile Include="WLeafreScene.cpp">
+      <Filter>Contents\Scene\Leafre</Filter>
+    </ClCompile>
+    <ClCompile Include="WMoveScene.cpp">
+      <Filter>Contents\Scene\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="WMoveScene_2.cpp">
+      <Filter>Contents\Scene\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="WTempleBossScene.cpp">
+      <Filter>Contents\Scene\Temple</Filter>
+    </ClCompile>
+    <ClCompile Include="WTempleScene.cpp">
+      <Filter>Contents\Scene\Temple</Filter>
+    </ClCompile>
+    <ClCompile Include="WTempleScene_2.cpp">
+      <Filter>Contents\Scene\Temple</Filter>
+    </ClCompile>
+    <ClCompile Include="WTempleStartScene.cpp">
+      <Filter>Contents\Scene\Temple</Filter>
+    </ClCompile>
+    <ClCompile Include="WValleyScene.cpp">
+      <Filter>Contents\Scene\Valley</Filter>
+    </ClCompile>
+    <ClCompile Include="WValleyScene_2.cpp">
+      <Filter>Contents\Scene\Valley</Filter>
+    </ClCompile>
+    <ClCompile Include="WCameraScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="WInterfaceUI.cpp">
+      <Filter>Contents\UI\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="WChannleBntUI.cpp">
+      <Filter>Contents\UI\Interface\Channle</Filter>
+    </ClCompile>
+    <ClCompile Include="WSystemUI.cpp">
+      <Filter>Contents\UI\Interface\System</Filter>
+    </ClCompile>
+    <ClCompile Include="WMenuUI.cpp">
+      <Filter>Contents\UI\Interface\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="WShopUI.cpp">
+      <Filter>Contents\UI\Interface\Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="WStarUI.cpp">
+      <Filter>Contents\UI\Interface\Star</Filter>
+    </ClCompile>
+    <ClCompile Include="WInvenUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Inven</Filter>
+    </ClCompile>
+    <ClCompile Include="WEquipUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="WCharUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Char</Filter>
+    </ClCompile>
+    <ClCompile Include="WStatUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Stat</Filter>
+    </ClCompile>
+    <ClCompile Include="WQuestUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="WSKillUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="WLevelUI.cpp">
+      <Filter>Contents\UI\Interface\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="WGaugeUI.cpp">
+      <Filter>Contents\UI\Interface\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="WInventory.cpp">
+      <Filter>Contents\UI\Interface\Extra\Inven</Filter>
+    </ClCompile>
+    <ClCompile Include="WItemUI.cpp">
+      <Filter>Contents\UI\ItemUI</Filter>
+    </ClCompile>
+    <ClCompile Include="WAlixirUI.cpp">
+      <Filter>Contents\UI\ItemUI\Potion</Filter>
+    </ClCompile>
+    <ClCompile Include="WHP.cpp">
+      <Filter>Contents\UI\Interface\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="WEXP.cpp">
+      <Filter>Contents\UI\Interface\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="WMP.cpp">
+      <Filter>Contents\UI\Interface\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="WCoverGaugeUI.cpp">
+      <Filter>Contents\UI\Interface\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntailItem.cpp">
+      <Filter>Contents\UI\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="WGridScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="WSKillStorage.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\SkillStorage</Filter>
+    </ClCompile>
+    <ClCompile Include="WSKillBox.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\SkillStorage</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillNumber1.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\1\SkillNumber1</Filter>
+    </ClCompile>
+    <ClCompile Include="WSKill.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="WEquipState.cpp">
+      <Filter>Contents\UI\Interface\Extra\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="WEquip.cpp">
+      <Filter>Contents\UI\Interface\Extra\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="WStat.cpp">
+      <Filter>Contents\UI\Interface\Extra\Stat</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillLuckUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\1</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillDarkUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\1</Filter>
+    </ClCompile>
+    <ClCompile Include="WIconUI.cpp">
+      <Filter>Contents\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="WAutoUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Stat</Filter>
+    </ClCompile>
+    <ClCompile Include="WUpBtn.cpp">
+      <Filter>Contents\UI\Interface\Extra\Stat</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayer.cpp">
+      <Filter>Contents\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="WInvenPage.cpp">
+      <Filter>Contents\UI\Interface\Extra\Inven\InvenPage</Filter>
+    </ClCompile>
+    <ClCompile Include="WCharState.cpp">
+      <Filter>Contents\UI\Interface\Extra\Char</Filter>
+    </ClCompile>
+    <ClCompile Include="WQuestState.cpp">
+      <Filter>Contents\UI\Interface\Extra\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="WQuestDetail.cpp">
+      <Filter>Contents\UI\Interface\Extra\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="WNumber.cpp">
+      <Filter>Contents\UI\Number</Filter>
+    </ClCompile>
+    <ClCompile Include="WHat_10.cpp">
+      <Filter>Contents\UI\Equip\Equip_10</Filter>
+    </ClCompile>
+    <ClCompile Include="WTop_10.cpp">
+      <Filter>Contents\UI\Equip\Equip_10</Filter>
+    </ClCompile>
+    <ClCompile Include="WBottom_10.cpp">
+      <Filter>Contents\UI\Equip\Equip_10</Filter>
+    </ClCompile>
+    <ClCompile Include="WShoes_10.cpp">
+      <Filter>Contents\UI\Equip\Equip_10</Filter>
+    </ClCompile>
+    <ClCompile Include="WWeapon_10.cpp">
+      <Filter>Contents\UI\Equip\Equip_10</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillNumber2.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\2</Filter>
+    </ClCompile>
+    <ClCompile Include="WSKillJumpUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\2</Filter>
+    </ClCompile>
+    <ClCompile Include="WSKillSpeedUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\2</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillNumber.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillNumber3.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\3</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillAvenUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\3</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillShadowUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\3</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillNumber4.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\4</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillQSUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\4</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillRaidUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\4</Filter>
+    </ClCompile>
+    <ClCompile Include="WGround.cpp">
+      <Filter>Contents\Object\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="WGroundScript.cpp">
+      <Filter>Contents\Object\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="WCage.cpp">
+      <Filter>Contents\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="WLadder.cpp">
+      <Filter>Contents\Object\Ladder</Filter>
+    </ClCompile>
+    <ClCompile Include="WNPC.cpp">
+      <Filter>Contents\Object\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="WStartScene.cpp">
+      <Filter>Contents\Scene\Start</Filter>
+    </ClCompile>
+    <ClCompile Include="WSeleteScene.cpp">
+      <Filter>Contents\Scene\Start</Filter>
+    </ClCompile>
+    <ClCompile Include="WCharScene.cpp">
+      <Filter>Contents\Scene\Start</Filter>
+    </ClCompile>
+    <ClCompile Include="WStartUI.cpp">
+      <Filter>Contents\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillBlastUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\5</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillLoadUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\5</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillNumber5.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\5</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillWindUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\5</Filter>
+    </ClCompile>
+    <ClCompile Include="WServerLayer.cpp">
+      <Filter>Contents\UI\StartUI</Filter>
+    </ClCompile>
+    <ClCompile Include="WScroll.cpp">
+      <Filter>Contents\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="WServerUI.cpp">
+      <Filter>Contents\UI\StartUI</Filter>
+    </ClCompile>
+    <ClCompile Include="WChannel.cpp">
+      <Filter>Contents\UI\StartUI</Filter>
+    </ClCompile>
+    <ClCompile Include="WChannelNumber.cpp">
+      <Filter>Contents\UI\StartUI</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerBody.cpp">
+      <Filter>Contents\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerArm.cpp">
+      <Filter>Contents\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerHead.cpp">
+      <Filter>Contents\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="WEyes.cpp">
+      <Filter>Contents\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerHair.cpp">
+      <Filter>Contents\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerTop.cpp">
+      <Filter>Contents\Player\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerBottom.cpp">
+      <Filter>Contents\Player\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerShoes.cpp">
+      <Filter>Contents\Player\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerWeapon.cpp">
+      <Filter>Contents\Player\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerHat.cpp">
+      <Filter>Contents\Player\Equip</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerFSM.cpp">
+      <Filter>Contents\Player\PlayerFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerState.cpp">
+      <Filter>Contents\Player\PlayerFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerStand.cpp">
+      <Filter>Contents\Player\PlayerFSM\PlayerStand</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerPronestab.cpp">
+      <Filter>Contents\Player\PlayerFSM\PlayerPronestab</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerWalk.cpp">
+      <Filter>Contents\Player\PlayerFSM\PlayerWalk</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerJump.cpp">
+      <Filter>Contents\Player\PlayerFSM\PlayerJump</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerSwing1.cpp">
+      <Filter>Contents\Player\PlayerFSM\PlayerSwing1</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerProneAttack.cpp">
+      <Filter>Contents\Player\PlayerFSM\PlayerPronestab</Filter>
+    </ClCompile>
+    <ClCompile Include="WLadderScript.cpp">
+      <Filter>Contents\Object\Ladder</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerLadder.cpp">
+      <Filter>Contents\Player\PlayerFSM\PlayerLadder</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonster.cpp">
+      <Filter>Contents\Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkelegon.cpp">
+      <Filter>Contents\Object\Monster\Skelegon</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterFSM.cpp">
+      <Filter>Contents\Object\Monster\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterState.cpp">
+      <Filter>Contents\Object\Monster\MonsterState</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterStand.cpp">
+      <Filter>Contents\Object\Monster\MonsterState\Stand</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterMove.cpp">
+      <Filter>Contents\Object\Monster\MonsterState\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="WShuriken.cpp">
+      <Filter>Contents\Player\AttackObject\Shuriken</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterHit.cpp">
+      <Filter>Contents\Object\Monster\MonsterState\Hit</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterScript.cpp">
+      <Filter>Contents\Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerAlert.cpp">
+      <Filter>Contents\Player\PlayerFSM\PlayerAlert</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterAttack.cpp">
+      <Filter>Contents\Object\Monster\MonsterState\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterAttackObject.cpp">
+      <Filter>Contents\Object\AttackObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterAttackScript.cpp">
+      <Filter>Contents\Object\AttackObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerStab.cpp">
+      <Filter>Contents\Player\PlayerFSM\PlayerStab</Filter>
+    </ClCompile>
+    <ClCompile Include="WAttackScript.cpp">
+      <Filter>Contents\Player\AttackObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerAttackObject.cpp">
+      <Filter>Contents\Player\AttackObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerSkill.cpp">
+      <Filter>Contents\Player\PlayerSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillState.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillLuck.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Luck</Filter>
+    </ClCompile>
+    <ClCompile Include="WEffect.cpp">
+      <Filter>Contents\Player\PlayerSkill\skilleffect</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillDark.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Dark</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillJump.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Jump</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillSpeed.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\speed</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillManager.cpp">
+      <Filter>Contents\Manager\SkillMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="WPortal.cpp">
+      <Filter>Contents\Object\Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="WPortalScript.cpp">
+      <Filter>Contents\Object\Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="WStone.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\horntailStone</Filter>
+    </ClCompile>
+    <ClCompile Include="WStoneScript.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\horntailStone</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntail.cpp">
+      <Filter>Contents\Object\BossMonster\horntail</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntailHeadA.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\headA</Filter>
+    </ClCompile>
+    <ClCompile Include="WBossStand.cpp">
+      <Filter>Contents\Object\Monster\Horntail</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntailHeadB.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\headB</Filter>
+    </ClCompile>
+    <ClCompile Include="WThunder.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\headC\thunder</Filter>
+    </ClCompile>
+    <ClCompile Include="WIce.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\headA\ice</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntailHeadC.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\headC</Filter>
+    </ClCompile>
+    <ClCompile Include="WFire.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\headB\fire</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntailRightHand.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\RightHand</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntailLeftHand.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\LeftHand</Filter>
+    </ClCompile>
+    <ClCompile Include="WSpear.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\LeftHand\spear</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntailLeg.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\leg</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntailWing.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\wing</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntailTail.cpp">
+      <Filter>Contents\Object\BossMonster\horntail\tail</Filter>
+    </ClCompile>
+    <ClCompile Include="WBattleManager.cpp">
+      <Filter>Contents\Manager\BattleMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="WDamageFont.cpp">
+      <Filter>Contents\Manager\BattleMgr\DamageFont</Filter>
+    </ClCompile>
+    <ClCompile Include="WEventManager.cpp">
+      <Filter>Contents\Manager\EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="WAbnormal.cpp">
+      <Filter>Contents\Object\Abnormal</Filter>
+    </ClCompile>
+    <ClCompile Include="WTemptation.cpp">
+      <Filter>Contents\Object\Abnormal\temptation</Filter>
+    </ClCompile>
+    <ClCompile Include="WAttackUp.cpp">
+      <Filter>Contents\Object\BossMonster\buff\attackup</Filter>
+    </ClCompile>
+    <ClCompile Include="WUpStat.cpp">
+      <Filter>Contents\Object\BossMonster\buff</Filter>
+    </ClCompile>
+    <ClCompile Include="WDefenseUp.cpp">
+      <Filter>Contents\Object\BossMonster\buff\defenseup</Filter>
+    </ClCompile>
+    <ClCompile Include="WSealSkill.cpp">
+      <Filter>Contents\Object\Abnormal\sealskill</Filter>
+    </ClCompile>
+    <ClCompile Include="WIgnore.cpp">
+      <Filter>Contents\Object\BossMonster\buff</Filter>
+    </ClCompile>
+    <ClCompile Include="WFaint.cpp">
+      <Filter>Contents\Object\Abnormal</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterHP.cpp">
+      <Filter>Contents\Object\Monster\MonsterHP</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterBackHP.cpp">
+      <Filter>Contents\Object\Monster\MonsterHP</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterDead.cpp">
+      <Filter>Contents\Object\Monster\MonsterState\MonsterDead</Filter>
+    </ClCompile>
+    <ClCompile Include="WHorntailDead.cpp">
+      <Filter>Contents\Object\Monster\FSM\HorntailDead</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterManager.cpp">
+      <Filter>Contents\Manager\RespawnManager</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillAven.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Aven</Filter>
+    </ClCompile>
+    <ClCompile Include="WAven.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Aven</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillShadow.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Shadow</Filter>
+    </ClCompile>
+    <ClCompile Include="WShadow.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Shadow</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillQuad.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Quadruple</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillRaid.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Raid</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillWind.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Wind</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillLoad.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillBlast.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\blast</Filter>
+    </ClCompile>
+    <ClCompile Include="WBlast.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\blast</Filter>
+    </ClCompile>
+    <ClCompile Include="WLoad.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="WAutoShuriken.cpp">
+      <Filter>Contents\Player\AttackObject\Shuriken</Filter>
+    </ClCompile>
+    <ClCompile Include="WWind.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\Wind</Filter>
+    </ClCompile>
+    <ClCompile Include="WItemObject.cpp">
+      <Filter>Contents\Object\itemobj</Filter>
+    </ClCompile>
+    <ClCompile Include="WItemManager.cpp">
+      <Filter>Contents\Manager\ItemManager</Filter>
+    </ClCompile>
+    <ClCompile Include="WItemScript.cpp">
+      <Filter>Contents\Object\itemobj</Filter>
+    </ClCompile>
+    <ClCompile Include="WSolomon.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\solomon</Filter>
+    </ClCompile>
+    <ClCompile Include="WSolThunder.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\solomon\thunder</Filter>
+    </ClCompile>
+    <ClCompile Include="WRex.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\rex</Filter>
+    </ClCompile>
+    <ClCompile Include="WBossStart.cpp">
+      <Filter>Contents\Object\Monster\FSM\BossStart</Filter>
+    </ClCompile>
+    <ClCompile Include="WRexThunder.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\rex\thunder</Filter>
+    </ClCompile>
+    <ClCompile Include="WMunin.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\munin</Filter>
+    </ClCompile>
+    <ClCompile Include="WMuninStone.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\munin\stone</Filter>
+    </ClCompile>
+    <ClCompile Include="WAriel.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\ariel</Filter>
+    </ClCompile>
+    <ClCompile Include="WArielLaser.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\ariel\laser</Filter>
+    </ClCompile>
+    <ClCompile Include="WArielStone.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\ariel\stone</Filter>
+    </ClCompile>
+    <ClCompile Include="WPinkBean.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\PinkBean</Filter>
+    </ClCompile>
+    <ClCompile Include="WPullObject.cpp">
+      <Filter>Contents\Object\BossMonster\PullObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WPinkbeanStand.cpp">
+      <Filter>Contents\Object\Monster\FSM\PinkBean</Filter>
+    </ClCompile>
+    <ClCompile Include="WJenesis.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\PinkBean\jenesis</Filter>
+    </ClCompile>
+    <ClCompile Include="WPinkBeanStone.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\PinkBean\PinkbeansStone</Filter>
+    </ClCompile>
+    <ClCompile Include="WRoccatBean.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\PinkBean\RoccatBean</Filter>
+    </ClCompile>
+    <ClCompile Include="WReflex.cpp">
+      <Filter>Contents\Object\BossMonster\buff\Reflex</Filter>
+    </ClCompile>
+    <ClCompile Include="WConfusion.cpp">
+      <Filter>Contents\Object\Abnormal\confusion</Filter>
+    </ClCompile>
+    <ClCompile Include="WVariation.cpp">
+      <Filter>Contents\Object\Abnormal</Filter>
+    </ClCompile>
+    <ClCompile Include="WMiniBean.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\miniBean</Filter>
+    </ClCompile>
+    <ClCompile Include="WMiniBeanAttack.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\miniBean\attack</Filter>
+    </ClCompile>
+    <ClCompile Include="WWhiggin.cpp">
+      <Filter>Contents\Object\Monster\pinkbean\Whiggin</Filter>
+    </ClCompile>
+    <ClCompile Include="WSharHP.cpp">
+      <Filter>Contents\Object\Monster\MonsterHP\sharHP</Filter>
+    </ClCompile>
+    <ClCompile Include="WMegnus.cpp">
+      <Filter>Contents\Object\BossMonster\magnus</Filter>
+    </ClCompile>
+    <ClCompile Include="WHelisiumBoss.cpp">
+      <Filter>Contents\Scene\Helisium</Filter>
+    </ClCompile>
+    <ClCompile Include="WMegnusStone.cpp">
+      <Filter>Contents\Object\BossMonster\magnus</Filter>
+    </ClCompile>
+    <ClCompile Include="WCloneMegnus.cpp">
+      <Filter>Contents\Object\BossMonster\magnus\clonemegnus</Filter>
+    </ClCompile>
+    <ClCompile Include="WMobZone.cpp">
+      <Filter>Contents\Object\BossMonster\magnus\MobZone</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterMoveAttack.cpp">
+      <Filter>Contents\Object\BossMonster\magnus</Filter>
+    </ClCompile>
+    <ClCompile Include="WMegnusAttack.cpp">
+      <Filter>Contents\Object\BossMonster\magnus\attack</Filter>
+    </ClCompile>
+    <ClCompile Include="WSlow.cpp">
+      <Filter>Contents\Object\Abnormal</Filter>
+    </ClCompile>
+    <ClCompile Include="WUndead.cpp">
+      <Filter>Contents\Object\Abnormal\undead</Filter>
+    </ClCompile>
+    <ClCompile Include="WSleepGas.cpp">
+      <Filter>Contents\Object\BossMonster\magnus\sleepgas</Filter>
+    </ClCompile>
+    <ClCompile Include="WStop.cpp">
+      <Filter>Contents\Object\Abnormal\Stop</Filter>
+    </ClCompile>
+    <ClCompile Include="WBossUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\bossUI</Filter>
+    </ClCompile>
+    <ClCompile Include="WBossTex.cpp">
+      <Filter>Contents\UI\Interface\Extra\bossUI\monsterTex</Filter>
+    </ClCompile>
+    <ClCompile Include="WBossEnterUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\bossUI\SceneEnter</Filter>
+    </ClCompile>
+    <ClCompile Include="WMonsterUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\bossUI\monsterUI</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianScene.cpp">
+      <Filter>Contents\Scene\Demian</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemian.cpp">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianExplode.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\attack0</Filter>
+    </ClCompile>
+    <ClCompile Include="WSpawnMonsterAttack.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\spawnattack</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianSword.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianPhase2.cpp">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianFire0.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\DemianFire</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianFire1.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\DemianFire</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianFire2.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\DemianFire</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianSpear0.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\spear</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianSpear1.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\spear</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianEntireAttack.cpp">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianVine.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClCompile>
+    <ClCompile Include="WWhite.cpp">
+      <Filter>Contents\Script\fadein</Filter>
+    </ClCompile>
+    <ClCompile Include="WSwordExplode.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianKeyAttack.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClCompile>
+    <ClCompile Include="WGroggy.cpp">
+      <Filter>Contents\Object\Abnormal</Filter>
+    </ClCompile>
+    <ClCompile Include="WInputObject.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClCompile>
+    <ClCompile Include="WInputBackground.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClCompile>
+    <ClCompile Include="WDemianCircle.cpp">
+      <Filter>Contents\Object\BossMonster\Demian\object</Filter>
+    </ClCompile>
+    <ClCompile Include="WStigma.cpp">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClCompile>
+    <ClCompile Include="WStigmaBack.cpp">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClCompile>
+    <ClCompile Include="WStigmaCount.cpp">
+      <Filter>Contents\Object\BossMonster\Demian</Filter>
+    </ClCompile>
+    <ClCompile Include="WBottom_40.cpp">
+      <Filter>Contents\UI\Equip\Equip_40</Filter>
+    </ClCompile>
+    <ClCompile Include="WHat_40.cpp">
+      <Filter>Contents\UI\Equip\Equip_40</Filter>
+    </ClCompile>
+    <ClCompile Include="WWeapon_25.cpp">
+      <Filter>Contents\UI\Equip\Equip_40</Filter>
+    </ClCompile>
+    <ClCompile Include="WTop_40.cpp">
+      <Filter>Contents\UI\Equip\Equip_40</Filter>
+    </ClCompile>
+    <ClCompile Include="WBottom_80.cpp">
+      <Filter>Contents\UI\Equip\Equip_80</Filter>
+    </ClCompile>
+    <ClCompile Include="WTop_80.cpp">
+      <Filter>Contents\UI\Equip\Equip_80</Filter>
+    </ClCompile>
+    <ClCompile Include="WHat_80.cpp">
+      <Filter>Contents\UI\Equip\Equip_80</Filter>
+    </ClCompile>
+    <ClCompile Include="WWeapon_63.cpp">
+      <Filter>Contents\UI\Equip\Equip_80</Filter>
+    </ClCompile>
+    <ClCompile Include="WShoes_40.cpp">
+      <Filter>Contents\UI\Equip\Equip_40</Filter>
+    </ClCompile>
+    <ClCompile Include="WShoes_80.cpp">
+      <Filter>Contents\UI\Equip\Equip_80</Filter>
+    </ClCompile>
+    <ClCompile Include="WUltimateSkill.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClCompile>
+    <ClCompile Include="WUltimateFog.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClCompile>
+    <ClCompile Include="WUltimateBackground.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClCompile>
+    <ClCompile Include="WSpawnUltimate.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClCompile>
+    <ClCompile Include="WUltimateShuriken.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClCompile>
+    <ClCompile Include="WUltimateObject.cpp">
+      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
+    </ClCompile>
+    <ClCompile Include="WHairItem.cpp">
+      <Filter>Contents\UI\cashitem</Filter>
+    </ClCompile>
+    <ClCompile Include="WSKillNumber6.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\1\SkillNumber6</Filter>
+    </ClCompile>
+    <ClCompile Include="WSkillUltimateUI.cpp">
+      <Filter>Contents\UI\Interface\Extra\Skill\1\SkillNumber6</Filter>
+    </ClCompile>
+    <ClCompile Include="WEyeItem.cpp">
+      <Filter>Contents\UI\cashitem</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerDead.cpp">
+      <Filter>Contents\Player\PlayerFSM\PlayerDead</Filter>
+    </ClCompile>
+    <ClCompile Include="WObjectPoolManager.cpp">
+      <Filter>Contents\Manager\ObjectPoolManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{3b307390-cc1e-4083-869d-a32d27fe6618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Load">
+      <UniqueIdentifier>{3935af5c-781a-485f-b861-a577e1da5dad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script">
+      <UniqueIdentifier>{ccb16c22-7d89-48d1-a1e0-e2dfac14ed65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene">
+      <UniqueIdentifier>{5320ced3-98e5-4f3b-a161-790e348625a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Cave">
+      <UniqueIdentifier>{735468d0-d587-4778-9167-b4941705c8a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Leafre">
+      <UniqueIdentifier>{386690a1-ad02-4a07-baed-214f0e7da814}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Temple">
+      <UniqueIdentifier>{dc1aa036-ec8d-4cbc-9d38-07666422a6d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Valley">
+      <UniqueIdentifier>{b6881b7f-30b1-4181-99e1-acfa27b42da2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Move">
+      <UniqueIdentifier>{a1327966-6d29-4c7b-9c87-e9b64670578b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI">
+      <UniqueIdentifier>{923d25ad-6dfc-4388-9627-2cdef72811db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface">
+      <UniqueIdentifier>{88744d0b-0e0a-4b42-8f50-5638699784ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Channle">
+      <UniqueIdentifier>{68d047e0-eaad-40c1-b5e3-cc4a149b4856}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\System">
+      <UniqueIdentifier>{5520e8df-d8a6-4d6d-b86c-73b68633cf88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Shop">
+      <UniqueIdentifier>{ccc61f3b-6936-46f4-b6b9-8bd4846204cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Star">
+      <UniqueIdentifier>{51a6b7d5-d4d1-479a-8456-60a5a4da8fa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Menu">
+      <UniqueIdentifier>{370d0dec-79f0-48be-9417-a6ab001fa59f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra">
+      <UniqueIdentifier>{fd3670e0-ed09-482c-8db8-cdbd824fe2b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Skill">
+      <UniqueIdentifier>{b14b477c-decd-4ef3-aea8-25d400789cef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Quest">
+      <UniqueIdentifier>{4ee4eece-175a-4dfa-9ec6-ead2a35496f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Inven">
+      <UniqueIdentifier>{bdddee6e-ed3d-4969-b89a-26401601a2bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Stat">
+      <UniqueIdentifier>{cb03f8bf-0372-468a-91d9-58aa1978846d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Equip">
+      <UniqueIdentifier>{b04d6b4b-1f40-4f72-ae9f-aa564e7d4a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Char">
+      <UniqueIdentifier>{f064c1ff-f82a-4523-b2e8-facce364f55b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Level">
+      <UniqueIdentifier>{0ab7a315-1a4d-43b6-a756-079506b6707c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Gauge">
+      <UniqueIdentifier>{00b29464-04a4-4845-98c0-a895b60071d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Gauge\HP">
+      <UniqueIdentifier>{810dacef-827c-4a2d-a92f-12b3b17e6bfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Gauge\MP">
+      <UniqueIdentifier>{8deb13e5-1132-43fb-9a1f-c7f55a10b77f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Gauge\EXP">
+      <UniqueIdentifier>{57b11561-8a84-47cf-8bd3-17033a4aa72f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Item">
+      <UniqueIdentifier>{ec43df9d-b9c0-4da4-90bb-b685a6f85b76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\ItemUI">
+      <UniqueIdentifier>{64f531d4-5c81-48e0-96c0-49b7c3651a6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\ItemUI\Potion">
+      <UniqueIdentifier>{89b91c99-324a-42c2-a53b-30ab2461e60f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Skill\1">
+      <UniqueIdentifier>{3019af27-fac1-4b21-a1fe-5a3bb2676695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Skill\2">
+      <UniqueIdentifier>{a7f4658f-296f-46a6-b40b-2fe06a69dd6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Skill\3">
+      <UniqueIdentifier>{d3056b9d-a33b-46ae-b053-8220d62ec530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Skill\4">
+      <UniqueIdentifier>{f49a63dd-ed21-48ab-9827-fc0afe4cdb15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Skill\5">
+      <UniqueIdentifier>{32bcabcf-4fcc-4c2d-ab24-599d3b845cb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Skill\SkillStorage">
+      <UniqueIdentifier>{0ffaf433-ba65-40fd-adba-a3dc75d9db1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Skill\1\SkillNumber1">
+      <UniqueIdentifier>{a26a92e4-d1ca-4bc1-9b0a-dce9350a0d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Equip">
+      <UniqueIdentifier>{7e5125b5-cf62-4aef-b78c-a31f37a52593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player">
+      <UniqueIdentifier>{3fce86ef-f16b-4886-8744-59a564b8f047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Inven\InvenPage">
+      <UniqueIdentifier>{5c1cc198-78d6-4f81-b16d-6447f4faa905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Number">
+      <UniqueIdentifier>{5614389c-3d37-4dbe-9c68-ab41ba4714c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Equip\Equip_10">
+      <UniqueIdentifier>{04ff3521-3a94-4eb4-acf9-1d55b8b0ba79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Equip\Equip_40">
+      <UniqueIdentifier>{c434cb2e-2905-49eb-97d4-25bc384acca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Equip\Equip_80">
+      <UniqueIdentifier>{17e0d300-09b1-47a6-b7f6-da44a595b096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object">
+      <UniqueIdentifier>{1e18e2e9-1c86-48a0-bc29-861fe2be18aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Ground">
+      <UniqueIdentifier>{70a6511b-6013-4f63-9df9-96ce09fbd873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Ladder">
+      <UniqueIdentifier>{1560192a-8ef8-4244-80aa-4759882c359a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\NPC">
+      <UniqueIdentifier>{38651194-cfcc-48de-a5dc-920cfbec8433}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Start">
+      <UniqueIdentifier>{1ea4504f-a69f-479c-9171-af27f9829182}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button">
+      <UniqueIdentifier>{0fc69002-b9f7-4e1a-9710-01b477991026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\StartUI">
+      <UniqueIdentifier>{d224f379-3b5c-4826-9e8d-f2e77ec0cd34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\Equip">
+      <UniqueIdentifier>{ba4e9b0f-259b-4735-b0cb-ac4672e76a13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM">
+      <UniqueIdentifier>{d3c3ae2f-bb24-4af4-9e92-5f4e3926b0e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM\PlayerStand">
+      <UniqueIdentifier>{18b29743-077b-4061-9e9c-116f6090a040}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM\PlayerPronestab">
+      <UniqueIdentifier>{27085fce-d7e7-420a-9a02-c21871abe917}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM\PlayerJump">
+      <UniqueIdentifier>{5430ca48-97a9-4fd9-a89c-742a716d63d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM\PlayerWalk">
+      <UniqueIdentifier>{4b58261c-3370-47d5-828c-5a30cc439077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM\PlayerSwing1">
+      <UniqueIdentifier>{ee2a6d59-8e84-4177-b477-73b67e33e047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM\PlayerLadder">
+      <UniqueIdentifier>{dbd0c878-07c8-4c64-be75-7789cf7f8f87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster">
+      <UniqueIdentifier>{eb985c1a-3bfd-4e36-8b3c-011ce2e1904a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\Skelegon">
+      <UniqueIdentifier>{c0c3203e-eee2-40d4-8fa8-19defe59922f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\FSM">
+      <UniqueIdentifier>{2617a980-b277-40bf-8616-a40fc4071686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\MonsterState">
+      <UniqueIdentifier>{fe9fe203-cfe5-43e4-9df7-a1fc88e3e9bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\MonsterState\Stand">
+      <UniqueIdentifier>{6e0a8031-580c-490e-85bd-abd111eb727c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\MonsterState\Move">
+      <UniqueIdentifier>{7da952eb-95c1-4934-8f91-be07f607db96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\MonsterState\Hit">
+      <UniqueIdentifier>{b06cf991-0f65-4aa5-bff4-adc5e6b6862b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM\PlayerAlert">
+      <UniqueIdentifier>{2cfc99d3-7bf5-4a9f-9f59-1c4819d1e116}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\MonsterState\Attack">
+      <UniqueIdentifier>{27c8ca4c-bf88-4b90-bb6f-c9180f14a07c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\AttackObject">
+      <UniqueIdentifier>{c20b09f3-6d29-44b3-b88d-e7ed14e1888a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM\PlayerStab">
+      <UniqueIdentifier>{09ccc3e6-4a37-4802-8cb3-f4ce758ac10c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\AttackObject">
+      <UniqueIdentifier>{f674baa7-76f5-4a34-87de-358061cf897c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\AttackObject\Shuriken">
+      <UniqueIdentifier>{3f75afda-edb5-4777-b2b9-4179431d7e0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill">
+      <UniqueIdentifier>{7fa8b8aa-2e29-4e07-999b-26bf36ba63ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState">
+      <UniqueIdentifier>{139e93fa-f031-4519-88d8-c163e189deeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Luck">
+      <UniqueIdentifier>{415efff1-f6e8-478c-9c7f-3317357f5e75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\skilleffect">
+      <UniqueIdentifier>{7f1221a1-82e7-44f9-9946-d270a6fbce09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Dark">
+      <UniqueIdentifier>{56826711-f978-4dd9-89d4-8198b0b9e52e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Jump">
+      <UniqueIdentifier>{8802166e-f402-4dd7-8a81-12f6c92c8fad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\speed">
+      <UniqueIdentifier>{4f8c8735-6b5a-4cb5-9bcf-6953a3106b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager">
+      <UniqueIdentifier>{af08dd14-ba30-4e67-a84c-70b6996582b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\SkillMgr">
+      <UniqueIdentifier>{d882fcb2-0360-4ab6-9b5b-c9a6bd33e773}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Portal">
+      <UniqueIdentifier>{3acb3aa0-f6bb-4528-a533-ecd8ec185e33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster">
+      <UniqueIdentifier>{e547478d-d4e9-4838-baf3-3ec15e48bfb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail">
+      <UniqueIdentifier>{42ba51d1-1fba-4c6a-9c2f-b57add4f5e13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\horntailStone">
+      <UniqueIdentifier>{fdb4f00e-8183-422e-a774-23cd3a148971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\headA">
+      <UniqueIdentifier>{f8936b03-e87c-4d90-80cb-848234beb90e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\Horntail">
+      <UniqueIdentifier>{7dc48ddc-32d7-4a15-8b4d-a221276dc2eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\headB">
+      <UniqueIdentifier>{f968cf70-225f-47b5-819a-c8c3037c98ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\headA\ice">
+      <UniqueIdentifier>{9d3f2f54-2308-4773-a556-55751fe390c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\headC">
+      <UniqueIdentifier>{ba2ba129-b535-439d-8b9c-6951516d4601}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\headC\thunder">
+      <UniqueIdentifier>{6cc2c5db-e6b6-495b-bdf4-c3e6b3eb5849}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\headB\fire">
+      <UniqueIdentifier>{32db815b-f2b6-4a1e-b5de-5aa9fb214538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\RightHand">
+      <UniqueIdentifier>{fe777953-3cdd-479a-a510-36fff823f9e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\LeftHand">
+      <UniqueIdentifier>{6a97d6fb-a867-4882-bc66-9caaa40bb950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\LeftHand\spear">
+      <UniqueIdentifier>{dd1a0e96-3ae0-4e5f-b2a3-2fe48bf12013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\leg">
+      <UniqueIdentifier>{c49afaea-6eec-4aed-9d09-3d854f1a0797}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\wing">
+      <UniqueIdentifier>{847b728a-4cfd-48dd-a72a-1eb7cf677d0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\horntail\tail">
+      <UniqueIdentifier>{a73da13c-f238-4396-89da-150a483b10c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\BattleMgr">
+      <UniqueIdentifier>{a0661a59-9d4f-46b2-8a33-3381df63e7d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\BattleMgr\DamageFont">
+      <UniqueIdentifier>{e1fd993f-0539-4ac5-b9db-44da543fce22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\EventManager">
+      <UniqueIdentifier>{80a7d4f2-2389-4f13-9587-ff0c0f0f3479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Abnormal">
+      <UniqueIdentifier>{9023457d-1daf-4bc4-b621-18776aeafd24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Abnormal\temptation">
+      <UniqueIdentifier>{de28d0e3-9a3f-41fd-b7ad-7029cc59f7c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Abnormal\sealskill">
+      <UniqueIdentifier>{d79799d2-51b3-4747-8763-53b9331cbaed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\buff">
+      <UniqueIdentifier>{d93abb08-0631-4b05-9135-f0379854c307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\buff\attackup">
+      <UniqueIdentifier>{2556f28d-2143-4cbd-ac60-8cd4019fc3d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\buff\defenseup">
+      <UniqueIdentifier>{718855e0-9f61-4c01-8cc0-c46e46981a76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\MonsterHP">
+      <UniqueIdentifier>{28fa04c8-2d4d-4aa1-a6f3-c8e0f27cdc34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\MonsterState\MonsterDead">
+      <UniqueIdentifier>{f1f24f4a-6fed-4f3c-9b72-6bb14585a461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\FSM\HorntailDead">
+      <UniqueIdentifier>{5ffab419-a1d4-4a2d-81df-ac378d24e73c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\RespawnManager">
+      <UniqueIdentifier>{e232eb7b-70fc-431a-b3e2-61dd2c4acbed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Aven">
+      <UniqueIdentifier>{16cf85ec-94ed-44aa-a614-85e3ddb149f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Shadow">
+      <UniqueIdentifier>{cef421c1-d16f-4e3b-b1b2-efeede1b80be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Quadruple">
+      <UniqueIdentifier>{67de22ef-a228-4da0-9437-e674555fc586}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Raid">
+      <UniqueIdentifier>{3cd5c9fd-aff8-4ec7-90c3-6744c26e029d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Wind">
+      <UniqueIdentifier>{d0c21362-70fd-4a8b-af41-5397897d96e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Load">
+      <UniqueIdentifier>{b72d131c-cd0b-4a95-906d-093089d7373d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\blast">
+      <UniqueIdentifier>{6fec3630-0515-4e04-8a56-ebca0ef10cd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\itemobj">
+      <UniqueIdentifier>{b4e855b6-ad25-4df7-91b4-b3c79c285c77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\ItemManager">
+      <UniqueIdentifier>{23346d51-ec1e-4e43-bd1d-538a0b1c63c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean">
+      <UniqueIdentifier>{066917a7-cb7a-4334-b461-e8eb6deef1cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\solomon">
+      <UniqueIdentifier>{1ce72545-3c5a-4783-b958-99dc0fa79c2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\munin">
+      <UniqueIdentifier>{1dc6a2b0-a6f9-440d-9829-c8869c9deaa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\ariel">
+      <UniqueIdentifier>{8a14c1bb-6f54-48df-81f9-caee287aa65e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\Whiggin">
+      <UniqueIdentifier>{0483d523-9dd4-4c4f-81a0-ebb8d3eff970}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\rex">
+      <UniqueIdentifier>{224d5567-367d-4eb0-9ca6-9ea5802ad92d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\PinkBean">
+      <UniqueIdentifier>{ee9efaff-02bc-4f73-88ac-c6cda7f606a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\solomon\thunder">
+      <UniqueIdentifier>{a8e6e086-3da3-4353-adae-b27ddb065df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\FSM\BossStart">
+      <UniqueIdentifier>{464a5fb5-e126-43a6-a8f4-7005e9aa63ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\rex\thunder">
+      <UniqueIdentifier>{8fd25aa6-2cc9-49bf-98bf-ab89361912bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\munin\stone">
+      <UniqueIdentifier>{48fd237d-be15-4fdf-83c6-dc7bf293b44d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\ariel\laser">
+      <UniqueIdentifier>{596f453f-3ffa-4bb9-908c-1f5cdfa0dcb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\ariel\stone">
+      <UniqueIdentifier>{9b97d37d-1afc-4cb1-8e0e-012cbb1c1c6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM\PlayerHit">
+      <UniqueIdentifier>{7f32eefd-1544-44e1-88c9-be42fd035d5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\PullObject">
+      <UniqueIdentifier>{328c344e-01d3-49ec-95e1-40d7d3aac6ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\FSM\PinkBean">
+      <UniqueIdentifier>{cdf7f12e-1fef-4dd4-87da-2c325bff8296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\PinkBean\jenesis">
+      <UniqueIdentifier>{eec240ac-4ca4-4ceb-899f-af6f6fa7f735}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\PinkBean\PinkbeansStone">
+      <UniqueIdentifier>{944f7ded-a2ab-46a4-b8a2-e9526338b1e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\PinkBean\RoccatBean">
+      <UniqueIdentifier>{1bc9c5b3-57a8-41c3-9d11-907897b9db07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\buff\Reflex">
+      <UniqueIdentifier>{8a38364a-0df5-4c70-a296-13ce72baa31a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Abnormal\confusion">
+      <UniqueIdentifier>{9eafe0dc-0eb9-4815-b181-df2c41367b47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\miniBean">
+      <UniqueIdentifier>{11c2aef1-6bd2-40ef-b1f7-4548f2277385}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\pinkbean\miniBean\attack">
+      <UniqueIdentifier>{414581dd-962b-4fe2-811d-eccc37942c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Monster\MonsterHP\sharHP">
+      <UniqueIdentifier>{69f607ce-90e7-431c-86b2-d2226e6aa64c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\magnus">
+      <UniqueIdentifier>{5ff33021-ee61-477f-97ed-ad154737b2b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Helisium">
+      <UniqueIdentifier>{aa3cc52f-a552-458b-9a0e-fdc31cf9555e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\magnus\moveattack">
+      <UniqueIdentifier>{d3444161-2b48-4240-a04d-be185629d820}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\magnus\clonemegnus">
+      <UniqueIdentifier>{ba02b3b7-8597-4af0-987e-4a17c9a3e02a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\magnus\MobZone">
+      <UniqueIdentifier>{c4565a8e-8901-4dec-993f-a76c0695f976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\magnus\attack">
+      <UniqueIdentifier>{e702fd33-a461-43f9-b417-9e25e0c2a907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Abnormal\Slow">
+      <UniqueIdentifier>{86f4969b-1146-46de-97fc-52d2286a9b4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Abnormal\undead">
+      <UniqueIdentifier>{04691a25-fa52-40c1-ae65-27492786f165}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\magnus\sleepgas">
+      <UniqueIdentifier>{f9d61ce3-e33a-4678-964c-485d47f8fac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Abnormal\Stop">
+      <UniqueIdentifier>{924e8adf-1b15-4ea0-8443-bd38769250f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\bossUI">
+      <UniqueIdentifier>{5a4c252c-7f32-452a-9436-a83090912b91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\bossUI\extra">
+      <UniqueIdentifier>{a52fd706-24ef-4a5a-b30f-786001d549ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\bossUI\monsterUI">
+      <UniqueIdentifier>{41706f2b-5947-4235-a7cb-ce2a20616c28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\bossUI\monsterTex">
+      <UniqueIdentifier>{243c7dac-ae15-41d6-9781-14b9c86fefd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\bossUI\SceneEnter">
+      <UniqueIdentifier>{bb4261a6-ef5b-49a7-a12f-490161d11a47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Demian">
+      <UniqueIdentifier>{9fc9b9e3-8682-4cf6-9838-b604ef7592a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\Demian">
+      <UniqueIdentifier>{c5207de9-0181-4036-aae5-97ec6115021a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\Demian\attack0">
+      <UniqueIdentifier>{0088f1d8-62e0-4fad-8286-8e4502a2a729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\Demian\spawnattack">
+      <UniqueIdentifier>{d1afa790-59f6-42e7-8f87-fa04eea792dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\Demian\object">
+      <UniqueIdentifier>{3dc9c768-2934-44d8-8a12-25b0a8520ffb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\Demian\DemianFire">
+      <UniqueIdentifier>{eb487f29-3d14-4f5b-9d1c-b753187680a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\Demian\demainspear">
+      <UniqueIdentifier>{7274e2c9-be3a-42dd-95ea-681f5a3e5366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BossMonster\Demian\spear">
+      <UniqueIdentifier>{462c9dfb-3af6-45a3-adfc-0f31b3cf1a1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\fadein">
+      <UniqueIdentifier>{a887672d-5342-4f0f-957d-54cdce0227cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\ultimate">
+      <UniqueIdentifier>{6bce2403-cb21-433c-8d66-e1896e616830}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Interface\Extra\Skill\1\SkillNumber6">
+      <UniqueIdentifier>{d2ca57b5-7d46-4fc2-a810-735005f09911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\cashitem">
+      <UniqueIdentifier>{546511eb-c1b6-4b41-8fa6-1da9912618da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerFSM\PlayerDead">
+      <UniqueIdentifier>{cee7a89f-de8c-4d80-9112-8dd1fe3953dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\ObjectPoolManager">
+      <UniqueIdentifier>{841e6804-6e66-4f01-a41d-731cf8ac634f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

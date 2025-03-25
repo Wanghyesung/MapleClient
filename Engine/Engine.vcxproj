@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{fbea7778-58bf-476c-b230-ad22cb7d5c09}</ProjectGuid>
+    <RootNamespace>Engine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+    <Import Project="..\Engine_Source\Engine_Source.vcxitems" Label="Shared" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent />
+    <PostBuildEvent />
+    <PostBuildEvent>
+      <Command>xcopy /R /Y "$(SolutionDir)dll\fmod.dll" "$(SolutionDir)x64\Debug"
+
+xcopy /R /Y "$(SolutionDir)dll\fmodL.dll" "$(SolutionDir)x64\Debug"
+
+xcopy /R /Y "$(SolutionDir)dll\fmodstudio.dll" "$(SolutionDir)x64\Debug"
+
+xcopy /R /Y "$(SolutionDir)dll\fmodstudioL.dll" "$(SolutionDir)x64\Debug"
+
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapper.dll" "$(SolutionDir)x64\Debug"
+
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent />
+    <PostBuildEvent />
+    <PostBuildEvent>
+      <Command>xcopy /R /Y "$(SolutionDir)dll\fmod.dll" "$(SolutionDir)x64\Debug"
+
+xcopy /R /Y "$(SolutionDir)dll\fmodL.dll" "$(SolutionDir)x64\Debug"
+
+xcopy /R /Y "$(SolutionDir)dll\fmodstudio.dll" "$(SolutionDir)x64\Debug"
+
+xcopy /R /Y "$(SolutionDir)dll\fmodstudioL.dll" "$(SolutionDir)x64\Debug"
+
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapper.dll" "$(SolutionDir)x64\Debug"
+
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="LoadScene.h" />
+    <ClInclude Include="WAbnormal.h" />
+    <ClInclude Include="WAriel.h" />
+    <ClInclude Include="WArielLaser.h" />
+    <ClInclude Include="WArielStone.h" />
+    <ClInclude Include="WAttackScript.h" />
+    <ClInclude Include="WAttackUp.h" />
+    <ClInclude Include="WAutoShuriken.h" />
+    <ClInclude Include="WAven.h" />
+    <ClInclude Include="WBattleManager.h" />
+    <ClInclude Include="WBlast.h" />
+    <ClInclude Include="WBossStart.h" />
+    <ClInclude Include="WBossUI.h" />
+    <ClInclude Include="WBottom_40.h" />
+    <ClInclude Include="WBottom_80.h" />
+    <ClInclude Include="WCage.h" />
+    <ClInclude Include="WChannel.h" />
+    <ClInclude Include="WChannelNumber.h" />
+    <ClInclude Include="WCharScene.h" />
+    <ClInclude Include="WCloneMegnus.h" />
+    <ClInclude Include="WConfusion.h" />
+    <ClInclude Include="WDamageFont.h" />
+    <ClInclude Include="WDefenseUp.h" />
+    <ClInclude Include="WDemianCircle.h" />
+    <ClInclude Include="WDemianEntireAttack.h" />
+    <ClInclude Include="WDemianFire0.h" />
+    <ClInclude Include="WDemian.h" />
+    <ClInclude Include="WDemianExplode.h" />
+    <ClInclude Include="WDemianFire1.h" />
+    <ClInclude Include="WDemianFire2.h" />
+    <ClInclude Include="WDemianKeyAttack.h" />
+    <ClInclude Include="WDemianSword.h" />
+    <ClInclude Include="WDemianPhase2.h" />
+    <ClInclude Include="WDemianScene.h" />
+    <ClInclude Include="WDemianSpear0.h" />
+    <ClInclude Include="WDemianSpear1.h" />
+    <ClInclude Include="WDemianVine.h" />
+    <ClInclude Include="WEyeItem.h" />
+    <ClInclude Include="WHairItem.h" />
+    <ClInclude Include="WHat_40.h" />
+    <ClInclude Include="WHat_80.h" />
+    <ClInclude Include="WObjectPoolManager.h" />
+    <ClInclude Include="WPlayerDead.h" />
+    <ClInclude Include="WShoes_40.h" />
+    <ClInclude Include="WShoes_80.h" />
+    <ClInclude Include="WSKillNumber6.h" />
+    <ClInclude Include="WSkillUltimateUI.h" />
+    <ClInclude Include="WSpawnUltimate.h" />
+    <ClInclude Include="WStigma.h" />
+    <ClInclude Include="WEffect.h" />
+    <ClInclude Include="WEventManager.h" />
+    <ClInclude Include="WEyes.h" />
+    <ClInclude Include="WFaint.h" />
+    <ClInclude Include="WFire.h" />
+    <ClInclude Include="WGroggy.h" />
+    <ClInclude Include="WGround.h" />
+    <ClInclude Include="WGroundScript.h" />
+    <ClInclude Include="WHelisiumBoss.h" />
+    <ClInclude Include="WHorntail.h" />
+    <ClInclude Include="WHorntailDead.h" />
+    <ClInclude Include="WHorntailHeadA.h" />
+    <ClInclude Include="WHorntailHeadB.h" />
+    <ClInclude Include="WBossStand.h" />
+    <ClInclude Include="WHorntailHeadC.h" />
+    <ClInclude Include="WHorntailLeftHand.h" />
+    <ClInclude Include="WHorntailLeg.h" />
+    <ClInclude Include="WHorntailRightHand.h" />
+    <ClInclude Include="WHorntailTail.h" />
+    <ClInclude Include="WHorntailWing.h" />
+    <ClInclude Include="WIce.h" />
+    <ClInclude Include="WIgnore.h" />
+    <ClInclude Include="WInputBackground.h" />
+    <ClInclude Include="WInputObject.h" />
+    <ClInclude Include="WItemManager.h" />
+    <ClInclude Include="WItemObject.h" />
+    <ClInclude Include="WItemScript.h" />
+    <ClInclude Include="WJenesis.h" />
+    <ClInclude Include="WLadderScript.h" />
+    <ClInclude Include="WLoad.h" />
+    <ClInclude Include="WMegnus.h" />
+    <ClInclude Include="WMegnusAttack.h" />
+    <ClInclude Include="WMegnusStone.h" />
+    <ClInclude Include="WMiniBean.h" />
+    <ClInclude Include="WMiniBeanAttack.h" />
+    <ClInclude Include="WMobZone.h" />
+    <ClInclude Include="WMonster.h" />
+    <ClInclude Include="WMonsterAttack.h" />
+    <ClInclude Include="WMonsterAttackObject.h" />
+    <ClInclude Include="WMonsterAttackScript.h" />
+    <ClInclude Include="WMonsterBackHP.h" />
+    <ClInclude Include="WMonsterDead.h" />
+    <ClInclude Include="WMonsterFSM.h" />
+    <ClInclude Include="WMonsterHit.h" />
+    <ClInclude Include="WMonsterHP.h" />
+    <ClInclude Include="WMonsterMove.h" />
+    <ClInclude Include="WMonsterMoveAttack.h" />
+    <ClInclude Include="WMonsterScript.h" />
+    <ClInclude Include="WMonsterStand.h" />
+    <ClInclude Include="WMonsterState.h" />
+    <ClInclude Include="WBossTex.h" />
+    <ClInclude Include="WMonsterUI.h" />
+    <ClInclude Include="WMunin.h" />
+    <ClInclude Include="WMuninStone.h" />
+    <ClInclude Include="WPinkBean.h" />
+    <ClInclude Include="WPinkbeanStand.h" />
+    <ClInclude Include="WPinkBeanStone.h" />
+    <ClInclude Include="WPlayerAlert.h" />
+    <ClInclude Include="WPlayerAttackObject.h" />
+    <ClInclude Include="WPlayerBottom.h" />
+    <ClInclude Include="WPlayerFSM.h" />
+    <ClInclude Include="WPlayerHair.h" />
+    <ClInclude Include="WLadder.h" />
+    <ClInclude Include="WNPC.h" />
+    <ClInclude Include="WPlayerArm.h" />
+    <ClInclude Include="WPlayerBody.h" />
+    <ClInclude Include="WPlayerHat.h" />
+    <ClInclude Include="WPlayerHead.h" />
+    <ClInclude Include="WPlayerJump.h" />
+    <ClInclude Include="WPlayerLadder.h" />
+    <ClInclude Include="WPlayerProneAttack.h" />
+    <ClInclude Include="WPlayerPronestab.h" />
+    <ClInclude Include="WPlayerShoes.h" />
+    <ClInclude Include="WPlayerSkill.h" />
+    <ClInclude Include="WPlayerStab.h" />
+    <ClInclude Include="WPlayerStand.h" />
+    <ClInclude Include="WPlayerState.h" />
+    <ClInclude Include="WPlayerSwing1.h" />
+    <ClInclude Include="WPlayerTop.h" />
+    <ClInclude Include="WPlayerWalk.h" />
+    <ClInclude Include="WPlayerWeapon.h" />
+    <ClInclude Include="WPortal.h" />
+    <ClInclude Include="WPortalScript.h" />
+    <ClInclude Include="WMonsterManager.h" />
+    <ClInclude Include="WPullObject.h" />
+    <ClInclude Include="WReflex.h" />
+    <ClInclude Include="WRex.h" />
+    <ClInclude Include="WRexThunder.h" />
+    <ClInclude Include="WRoccatBean.h" />
+    <ClInclude Include="WBossEnterUI.h" />
+    <ClInclude Include="WScroll.h" />
+    <ClInclude Include="WSealSkill.h" />
+    <ClInclude Include="WSeleteScene.h" />
+    <ClInclude Include="WServerLayer.h" />
+    <ClInclude Include="WServerUI.h" />
+    <ClInclude Include="WShadow.h" />
+    <ClInclude Include="WSharHP.h" />
+    <ClInclude Include="WShuriken.h" />
+    <ClInclude Include="WSkelegon.h" />
+    <ClInclude Include="WSkillAven.h" />
+    <ClInclude Include="WSkillAvenUI.h" />
+    <ClInclude Include="WSkillBlast.h" />
+    <ClInclude Include="WSkillBlastUI.h" />
+    <ClInclude Include="WSkillDark.h" />
+    <ClInclude Include="WSkillJump.h" />
+    <ClInclude Include="WSKillJumpUI.h" />
+    <ClInclude Include="WSkillLoad.h" />
+    <ClInclude Include="WSkillLoadUI.h" />
+    <ClInclude Include="WSkillLuck.h" />
+    <ClInclude Include="WSkillManager.h" />
+    <ClInclude Include="WSkillNumber.h" />
+    <ClInclude Include="WSkillNumber2.h" />
+    <ClInclude Include="WAlixirUI.h" />
+    <ClInclude Include="WAutoUI.h" />
+    <ClInclude Include="WBottom_10.h" />
+    <ClInclude Include="WCameraScript.h" />
+    <ClInclude Include="WCaveScene.h" />
+    <ClInclude Include="WCaveStartScene.h" />
+    <ClInclude Include="WChannleBntUI.h" />
+    <ClInclude Include="WCharState.h" />
+    <ClInclude Include="WCharUI.h" />
+    <ClInclude Include="WCoverGaugeUI.h" />
+    <ClInclude Include="WEquip.h" />
+    <ClInclude Include="WHat_10.h" />
+    <ClInclude Include="WInvenPage.h" />
+    <ClInclude Include="WEquipState.h" />
+    <ClInclude Include="WEquipUI.h" />
+    <ClInclude Include="WEXP.h" />
+    <ClInclude Include="WGaugeUI.h" />
+    <ClInclude Include="WGridScript.h" />
+    <ClInclude Include="WHorntailItem.h" />
+    <ClInclude Include="WHP.h" />
+    <ClInclude Include="WIconUI.h" />
+    <ClInclude Include="WInterfaceUI.h" />
+    <ClInclude Include="WInventory.h" />
+    <ClInclude Include="WInvenUI.h" />
+    <ClInclude Include="WItemUI.h" />
+    <ClInclude Include="WLeafreScene.h" />
+    <ClInclude Include="WLevelUI.h" />
+    <ClInclude Include="WNumber.h" />
+    <ClInclude Include="WPlayer.h" />
+    <ClInclude Include="WPlayerScript.h" />
+    <ClInclude Include="WQuestDetail.h" />
+    <ClInclude Include="WQuestState.h" />
+    <ClInclude Include="WShoes_10.h" />
+    <ClInclude Include="WSkillLuckUI.h" />
+    <ClInclude Include="WMenuUI.h" />
+    <ClInclude Include="WMoveScene.h" />
+    <ClInclude Include="WMoveScene_2.h" />
+    <ClInclude Include="WMP.h" />
+    <ClInclude Include="WPlayScene.h" />
+    <ClInclude Include="WQuestUI.h" />
+    <ClInclude Include="WShopUI.h" />
+    <ClInclude Include="WSKill.h" />
+    <ClInclude Include="WSKillBox.h" />
+    <ClInclude Include="WSkillDarkUI.h" />
+    <ClInclude Include="WSkillNumber1.h" />
+    <ClInclude Include="WSkillNumber3.h" />
+    <ClInclude Include="WSkillNumber4.h" />
+    <ClInclude Include="WSkillNumber5.h" />
+    <ClInclude Include="WSkillQSUI.h" />
+    <ClInclude Include="WSkillQuad.h" />
+    <ClInclude Include="WSkillRaid.h" />
+    <ClInclude Include="WSkillRaidUI.h" />
+    <ClInclude Include="WSkillShadow.h" />
+    <ClInclude Include="WSkillShadowUI.h" />
+    <ClInclude Include="WSkillSpeed.h" />
+    <ClInclude Include="WSKillSpeedUI.h" />
+    <ClInclude Include="WSkillState.h" />
+    <ClInclude Include="WSKillStorage.h" />
+    <ClInclude Include="WSKillUI.h" />
+    <ClInclude Include="WSkillWind.h" />
+    <ClInclude Include="WSkillWindUI.h" />
+    <ClInclude Include="WSleepGas.h" />
+    <ClInclude Include="WSlow.h" />
+    <ClInclude Include="WSolomon.h" />
+    <ClInclude Include="WSolThunder.h" />
+    <ClInclude Include="WStigmaBack.h" />
+    <ClInclude Include="WStigmaCount.h" />
+    <ClInclude Include="WSwordExplode.h" />
+    <ClInclude Include="WSpawnMonsterAttack.h" />
+    <ClInclude Include="WSpear.h" />
+    <ClInclude Include="WStartScene.h" />
+    <ClInclude Include="WStartUI.h" />
+    <ClInclude Include="WStarUI.h" />
+    <ClInclude Include="WStat.h" />
+    <ClInclude Include="WStatUI.h" />
+    <ClInclude Include="WStone.h" />
+    <ClInclude Include="WStoneScript.h" />
+    <ClInclude Include="WStop.h" />
+    <ClInclude Include="WSystemUI.h" />
+    <ClInclude Include="WTempleBossScene.h" />
+    <ClInclude Include="WTempleScene.h" />
+    <ClInclude Include="WTempleScene_2.h" />
+    <ClInclude Include="WTempleStartScene.h" />
+    <ClInclude Include="WTemptation.h" />
+    <ClInclude Include="WThunder.h" />
+    <ClInclude Include="WTop_10.h" />
+    <ClInclude Include="WTop_40.h" />
+    <ClInclude Include="WTop_80.h" />
+    <ClInclude Include="WUltimateBackground.h" />
+    <ClInclude Include="WUltimateFog.h" />
+    <ClInclude Include="WUltimateObject.h" />
+    <ClInclude Include="WUltimateShuriken.h" />
+    <ClInclude Include="WUltimateSkill.h" />
+    <ClInclude Include="WUndead.h" />
+    <ClInclude Include="WUpBtn.h" />
+    <ClInclude Include="WUpStat.h" />
+    <ClInclude Include="WValleyScene.h" />
+    <ClInclude Include="WValleyScene_2.h" />
+    <ClInclude Include="WVariation.h" />
+    <ClInclude Include="WWeapon_10.h" />
+    <ClInclude Include="WWeapon_25.h" />
+    <ClInclude Include="WWeapon_63.h" />
+    <ClInclude Include="WWhiggin.h" />
+    <ClInclude Include="WWhite.h" />
+    <ClInclude Include="WWind.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="WAbnormal.cpp" />
+    <ClCompile Include="WAriel.cpp" />
+    <ClCompile Include="WArielLaser.cpp" />
+    <ClCompile Include="WArielStone.cpp" />
+    <ClCompile Include="WAttackScript.cpp" />
+    <ClCompile Include="WAttackUp.cpp" />
+    <ClCompile Include="WAutoShuriken.cpp" />
+    <ClCompile Include="WAven.cpp" />
+    <ClCompile Include="WBattleManager.cpp" />
+    <ClCompile Include="WBlast.cpp" />
+    <ClCompile Include="WBossStart.cpp" />
+    <ClCompile Include="WBossUI.cpp" />
+    <ClCompile Include="WBottom_40.cpp" />
+    <ClCompile Include="WBottom_80.cpp" />
+    <ClCompile Include="WCage.cpp" />
+    <ClCompile Include="WChannel.cpp" />
+    <ClCompile Include="WChannelNumber.cpp" />
+    <ClCompile Include="WCharScene.cpp" />
+    <ClCompile Include="WCloneMegnus.cpp" />
+    <ClCompile Include="WConfusion.cpp" />
+    <ClCompile Include="WDamageFont.cpp" />
+    <ClCompile Include="WDefenseUp.cpp" />
+    <ClCompile Include="WDemianCircle.cpp" />
+    <ClCompile Include="WDemianEntireAttack.cpp" />
+    <ClCompile Include="WDemianFire0.cpp" />
+    <ClCompile Include="WDemian.cpp" />
+    <ClCompile Include="WDemianExplode.cpp" />
+    <ClCompile Include="WDemianFire1.cpp" />
+    <ClCompile Include="WDemianFire2.cpp" />
+    <ClCompile Include="WDemianKeyAttack.cpp" />
+    <ClCompile Include="WDemianSword.cpp" />
+    <ClCompile Include="WDemianPhase2.cpp" />
+    <ClCompile Include="WDemianScene.cpp" />
+    <ClCompile Include="WDemianSpear0.cpp" />
+    <ClCompile Include="WDemianSpear1.cpp" />
+    <ClCompile Include="WDemianVine.cpp" />
+    <ClCompile Include="WEyeItem.cpp" />
+    <ClCompile Include="WHairItem.cpp" />
+    <ClCompile Include="WHat_40.cpp" />
+    <ClCompile Include="WHat_80.cpp" />
+    <ClCompile Include="WObjectPoolManager.cpp" />
+    <ClCompile Include="WPlayerDead.cpp" />
+    <ClCompile Include="WShoes_40.cpp" />
+    <ClCompile Include="WShoes_80.cpp" />
+    <ClCompile Include="WSKillNumber6.cpp" />
+    <ClCompile Include="WSkillUltimateUI.cpp" />
+    <ClCompile Include="WSpawnUltimate.cpp" />
+    <ClCompile Include="WStigma.cpp" />
+    <ClCompile Include="WEffect.cpp" />
+    <ClCompile Include="WEventManager.cpp" />
+    <ClCompile Include="WEyes.cpp" />
+    <ClCompile Include="WFaint.cpp" />
+    <ClCompile Include="WFire.cpp" />
+    <ClCompile Include="WGroggy.cpp" />
+    <ClCompile Include="WGround.cpp" />
+    <ClCompile Include="WGroundScript.cpp" />
+    <ClCompile Include="WHelisiumBoss.cpp" />
+    <ClCompile Include="WHorntail.cpp" />
+    <ClCompile Include="WHorntailDead.cpp" />
+    <ClCompile Include="WHorntailHeadA.cpp" />
+    <ClCompile Include="WHorntailHeadB.cpp" />
+    <ClCompile Include="WBossStand.cpp" />
+    <ClCompile Include="WHorntailHeadC.cpp" />
+    <ClCompile Include="WHorntailLeftHand.cpp" />
+    <ClCompile Include="WHorntailLeg.cpp" />
+    <ClCompile Include="WHorntailRightHand.cpp" />
+    <ClCompile Include="WHorntailTail.cpp" />
+    <ClCompile Include="WHorntailWing.cpp" />
+    <ClCompile Include="WIce.cpp" />
+    <ClCompile Include="WIgnore.cpp" />
+    <ClCompile Include="WInputBackground.cpp" />
+    <ClCompile Include="WInputObject.cpp" />
+    <ClCompile Include="WItemManager.cpp" />
+    <ClCompile Include="WItemObject.cpp" />
+    <ClCompile Include="WItemScript.cpp" />
+    <ClCompile Include="WJenesis.cpp" />
+    <ClCompile Include="WLadderScript.cpp" />
+    <ClCompile Include="WLoad.cpp" />
+    <ClCompile Include="WMegnus.cpp" />
+    <ClCompile Include="WMegnusAttack.cpp" />
+    <ClCompile Include="WMegnusStone.cpp" />
+    <ClCompile Include="WMiniBean.cpp" />
+    <ClCompile Include="WMiniBeanAttack.cpp" />
+    <ClCompile Include="WMobZone.cpp" />
+    <ClCompile Include="WMonster.cpp" />
+    <ClCompile Include="WMonsterAttack.cpp" />
+    <ClCompile Include="WMonsterAttackObject.cpp" />
+    <ClCompile Include="WMonsterAttackScript.cpp" />
+    <ClCompile Include="WMonsterBackHP.cpp" />
+    <ClCompile Include="WMonsterDead.cpp" />
+    <ClCompile Include="WMonsterFSM.cpp" />
+    <ClCompile Include="WMonsterHit.cpp" />
+    <ClCompile Include="WMonsterHP.cpp" />
+    <ClCompile Include="WMonsterMove.cpp" />
+    <ClCompile Include="WMonsterMoveAttack.cpp" />
+    <ClCompile Include="WMonsterScript.cpp" />
+    <ClCompile Include="WMonsterStand.cpp" />
+    <ClCompile Include="WMonsterState.cpp" />
+    <ClCompile Include="WBossTex.cpp" />
+    <ClCompile Include="WMonsterUI.cpp" />
+    <ClCompile Include="WMunin.cpp" />
+    <ClCompile Include="WMuninStone.cpp" />
+    <ClCompile Include="WPinkBean.cpp" />
+    <ClCompile Include="WPinkbeanStand.cpp" />
+    <ClCompile Include="WPinkBeanStone.cpp" />
+    <ClCompile Include="WPlayerAlert.cpp" />
+    <ClCompile Include="WPlayerAttackObject.cpp" />
+    <ClCompile Include="WPlayerBottom.cpp" />
+    <ClCompile Include="WPlayerFSM.cpp" />
+    <ClCompile Include="WPlayerHair.cpp" />
+    <ClCompile Include="WLadder.cpp" />
+    <ClCompile Include="WNPC.cpp" />
+    <ClCompile Include="WPlayerArm.cpp" />
+    <ClCompile Include="WPlayerBody.cpp" />
+    <ClCompile Include="WPlayerHat.cpp" />
+    <ClCompile Include="WPlayerHead.cpp" />
+    <ClCompile Include="WPlayerJump.cpp" />
+    <ClCompile Include="WPlayerLadder.cpp" />
+    <ClCompile Include="WPlayerProneAttack.cpp" />
+    <ClCompile Include="WPlayerPronestab.cpp" />
+    <ClCompile Include="WPlayerShoes.cpp" />
+    <ClCompile Include="WPlayerSkill.cpp" />
+    <ClCompile Include="WPlayerStab.cpp" />
+    <ClCompile Include="WPlayerStand.cpp" />
+    <ClCompile Include="WPlayerState.cpp" />
+    <ClCompile Include="WPlayerSwing1.cpp" />
+    <ClCompile Include="WPlayerTop.cpp" />
+    <ClCompile Include="WPlayerWalk.cpp" />
+    <ClCompile Include="WPlayerWeapon.cpp" />
+    <ClCompile Include="WPortal.cpp" />
+    <ClCompile Include="WPortalScript.cpp" />
+    <ClCompile Include="WMonsterManager.cpp" />
+    <ClCompile Include="WPullObject.cpp" />
+    <ClCompile Include="WReflex.cpp" />
+    <ClCompile Include="WRex.cpp" />
+    <ClCompile Include="WRexThunder.cpp" />
+    <ClCompile Include="WRoccatBean.cpp" />
+    <ClCompile Include="WBossEnterUI.cpp" />
+    <ClCompile Include="WScroll.cpp" />
+    <ClCompile Include="WSealSkill.cpp" />
+    <ClCompile Include="WSeleteScene.cpp" />
+    <ClCompile Include="WServerLayer.cpp" />
+    <ClCompile Include="WServerUI.cpp" />
+    <ClCompile Include="WShadow.cpp" />
+    <ClCompile Include="WSharHP.cpp" />
+    <ClCompile Include="WShuriken.cpp" />
+    <ClCompile Include="WSkelegon.cpp" />
+    <ClCompile Include="WSkillAven.cpp" />
+    <ClCompile Include="WSkillAvenUI.cpp" />
+    <ClCompile Include="WSkillBlast.cpp" />
+    <ClCompile Include="WSkillBlastUI.cpp" />
+    <ClCompile Include="WSkillDark.cpp" />
+    <ClCompile Include="WSkillJump.cpp" />
+    <ClCompile Include="WSKillJumpUI.cpp" />
+    <ClCompile Include="WSkillLoad.cpp" />
+    <ClCompile Include="WSkillLoadUI.cpp" />
+    <ClCompile Include="WSkillLuck.cpp" />
+    <ClCompile Include="WSkillManager.cpp" />
+    <ClCompile Include="WSkillNumber.cpp" />
+    <ClCompile Include="WSkillNumber2.cpp" />
+    <ClCompile Include="WAlixirUI.cpp" />
+    <ClCompile Include="WAutoUI.cpp" />
+    <ClCompile Include="WBottom_10.cpp" />
+    <ClCompile Include="WCameraScript.cpp" />
+    <ClCompile Include="WCaveScene.cpp" />
+    <ClCompile Include="WCaveStartScene.cpp" />
+    <ClCompile Include="WChannleBntUI.cpp" />
+    <ClCompile Include="WCharState.cpp" />
+    <ClCompile Include="WCharUI.cpp" />
+    <ClCompile Include="WCoverGaugeUI.cpp" />
+    <ClCompile Include="WEquip.cpp" />
+    <ClCompile Include="WHat_10.cpp" />
+    <ClCompile Include="WInvenPage.cpp" />
+    <ClCompile Include="WEquipState.cpp" />
+    <ClCompile Include="WEquipUI.cpp" />
+    <ClCompile Include="WEXP.cpp" />
+    <ClCompile Include="WGaugeUI.cpp" />
+    <ClCompile Include="WGridScript.cpp" />
+    <ClCompile Include="WHorntailItem.cpp" />
+    <ClCompile Include="WHP.cpp" />
+    <ClCompile Include="WIconUI.cpp" />
+    <ClCompile Include="WInterfaceUI.cpp" />
+    <ClCompile Include="WInventory.cpp" />
+    <ClCompile Include="WInvenUI.cpp" />
+    <ClCompile Include="WItemUI.cpp" />
+    <ClCompile Include="WLeafreScene.cpp" />
+    <ClCompile Include="WLevelUI.cpp" />
+    <ClCompile Include="WNumber.cpp" />
+    <ClCompile Include="WPlayer.cpp" />
+    <ClCompile Include="WPlayerScript.cpp" />
+    <ClCompile Include="WQuestDetail.cpp" />
+    <ClCompile Include="WQuestState.cpp" />
+    <ClCompile Include="WShoes_10.cpp" />
+    <ClCompile Include="WSkillLuckUI.cpp" />
+    <ClCompile Include="WMenuUI.cpp" />
+    <ClCompile Include="WMoveScene.cpp" />
+    <ClCompile Include="WMoveScene_2.cpp" />
+    <ClCompile Include="WMP.cpp" />
+    <ClCompile Include="WPlayScene.cpp" />
+    <ClCompile Include="WQuestUI.cpp" />
+    <ClCompile Include="WShopUI.cpp" />
+    <ClCompile Include="WSKill.cpp" />
+    <ClCompile Include="WSKillBox.cpp" />
+    <ClCompile Include="WSkillDarkUI.cpp" />
+    <ClCompile Include="WSkillNumber1.cpp" />
+    <ClCompile Include="WSkillNumber3.cpp" />
+    <ClCompile Include="WSkillNumber4.cpp" />
+    <ClCompile Include="WSkillNumber5.cpp" />
+    <ClCompile Include="WSkillQSUI.cpp" />
+    <ClCompile Include="WSkillQuad.cpp" />
+    <ClCompile Include="WSkillRaid.cpp" />
+    <ClCompile Include="WSkillRaidUI.cpp" />
+    <ClCompile Include="WSkillShadow.cpp" />
+    <ClCompile Include="WSkillShadowUI.cpp" />
+    <ClCompile Include="WSkillSpeed.cpp" />
+    <ClCompile Include="WSKillSpeedUI.cpp" />
+    <ClCompile Include="WSkillState.cpp" />
+    <ClCompile Include="WSKillStorage.cpp" />
+    <ClCompile Include="WSKillUI.cpp" />
+    <ClCompile Include="WSkillWind.cpp" />
+    <ClCompile Include="WSkillWindUI.cpp" />
+    <ClCompile Include="WSleepGas.cpp" />
+    <ClCompile Include="WSlow.cpp" />
+    <ClCompile Include="WSolomon.cpp" />
+    <ClCompile Include="WSolThunder.cpp" />
+    <ClCompile Include="WStigmaBack.cpp" />
+    <ClCompile Include="WStigmaCount.cpp" />
+    <ClCompile Include="WSwordExplode.cpp" />
+    <ClCompile Include="WSpawnMonsterAttack.cpp" />
+    <ClCompile Include="WSpear.cpp" />
+    <ClCompile Include="WStartScene.cpp" />
+    <ClCompile Include="WStartUI.cpp" />
+    <ClCompile Include="WStarUI.cpp" />
+    <ClCompile Include="WStat.cpp" />
+    <ClCompile Include="WStatUI.cpp" />
+    <ClCompile Include="WStone.cpp" />
+    <ClCompile Include="WStoneScript.cpp" />
+    <ClCompile Include="WStop.cpp" />
+    <ClCompile Include="WSystemUI.cpp" />
+    <ClCompile Include="WTempleBossScene.cpp" />
+    <ClCompile Include="WTempleScene.cpp" />
+    <ClCompile Include="WTempleScene_2.cpp" />
+    <ClCompile Include="WTempleStartScene.cpp" />
+    <ClCompile Include="WTemptation.cpp" />
+    <ClCompile Include="WThunder.cpp" />
+    <ClCompile Include="WTop_10.cpp" />
+    <ClCompile Include="WTop_40.cpp" />
+    <ClCompile Include="WTop_80.cpp" />
+    <ClCompile Include="WUltimateBackground.cpp" />
+    <ClCompile Include="WUltimateFog.cpp" />
+    <ClCompile Include="WUltimateObject.cpp" />
+    <ClCompile Include="WUltimateShuriken.cpp" />
+    <ClCompile Include="WUltimateSkill.cpp" />
+    <ClCompile Include="WUndead.cpp" />
+    <ClCompile Include="WUpBtn.cpp" />
+    <ClCompile Include="WUpStat.cpp" />
+    <ClCompile Include="WValleyScene.cpp" />
+    <ClCompile Include="WValleyScene_2.cpp" />
+    <ClCompile Include="WVariation.cpp" />
+    <ClCompile Include="WWeapon_10.cpp" />
+    <ClCompile Include="WWeapon_25.cpp" />
+    <ClCompile Include="WWeapon_63.cpp" />
+    <ClCompile Include="WWhiggin.cpp" />
+    <ClCompile Include="WWhite.cpp" />
+    <ClCompile Include="WWind.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
