@@ -1,12 +1,12 @@
 #include "WSkillShadowUI.h"
 #include "WPlayer.h"
-#include "WSkillManager.h"
+//#include "WSkillManager.h"
 
 namespace W
 {
 	SkillShadowUI::SkillShadowUI()
 	{
-		SetPlayerSkill(Player::ePlayerSkill::shadow);
+		//SetPlayerSkill(Player::ePlayerSkill::shadow);
 
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
@@ -80,6 +80,6 @@ namespace W
 	void SkillShadowUI::Using()
 	{
 		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		EventManager::ChangePlayerSkillState(Player::ePlayerSkill::shadow);
+		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::shadow);
 	}
 }

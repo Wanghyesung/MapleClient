@@ -2,7 +2,7 @@
 #include "WAnimator.h"
 #include "WResources.h"
 #include "WRenderer.h"
-#include "WBattleManager.h"
+//#include "WBattleManager.h"
 #include "WPlayer.h"
 #include "WEventManager.h"
 namespace W
@@ -37,7 +37,7 @@ namespace W
 	}
 	void Slow::Update()
 	{
-		Abnormal::Update();
+
 	}
 	void Slow::LateUpdate()
 	{
@@ -59,6 +59,6 @@ namespace W
 	}
 	void Slow::Restore()
 	{
-		EventManager::Restore(m_pTarget, BattleManager::eAbnormalType::Slow, -m_fAccValue);
+	
 	}
 }

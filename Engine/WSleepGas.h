@@ -13,18 +13,6 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-	private:
-		void end();
-		void start();
-		void off();
-
-		std::wstring m_strCurAnim;
-		tMonsterAttack m_tMonsterAttack;
-
-		bool m_bStart;
-		bool m_bEnd;
-
-		friend class Megnus;
 	};
 
 }

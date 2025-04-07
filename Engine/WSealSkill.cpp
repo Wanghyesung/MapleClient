@@ -2,9 +2,7 @@
 #include "WResources.h"
 #include "WAnimator.h"
 #include "WRenderer.h"
-#include "WRigidbody.h"
 #include "WPlayer.h"
-#include "WBattleManager.h"
 #include "WPlayer.h"
 #include "WEventManager.h"
 namespace W
@@ -26,9 +24,6 @@ namespace W
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"sealskill", pAtlas, Vector2(0.0f, 0.0f), Vector2(73.0f, 47.0f), 10, Vector2(80.f, 80.f), Vector2::Zero, 0.15f);
 
-		pAnim->Play(L"sealskill", true);
-
-		//GetComponent<Transform>()->SetScale(Vector3(1.2f, 1.2f, 0.f));
 	}
 	SealSkill::~SealSkill()
 	{
@@ -62,7 +57,7 @@ namespace W
 
 	void SealSkill::Restore()
 	{
-		EventManager::Restore(m_pTarget, BattleManager::eAbnormalType::SealSkill);
+		
 		//BattleManager::Restore_move(m_pTarget, BattleManager::eAbnormalType::SealSkill);
 	}
 

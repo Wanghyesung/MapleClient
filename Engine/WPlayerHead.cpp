@@ -9,10 +9,7 @@
 
 namespace W
 {
-	PlayerHead::PlayerHead():
-		m_pPlayerHat(nullptr),
-		m_pPlayerHair(nullptr),
-		m_pPlayerEyes(nullptr)
+	PlayerHead::PlayerHead()
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -20,21 +17,7 @@ namespace W
 	}
 	PlayerHead::~PlayerHead()
 	{
-		if (m_pPlayerHat)
-		{
-			delete m_pPlayerHat;
-			m_pPlayerHat = nullptr;
-		}
-		if (m_pPlayerHair)
-		{
-			delete m_pPlayerHair;
-			m_pPlayerHair = nullptr;
-		}
-		if (m_pPlayerEyes)
-		{
-			delete m_pPlayerEyes;
-			m_pPlayerEyes = nullptr;
-		}
+		
 	}
 	void PlayerHead::Initialize()
 	{
@@ -73,102 +56,19 @@ namespace W
 		pAnimator->FindAnimation(L"head_swingQS_right")->Create(L"head_swingQS_right", pAtlasBdoy, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
 		pAnimator->FindAnimation(L"head_swingQS_right")->Create(L"head_swingQS_right", pAtlasBdoy, Vector2(0, 1200.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
 
-		Vector3 vScale = m_pPlayer->GetComponent<Transform>()->GetScale();
-		GetComponent<Transform>()->SetScale(vScale);
-
-		m_pPlayerHat = new PlayerHat();
-		m_pPlayerHat->SetPlayerHead(this);
-
-		m_pPlayerEyes = new Eyes();
-		m_pPlayerEyes->SetPlayerHead(this);
-		m_pPlayerEyes->Initialize();
-		
-		
-		m_pPlayerHair = new PlayerHair();
-		m_pPlayerHair->SetPlayerHead(this);
-		m_pPlayerHair->Initialize();
 	}
 
 	void PlayerHead::Update()
 	{
 		GameObject::Update();
-
-		m_pPlayerHair->Update();
-		m_pPlayerEyes->Update();
-		m_pPlayerHat->Update();
 	}
 	void PlayerHead::LateUpdate()
 	{
-		Animator* pAnimator = GetComponent<Animator>();
-		Vector3 vPlayerPos = m_pPlayer->GetComponent<Transform>()->GetPosition();
-		GetComponent<Transform>()->SetPosition(vPlayerPos);
-
-		int iDir = m_pPlayer->GetDir();
-		std::wstring strDir;
-		std::wstring strState;
-		if (iDir > 0)
-			strDir = L"_right";
-		else
-			strDir = L"_left";
-
-		strState = m_pPlayer->GetCurStateName();
-
-		std::wstring strAnim = L"head" + strState + strDir;
-
-		if (m_strCurAnim != strAnim)
-		{
-			m_strCurAnim = strAnim;
-			bool bLoop = m_pPlayer->IsLoop();
-			pAnimator->Play(strAnim, bLoop);
-		}
-
 		GameObject::LateUpdate();
-
-		m_pPlayerHair->LateUpdate();
-		m_pPlayerEyes->LateUpdate();
-		m_pPlayerHat->LateUpdate();
 	}
 	void PlayerHead::Render()
 	{
 		GameObject::Render();
-
-		m_pPlayerHair->Render();
-		m_pPlayerEyes->Render();
-		m_pPlayerHat->Render();
-	}
-
-	void PlayerHead::SetAlert(bool _bAlert)
-	{
-		m_pPlayerEyes->SetAlert(_bAlert);
-	}
-
-	void PlayerHead::SetEquipHat(Equip* _pEquip)
-	{
-		if (_pEquip == nullptr)
-			m_pPlayerHair->SetHairDown(false);
-		else
-			m_pPlayerHair->SetHairDown(true);
-		
-		m_pPlayerHat->SetPlayerEquip(_pEquip);
-	}
-
-	void PlayerHead::SetAnimationIndex()
-	{
-		if (m_strCurAnim.size() != 0)
-			GetComponent<Animator>()->GetActiveAnimation()->SetIndex(0);
-		if (m_pPlayerHair->GetCurAnimName().size() != 0)
-			m_pPlayerHair->GetComponent<Animator>()->GetActiveAnimation()->SetIndex(0);
-		if (m_pPlayerEyes->GetCurAnimName().size() != 0)
-			m_pPlayerEyes->GetComponent<Animator>()->GetActiveAnimation()->SetIndex(0);
-		if (m_pPlayerHat->GetCurAnimName().size() != 0)
-			m_pPlayerHat->GetComponent<Animator>()->GetActiveAnimation()->SetIndex(0);
-	}
-	void PlayerHead::SetStop(bool _bStop)
-	{
-		GetComponent<Animator>()->Stop(_bStop);
-		m_pPlayerHair->GetComponent<Animator>()->Stop(_bStop);
-		m_pPlayerEyes->GetComponent<Animator>()->Stop(_bStop);
-		m_pPlayerHat->GetComponent<Animator>()->Stop(_bStop);
 	}
 
 	void PlayerHead::SetHair(UINT _iHairNum)

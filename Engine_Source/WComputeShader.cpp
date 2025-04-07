@@ -1,5 +1,7 @@
 #include "WComputeShader.h"
 #include "WGraphicDevice_Dx11.h"
+#include "WPathManager.h"
+
 namespace W::graphics
 {
 	ComputeShader::ComputeShader():
@@ -22,15 +24,12 @@ namespace W::graphics
 	}
 	bool ComputeShader::Create(const std::wstring& _strName, const std::string& _strMethdName)
 	{
-		std::filesystem::path shaderPath
-			= std::filesystem::current_path().parent_path();
+		std::wstring shaderPath = PathManager::GetContentPath();
 		shaderPath += L"\\Shader_Source\\";
-
-		std::filesystem::path fullPath(shaderPath.c_str());
-		fullPath += _strName;
+		shaderPath += _strName;
 
 		ID3DBlob* errorBlob = nullptr;
-		graphics::GetDevice()->CompileFromfile(fullPath, _strMethdName, "cs_5_0", m_cpCSBlob.GetAddressOf());
+		graphics::GetDevice()->CompileFromfile(shaderPath, _strMethdName, "cs_5_0", m_cpCSBlob.GetAddressOf());
 		graphics::GetDevice()->CreateComputeShader(m_cpCSBlob->GetBufferPointer()
 			, m_cpCSBlob->GetBufferSize(), m_cpCS.GetAddressOf());
 

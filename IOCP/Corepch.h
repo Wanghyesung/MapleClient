@@ -1,13 +1,12 @@
 #pragma once
 
+using namespace std;
 
-#define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용을 Windows 헤더에서 제외합니다.
-
+// 반드시 Windows.h 전에 WinSock2 관련 포함
 #include <WinSock2.h>
-#include <mswsock.h>
 #include <ws2tcpip.h>
+#include <mswsock.h>
 #pragma comment(lib, "ws2_32.lib")
-
 
 
 #include <Windows.h>
@@ -27,5 +26,3 @@
 #include "Global.h"
 #include "SendBufferChunk.h"
 //#include "Allocator.h"
-
-using namespace std;

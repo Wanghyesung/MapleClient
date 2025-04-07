@@ -1,5 +1,4 @@
 #include "guiEditor.h"
-#include "..\Engine\WGridScript.h"
 #include "..\Engine_Source\WMesh.h"
 #include "..\Engine_Source\WResources.h"
 #include "..\Engine_Source\WTransform.h"
@@ -32,18 +31,7 @@ namespace gui
 		mr->SetMaterial(material);
 		mr->SetMesh(mesh);
 		
-		
-		//EditorObject* grid = new EditorObject();
-		//grid->SetName(L"Grid");
-		//
-		//mr = grid->AddComponent<W::MeshRenderer>();
-		//mr->SetMesh(W::Resources::Find<W::Mesh>(L"RectMesh"));
-		//mr->SetMaterial(W::Resources::Find<W::Material>(L"GridMaterial"));
-		//W::GridScript* gridSc = grid->AddComponent<W::GridScript>();
-		//gridSc->SetCamera(renderer::m_vecCameras[0]);//메인카메라가 0번 인덱스
-		//
-		//m_vecEditorObjects.push_back(grid);
-
+	
 	}
 
 	void Editor::Run()

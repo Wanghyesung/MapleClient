@@ -9,9 +9,7 @@ namespace W
 		Resource(enums::eResourceType::Animation),
 		m_pAnimator(nullptr),
 		m_vecSprites{},
-		m_iIndex(-1),
-		m_fTime(0.f),
-		m_bComplete(false)
+		m_iIndex(-1)
 	{
 
 	}
@@ -25,22 +23,7 @@ namespace W
 	}
 	void Animation::LateUpdate()
 	{
-		if (m_bComplete)
-			return;
-
-		m_fTime += Time::DeltaTime();
-
-		if (m_vecSprites[m_iIndex].fDuration <= m_fTime)
-		{
-			++m_iIndex;
-			m_fTime = 0.f;
-
-			if (m_vecSprites.size() <= m_iIndex)
-			{
-				m_iIndex = m_vecSprites.size() - 1;
-				m_bComplete = true;
-			}
-		}
+		
 	}
 	void Animation::Render()
 	{
@@ -92,10 +75,5 @@ namespace W
 		pCB->Bind(eShaderStage::VS);
 		pCB->Bind(eShaderStage::PS);
 	}
-	void Animation::Reset()
-	{
-		m_fTime = 0.f;
-		m_bComplete = false;
-		m_iIndex = 0;
-	}
+
 }

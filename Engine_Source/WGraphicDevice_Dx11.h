@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine.h"
+//#include "Engine.h"
 #include "WGraphics.h"
 #include "WTexture.h"
 //DirectX 11 라이브러리 추가(정적)

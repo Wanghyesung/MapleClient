@@ -2,9 +2,7 @@
 #include "WResources.h"
 #include "WAnimator.h"
 #include "WRenderer.h"
-#include "WRigidbody.h"
 #include "WPlayer.h"
-#include "WBattleManager.h"
 #include "WEventManager.h"
 namespace W
 {
@@ -39,7 +37,7 @@ namespace W
 	}
 	void Faint::Update()
 	{
-		Abnormal::Update();
+	
 	}
 	void Faint::LateUpdate()
 	{
@@ -61,8 +59,7 @@ namespace W
 
 	void Faint::Restore()
 	{
-		EventManager::Restore(m_pTarget, BattleManager::eAbnormalType::Faint);
-
+		
 	}
 
 

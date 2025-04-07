@@ -15,14 +15,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)temTex.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WPacket.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WPacketManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WPathManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WThreadPool.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WFadeInOut.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)WInfo.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)UIManger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WAnimator.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)WCollider2D.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)WCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WComputeShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WApplication.h" />
@@ -49,7 +49,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WResources.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)WRigidbody.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WSceneManger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WScript.h" />
@@ -66,12 +65,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WFontWrapper.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WPacket.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WPacketManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WPathManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WThreadPool.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)UIManger.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WAnimation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WAnimator.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)WCollider2D.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)WCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WFadeInOut.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WLayer.cpp" />
@@ -94,7 +94,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WResources.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)WRigidbody.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WSceneManger.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WScript.cpp" />

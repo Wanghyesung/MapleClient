@@ -1,6 +1,5 @@
 #include "WAbnormal.h"
 #include "WTime.h"
-#include "WBattleManager.h"
 #include "WPlayer.h"
 #include "WObject.h"
 
@@ -24,28 +23,11 @@ namespace W
 	}
 	void Abnormal::Update()
 	{	
-		GameObject::Update();
+		
 	}
 	void Abnormal::LateUpdate()
 	{	
-		m_fCurTime += Time::DeltaTime();
-
-		if (m_fCurTime >= m_fDeleteTime ||
-			m_pTarget->GetState() == GameObject::Dead)
-		{
-			object::Destroy(this);
-			Restore();
-			return;
-		}
-
-		Vector3 vTargetPos = m_pTarget->GetComponent<Transform>()->GetPosition();
-		vTargetPos.z -= 0.5f;
-		if(m_bRenderPosUp)
-			vTargetPos.y += 0.5f;
-		else
-			vTargetPos.y -= 0.2f;
-
-		GetComponent<Transform>()->SetPosition(vTargetPos);
+		
 
 		GameObject::LateUpdate();
 	}

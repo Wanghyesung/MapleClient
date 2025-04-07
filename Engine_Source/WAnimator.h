@@ -7,29 +7,6 @@ namespace W
 	class Animator : public Component
 	{
 	public:
-		struct Event
-		{
-			void operator=(std::function<void()> _func)
-			{
-				m_Event = std::move(_func);
-			}
-
-			void operator()()
-			{
-				if (m_Event)
-					m_Event();
-			}
-			std::function<void()> m_Event;
-		};
-
-
-		struct Events
-		{
-			Event tStartEvent;
-			Event tCompleteEvent;
-			Event tEndEvent;
-		};
-
 		Animator();
 		virtual ~Animator();
 
@@ -50,21 +27,16 @@ namespace W
 
 
 		Animation* FindAnimation(const std::wstring& _strName);
-		Events* FindEvents(const std::wstring& _strName);
-		void Play(const std::wstring& _strName, bool _bLoop);
+		void Play(const std::wstring& _strName, int _iIndex);
 		void Stop(bool _bStop) { m_bStop = _bStop; }
 		bool IsStop() { return m_bStop; }
 		void Binds();
 
-		std::function<void()>& StartEvent(const std::wstring _strKey);
-		std::function<void()>& CompleteEvent(const std::wstring _strKey);
-		std::function<void()>& EndEvent(const std::wstring _strKey);
-
+	
 		Animation* GetActiveAnimation() { return m_pActiveAnimation; }
 
 	private:
 		std::map<std::wstring, Animation*> m_mapAnimation;
-		std::map<std::wstring, Events*> m_mapEvent;
 		Animation* m_pActiveAnimation;
 
 		bool m_bLoop;

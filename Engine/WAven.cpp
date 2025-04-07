@@ -1,10 +1,10 @@
 #include "WAven.h"
 #include "WResources.h"
 #include "WAnimator.h"
-#include "WAttackScript.h"
 #include "WRenderer.h"
 #include "WTime.h"
 #include "WEventManager.h"
+#include "WTransform.h"
 namespace W
 {
 	Aven::Aven() :
@@ -27,6 +27,10 @@ namespace W
 		pMater->SetTexture(pAtlas);
 		mr->SetMaterial(pMater);
 
+		Resources::Load<Texture>(L"aveneffect", L"..\\Resources\\Texture\\Player\\skill\\effect4.png");
+	
+
+
 	}
 
 	Aven::~Aven()
@@ -36,31 +40,17 @@ namespace W
 
 	void Aven::Initialize()
 	{
-		AttackScript* pScript = AddComponent<AttackScript>();
-		pScript->SetStayObject(1, 10.f);
-
-		Collider2D* pCollider = AddComponent<Collider2D>();
-		GetComponent<Transform>()->SetScale(1.f, 1.f, 0.f);
-		pCollider->SetSize(Vector2(0.5f, 0.5f));
-
+	
 	}
 
 	void Aven::Update()
 	{
-		GameObject::Update();
-
-		Vector3 vRotation = GetComponent<Transform>()->GetRotation();
-		vRotation.z += XM_PI  * Time::DeltaTime() * 6;
-		GetComponent<Transform>()->SetRotation(vRotation);
+		
 	}
 
 	void Aven::LateUpdate()
 	{
-		Transform* pTr = GetComponent<Transform>();
-		Vector3 vPosition = pTr->GetPosition();
-		vPosition.x += (m_iDir * 8.f * Time::DeltaTime());
-		pTr->SetPosition(vPosition);
-
+		
 		GameObject::LateUpdate();
 	}
 
@@ -75,9 +65,5 @@ namespace W
 
 		GameObject::Render();
 	}
-	void Aven::Off()
-	{
-		PlayerAttackObject::Off();
-		//EventManager::AddPlayerPool(this);
-	}
+	
 }

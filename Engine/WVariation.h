@@ -13,9 +13,6 @@ namespace W
 		virtual void Update()override;
 		virtual void LateUpdate()override;
 		virtual void Render()override;
-
-	private:
-		void off();
 	};
 }
 

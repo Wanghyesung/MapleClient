@@ -188,12 +188,12 @@ namespace W
 			pEquip->GetComponent<Transform>()->SetPosition(vPosition.x + m_vWeaponPosition.x, vPosition.y + m_vWeaponPosition.y, vItemPosition.z);
 			break;
 		}		
-		m_pPlayer->SetEquip(pEquip);
+		//m_pPlayer->SetEquip(pEquip);
 	}
 
 	void EquipState::DisableEquip(Equip* _pEquip)
 	{
-		m_pPlayer->DisableEquip(_pEquip);
+		//m_pPlayer->DisableEquip(_pEquip);
 	}
 
 	Equip* EquipState::GetEquip(Equip::EquipType _eEquipType)

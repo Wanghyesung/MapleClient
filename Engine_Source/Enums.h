@@ -8,8 +8,6 @@ namespace W::enums
 		None,
 		Transform,
 		Mesh,
-		Collider2D,
-		Rigidbody,
 		Particle,
 		MeshRenderer,
 		Animator,
@@ -25,7 +23,6 @@ namespace W::enums
 	{
 		Default,
 		Camera,
-		Grid,
 		Background,
 		Player,
 		Ladder,
@@ -39,9 +36,8 @@ namespace W::enums
 		Effect,
 		ItemObject,
 		Light,
-		Portal,
 		UI,
-		End = 20,
+		End,
 	};
 
 	enum class eResourceType

@@ -149,7 +149,7 @@ namespace W
 		int iHairNum = disX(en);
 		//임시
 		iHairNum = 1;
-		dynamic_cast<Player*>(SceneManger::FindPlayer())->SetHair(iHairNum);
+		//dynamic_cast<Player*>(SceneManger::FindPlayer())->SetHair(iHairNum);
 	}
 	void ItemManager::chanage_eye()
 	{
@@ -160,7 +160,7 @@ namespace W
 
 		//임시
 		iEyeNum = 1;
-		dynamic_cast<Player*>(SceneManger::FindPlayer())->SetEye(iEyeNum);
+		//dynamic_cast<Player*>(SceneManger::FindPlayer())->SetEye(iEyeNum);
 	}
 	IconUI* ItemManager::GetClone(const std::wstring& _strName)
 	{

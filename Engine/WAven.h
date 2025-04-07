@@ -17,7 +17,6 @@ namespace W
 		int GetDir() { return m_iDir; }
 		void SetDir(int _iDir) { m_iDir = _iDir; }
 
-		virtual void Off()override;
 	private:
 		int m_iDir;
 

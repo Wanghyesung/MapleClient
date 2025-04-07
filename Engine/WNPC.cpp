@@ -16,7 +16,7 @@ namespace W
 	}
 	void NPC::Update()
 	{
-		GameObject::Update();
+		
 	}
 	void NPC::LateUpdate()
 	{

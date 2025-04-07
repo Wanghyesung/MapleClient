@@ -15,18 +15,6 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-		void SetSword(DemianSword* _pSword) { m_pSword = _pSword; }
-	private:
-		void off();
-		void start();
-		void check();
-
-	private:
-		UINT m_iCallCount;
-		UINT m_iExplodeCount;
-		tMonsterAttack m_tMonsterAttack;
-		DemianSword* m_pSword;
-
 	};
 }
 

@@ -1,5 +1,4 @@
 #include "WBlast.h"
-#include "WAttackScript.h"
 #include "WObject.h"
 #include "WRenderer.h"
 #include "WAnimator.h"
@@ -23,10 +22,11 @@ namespace W
 		pAnim->Create(L"left", pAtlas, Vector2(0.0f, 0.0f), Vector2(695.0f, 506.0f), 23, Vector2(700.f, 700.f), Vector2::Zero, 0.06f);
 		pAnim->Create(L"right", pAtlas, Vector2(15290.0f, 0.0f), Vector2(-695.0f, 506.0f), 23, Vector2(700.f, 700.f), Vector2::Zero, 0.06f);
 
-		pAnim->CompleteEvent(L"right") = std::bind(&EventManager::AddPlayerPool, this);
-		pAnim->CompleteEvent(L"left") = std::bind(&EventManager::AddPlayerPool, this);
+		Resources::Load<Texture>(L"blastffect1", L"..\\Resources\\Texture\\Player\\skill\\blast\\effect_0.png");
+		Resources::Load<Texture>(L"blastffect2", L"..\\Resources\\Texture\\Player\\skill\\blast\\effect_1.png");
+		Resources::Load<Texture>(L"blast", L"..\\Resources\\Texture\\Player\\skill\\blast\\hit.png");
+		Resources::Load<Texture>(L"blastTex", L"..\\Resources\\Texture\\Player\\skill\\blast\\effect_2.png");
 
-		SetHitSound(Resources::Find<AudioClip>(L"blasthit"), false);
 	}
 	Blast::~Blast()
 	{
@@ -34,18 +34,11 @@ namespace W
 	}
 	void Blast::Initialize()
 	{
-		AttackScript* pScript = AddComponent<AttackScript>();
-		pScript->SetDir(m_iDir);
-		pScript->SetStayObject(5, 0.5f);
-		pScript->SetDeleteTime(20.f);
-
-		GetComponent<Transform>()->SetScale(8.f, 8.f, 0.f);
-		Collider2D* pCollider = AddComponent<Collider2D>();
-		pCollider->SetSize(Vector2(0.4f, 0.4f));
+		
 	}
 	void Blast::Update()
 	{
-		GameObject::Update();
+
 	}
 	void Blast::LateUpdate()
 	{
@@ -63,10 +56,7 @@ namespace W
 
 		GameObject::Render();
 	}
-	void Blast::Off()
-	{
-		PlayerAttackObject::Off();
-	}
+	
 	void Blast::SetDir(int _iDir)
 	{
 		Animator* pAnim = GetComponent<Animator>();

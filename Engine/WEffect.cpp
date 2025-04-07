@@ -3,16 +3,11 @@
 #include "WResources.h"
 #include "WObject.h"
 #include "WRenderer.h"
-#include "WInfo.h"
-#include "WBattleManager.h"
+
 namespace W
 {
 	Effect::Effect():
 		m_pOwner(nullptr),
-		m_bActive(false),
-		m_pFunction(nullptr),
-		m_iStartIndex(0),
-		m_iFuncCount(1),
 		m_iDir(1)
 	{
 
@@ -40,46 +35,18 @@ namespace W
 
 	void Effect::Update()
 	{
-		if (!m_bActive)
-			return;
-
-		GameObject::Update();
+	
 	}
 
 	void Effect::LateUpdate()
 	{
-		if (!m_bActive)
-			return;
-
-		if (m_iFuncCount == 1 && m_pFunction)
-		{
-			UINT iCurIndex = GetComponent<Animator>()->GetActiveAnimation()->GetCurIndex();
-			if (iCurIndex == m_iStartIndex)
-			{
-				--m_iFuncCount;
-				m_pFunction();
-			}
-		}
-
-		if (m_pOwner != nullptr)
-		{
-			Vector3 vOnwerPos = m_pOwner->GetComponent<Transform>()->GetPosition();
-
-			vOnwerPos.x += (m_vOffset.x * m_iDir);
-			vOnwerPos.y += m_vOffset.y;
-			vOnwerPos.z = vOnwerPos.z - 0.02f;
-
-			GetComponent<Transform>()->SetPosition(vOnwerPos);
-		}
-	
+		
 		GameObject::LateUpdate();
 	}
 
 	void Effect::Render()
 	{
-		if (!m_bActive)
-			return;
-
+		
 		renderer::ObjectCB ObjectCB;
 		ObjectCB.vObjectDir.x = m_iDir * -1;
 		ObjectCB.vObjectColor = Vector4::One;
@@ -123,10 +90,6 @@ namespace W
 				_vSize, _iColumnLength, _vDivisionSize, Vector2::Zero, _fDuration);
 		}
 
-		pAnimator->CompleteEvent(GetName() + L"Anim_right") = std::bind(&Effect::off, this);
-		pAnimator->CompleteEvent(GetName() + L"Anim_left") = std::bind(&Effect::off, this);
-
-		BattleManager::PushEffect(this);
 	}
 	void Effect::StartEffect(int _iDir)
 	{
@@ -147,24 +110,5 @@ namespace W
 		GetComponent<Animator>()->Play(GetName() + L"Anim" + strDir, true);
 	}
 
-	void Effect::SetPosition(Collider2D* _pCollider)
-	{
-		Vector3 vPosition = _pCollider->GetPosition();
 
-		vPosition.z -= 0.01f;
-		vPosition.y += _pCollider->GetSize().y /2.f;
-
-		vPosition.y += m_vOffset.y;
-		vPosition.x += m_vOffset.x;
-
-		GetComponent<Transform>()->SetPosition(vPosition);
-	}
-
-	void Effect::off()
-	{
-		m_iFuncCount = 1;
-		m_bActive = false;
-		BattleManager::PushEffect(this);
-		SceneManger::Erase(this);
-	}
 }

@@ -16,8 +16,7 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-		void SetPlayerBody(PlayerBody* _pPlayerBody) { m_pPlayerBody = _pPlayerBody; }
-
+		
 		void SetPlayerEquip(Equip* _pEquip);
 
 		const std::wstring& GetCurAnimName() { return m_strCurAnim; }

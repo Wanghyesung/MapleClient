@@ -1,6 +1,5 @@
 #include "WStone.h"
 #include "WResources.h"
-#include "WStoneScript.h"
 #include "WAnimator.h"
 #include "WRenderer.h"
 namespace W
@@ -15,18 +14,13 @@ namespace W
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
 
-		AddComponent<StoneScript>();
-		Collider2D* pCollider = AddComponent<Collider2D>();
-		pCollider->SetSize(Vector2(0.8f, 0.8f));
-
-		
+	
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"StoneTex");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"stone_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(69.0f, 106.0f), 3, Vector2(100.f, 100.f), Vector2::Zero, 0.2f);
 
 		pAnim->Play(L"stone_left", true);
 
-		//GetComponent<Transform>()->SetScale(Vector3(1.2f, 1.2f, 0.f));
 	}
 	Stone::~Stone()
 	{

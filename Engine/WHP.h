@@ -23,7 +23,7 @@ namespace W
 		virtual void MouseLbtnClicked()override;
 
 	private:
-		PlayerScript* m_pPlayerScript;
+		//PlayerScript* m_pPlayerScript;
 
 	};
 }

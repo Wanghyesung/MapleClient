@@ -15,13 +15,7 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-	private:
-		void set_count();
 
-	private:
-		GameObject* m_pTarget;
-		StigmaCount* m_pCount;
-		UINT m_iCount;
 	};
 
 }

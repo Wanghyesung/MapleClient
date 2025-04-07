@@ -1,7 +1,7 @@
 #pragma once
-#include "Engine.h"
+//#include "Engine.h"
 #include "WGraphicDevice_Dx11.h"
-#include "WScene.h"
+
 
 namespace W
 {

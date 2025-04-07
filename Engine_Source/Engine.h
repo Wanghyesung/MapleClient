@@ -19,7 +19,13 @@
 #include <algorithm> //정렬 알고리즘
 #include <limits> //부동 소수점 표현 및 반올림과 관련된 클래스 템플릿 numeric_limits 및 두 개의 열거형을 정의합니다.
 #include <memory> //메모리 관련된 라이브러리
-#include <filesystem> // 파일입출력 편하게 도와주는 라이브러리
+
+// FileSystem
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+#include <experimental/filesystem>
+using namespace std::experimental;
+using namespace std::experimental::filesystem;
+
 #include <random>
 
 #include "Common.h"

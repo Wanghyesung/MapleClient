@@ -13,17 +13,6 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-	private:
-		void off();
-
-	private:
-		UINT m_iCallCount;
-		tMonsterAttack m_tMonsterAttack;
-
-		GameObject* m_pTarget;
-
-		float m_fDeleteTIme;
-		float m_fCurTime;
 	};
 }
 

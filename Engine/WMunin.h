@@ -15,16 +15,6 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-	private:
-		void add_skill();
-
-		void setattack();
-		void attack1();
-		void attack2();
-
-		void dark();
-		void attack_reflect();
-
 
 	};
 }

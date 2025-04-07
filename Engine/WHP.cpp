@@ -1,14 +1,12 @@
 #include "WHP.h"
 #include "WSceneManger.h"
 #include "WPlayer.h"
-#include "WPlayerScript.h"
-#include "WInfo.h"
+
 #include "WRenderer.h"
 
 namespace W
 {
-	HP::HP():
-		m_pPlayerScript(nullptr)
+	HP::HP()
 	{
 		std::shared_ptr<Texture> pTex =
 			Resources::Load<Texture>(L"HPTex", L"..\\Resources\\Texture\\UI\\Interface\\HP.png");
@@ -31,7 +29,7 @@ namespace W
 		std::vector<GameObject*> vecObj = SceneManger::GetActiveScene()->GetLayer(eLayerType::Player).GetGameObjects();
 		Player* pPlayer = dynamic_cast<Player*>(vecObj[0]);
 
-		m_pPlayerScript = pPlayer->GetScript<PlayerScript>();
+		//m_pPlayerScript = pPlayer->GetScript<PlayerScript>();
 	}
 	void HP::Update()
 	{
@@ -43,11 +41,11 @@ namespace W
 	}
 	void HP::Render()
 	{
-		const tObjectInfo& tObjectInfo = m_pPlayerScript->GetObjectInfo();
+		/*const tObjectInfo& tObjectInfo = m_pPlayerScript->GetObjectInfo();
 		float fSize = tObjectInfo.fHP;
-		
+		*/
 		renderer::PlayerUICB PlayerUICB;
-		PlayerUICB.vSize.x = fSize;
+		PlayerUICB.vSize.x = 100;
 
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::PlayerUI];
 		//Vector4 vPosition(m_vPosition.x, m_vPosition.y, m_vPosition.z, 1.f);

@@ -2,11 +2,11 @@
 #include "WMonsterHP.h"
 #include "WResources.h"
 #include "WRenderer.h"
+#include "WTransform.h"
 
 namespace W
 {
-	MonsterBackHP::MonsterBackHP(bool _bBoss):
-		m_pHP(nullptr)
+	MonsterBackHP::MonsterBackHP(bool _bBoss)
 	{
 		std::shared_ptr<Texture> pAtlas;
 		if (!_bBoss)
@@ -43,30 +43,16 @@ namespace W
 	}
 	void MonsterBackHP::Update()
 	{
-		if (!m_pHP->IsActive())
-			return;
-
-		Vector3 vPosition = m_pHP->GetComponent<Transform>()->GetPosition();
-		vPosition.z += 0.01f;
-		if(m_pHP->IsBoss())
-			vPosition.x -= 0.2f;
-
-		GetComponent<Transform>()->SetPosition(vPosition);
-
-		GameObject::Update();
+		
 	}
 	void MonsterBackHP::LateUpdate()
 	{
-		if (!m_pHP->IsActive())
-			return;
-
+	
 		GameObject::LateUpdate();
 	}
 	void MonsterBackHP::Render()
 	{
-		if (!m_pHP->IsActive())
-			return;
-
+	
 		renderer::ObjectCB ObjectCB;
 		ObjectCB.vObjectColor = Vector4::One;
 		

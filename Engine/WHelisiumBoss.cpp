@@ -2,11 +2,10 @@
 #include "WResources.h"
 #include "WCamera.h"
 #include "WCameraScript.h"
-#include "WCollisionManager.h"
 #include "WGround.h"
 #include "WMegnus.h"
 #include "WThreadPool.h"
-#include "WMonsterManager.h"
+#include "WTransform.h"
 
 namespace W
 {
@@ -84,32 +83,16 @@ namespace W
 
 		create_monster();
 
-		StartSound();
-
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
-		CollisionManager::SetLayer(eLayerType::ItemObject, eLayerType::Ground, true);
-		CollisionManager::SetLayer(eLayerType::ItemObject, eLayerType::Player, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ladder, true);
-		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::AttackObject, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::MonsterAttack, true);
-		CollisionManager::SetLayer(eLayerType::Ground, eLayerType::MonsterAttack, true);
-
 	}
 	void HelisiumBoss::OnExit()
 	{
 		Scene::OnExit();
-		DeleteMonsterObject();
-		MonsterManager::DeleteMonster();
 
-		EndSound();
-		CollisionManager::Clear();
 	}
 	void HelisiumBoss::CreateBackground()
 	{
 		GameObject* pBackGround = new GameObject();
-		AudioSource* pAudio = pBackGround->AddComponent<AudioSource>();
-		pAudio->SetClip(Resources::Load<AudioClip>(L"Helisiumsound", L"..\\Resources\\sound\\thefinalWar.mp3"));
-
+		
 		AddGameObject(eLayerType::Background, pBackGround);
 		MeshRenderer* pMeshRender = pBackGround->AddComponent<MeshRenderer>();
 		pMeshRender->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -118,11 +101,6 @@ namespace W
 		//2 : 1
 		pBackGround->GetComponent<Transform>()->SetScale(3.65f * 8.f, 1.f * 8.f, 1.f);
 
-
-		Ground* pGround = new Ground(true);
-		AddGameObject(eLayerType::Ground, pGround);
-		pGround->GetComponent<Transform>()->SetPosition(0.f, -2.95f, -0.1f);
-		pGround->GetComponent<Transform>()->SetScale(4.3f * 7.f, 1.f * 0.3f, 0.f);
 	}
 	void HelisiumBoss::StartSound()
 	{
@@ -140,38 +118,23 @@ namespace W
 	}
 	void HelisiumBoss::create_monster()
 	{
-		Megnus* pMegnus = new Megnus();
-		pMegnus->Initialize();
-		AddGameObject(eLayerType::Monster, pMegnus);
+		//Megnus* pMegnus = new Megnus();
+		//pMegnus->Initialize();
+		//AddGameObject(eLayerType::Monster, pMegnus);
 	}
 
 	void HelisiumBoss::create_effect()
 	{
-		std::shared_ptr<Texture> pTex = 
-			Resources::Load<Texture>(L"Megnus_attack0_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack0_hit.png");
-		Effect* pEffect = new Effect();
-		pEffect->SetName(L"Megnus_attack0");
-		pEffect->CreateAnimation(pTex, Vector2(0.f, 0.f), Vector2(320.f, 244.f), 5, 1, Vector2(320.f, 320.f), Vector2(0.f, 0.f), 0.2f);
+		
+		Resources::Load<Texture>(L"Megnus_attack0_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack0_hit.png");
+		
+		Resources::Load<Texture>(L"Megnus_attack1_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack1_hit.png");
+		
+		Resources::Load<Texture>(L"Megnus_attack2_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack2_hit.png");
 
-		pTex = Resources::Load<Texture>(L"Megnus_attack1_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack1_hit.png");
-		pEffect = new Effect();
-		pEffect->SetName(L"Megnus_attack1");
-		pEffect->CreateAnimation(pTex, Vector2(0.f, 0.f), Vector2(256.f, 196.f), 5, 1, Vector2(250.f, 250.f), Vector2(0.f, 0.f), 0.2f);
+		Resources::Load<Texture>(L"Megnus_attack3_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack3_hit.png");
 
-		pTex = Resources::Load<Texture>(L"Megnus_attack2_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack2_hit.png");
-		pEffect = new Effect();
-		pEffect->SetName(L"Megnus_attack2");
-		pEffect->CreateAnimation(pTex, Vector2(0.f, 0.f), Vector2(236.f, 229.f), 7, 1, Vector2(240.f, 240.f), Vector2(0.f, 0.f), 0.2f);
-
-		pTex = Resources::Load<Texture>(L"Megnus_attack3_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack3_hit.png");
-		pEffect = new Effect();
-		pEffect->SetName(L"Megnus_attack3");
-		pEffect->CreateAnimation(pTex, Vector2(0.f, 0.f), Vector2(228.f, 231.f), 7, 1, Vector2(230.f, 230.f), Vector2(0.f, 0.f), 0.2f);
-
-		pTex = Resources::Load<Texture>(L"Megnus_attack4_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack4_hit.png");
-		pEffect = new Effect();
-		pEffect->SetName(L"Megnus_attack4");
-		pEffect->CreateAnimation(pTex, Vector2(0.f, 0.f), Vector2(165.f, 168.f), 7, 1, Vector2(170.f, 170.f), Vector2(0.f, 0.f), 0.2f);
-
+		Resources::Load<Texture>(L"Megnus_attack4_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack4_hit.png");
+		
 	}
 }

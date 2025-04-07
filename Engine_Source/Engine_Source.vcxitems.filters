@@ -76,12 +76,6 @@
     <Filter Include="UI">
       <UniqueIdentifier>{b130f63c-321a-475a-be85-57688e346cf8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Component\Collider">
-      <UniqueIdentifier>{b43d42c2-7212-4101-a4fc-c110d7c8f5ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameObject\Component\Rigidbody">
-      <UniqueIdentifier>{79528989-18c3-41f2-b593-67e9e64c0ed8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource\Animation">
       <UniqueIdentifier>{cb761f7a-015f-4714-af60-77a09720dc6d}</UniqueIdentifier>
     </Filter>
@@ -102,6 +96,12 @@
     </Filter>
     <Filter Include="ThreadPool">
       <UniqueIdentifier>{24ad2f3e-a5b0-4806-ab27-1d84500e448a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Packet">
+      <UniqueIdentifier>{dac06cb1-f434-4267-af12-d4b89f583c8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PathManager">
+      <UniqueIdentifier>{a7904808-9881-429c-b18e-33d5d7d2c5c6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -177,15 +177,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)UIManger.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)WCollisionManager.cpp">
-      <Filter>Scene\Manger</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)WCollider2D.cpp">
-      <Filter>GameObject\Component\Collider</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)WRigidbody.cpp">
-      <Filter>GameObject\Component\Rigidbody</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)WAnimation.cpp">
       <Filter>Resource\Animation</Filter>
     </ClCompile>
@@ -227,6 +218,15 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)WThreadPool.cpp">
       <Filter>ThreadPool</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WPacketManager.cpp">
+      <Filter>Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WPacket.cpp">
+      <Filter>Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WPathManager.cpp">
+      <Filter>PathManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -317,15 +317,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WObject.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)WCollisionManager.h">
-      <Filter>Scene\Manger</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)WCollider2D.h">
-      <Filter>GameObject\Component\Collider</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)WRigidbody.h">
-      <Filter>GameObject\Component\Rigidbody</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WAnimation.h">
       <Filter>Resource\Animation</Filter>
     </ClInclude>
@@ -340,9 +331,6 @@
       <Filter>Graphics\StructedBuffer</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WComputeShader.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)WInfo.h">
-      <Filter>Common</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WPaintShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WParticleSystem.h">
       <Filter>GameObject\Component</Filter>
@@ -373,6 +361,15 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WThreadPool.h">
       <Filter>ThreadPool</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WPacketManager.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WPacket.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WPathManager.h">
+      <Filter>PathManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

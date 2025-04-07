@@ -1,15 +1,14 @@
 #include "WSkillDarkUI.h"
 #include "WInput.h"
 #include "WPlayer.h"
-#include "WPlayerScript.h"
+
 #include "WSceneManger.h"
-#include "WSkillManager.h"
 
 namespace W
 {
 	SkillDarkUI::SkillDarkUI()
 	{
-		SetPlayerSkill(Player::ePlayerSkill::dark);
+		//SetPlayerSkill(Player::ePlayerSkill::dark);
 
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
@@ -84,7 +83,7 @@ namespace W
 	void SkillDarkUI::Using()
 	{
 		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		EventManager::ChangePlayerSkillState(Player::ePlayerSkill::dark);
+		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::dark);
 	}
 	
 }

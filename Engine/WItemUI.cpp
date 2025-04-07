@@ -6,9 +6,7 @@
 #include "WTransform.h"
 #include "WNumber.h"
 #include "UIManger.h"
-#include "WBattleManager.h"
 #include "WObject.h"
-#include "WPlayerScript.h"
 namespace W
 {
 	ItemUI::ItemUI():
@@ -231,26 +229,6 @@ namespace W
 			pTarget->GetState() != GameObject::eState::Active)
 			return false;
 
-		const tObjectInfo& tInfo = SceneManger::FindPlayer()->GetScript<PlayerScript>()->GetObjectInfo();
-
-		if (m_fAccHP > 0.f && tInfo.fHP < tInfo.fMaxHP)
-		{
-			BattleManager::Buff_Stat(SceneManger::FindPlayer(), BattleManager::eUpStatType::AccHP, m_fAccHP);
-			--m_iAccCount;
-		}
-		if (m_fAccMP > 0.f && tInfo.fMP < tInfo.fMaxMP)
-		{
-			BattleManager::Buff_Stat(SceneManger::FindPlayer(), BattleManager::eUpStatType::AccMP, m_fAccMP);
-			--m_iAccCount;
-		}
-
-		if (m_iAccCount < 1)
-		{
-			m_iAccCount = 1;
-			return true;
-		}
-
-		return false;
 	}
 
 	bool ItemUI::active_cash()

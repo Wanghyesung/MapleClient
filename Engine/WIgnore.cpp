@@ -20,9 +20,6 @@ namespace W
 		std::shared_ptr<Texture> pAtlas =
 			Resources::Load<Texture>(L"ignoreTex", L"..\\Resources\\Texture\\Abnormal\\ignore.png");
 		pMater->SetTexture(pAtlas);
-
-		GetComponent<Transform>()->SetScale(1.f * 0.34f, 1.f * 0.34f, 0.f);
-
 	}
 	Ignore::~Ignore()
 	{
@@ -34,7 +31,6 @@ namespace W
 	}
 	void Ignore::Update()
 	{
-		UpStat::Update();
 	}
 	void Ignore::LateUpdate()
 	{

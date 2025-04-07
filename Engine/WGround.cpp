@@ -1,16 +1,11 @@
 #include "WGround.h"
-#include "WCollider2D.h"
-#include "WGroundScript.h"
+
 
 namespace W
 {
-	Ground::Ground(bool _bFinalGround)
+	Ground::Ground()
 	{
-		//기본적으로 충돌체 가지게
-		AddComponent<Collider2D>();
-		GroundScript* pScript = AddComponent<GroundScript>();
-		if (_bFinalGround)
-			pScript->SetFinalGround();
+		
 	}
 	Ground::~Ground()
 	{
@@ -21,7 +16,7 @@ namespace W
 	}
 	void Ground::Update()
 	{
-		GameObject::Update();
+		
 	}
 	void Ground::LateUpdate()
 	{

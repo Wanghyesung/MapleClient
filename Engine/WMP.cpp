@@ -1,15 +1,15 @@
 #include "WMP.h"
 #include "WRenderer.h"
 #include "WPlayer.h"
-#include "WPlayerScript.h"
+
 #include "WSceneManger.h"
 
 namespace W
 {
-	MP::MP():
-		m_pPlayerScript(nullptr)
+	MP::MP()
 	{
 		std::shared_ptr<Texture> pTex =
+
 			Resources::Load<Texture>(L"MPTex", L"..\\Resources\\Texture\\UI\\Interface\\MP.png");
 
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
@@ -30,7 +30,7 @@ namespace W
 		std::vector<GameObject*> vecObj = SceneManger::GetActiveScene()->GetLayer(eLayerType::Player).GetGameObjects();
 		Player* pPlayer = dynamic_cast<Player*>(vecObj[0]);
 
-		m_pPlayerScript = pPlayer->GetScript<PlayerScript>();
+		//m_pPlayerScript = pPlayer->GetScript<PlayerScript>();
 	}
 	void MP::Update()
 	{
@@ -42,11 +42,11 @@ namespace W
 	}
 	void MP::Render()
 	{
-		const tObjectInfo& tObjectInfo = m_pPlayerScript->GetObjectInfo();
-		float fSize = tObjectInfo.fMP;
+		//const tObjectInfo& tObjectInfo = m_pPlayerScript->GetObjectInfo();
+		//float fSize = tObjectInfo.fMP;
 
 		renderer::PlayerUICB PlayerUICB;
-		PlayerUICB.vSize.x = fSize;
+		PlayerUICB.vSize.x = 100;
 
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::PlayerUI];
 		//Vector4 vPosition(m_vPosition.x, m_vPosition.y, m_vPosition.z, 1.f);

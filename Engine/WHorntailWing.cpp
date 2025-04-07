@@ -1,16 +1,11 @@
 #include "WHorntailWing.h"
 #include "WResources.h"
 #include "WAnimator.h"
-#include "WMonsterScript.h"
-#include "WMonsterFSM.h"
-#include "WBossStand.h"
-#include "WMonsterAttack.h"
+
 #include "WRenderer.h"
-#include "WHorntailDead.h"
 namespace W
 {
-	HorntailWing::HorntailWing(Horntail* _pOwner):
-		m_pOwner(_pOwner)
+	HorntailWing::HorntailWing(Horntail* _pOwner)
 	{
 		SetName(L"Wing");
 
@@ -41,64 +36,19 @@ namespace W
 
 	HorntailWing::~HorntailWing()
 	{
-		ObjectPoolManager::ReleaseObject(L"tailattack");
-
-
+	
 	}
 	void HorntailWing::Initialize()
 	{
-		GetComponent<Transform>()->SetScale(11.f, 11.f, 0.f);
-		GetComponent<Transform>()->SetPosition(-1.5f, -0.27f, -1.2f);
-		Collider2D* pCollider = AddComponent<Collider2D>();
-		pCollider->SetSize(Vector2(0.45f, 0.15f));
-		pCollider->SetCenter(Vector2(0.f, -0.5f));
-
-		//보스 등록
-		MonsterScript* Pscript = AddComponent<MonsterScript>();
-		Pscript->SetBoss();
-		Pscript->Initialize();
-
-		setAttack();
-
-		MonsterFSM* pFSM = new MonsterFSM();
-		pFSM->SetMonster(this);
-		Pscript->SetFSM(pFSM);
-
-		BossStand* pHorntailStand = new BossStand();
-		pFSM->AddState(pHorntailStand);
-		MonsterAttack* pMonsterAttack = new MonsterAttack();
-		pFSM->AddState(pMonsterAttack);
-		HorntailDead* pDead = new HorntailDead();
-		pFSM->AddState(pDead);
-
-		pFSM->SetActiveState(Monster::eMonsterState::stand);
-		pFSM->Initialize();
+	
 	}
 	void HorntailWing::Update()
 	{
-		Monster::Update();
-
+		
 	}
 	void HorntailWing::LateUpdate()
 	{
-		std::wstring strName = GetName();
-		std::wstring strState = GetCurStateName();
-
-		if (strState == L"_attack")
-		{
-			UINT iNumber = GetScript<MonsterScript>()->GetAttackNumber();
-			strState += std::to_wstring(iNumber);
-		}
-
-		std::wstring strAnimName = GetMonsterAnim();
-		std::wstring strCurAnim = strName + strState;
-
-		if (strAnimName != strCurAnim)
-		{
-			SetMonsterAnim(strCurAnim);
-			GetComponent<Animator>()->Play(strCurAnim, true);
-		}
-
+		
 		Monster::LateUpdate();
 	}
 	void HorntailWing::Render()
@@ -113,42 +63,5 @@ namespace W
 
 		GameObject::Render();
 	}
-	void HorntailWing::setAttack()
-	{
-		MonsterScript* Pscript = GetComponent<MonsterScript>();
-
-		//1
-		tMonsterAttack attack0 = {};
-		attack0.tTime.fCoolTime = 10.f;
-		attack0.bSkill = true;
-		attack0.vScale = Vector2::Zero;
-
-		attack0.iStartFrame = 11;
-		attack0.iEndFrame = 12;
-		attack0.pFunction = std::bind(&HorntailWing::Heal, this);
-		Pscript->AddAttack(attack0);
-
-		//2
-		tMonsterAttack attack1 = {};
-		attack1.bSkill = true;
-		attack1.tTime.fCoolTime = 30.f;
-
-		attack1.vScale = Vector2::Zero;
-
-		attack1.iStartFrame = 11;
-		attack1.iEndFrame = 12;
-		attack1.pFunction = std::bind(&HorntailWing::summons, this);
-		Pscript->AddAttack(attack1);
-
-	}
-	void HorntailWing::summons()
-	{
-
-	}
-
-	void HorntailWing::Heal()
-	{
-		if (m_pHealFunc)
-			m_pHealFunc();
-	}
+	
 }

@@ -1,6 +1,7 @@
 #include "WDefenseUp.h"
 #include "WResources.h"
 #include "WMonster.h"
+#include "WTransform.h"
 
 namespace W
 {
@@ -34,7 +35,7 @@ namespace W
 	}
 	void DefenseUp::Update()
 	{
-		UpStat::Update();
+		
 	}
 	void DefenseUp::LateUpdate()
 	{

@@ -1,6 +1,6 @@
 #include "WShader.h"
 #include "WRenderer.h"
-
+#include "WPathManager.h"
 namespace W
 {
 	Shader::Shader():
@@ -28,31 +28,27 @@ namespace W
 		const std::wstring& _wstrFileName, 
 		const std::string& _strFuncName)
 	{
-		std::filesystem::path shaderPath =
-			std::filesystem::current_path().parent_path();
-
+		std::wstring shaderPath = PathManager::GetContentPath();
 		shaderPath += L"\\Shader_Source\\";
-
-		std::filesystem::path fullPath(shaderPath.c_str());
-		fullPath += _wstrFileName;
+		shaderPath += _wstrFileName;
 
 		ID3DBlob* errorBlob = nullptr;
 		if (_eStage == eShaderStage::VS)
 		{
-			GetDevice()->CompileFromfile(fullPath, _strFuncName, "vs_5_0", m_cpVSBlop.GetAddressOf());
+			GetDevice()->CompileFromfile(shaderPath, _strFuncName, "vs_5_0", m_cpVSBlop.GetAddressOf());
 			GetDevice()->CreateVertexShader(m_cpVSBlop->GetBufferPointer(),
 				m_cpVSBlop->GetBufferSize(), m_cpVS.GetAddressOf());
 		}
 		else if (_eStage == eShaderStage::GS)
 		{
-			GetDevice()->CompileFromfile(fullPath, _strFuncName, "gs_5_0", m_cpGSBlop.GetAddressOf());
+			GetDevice()->CompileFromfile(shaderPath, _strFuncName, "gs_5_0", m_cpGSBlop.GetAddressOf());
 			GetDevice()->CreateGeometryShader(m_cpGSBlop->GetBufferPointer(),
 				m_cpGSBlop->GetBufferSize(), m_cpGS.GetAddressOf());
 		}
 
 		else if (_eStage == eShaderStage::PS)
 		{
-			GetDevice()->CompileFromfile(fullPath, _strFuncName, "ps_5_0", m_cpPSBlop.GetAddressOf());
+			GetDevice()->CompileFromfile(shaderPath, _strFuncName, "ps_5_0", m_cpPSBlop.GetAddressOf());
 			GetDevice()->CreatePixelShader(m_cpPSBlop->GetBufferPointer(),
 				m_cpPSBlop->GetBufferSize(), m_cpPS.GetAddressOf());
 		}

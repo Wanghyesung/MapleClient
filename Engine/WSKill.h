@@ -23,9 +23,6 @@ namespace W
 
 		virtual void Using()override;
 
-		Player::ePlayerSkill GetPlayerSkill() { return m_ePlayerSkill; }
-		void SetPlayerSkill(Player::ePlayerSkill _eSkill) { m_ePlayerSkill = _eSkill; }
-
 		void SetSkillNuber(SKillStorage::eSkillNuber _eNuber) { m_eSkillNuber = _eNuber; }
 
 		void SetClone(bool _bOn) { m_bClone = _bOn; }
@@ -55,7 +52,7 @@ namespace W
 		Vector3 m_vStartPos;
 
 		SKillStorage::eSkillNuber m_eSkillNuber;
-		Player::ePlayerSkill m_ePlayerSkill;
+		
 	};
 }
 

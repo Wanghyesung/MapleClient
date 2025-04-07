@@ -2,7 +2,6 @@
 #include "WResources.h"
 #include "WAnimator.h"
 #include "WRenderer.h"
-#include "WBattleManager.h"
 #include "WPlayer.h"
 #include "WEventManager.h"
 namespace W
@@ -37,7 +36,7 @@ namespace W
 	}
 	void Undead::Update()
 	{
-		Abnormal::Update();
+		
 	}
 	void Undead::LateUpdate()
 	{
@@ -59,8 +58,6 @@ namespace W
 	}
 	void Undead::Restore()
 	{
-		EventManager::Restore(m_pTarget, BattleManager::eAbnormalType::Undead);
-
-		//BattleManager::Restore_move(m_pTarget, BattleManager::eAbnormalType::Undead);
+	
 	}
 }

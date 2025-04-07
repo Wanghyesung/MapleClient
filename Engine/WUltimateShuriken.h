@@ -14,11 +14,6 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-		void SetStartPos(Vector2 _vPos);
-		void SetTarget(GameObject* _pTarget) { m_pTarget = _pTarget; }
-	private:
-		Vector2 m_vDir;
-		GameObject* m_pTarget;
 
 	};
 }

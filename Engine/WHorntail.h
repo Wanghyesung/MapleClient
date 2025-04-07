@@ -25,24 +25,6 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-		void Start();
-
-	private:
-		void create_child();
-		void delete_child();
-
-		void up_attack();
-		void up_defense();
-		void heal();
-		void dead();
-
-		void update_HP();
-
-	private:
-		bool m_bStart;
-		
-		int m_iDeadCount;
-
 		std::vector<Monster*> m_vecMonster;
 	};
 }

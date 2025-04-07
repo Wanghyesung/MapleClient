@@ -13,12 +13,6 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-		void SetDir(int _iDir);
-	private:
-		void off();
-	private:
-		UINT m_iCallCount;
-		tMonsterAttack m_tMonsterAttack;
 
 	};
 }

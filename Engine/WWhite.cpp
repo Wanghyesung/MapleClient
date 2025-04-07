@@ -4,10 +4,10 @@
 #include "WCameraScript.h"
 #include "WSceneManger.h"
 #include "WTime.h"
+#include "WTransform.h"
 namespace W
 {
-	White::White():
-		m_vColor(Vector4::Zero)
+	White::White()
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetRenderinMode(eRenderingMode::Transparent);
@@ -32,22 +32,12 @@ namespace W
 
 	void White::Initialize()
 	{
-		m_vColor = Vector4::One;
-		m_vColor.w = 0.f;
+		
 	}
 
 	void White::Update()
 	{
-		if (m_vColor.w >= 1.f)
-		{
-			m_vColor = Vector4::Zero;
-			SceneManger::Erase(this);
-			m_pCompleteEvent();
-			return;
-		}
-		m_vColor.w += (Time::DeltaTime() / m_fEndTime);
-
-		GameObject::Update();
+		
 	}
 
 	void White::LateUpdate()
@@ -59,7 +49,7 @@ namespace W
 	{
 		renderer::ObjectCB ObjectCB;
 		ObjectCB.vObjectDir.x = 1;
-		ObjectCB.vObjectColor = m_vColor;
+		//ObjectCB.vObjectColor = m_vColor;
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::Object];
 		//Vector4 vPosition(m_vPosition.x, m_vPosition.y, m_vPosition.z, 1.f);
 		pConstBuffer->SetData(&ObjectCB);

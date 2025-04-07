@@ -14,16 +14,6 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-	private:
-		void move();
-		void start();
-		void off();
-	private:
-		tMonsterAttack m_tMonsterAttack;
-		std::wstring m_strCurAnim;
-
-		bool m_bMove;
-		bool m_bEnd;
 	};
 }
 

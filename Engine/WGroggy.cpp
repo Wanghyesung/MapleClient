@@ -3,7 +3,6 @@
 #include "WRenderer.h"
 #include "WAnimator.h"
 #include "WEventManager.h"
-#include "WBattleManager.h"
 namespace W
 {
 	Groggy::Groggy()
@@ -18,8 +17,7 @@ namespace W
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
 
-		GetComponent<Transform>()->SetScale(2.f, 2.f, 0.f);
-
+		
 		std::shared_ptr<Texture> pAtlas =
 			Resources::Load<Texture>(L"groggyTex", L"..\\Resources\\Texture\\Abnormal\\groggy.png");
 		Animator* pAnim = AddComponent<Animator>();
@@ -38,7 +36,7 @@ namespace W
 	}
 	void Groggy::Update()
 	{
-		GameObject::Update();
+		
 	}
 
 	void Groggy::LateUpdate()
@@ -61,6 +59,6 @@ namespace W
 	}
 	void Groggy::Restore()
 	{
-		EventManager::Restore(m_pTarget, BattleManager::eAbnormalType::InputKey);
+		
 	}
 }

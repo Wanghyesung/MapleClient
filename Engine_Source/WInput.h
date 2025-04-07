@@ -58,7 +58,7 @@ namespace W
 		static void Initialize();
 		static void Update();
 		static void Render(HDC hdc);
-
+		
 		inline static eKeyState GetKeyState(eKeyCode keyCode)
 		{
 			return m_vecKeys[(UINT)keyCode].state;

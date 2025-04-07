@@ -17,10 +17,8 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-		void SetHPValue(float _fValue) { m_fHP = _fValue; }
 	private:
 		float m_fHP;
-		friend class MonsterManager;
 	};
 
 	

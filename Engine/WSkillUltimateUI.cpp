@@ -1,11 +1,11 @@
 #include "WSkillUltimateUI.h"
-#include "WSkillManager.h"
+
 #include "WPlayer.h"
 namespace W
 {
 	SkillUltimateUI::SkillUltimateUI()
 	{
-		SetPlayerSkill(Player::ePlayerSkill::ultimate);
+		
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
 			Resources::Load<Texture>(L"SKillUltimateUI2", L"..\\Resources\\Texture\\UI\\SkillUI\\6\\2.png");
@@ -80,6 +80,6 @@ namespace W
 	void SkillUltimateUI::Using()
 	{
 		
-		EventManager::ChangePlayerSkillState(Player::ePlayerSkill::ultimate);
+		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::ultimate);
 	}
 }

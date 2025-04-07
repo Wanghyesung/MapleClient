@@ -19,30 +19,11 @@ namespace W
 			UINT _iRowLength, Vector2 _vDivisionSize, Vector2 _vOffset, float _fDuration);
 
 		void StartEffect(int _iDir);
-		void SetPosition(Collider2D* _pCollider);
-		void SetActive(bool _bActive) { m_bActive = _bActive; }
-		bool IsActive() { return m_bActive; }
-
-		void SetFunction(std::function<void()> _func, UINT _iStartIndex) 
-		{
-			m_pFunction = std::move(_func); 
-			m_iStartIndex = _iStartIndex;
-		}
-	private:
-		void off();
 		
-		std::function<void()> m_pFunction;
-
 	private:
+		int m_iDir;
 		GameObject* m_pOwner;
 		Vector2 m_vOffset;
-
-		bool m_bActive;
-		UINT m_iStartIndex;
-		UINT m_iFuncCount;
-
-		int m_iDir;
-		
 	};
 
 }

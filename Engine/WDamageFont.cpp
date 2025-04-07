@@ -4,7 +4,7 @@
 #include "WTexture.h"
 #include "WRenderer.h"
 #include "WBattleManager.h"
-
+#include "WTransform.h"
 
 namespace W
 {

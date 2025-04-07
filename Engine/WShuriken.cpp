@@ -1,23 +1,15 @@
 #include "WShuriken.h"
 #include "WResources.h"
 #include "WAnimator.h"
-#include "WAttackScript.h"
 #include "WRenderer.h"
 #include "WSceneManger.h"
 #include "WTime.h"
 #include "WEventManager.h"
 namespace W
 {
-	UINT Shuriken::COUNT = 0;
 
-	Shuriken::Shuriken():
-		m_iDir(1)
+	Shuriken::Shuriken()
 	{
-		m_iCount = COUNT;
-		++COUNT;
-
-		//std::wstring strNum = std::to_wstring(m_iCount);
-
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 
@@ -43,27 +35,18 @@ namespace W
 
 	void Shuriken::Initialize()
 	{
-		AddComponent<AttackScript>();
-
-		Collider2D* pCollider = AddComponent<Collider2D>();
-		GetComponent<Transform>()->SetScale(1.f, 1.f, 0.f);
-		pCollider->SetSize(Vector2(0.5f, 0.5f));
-
+	
 	}
 
 	//이동, 삭제시간, attackscript말고 각각의 클래스에서
 	void Shuriken::Update()
 	{	
-		GameObject::Update();
+		
 	}
 
 	void Shuriken::LateUpdate()
 	{
-		Transform* pTr =GetComponent<Transform>();
-		Vector3 vPosition = pTr->GetPosition();
-		vPosition.x += (m_iDir * 8.f * Time::DeltaTime());
-		pTr->SetPosition(vPosition);
-
+		
 		GameObject::LateUpdate();
 	}
 
@@ -79,22 +62,5 @@ namespace W
 
 		GameObject::Render();
 	}
-	void Shuriken::SetDir(int _iDir)
-	{
-		m_iDir = _iDir;
-		AttackScript* pScript = GetScript<AttackScript>();
-		pScript->SetDir(m_iDir);
-
-		Animator* pAnimator = GetComponent<Animator>();
-		std::wstring strDir;
-		if (m_iDir > 0)
-			strDir = L"_right";
-		else
-			strDir = L"_left";
-		pAnimator->Play(L"shuriken" + strDir, true);
-	}
-	void Shuriken::Off()
-	{
-		PlayerAttackObject::Off();
-	}
+	
 }

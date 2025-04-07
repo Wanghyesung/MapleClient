@@ -1,7 +1,8 @@
 #include "WReflex.h"
 #include "WResources.h"
 #include "WMonster.h"
-#include "WMonsterScript.h"
+#include "WTransform.h"
+
 namespace W
 {
 	Reflex::Reflex(float _fAccStat):
@@ -36,7 +37,7 @@ namespace W
 
 	void Reflex::Update()
 	{
-		UpStat::Update();
+		
 	}
 	void Reflex::LateUpdate()
 	{

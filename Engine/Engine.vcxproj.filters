@@ -5,40 +5,13 @@
     <ClInclude Include="LoadScene.h">
       <Filter>Contents\Load</Filter>
     </ClInclude>
-    <ClInclude Include="WPlayScene.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="WCaveScene.h">
       <Filter>Contents\Scene\Cave</Filter>
-    </ClInclude>
-    <ClInclude Include="WCaveStartScene.h">
-      <Filter>Contents\Scene\Cave</Filter>
-    </ClInclude>
-    <ClInclude Include="WLeafreScene.h">
-      <Filter>Contents\Scene\Leafre</Filter>
-    </ClInclude>
-    <ClInclude Include="WMoveScene.h">
-      <Filter>Contents\Scene\Move</Filter>
-    </ClInclude>
-    <ClInclude Include="WMoveScene_2.h">
-      <Filter>Contents\Scene\Move</Filter>
     </ClInclude>
     <ClInclude Include="WTempleBossScene.h">
       <Filter>Contents\Scene\Temple</Filter>
     </ClInclude>
-    <ClInclude Include="WTempleScene.h">
-      <Filter>Contents\Scene\Temple</Filter>
-    </ClInclude>
-    <ClInclude Include="WTempleScene_2.h">
-      <Filter>Contents\Scene\Temple</Filter>
-    </ClInclude>
-    <ClInclude Include="WTempleStartScene.h">
-      <Filter>Contents\Scene\Temple</Filter>
-    </ClInclude>
     <ClInclude Include="WValleyScene.h">
-      <Filter>Contents\Scene\Valley</Filter>
-    </ClInclude>
-    <ClInclude Include="WValleyScene_2.h">
       <Filter>Contents\Scene\Valley</Filter>
     </ClInclude>
     <ClInclude Include="WCameraScript.h">
@@ -109,9 +82,6 @@
     </ClInclude>
     <ClInclude Include="WHorntailItem.h">
       <Filter>Contents\UI\Equip</Filter>
-    </ClInclude>
-    <ClInclude Include="WGridScript.h">
-      <Filter>Contents\Script</Filter>
     </ClInclude>
     <ClInclude Include="WSKillStorage.h">
       <Filter>Contents\UI\Interface\Extra\Skill\SkillStorage</Filter>
@@ -215,9 +185,6 @@
     <ClInclude Include="WGround.h">
       <Filter>Contents\Object\Ground</Filter>
     </ClInclude>
-    <ClInclude Include="WGroundScript.h">
-      <Filter>Contents\Object\Ground</Filter>
-    </ClInclude>
     <ClInclude Include="WCage.h">
       <Filter>Contents\Object</Filter>
     </ClInclude>
@@ -226,15 +193,6 @@
     </ClInclude>
     <ClInclude Include="WNPC.h">
       <Filter>Contents\Object\NPC</Filter>
-    </ClInclude>
-    <ClInclude Include="WStartScene.h">
-      <Filter>Contents\Scene\Start</Filter>
-    </ClInclude>
-    <ClInclude Include="WSeleteScene.h">
-      <Filter>Contents\Scene\Start</Filter>
-    </ClInclude>
-    <ClInclude Include="WCharScene.h">
-      <Filter>Contents\Scene\Start</Filter>
     </ClInclude>
     <ClInclude Include="WStartUI.h">
       <Filter>Contents\UI\Button</Filter>
@@ -293,121 +251,25 @@
     <ClInclude Include="WPlayerHat.h">
       <Filter>Contents\Player\Equip</Filter>
     </ClInclude>
-    <ClInclude Include="WPlayerScript.h">
-      <Filter>Contents\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerFSM.h">
-      <Filter>Contents\Player\PlayerFSM</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerState.h">
-      <Filter>Contents\Player\PlayerFSM</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerStand.h">
-      <Filter>Contents\Player\PlayerFSM\PlayerStand</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerPronestab.h">
-      <Filter>Contents\Player\PlayerFSM\PlayerPronestab</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerWalk.h">
-      <Filter>Contents\Player\PlayerFSM\PlayerWalk</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerJump.h">
-      <Filter>Contents\Player\PlayerFSM\PlayerJump</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerSwing1.h">
-      <Filter>Contents\Player\PlayerFSM\PlayerSwing1</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerProneAttack.h">
-      <Filter>Contents\Player\PlayerFSM\PlayerPronestab</Filter>
-    </ClInclude>
-    <ClInclude Include="WLadderScript.h">
-      <Filter>Contents\Object\Ladder</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerLadder.h">
-      <Filter>Contents\Player\PlayerFSM\PlayerLadder</Filter>
-    </ClInclude>
     <ClInclude Include="WMonster.h">
       <Filter>Contents\Object\Monster</Filter>
     </ClInclude>
     <ClInclude Include="WSkelegon.h">
       <Filter>Contents\Object\Monster\Skelegon</Filter>
     </ClInclude>
-    <ClInclude Include="WMonsterFSM.h">
-      <Filter>Contents\Object\Monster\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="WMonsterState.h">
-      <Filter>Contents\Object\Monster\MonsterState</Filter>
-    </ClInclude>
-    <ClInclude Include="WMonsterStand.h">
-      <Filter>Contents\Object\Monster\MonsterState\Stand</Filter>
-    </ClInclude>
-    <ClInclude Include="WMonsterMove.h">
-      <Filter>Contents\Object\Monster\MonsterState\Move</Filter>
-    </ClInclude>
     <ClInclude Include="WShuriken.h">
       <Filter>Contents\Player\AttackObject\Shuriken</Filter>
-    </ClInclude>
-    <ClInclude Include="WMonsterHit.h">
-      <Filter>Contents\Object\Monster\MonsterState\Hit</Filter>
-    </ClInclude>
-    <ClInclude Include="WMonsterScript.h">
-      <Filter>Contents\Object\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerAlert.h">
-      <Filter>Contents\Player\PlayerFSM\PlayerAlert</Filter>
-    </ClInclude>
-    <ClInclude Include="WMonsterAttack.h">
-      <Filter>Contents\Object\Monster\MonsterState\Attack</Filter>
     </ClInclude>
     <ClInclude Include="WMonsterAttackObject.h">
       <Filter>Contents\Object\AttackObject</Filter>
     </ClInclude>
-    <ClInclude Include="WMonsterAttackScript.h">
-      <Filter>Contents\Object\AttackObject</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerStab.h">
-      <Filter>Contents\Player\PlayerFSM\PlayerStab</Filter>
-    </ClInclude>
-    <ClInclude Include="WAttackScript.h">
-      <Filter>Contents\Player\AttackObject</Filter>
-    </ClInclude>
     <ClInclude Include="WPlayerAttackObject.h">
       <Filter>Contents\Player\AttackObject</Filter>
-    </ClInclude>
-    <ClInclude Include="WPlayerSkill.h">
-      <Filter>Contents\Player\PlayerSkill</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillState.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillLuck.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Luck</Filter>
     </ClInclude>
     <ClInclude Include="WEffect.h">
       <Filter>Contents\Player\PlayerSkill\skilleffect</Filter>
     </ClInclude>
-    <ClInclude Include="WSkillDark.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Dark</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillJump.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Jump</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillSpeed.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\speed</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillManager.h">
-      <Filter>Contents\Manager\SkillMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="WPortal.h">
-      <Filter>Contents\Object\Portal</Filter>
-    </ClInclude>
-    <ClInclude Include="WPortalScript.h">
-      <Filter>Contents\Object\Portal</Filter>
-    </ClInclude>
     <ClInclude Include="WStone.h">
-      <Filter>Contents\Object\BossMonster\horntail\horntailStone</Filter>
-    </ClInclude>
-    <ClInclude Include="WStoneScript.h">
       <Filter>Contents\Object\BossMonster\horntail\horntailStone</Filter>
     </ClInclude>
     <ClInclude Include="WHorntail.h">
@@ -415,9 +277,6 @@
     </ClInclude>
     <ClInclude Include="WHorntailHeadA.h">
       <Filter>Contents\Object\BossMonster\horntail\headA</Filter>
-    </ClInclude>
-    <ClInclude Include="WBossStand.h">
-      <Filter>Contents\Object\Monster\Horntail</Filter>
     </ClInclude>
     <ClInclude Include="WHorntailHeadB.h">
       <Filter>Contents\Object\BossMonster\horntail\headB</Filter>
@@ -452,12 +311,6 @@
     <ClInclude Include="WHorntailTail.h">
       <Filter>Contents\Object\BossMonster\horntail\tail</Filter>
     </ClInclude>
-    <ClInclude Include="WBattleManager.h">
-      <Filter>Contents\Manager\BattleMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="WDamageFont.h">
-      <Filter>Contents\Manager\BattleMgr\DamageFont</Filter>
-    </ClInclude>
     <ClInclude Include="WEventManager.h">
       <Filter>Contents\Manager\EventManager</Filter>
     </ClInclude>
@@ -491,41 +344,11 @@
     <ClInclude Include="WMonsterBackHP.h">
       <Filter>Contents\Object\Monster\MonsterHP</Filter>
     </ClInclude>
-    <ClInclude Include="WMonsterDead.h">
-      <Filter>Contents\Object\Monster\MonsterState\MonsterDead</Filter>
-    </ClInclude>
-    <ClInclude Include="WHorntailDead.h">
-      <Filter>Contents\Object\Monster\FSM\HorntailDead</Filter>
-    </ClInclude>
-    <ClInclude Include="WMonsterManager.h">
-      <Filter>Contents\Manager\RespawnManager</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillAven.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Aven</Filter>
-    </ClInclude>
     <ClInclude Include="WAven.h">
       <Filter>Contents\Player\PlayerSkill\SkillState\Aven</Filter>
     </ClInclude>
-    <ClInclude Include="WSkillShadow.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Shadow</Filter>
-    </ClInclude>
     <ClInclude Include="WShadow.h">
       <Filter>Contents\Player\PlayerSkill\SkillState\Shadow</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillQuad.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Quadruple</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillRaid.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Raid</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillWind.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Wind</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillLoad.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Load</Filter>
-    </ClInclude>
-    <ClInclude Include="WSkillBlast.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\blast</Filter>
     </ClInclude>
     <ClInclude Include="WBlast.h">
       <Filter>Contents\Player\PlayerSkill\SkillState\blast</Filter>
@@ -539,14 +362,8 @@
     <ClInclude Include="WWind.h">
       <Filter>Contents\Player\PlayerSkill\SkillState\Wind</Filter>
     </ClInclude>
-    <ClInclude Include="WItemObject.h">
-      <Filter>Contents\Object\itemobj</Filter>
-    </ClInclude>
     <ClInclude Include="WItemManager.h">
       <Filter>Contents\Manager\ItemManager</Filter>
-    </ClInclude>
-    <ClInclude Include="WItemScript.h">
-      <Filter>Contents\Object\itemobj</Filter>
     </ClInclude>
     <ClInclude Include="WSolomon.h">
       <Filter>Contents\Object\Monster\pinkbean\solomon</Filter>
@@ -556,9 +373,6 @@
     </ClInclude>
     <ClInclude Include="WRex.h">
       <Filter>Contents\Object\Monster\pinkbean\rex</Filter>
-    </ClInclude>
-    <ClInclude Include="WBossStart.h">
-      <Filter>Contents\Object\Monster\FSM\BossStart</Filter>
     </ClInclude>
     <ClInclude Include="WRexThunder.h">
       <Filter>Contents\Object\Monster\pinkbean\rex\thunder</Filter>
@@ -583,9 +397,6 @@
     </ClInclude>
     <ClInclude Include="WPullObject.h">
       <Filter>Contents\Object\BossMonster\PullObject</Filter>
-    </ClInclude>
-    <ClInclude Include="WPinkbeanStand.h">
-      <Filter>Contents\Object\Monster\FSM\PinkBean</Filter>
     </ClInclude>
     <ClInclude Include="WJenesis.h">
       <Filter>Contents\Object\Monster\pinkbean\PinkBean\jenesis</Filter>
@@ -761,16 +572,10 @@
     <ClInclude Include="WShoes_80.h">
       <Filter>Contents\UI\Equip\Equip_80</Filter>
     </ClInclude>
-    <ClInclude Include="WUltimateSkill.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
-    </ClInclude>
     <ClInclude Include="WUltimateFog.h">
       <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
     </ClInclude>
     <ClInclude Include="WUltimateBackground.h">
-      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
-    </ClInclude>
-    <ClInclude Include="WSpawnUltimate.h">
       <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
     </ClInclude>
     <ClInclude Include="WUltimateShuriken.h">
@@ -794,49 +599,19 @@
     <ClInclude Include="WEyeItem.h">
       <Filter>Contents\UI\cashitem</Filter>
     </ClInclude>
-    <ClInclude Include="WPlayerDead.h">
-      <Filter>Contents\Player\PlayerFSM\PlayerDead</Filter>
-    </ClInclude>
     <ClInclude Include="WObjectPoolManager.h">
       <Filter>Contents\Manager\ObjectPoolManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="WPlayScene.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="WCaveScene.cpp">
       <Filter>Contents\Scene\Cave</Filter>
-    </ClCompile>
-    <ClCompile Include="WCaveStartScene.cpp">
-      <Filter>Contents\Scene\Cave</Filter>
-    </ClCompile>
-    <ClCompile Include="WLeafreScene.cpp">
-      <Filter>Contents\Scene\Leafre</Filter>
-    </ClCompile>
-    <ClCompile Include="WMoveScene.cpp">
-      <Filter>Contents\Scene\Move</Filter>
-    </ClCompile>
-    <ClCompile Include="WMoveScene_2.cpp">
-      <Filter>Contents\Scene\Move</Filter>
     </ClCompile>
     <ClCompile Include="WTempleBossScene.cpp">
       <Filter>Contents\Scene\Temple</Filter>
     </ClCompile>
-    <ClCompile Include="WTempleScene.cpp">
-      <Filter>Contents\Scene\Temple</Filter>
-    </ClCompile>
-    <ClCompile Include="WTempleScene_2.cpp">
-      <Filter>Contents\Scene\Temple</Filter>
-    </ClCompile>
-    <ClCompile Include="WTempleStartScene.cpp">
-      <Filter>Contents\Scene\Temple</Filter>
-    </ClCompile>
     <ClCompile Include="WValleyScene.cpp">
-      <Filter>Contents\Scene\Valley</Filter>
-    </ClCompile>
-    <ClCompile Include="WValleyScene_2.cpp">
       <Filter>Contents\Scene\Valley</Filter>
     </ClCompile>
     <ClCompile Include="WCameraScript.cpp">
@@ -907,9 +682,6 @@
     </ClCompile>
     <ClCompile Include="WHorntailItem.cpp">
       <Filter>Contents\UI\Equip</Filter>
-    </ClCompile>
-    <ClCompile Include="WGridScript.cpp">
-      <Filter>Contents\Script</Filter>
     </ClCompile>
     <ClCompile Include="WSKillStorage.cpp">
       <Filter>Contents\UI\Interface\Extra\Skill\SkillStorage</Filter>
@@ -1013,9 +785,6 @@
     <ClCompile Include="WGround.cpp">
       <Filter>Contents\Object\Ground</Filter>
     </ClCompile>
-    <ClCompile Include="WGroundScript.cpp">
-      <Filter>Contents\Object\Ground</Filter>
-    </ClCompile>
     <ClCompile Include="WCage.cpp">
       <Filter>Contents\Object</Filter>
     </ClCompile>
@@ -1024,15 +793,6 @@
     </ClCompile>
     <ClCompile Include="WNPC.cpp">
       <Filter>Contents\Object\NPC</Filter>
-    </ClCompile>
-    <ClCompile Include="WStartScene.cpp">
-      <Filter>Contents\Scene\Start</Filter>
-    </ClCompile>
-    <ClCompile Include="WSeleteScene.cpp">
-      <Filter>Contents\Scene\Start</Filter>
-    </ClCompile>
-    <ClCompile Include="WCharScene.cpp">
-      <Filter>Contents\Scene\Start</Filter>
     </ClCompile>
     <ClCompile Include="WStartUI.cpp">
       <Filter>Contents\UI\Button</Filter>
@@ -1094,121 +854,25 @@
     <ClCompile Include="WPlayerHat.cpp">
       <Filter>Contents\Player\Equip</Filter>
     </ClCompile>
-    <ClCompile Include="WPlayerScript.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerFSM.cpp">
-      <Filter>Contents\Player\PlayerFSM</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerState.cpp">
-      <Filter>Contents\Player\PlayerFSM</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerStand.cpp">
-      <Filter>Contents\Player\PlayerFSM\PlayerStand</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerPronestab.cpp">
-      <Filter>Contents\Player\PlayerFSM\PlayerPronestab</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerWalk.cpp">
-      <Filter>Contents\Player\PlayerFSM\PlayerWalk</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerJump.cpp">
-      <Filter>Contents\Player\PlayerFSM\PlayerJump</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerSwing1.cpp">
-      <Filter>Contents\Player\PlayerFSM\PlayerSwing1</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerProneAttack.cpp">
-      <Filter>Contents\Player\PlayerFSM\PlayerPronestab</Filter>
-    </ClCompile>
-    <ClCompile Include="WLadderScript.cpp">
-      <Filter>Contents\Object\Ladder</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerLadder.cpp">
-      <Filter>Contents\Player\PlayerFSM\PlayerLadder</Filter>
-    </ClCompile>
     <ClCompile Include="WMonster.cpp">
       <Filter>Contents\Object\Monster</Filter>
     </ClCompile>
     <ClCompile Include="WSkelegon.cpp">
       <Filter>Contents\Object\Monster\Skelegon</Filter>
     </ClCompile>
-    <ClCompile Include="WMonsterFSM.cpp">
-      <Filter>Contents\Object\Monster\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="WMonsterState.cpp">
-      <Filter>Contents\Object\Monster\MonsterState</Filter>
-    </ClCompile>
-    <ClCompile Include="WMonsterStand.cpp">
-      <Filter>Contents\Object\Monster\MonsterState\Stand</Filter>
-    </ClCompile>
-    <ClCompile Include="WMonsterMove.cpp">
-      <Filter>Contents\Object\Monster\MonsterState\Move</Filter>
-    </ClCompile>
     <ClCompile Include="WShuriken.cpp">
       <Filter>Contents\Player\AttackObject\Shuriken</Filter>
-    </ClCompile>
-    <ClCompile Include="WMonsterHit.cpp">
-      <Filter>Contents\Object\Monster\MonsterState\Hit</Filter>
-    </ClCompile>
-    <ClCompile Include="WMonsterScript.cpp">
-      <Filter>Contents\Object\Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerAlert.cpp">
-      <Filter>Contents\Player\PlayerFSM\PlayerAlert</Filter>
-    </ClCompile>
-    <ClCompile Include="WMonsterAttack.cpp">
-      <Filter>Contents\Object\Monster\MonsterState\Attack</Filter>
     </ClCompile>
     <ClCompile Include="WMonsterAttackObject.cpp">
       <Filter>Contents\Object\AttackObject</Filter>
     </ClCompile>
-    <ClCompile Include="WMonsterAttackScript.cpp">
-      <Filter>Contents\Object\AttackObject</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerStab.cpp">
-      <Filter>Contents\Player\PlayerFSM\PlayerStab</Filter>
-    </ClCompile>
-    <ClCompile Include="WAttackScript.cpp">
-      <Filter>Contents\Player\AttackObject</Filter>
-    </ClCompile>
     <ClCompile Include="WPlayerAttackObject.cpp">
       <Filter>Contents\Player\AttackObject</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerSkill.cpp">
-      <Filter>Contents\Player\PlayerSkill</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillState.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillLuck.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Luck</Filter>
     </ClCompile>
     <ClCompile Include="WEffect.cpp">
       <Filter>Contents\Player\PlayerSkill\skilleffect</Filter>
     </ClCompile>
-    <ClCompile Include="WSkillDark.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Dark</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillJump.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Jump</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillSpeed.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\speed</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillManager.cpp">
-      <Filter>Contents\Manager\SkillMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="WPortal.cpp">
-      <Filter>Contents\Object\Portal</Filter>
-    </ClCompile>
-    <ClCompile Include="WPortalScript.cpp">
-      <Filter>Contents\Object\Portal</Filter>
-    </ClCompile>
     <ClCompile Include="WStone.cpp">
-      <Filter>Contents\Object\BossMonster\horntail\horntailStone</Filter>
-    </ClCompile>
-    <ClCompile Include="WStoneScript.cpp">
       <Filter>Contents\Object\BossMonster\horntail\horntailStone</Filter>
     </ClCompile>
     <ClCompile Include="WHorntail.cpp">
@@ -1216,9 +880,6 @@
     </ClCompile>
     <ClCompile Include="WHorntailHeadA.cpp">
       <Filter>Contents\Object\BossMonster\horntail\headA</Filter>
-    </ClCompile>
-    <ClCompile Include="WBossStand.cpp">
-      <Filter>Contents\Object\Monster\Horntail</Filter>
     </ClCompile>
     <ClCompile Include="WHorntailHeadB.cpp">
       <Filter>Contents\Object\BossMonster\horntail\headB</Filter>
@@ -1253,12 +914,6 @@
     <ClCompile Include="WHorntailTail.cpp">
       <Filter>Contents\Object\BossMonster\horntail\tail</Filter>
     </ClCompile>
-    <ClCompile Include="WBattleManager.cpp">
-      <Filter>Contents\Manager\BattleMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="WDamageFont.cpp">
-      <Filter>Contents\Manager\BattleMgr\DamageFont</Filter>
-    </ClCompile>
     <ClCompile Include="WEventManager.cpp">
       <Filter>Contents\Manager\EventManager</Filter>
     </ClCompile>
@@ -1292,41 +947,11 @@
     <ClCompile Include="WMonsterBackHP.cpp">
       <Filter>Contents\Object\Monster\MonsterHP</Filter>
     </ClCompile>
-    <ClCompile Include="WMonsterDead.cpp">
-      <Filter>Contents\Object\Monster\MonsterState\MonsterDead</Filter>
-    </ClCompile>
-    <ClCompile Include="WHorntailDead.cpp">
-      <Filter>Contents\Object\Monster\FSM\HorntailDead</Filter>
-    </ClCompile>
-    <ClCompile Include="WMonsterManager.cpp">
-      <Filter>Contents\Manager\RespawnManager</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillAven.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Aven</Filter>
-    </ClCompile>
     <ClCompile Include="WAven.cpp">
       <Filter>Contents\Player\PlayerSkill\SkillState\Aven</Filter>
     </ClCompile>
-    <ClCompile Include="WSkillShadow.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Shadow</Filter>
-    </ClCompile>
     <ClCompile Include="WShadow.cpp">
       <Filter>Contents\Player\PlayerSkill\SkillState\Shadow</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillQuad.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Quadruple</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillRaid.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Raid</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillWind.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Wind</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillLoad.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\Load</Filter>
-    </ClCompile>
-    <ClCompile Include="WSkillBlast.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\blast</Filter>
     </ClCompile>
     <ClCompile Include="WBlast.cpp">
       <Filter>Contents\Player\PlayerSkill\SkillState\blast</Filter>
@@ -1340,14 +965,8 @@
     <ClCompile Include="WWind.cpp">
       <Filter>Contents\Player\PlayerSkill\SkillState\Wind</Filter>
     </ClCompile>
-    <ClCompile Include="WItemObject.cpp">
-      <Filter>Contents\Object\itemobj</Filter>
-    </ClCompile>
     <ClCompile Include="WItemManager.cpp">
       <Filter>Contents\Manager\ItemManager</Filter>
-    </ClCompile>
-    <ClCompile Include="WItemScript.cpp">
-      <Filter>Contents\Object\itemobj</Filter>
     </ClCompile>
     <ClCompile Include="WSolomon.cpp">
       <Filter>Contents\Object\Monster\pinkbean\solomon</Filter>
@@ -1357,9 +976,6 @@
     </ClCompile>
     <ClCompile Include="WRex.cpp">
       <Filter>Contents\Object\Monster\pinkbean\rex</Filter>
-    </ClCompile>
-    <ClCompile Include="WBossStart.cpp">
-      <Filter>Contents\Object\Monster\FSM\BossStart</Filter>
     </ClCompile>
     <ClCompile Include="WRexThunder.cpp">
       <Filter>Contents\Object\Monster\pinkbean\rex\thunder</Filter>
@@ -1384,9 +1000,6 @@
     </ClCompile>
     <ClCompile Include="WPullObject.cpp">
       <Filter>Contents\Object\BossMonster\PullObject</Filter>
-    </ClCompile>
-    <ClCompile Include="WPinkbeanStand.cpp">
-      <Filter>Contents\Object\Monster\FSM\PinkBean</Filter>
     </ClCompile>
     <ClCompile Include="WJenesis.cpp">
       <Filter>Contents\Object\Monster\pinkbean\PinkBean\jenesis</Filter>
@@ -1562,16 +1175,10 @@
     <ClCompile Include="WShoes_80.cpp">
       <Filter>Contents\UI\Equip\Equip_80</Filter>
     </ClCompile>
-    <ClCompile Include="WUltimateSkill.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
-    </ClCompile>
     <ClCompile Include="WUltimateFog.cpp">
       <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
     </ClCompile>
     <ClCompile Include="WUltimateBackground.cpp">
-      <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
-    </ClCompile>
-    <ClCompile Include="WSpawnUltimate.cpp">
       <Filter>Contents\Player\PlayerSkill\SkillState\ultimate</Filter>
     </ClCompile>
     <ClCompile Include="WUltimateShuriken.cpp">
@@ -1591,9 +1198,6 @@
     </ClCompile>
     <ClCompile Include="WEyeItem.cpp">
       <Filter>Contents\UI\cashitem</Filter>
-    </ClCompile>
-    <ClCompile Include="WPlayerDead.cpp">
-      <Filter>Contents\Player\PlayerFSM\PlayerDead</Filter>
     </ClCompile>
     <ClCompile Include="WObjectPoolManager.cpp">
       <Filter>Contents\Manager\ObjectPoolManager</Filter>
@@ -1615,17 +1219,11 @@
     <Filter Include="Contents\Scene\Cave">
       <UniqueIdentifier>{735468d0-d587-4778-9167-b4941705c8a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\Leafre">
-      <UniqueIdentifier>{386690a1-ad02-4a07-baed-214f0e7da814}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Scene\Temple">
       <UniqueIdentifier>{dc1aa036-ec8d-4cbc-9d38-07666422a6d8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Scene\Valley">
       <UniqueIdentifier>{b6881b7f-30b1-4181-99e1-acfa27b42da2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\Move">
-      <UniqueIdentifier>{a1327966-6d29-4c7b-9c87-e9b64670578b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\UI">
       <UniqueIdentifier>{923d25ad-6dfc-4388-9627-2cdef72811db}</UniqueIdentifier>
@@ -1683,9 +1281,6 @@
     </Filter>
     <Filter Include="Contents\UI\Interface\Gauge\EXP">
       <UniqueIdentifier>{57b11561-8a84-47cf-8bd3-17033a4aa72f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Item">
-      <UniqueIdentifier>{ec43df9d-b9c0-4da4-90bb-b685a6f85b76}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\UI\ItemUI">
       <UniqueIdentifier>{64f531d4-5c81-48e0-96c0-49b7c3651a6e}</UniqueIdentifier>
@@ -1747,9 +1342,6 @@
     <Filter Include="Contents\Object\NPC">
       <UniqueIdentifier>{38651194-cfcc-48de-a5dc-920cfbec8433}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\Start">
-      <UniqueIdentifier>{1ea4504f-a69f-479c-9171-af27f9829182}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\UI\Button">
       <UniqueIdentifier>{0fc69002-b9f7-4e1a-9710-01b477991026}</UniqueIdentifier>
     </Filter>
@@ -1759,59 +1351,14 @@
     <Filter Include="Contents\Player\Equip">
       <UniqueIdentifier>{ba4e9b0f-259b-4735-b0cb-ac4672e76a13}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Player\PlayerFSM">
-      <UniqueIdentifier>{d3c3ae2f-bb24-4af4-9e92-5f4e3926b0e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Player\PlayerFSM\PlayerStand">
-      <UniqueIdentifier>{18b29743-077b-4061-9e9c-116f6090a040}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Player\PlayerFSM\PlayerPronestab">
-      <UniqueIdentifier>{27085fce-d7e7-420a-9a02-c21871abe917}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Player\PlayerFSM\PlayerJump">
-      <UniqueIdentifier>{5430ca48-97a9-4fd9-a89c-742a716d63d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Player\PlayerFSM\PlayerWalk">
-      <UniqueIdentifier>{4b58261c-3370-47d5-828c-5a30cc439077}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Player\PlayerFSM\PlayerSwing1">
-      <UniqueIdentifier>{ee2a6d59-8e84-4177-b477-73b67e33e047}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Player\PlayerFSM\PlayerLadder">
-      <UniqueIdentifier>{dbd0c878-07c8-4c64-be75-7789cf7f8f87}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\Monster">
       <UniqueIdentifier>{eb985c1a-3bfd-4e36-8b3c-011ce2e1904a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Object\Monster\Skelegon">
       <UniqueIdentifier>{c0c3203e-eee2-40d4-8fa8-19defe59922f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Monster\FSM">
-      <UniqueIdentifier>{2617a980-b277-40bf-8616-a40fc4071686}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Monster\MonsterState">
-      <UniqueIdentifier>{fe9fe203-cfe5-43e4-9df7-a1fc88e3e9bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Monster\MonsterState\Stand">
-      <UniqueIdentifier>{6e0a8031-580c-490e-85bd-abd111eb727c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Monster\MonsterState\Move">
-      <UniqueIdentifier>{7da952eb-95c1-4934-8f91-be07f607db96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Monster\MonsterState\Hit">
-      <UniqueIdentifier>{b06cf991-0f65-4aa5-bff4-adc5e6b6862b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Player\PlayerFSM\PlayerAlert">
-      <UniqueIdentifier>{2cfc99d3-7bf5-4a9f-9f59-1c4819d1e116}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Monster\MonsterState\Attack">
-      <UniqueIdentifier>{27c8ca4c-bf88-4b90-bb6f-c9180f14a07c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\AttackObject">
       <UniqueIdentifier>{c20b09f3-6d29-44b3-b88d-e7ed14e1888a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Player\PlayerFSM\PlayerStab">
-      <UniqueIdentifier>{09ccc3e6-4a37-4802-8cb3-f4ce758ac10c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Player\AttackObject">
       <UniqueIdentifier>{f674baa7-76f5-4a34-87de-358061cf897c}</UniqueIdentifier>
@@ -1831,23 +1378,11 @@
     <Filter Include="Contents\Player\PlayerSkill\skilleffect">
       <UniqueIdentifier>{7f1221a1-82e7-44f9-9946-d270a6fbce09}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Player\PlayerSkill\SkillState\Dark">
-      <UniqueIdentifier>{56826711-f978-4dd9-89d4-8198b0b9e52e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Player\PlayerSkill\SkillState\Jump">
-      <UniqueIdentifier>{8802166e-f402-4dd7-8a81-12f6c92c8fad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Player\PlayerSkill\SkillState\speed">
       <UniqueIdentifier>{4f8c8735-6b5a-4cb5-9bcf-6953a3106b7d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Manager">
       <UniqueIdentifier>{af08dd14-ba30-4e67-a84c-70b6996582b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Manager\SkillMgr">
-      <UniqueIdentifier>{d882fcb2-0360-4ab6-9b5b-c9a6bd33e773}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Portal">
-      <UniqueIdentifier>{3acb3aa0-f6bb-4528-a533-ecd8ec185e33}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Object\BossMonster">
       <UniqueIdentifier>{e547478d-d4e9-4838-baf3-3ec15e48bfb2}</UniqueIdentifier>
@@ -1860,9 +1395,6 @@
     </Filter>
     <Filter Include="Contents\Object\BossMonster\horntail\headA">
       <UniqueIdentifier>{f8936b03-e87c-4d90-80cb-848234beb90e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Monster\Horntail">
-      <UniqueIdentifier>{7dc48ddc-32d7-4a15-8b4d-a221276dc2eb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Object\BossMonster\horntail\headB">
       <UniqueIdentifier>{f968cf70-225f-47b5-819a-c8c3037c98ea}</UniqueIdentifier>
@@ -1897,12 +1429,6 @@
     <Filter Include="Contents\Object\BossMonster\horntail\tail">
       <UniqueIdentifier>{a73da13c-f238-4396-89da-150a483b10c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Manager\BattleMgr">
-      <UniqueIdentifier>{a0661a59-9d4f-46b2-8a33-3381df63e7d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Manager\BattleMgr\DamageFont">
-      <UniqueIdentifier>{e1fd993f-0539-4ac5-b9db-44da543fce22}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Manager\EventManager">
       <UniqueIdentifier>{80a7d4f2-2389-4f13-9587-ff0c0f0f3479}</UniqueIdentifier>
     </Filter>
@@ -1927,12 +1453,6 @@
     <Filter Include="Contents\Object\Monster\MonsterHP">
       <UniqueIdentifier>{28fa04c8-2d4d-4aa1-a6f3-c8e0f27cdc34}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Monster\MonsterState\MonsterDead">
-      <UniqueIdentifier>{f1f24f4a-6fed-4f3c-9b72-6bb14585a461}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Monster\FSM\HorntailDead">
-      <UniqueIdentifier>{5ffab419-a1d4-4a2d-81df-ac378d24e73c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Manager\RespawnManager">
       <UniqueIdentifier>{e232eb7b-70fc-431a-b3e2-61dd2c4acbed}</UniqueIdentifier>
     </Filter>
@@ -1956,9 +1476,6 @@
     </Filter>
     <Filter Include="Contents\Player\PlayerSkill\SkillState\blast">
       <UniqueIdentifier>{6fec3630-0515-4e04-8a56-ebca0ef10cd1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\itemobj">
-      <UniqueIdentifier>{b4e855b6-ad25-4df7-91b4-b3c79c285c77}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Manager\ItemManager">
       <UniqueIdentifier>{23346d51-ec1e-4e43-bd1d-538a0b1c63c6}</UniqueIdentifier>
@@ -1987,9 +1504,6 @@
     <Filter Include="Contents\Object\Monster\pinkbean\solomon\thunder">
       <UniqueIdentifier>{a8e6e086-3da3-4353-adae-b27ddb065df4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Monster\FSM\BossStart">
-      <UniqueIdentifier>{464a5fb5-e126-43a6-a8f4-7005e9aa63ae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\Monster\pinkbean\rex\thunder">
       <UniqueIdentifier>{8fd25aa6-2cc9-49bf-98bf-ab89361912bc}</UniqueIdentifier>
     </Filter>
@@ -2002,14 +1516,8 @@
     <Filter Include="Contents\Object\Monster\pinkbean\ariel\stone">
       <UniqueIdentifier>{9b97d37d-1afc-4cb1-8e0e-012cbb1c1c6c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Player\PlayerFSM\PlayerHit">
-      <UniqueIdentifier>{7f32eefd-1544-44e1-88c9-be42fd035d5d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\BossMonster\PullObject">
       <UniqueIdentifier>{328c344e-01d3-49ec-95e1-40d7d3aac6ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Monster\FSM\PinkBean">
-      <UniqueIdentifier>{cdf7f12e-1fef-4dd4-87da-2c325bff8296}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Object\Monster\pinkbean\PinkBean\jenesis">
       <UniqueIdentifier>{eec240ac-4ca4-4ceb-899f-af6f6fa7f735}</UniqueIdentifier>
@@ -2116,11 +1624,14 @@
     <Filter Include="Contents\UI\cashitem">
       <UniqueIdentifier>{546511eb-c1b6-4b41-8fa6-1da9912618da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Player\PlayerFSM\PlayerDead">
-      <UniqueIdentifier>{cee7a89f-de8c-4d80-9112-8dd1fe3953dc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Manager\ObjectPoolManager">
       <UniqueIdentifier>{841e6804-6e66-4f01-a41d-731cf8ac634f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Dark">
+      <UniqueIdentifier>{fed96fa8-4258-4712-8c60-4ba2b224ab2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\PlayerSkill\SkillState\Jump">
+      <UniqueIdentifier>{419809ce-ead4-415f-96dd-0b1a8c328337}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

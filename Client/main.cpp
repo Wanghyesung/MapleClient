@@ -1,31 +1,4 @@
-﻿// Client.cpp : 애플리케이션에 대한 진입점을 정의합니다.
-//
-
-//github msdl 참고 딥앱?
-//editer 프로잭트
-//공유 항목 프로젝트는 어느 플랫폼이여도 사용가능하기 때문에
-//빌드 중속성 굳이 하나하나 빌드가 아니라 하나를 돌리면 같이 빌드되게
-//engine -> editer
-//기존 클래스 복사 -> 기존항복에 추가 
-//c++ 버전 20으로
-
-#include "framework.h"
-#include "Client.h"
-#include "..\Engine_Source\WApplication.h"
-#include "..\Engine_Source\WRenderer.h"
-#include "..\Engine_Source\WResources.h"
-//#include "..\Engine\WBattleManager.h"
-//#include "WSceneManger.h"
-#include "..\Engine_Source/WFmod.h"
-#include "..\Engine_Source\WFontWrapper.h"
-#include "..\Engine\LoadScene.h"
-#include "..\Engine_Source\WThreadPool.h"
-
-#include "guiEditor.h"
-
-//키 이동, shader 색, 랜덤한게 생성, 먹으면 크기 늘어나게 (분열은 선택)
-
-//정적라이브러리 추가 1. 소스코드  2. 비주얼스튜디오 옵션
+﻿//정적라이브러리 추가 1. 소스코드  2. 비주얼스튜디오 옵션
 //정적라이브러리에 들어가기 위한 헤더파일 include 
 
 //참조 -> 엔진소수 추가
@@ -37,7 +10,7 @@
 ////하나하나 전부 해줄 수 없기 때문에
 //#include "CommonInclude.h"
 //
-////디버그일떄 Debug파일에 정적라이브러리를 참조하고 Release일때는 Release파일에 정적라이브럴리 참조
+////디버그일떄 Debug파일에 정적라이브러리를 참조하고 Release일때는 Release파일에 정적라이브러리 참조
 #ifdef _DEBUG
 #pragma comment (lib,"..\\x64\\Debug\\Engine.lib")
 #pragma comment(lib, "IOCP\\Debug\\IOCP.lib")
@@ -49,6 +22,25 @@
 #pragma comment(lib, "ProtoBuf\\Release\\libprotobufd.lib")
 
 #endif
+
+
+//공유 항목 프로젝트는 어느 플랫폼이여도 사용가능하기 때문에
+//빌드 중속성 굳이 하나하나 빌드가 아니라 하나를 돌리면 같이 빌드되게
+//engine -> editer
+//기존 클래스 복사 -> 기존항복에 추가 
+//c++ 버전 20으로
+#include "framework.h"
+#include "Client.h"
+#include "..\Engine_Source\WApplication.h"
+#include "..\Engine_Source\WRenderer.h"
+#include "..\Engine_Source\WResources.h"
+
+#include "..\Engine_Source/WFmod.h"
+#include "..\Engine_Source\WFontWrapper.h"
+#include "..\Engine\LoadScene.h"
+#include "..\Engine_Source\WThreadPool.h"
+
+#include "guiEditor.h"
 
 //셰이더 만들어진 후 셋팅
 //layout 설정 -> setpustate에서 레이아웃 속성설정 

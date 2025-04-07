@@ -37,19 +37,7 @@ namespace W
 
 		static void AddGameObject(eLayerType _eType, GameObject* _pGameObj){ m_pActiveScene->AddGameObject(_eType, _pGameObj);}
 		static GameObject* FindPlayer();
-
-		//template <typename T>
-		//static T* GetUI()
-		//{
-		//	std::vector<UI*> vecUI = m_pActiveScene->FindObjectsOfType<UI>();
-		//	for (UI* pUI : vecUI)
-		//	{
-		//		T* pTargetUI = dynamic_cast<T*>(pUI);
-		//		if (pTargetUI != nullptr)
-		//			return pTargetUI;
-		//	}
-		//	return nullptr;
-		//}
+	
 		template <typename T>
 		static T* GetUI()
 		{
@@ -83,9 +71,9 @@ namespace W
 
 		static void SwapObject(Scene* _pPrevScene, Scene* _pNextScene, GameObject* _pGameObject);
 		static void SwapUI(Scene* _pPrevScene, Scene* _pNextScene);
-		static void SwapPlayer(Scene* _pPrevScene, Scene* _pNextScene);
+
 		static void SwapCamera();
-		static void PushObjectPool(Scene* _pPrevScene);
+	
 	private:
 		static Scene* m_pActiveScene;
 		static std::map<std::wstring, Scene*> m_mapScene;

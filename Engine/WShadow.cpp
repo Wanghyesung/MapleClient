@@ -3,21 +3,13 @@
 #include "WAnimator.h"
 #include "WRenderer.h"
 #include "WPlayer.h"
-#include "WPlayerScript.h"
+
 #include "WTime.h"
 #include "WSceneManger.h"
+#include "WTransform.h"
 namespace W
 {
-	Shadow::Shadow() :
-		m_pOwner(nullptr),
-		m_pFuncAttack(nullptr),
-		m_fActiveTime(0.f),
-		m_fCurTime(0.f),
-		m_fAttackTime(0.f),
-		m_fCurAttackTime(0.f),
-		m_bActive(false),
-		m_bOff(false),
-		m_strCurAnim{}
+	Shadow::Shadow() 
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetShader(Resources::Find<Shader>(L"ObjectAnimShader"));
@@ -66,8 +58,10 @@ namespace W
 		pAnimator->Create(L"_dead", pAtlas, Vector2(150.0f, 1500.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
 
 		pAnimator->Play(L"_stand_left", true);
-		pAnimator->CompleteEvent(L"_dead") = std::bind(&Shadow::off, this);
 		GetComponent<Transform>()->SetScale(Vector3(1.5f, 1.5f, 0.f));
+
+		Resources::Load<Texture>(L"shadowe1ffect", L"..\\Resources\\Texture\\Player\\skill\\effect5.png");
+		Resources::Load<Texture>(L"shadowe2ffect", L"..\\Resources\\Texture\\Player\\skill\\effect6.png");
 	}
 
 	Shadow::~Shadow()
@@ -81,78 +75,25 @@ namespace W
 
 	void Shadow::Update()
 	{
-		if (!m_bActive)
-			return;
-
-		m_fCurTime += Time::DeltaTime();
-
-		PlayerScript* pScript = m_pOwner->GetComponent<PlayerScript>();
-		/*pScript->GetObjectInfo().fHP <= 0.f ||*/
-		if (m_fCurTime >= m_fActiveTime)
-		{
-			m_bOff = true;
-			m_pOwner->SetShadow(false);
-		}
 		
-		if (m_pFuncAttack)
-			update_attack();
 
 		GameObject::Update();
 	}
 
 	void Shadow::LateUpdate()
 	{
-		if (!m_bActive)
-			return;
-
-		if (m_pOwner->IsAnimStop())
-			GetComponent<Animator>()->Stop(true);
-		else
-			GetComponent<Animator>()->Stop(false);
-
-		Animator* pAnimator = GetComponent<Animator>();
-		Vector3 vPlayerPos = m_pOwner->GetComponent<Transform>()->GetPosition();
-
-		int iDir = m_pOwner->GetDir();
-		vPlayerPos.z += 0.01f;
-		if (m_pOwner->GetCurPlayerState() == Player::ePlayerState::ladder)
-			vPlayerPos.y -= 0.4f;
-		else
-			vPlayerPos.x -= iDir * 0.4f;
-		GetComponent<Transform>()->SetPosition(vPlayerPos);
 		
-		std::wstring strDir;
-		std::wstring strState;
-		if (iDir > 0)
-			strDir = L"_right";
-		else
-			strDir = L"_left";
-		
-		strState = m_pOwner->GetCurStateName();
-		std::wstring strAnim = strState + strDir;
-		if (m_bOff)
-			strAnim = L"_dead";
-
-		if (m_strCurAnim != strAnim)
-		{
-			m_strCurAnim = strAnim;
-			bool bLoop = m_pOwner->IsLoop();
-			pAnimator->Play(strAnim, bLoop);
-		}
 
 		GameObject::LateUpdate();
 	}
 
 	void Shadow::Render()
 	{
-		if (!m_bActive)
-			return;
+		
 
 		renderer::ObjectCB ObjectCB;
-		int iDir = m_pOwner->GetDir() * -1;
-		if (m_bOff)
-			iDir = 1;
-		ObjectCB.vObjectDir.x = iDir;
+		
+		ObjectCB.vObjectDir.x = 1;// iDir;
 		ObjectCB.vObjectColor = Vector4::One;
 
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::Object];
@@ -162,21 +103,5 @@ namespace W
 
 		GameObject::Render();
 	}
-	void Shadow::update_attack()
-	{
-		m_fCurAttackTime += Time::DeltaTime();
-		if (m_fCurAttackTime >= m_fAttackTime)
-		{
-			m_fCurAttackTime = 0.f;
-			m_pFuncAttack();
-			m_pFuncAttack = nullptr;
-		}
-	}
-	void Shadow::off()
-	{
-		m_fCurTime = 0.f;
-		//SceneManger::Erase(this);
-		m_bOff = false;
-		m_bActive = false;
-	}
+	
 }

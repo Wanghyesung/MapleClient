@@ -2,9 +2,12 @@
 #include "WUI.h"
 #include "WThreadPool.h"
 #include "..\Engine\WMonsterHP.h"
-#include "..\Engine\WMonsterManager.h"
+#include "WSceneManger.h"
 namespace W
 {
+	std::vector<eLayerType> Scene::m_vecUpdateLayer = 
+	{eLayerType::Camera, eLayerType::Background, eLayerType::Light,eLayerType::UI};
+
 	Scene::Scene()
 	{
 		m_vecLayer.resize((UINT)W::enums::eLayerType::End);
@@ -17,23 +20,27 @@ namespace W
 	}
 	void Scene::Update()
 	{
-		for (Layer& layer : m_vecLayer)
+		for (eLayerType eType : m_vecUpdateLayer)
 		{
-			layer.Update();
+			Layer& UILayer = m_vecLayer[(UINT)eType];
+			UILayer.Update();
 		}
+		
 	}
 	void Scene::LateUpdate()
 	{
-		for (Layer& layer : m_vecLayer)
+		for (eLayerType eType : m_vecUpdateLayer)
 		{
-			layer.LateUpdate();
+			Layer& UILayer = m_vecLayer[(UINT)eType];
+			UILayer.LateUpdate();
 		}
 	}
 	void Scene::Render()
 	{
-		for (Layer& layer : m_vecLayer)
+		for (eLayerType eType : m_vecUpdateLayer)
 		{
-			layer.Render();
+			Layer& UILayer = m_vecLayer[(UINT)eType];
+			UILayer.Render();
 		}
 	}
 
@@ -68,27 +75,5 @@ namespace W
 		_pGameObj->SetLayerType(_eType);
 	}
 
-	void Scene::DeleteMonsterObject()
-	{
-		Layer& monsterLayer = GetLayer(eLayerType::Monster);
-		const std::vector<GameObject*> vecMonster = monsterLayer.GetGameObjects();
-		for (int i = 0; i < vecMonster.size(); ++i)
-			MonsterManager::AddDeleteObject(vecMonster[i]);
-		
-		Layer& monAttackLayer = GetLayer(eLayerType::MonsterAttack);
-		const std::vector<GameObject*> vecAttack = monAttackLayer.GetGameObjects();
-		for (int i = 0; i < vecAttack.size(); ++i)
-			MonsterManager::AddDeleteObject(vecAttack[i]);
-
-		Layer& monStatLayer = GetLayer(eLayerType::Object);
-		const std::vector<GameObject*> vecStat = monStatLayer.GetGameObjects();
-		for (int i = 0; i < vecStat.size(); ++i)
-			MonsterManager::AddDeleteObject(vecStat[i]);
-
-		Layer& monsterUI = GetLayer(eLayerType::UI);
-		MonsterHP* pHp = monsterUI.FindObject<MonsterHP>();
-		if (pHp)
-			pHp->DeleteHP();
-		
-	}
+	
 }

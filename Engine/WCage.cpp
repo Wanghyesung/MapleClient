@@ -30,8 +30,7 @@ namespace W
 	}
 	void Cage::Update()
 	{
-		GameObject::Update();
-
+		
 	}
 	void Cage::LateUpdate()
 	{

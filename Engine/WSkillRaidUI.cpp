@@ -1,11 +1,11 @@
 #include "WSkillRaidUI.h"
-#include "WSkillManager.h"
+//#include "WSkillManager.h"
 
 namespace W
 {
 	SkillRaidUI::SkillRaidUI()
 	{
-		SetPlayerSkill(Player::ePlayerSkill::raid);
+		//SetPlayerSkill(Player::ePlayerSkill::raid);
 
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
@@ -79,6 +79,6 @@ namespace W
 	void SkillRaidUI::Using()
 	{
 		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		EventManager::ChangePlayerSkillState(Player::ePlayerSkill::raid);
+		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::raid);
 	}
 }

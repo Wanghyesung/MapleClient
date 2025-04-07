@@ -4,20 +4,13 @@
 #include "WPlayer.h"
 #include "WSceneManger.h"
 #include "WMonster.h"
-#include "WBattleManager.h"
-#include "WPlayerScript.h"
+
 #include "WAnimator.h"
-#include "WInfo.h"
 #include "WTime.h"
+#include "WTransform.h"
 namespace W
 {
-	MobZone::MobZone():
-		m_pTarget(nullptr),
-		m_pMonster(nullptr),
-		m_iCurLevel(0),
-		m_tAttackInfo{},
-		m_fAttackTime(2.f),
-		m_fCurTime(0.f)
+	MobZone::MobZone()
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetRenderinMode(eRenderingMode::Transparent);
@@ -35,10 +28,34 @@ namespace W
 		Resources::Find<Texture>(L"Megnus_Zone2");
 		Resources::Find<Texture>(L"Megnus_Zone3");
 
-		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Megnus_Zone0", pAtlas, Vector2(0.0f, 0.0f), Vector2(796.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
+		Animator* pAnim = AddComponent<Animator>();		
 		
+		for (int i = 0; i < 4; ++i)
+		{
+			std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Megnus_Zone" + i);
+
+			Animator* pAnim = GetComponent<Animator>();
+			switch (i)
+			{
+			case 0:
+				pAnim->Create(L"Megnus_Zone" + i, pAtlas, Vector2(0.0f, 0.0f), Vector2(796.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
+
+			case 1:
+				pAnim->Create(L"Megnus_Zone" + i, pAtlas, Vector2(0.0f, 0.0f), Vector2(696.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
+				break;
+			case 2:
+				pAnim->Create(L"Megnus_Zone" + i, pAtlas, Vector2(0.0f, 0.0f), Vector2(596.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
+				break;
+			case 3:
+				pAnim->Create(L"Megnus_Zone" + i, pAtlas, Vector2(0.0f, 0.0f), Vector2(396.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
+				break;
+			}
+		}
+
 		pAnim->Play(L"Megnus_Zone0", true);
+
+		
+
 	}
 	MobZone::~MobZone()
 	{
@@ -46,31 +63,10 @@ namespace W
 	}
 	void MobZone::Initialize()
 	{
-		m_tAttackInfo.fAttackDamage = 10.f;
-		m_tAttackInfo.fAttRcnt = 0.f;//¸ÂÀ¸
-		m_tAttackInfo.fAttUpperRcnt = 0.f;
-
-		m_vecLength.push_back(3.3f);
-		m_vecLength.push_back(2.7f);
-		m_vecLength.push_back(2.1f);
-		m_vecLength.push_back(1.5f);
-
+		
 	}
 	void MobZone::Update()
 	{
-		
-
-		Vector3 vPosition = m_pMonster->GetComponent<Transform>()->GetPosition();
-		GetComponent<Transform>()->SetPosition(vPosition);
-
-		m_fCurTime += Time::DeltaTime();
-		if (m_fCurTime >= m_fAttackTime)
-		{
-			m_fCurTime = 0.f;
-			attack();
-		}
-		
-		GameObject::Update();
 	}
 	void MobZone::LateUpdate()
 	{
@@ -89,48 +85,5 @@ namespace W
 
 		GameObject::Render();
 	}
-	void MobZone::SetLevel(UINT _iNum)
-	{
-		m_iCurLevel = _iNum;
-
-		if (m_iCurLevel >= 4)
-		{
-			SetState(GameObject::eState::Paused);
-			return;
-		}
-
-		std::wstring strLevel =  std::to_wstring(m_iCurLevel);
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Megnus_Zone" + strLevel);
-
-		Animator* pAnim = GetComponent<Animator>();
-		switch (m_iCurLevel)
-		{
-		case 1:
-			pAnim->Create(L"Megnus_Zone" + strLevel, pAtlas, Vector2(0.0f, 0.0f), Vector2(696.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
-			break;
-		case 2:
-			pAnim->Create(L"Megnus_Zone" + strLevel, pAtlas, Vector2(0.0f, 0.0f), Vector2(596.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
-			break;
-		case 3:
-			pAnim->Create(L"Megnus_Zone" + strLevel, pAtlas, Vector2(0.0f, 0.0f), Vector2(396.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
-			break;
-		}
-		
-		pAnim->Play(L"Megnus_Zone" + strLevel, true);
-	}
-	void MobZone::attack()
-	{
-		m_pTarget = dynamic_cast<Player*>(SceneManger::FindPlayer());
-		if (m_pTarget &&
-			m_pTarget->GetState() == GameObject::eState::Active)
-		{
-			float fPlayerX = m_pTarget->GetComponent<Transform>()->GetPosition().x;
-			float fX = GetComponent<Transform>()->GetPosition().x;
-
-			float fLen = fPlayerX - fX;
-			if (fabs(fLen) >= m_vecLength[m_iCurLevel])
-				m_pTarget->GetScript<PlayerScript>()->Hit(m_tAttackInfo, L"MobZone");
-		}
-
-	}
+	
 }

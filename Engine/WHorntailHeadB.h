@@ -15,15 +15,5 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-	private:
-		void add_skill();
-
-		void setAttack();
-		void create_breath();
-		void create_fire();
-		void faint();
-
-	private:
-		Horntail* m_pOwner;
 	};
 }

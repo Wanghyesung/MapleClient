@@ -1,7 +1,7 @@
 #include "WAttackUp.h"
 #include "WResources.h"
 #include "WMonster.h"
-
+#include "WTransform.h"
 namespace W
 {
 	AttackUp::AttackUp(float _fAccStat):
@@ -34,7 +34,7 @@ namespace W
 	}
 	void AttackUp::Update()
 	{
-		UpStat::Update();
+
 	}
 	void AttackUp::LateUpdate()
 	{

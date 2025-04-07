@@ -1,12 +1,11 @@
 #include "WSkillAvenUI.h"
-#include "WSkillManager.h"
 #include "WPlayer.h"
 
 namespace W
 {
 	SkillAvenUI::SkillAvenUI()
 	{
-		SetPlayerSkill(Player::ePlayerSkill::aven);
+		//SetPlayerSkill(Player::ePlayerSkill::aven);
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
 			Resources::Load<Texture>(L"SKillAvenUI2", L"..\\Resources\\Texture\\UI\\SkillUI\\3\\aven\\2.png");
@@ -78,6 +77,6 @@ namespace W
 	void SkillAvenUI::Using()
 	{
 		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		EventManager::ChangePlayerSkillState(Player::ePlayerSkill::aven);
+		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::aven);
 	}
 }

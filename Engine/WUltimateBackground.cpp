@@ -2,7 +2,6 @@
 #include "WResources.h"
 #include "WRenderer.h"
 #include "WAnimator.h"
-#include "WAttackScript.h"
 namespace W
 {
 	UltimateBackground::UltimateBackground()
@@ -25,30 +24,18 @@ namespace W
 
 		mr->SetMaterial(pMater);
 
-		AddComponent<Collider2D>()->SetSize(Vector2(0.f, 0.f));
-		AddComponent<AttackScript>()->SetDeleteTime(20.f);
-		GetComponent<AttackScript>()->SetDeleteObject(false);
+		
 	}
 	UltimateBackground::~UltimateBackground()
 	{
 	}
 	void UltimateBackground::Initialize()
 	{
-		//Vector3 vCamPos = renderer::MainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
-
-		//GetComponent<Transform>()->SetPosition(Vector3(vCamPos.x, vCamPos.y, -3.9f));
-		//GetComponent<AttackScript>()->SetDeleteTime(20.f);
-		GetComponent<Transform>()->SetScale(Vector3(15.5f, 15.f, 0.f));
-
 		GetComponent<Animator>()->Play(L"ultimate1", true);
 	}
 	void UltimateBackground::Update()
 	{
-		Vector3 vCamPos = renderer::MainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
 		
-		GetComponent<Transform>()->SetPosition(Vector3(vCamPos.x, vCamPos.y, -4.0f));
-
-		GameObject::Update();
 	}
 	void UltimateBackground::LateUpdate()
 	{

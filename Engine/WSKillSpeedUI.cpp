@@ -1,15 +1,13 @@
 #include "WSKillSpeedUI.h"
 #include "WPlayer.h"
-#include "WPlayerScript.h"
 #include "WSceneManger.h"
-#include "WSkillManager.h"
 
 namespace W
 {
 	SkillSpeedUI::SkillSpeedUI()
 	{
 
-		SetPlayerSkill(Player::ePlayerSkill::speed);
+		//SetPlayerSkill(Player::ePlayerSkill::speed);
 
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
@@ -81,6 +79,6 @@ namespace W
 
 	void SkillSpeedUI::Using()
 	{
-		EventManager::ChangePlayerSkillState(Player::ePlayerSkill::speed);
+		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::speed);
 	}
 }

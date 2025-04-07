@@ -42,8 +42,7 @@ namespace W
 		virtual void EndSound() {};
 
 		void AddGameObject(eLayerType _eType, GameObject* _pGameObj);
-		void DeleteMonsterObject();
-
+		
 		template <typename T>
 		std::vector<T*> FindObjectsOfType()
 		{
@@ -82,10 +81,10 @@ namespace W
 
 		
 	protected:
-		//맵 나갈 때, 맵 들어올 때 리소스 삭제, 할당
 		std::vector<std::pair<std::wstring, std::wstring>> m_vecResource;
 
 	private:
+		static std::vector<eLayerType> m_vecUpdateLayer;
 		std::vector<Layer> m_vecLayer;
 
 		tMapSize m_tMapSize;

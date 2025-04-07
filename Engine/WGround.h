@@ -5,7 +5,7 @@ namespace W
 	class Ground : public GameObject
 	{
 	public:
-		Ground(bool _bFinalGround = false);
+		Ground();
 		virtual ~Ground();
 
 		virtual void Initialize() override;

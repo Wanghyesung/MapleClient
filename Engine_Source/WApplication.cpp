@@ -5,13 +5,11 @@
 #include "WRenderer.h"
 #include "WSceneManger.h"
 #include "UIManger.h"
-#include "WCollisionManager.h"
-#include "..\Engine\WSkillManager.h"
-#include "..\Engine\WBattleManager.h"
 #include "..\Engine\WEventManager.h"
-#include "..\Engine\WMonsterManager.h"
+
 #include "..\Engine\WItemManager.h"
 #include "..\Engine_Source\WThreadPool.h"
+#include "WPathManager.h"
 #include "WFmod.h"
 #include "WFontWrapper.h"
 namespace W
@@ -32,7 +30,6 @@ namespace W
 
 	void Application::Run()
 	{
-		SkillManager::Update();
 		Update();
 		LateUpdate();
 		Render();
@@ -43,6 +40,7 @@ namespace W
 
 	void Application::Initialize()
 	{
+		PathManager::Initialize();
 		ThreadPool::Initiailize(4);
 		Time::Initiailize();
 		Input::Initialize();
@@ -50,20 +48,16 @@ namespace W
 		FontWrapper::Initialize();
 
 		renderer::Initialize();
-		BattleManager::Initialize();
 		ItemManager::Initialize();
 	}
 
 	void Application::Update()
 	{
-		Time::Update();
 		Input::Update();
-
-		CollisionManager::Update();
+		
 		SceneManger::Update();
-		BattleManager::Update();
 		UIManger::Update();
-		MonsterManager::Update();
+	
 		EventManager::Update();
 	}
 

@@ -1,8 +1,8 @@
 #include "WEyeItem.h"
-#include "WBattleManager.h"
 #include "WHairItem.h"
 #include "WSceneManger.h"
 #include "WPlayer.h"
+#include "WTransform.h"
 namespace W
 {
 	EyeItem::EyeItem()

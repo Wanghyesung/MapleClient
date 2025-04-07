@@ -1,14 +1,13 @@
 #include "WSkillLuckUI.h"
 #include "WSceneManger.h"
 #include "WPlayer.h"
-#include "WPlayerScript.h"
-#include "WSkillManager.h"
+
 
 namespace W
 {
 	SkillLuckUI::SkillLuckUI()
 	{
-		SetPlayerSkill(Player::ePlayerSkill::luck);
+		//SetPlayerSkill(Player::ePlayerSkill::luck);
 
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
@@ -82,6 +81,6 @@ namespace W
 	void SkillLuckUI::Using()
 	{
 		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		EventManager::ChangePlayerSkillState(Player::ePlayerSkill::luck);
+		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::luck);
 	}
 }

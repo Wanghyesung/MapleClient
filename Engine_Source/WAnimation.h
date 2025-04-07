@@ -50,13 +50,9 @@ namespace W
 		);
 
 		void Binds();
-		void Reset();
 
-		void SetIndex(int _i, float _fTime = 0.f) { m_iIndex = _i; m_fTime = _fTime; }
 		int GetCurIndex() { return m_iIndex; }
-		float GetCurTime() { return m_fTime; }
-
-		bool IsComplete() { return m_bComplete; }
+		void SetIndex(int _iIndex) { m_iIndex = _iIndex; }
 
 		void SetAnimator(Animator* _pAnim) { m_pAnimator = _pAnim; }
 	private:
@@ -64,8 +60,6 @@ namespace W
 		Animator* m_pAnimator;
 		std::vector<Sprite> m_vecSprites;
 		int m_iIndex;
-		float m_fTime;
-		bool m_bComplete;
 	};
 }
 

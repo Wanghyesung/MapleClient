@@ -21,8 +21,6 @@ namespace W
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Stigma");
 		pAnim->Create(L"start", pAtlas, Vector2(0.0f, 0.0f), Vector2(189.0f, 187.0f), 7, Vector2(200.f, 200.f), Vector2::Zero, 0.12f);
 		
-		pAnim->CompleteEvent(L"start") = std::bind(&Stigma::Restore, this);
-		//pAnim->CompleteEvent(L"stone_end") = std::bind(&MegnusStone::off, this);
 		mr->SetMaterial(pMater);
 		pAnim->Play(L"start", true);
 	}
@@ -36,26 +34,17 @@ namespace W
 	}
 	void Stigma::Update()
 	{
-		GameObject::Update();
+		
 	}
 
 	void Stigma::LateUpdate()
 	{
 		Abnormal::LateUpdate();
-
-		Vector3 vTargetPos = GetComponent<Transform>()->GetPosition();
-		vTargetPos.y -= 0.5f;
-		GetComponent<Transform>()->SetPosition(vTargetPos);
 	}
 
 	void Stigma::Render()
 	{
 		GameObject::Render();
 	}
-	void Stigma::Restore()
-	{
-		object::Destroy(this);
-		EventManager::Restore(m_pTarget, BattleManager::eAbnormalType::Stigma);
-		//BattleManager::Restore_move(m_pTarget, BattleManager::eAbnormalType::SealSkill);
-	}
+	
 }

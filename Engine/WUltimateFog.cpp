@@ -2,7 +2,7 @@
 #include "WResources.h"
 #include "WRenderer.h"
 #include "WAnimator.h"
-#include "WAttackScript.h"
+#include "WTransform.h"
 namespace W
 {
 	UltimateFog::UltimateFog()
@@ -25,18 +25,12 @@ namespace W
 
 		mr->SetMaterial(pMater);
 
-		AddComponent<Collider2D>()->SetSize(Vector2(0.f, 0.f));
-		AddComponent<AttackScript>()->SetDeleteTime(20.f);
-		GetComponent<AttackScript>()->SetDeleteObject(false);
 	}
 	UltimateFog::~UltimateFog()
 	{
 	}
 	void UltimateFog::Initialize()
 	{
-		//Vector3 vCamPos = renderer::MainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
-
-		//GetComponent<Transform>()->SetPosition(Vector3(vCamPos.x, vCamPos.y, -4.f));
 		
 
 		GetComponent<Transform>()->SetScale(Vector3(15.5f, 15.f, 0.f));
@@ -45,11 +39,7 @@ namespace W
 	}
 	void UltimateFog::Update()
 	{
-		Vector3 vCamPos = renderer::MainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
 		
-		GetComponent<Transform>()->SetPosition(Vector3(vCamPos.x, vCamPos.y, -4.1f));
-
-		GameObject::Update();
 	}
 	void UltimateFog::LateUpdate()
 	{

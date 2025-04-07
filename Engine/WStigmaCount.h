@@ -13,14 +13,6 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-	private:
-		void set_count(UINT _iCount);
-
-	private:
-		UINT m_iNumber;
-		GameObject* m_pOwner;
-
-		friend class StigmaBack;
 	};
 
 }

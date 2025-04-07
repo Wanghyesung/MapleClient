@@ -1,10 +1,10 @@
 #include "WSkillLoadUI.h"
-#include "WSkillManager.h"
+
 namespace W
 {
 	SkillLoadUI::SkillLoadUI()
 	{
-		SetPlayerSkill(Player::ePlayerSkill::load);
+		//SetPlayerSkill(Player::ePlayerSkill::load);
 
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
@@ -78,6 +78,6 @@ namespace W
 	void SkillLoadUI::Using()
 	{
 		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		EventManager::ChangePlayerSkillState(Player::ePlayerSkill::load);
+		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::load);
 	}
 }

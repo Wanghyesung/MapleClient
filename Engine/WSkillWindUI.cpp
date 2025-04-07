@@ -1,11 +1,11 @@
 #include "WSkillWindUI.h"
-#include "WSkillManager.h"
+//#include "WSkillManager.h"
 
 namespace W
 {
 	SkillWindUI::SkillWindUI()
 	{
-		SetPlayerSkill(Player::ePlayerSkill::wind);
+		//SetPlayerSkill(Player::ePlayerSkill::wind);
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
 			Resources::Load<Texture>(L"SKillWindUI2", L"..\\Resources\\Texture\\UI\\SkillUI\\5\\wind\\2.png");
@@ -78,6 +78,6 @@ namespace W
 
 	void SkillWindUI::Using()
 	{
-		EventManager::ChangePlayerSkillState(Player::ePlayerSkill::wind);
+		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::wind);
 	}
 }

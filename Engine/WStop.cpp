@@ -1,6 +1,5 @@
 #include "WStop.h"
 #include "WResources.h"
-#include "WBattleManager.h"
 #include "WPlayer.h"
 #include "WEventManager.h"
 namespace W
@@ -41,8 +40,5 @@ namespace W
 	}
 	void Stop::Restore()
 	{
-		EventManager::Restore(m_pTarget, BattleManager::eAbnormalType::Stop);
-
-		//BattleManager::Restore_move(m_pTarget, BattleManager::eAbnormalType::Stop);
 	}
 }

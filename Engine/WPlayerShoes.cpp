@@ -5,7 +5,7 @@
 #include "WPlayerBody.h"
 #include "WRenderer.h"
 #include "WEquip.h"
-
+#include "WTransform.h"
 namespace W
 {
 	PlayerShoes::PlayerShoes():
@@ -70,46 +70,16 @@ namespace W
 	}
 	void PlayerShoes::Update()
 	{
-		if (m_strCurEquip.size() == 0)
-			return;
-		GameObject::Update();
+
 	}
 	void PlayerShoes::LateUpdate()
 	{
-		if (m_strCurEquip.size() == 0)
-			return;
-
-		Animator* pAnimator = GetComponent<Animator>();
-		Vector3 vPlayerPos = m_pPlayerBody->GetComponent<Transform>()->GetPosition();
-		vPlayerPos.z -= 0.01f;
-		GetComponent<Transform>()->SetPosition(vPlayerPos);
-
-		Player* pPlayer = m_pPlayerBody->GetPlayer();
-		int iDir = pPlayer->GetDir();
-		std::wstring strDir;
-		std::wstring strState;
-		if (iDir > 0)
-			strDir = L"_right";
-		else
-			strDir = L"_left";
-
-		strState = pPlayer->GetCurStateName();
-
-		std::wstring strAnim = m_strCurEquip + strState + strDir;
-
-		if (m_strCurAnim != strAnim)
-		{
-			m_strCurAnim = strAnim;
-			bool bLoop = pPlayer->IsLoop();
-			pAnimator->Play(strAnim, bLoop);
-		}
-
+		
 		GameObject::LateUpdate();
 	}
 	void PlayerShoes::Render()
 	{
-		if (m_strCurEquip.size() == 0)
-			return;
+		
 		GameObject::Render();
 	}
 	void PlayerShoes::SetPlayerEquip(Equip* _pEquip)

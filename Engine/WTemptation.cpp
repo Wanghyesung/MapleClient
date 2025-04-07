@@ -2,9 +2,7 @@
 #include "WResources.h"
 #include "WAnimator.h"
 #include "WRenderer.h"
-#include "WRigidbody.h"
 #include "WPlayer.h"
-#include "WBattleManager.h"
 #include "WEventManager.h"
 namespace W
 {
@@ -26,8 +24,6 @@ namespace W
 		pAnim->Create(L"temptation", pAtlas, Vector2(0.0f, 0.0f), Vector2(50.0f, 63.0f), 8, Vector2(80.f, 80.f), Vector2::Zero, 0.2f);
 
 		pAnim->Play(L"temptation", true);
-
-		//GetComponent<Transform>()->SetScale(Vector3(1.2f, 1.2f, 0.f));
 	}
 	Temptation::~Temptation()
 	{
@@ -39,23 +35,9 @@ namespace W
 	}
 	void Temptation::Update()
 	{
-		Rigidbody* pRigidbody = m_pTarget->GetComponent<Rigidbody>();
-		int iDir = m_pTarget->GetDir();
-
-		bool bGround = pRigidbody->IsGround();
-		if (bGround)
-		{
-			pRigidbody->SetVelocity(Vector2(iDir * 1.5f, 3.5f));
-			pRigidbody->SetGround(false);
-		}
-		else
-			pRigidbody->AddForce(Vector2(1.5f * iDir, 0.f));
-
-		Abnormal::Update();
 	}
 	void Temptation::LateUpdate()
 	{
-		Abnormal::LateUpdate();
 	}
 	void Temptation::Render()
 	{
@@ -73,9 +55,6 @@ namespace W
 
 	void Temptation::Restore()
 	{
-		EventManager::Restore(m_pTarget, BattleManager::eAbnormalType::temptation);
-
-		//BattleManager::Restore_move(m_pTarget, BattleManager::eAbnormalType::temptation);
 	}
 
 	
