@@ -11,7 +11,7 @@ namespace W
 		if (FAILED(FW1CreateFactory(FW1_VERSION, &mFW1Factory)))
 			return false;
 
-		ID3D11Device* pDevice = graphics::GetDevice()->GetID3D11Device();
+		ID3D11Device* pDevice = GetDevice()->GetID3D11Device();
 		if (FAILED(mFW1Factory->CreateFontWrapper(pDevice, L"Arial", &mFontWrapper)))
 			return false;
 
@@ -21,7 +21,7 @@ namespace W
 	void FontWrapper::DrawFont(const wchar_t* str, float x, float y, float size, UINT rgb)
 	{
 		//RGB();
-		ID3D11DeviceContext* pContext = graphics::GetDevice()->GetID3D11DeviceContext();
+		ID3D11DeviceContext* pContext = GetDevice()->GetID3D11DeviceContext();
 		mFontWrapper->DrawString(
 			pContext,
 			str, // String

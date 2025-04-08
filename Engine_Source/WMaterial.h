@@ -4,7 +4,7 @@
 #include "WShader.h"
 #include "WTexture.h"
 
-namespace W::graphics
+namespace W
 {
 	class Material : public Resource
 	{

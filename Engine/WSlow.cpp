@@ -7,8 +7,7 @@
 #include "WEventManager.h"
 namespace W
 {
-	Slow::Slow(float _fAccStat):
-		m_fAccValue(_fAccStat)
+	Slow::Slow()
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetShader(Resources::Find<Shader>(L"ObjectAnimShader"));

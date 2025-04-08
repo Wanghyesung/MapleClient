@@ -2,7 +2,7 @@
 #include "WGraphicDevice_Dx11.h"
 
 
-namespace W::graphics
+namespace W
 {
 	StructedBuffer::StructedBuffer():
 		GpuBuffer(),

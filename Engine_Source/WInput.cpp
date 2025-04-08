@@ -97,12 +97,12 @@ namespace W
 			GetCursorPos(&mousePos);
 
 			ScreenToClient(application.GetHwnd(), &mousePos);
-			math::Vector3 vMousePos(mousePos.x, mousePos.y, 0.f);
+			Vector3 vMousePos(mousePos.x, mousePos.y, 0.f);
 
 			RECT tRect = {};
 			GetClientRect(application.GetHwnd(), &tRect);
 
-			math::Viewport view(0.f, 0.f, tRect.right - tRect.left, tRect.bottom - tRect.top);
+			Viewport view(0.f, 0.f, tRect.right - tRect.left, tRect.bottom - tRect.top);
 			//renderer::MainCamera->GetGpuProjectionMatrix();
 			vMousePos = view.Unproject(vMousePos, renderer::UICamera->GetGpuProjectionMatrix(), renderer::UICamera->GetViewMatrix(), Matrix::Identity);
 

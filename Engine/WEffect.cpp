@@ -1,7 +1,7 @@
 #include "WEffect.h"
 #include "WAnimator.h"
 #include "WResources.h"
-#include "WObject.h"
+#include "WTransform.h"
 #include "WRenderer.h"
 
 namespace W

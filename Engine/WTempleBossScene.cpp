@@ -59,17 +59,6 @@ namespace W
 		CreateBackground();
 		create_effect();
 
-
-		NPC* pNPC = new NPC();
-		AddGameObject(eLayerType::NPC, pNPC);
-		MeshRenderer* pMeshRender = pNPC->AddComponent<MeshRenderer>();
-		pMeshRender->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		pMeshRender->SetMaterial(Resources::Find<Material>(L"NPCMater5"));
-		pNPC->GetComponent<Transform>()->SetPosition(-7.f, -2.f, -1.f);
-		pNPC->GetComponent<Transform>()->SetScale(0.547f * 1.2, 1.f * 1.2f, 0.f);
-		pNPC->GetComponent<Transform>()->SetRotation(0.f, 0.f, 0.f);
-
-
 		{
 			GameObject* pCamera = new GameObject();
 			pCamera->SetName(L"ObjCam");

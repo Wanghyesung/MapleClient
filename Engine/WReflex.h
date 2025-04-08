@@ -6,7 +6,7 @@ namespace W
 	class Reflex : public UpStat
 	{
 	public:
-		Reflex(float _fAccStat);
+		Reflex();
 		virtual ~Reflex();
 
 		virtual void Initialize() override;

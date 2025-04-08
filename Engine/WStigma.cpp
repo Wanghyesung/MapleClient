@@ -2,7 +2,8 @@
 #include "WResources.h"
 #include "WAnimator.h"
 #include "WEventManager.h"
-#include "WObject.h"
+#include "WTransform.h"
+
 namespace W
 {
 	Stigma::Stigma()

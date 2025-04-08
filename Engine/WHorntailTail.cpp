@@ -8,7 +8,7 @@
 
 namespace W
 {
-	HorntailTail::HorntailTail(Horntail* _pOwner)
+	HorntailTail::HorntailTail()
 	{
 		SetName(L"Tail");
 

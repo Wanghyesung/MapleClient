@@ -9,7 +9,7 @@
 #include "WEventManager.h"
 namespace W
 {
-	HorntailHeadC::HorntailHeadC(Horntail* _pOwner) 
+	HorntailHeadC::HorntailHeadC() 
 	{
 		SetName(L"HeadC");
 

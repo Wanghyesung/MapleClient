@@ -1,7 +1,7 @@
 #pragma once
 #include "WComputeShader.h"
 
-namespace W::graphics
+namespace W
 {
 	class PaintShader : public ComputeShader
 	{

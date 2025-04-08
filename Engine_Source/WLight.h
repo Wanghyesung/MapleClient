@@ -4,7 +4,6 @@
 
 namespace W
 {
-	using namespace graphics;
 	class Light : public Component
 	{
 	public:

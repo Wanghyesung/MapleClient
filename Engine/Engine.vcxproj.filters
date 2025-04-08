@@ -602,6 +602,12 @@
     <ClInclude Include="WObjectPoolManager.h">
       <Filter>Contents\Manager\ObjectPoolManager</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectHeader.h">
+      <Filter>Contents\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="WGameObjectManager.h">
+      <Filter>Contents\Manager\ObjectManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
@@ -1202,6 +1208,9 @@
     <ClCompile Include="WObjectPoolManager.cpp">
       <Filter>Contents\Manager\ObjectPoolManager</Filter>
     </ClCompile>
+    <ClCompile Include="WGameObjectManager.cpp">
+      <Filter>Contents\Manager\ObjectManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -1632,6 +1641,9 @@
     </Filter>
     <Filter Include="Contents\Player\PlayerSkill\SkillState\Jump">
       <UniqueIdentifier>{419809ce-ead4-415f-96dd-0b1a8c328337}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\ObjectManager">
+      <UniqueIdentifier>{6339027a-5aaa-4d38-8906-ef716d59473a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -7,10 +7,10 @@
 #include "WCamera.h"
 #include "WLight.h"
 
-using namespace W::math;
-using namespace W::graphics;
+
 namespace renderer
 {
+	using namespace W;
 	struct Vertex
 	{
 		Vector3 Pos;
@@ -78,19 +78,8 @@ namespace renderer
 		Vector4 vSize;
 	};
 
-	//extern Vertex vertexes[];
-	//extern ID3D11InputLayout* triangleLayout;
-	//extern ID3D11Buffer* triangleBuffer;
-	//extern ID3D11Buffer* triangleIdxBuffer;
-	//extern W::Mesh* mesh;
-	//extern ID3DBlob* errorBlob;
-	//extern ID3DBlob* triangleVSBlob;
-	//extern ID3D11VertexShader* triangleVSShader;
-	//extern ID3DBlob* trianglePSBlob;
-	//extern W::Shader* shader;
-	//extern ID3D11PixelShader* trianglePSShader;
 
-	extern W::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END];
+	extern W::ConstantBuffer* constantBuffer[(UINT)eCBType::END];
 	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> m_cpSamplerState[(UINT)eSamplerType::End];
 	
 	//∑πΩ∫≈Õ∂Û¿Ã¿˙, µ™Ω∫≈ŸΩ«, ∫Ì∑ªµÂ
@@ -103,8 +92,7 @@ namespace renderer
 	extern W::Camera* MainCamera;
 	extern W::Camera* UICamera;
 	extern std::vector<W::Camera*> m_vecCameras;
-	extern std::vector<DebugMesh> m_vecDebugMeshs;
-
+	
 	extern Vector2 RectVertexsPos[4];
 	extern Vector2 CircleVertexsPos[41];
 
@@ -113,6 +101,5 @@ namespace renderer
 	void BindLights();
 	void Release();
 
-	void PushDebugMeshAttribute(DebugMesh mesh);
 }
 

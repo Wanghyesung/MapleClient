@@ -3,7 +3,7 @@
 #include "WConstantBuffer.h"
 #include "WTime.h"
 
-namespace W::graphics
+namespace W
 {
 	ParticleShader::ParticleShader():
 		ComputeShader(128,1,1),

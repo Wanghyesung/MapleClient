@@ -1,7 +1,7 @@
 #pragma once
 #include "WEntity.h"
 #include "WGraphics.h"
-namespace W::graphics
+namespace W
 {
 	class StructedBuffer : public GpuBuffer
 	{

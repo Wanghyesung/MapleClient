@@ -4,8 +4,7 @@
 #include "WTransform.h"
 namespace W
 {
-	AttackUp::AttackUp(float _fAccStat):
-		UpStat(_fAccStat)
+	AttackUp::AttackUp()
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetShader(Resources::Find<Shader>(L"ObjectShader"));

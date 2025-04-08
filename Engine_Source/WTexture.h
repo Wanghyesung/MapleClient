@@ -15,7 +15,7 @@
 //gpu로 계산, 등 gpu를 활용하게
 //컴퓨트셰이더 접근에 필요  
 
-namespace W::graphics
+namespace W
 {
 	class Texture : public Resource
 	{

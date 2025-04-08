@@ -1,6 +1,6 @@
 #include "WPullObject.h"
 #include "WTime.h"
-#include "WObject.h"
+
 namespace W
 {
 	PullObject::PullObject()

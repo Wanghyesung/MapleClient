@@ -8,7 +8,7 @@ namespace W
 	class MonsterBackHP : public GameObject
 	{
 	public:
-		MonsterBackHP(bool _bBoss);
+		MonsterBackHP();
 		virtual ~MonsterBackHP();
 
 		virtual void Initialize() override;

@@ -9,7 +9,7 @@
 
 namespace W
 {
-	HorntailHeadB::HorntailHeadB(Horntail* _pOwner) 
+	HorntailHeadB::HorntailHeadB() 
 	{
 		SetName(L"HeadB");
 

@@ -6,7 +6,7 @@
 //DirectX 11 라이브러리 추가(정적)
 
 
-namespace W::graphics
+namespace W
 {
 	class GraphicDevice_Dx11
 	{
@@ -88,8 +88,8 @@ namespace W::graphics
 		//
 		//// 깊이버퍼에 접근할수 있는 뷰
 		//Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_cpDepthStencilView;
-		std::shared_ptr<W::graphics::Texture> m_cpRenderTarget;
-		std::shared_ptr<W::graphics::Texture> m_cpDepthStencil;
+		std::shared_ptr<W::Texture> m_cpRenderTarget;
+		std::shared_ptr<W::Texture> m_cpDepthStencil;
 
 		// 더블버퍼링 작업을 진행해주는 swapChain
 		Microsoft::WRL::ComPtr<IDXGISwapChain> m_cpSwapChain;

@@ -4,7 +4,7 @@
 #include "WCamera.h"
 namespace W
 {
-	using namespace W::graphics;
+	using namespace W;
 
 	Transform::Transform():
 		Component(eComponentType::Transform),

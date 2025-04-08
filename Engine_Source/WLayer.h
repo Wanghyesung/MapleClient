@@ -20,6 +20,7 @@ namespace W
 		template<typename T>
 		T* FindObject();
 
+		GameObject* FindObjectByName(const std::wstring& _strName);
 		virtual void Destory();
 		virtual void DestroyAll(Scene* _pScene);
 

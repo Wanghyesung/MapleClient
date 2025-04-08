@@ -11,7 +11,8 @@
 #include "WHorntailWing.h"
 #include "WHorntailTail.h"
 #include "WSceneManger.h"
-#include "WObject.h"
+#include "WTransform.h"
+
 #include "WCameraScript.h"
 
 //수동으로 exe파일에 넣어주기

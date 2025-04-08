@@ -17,8 +17,8 @@ namespace W
 		virtual void Render() override;
 
 	private:
-		graphics::StructedBuffer* m_pBuffer;
-		graphics::StructedBuffer* m_pSharedBuffer;
+		StructedBuffer* m_pBuffer;
+		StructedBuffer* m_pSharedBuffer;
 
 		std::shared_ptr<ParticleShader> m_spCS;
 

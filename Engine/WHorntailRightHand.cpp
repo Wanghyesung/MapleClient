@@ -7,7 +7,7 @@
 
 namespace W
 {
-	HorntailRightHand::HorntailRightHand(Horntail* _pOwner)
+	HorntailRightHand::HorntailRightHand()
 	{
 		SetName(L"RightHand");
 

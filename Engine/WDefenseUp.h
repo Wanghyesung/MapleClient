@@ -6,7 +6,7 @@ namespace W
 	class DefenseUp : public UpStat
 	{
 	public:
-		DefenseUp(float _fAccStat);
+		DefenseUp();
 		virtual ~DefenseUp();
 
 		virtual void Initialize() override;

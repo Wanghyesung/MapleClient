@@ -10,7 +10,7 @@ namespace W
 
 	Scene::Scene()
 	{
-		m_vecLayer.resize((UINT)W::enums::eLayerType::End);
+		m_vecLayer.resize((UINT)W::eLayerType::End);
 	}
 	Scene::~Scene()
 	{

@@ -214,25 +214,18 @@ namespace W
 
 #pragma region Extra UI
 		Inventory* pInventory = new Inventory();
+		pInventory->SetName(L"Inven");
 		SceneManger::AddGameObject(eLayerType::UI, pInventory);
 		pInventory->Initialize();
 
 		SKillStorage* pSKillStorage = new SKillStorage();
+		pSKillStorage->SetName(L"Skill");
 		SceneManger::AddGameObject(eLayerType::UI, pSKillStorage);
 		pSKillStorage->Initialize();
 
 		//EquipState* pEquipState = new EquipState();
 		//SceneManger::AddGameObject(eLayerType::UI, pEquipState);
 		//pEquipState->Initialize();
-
-		Stat* pStat = new Stat();
-		SceneManger::AddGameObject(eLayerType::UI, pStat);
-		pStat->Initialize();
-
-		QuestState* pQuest = new QuestState();
-		SceneManger::AddGameObject(eLayerType::UI, pQuest);
-		pQuest->Initialize();
-	
 
 #pragma endregion
 	}
@@ -356,7 +349,7 @@ namespace W
 				eParentUI eParentType = _pItem->GetParentUIType();
 				switch (eParentType)
 				{
-				case W::enums::eParentUI::Inventory:
+				case W::eParentUI::Inventory:
 				{
 					if (pFindItem->GetIconType() == IconUI::eIconType::SKill)
 						return false;
@@ -369,7 +362,7 @@ namespace W
 				}
 					break;
 
-				case W::enums::eParentUI::SkillStorage:
+				case W::eParentUI::SkillStorage:
 				{
 					if(pFindItem->GetIconType() == IconUI::eIconType::Item)
 						return false;

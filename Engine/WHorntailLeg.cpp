@@ -7,7 +7,7 @@
 #include "WEventManager.h"
 namespace W
 {
-	HorntailLeg::HorntailLeg(Horntail* _pOwner)
+	HorntailLeg::HorntailLeg()
 	{
 		SetName(L"Leg");
 

@@ -17,7 +17,7 @@
 #include "WEquipState.h"
 #include "WAlixirUI.h"
 #include "WPlayer.h"
-#include "WObject.h"
+
 #include "WRenderer.h"
 #include "WGround.h"
 #include "WTexture.h"
@@ -62,21 +62,24 @@ namespace W
 		setmonster();
 
 		Player* pPlayer = new Player();
+		pPlayer->SetName(L"Player");
 		AddGameObject(eLayerType::Player, pPlayer);
 		pPlayer->Initialize();
 
 
-	
 		EquipState* pEquipState = new EquipState();
+		pEquipState->SetName(L"Equip");
 		SceneManger::AddGameObject(eLayerType::UI, pEquipState);
 		pEquipState->SetPlayer(pPlayer);
 		pEquipState->Initialize();
 
 		InterfaceUI* pInterUI = new InterfaceUI();
+		pInterUI->SetName(L"Interface");
 		AddGameObject(eLayerType::UI, pInterUI);
 		pInterUI->Initialize();
 
 		BossUI* pBossUI = new BossUI();
+		pBossUI->SetName(L"Boss");
 		AddGameObject(eLayerType::UI, pBossUI);
 		pBossUI->Initialize();
 
@@ -121,7 +124,6 @@ namespace W
 	}
 	void ValleyScene::OnExit()
 	{
-		EndSound();
 
 	}
 	void ValleyScene::CreateBackground()

@@ -24,7 +24,7 @@
 #define CBSLOT_OBJECT			8
 #define CBSLOT_NOISE			9
 
-namespace W::graphics
+namespace W
 {
 
 	enum class eShaderStage
@@ -127,10 +127,10 @@ namespace W::graphics
 
 	struct DebugMesh
 	{
-		enums::eColliderType type;
-		math::Vector3 position;
-		math::Vector3 rotation;
-		math::Vector3 scale;
+		eColliderType type;
+		Vector3 position;
+		Vector3 rotation;
+		Vector3 scale;
 
 		float radius;
 		float duration;
@@ -142,11 +142,11 @@ namespace W::graphics
 	//13
 	struct LightAttribute
 	{
-		math::Vector4 color;
-		math::Vector4 position;
-		math::Vector4 direction;
+		Vector4 color;
+		Vector4 position;
+		Vector4 direction;
 
-		enums::eLightType type;
+		eLightType type;
 		float radius;
 		float angle;
 		int pad;
@@ -155,8 +155,8 @@ namespace W::graphics
 	//14
 	struct Particle
 	{
-		math::Vector4 position;
-		math::Vector4 direction;
+		Vector4 position;
+		Vector4 direction;
 
 		float endTime;
 		float time;

@@ -14,8 +14,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine_Source", "Engine_Sou
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcxproj", "{FBEA7778-58BF-476C-B230-AD22CB7D5C09}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor_Source", "Editor_Source\Editor_Source.vcxitems", "{2E9ECE60-C857-4A08-BF12-FCFD66DCEAE8}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IOCP", "IOCP\IOCP.vcxproj", "{7751BDE5-AFB2-4CE2-AEB2-8F4CB4467C6E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IOCP_CLIENT", "IOCP_CLIENT\IOCP_CLIENT.vcxproj", "{4D6DFD88-1987-40D0-8C60-286377B3F23A}"
@@ -68,7 +66,7 @@ Global
 		SolutionGuid = {1D848CFE-EBF0-4C2C-8E62-009C0C603C40}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Editor_Source\Editor_Source.vcxitems*{2e9ece60-c857-4a08-bf12-fcfd66dceae8}*SharedItemsImports = 9
+		Engine_Source\Engine_Source.vcxitems*{4d6dfd88-1987-40d0-8c60-286377b3f23a}*SharedItemsImports = 4
 		Shader_Source\Shader_Source.vcxitems*{61ea6587-6306-4326-8b23-3d5411667a2e}*SharedItemsImports = 9
 		Engine_Source\Engine_Source.vcxitems*{fa95d34b-aa75-4906-8677-b8cca43dce10}*SharedItemsImports = 9
 		Engine_Source\Engine_Source.vcxitems*{fbea7778-58bf-476c-b230-ad22cb7d5c09}*SharedItemsImports = 4

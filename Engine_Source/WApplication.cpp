@@ -98,9 +98,9 @@ namespace W
 			m_iWidth = _iWidth;
 			m_iHeight = _iHeight;
 		
-			graphicDevice = std::make_unique<W::graphics::GraphicDevice_Dx11>();
+			graphicDevice = std::make_unique<W::GraphicDevice_Dx11>();
 			//제일먼저 호출될때 graphicDevice할당
-			W::graphics::GetDevice() = graphicDevice.get();
+			W::GetDevice() = graphicDevice.get();
 		}
 
 		RECT rt = { 0, 0, (LONG)_iWidth , (LONG)_iHeight };

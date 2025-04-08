@@ -58,6 +58,7 @@ namespace W
 		GetComponent<Transform>()->SetPosition(0.f, -5.f, -2.f);
 
 
+
 	}
 	void Player::Update()
 	{

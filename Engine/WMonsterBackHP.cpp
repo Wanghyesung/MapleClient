@@ -6,19 +6,16 @@
 
 namespace W
 {
-	MonsterBackHP::MonsterBackHP(bool _bBoss)
+	MonsterBackHP::MonsterBackHP()
 	{
 		std::shared_ptr<Texture> pAtlas;
-		if (!_bBoss)
-		{
-			pAtlas = Resources::Load<Texture>(L"MonBackHP", L"..\\Resources\\Texture\\MonsterUI\\energebar.png");
-			GetComponent<Transform>()->SetScale(1.f * 0.7f, 1.f * 0.13f, 0.f);
-		}
-		else
-		{
-			pAtlas = Resources::Load<Texture>(L"MonBackBossHP", L"..\\Resources\\Texture\\MonsterUI\\boss_energebar.png");
-			GetComponent<Transform>()->SetScale(1.2f * 8.01f, 1.2f * 0.4f, 0.f);
-		}
+	
+		pAtlas = Resources::Load<Texture>(L"MonBackHP", L"..\\Resources\\Texture\\MonsterUI\\energebar.png");
+		GetComponent<Transform>()->SetScale(1.f * 0.7f, 1.f * 0.13f, 0.f);
+		
+		pAtlas = Resources::Load<Texture>(L"MonBackBossHP", L"..\\Resources\\Texture\\MonsterUI\\boss_energebar.png");
+		GetComponent<Transform>()->SetScale(1.2f * 8.01f, 1.2f * 0.4f, 0.f);
+		
 		
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetShader(Resources::Find<Shader>(L"ObjectShader"));

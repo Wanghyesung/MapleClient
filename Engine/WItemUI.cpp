@@ -6,7 +6,8 @@
 #include "WTransform.h"
 #include "WNumber.h"
 #include "UIManger.h"
-#include "WObject.h"
+#include "WTransform.h"
+
 namespace W
 {
 	ItemUI::ItemUI():

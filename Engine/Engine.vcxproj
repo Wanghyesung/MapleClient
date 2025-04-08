@@ -142,7 +142,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -177,7 +177,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -194,6 +194,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScene.h" />
+    <ClInclude Include="ObjectHeader.h" />
     <ClInclude Include="WAbnormal.h" />
     <ClInclude Include="WAriel.h" />
     <ClInclude Include="WArielLaser.h" />
@@ -226,6 +227,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
     <ClInclude Include="WDemianSpear1.h" />
     <ClInclude Include="WDemianVine.h" />
     <ClInclude Include="WEyeItem.h" />
+    <ClInclude Include="WGameObjectManager.h" />
     <ClInclude Include="WHairItem.h" />
     <ClInclude Include="WHat_40.h" />
     <ClInclude Include="WHat_80.h" />
@@ -428,6 +430,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
     <ClCompile Include="WDemianSpear1.cpp" />
     <ClCompile Include="WDemianVine.cpp" />
     <ClCompile Include="WEyeItem.cpp" />
+    <ClCompile Include="WGameObjectManager.cpp" />
     <ClCompile Include="WHairItem.cpp" />
     <ClCompile Include="WHat_40.cpp" />
     <ClCompile Include="WHat_80.cpp" />

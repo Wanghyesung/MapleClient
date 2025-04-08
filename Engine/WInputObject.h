@@ -1,5 +1,5 @@
 #pragma once
-#include "WObject.h"
+
 #include "WInput.h"
 namespace W
 {
@@ -7,7 +7,7 @@ namespace W
 	class InputObject : public GameObject
 	{
 	public:
-		InputObject(eKeyCode _eKeyCode);
+		InputObject();
 		virtual ~InputObject();
 
 		virtual void Initialize()override;

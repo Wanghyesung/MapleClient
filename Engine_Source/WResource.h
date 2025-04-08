@@ -7,7 +7,7 @@ namespace W
 	class Resource
 	{
 	public:
-		Resource(const enums::eResourceType type);
+		Resource(const eResourceType type);
 		virtual ~Resource();
 
 		virtual HRESULT Load(const std::wstring& _strPath) = 0;
@@ -18,7 +18,7 @@ namespace W
 		void SetPath(const std::wstring& _strPath) { m_strPath = _strPath; }
 
 	private:
-		const enums::eResourceType m_eType;
+		const eResourceType m_eType;
 		std::wstring m_strKey;
 		std::wstring m_strPath;
 	};

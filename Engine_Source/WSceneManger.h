@@ -70,8 +70,9 @@ namespace W
 		}
 
 		static void SwapObject(Scene* _pPrevScene, Scene* _pNextScene, GameObject* _pGameObject);
+		static void SwapObject(Scene* _pPrevScene, Scene* _pNextScene, const std::wstring& _strGameName, eLayerType _eLayerType);
 		static void SwapUI(Scene* _pPrevScene, Scene* _pNextScene);
-
+		static void SwapPlayer(Scene* _pPrevScene, Scene* _pNextScene);
 		static void SwapCamera();
 	
 	private:

@@ -112,4 +112,17 @@ namespace W
 		}
 	}
 
+	GameObject* Layer::FindObjectByName(const std::wstring& _strName)
+	{
+		std::vector<GameObject*>::iterator iter = m_vecGameObject.begin();
+		for (iter; iter != m_vecGameObject.end(); ++iter)
+		{
+			if ((*iter)->GetName() == _strName)
+			{
+				return *iter;
+			}
+		}
+		return nullptr;
+	}
+
 }

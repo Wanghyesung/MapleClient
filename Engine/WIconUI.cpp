@@ -159,7 +159,7 @@ namespace W
 	{
 		switch (m_eParentType)
 		{
-		case W::enums::eParentUI::Interface:
+		case W::eParentUI::Interface:
 		{
 			UI* pParentUI = GetParentUI();
 			InterfaceUI* pInter = dynamic_cast<InterfaceUI*>(pParentUI);
@@ -170,7 +170,7 @@ namespace W
 			m_eKeyCode = eKeyCode::END;
 		}
 		break;
-		case W::enums::eParentUI::Inventory:
+		case W::eParentUI::Inventory:
 		{
 			UI* pParentUI = GetParentUI();
 			Inventory* pInven = dynamic_cast<Inventory*>(pParentUI);
@@ -178,13 +178,13 @@ namespace W
 			pInven->DeleteChildUI(this);
 		}
 		break;
-		case W::enums::eParentUI::SkillStorage:
+		case W::eParentUI::SkillStorage:
 		{
 			UI* pParentUI = GetParentUI();
 			pParentUI->DeleteChildUI(this);
 		}
 		break;
-		case W::enums::eParentUI::EquipState:
+		case W::eParentUI::EquipState:
 		{
 			UI* pParentUI = GetParentUI();
 			Equip* pEquip = dynamic_cast<Equip*>(this);

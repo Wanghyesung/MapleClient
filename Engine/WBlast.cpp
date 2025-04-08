@@ -1,8 +1,10 @@
 #include "WBlast.h"
-#include "WObject.h"
+#include "WTransform.h"
 #include "WRenderer.h"
 #include "WAnimator.h"
 #include "WEventManager.h"
+#include "WResources.h"
+
 namespace W
 {
 	Blast::Blast()

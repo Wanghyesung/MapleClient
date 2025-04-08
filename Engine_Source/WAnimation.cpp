@@ -6,7 +6,7 @@
 namespace W
 {
 	Animation::Animation():
-		Resource(enums::eResourceType::Animation),
+		Resource(eResourceType::Animation),
 		m_pAnimator(nullptr),
 		m_vecSprites{},
 		m_iIndex(-1)
@@ -29,7 +29,7 @@ namespace W
 	{
 
 	}
-	void Animation::Create(std::wstring _strName, std::shared_ptr<graphics::Texture> _pAtlas, Vector2 _vLeftTop, 
+	void Animation::Create(std::wstring _strName, std::shared_ptr<Texture> _pAtlas, Vector2 _vLeftTop, 
 		Vector2 _vSize, UINT _iColumnLength, Vector2 _vDivisionSize, Vector2 _vOffset, float _fDuration)
 	{
 		SetKey(_strName);
@@ -60,7 +60,7 @@ namespace W
 		std::shared_ptr<Texture> spAtlas = m_wpAtlas.lock();
 		if (!spAtlas)
 			assert(nullptr);
-		spAtlas->BindShaderResource(graphics::eShaderStage::PS, 12);
+		spAtlas->BindShaderResource(eShaderStage::PS, 12);
 
 		renderer::AnimatorCB data = {};
 		data.vSpriteLeftTop = m_vecSprites[m_iIndex].vLeftTop;

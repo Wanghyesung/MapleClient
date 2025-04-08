@@ -2,17 +2,17 @@
 #include "WGraphicDevice_Dx11.h"
 #include "WPathManager.h"
 
-namespace W::graphics
+namespace W
 {
 	ComputeShader::ComputeShader():
-		Resource(enums::eResourceType::ComputeShader)
+		Resource(eResourceType::ComputeShader)
 	{
 		m_iThreadGroupCountX = 32;
 		m_iThreadGroupCountY = 32;
 		m_iThreadGroupCountZ = 1;
 	}
 	ComputeShader::ComputeShader(UINT _ix, UINT _iY, UINT _iZ):
-		Resource(enums::eResourceType::ComputeShader)
+		Resource(eResourceType::ComputeShader)
 	{
 		m_iThreadGroupCountX = _ix;
 		m_iThreadGroupCountY = _iY;
@@ -29,8 +29,8 @@ namespace W::graphics
 		shaderPath += _strName;
 
 		ID3DBlob* errorBlob = nullptr;
-		graphics::GetDevice()->CompileFromfile(shaderPath, _strMethdName, "cs_5_0", m_cpCSBlob.GetAddressOf());
-		graphics::GetDevice()->CreateComputeShader(m_cpCSBlob->GetBufferPointer()
+		GetDevice()->CompileFromfile(shaderPath, _strMethdName, "cs_5_0", m_cpCSBlob.GetAddressOf());
+		GetDevice()->CreateComputeShader(m_cpCSBlob->GetBufferPointer()
 			, m_cpCSBlob->GetBufferSize(), m_cpCS.GetAddressOf());
 
 		return true;

@@ -1,7 +1,5 @@
 #include "WRenderer.h"
-//#include "WApplication.h"
 
-//extern W::Application application;
 #include "WResources.h"
 #include "WTexture.h"
 #include "WMaterial.h"
@@ -15,9 +13,7 @@
 namespace renderer
 {
 	using namespace W;
-	using namespace W::graphics;
-
-	W::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END] = {};
+	W::ConstantBuffer* constantBuffer[(UINT)eCBType::END] = {};
 
 	
 	
@@ -39,12 +35,12 @@ namespace renderer
 
 	//light
 	std::vector<W::Light*> m_vecLights = {};
-	StructedBuffer* m_pLightsBuffer = nullptr;
+	W::StructedBuffer* m_pLightsBuffer = nullptr;
 
 	W::Camera* MainCamera = nullptr;
 	W::Camera* UICamera = nullptr;
 	std::vector<W::Camera*> m_vecCameras = {};
-	std::vector<DebugMesh> m_vecDebugMeshs = {};
+	std::vector<W::DebugMesh> m_vecDebugMeshs = {};
 
 	Vector2 RectVertexsPos[4] = {};
 	Vector2 CircleVertexsPos[41] = {};
@@ -79,73 +75,73 @@ namespace renderer
 		arrLayout[2].SemanticIndex = 0;
 
 		std::shared_ptr<Shader> pShader = W::Resources::Find<Shader>(L"TriangleShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3,
+		GetDevice()->CreateInputLayout(arrLayout, 3,
 			pShader->GetVSCode(),
 			pShader->GetInputLayoutAddressOf());
 		
 		pShader = W::Resources::Find<Shader>(L"GridShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3,
+		GetDevice()->CreateInputLayout(arrLayout, 3,
 			pShader->GetVSCode(),
 			pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"SpriteShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3,
+		GetDevice()->CreateInputLayout(arrLayout, 3,
 			pShader->GetVSCode(),
 			pShader->GetInputLayoutAddressOf());
 
 
 		pShader = W::Resources::Find<Shader>(L"BackgroundShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3,
+		GetDevice()->CreateInputLayout(arrLayout, 3,
 			pShader->GetVSCode(),
 			pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"ObjectShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3,
+		GetDevice()->CreateInputLayout(arrLayout, 3,
 			pShader->GetVSCode(),
 			pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"UIShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3,
+		GetDevice()->CreateInputLayout(arrLayout, 3,
 			pShader->GetVSCode(),
 			pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"DebugShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+		GetDevice()->CreateInputLayout(arrLayout, 3
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"PlayerShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+		GetDevice()->CreateInputLayout(arrLayout, 3
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"SpriteAnimationShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+		GetDevice()->CreateInputLayout(arrLayout, 3
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"MonsterShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+	    GetDevice()->CreateInputLayout(arrLayout, 3
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"ObjectAnimShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+		GetDevice()->CreateInputLayout(arrLayout, 3
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"LightShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+		GetDevice()->CreateInputLayout(arrLayout, 3
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"PlayerUIShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+		GetDevice()->CreateInputLayout(arrLayout, 3
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
 
 		pShader = W::Resources::Find<Shader>(L"ParticleShader");
-		W::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+		GetDevice()->CreateInputLayout(arrLayout, 3
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
 
@@ -708,9 +704,5 @@ namespace renderer
 		m_pLightsBuffer = nullptr;
 	}
 
-	void PushDebugMeshAttribute(DebugMesh mesh)
-	{
-		m_vecDebugMeshs.push_back(mesh);
-	}
 
 }

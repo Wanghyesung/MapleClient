@@ -1,10 +1,9 @@
 #include "WInputBackground.h"
 #include "WResources.h"
-#include "WObject.h"
+#include "WTransform.h"
 #include "WGroggy.h"
 #include "WInputObject.h"
 #include "WRenderer.h"
-#include "WObject.h"
 #include "WSceneManger.h"
 
 namespace W

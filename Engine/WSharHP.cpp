@@ -3,12 +3,12 @@
 #include "WMonsterBackHP.h"
 #include "WSceneManger.h"
 #include "WRenderer.h"
-#include "WObject.h"
+#include "WTransform.h"
+
 namespace W
 {
 	
 	SharHP::SharHP():
-		MonsterHP(true),
 		m_fHP(100.f)
 	{
 	

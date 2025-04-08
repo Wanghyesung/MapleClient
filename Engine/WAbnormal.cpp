@@ -1,7 +1,7 @@
 #include "WAbnormal.h"
 #include "WTime.h"
 #include "WPlayer.h"
-#include "WObject.h"
+
 
 namespace W
 {

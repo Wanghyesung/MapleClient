@@ -2,7 +2,7 @@
 #include "WResources.h"
 #include "WAnimator.h"
 #include "WRenderer.h"
-#include "WObject.h"
+#include "WTransform.h"
 #include "WSceneManger.h"
 #include "WTime.h"
 namespace W

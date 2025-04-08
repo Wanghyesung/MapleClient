@@ -1,14 +1,13 @@
 #include "WUpStat.h"
 #include "WRenderer.h"
 #include "WMonster.h"
-#include "WObject.h"
+#include "WTransform.h"
+
 #include "WTime.h"
 
 namespace W
 {
-	UpStat::UpStat(float _fAccStat):
-		m_fCurTime(0.f),
-		m_fAccStat(_fAccStat)
+	UpStat::UpStat()
 	{
 
 	}

@@ -4,7 +4,7 @@
 #include "WGraphicDevice_Dx11.h"
 namespace W
 {
-	using namespace W::math;
+	using namespace W;
 
 	enum class eKeyCode
 	{

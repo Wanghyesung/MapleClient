@@ -7,7 +7,7 @@
 
 namespace W 
 {
-	using namespace graphics;
+
 	class Shader : public Resource
 	{
 	public:

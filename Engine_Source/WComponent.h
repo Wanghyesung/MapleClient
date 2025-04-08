@@ -3,9 +3,7 @@
 
 namespace W
 {
-	using namespace W::enums;
-	using namespace W::math;
-
+	
 	class GameObject;
 
 	class Component

@@ -7,7 +7,7 @@ namespace W
 	class HorntailHeadA : public Monster
 	{
 	public:
-		HorntailHeadA(Horntail* _pOwner);
+		HorntailHeadA();
 		virtual ~HorntailHeadA();
 
 		virtual void Initialize()override;

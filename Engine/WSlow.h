@@ -6,7 +6,7 @@ namespace W
 	class Slow : public Abnormal
 	{
 	public:
-		Slow(float _fAccStat);
+		Slow();
 		virtual ~Slow();
 
 		virtual void Initialize() override;

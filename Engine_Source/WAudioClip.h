@@ -1,7 +1,7 @@
 #pragma once
 #include "WResource.h"
 #include "WFmod.h"
-
+#include "WMath.h"
 
 
 //#include <Fmod/fmod_studio.hpp>
@@ -13,7 +13,7 @@
 
 namespace W
 {
-	using namespace W::math;
+	using namespace W;
 	class AudioClip : public Resource
 	{
 	public:

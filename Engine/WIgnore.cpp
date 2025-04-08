@@ -4,8 +4,7 @@
 
 namespace W
 {
-	Ignore::Ignore(float _fAccStat) :
-		UpStat(_fAccStat)
+	Ignore::Ignore() 
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetShader(Resources::Find<Shader>(L"ObjectShader"));

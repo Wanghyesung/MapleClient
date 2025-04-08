@@ -4,7 +4,7 @@
 
 extern W::Application application;
 
-namespace W::graphics
+namespace W
 {
 	//ram위에 gpu그래픽카드의 주소를 가르키는 변수를 올려둠
 	//기본적으로 전부 포인터임

@@ -11,7 +11,7 @@
 namespace W
 {
     Mesh::Mesh() :
-        Resource(enums::eResourceType::Mesh),
+        Resource(eResourceType::Mesh),
         m_cpVertexBuffer(nullptr),
         m_cpIndexBuffer(nullptr),
         m_tVBDesc{},

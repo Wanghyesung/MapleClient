@@ -2,7 +2,6 @@
 #include "WCamera.h"
 #include "WRenderer.h"
 #include "..\Engine\WCameraScript.h"
-#include "..\Engine\WBossUI.h"
 #include "..\Engine\WItemManager.h"
 #include "..\Engine\WPlayerAttackObject.h"
 #include "..\Engine\WObjectPoolManager.h"
@@ -57,8 +56,10 @@ namespace W
 		if (iter == m_mapScene.end())
 			return nullptr;
 
+	
 		SwapUI(m_pActiveScene, iter->second);
-		
+		SwapPlayer(m_pActiveScene, iter->second);
+
 		m_pActiveScene->OnExit();
 		m_pActiveScene = iter->second;
 		m_pActiveScene->OnEnter();
@@ -83,14 +84,30 @@ namespace W
 		_pNextScene->AddGameObject(eType, _pGameObject);
 	}
 
+	void SceneManger::SwapObject(Scene* _pPrevScene, Scene* _pNextScene, const std::wstring& _strGameName, eLayerType _eLayerType)
+	{
+		GameObject* pGameObject = _pPrevScene->GetLayer(_eLayerType).FindObjectByName(_strGameName);
+		if (pGameObject == nullptr)
+			assert(nullptr);
+
+		eLayerType eType = pGameObject->GetLayerType();
+
+		_pPrevScene->EraseObject(eType, pGameObject);
+		_pNextScene->AddGameObject(eType, pGameObject);
+	}
+
 	void SceneManger::SwapUI(Scene* _pPrevScene, Scene* _pNextScene)
 	{
-		SwapObject(_pPrevScene, _pNextScene, (GameObject*)GetUI<class InterfaceUI>());
-		SwapObject(_pPrevScene, _pNextScene, (GameObject*)GetUI<class Inventory>());
-		SwapObject(_pPrevScene, _pNextScene, (GameObject*)GetUI<class Stat>());
-		SwapObject(_pPrevScene, _pNextScene, (GameObject*)GetUI<class EquipState>());
-		SwapObject(_pPrevScene, _pNextScene, (GameObject*)GetUI<class SKillStorage>());
-		SwapObject(_pPrevScene, _pNextScene, (GameObject*)GetUI<class BossUI>());
+		SwapObject(_pPrevScene, _pNextScene, L"Equip", eLayerType::UI);
+		SwapObject(_pPrevScene, _pNextScene, L"Interface", eLayerType::UI);
+		SwapObject(_pPrevScene, _pNextScene, L"Boss", eLayerType::UI);
+		SwapObject(_pPrevScene, _pNextScene, L"Inven", eLayerType::UI);
+		SwapObject(_pPrevScene, _pNextScene, L"Skill", eLayerType::UI);	
+	}
+
+	void SceneManger::SwapPlayer(Scene* _pPrevScene, Scene* _pNextScene)
+	{
+		SwapObject(_pPrevScene, _pNextScene, L"Player", eLayerType::Player);
 	}
 
 	

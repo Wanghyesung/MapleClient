@@ -16,7 +16,7 @@ namespace W
 		virtual void Render();
 
 		void Create(const std::wstring& _strName,
-			std::shared_ptr<graphics::Texture> _pAtlas,
+			std::shared_ptr<Texture> _pAtlas,
 			Vector2 _vLeftTop,
 			Vector2 _vSize,
 			UINT _iColumnLength,

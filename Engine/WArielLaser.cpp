@@ -2,8 +2,8 @@
 #include "WResources.h"
 #include "WAnimator.h"
 #include "WRenderer.h"
-#include "WObject.h"
 #include "WMonster.h"
+#include "WTransform.h"
 namespace W
 {
 	ArielLaser::ArielLaser()

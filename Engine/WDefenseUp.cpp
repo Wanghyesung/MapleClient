@@ -5,8 +5,7 @@
 
 namespace W
 {
-	DefenseUp::DefenseUp(float _fAccStat) :
-		UpStat(_fAccStat)
+	DefenseUp::DefenseUp() 
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetShader(Resources::Find<Shader>(L"ObjectShader"));

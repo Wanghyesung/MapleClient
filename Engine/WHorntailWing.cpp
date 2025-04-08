@@ -5,7 +5,7 @@
 #include "WRenderer.h"
 namespace W
 {
-	HorntailWing::HorntailWing(Horntail* _pOwner)
+	HorntailWing::HorntailWing()
 	{
 		SetName(L"Wing");
 

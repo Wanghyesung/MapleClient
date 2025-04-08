@@ -3,7 +3,8 @@
 #include "WAnimator.h"
 #include "WRenderer.h"
 #include "WPlayer.h"
-#include "WObject.h"
+#include "WTransform.h"
+
 namespace W
 {
 	Variation::Variation()

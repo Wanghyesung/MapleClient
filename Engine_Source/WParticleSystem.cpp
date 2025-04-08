@@ -45,11 +45,11 @@ namespace W
 			particles[i].time = 0.f;
 		}
 
-		m_pBuffer = new graphics::StructedBuffer();
+		m_pBuffer = new StructedBuffer();
 		m_pBuffer->Create(sizeof(Particle), 1000, eViewType::UAV, particles);
 
 		//cpu gpu 읽고 쓰기 기능
-		m_pSharedBuffer = new graphics::StructedBuffer();
+		m_pSharedBuffer = new StructedBuffer();
 		m_pSharedBuffer->Create(sizeof(ParticleShared), 1, eViewType::UAV, nullptr, true);
 		
 		//ParticleShared shareData = {};

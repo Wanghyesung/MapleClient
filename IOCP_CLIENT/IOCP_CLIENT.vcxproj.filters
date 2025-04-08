@@ -3,14 +3,93 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="ServerSession.h" />
     <ClInclude Include="header.h" />
-    <ClInclude Include="ServerPacketHandler.h" />
+    <ClInclude Include="ServerSession.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerPacketHandler.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="Enter.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="Exit.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectState.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="NetFunc.h">
+      <Filter>Net</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="IOCP_CLIENT.cpp" />
-    <ClCompile Include="ServerSession.cpp" />
-    <ClCompile Include="ServerPacketHandler.cpp" />
+    <ClCompile Include="ServerPacketHandler.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerSession.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Enter.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Exit.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectState.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="NetFunc.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Net">
+      <UniqueIdentifier>{6c59cd64-4529-4427-ad8b-29a3c896bda7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

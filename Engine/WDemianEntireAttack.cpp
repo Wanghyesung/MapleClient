@@ -6,7 +6,8 @@
 #include "WTime.h"
 #include "WAnimator.h"
 #include "WRenderer.h"
-#include "WObject.h"
+#include "WTransform.h"
+
 namespace W
 {
 	DemianEntireAttack::DemianEntireAttack()

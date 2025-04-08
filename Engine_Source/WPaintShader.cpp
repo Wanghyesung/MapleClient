@@ -1,7 +1,7 @@
 #include "WPaintShader.h"
 #include "WTexture.h"
 
-namespace W::graphics
+namespace W
 {
 	void PaintShader::Binds()
 	{

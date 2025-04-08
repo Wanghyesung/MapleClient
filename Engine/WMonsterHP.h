@@ -9,7 +9,7 @@ namespace W
 	class MonsterHP : public GameObject
 	{
 	public:
-		MonsterHP(bool bBoss);
+		MonsterHP();
 		virtual ~MonsterHP();
 
 		virtual void Initialize()override;

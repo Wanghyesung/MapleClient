@@ -34,7 +34,7 @@ namespace W
 	{
 
 	}
-	void Animator::Create(const std::wstring& _strName, std::shared_ptr<graphics::Texture> _pAtlas, Vector2 _vLeftTop, 
+	void Animator::Create(const std::wstring& _strName, std::shared_ptr<Texture> _pAtlas, Vector2 _vLeftTop, 
 		Vector2 _vSize, UINT _iColumnLength, Vector2 _vDivisionSize, Vector2 _vOffset, float _fDuration)
 	{
 		Animation* pAnimation = FindAnimation(_strName);

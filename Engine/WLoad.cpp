@@ -1,7 +1,7 @@
 #include "WLoad.h"
 #include "WResources.h"
 #include "WAnimator.h"
-#include "WObject.h"
+#include "WTransform.h"
 #include "WTime.h"
 #include "WAutoShuriken.h"
 #include "WEventManager.h"
@@ -33,7 +33,7 @@ namespace W
 
 		
 		//test
-		pAtlas->BindShaderResource(graphics::eShaderStage::PS, 12);
+		pAtlas->BindShaderResource(eShaderStage::PS, 12);
 
 		GetComponent<Transform>()->SetScale(11.f, 11.f, 0.f);
 	}

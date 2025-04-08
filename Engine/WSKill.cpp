@@ -9,7 +9,8 @@
 #include "WSkillNumber5.h"
 #include "WInterfaceUI.h"
 #include "WSceneManger.h"
-#include "WObject.h"
+#include "WTransform.h"
+
 #include "WPlayer.h"
 #include "WSKillNumber6.h"
 namespace W
@@ -118,7 +119,8 @@ namespace W
 
 			if (GetParentUIType() == eParentUI::SkillStorage)
 			{
-				object::Destroy(m_pSKillClone);
+				EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
+			
 				Vector3 vStartPos = GetStartPosition();
 				GetComponent<Transform>()->SetPosition((vStartPos));
 			}
@@ -133,7 +135,7 @@ namespace W
 				m_pSKillClone->GetParentUI()->AddChildUI(this, false);
 				SetParentUIType(eParentUI::SkillStorage);
 
-				object::Destroy(m_pSKillClone);
+				EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
 			}
 		}
 			
@@ -141,7 +143,8 @@ namespace W
 		{
 			if (!changepos_interface())//실패하면
 			{
-				object::Destroy(m_pSKillClone);
+				EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
+
 				Vector3 vStartPos = GetStartPosition();
 				GetComponent<Transform>()->SetPosition((vStartPos));
 			}

@@ -3,7 +3,7 @@
 #include "WResources.h"
 #include "WAnimator.h"
 #include "WRenderer.h"
-#include "WObject.h"
+#include "WTransform.h"
 #include "WMonster.h"
 namespace W
 {

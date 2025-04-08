@@ -6,7 +6,7 @@
 
 namespace W
 {
-	using namespace graphics;
+	
 	class Mesh : public Resource
 	{
 	public:

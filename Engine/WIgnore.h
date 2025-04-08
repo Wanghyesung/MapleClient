@@ -6,7 +6,7 @@ namespace W
 	class Ignore : public UpStat
 	{
 	public:
-		Ignore(float _fAccStat);
+		Ignore();
 		virtual ~Ignore();
 
 		virtual void Initialize() override;

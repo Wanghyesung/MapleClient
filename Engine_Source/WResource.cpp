@@ -2,7 +2,7 @@
 
 namespace W
 {
-	Resource::Resource(const enums::eResourceType type):
+	Resource::Resource(const eResourceType type):
 		m_eType(type)
 	{
 	}

@@ -314,9 +314,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)UIManger.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)WObject.h">
-      <Filter>Common</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WAnimation.h">
       <Filter>Resource\Animation</Filter>
     </ClInclude>

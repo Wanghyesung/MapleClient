@@ -118,7 +118,7 @@ namespace W
 
 			switch (m_eParentUI)
 			{
-			case W::enums::eParentUI::Inventory:
+			case W::eParentUI::Inventory:
 			{
 				Inventory* pInven = dynamic_cast<Inventory*>(GetParentUI());
 				pInven->CheckPosition(iDir);

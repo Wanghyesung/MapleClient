@@ -2,8 +2,7 @@
 #include "WResource.h"
 #include "WGraphics.h"
 
-//파티클 만들때마다 상속받아서
-namespace W::graphics
+namespace W
 {
 	class ComputeShader : public Resource
 	{

@@ -10,7 +10,7 @@
 
 #pragma once
 
-using namespace W::math;
+using namespace W;
 /****************************************************************************
 *
 * Rectangle
@@ -51,7 +51,7 @@ inline void Rectangle::Inflate(long horizAmount, long vertAmount) noexcept
 //------------------------------------------------------------------------------
 
 
-inline W::math::Rectangle Rectangle::Intersect(const Rectangle& ra, const Rectangle& rb) noexcept
+inline W::Rectangle W::Rectangle::Intersect(const Rectangle& ra, const Rectangle& rb) noexcept
 {
     const long righta = ra.x + ra.width;
     const long rightb = rb.x + rb.width;
@@ -113,7 +113,7 @@ inline RECT Rectangle::Intersect(const RECT& rcta, const RECT& rctb) noexcept
     return result;
 }
 
-inline W::math::Rectangle Rectangle::Union(const Rectangle& ra, const Rectangle& rb) noexcept
+inline W::Rectangle W::Rectangle::Union(const Rectangle& ra, const Rectangle& rb) noexcept
 {
     const long righta = ra.x + ra.width;
     const long rightb = rb.x + rb.width;

@@ -4,9 +4,7 @@
 
 namespace W
 {
-	using namespace math;
-	using namespace graphics;
-
+	
 	class Animator;
 	class Animation : public Resource
 	{
@@ -40,7 +38,7 @@ namespace W
 		void Render();
 
 		void Create(std::wstring _strName,
-			std::shared_ptr<graphics::Texture> _pAtlas,
+			std::shared_ptr<Texture> _pAtlas,
 			Vector2 _vLeftTop,
 			Vector2 _vSize,
 			UINT _iColumnLength,
@@ -56,7 +54,7 @@ namespace W
 
 		void SetAnimator(Animator* _pAnim) { m_pAnimator = _pAnim; }
 	private:
-		std::weak_ptr<graphics::Texture> m_wpAtlas;
+		std::weak_ptr<Texture> m_wpAtlas;
 		Animator* m_pAnimator;
 		std::vector<Sprite> m_vecSprites;
 		int m_iIndex;

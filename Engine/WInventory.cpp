@@ -13,7 +13,6 @@
 #include "WBottom_10.h"
 #include "WShoes_10.h"
 #include "WWeapon_10.h"
-#include "WObject.h"
 #include "WItemManager.h"
 namespace W
 {
@@ -339,7 +338,7 @@ namespace W
 				eParentUI eParentType = _pItem->GetParentUIType();
 				switch (eParentType)
 				{
-				case W::enums::eParentUI::Interface:
+				case W::eParentUI::Interface:
 				{
 					if (pFindItem->GetIconType() == IconUI::eIconType::Equip)
 						return false;
@@ -349,7 +348,7 @@ namespace W
 					SceneManger::GetUI<InterfaceUI>()->InsertItem(pFindItem, pFindItem->GetName());
 				}
 				break;
-				case W::enums::eParentUI::EquipState:
+				case W::eParentUI::EquipState:
 					return false;
 				break;
 				}

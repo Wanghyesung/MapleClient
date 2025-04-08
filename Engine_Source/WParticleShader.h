@@ -2,7 +2,7 @@
 #include "WComputeShader.h"
 #include "WStructedBuffer.h"
 
-namespace W::graphics
+namespace W
 {
 	class ParticleShader : public ComputeShader
 	{

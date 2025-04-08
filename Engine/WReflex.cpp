@@ -5,8 +5,7 @@
 
 namespace W
 {
-	Reflex::Reflex(float _fAccStat):
-		UpStat(_fAccStat),
+	Reflex::Reflex():
 		m_fCurHp(0)
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();

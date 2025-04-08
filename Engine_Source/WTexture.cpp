@@ -1,10 +1,10 @@
 #include "WTexture.h"
 #include "WGraphicDevice_Dx11.h"
 
-namespace W::graphics
+namespace W
 {
 	Texture::Texture():
-		Resource(enums::eResourceType::Texture),
+		Resource(eResourceType::Texture),
 		m_Image{},
 		m_cpTexture(nullptr),
 		m_cpSRV(nullptr),

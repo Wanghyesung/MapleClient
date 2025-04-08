@@ -15,7 +15,6 @@ namespace W
 	private:
 		static std::queue<Packet*> m_queuePacket;
 
-		//받는쪽은 이벤트 매니저에 바로 넣기
-		//static std::queue<Packet*> m_queueRecvPacket;
+		
 	};
 }

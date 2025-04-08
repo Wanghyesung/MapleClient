@@ -3,7 +3,8 @@
 #include "WRenderer.h"
 #include "WTime.h"
 #include "WAnimator.h"
-#include "WObject.h"
+#include "WTransform.h"
+
 #include "WEventManager.h"
 namespace W
 {

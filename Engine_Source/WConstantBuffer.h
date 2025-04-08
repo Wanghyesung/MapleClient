@@ -2,7 +2,7 @@
 
 #include "WGraphics.h"
 
-namespace W::graphics
+namespace W
 {
 	class ConstantBuffer : public GpuBuffer
 	{

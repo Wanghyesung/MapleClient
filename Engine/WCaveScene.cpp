@@ -104,7 +104,6 @@ namespace W
 
 		ThreadPool::Joinable();
 
-		EndSound();
 	}
 	void CaveScene::CreateBackground()
 	{

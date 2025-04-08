@@ -1,10 +1,10 @@
 #include "WMaterial.h"
 
 
-namespace W::graphics
+namespace W
 {
 	Material::Material() :
-		Resource(W::enums::eResourceType::Material),
+		Resource(W::eResourceType::Material),
 		m_pShader(nullptr),
 		m_pTex(nullptr),
 		m_eMode(eRenderingMode::Opaque)

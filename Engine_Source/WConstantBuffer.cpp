@@ -1,7 +1,7 @@
 #include "WConstantBuffer.h"
 #include "WGraphicDevice_Dx11.h"
 
-namespace W::graphics
+namespace W
 {
 	ConstantBuffer::ConstantBuffer(const eCBType _eType) :
 		GpuBuffer(),
@@ -20,16 +20,16 @@ namespace W::graphics
 		desc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
 		desc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
 
-		W::graphics::GetDevice()->CreateBuffer(buffer.GetAddressOf(), &desc, nullptr);
+		W::GetDevice()->CreateBuffer(buffer.GetAddressOf(), &desc, nullptr);
 
 		return true;
 	}
 	void ConstantBuffer::SetData(void* _data)
 	{
-		W::graphics::GetDevice()->SetConstantBuffer(buffer.Get(), _data, desc.ByteWidth);
+		W::GetDevice()->SetConstantBuffer(buffer.Get(), _data, desc.ByteWidth);
 	}
 	void ConstantBuffer::Bind(eShaderStage _eStage)
 	{
-		W::graphics::GetDevice()->BindConstantBuffer(_eStage, m_eType, buffer.Get());
+		W::GetDevice()->BindConstantBuffer(_eStage, m_eType, buffer.Get());
 	}
 }

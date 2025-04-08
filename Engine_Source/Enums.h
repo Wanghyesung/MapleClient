@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace W::enums
+namespace W
 {
 	enum class eComponentType
 	{
