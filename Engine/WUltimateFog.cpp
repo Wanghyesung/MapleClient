@@ -16,8 +16,7 @@ namespace W
 		Resources::Insert(L"FogMater", pMater);
 
 		//충돌체 없음
-		std::shared_ptr<Texture> pTex =
-			Resources::Load<Texture>(L"ultimate2", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\ultimate2.png");
+		std::shared_ptr<Texture> pTex = Resources::Find<Texture>(L"ultimate2");
 
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"ultimate2",pTex, Vector2(0.f,0.f), Vector2(1412.f, 812.f),10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), 0.13f);

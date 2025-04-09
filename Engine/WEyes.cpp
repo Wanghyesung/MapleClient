@@ -8,6 +8,7 @@
 namespace W
 {
 	Eyes::Eyes():
+		m_bAlert(false),
 		m_iEyeNumber(0)
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
@@ -101,6 +102,9 @@ namespace W
 		pAnimator->Create(L"eyealert_swingQS_right" + strNum, pAtlasBdoy, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
 		pAnimator->FindAnimation(L"eyealert_swingQS_right" + strNum)->Create(L"eyealert_swingQS_right" + strNum, pAtlasBdoy, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
 		pAnimator->FindAnimation(L"eyealert_swingQS_right" + strNum)->Create(L"eyealert_swingQS_right" + strNum, pAtlasBdoy, Vector2(0, 1200.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
+
+		Vector3 vScale = m_pPlayerHead->GetComponent<Transform>()->GetScale();
+		GetComponent<Transform>()->SetScale(vScale);
 	}
 	void Eyes::Update()
 	{
@@ -108,7 +112,38 @@ namespace W
 	}
 	void Eyes::LateUpdate()
 	{
-		
+		Animator* pAnimator = GetComponent<Animator>();
+		Vector3 vPlayerPos = m_pPlayerHead->GetComponent<Transform>()->GetPosition();
+		GetComponent<Transform>()->SetPosition(vPlayerPos);
+
+		Player* pPlayer = m_pPlayerHead->GetPlayer();
+
+		int iDir = pPlayer->GetDir();
+		std::wstring strDir;
+		std::wstring strState;
+		std::wstring strEye = L"eye";
+		if (iDir > 0)
+			strDir = L"_right";
+		else
+			strDir = L"_left";
+
+		strState = pPlayer->GetCurStateName();
+
+		if (m_bAlert)
+			strEye += L"alert";
+
+		std::wstring strNum = std::to_wstring(m_iEyeNumber);
+
+		std::wstring strAnim = strEye + strState + strDir + strNum;
+
+		if (m_strCurAnim != strAnim)
+		{
+			Animation* pAnim = m_pPlayerHead->GetComponent<Animator>()->GetActiveAnimation();
+
+			m_strCurAnim = strAnim;
+			pAnimator->Play(strAnim, pPlayer->GetAnimIdx());
+		}
+
 		GameObject::LateUpdate();
 	}
 	void Eyes::Render()

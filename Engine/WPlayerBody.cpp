@@ -7,17 +7,34 @@
 #include "WPlayerTop.h"
 #include "WPlayerBottom.h"
 #include "WPlayerShoes.h"
+#include "WTransform.h"
+
 namespace W
 {
-	PlayerBody::PlayerBody() 
+	PlayerBody::PlayerBody()
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
+
 	}
 	PlayerBody::~PlayerBody()
 	{
-	
+		if (m_pPlayerTop)
+		{
+			delete m_pPlayerTop;
+			m_pPlayerTop = nullptr;
+		}
+		if (m_pPlayerBottom)
+		{
+			delete m_pPlayerBottom;
+			m_pPlayerBottom = nullptr;
+		}
+		if (m_pPlayerShoes)
+		{
+			delete m_pPlayerShoes;
+			m_pPlayerShoes = nullptr;
+		}
 	}
 	void PlayerBody::Initialize()
 	{
@@ -57,21 +74,79 @@ namespace W
 		pAnimator->FindAnimation(L"body_swingQS_right")->Create(L"body_swingQS_right", pAtlasBdoy, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
 		pAnimator->FindAnimation(L"body_swingQS_right")->Create(L"body_swingQS_right", pAtlasBdoy, Vector2(0, 1200.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
 
+
+		Vector3 vScale = m_pPlayer->GetComponent<Transform>()->GetScale();
+		GetComponent<Transform>()->SetScale(vScale);
+
+		m_pPlayerTop = new PlayerTop();
+		m_pPlayerTop->SetPlayerBody(this);
+
+		m_pPlayerBottom = new PlayerBottom();
+		m_pPlayerBottom->SetPlayerBody(this);
+
+		m_pPlayerShoes = new PlayerShoes();
+		m_pPlayerShoes->SetPlayerBody(this);
+
 	}
 	void PlayerBody::Update()
 	{
 		
 	}
+
 	void PlayerBody::LateUpdate()
 	{
-		
+		Animator* pAnimator = GetComponent<Animator>();
+		Vector3 vPlayerPos = m_pPlayer->GetComponent<Transform>()->GetPosition();
+		vPlayerPos.z -= 0.01f;
+		GetComponent<Transform>()->SetPosition(vPlayerPos);
+
+		int iDir = m_pPlayer->GetDir();
+		std::wstring strDir;
+		std::wstring strState;
+		if (iDir > 0)
+			strDir = L"_right";
+		else
+			strDir = L"_left";
+
+		strState = m_pPlayer->GetCurStateName();
+
+		std::wstring strAnim = L"body" + strState + strDir;
+
+		if (m_strCurAnim != strAnim)
+		{
+			m_strCurAnim = strAnim;
+			
+			pAnimator->Play(strAnim, m_pPlayer->GetAnimIdx());
+		}
+
 		GameObject::LateUpdate();
+
+		m_pPlayerBottom->LateUpdate();
+		m_pPlayerTop->LateUpdate();
+		m_pPlayerShoes->LateUpdate();
 
 	}
 	void PlayerBody::Render()
 	{
 		GameObject::Render();
 
+		m_pPlayerBottom->Render();
+		m_pPlayerTop->Render();
+		m_pPlayerShoes->Render();
+
+	}
+
+	void PlayerBody::SetEquipTop(Equip* _pEquip)
+	{
+		m_pPlayerTop->SetPlayerEquip(_pEquip);
+	}
+	void PlayerBody::SetEquipBottom(Equip* _pEquip)
+	{
+		m_pPlayerBottom->SetPlayerEquip(_pEquip);
+	}
+	void PlayerBody::SetEquipShoes(Equip* _pEquip)
+	{
+		m_pPlayerShoes->SetPlayerEquip(_pEquip);
 	}
 
 }

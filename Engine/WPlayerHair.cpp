@@ -4,7 +4,7 @@
 #include "WResources.h"
 #include "WRenderer.h"
 #include "WPlayerHead.h"
-
+#include "WTransform.h"
 namespace W
 {
 	PlayerHair::PlayerHair()
@@ -88,6 +88,8 @@ namespace W
 		pAnimator->FindAnimation(L"hairdown_swingQS_right" + strNum)->Create(L"hairdown_swingQS_right" + strNum, pAtlasBdoy, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
 		pAnimator->FindAnimation(L"hairdown_swingQS_right" + strNum)->Create(L"hairdown_swingQS_right" + strNum, pAtlasBdoy, Vector2(0, 1200.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
 
+		Vector3 vScale = m_pPlayerHead->GetComponent<Transform>()->GetScale();
+		GetComponent<Transform>()->SetScale(vScale);
 	}
 	void PlayerHair::Update()
 	{
@@ -95,7 +97,36 @@ namespace W
 	}
 	void PlayerHair::LateUpdate()
 	{
-		
+		Animator* pAnimator = GetComponent<Animator>();
+		Vector3 vPlayerPos = m_pPlayerHead->GetComponent<Transform>()->GetPosition();
+		GetComponent<Transform>()->SetPosition(vPlayerPos);
+
+		Player* pPlayer = m_pPlayerHead->GetPlayer();
+
+		int iDir = pPlayer->GetDir();
+		std::wstring strHair = L"hair";
+		std::wstring strDir;
+		std::wstring strState;
+		if (iDir > 0)
+			strDir = L"_right";
+		else
+			strDir = L"_left";
+
+		strState = pPlayer->GetCurStateName();
+
+		if (m_bHairDown)
+			strHair += L"down";
+
+		std::wstring strNum = std::to_wstring(m_iHairNum);
+
+		std::wstring strAnim = strHair + strState + strDir + strNum;
+
+		if (m_strCurAnim != strAnim)
+		{
+			m_strCurAnim = strAnim;
+			pAnimator->Play(strAnim, pPlayer->GetAnimIdx());
+		}
+
 
 		GameObject::LateUpdate();
 	}

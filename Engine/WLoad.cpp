@@ -21,8 +21,7 @@ namespace W
 		mr->SetMaterial(pMater);
 
 		Animator* pAnim = AddComponent<Animator>();
-		std::shared_ptr<Texture> pAtlas
-			= Resources::Find<Texture>(L"loadTex");
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"loadTex");
 		pAnim->Create(L"active", pAtlas, Vector2(0.0f, 0.0f), Vector2(1700.0f, 1200.0f), 5, Vector2(1700.f, 1700.f), Vector2::Zero, 0.1f);
 		pAnim->FindAnimation(L"active")->Create(L"active",pAtlas, Vector2(0.0f, 1200.0f), Vector2(1700.0f, 1200.0f), 5, Vector2(1700.f, 1700.f), Vector2::Zero, 0.1f);
 

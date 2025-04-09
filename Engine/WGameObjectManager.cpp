@@ -12,7 +12,7 @@
 
 namespace W
 {
-	std::unordered_map <UINT, std::function<GameObject* ()>> m_hashObject = {};
+	std::unordered_map <UINT, std::function<GameObject* ()>> GameObjectManager::m_hashObject = {};
 
 	void GameObjectManager::Initialize()
 	{

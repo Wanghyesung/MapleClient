@@ -28,7 +28,7 @@ namespace W
 	}
 	void Animator::LateUpdate()
 	{
-
+	
 	}
 	void Animator::Render()
 	{

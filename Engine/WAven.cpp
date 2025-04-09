@@ -22,12 +22,11 @@ namespace W
 		pMater->SetShader(Resources::Find<Shader>(L"ObjectShader"));
 		Resources::Insert(L"AvenMater", pMater);
 
-		std::shared_ptr<Texture> pAtlas
-			= Resources::Load<Texture>(L"avenTex", L"..\\Resources\\Texture\\Player\\skill\\ball.png");
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"avenTex");
 		pMater->SetTexture(pAtlas);
 		mr->SetMaterial(pMater);
 
-		Resources::Load<Texture>(L"aveneffect", L"..\\Resources\\Texture\\Player\\skill\\effect4.png");
+		//Resources::Load<Texture>(L"aveneffect", L"..\\Resources\\Texture\\Player\\skill\\effect4.png");
 	
 
 

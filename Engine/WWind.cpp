@@ -19,8 +19,7 @@ namespace W
 		Resources::Insert(L"WindMater", pMater);
 
 		Animator* pAnim = AddComponent<Animator>();
-		std::shared_ptr<Texture> pAtlas
-			= Resources::Find<Texture>(L"windTex"); 
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"windTex"); 
 		pAnim->Create(L"move_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(402.0f, 316.0f), 6, Vector2(600.f, 600.f), Vector2::Zero, 0.06f);
 		pAnim->Create(L"stop_left", pAtlas, Vector2(0.0f, 316.0f), Vector2(460.0f, 460.0f), 6, Vector2(600.f, 600.f), Vector2::Zero, 0.06f);
 		pAnim->Create(L"finish_left", pAtlas, Vector2(0.0f, 776.0f), Vector2(612.0f, 580.0f), 18, Vector2(600.f, 600.f), Vector2::Zero, 0.06f);

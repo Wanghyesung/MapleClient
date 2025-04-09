@@ -5,8 +5,8 @@
 #include "WSceneManger.h"
 namespace W
 {
-	std::vector<eLayerType> Scene::m_vecUpdateLayer = 
-	{eLayerType::Camera, eLayerType::Background, eLayerType::Light,eLayerType::UI};
+	//std::vector<eLayerType> Scene::m_vecUpdateLayer = 
+	//{eLayerType::Camera, eLayerType::Background, eLayerType::Light,eLayerType::UI};
 
 	Scene::Scene()
 	{
@@ -20,27 +20,24 @@ namespace W
 	}
 	void Scene::Update()
 	{
-		for (eLayerType eType : m_vecUpdateLayer)
+		for (Layer& layer : m_vecLayer)
 		{
-			Layer& UILayer = m_vecLayer[(UINT)eType];
-			UILayer.Update();
+			layer.Update();
 		}
 		
 	}
 	void Scene::LateUpdate()
 	{
-		for (eLayerType eType : m_vecUpdateLayer)
+		for (Layer& layer : m_vecLayer)
 		{
-			Layer& UILayer = m_vecLayer[(UINT)eType];
-			UILayer.LateUpdate();
+			layer.LateUpdate();
 		}
 	}
 	void Scene::Render()
 	{
-		for (eLayerType eType : m_vecUpdateLayer)
+		for (Layer& layer : m_vecLayer)
 		{
-			Layer& UILayer = m_vecLayer[(UINT)eType];
-			UILayer.Render();
+			layer.Render();
 		}
 	}
 

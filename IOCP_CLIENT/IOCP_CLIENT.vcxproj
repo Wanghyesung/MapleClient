@@ -74,12 +74,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>$(SolutionDir)\Lib\Libs\;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)Lib\Include\;$(SolutionDir)IOCP\;$(SolutionDir)Engine\;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)Lib\Libs\IOCP\$(Configuration)</OutDir>
+    <OutDir>$(SolutionDir)Lib\Libs\IOCP_CLIENT\$(Configuration)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryPath>$(SolutionDir)\Lib\Libs\;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)Lib\Include\;$(SolutionDir)IOCP\;$(SolutionDir)Engine\;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)Lib\Libs\IOCP\$(Configuration)</OutDir>
+    <OutDir>$(SolutionDir)Lib\Libs\IOCP_CLIENT\$(Configuration)</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -166,6 +166,7 @@
     <ClInclude Include="ServerPacketHandler.h" />
     <ClInclude Include="ServerSession.h" />
     <ClInclude Include="Transform.pb.h" />
+    <ClInclude Include="WRoom.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Collision.pb.cc">
@@ -218,6 +219,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WRoom.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

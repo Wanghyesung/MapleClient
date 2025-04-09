@@ -106,13 +106,13 @@ void ClientService::Start()
 	SockHelper::Start();
 
 	m_pClientSession = CreateSession();
-	//int iCount = GetMaxSessionCount();
-	//
-	//for (int i = 0; i < iCount; ++i)
-	//{
-	//	shared_ptr<Session> pSession = CreateSession();
-	//	pSession->Connect();
-	//}
+	int iCount = GetMaxSessionCount();
+	
+	for (int i = 0; i < iCount; ++i)
+	{
+		shared_ptr<Session> pSession = CreateSession();
+		pSession->Connect();
+	}
 
 }
 

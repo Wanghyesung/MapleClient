@@ -9,6 +9,7 @@
 
 #include "..\Engine\WItemManager.h"
 #include "..\Engine_Source\WThreadPool.h"
+#include "..\Engine\WGameObjectManager.h"
 #include "WPathManager.h"
 #include "WFmod.h"
 #include "WFontWrapper.h"
@@ -42,17 +43,19 @@ namespace W
 	{
 		PathManager::Initialize();
 		ThreadPool::Initiailize(4);
-		Time::Initiailize();
 		Input::Initialize();
-		Fmod::Initialize();
-		FontWrapper::Initialize();
-
+	
 		renderer::Initialize();
 		ItemManager::Initialize();
+
+		GameObjectManager::Initialize();
+		
 	}
 
 	void Application::Update()
 	{
+
+		Time::Update();
 		Input::Update();
 		
 		SceneManger::Update();

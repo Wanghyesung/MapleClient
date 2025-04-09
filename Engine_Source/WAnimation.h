@@ -58,6 +58,8 @@ namespace W
 		Animator* m_pAnimator;
 		std::vector<Sprite> m_vecSprites;
 		int m_iIndex;
+
+		float m_fTime;
 	};
 }
 

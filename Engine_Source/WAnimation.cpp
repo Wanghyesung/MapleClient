@@ -9,7 +9,8 @@ namespace W
 		Resource(eResourceType::Animation),
 		m_pAnimator(nullptr),
 		m_vecSprites{},
-		m_iIndex(-1)
+		m_iIndex(0),
+		m_fTime(0)
 	{
 
 	}

@@ -15,8 +15,16 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
+		void SetPlayer(Player* _pPlayer) { m_pPlayer = _pPlayer; }
+		Player* GetPlayer() { return m_pPlayer; }
+
 		void SetEquipWeapon(Equip* _pEquip);
 
+	private:
+		Player* m_pPlayer;
+
+		PlayerWeapon* m_pPlayerWeapon;
+		std::wstring m_strCurAnim;
 	};
 }
 

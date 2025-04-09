@@ -6,7 +6,7 @@
 #include "WPlayerHat.h"
 #include "WEyes.h"
 #include "WPlayerHair.h"
-
+#include "WTransform.h"
 namespace W
 {
 	PlayerHead::PlayerHead()
@@ -17,7 +17,21 @@ namespace W
 	}
 	PlayerHead::~PlayerHead()
 	{
-		
+		if (m_pPlayerHat)
+		{
+			delete m_pPlayerHat;
+			m_pPlayerHat = nullptr;
+		}
+		if (m_pPlayerHair)
+		{
+			delete m_pPlayerHair;
+			m_pPlayerHair = nullptr;
+		}
+		if (m_pPlayerEyes)
+		{
+			delete m_pPlayerEyes;
+			m_pPlayerEyes = nullptr;
+		}
 	}
 	void PlayerHead::Initialize()
 	{
@@ -56,19 +70,77 @@ namespace W
 		pAnimator->FindAnimation(L"head_swingQS_right")->Create(L"head_swingQS_right", pAtlasBdoy, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
 		pAnimator->FindAnimation(L"head_swingQS_right")->Create(L"head_swingQS_right", pAtlasBdoy, Vector2(0, 1200.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
 
+		Vector3 vScale = m_pPlayer->GetComponent<Transform>()->GetScale();
+		GetComponent<Transform>()->SetScale(vScale);
+
+		m_pPlayerHat = new PlayerHat();
+		m_pPlayerHat->SetPlayerHead(this);
+
+		m_pPlayerEyes = new Eyes();
+		m_pPlayerEyes->SetPlayerHead(this);
+		m_pPlayerEyes->Initialize();
+
+		m_pPlayerHair = new PlayerHair();
+		m_pPlayerHair->SetPlayerHead(this);
+		m_pPlayerHair->Initialize();
 	}
 
 	void PlayerHead::Update()
 	{
-		GameObject::Update();
+	
 	}
 	void PlayerHead::LateUpdate()
 	{
+		Animator* pAnimator = GetComponent<Animator>();
+		Vector3 vPlayerPos = m_pPlayer->GetComponent<Transform>()->GetPosition();
+		GetComponent<Transform>()->SetPosition(vPlayerPos);
+
+		int iDir = m_pPlayer->GetDir();
+		std::wstring strDir;
+		std::wstring strState;
+		if (iDir > 0)
+			strDir = L"_right";
+		else
+			strDir = L"_left";
+
+		strState = m_pPlayer->GetCurStateName();
+
+		std::wstring strAnim = L"head" + strState + strDir;
+
+		if (m_strCurAnim != strAnim)
+		{
+			m_strCurAnim = strAnim;
+			pAnimator->Play(strAnim, m_pPlayer->GetAnimIdx());
+		}
+
 		GameObject::LateUpdate();
+
+		m_pPlayerHair->LateUpdate();
+		m_pPlayerEyes->LateUpdate();
+		m_pPlayerHat->LateUpdate();
 	}
 	void PlayerHead::Render()
 	{
 		GameObject::Render();
+
+		m_pPlayerHair->Render();
+		m_pPlayerEyes->Render();
+		m_pPlayerHat->Render();
+	}
+
+	void PlayerHead::SetAlert(bool _bAlert)
+	{
+		m_pPlayerEyes->SetAlert(_bAlert);
+	}
+
+	void PlayerHead::SetEquipHat(Equip* _pEquip)
+	{
+		if (_pEquip == nullptr)
+			m_pPlayerHair->SetHairDown(false);
+		else
+			m_pPlayerHair->SetHairDown(true);
+
+		m_pPlayerHat->SetPlayerEquip(_pEquip);
 	}
 
 	void PlayerHead::SetHair(UINT _iHairNum)

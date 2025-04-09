@@ -43,6 +43,9 @@
     <ClInclude Include="NetFunc.h">
       <Filter>Net</Filter>
     </ClInclude>
+    <ClInclude Include="WRoom.h">
+      <Filter>Net</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -84,6 +87,9 @@
       <Filter>Net</Filter>
     </ClCompile>
     <ClCompile Include="NetFunc.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="WRoom.cpp">
       <Filter>Net</Filter>
     </ClCompile>
   </ItemGroup>

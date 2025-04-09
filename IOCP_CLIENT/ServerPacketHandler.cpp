@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "ServerPacketHandler.h"
 
+PacketHandlerFunc GPacketHandler[UINT16_MAX];
+
 bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt)
 {
 	return false;

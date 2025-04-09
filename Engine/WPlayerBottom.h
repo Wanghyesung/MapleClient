@@ -19,6 +19,8 @@ namespace W
 		
 		void SetPlayerEquip(Equip* _pEquip);
 
+		void SetPlayerBody(PlayerBody* _pPlayerBody) { m_pPlayerBody = _pPlayerBody; }
+
 		const std::wstring& GetCurAnimName() { return m_strCurAnim; }
 
 		void SetStop(bool _bStop) { GetComponent<Animator>()->Stop(_bStop); }

@@ -75,11 +75,39 @@ namespace W
 	}
 	void PlayerHat::LateUpdate()
 	{
-		
+		if (m_strCurEquip.size() == 0)
+			return;
+
+		Animator* pAnimator = GetComponent<Animator>();
+		Vector3 vPlayerPos = m_pPlayerHead->GetComponent<Transform>()->GetPosition();
+		vPlayerPos.z -= 0.02f;
+		GetComponent<Transform>()->SetPosition(vPlayerPos);
+
+		Player* pPlayer = m_pPlayerHead->GetPlayer();
+		int iDir = pPlayer->GetDir();
+		std::wstring strDir;
+		std::wstring strState;
+		if (iDir > 0)
+			strDir = L"_right";
+		else
+			strDir = L"_left";
+
+		strState = pPlayer->GetCurStateName();
+
+		std::wstring strAnim = m_strCurEquip + strState + strDir;
+
+		if (m_strCurAnim != strAnim)
+		{
+			m_strCurAnim = strAnim;
+			pAnimator->Play(strAnim, pPlayer->GetAnimIdx());
+		}
+
 		GameObject::LateUpdate();
 	}
 	void PlayerHat::Render()
 	{
+		if (m_strCurEquip.size() == 0)
+			return;
 		GameObject::Render();
 	}
 	void PlayerHat::SetPlayerEquip(Equip* _pEquip)

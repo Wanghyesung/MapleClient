@@ -38,16 +38,6 @@ namespace W
 		//pValleyMater->SetRenderinMode(eRenderingMode::Transparent);
 		Resources::Insert(L"dragonValleyMater", pValleyMater);
 
-
-		//npc
-		std::shared_ptr<Texture> pNPCTex =
-			Resources::Load<Texture>(L"NPCTex1", L"..\\Resources\\Texture\\NPC\\npc1.png");
-
-		std::shared_ptr<Material> pNPCMater = std::make_shared<Material>();
-		pNPCMater->SetShader(Resources::Find<Shader>(L"ObjectShader"));
-		pNPCMater->SetTexture(pNPCTex);
-		Resources::Insert(L"NPCMater1", pNPCMater);
-
 		SetMapSize(0.f, 7.f, 0.f, -7.f);
 		SetMapPossibleSize(-4.37f, 4.37f);
 	}
