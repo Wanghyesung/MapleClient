@@ -608,6 +608,9 @@
     <ClInclude Include="WGameObjectManager.h">
       <Filter>Contents\Manager\ObjectManager</Filter>
     </ClInclude>
+    <ClInclude Include="WInputPacket.h" />
+    <ClInclude Include="WPacket.h" />
+    <ClInclude Include="WPacketManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
@@ -1211,6 +1214,9 @@
     <ClCompile Include="WGameObjectManager.cpp">
       <Filter>Contents\Manager\ObjectManager</Filter>
     </ClCompile>
+    <ClCompile Include="WInputPacket.cpp" />
+    <ClCompile Include="WPacketManager.cpp" />
+    <ClCompile Include="WPacket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -1644,6 +1650,9 @@
     </Filter>
     <Filter Include="Contents\Manager\ObjectManager">
       <UniqueIdentifier>{6339027a-5aaa-4d38-8906-ef716d59473a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Packet">
+      <UniqueIdentifier>{222832eb-53d8-4c8a-9244-7a9f2cdc613e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

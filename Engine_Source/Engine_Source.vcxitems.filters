@@ -97,11 +97,11 @@
     <Filter Include="ThreadPool">
       <UniqueIdentifier>{24ad2f3e-a5b0-4806-ab27-1d84500e448a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Packet">
-      <UniqueIdentifier>{dac06cb1-f434-4267-af12-d4b89f583c8b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PathManager">
       <UniqueIdentifier>{a7904808-9881-429c-b18e-33d5d7d2c5c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Packet">
+      <UniqueIdentifier>{fbe9165a-f04c-4bfd-9c58-19843f59921f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -218,12 +218,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)WThreadPool.cpp">
       <Filter>ThreadPool</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)WPacketManager.cpp">
-      <Filter>Packet</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)WPacket.cpp">
-      <Filter>Packet</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)WPathManager.cpp">
       <Filter>PathManager</Filter>
@@ -358,12 +352,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WThreadPool.h">
       <Filter>ThreadPool</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)WPacketManager.h">
-      <Filter>Packet</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)WPacket.h">
-      <Filter>Packet</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WPathManager.h">
       <Filter>PathManager</Filter>

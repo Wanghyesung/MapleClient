@@ -49,6 +49,7 @@ namespace W
 
 
 	std::vector<Input::Key> Input::m_vecKeys;
+	std::vector<UCHAR> Input::m_vecCurKeys;
 	Vector2 Input::m_vMousePos = Vector2::Zero;
 
 	void Input::Initialize()
@@ -68,7 +69,7 @@ namespace W
 	{
 		if (GetFocus())
 		{
-
+			m_vecCurKeys.clear();
 			for (UINT i = 0; i < (UINT)eKeyCode::NONE; i++)
 			{
 				if (GetAsyncKeyState(ASCII[i]) & 0x8000)
@@ -80,6 +81,7 @@ namespace W
 						m_vecKeys[i].state = eKeyState::Down;
 
 					m_vecKeys[i].bPressed = true;
+					m_vecCurKeys.push_back(i);
 				}
 				else // 현재 프레임에 키가 눌려있지 않다.
 				{

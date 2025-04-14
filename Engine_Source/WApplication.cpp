@@ -27,6 +27,7 @@ namespace W
 
 	Application::~Application()
 	{
+
 	}
 
 	void Application::Run()

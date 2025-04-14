@@ -66,7 +66,6 @@ Global
 		SolutionGuid = {1D848CFE-EBF0-4C2C-8E62-009C0C603C40}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Engine_Source\Engine_Source.vcxitems*{4d6dfd88-1987-40d0-8c60-286377b3f23a}*SharedItemsImports = 4
 		Shader_Source\Shader_Source.vcxitems*{61ea6587-6306-4326-8b23-3d5411667a2e}*SharedItemsImports = 9
 		Engine_Source\Engine_Source.vcxitems*{fa95d34b-aa75-4906-8677-b8cca43dce10}*SharedItemsImports = 9
 		Engine_Source\Engine_Source.vcxitems*{fbea7778-58bf-476c-b230-ad22cb7d5c09}*SharedItemsImports = 4
