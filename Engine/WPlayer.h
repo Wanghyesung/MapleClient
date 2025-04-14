@@ -80,6 +80,8 @@ namespace W
 			}
 		}
 
+		UINT GetUserID() { return m_iPlayerID; }
+		void SetTargetPlayer();
 	private:
 		void child_render();
 		void child_lateupdate();
@@ -92,6 +94,10 @@ namespace W
 		std::wstring m_strCurStateName;
 		ePlayerState m_ePlayerState;
 		ePlayerState m_ePrevPlayerState;
+
+		UINT m_iPlayerID;
+
+		friend class EventManager;
 	};
 }
 

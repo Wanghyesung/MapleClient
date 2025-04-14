@@ -1,5 +1,5 @@
 #pragma once
-#include "Engine.h"
+#include "..\Engine_Source\Engine.h"
 
 namespace W
 {
@@ -35,6 +35,7 @@ namespace W
 	
 		static void ChangeScene(const std::wstring& _strNextScene);
 	
+		static void AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID);
 	private:
 		static void excute(const tEvent& _tEve);
 

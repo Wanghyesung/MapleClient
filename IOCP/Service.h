@@ -81,6 +81,10 @@ public:
 	void Connect();
 	shared_ptr<Session> GetClientSession() { return m_pClientSession; }
 
+public :
+	void Connected() { m_bConnected = true; }
+
 private:
 	shared_ptr<Session> m_pClientSession; 
+	atomic<bool> m_bConnected;
 };

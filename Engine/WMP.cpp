@@ -27,8 +27,8 @@ namespace W
 	}
 	void MP::Initialize()
 	{
-		std::vector<GameObject*> vecObj = SceneManger::GetActiveScene()->GetLayer(eLayerType::Player).GetGameObjects();
-		Player* pPlayer = dynamic_cast<Player*>(vecObj[0]);
+		//std::vector<GameObject*> vecObj = SceneManger::GetActiveScene()->GetLayer(eLayerType::Player).GetGameObjects();
+		//Player* pPlayer = dynamic_cast<Player*>(vecObj[0]);
 
 		//m_pPlayerScript = pPlayer->GetScript<PlayerScript>();
 	}

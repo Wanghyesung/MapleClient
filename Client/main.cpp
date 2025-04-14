@@ -1,34 +1,11 @@
-﻿//정적라이브러리 추가 1. 소스코드  2. 비주얼스튜디오 옵션
-//정적라이브러리에 들어가기 위한 헤더파일 include 
-
-//참조 -> 엔진소수 추가
-
-
-//정적라이브러리의 commoninclude헤더파일 include해야 알수있음
-//#include "..\Client_Source\CommonInclude.h"
-
-////하나하나 전부 해줄 수 없기 때문에
-//#include "CommonInclude.h"
-//
-////디버그일떄 Debug파일에 정적라이브러리를 참조하고 Release일때는 Release파일에 정적라이브러리 참조
-#ifdef _DEBUG
+﻿#ifdef _DEBUG
 #pragma comment (lib,"..\\x64\\Debug\\Engine.lib")
-#pragma comment(lib, "IOCP\\Debug\\IOCP.lib")
-#pragma comment(lib, "ProtoBuf\\Debug\\libprotobufd.lib")
 
 #else
 #pragma comment (lib, "..\\x64\\Release\\Engine.lib")
-#pragma comment(lib, "IOCP\\Release\\IOCP.lib")
-#pragma comment(lib, "ProtoBuf\\Release\\libprotobufd.lib")
 
 #endif
 
-
-//공유 항목 프로젝트는 어느 플랫폼이여도 사용가능하기 때문에
-//빌드 중속성 굳이 하나하나 빌드가 아니라 하나를 돌리면 같이 빌드되게
-//engine -> editer
-//기존 클래스 복사 -> 기존항복에 추가 
-//c++ 버전 20으로
 #include "framework.h"
 #include "Client.h"
 #include "..\Engine_Source\WApplication.h"
@@ -68,7 +45,7 @@ shared_ptr<ServerSession> MakeSharedSesion()
 atomic<bool> bIsRunning = true;
 
 W::Application application;
-shared_ptr< ClientService> GClientService;
+extern shared_ptr< ClientService> GClientService;
 
 #define MAX_LOADSTRING 100
 
@@ -92,7 +69,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    //_CrtSetBreakAlloc(16485);
+    //_CrtSetBreakAlloc(71104);
     // TODO: 여기에 코드를 입력합니다.
     
     // 전역 문자열을 초기화합니다.
@@ -109,6 +86,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     GClientService = make_shared<ClientService>(NetAddress(L"127.0.0.1", 7777),
         make_shared<IOCP>(), MakeSharedSesion, 1);
     
+    ServerPacketHandler::Initialize();
     GClientService->Start();
     
     for (int i = 0; i < 5; ++i)

@@ -4,8 +4,10 @@
 #include "WObjectPoolManager.h"
 #include "..\Engine\WPlayerAttackObject.h"
 #include "..\Engine\WMonsterAttackObject.h"
+#include "..\Engine\WPlayer.h"
 #include "WGameObject.h"
 #include "WLayer.h"
+
 namespace W
 {
 	std::vector<tEvent> EventManager::m_vecEvent = {};
@@ -117,6 +119,35 @@ namespace W
 		m_strNextScene = _strNextScene;
 
 		AddEvent(eve);
+	}
+	void EventManager::AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID)
+	{
+		tEvent eve = {};
+		eve.eEventType = EVENT_TYPE::CREATE_OBJECT;
+
+		Player* pPlayer = new Player();
+		pPlayer->SetName(L"Player");
+		pPlayer->Initialize();
+		pPlayer->m_iPlayerID = _iPlayerID;
+		pPlayer->SetTargetPlayer();
+
+		eve.lParm = (DWORD_PTR)pPlayer;
+		eve.wParm = (DWORD_PTR)eLayerType::Player;
+
+		AddEvent(eve);
+
+		for (int i = 0; i < _vecPlayerID.size(); ++i)
+		{
+			pPlayer = new Player();
+			pPlayer->SetName(L"Other_Player");
+			pPlayer->Initialize();
+			pPlayer->m_iPlayerID = _vecPlayerID[i];
+		
+			eve.lParm = (DWORD_PTR)pPlayer;
+			eve.wParm = (DWORD_PTR)eLayerType::Player;
+
+			AddEvent(eve);
+		}
 	}
 	void EventManager::CreateObject(GameObject* _pObj, eLayerType _eLayer)
 	{

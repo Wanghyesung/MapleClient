@@ -14,7 +14,9 @@
 #include "WShadow.h"
 #include "WTransform.h"
 #include "WThreadPool.h"
-
+#include "WSceneManger.h"
+#include "WEquipState.h"
+#include "WCameraScript.h"
 namespace W
 {
 	Player::Player():
@@ -82,7 +84,6 @@ namespace W
 
 	void Player::Initialize()
 	{
-		//PlayerScript* pPlayerScript = AddComponent<PlayerScript>();
 		
 		GetComponent<Transform>()->SetScale(1.5f, 1.5f, 0.f);
 		GetComponent<Transform>()->SetPosition(0.f, -5.f, -2.f);
@@ -103,7 +104,8 @@ namespace W
 		pPlayerArm->SetPlayer(this);
 		pPlayerArm->Initialize();
 		m_vecChildObj[2] = pPlayerArm;
-
+			
+		
 	}
 	void Player::Update()
 	{
@@ -176,6 +178,17 @@ namespace W
 			GetPlayerChild<PlayerArm>()->SetEquipWeapon(nullptr);
 			break;
 		}
+	}
+
+	void Player::SetTargetPlayer()
+	{
+		renderer::MainCamera->GetOwner()->GetScript<CameraScript>()->SetPlayer(this);
+
+		EquipState* pEquipState = new EquipState();
+		pEquipState->SetName(L"Equip");
+		SceneManger::AddGameObject(eLayerType::UI, pEquipState);
+		pEquipState->SetPlayer(this);
+		pEquipState->Initialize();
 	}
 
 	void Player::child_render()

@@ -51,17 +51,11 @@ namespace W
 		setobject();
 		setmonster();
 
-		Player* pPlayer = new Player();
+		/*Player* pPlayer = new Player();
 		pPlayer->SetName(L"Player");
 		AddGameObject(eLayerType::Player, pPlayer);
-		pPlayer->Initialize();
+		pPlayer->Initialize();*/
 
-
-		EquipState* pEquipState = new EquipState();
-		pEquipState->SetName(L"Equip");
-		SceneManger::AddGameObject(eLayerType::UI, pEquipState);
-		pEquipState->SetPlayer(pPlayer);
-		pEquipState->Initialize();
 
 		InterfaceUI* pInterUI = new InterfaceUI();
 		pInterUI->SetName(L"Interface");
@@ -82,7 +76,7 @@ namespace W
 			pCameraComp->TurnLayerMask(eLayerType::UI, false);
 			CameraScript* pCameraScript = pCamera->AddComponent<CameraScript>();
 			renderer::MainCamera = pCameraComp;
-			pCameraScript->SetPlayer(pPlayer);
+			//pCameraScript->SetPlayer(pPlayer);
 		}
 
 		//ui camera

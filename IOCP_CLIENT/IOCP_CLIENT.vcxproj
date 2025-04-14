@@ -71,12 +71,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>$(SolutionDir)\Lib\Libs\;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Lib\Include\;$(SolutionDir)IOCP\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Lib\Include\;$(SolutionDir)Engine\;$(SolutionDir)IOCP\;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)Lib\Libs\IOCP_CLIENT\$(Configuration)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryPath>$(SolutionDir)\Lib\Libs\;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Lib\Include\;$(SolutionDir)IOCP\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Lib\Include\;$(SolutionDir)Engine\;$(SolutionDir)IOCP\;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)Lib\Libs\IOCP_CLIENT\$(Configuration)</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
