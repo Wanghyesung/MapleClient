@@ -87,7 +87,7 @@ namespace W
 
 	private:
 		static std::vector<Key> m_vecKeys;
-		static std::vector<UCHAR> m_vecCurKeys;
+		static std::vector<pair<UCHAR, UCHAR>> m_vecCurKeys;
 		static Vector2 m_vMousePos;
 	};
 

@@ -81,10 +81,14 @@ public:
 	void Connect();
 	shared_ptr<Session> GetClientSession() { return m_pClientSession; }
 
+	UINT GetPlayerID() { return m_iPlayerID; }
+	void SetPlayerID(UINT _iPlayerID) { m_iPlayerID = _iPlayerID; }
+
 public :
 	void Connected() { m_bConnected = true; }
 
 private:
 	shared_ptr<Session> m_pClientSession; 
 	atomic<bool> m_bConnected;
+	UINT m_iPlayerID;
 };

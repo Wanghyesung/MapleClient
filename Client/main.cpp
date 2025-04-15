@@ -88,7 +88,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     
     ServerPacketHandler::Initialize();
     GClientService->Start();
-    
+    GClientService->Connect();
     for (int i = 0; i < 5; ++i)
     {
         ThreadMgr->Excute(

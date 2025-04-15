@@ -4,9 +4,13 @@
 #include "WCamera.h"
 #include "WRenderer.h"
 
+#include "..\IOCP_CLIENT\Input.pb.h"
+#include "..\IOCP_CLIENT\ServerSession.h"
+#include "..\IOCP_CLIENT\ServerPacketHandler.h"
+#include "..\IOCP\Service.h"
 
 extern W::Application application;
-
+extern shared_ptr< ClientService> GClientService;
 namespace W
 {
 	int ASCII[(UINT)eKeyCode::NONE] =
@@ -49,7 +53,7 @@ namespace W
 
 
 	std::vector<Input::Key> Input::m_vecKeys;
-	std::vector<UCHAR> Input::m_vecCurKeys;
+	std::vector<pair<UCHAR,UCHAR>> Input::m_vecCurKeys;
 	Vector2 Input::m_vMousePos = Vector2::Zero;
 
 	void Input::Initialize()
@@ -67,29 +71,43 @@ namespace W
 
 	void Input::Update()
 	{
+		m_vecCurKeys.clear();
 		if (GetFocus())
 		{
-			m_vecCurKeys.clear();
 			for (UINT i = 0; i < (UINT)eKeyCode::NONE; i++)
 			{
 				if (GetAsyncKeyState(ASCII[i]) & 0x8000)
 				{
 					// 이전 프레임에도 눌려 있었다
 					if (m_vecKeys[i].bPressed)
+					{
 						m_vecKeys[i].state = eKeyState::Pressed;
+						m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Pressed));
+					}
+						
 					else
+					{
 						m_vecKeys[i].state = eKeyState::Down;
+						m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Down));
+					}
 
 					m_vecKeys[i].bPressed = true;
-					m_vecCurKeys.push_back(i);
+					
 				}
 				else // 현재 프레임에 키가 눌려있지 않다.
 				{
 					// 이전 프레임에 내키가 눌려있엇다.
 					if (m_vecKeys[i].bPressed)
+					{
 						m_vecKeys[i].state = eKeyState::Up;
+						m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Up));
+					}
+						
 					else
+					{
 						m_vecKeys[i].state = eKeyState::None;
+						m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::None));
+					}
 
 					m_vecKeys[i].bPressed = false;
 				}
@@ -118,17 +136,33 @@ namespace W
 				if (eKeyState::Down == m_vecKeys[i].state
 					|| eKeyState::Pressed == m_vecKeys[i].state)
 				{
-					m_vecKeys[i].state = eKeyState::Up;
+					//m_vecKeys[i].state = eKeyState::Up;
+					m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Up));
+
 				}
 				else if (eKeyState::Up == m_vecKeys[i].state)
 				{
-					m_vecKeys[i].state = eKeyState::None;
+					//m_vecKeys[i].state = eKeyState::None;
+					m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::None));
 				}
 
 				m_vecKeys[i].bPressed = false;
 			}
 		}
-	}
+
+		Protocol::C_INPUT pkt;
+		pkt.set_playerid(GClientService->GetPlayerID());
+
+		for (int i = 0; i < m_vecCurKeys.size(); ++i)
+		{
+		 	//눌린 키, 상태 (0~255 1바이트 표현)
+			pkt.add_inpus((m_vecCurKeys[i].first << 8) | m_vecCurKeys[i].second);
+		}
+		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+
+		GClientService->GetClientSession()->Send(pSendBuffer);
+	}	
+
 
 	void Input::Render(HDC hdc)
 	{
