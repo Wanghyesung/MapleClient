@@ -2,6 +2,6 @@
 
 namespace W
 {
-	std::mutex Resources::m_mutex;
+	RWLock Resources::m_lock = {};
 	std::map<std::wstring, std::shared_ptr<Resource>> Resources::m_mapResources;
 }

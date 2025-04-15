@@ -141,32 +141,6 @@ namespace W
 
 		//자식UI
 #pragma region ChildUI
-		//편집으로
-		//ChannleBntUI* pChannleUI = new ChannleBntUI();
-		//
-		//pChannleUI->GetComponent<Transform>()->SetPosition(1.65f,-0.23f,-0.01f);
-		//pChannleUI->GetComponent<Transform>()->SetScale(1.5f * 0.5f, 0.7f * 0.5f, 0.f);
-		//AddChildUI(pChannleUI);
-		//
-		//ShopUI* pShopUI = new ShopUI();
-		//pShopUI->GetComponent<Transform>()->SetPosition(-0.9f, -0.23f, -0.01f);
-		//pShopUI->GetComponent<Transform>()->SetScale(1.1f * 0.5f, 0.7f * 0.5f, 0.f); //11 : 7
-		//AddChildUI(pShopUI);
-		//
-		//StarUI* pStarUI = new StarUI();
-		//pStarUI->GetComponent<Transform>()->SetPosition(-0.3f, -0.23f, -0.01f);
-		//pStarUI->GetComponent<Transform>()->SetScale(1.1f * 0.5f, 0.7f * 0.5f, 0.f); //11 : 7
-		//AddChildUI(pStarUI);
-		//
-		//MenuUI* pMenuUI = new MenuUI();
-		//pMenuUI->GetComponent<Transform>()->SetPosition(0.3f, -0.23f, -0.01f);
-		//pMenuUI->GetComponent<Transform>()->SetScale(1.1f * 0.5f, 0.7f * 0.5f, 0.f); //11 : 7
-		//AddChildUI(pMenuUI);
-		//
-		//SystemUI* pSystemUI = new SystemUI();
-		//pSystemUI->GetComponent<Transform>()->SetPosition(0.9f, -0.23f, -0.01f);
-		//pSystemUI->GetComponent<Transform>()->SetScale(1.1f * 0.5f, 0.7f * 0.5f, 0.f); //11 : 7
-		//AddChildUI(pSystemUI);
 
 		//extra
 		CharUI* pCharUI = new CharUI();
@@ -214,11 +188,13 @@ namespace W
 
 #pragma region Extra UI
 		Inventory* pInventory = new Inventory();
+		pInventory->SetObjectID(1);
 		pInventory->SetName(L"Inven");
 		SceneManger::AddGameObject(eLayerType::UI, pInventory);
 		pInventory->Initialize();
 
 		SKillStorage* pSKillStorage = new SKillStorage();
+		pSKillStorage->SetObjectID(2);
 		pSKillStorage->SetName(L"Skill");
 		SceneManger::AddGameObject(eLayerType::UI, pSKillStorage);
 		pSKillStorage->Initialize();

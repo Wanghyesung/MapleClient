@@ -4,11 +4,12 @@
 
 #define REGISTER_OBJECT_FACTORY(name, id)               \
 {                                                       \
-    name::SetObjectID(id);                              \
+    name::SetCreateID(id);                              \
     m_hashObject[id] = []() -> GameObject* {            \
         return new name();                              \
     };                                                  \
 };
+
 
 namespace W
 {

@@ -51,28 +51,6 @@ namespace W
 
 	}
 
-	void UIManger::SetFoucseUI(UI* _pUI)
-	{
-		//if (m_pFoucseUI == _pUI || _pUI == nullptr)
-		//{
-		//	m_pFoucseUI = _pUI;
-		//	return;
-		//}
-		Layer& pLayer = SceneManger::GetActiveScene()->GetLayer(eLayerType::UI);
-		std::vector<GameObject*>& vecUI = pLayer.m_vecGameObject;
-		std::vector<GameObject*>::iterator iter = vecUI.begin();
-
-		for (; iter != vecUI.end(); ++iter)
-		{
-			if (*iter == _pUI)
-				break;
-		}
-
-		//가장 뒤로 보냄
-		vecUI.erase(iter);
-	
-		vecUI.push_back(m_pFoucseUI);
-	}
 
 	void UIManger::MoveFrontChildUI(UI* pUI)
 	{
@@ -90,14 +68,14 @@ namespace W
 		if (!bIsLbntDown)
 			return pFoucseUI;
 
-		std::vector<GameObject*> vecUI = pLayer.GetGameObjects();
+		const std::unordered_map<UINT, GameObject*>& hashUI = pLayer.GetGameObjects();
 
-		std::vector<GameObject*>::iterator targetiter = vecUI.end();
-		std::vector<GameObject*>::iterator iter = vecUI.begin();
+		auto targetiter = hashUI.end();
+		auto iter = hashUI.begin();
 
-		for (; iter != vecUI.end(); ++iter)
+		for (; iter != hashUI.end(); ++iter)
 		{
-			UI* pUI = dynamic_cast<UI*>(*iter);
+			UI* pUI = dynamic_cast<UI*>(iter->second);
 			if (!pUI)
 				continue;
 
@@ -107,13 +85,10 @@ namespace W
 			}
 		}
 
-		if (vecUI.end() == targetiter)
+		if (hashUI.end() == targetiter)
 			return nullptr;
 
-		pFoucseUI = ((UI*)*targetiter);
-
-		vecUI.erase(targetiter);
-		vecUI.push_back(pFoucseUI);
+		pFoucseUI = ((UI*)targetiter->second);
 
 		return pFoucseUI;
 	}
@@ -177,14 +152,16 @@ namespace W
 	void UIManger::ReleaseChildUI()
 	{
 		Layer& pLayer = SceneManger::GetActiveScene()->GetLayer(eLayerType::UI);
-		std::vector<GameObject*> m_vecUI = pLayer.GetGameObjects();
+		const std::unordered_map<UINT, GameObject*>& hashUI = pLayer.GetGameObjects();
 		
-		for (GameObject* pObj : m_vecUI)
+		auto iter = hashUI.begin();
+		for (iter; iter != hashUI.end(); ++iter)
 		{
+			GameObject* pObj = iter->second;
+
 			UI* pUI = dynamic_cast<UI*>(pObj);
 			if (!pUI)
 				continue;
-
 			std::queue<UI*> queue;
 			queue.push(pUI);
 
@@ -202,7 +179,7 @@ namespace W
 						delete pChildUI;
 						pChildUI = nullptr;
 					}
-						
+
 					else
 					{
 						//벡터에서 지우고 메모리 해제
@@ -220,8 +197,6 @@ namespace W
 				}
 			}
 		}
-
-
 	}
 	
 }

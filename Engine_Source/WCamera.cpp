@@ -137,10 +137,8 @@ namespace W
 			if (m_bitLayerMask[i] == true)
 			{
 				Layer& layer = pScene->GetLayer((eLayerType)i);
-				const std::vector<GameObject*> vecGameObjects =
-					layer.GetGameObjects();
-
-				DivideAlphaBlendGameObjects(vecGameObjects);
+				
+				DivideAlphaBlendGameObjects(layer.GetGameObjects());
 			}
 		}
 	}
@@ -157,10 +155,13 @@ namespace W
 
 	}
 	
-	void Camera::DivideAlphaBlendGameObjects(const std::vector<GameObject*> _vecGameObj)
+	void Camera::DivideAlphaBlendGameObjects(const std::unordered_map<UINT, GameObject*> _hashGameObj)
 	{
-		for (GameObject* obj : _vecGameObj)
+		auto iter = _hashGameObj.begin();
+		for (iter; iter!= _hashGameObj.end(); ++iter)
 		{
+			GameObject* obj = iter->second;
+
 			MeshRenderer* pMeshRender =
 				obj->GetComponent<MeshRenderer>();
 

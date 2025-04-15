@@ -44,6 +44,7 @@ namespace W
 
 		{
 			GameObject* pCamera = new GameObject();
+			pCamera->SetObjectID(0);
 			pCamera->SetName(L"ObjCam");
 			AddGameObject(eLayerType::Camera, pCamera);
 			pCamera->GetComponent<Transform>()->SetPosition(Vector3(0.f, 0.f, -10.f));
@@ -55,6 +56,7 @@ namespace W
 		//ui camera
 		{
 			GameObject* pUICamera = new GameObject();
+			pUICamera->SetObjectID(1);
 			pUICamera->SetName(L"UICam");
 			AddGameObject(eLayerType::Camera, pUICamera);
 			pUICamera->GetComponent<Transform>()->SetPosition(Vector3(0.f, 0.f, -10.f));
@@ -104,17 +106,17 @@ namespace W
 	}
 	void HelisiumBoss::StartSound()
 	{
-		const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
+		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
 		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
 		pAudio->SetLoop(true);
-		pAudio->Play();
+		pAudio->Play();*/
 	}
 
 	void HelisiumBoss::EndSound()
 	{
-		const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
+		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
 		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->Stop();
+		pAudio->Stop();*/
 	}
 	void HelisiumBoss::create_monster()
 	{

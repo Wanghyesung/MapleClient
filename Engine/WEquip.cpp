@@ -52,7 +52,7 @@ namespace W
 	}
 	void Equip::MouseLbtnDown()
 	{
-		UIManger::SetFoucseUI(GetParentUI());
+		//UIManger::SetFoucseUI(GetParentUI());
 		IconUI::MouseLbtnDown();
 	}
 	void Equip::MouseLbtnUp()

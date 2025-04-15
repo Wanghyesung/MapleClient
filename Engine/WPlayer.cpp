@@ -185,6 +185,7 @@ namespace W
 		renderer::MainCamera->GetOwner()->GetScript<CameraScript>()->SetPlayer(this);
 
 		EquipState* pEquipState = new EquipState();
+		pEquipState->SetObjectID(4);
 		pEquipState->SetName(L"Equip");
 		SceneManger::AddGameObject(eLayerType::UI, pEquipState);
 		pEquipState->SetPlayer(this);

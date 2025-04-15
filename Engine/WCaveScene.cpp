@@ -56,6 +56,7 @@ namespace W
 		CreateBackground();
 		{
 			GameObject* pCamera = new GameObject();
+			pCamera->SetObjectID(0);
 			pCamera->SetName(L"ObjCam");
 			AddGameObject(eLayerType::Camera, pCamera);
 			pCamera->GetComponent<Transform>()->SetPosition(Vector3(0.f, 0.f, -10.f));
@@ -67,6 +68,7 @@ namespace W
 		//ui camera
 		{
 			GameObject* pUICamera = new GameObject();
+			pUICamera->SetObjectID(1);
 			pUICamera->SetName(L"UICam");
 			AddGameObject(eLayerType::Camera, pUICamera);
 			pUICamera->GetComponent<Transform>()->SetPosition(Vector3(0.f, 0.f, -10.f));
@@ -108,7 +110,8 @@ namespace W
 	void CaveScene::CreateBackground()
 	{
 		GameObject* pBackGround = new GameObject();
-		
+		pBackGround->SetObjectID(0);
+
 		AddGameObject(eLayerType::Background, pBackGround);
 		MeshRenderer* pMeshRender = pBackGround->AddComponent<MeshRenderer>();
 		pMeshRender->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -120,17 +123,17 @@ namespace W
 	}
 	void CaveScene::StartSound()
 	{
-		const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
+		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
 		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
 		pAudio->SetLoop(true);
-		pAudio->Play();
+		pAudio->Play();*/
 	}
 
 	void CaveScene::EndSound()
 	{
-		const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
+		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
 		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->Stop();
+		pAudio->Stop();*/
 	}
 	void CaveScene::create_object()
 	{	
@@ -150,7 +153,7 @@ namespace W
 	}
 	void CaveScene::create_effect()
 	{
-
+		//ThreadPool::LoadingResource<Texture>()
 		Resources::Load<Texture>(L"icebreathHit", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack0_hit.png");
 
 		Resources::Load<Texture>(L"iceHit", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack1_hit.png");

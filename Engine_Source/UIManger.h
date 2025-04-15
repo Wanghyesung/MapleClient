@@ -9,7 +9,6 @@ namespace W
 	{
 	public:
 		static void Update();
-		static void SetFoucseUI(UI* _pUI);
 		static void MoveFrontChildUI(UI* pUI);
 
 		static UI* GetFoucseUI();

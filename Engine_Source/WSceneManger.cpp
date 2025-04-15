@@ -6,6 +6,7 @@
 #include "..\Engine\WPlayerAttackObject.h"
 #include "..\Engine\WObjectPoolManager.h"
 
+extern UINT PLAYER_ID;
 namespace W
 {
 	Scene* SceneManger::m_pActiveScene = nullptr;
@@ -25,11 +26,6 @@ namespace W
 	void SceneManger::Render()
 	{
 		m_pActiveScene->Render();
-	}
-
-	void SceneManger::Destroy()
-	{
-		m_pActiveScene->Destroy();
 	}
 
 	void SceneManger::Release()
@@ -69,11 +65,11 @@ namespace W
 	}
 
 	GameObject* SceneManger::FindPlayer()
-	{
-		std::vector<GameObject*> vecObjs = 
+	{		
+		std::unordered_map<UINT, GameObject*> vecObjs = 
 			m_pActiveScene->GetLayer(eLayerType::Player).GetGameObjects();
 
-		return vecObjs[0];
+		return vecObjs[PLAYER_ID];
 	}
 
 	void SceneManger::SwapObject(Scene* _pPrevScene, Scene* _pNextScene, GameObject* _pGameObject)
@@ -113,14 +109,15 @@ namespace W
 	
 	void SceneManger::SwapCamera()
 	{
-		std::vector<GameObject*> vecObjs =
+
+		std::unordered_map<UINT, GameObject*> hashObj =
 			m_pActiveScene->GetLayer(eLayerType::Camera).GetGameObjects();
 		
 		////1 main , 2 UI
-		renderer::MainCamera = vecObjs[0]->GetComponent<Camera>();
-		renderer::UICamera = vecObjs[1]->GetComponent<Camera>();
+		renderer::MainCamera = hashObj[0]->GetComponent<Camera>();
+		renderer::UICamera = hashObj[1]->GetComponent<Camera>();
 
-		vecObjs[0]->GetScript<CameraScript>()->SetPlayer(FindPlayer());
+		hashObj[0]->GetScript<CameraScript>()->SetPlayer(FindPlayer());
 	}
 
 	

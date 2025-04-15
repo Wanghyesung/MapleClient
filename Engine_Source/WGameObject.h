@@ -113,8 +113,11 @@ namespace W
 		void SetLayerType(eLayerType _eLayerType) { m_eLayerType = _eLayerType; }
 		eLayerType GetLayerType() { return m_eLayerType; }
 
-		static void SetObjectID(UINT _ID) { OBJECT_ID = _ID; }
-		static UINT GetObjectID() { return OBJECT_ID; }
+		void SetObjectID(UINT _ID) { m_iObjectID = _ID; }
+		UINT GetObjectID() { return m_iObjectID; }
+
+	private:
+		static void SetCreateID(UINT _ID) { CREATE_ID = _ID; }
 
 	private:
 		eState m_eState;
@@ -122,7 +125,11 @@ namespace W
 		std::vector<Script*> m_vecScript;
 		eLayerType m_eLayerType;
 
-		static UINT OBJECT_ID;
+		UINT m_iObjectID;
+
+		static UINT CREATE_ID;
+
+		friend class GameObjectManager;
 	};
 }
 

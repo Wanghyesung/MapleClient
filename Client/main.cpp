@@ -46,6 +46,7 @@ atomic<bool> bIsRunning = true;
 
 W::Application application;
 extern shared_ptr< ClientService> GClientService;
+UINT PLAYER_ID;
 
 #define MAX_LOADSTRING 100
 

@@ -5,10 +5,11 @@
 
 namespace W
 {
-	UINT GameObject::OBJECT_ID = 0;
+	UINT GameObject::CREATE_ID = 0;
 
 	GameObject::GameObject() :
-		m_eState(eState::Active)
+		m_eState(eState::Active),
+		m_iObjectID(0)
 	{
 		AddComponent<Transform>();
 	}
@@ -16,7 +17,8 @@ namespace W
 	GameObject::GameObject(const GameObject& _pOrigin):
 		Entity(_pOrigin),
 		m_eState(_pOrigin.m_eState),
-		m_eLayerType(_pOrigin.m_eLayerType)
+		m_eLayerType(_pOrigin.m_eLayerType),
+		m_iObjectID(0)
 	{
 		for (Component* pCom : _pOrigin.m_vecComponent)
 		{

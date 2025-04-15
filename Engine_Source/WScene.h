@@ -31,7 +31,7 @@ namespace W
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();
-		virtual void Destroy();
+		
 
 		virtual void OnEnter();
 		virtual void OnExit();
@@ -49,11 +49,14 @@ namespace W
 			std::vector<T*> vecObjects = {};
 			for (Layer& layer : m_vecLayer)
 			{
-				const std::vector<GameObject*> vecGameObjects =
+				const std::unordered_map<UINT,GameObject*> hashGameObjects =
 					layer.GetGameObjects();
 				
-				for (GameObject* obj : vecGameObjects)
+				auto iter = hashGameObjects.begin();
+				for (iter; iter != hashGameObjects.end(); ++iter)
 				{
+					GameObject* obj = iter->second;
+
 					T* buff = dynamic_cast<T*>(obj);
 					if (buff != nullptr)
 						vecObjects.push_back(buff);

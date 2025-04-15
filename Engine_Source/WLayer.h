@@ -21,16 +21,16 @@ namespace W
 		T* FindObject();
 
 		GameObject* FindObjectByName(const std::wstring& _strName);
-		virtual void Destory();
 		virtual void DestroyAll(Scene* _pScene);
 
 		void AddGameObject(GameObject* _pGameObj);
-		const std::vector<GameObject*>& GetGameObjects() { return m_vecGameObject; }
+		const unordered_map<UINT, GameObject*>& GetGameObjects() { return m_hashGameObject; }
 
 		void EraseOnVector(GameObject* _pGameObject);
 
 	private:
-		std::vector<GameObject*> m_vecGameObject;
+		//UM으로 변경
+		std::unordered_map<UINT, GameObject*> m_hashGameObject;
 
 
 		friend class UIManger;
@@ -39,12 +39,13 @@ namespace W
 	template<typename T>
 	inline T* Layer::FindObject()
 	{
-		for (int i = 0; i < m_vecGameObject.size(); ++i)
+		auto iter = m_hashGameObject.begin();
+		for (iter; iter != m_hashGameObject.end(); ++iter)
 		{
-			T* pTarget = dynamic_cast<T*>(m_vecGameObject[i]);
+			T* pTarget = dynamic_cast<T*>(iter->second);
 			if (pTarget == nullptr)
 				continue;
-			
+
 			return pTarget;
 		}
 		return nullptr;

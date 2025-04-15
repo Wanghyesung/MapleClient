@@ -70,7 +70,7 @@ namespace W
 	}
 	void ItemUI::MouseLbtnDown()
 	{
-		UIManger::SetFoucseUI(GetParentUI());
+		//UIManger::SetFoucseUI(GetParentUI());
 
 		IconUI::MouseLbtnDown();
 	}

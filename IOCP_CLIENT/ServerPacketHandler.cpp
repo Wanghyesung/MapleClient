@@ -6,6 +6,7 @@
 
 shared_ptr< ClientService> GClientService;
 PacketHandlerFunc GPacketHandler[UINT16_MAX];
+extern UINT PLAYER_ID;
 
 bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt)
 {
@@ -16,6 +17,7 @@ bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt)
 
 	GClientService->Connected();
 	GClientService->SetPlayerID(_pkt.playerid());
+	PLAYER_ID = _pkt.playerid();
 
 	vector<UINT> vecUserID;
 	int iUserSize = _pkt.users_ids_size();

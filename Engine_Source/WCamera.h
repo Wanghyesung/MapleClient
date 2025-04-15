@@ -53,7 +53,8 @@ namespace W
 
 		void AlphaSortGameObjects();
 		void ZSortTransparencyGameObjects();
-		void DivideAlphaBlendGameObjects(const std::vector<GameObject*> _vecGameObj);
+		void DivideAlphaBlendGameObjects(const std::unordered_map<UINT, GameObject*> _hashGameObj);
+		void DivideAlphaBlendGameUIs();
 		void RenderOpaque();
 		void RenderCutOut();
 		void RenderTransparent();

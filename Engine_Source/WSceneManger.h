@@ -12,7 +12,6 @@ namespace W
 		static void Update();
 		static void LateUpdate();
 		static void Render();
-		static void Destroy();
 		static void Release();
 		static void Erase(GameObject* _pGameObject);
 
@@ -41,9 +40,14 @@ namespace W
 		template <typename T>
 		static T* GetUI()
 		{
-			std::vector<UI*> vecUI = m_pActiveScene->FindObjectsOfType<UI>();
-			for (UI* pUI : vecUI)
+			std::unordered_map<UINT, GameObject*> hashUI =
+				m_pActiveScene->GetLayer(eLayerType::UI).GetGameObjects();
+			
+			auto iter = hashUI.begin();
+			for (iter; iter != hashUI.end(); ++iter )
 			{
+				UI* pUI = (UI*)iter->second;
+
 				std::queue<UI*> queue;
 
 				queue.push(pUI);

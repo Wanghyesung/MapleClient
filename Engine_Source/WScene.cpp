@@ -41,17 +41,6 @@ namespace W
 		}
 	}
 
-	void Scene::Destroy()
-	{
-		for (UINT i = 0; i < m_vecLayer.size(); ++i)
-		{
-			if (i == (UINT)eLayerType::UI)
-				continue;
-
-			m_vecLayer[i].Destory();
-		}
-	}
-
 	void Scene::OnEnter()
 	{
 		for (int i = 0; i < m_vecResource.size(); ++i)

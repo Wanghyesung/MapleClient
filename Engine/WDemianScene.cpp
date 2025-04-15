@@ -87,6 +87,7 @@ namespace W
 		{
 			GameObject* pCamera = new GameObject();
 			pCamera->SetName(L"ObjCam");
+			pCamera->SetObjectID(0);
 			AddGameObject(eLayerType::Camera, pCamera);
 			pCamera->GetComponent<Transform>()->SetPosition(Vector3(0.f, 0.f, -10.f));
 			Camera* pCameraComp = pCamera->AddComponent<Camera>();
@@ -98,6 +99,7 @@ namespace W
 		{
 			GameObject* pUICamera = new GameObject();
 			pUICamera->SetName(L"UICam");
+			pUICamera->SetObjectID(1);
 			AddGameObject(eLayerType::Camera, pUICamera);
 			pUICamera->GetComponent<Transform>()->SetPosition(Vector3(0.f, 0.f, -10.f));
 			Camera* pCameraComp = pUICamera->AddComponent<Camera>();
@@ -154,17 +156,17 @@ namespace W
 
 	void DemianScene::StartSound()
 	{
-		const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
+		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
 		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
 		pAudio->SetLoop(true);
-		pAudio->Play();
+		pAudio->Play();*/
 	}
 
 	void DemianScene::EndSound()
 	{
-		const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
+		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
 		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->Stop();
+		pAudio->Stop();*/
 	}
 
 	void DemianScene::fadein()
