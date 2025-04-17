@@ -189,6 +189,7 @@ namespace W
 		pEquipState->SetName(L"Equip");
 		SceneManger::AddGameObject(eLayerType::UI, pEquipState);
 		pEquipState->SetPlayer(this);
+
 		pEquipState->Initialize();
 	}
 

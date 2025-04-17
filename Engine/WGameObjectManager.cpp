@@ -126,10 +126,16 @@ namespace W
 		REGISTER_OBJECT_FACTORY(Whiggin				 , 106)
 		REGISTER_OBJECT_FACTORY(White				 , 107)
 		REGISTER_OBJECT_FACTORY(Wind				 , 108)
-
-
-
 	}
+
+	GameObject* GameObjectManager::GetMonsterOfID(UINT _ID)
+	{
+		if (m_hashObject.find(_ID) == m_hashObject.end())
+			return nullptr;
+		return m_hashObject[_ID]();
+	}
+
+	
 	
 
 

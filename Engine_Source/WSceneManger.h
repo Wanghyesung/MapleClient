@@ -36,7 +36,7 @@ namespace W
 
 		static void AddGameObject(eLayerType _eType, GameObject* _pGameObj){ m_pActiveScene->AddGameObject(_eType, _pGameObj);}
 		static GameObject* FindPlayer();
-	
+		static GameObject* FindObject(UINT _ID, eLayerType _eLayerType);
 		template <typename T>
 		static T* GetUI()
 		{

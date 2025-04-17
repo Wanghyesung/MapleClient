@@ -95,6 +95,14 @@ namespace W
 			m_hashGameObject.erase(iGameObjectID);
 	}
 
+	GameObject* Layer::FindObject(UINT _ID)
+	{
+		if (m_hashGameObject.find(_ID) == m_hashGameObject.end())
+			return nullptr;
+
+		return m_hashGameObject[_ID];
+	}
+
 	GameObject* Layer::FindObjectByName(const std::wstring& _strName)
 	{
 		auto iter = m_hashGameObject.begin();

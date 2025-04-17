@@ -14,7 +14,8 @@ namespace W
 			//데이터가 없다면 end를 반환해준다.
 			std::map<std::wstring, std::shared_ptr<Resource>>::iterator iter;
 			{
-				RLock lock(m_lock);
+				std::lock_guard<mutex> lock(m_mutex);
+				//RLock lock(m_lock);
 				iter = m_mapResources.find(_strKey);
 			}
 			
@@ -49,7 +50,8 @@ namespace W
 			resource->SetPath(_strPath);
 
 			{
-				WLock lock(m_lock);
+				std::lock_guard<mutex> lock(m_mutex);
+				//WLock lock(m_lock);
 				m_mapResources.insert(std::make_pair(_strKey, resource));
 			}
 
@@ -60,21 +62,23 @@ namespace W
 		static void Insert(const std::wstring& _strKey, std::shared_ptr<T> _pResource)
 		{
 			//static_assert(std::is_base_of<Resource, T>::value, "T must derive from Resource");
-			WLock lock(m_lock);
+			//WLock lock(m_lock);
+			std::lock_guard<mutex> lock(m_mutex);
 			m_mapResources.insert(std::make_pair(_strKey, _pResource));
 		}
 
 		template <typename T>
 		static void Release(const std::wstring& _strKey)
 		{
-			WLock lock(m_lock);
+			//WLock lock(m_lock);
+			std::lock_guard<mutex> lock(m_mutex);
 			m_mapResources.erase(_strKey);
 		}
 		
 
 	private:
 		static RWLock m_lock;
-
+		static std::mutex m_mutex;
 		static std::map<std::wstring, std::shared_ptr<Resource>> m_mapResources;
 		//리소스같은 경우엔 로드된 리소스하나를 모두가 쓰기 때문에 sharedptr이 적합 쓰고 있는
 		//리소스가 전부 해제되야 그떄 해제됨

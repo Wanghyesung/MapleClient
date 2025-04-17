@@ -19,7 +19,7 @@ namespace W
 
 		template<typename T>
 		T* FindObject();
-
+		GameObject* FindObject(UINT _ID);
 		GameObject* FindObjectByName(const std::wstring& _strName);
 		virtual void DestroyAll(Scene* _pScene);
 
@@ -35,7 +35,6 @@ namespace W
 
 		friend class UIManger;
 	};
-
 	template<typename T>
 	inline T* Layer::FindObject()
 	{

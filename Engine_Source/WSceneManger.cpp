@@ -72,6 +72,15 @@ namespace W
 		return vecObjs[PLAYER_ID];
 	}
 
+	GameObject* SceneManger::FindObject(UINT _ID, eLayerType _eLayerType)
+	{
+		GameObject* pObj = m_pActiveScene->GetLayer(_eLayerType).FindObject(_ID);
+		if(!pObj)
+			return nullptr;
+
+		return pObj;
+	}
+
 	void SceneManger::SwapObject(Scene* _pPrevScene, Scene* _pNextScene, GameObject* _pGameObject)
 	{
 		eLayerType eType = _pGameObject->GetLayerType();

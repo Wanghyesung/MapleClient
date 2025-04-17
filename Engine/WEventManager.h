@@ -4,11 +4,22 @@
 namespace W
 {
 	class GameObject;
+	class Scene;
 
 	enum class EVENT_TYPE
 	{
+		UPDATE_STATE,
+		UPDATE_TRANSFORM,
+
+		CREATE_PLAYER,
+		CREATE_OTHER_PLAYER,
+		DELETE_PLAYER,
+
 		CREATE_OBJECT,
 		DELET_OBJECT,
+		CREATE_OBJECT_ID,
+		DELET_OBJECT_ID,
+
 		SCENE_CHANGE,
 
 		ADD_PLAYER_POOL,
@@ -31,11 +42,16 @@ namespace W
 		static void AddEvent(const tEvent& _tEve) { m_vecEvent.push_back(_tEve); }
 		
 		static void CreateObject(GameObject* _pObj, eLayerType _eLayer);
-		static void DeleteObject(GameObject* _pObj, class Scene* _pScene);
-	
+		static void CreateObject(UINT _ID, eLayerType _eLayer);
+		static void DeleteObject(GameObject* _pObj,  Scene* _pScene);
+		static void DeleteObject(UINT _ID, eLayerType _eType);
 		static void ChangeScene(const std::wstring& _strNextScene);
 	
-		static void AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID);
+		static void AddPlayer(UINT _iPlayerID, UINT _iObjectID, vector<UINT> _vecPlayerID, vector<UINT> _vecObjectID);
+		static void AddOtherPlayer(UINT _iPlayerID, UINT _iObjectID);
+
+		static void UpdateTransform(UINT _ID, eLayerType _eType, Vector3 _vPosition);
+		static void UpdateState(UINT _ID, eLayerType _eType, const wstring& _strAnimState);
 	private:
 		static void excute(const tEvent& _tEve);
 

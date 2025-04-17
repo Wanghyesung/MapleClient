@@ -3,7 +3,6 @@
 #include "PacketSession.h"
 #include "Enter.pb.h"
 #include "Exit.pb.h"
-#include "Collision.pb.h"
 #include "Equip.pb.h"
 #include "Input.pb.h"
 #include "Map.pb.h"

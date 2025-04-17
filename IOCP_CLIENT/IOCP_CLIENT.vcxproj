@@ -148,7 +148,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Collision.pb.h" />
     <ClInclude Include="Enter.pb.h" />
     <ClInclude Include="Equip.pb.h" />
     <ClInclude Include="Exit.pb.h" />
@@ -158,7 +157,6 @@
     <ClInclude Include="Input.pb.h" />
     <ClInclude Include="Map.pb.h" />
     <ClInclude Include="NetFunc.h" />
-    <ClInclude Include="Object.pb.h" />
     <ClInclude Include="ObjectState.pb.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ServerPacketHandler.h" />
@@ -167,10 +165,6 @@
     <ClInclude Include="WRoom.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Collision.pb.cc">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="Enter.pb.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
@@ -197,10 +191,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="NetFunc.cpp" />
-    <ClCompile Include="Object.pb.cc">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="ObjectState.pb.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>

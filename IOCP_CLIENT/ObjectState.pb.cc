@@ -21,9 +21,9 @@ constexpr S_STATE::S_STATE(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , state_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , layer_(0)
-  , id_(0)
-  , anim_idx_(0){}
+  , layer_(0u)
+  , id_(0u)
+  , anim_idx_(0u){}
 struct S_STATEDefaultTypeInternal {
   constexpr S_STATEDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -60,8 +60,8 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_ObjectState_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\021ObjectState.proto\022\010Protocol\"T\n\007S_STATE"
-  "\022\r\n\005scene\030\001 \001(\t\022\r\n\005layer\030\002 \001(\005\022\n\n\002id\030\003 \001"
-  "(\005\022\r\n\005state\030\004 \001(\t\022\020\n\010anim_idx\030\005 \001(\005b\006pro"
+  "\022\r\n\005scene\030\001 \001(\t\022\r\n\005layer\030\002 \001(\r\022\n\n\002id\030\003 \001"
+  "(\r\022\r\n\005state\030\004 \001(\t\022\020\n\010anim_idx\030\005 \001(\rb\006pro"
   "to3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ObjectState_2eproto_once;
@@ -170,17 +170,17 @@ const char* S_STATE::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 layer = 2;
+      // uint32 layer = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 id = 3;
+      // uint32 id = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -193,10 +193,10 @@ const char* S_STATE::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 anim_idx = 5;
+      // uint32 anim_idx = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          anim_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          anim_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -239,16 +239,16 @@ failure:
         1, this->_internal_scene(), target);
   }
 
-  // int32 layer = 2;
+  // uint32 layer = 2;
   if (this->layer() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_layer(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer(), target);
   }
 
-  // int32 id = 3;
+  // uint32 id = 3;
   if (this->id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_id(), target);
   }
 
   // string state = 4;
@@ -261,10 +261,10 @@ failure:
         4, this->_internal_state(), target);
   }
 
-  // int32 anim_idx = 5;
+  // uint32 anim_idx = 5;
   if (this->anim_idx() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_anim_idx(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(5, this->_internal_anim_idx(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -297,24 +297,24 @@ size_t S_STATE::ByteSizeLong() const {
         this->_internal_state());
   }
 
-  // int32 layer = 2;
+  // uint32 layer = 2;
   if (this->layer() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_layer());
   }
 
-  // int32 id = 3;
+  // uint32 id = 3;
   if (this->id() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_id());
   }
 
-  // int32 anim_idx = 5;
+  // uint32 anim_idx = 5;
   if (this->anim_idx() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_anim_idx());
   }
 

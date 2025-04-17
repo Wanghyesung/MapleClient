@@ -207,31 +207,31 @@ class S_STATE final :
   std::string* _internal_mutable_state();
   public:
 
-  // int32 layer = 2;
+  // uint32 layer = 2;
   void clear_layer();
-  ::PROTOBUF_NAMESPACE_ID::int32 layer() const;
-  void set_layer(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer() const;
+  void set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_layer() const;
-  void _internal_set_layer(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer() const;
+  void _internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // int32 id = 3;
+  // uint32 id = 3;
   void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::int32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 id() const;
+  void set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_id() const;
+  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // int32 anim_idx = 5;
+  // uint32 anim_idx = 5;
   void clear_anim_idx();
-  ::PROTOBUF_NAMESPACE_ID::int32 anim_idx() const;
-  void set_anim_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 anim_idx() const;
+  void set_anim_idx(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_anim_idx() const;
-  void _internal_set_anim_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_anim_idx() const;
+  void _internal_set_anim_idx(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.S_STATE)
@@ -243,9 +243,9 @@ class S_STATE final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr state_;
-  ::PROTOBUF_NAMESPACE_ID::int32 layer_;
-  ::PROTOBUF_NAMESPACE_ID::int32 id_;
-  ::PROTOBUF_NAMESPACE_ID::int32 anim_idx_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 anim_idx_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ObjectState_2eproto;
 };
@@ -305,42 +305,42 @@ inline void S_STATE::set_allocated_scene(std::string* scene) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_STATE.scene)
 }
 
-// int32 layer = 2;
+// uint32 layer = 2;
 inline void S_STATE::clear_layer() {
-  layer_ = 0;
+  layer_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_STATE::_internal_layer() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_STATE::_internal_layer() const {
   return layer_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_STATE::layer() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_STATE::layer() const {
   // @@protoc_insertion_point(field_get:Protocol.S_STATE.layer)
   return _internal_layer();
 }
-inline void S_STATE::_internal_set_layer(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_STATE::_internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   layer_ = value;
 }
-inline void S_STATE::set_layer(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_STATE::set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_layer(value);
   // @@protoc_insertion_point(field_set:Protocol.S_STATE.layer)
 }
 
-// int32 id = 3;
+// uint32 id = 3;
 inline void S_STATE::clear_id() {
-  id_ = 0;
+  id_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_STATE::_internal_id() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_STATE::_internal_id() const {
   return id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_STATE::id() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_STATE::id() const {
   // @@protoc_insertion_point(field_get:Protocol.S_STATE.id)
   return _internal_id();
 }
-inline void S_STATE::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_STATE::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   id_ = value;
 }
-inline void S_STATE::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_STATE::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_id(value);
   // @@protoc_insertion_point(field_set:Protocol.S_STATE.id)
 }
@@ -390,22 +390,22 @@ inline void S_STATE::set_allocated_state(std::string* state) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_STATE.state)
 }
 
-// int32 anim_idx = 5;
+// uint32 anim_idx = 5;
 inline void S_STATE::clear_anim_idx() {
-  anim_idx_ = 0;
+  anim_idx_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_STATE::_internal_anim_idx() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_STATE::_internal_anim_idx() const {
   return anim_idx_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_STATE::anim_idx() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_STATE::anim_idx() const {
   // @@protoc_insertion_point(field_get:Protocol.S_STATE.anim_idx)
   return _internal_anim_idx();
 }
-inline void S_STATE::_internal_set_anim_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_STATE::_internal_set_anim_idx(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   anim_idx_ = value;
 }
-inline void S_STATE::set_anim_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_STATE::set_anim_idx(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_anim_idx(value);
   // @@protoc_insertion_point(field_set:Protocol.S_STATE.anim_idx)
 }

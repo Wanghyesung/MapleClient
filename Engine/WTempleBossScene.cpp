@@ -109,9 +109,7 @@ namespace W
 	void TempleBossScene::CreateBackground()
 	{
 		GameObject* pBackGround = new GameObject();
-		AudioSource* pAudio = pBackGround->AddComponent<AudioSource>();
-		pAudio->SetClip(Resources::Load<AudioClip>(L"pinkbeansound", L"..\\Resources\\sound\\FightingPinkBeen.mp3"));
-
+		
 		AddGameObject(eLayerType::Background, pBackGround);
 		MeshRenderer* pMeshRender = pBackGround->AddComponent<MeshRenderer>();
 		pMeshRender->SetMesh(Resources::Find<Mesh>(L"RectMesh"));

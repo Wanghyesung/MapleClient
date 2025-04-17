@@ -194,22 +194,22 @@ class S_TRANSFORM final :
   std::string* _internal_mutable_scene();
   public:
 
-  // int32 layer = 2;
+  // uint32 layer = 2;
   void clear_layer();
-  ::PROTOBUF_NAMESPACE_ID::int32 layer() const;
-  void set_layer(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer() const;
+  void set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_layer() const;
-  void _internal_set_layer(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer() const;
+  void _internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // int32 id = 3;
+  // uint32 id = 3;
   void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::int32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 id() const;
+  void set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_id() const;
+  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // float x = 4;
@@ -247,8 +247,8 @@ class S_TRANSFORM final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
-  ::PROTOBUF_NAMESPACE_ID::int32 layer_;
-  ::PROTOBUF_NAMESPACE_ID::int32 id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 id_;
   float x_;
   float y_;
   float z_;
@@ -311,42 +311,42 @@ inline void S_TRANSFORM::set_allocated_scene(std::string* scene) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_TRANSFORM.scene)
 }
 
-// int32 layer = 2;
+// uint32 layer = 2;
 inline void S_TRANSFORM::clear_layer() {
-  layer_ = 0;
+  layer_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_TRANSFORM::_internal_layer() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::_internal_layer() const {
   return layer_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_TRANSFORM::layer() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::layer() const {
   // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.layer)
   return _internal_layer();
 }
-inline void S_TRANSFORM::_internal_set_layer(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_TRANSFORM::_internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   layer_ = value;
 }
-inline void S_TRANSFORM::set_layer(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_TRANSFORM::set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_layer(value);
   // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.layer)
 }
 
-// int32 id = 3;
+// uint32 id = 3;
 inline void S_TRANSFORM::clear_id() {
-  id_ = 0;
+  id_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_TRANSFORM::_internal_id() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::_internal_id() const {
   return id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_TRANSFORM::id() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::id() const {
   // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.id)
   return _internal_id();
 }
-inline void S_TRANSFORM::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_TRANSFORM::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   id_ = value;
 }
-inline void S_TRANSFORM::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_TRANSFORM::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_id(value);
   // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.id)
 }

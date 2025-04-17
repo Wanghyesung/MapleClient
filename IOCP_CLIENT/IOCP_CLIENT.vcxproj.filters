@@ -10,19 +10,10 @@
     <ClInclude Include="ServerPacketHandler.h">
       <Filter>Net</Filter>
     </ClInclude>
-    <ClInclude Include="Collision.pb.h">
+    <ClInclude Include="NetFunc.h">
       <Filter>Net</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.pb.h">
-      <Filter>Net</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.pb.h">
-      <Filter>Net</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.pb.h">
-      <Filter>Net</Filter>
-    </ClInclude>
-    <ClInclude Include="Enter.pb.h">
+    <ClInclude Include="WRoom.h">
       <Filter>Net</Filter>
     </ClInclude>
     <ClInclude Include="Equip.pb.h">
@@ -34,16 +25,19 @@
     <ClInclude Include="Input.pb.h">
       <Filter>Net</Filter>
     </ClInclude>
-    <ClInclude Include="Map.pb.h">
-      <Filter>Net</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectState.pb.h">
       <Filter>Net</Filter>
     </ClInclude>
-    <ClInclude Include="NetFunc.h">
+    <ClInclude Include="Transform.pb.h">
       <Filter>Net</Filter>
     </ClInclude>
-    <ClInclude Include="WRoom.h">
+    <ClInclude Include="Map.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.pb.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="Enter.pb.h">
       <Filter>Net</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,19 +50,10 @@
     <ClCompile Include="ServerSession.cpp">
       <Filter>Net</Filter>
     </ClCompile>
-    <ClCompile Include="Collision.pb.cc">
+    <ClCompile Include="NetFunc.cpp">
       <Filter>Net</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.pb.cc">
-      <Filter>Net</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.pb.cc">
-      <Filter>Net</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.pb.cc">
-      <Filter>Net</Filter>
-    </ClCompile>
-    <ClCompile Include="Enter.pb.cc">
+    <ClCompile Include="WRoom.cpp">
       <Filter>Net</Filter>
     </ClCompile>
     <ClCompile Include="Equip.pb.cc">
@@ -80,16 +65,19 @@
     <ClCompile Include="Input.pb.cc">
       <Filter>Net</Filter>
     </ClCompile>
-    <ClCompile Include="Map.pb.cc">
-      <Filter>Net</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectState.pb.cc">
       <Filter>Net</Filter>
     </ClCompile>
-    <ClCompile Include="NetFunc.cpp">
+    <ClCompile Include="Transform.pb.cc">
       <Filter>Net</Filter>
     </ClCompile>
-    <ClCompile Include="WRoom.cpp">
+    <ClCompile Include="Map.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.pb.cc">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Enter.pb.cc">
       <Filter>Net</Filter>
     </ClCompile>
   </ItemGroup>

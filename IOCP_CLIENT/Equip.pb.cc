@@ -21,9 +21,9 @@ constexpr C_EQUIP::C_EQUIP(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , item_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , layer_(0)
-  , player_id_(0)
-  , equip_type_(0){}
+  , layer_(0u)
+  , player_id_(0u)
+  , equip_type_(0u){}
 struct C_EQUIPDefaultTypeInternal {
   constexpr C_EQUIPDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -37,9 +37,9 @@ constexpr S_EQUIP::S_EQUIP(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , item_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , layer_(0)
-  , player_id_(0)
-  , equip_type_(0){}
+  , layer_(0u)
+  , player_id_(0u)
+  , equip_type_(0u){}
 struct S_EQUIPDefaultTypeInternal {
   constexpr S_EQUIPDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -88,11 +88,11 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_Equip_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\013Equip.proto\022\010Protocol\"a\n\007C_EQUIP\022\r\n\005sc"
-  "ene\030\001 \001(\t\022\r\n\005layer\030\002 \001(\005\022\021\n\tplayer_id\030\003 "
-  "\001(\005\022\021\n\titem_name\030\004 \001(\t\022\022\n\nequip_type\030\005 \001"
-  "(\005\"a\n\007S_EQUIP\022\r\n\005scene\030\001 \001(\t\022\r\n\005layer\030\002 "
-  "\001(\005\022\021\n\tplayer_id\030\003 \001(\005\022\021\n\titem_name\030\004 \001("
-  "\t\022\022\n\nequip_type\030\005 \001(\005b\006proto3"
+  "ene\030\001 \001(\t\022\r\n\005layer\030\002 \001(\r\022\021\n\tplayer_id\030\003 "
+  "\001(\r\022\021\n\titem_name\030\004 \001(\t\022\022\n\nequip_type\030\005 \001"
+  "(\r\"a\n\007S_EQUIP\022\r\n\005scene\030\001 \001(\t\022\r\n\005layer\030\002 "
+  "\001(\r\022\021\n\tplayer_id\030\003 \001(\r\022\021\n\titem_name\030\004 \001("
+  "\t\022\022\n\nequip_type\030\005 \001(\rb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Equip_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Equip_2eproto = {
@@ -200,17 +200,17 @@ const char* C_EQUIP::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 layer = 2;
+      // uint32 layer = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 player_id = 3;
+      // uint32 player_id = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          player_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          player_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -223,10 +223,10 @@ const char* C_EQUIP::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 equip_type = 5;
+      // uint32 equip_type = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          equip_type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          equip_type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -269,16 +269,16 @@ failure:
         1, this->_internal_scene(), target);
   }
 
-  // int32 layer = 2;
+  // uint32 layer = 2;
   if (this->layer() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_layer(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer(), target);
   }
 
-  // int32 player_id = 3;
+  // uint32 player_id = 3;
   if (this->player_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_player_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_player_id(), target);
   }
 
   // string item_name = 4;
@@ -291,10 +291,10 @@ failure:
         4, this->_internal_item_name(), target);
   }
 
-  // int32 equip_type = 5;
+  // uint32 equip_type = 5;
   if (this->equip_type() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_equip_type(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(5, this->_internal_equip_type(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -327,24 +327,24 @@ size_t C_EQUIP::ByteSizeLong() const {
         this->_internal_item_name());
   }
 
-  // int32 layer = 2;
+  // uint32 layer = 2;
   if (this->layer() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_layer());
   }
 
-  // int32 player_id = 3;
+  // uint32 player_id = 3;
   if (this->player_id() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_player_id());
   }
 
-  // int32 equip_type = 5;
+  // uint32 equip_type = 5;
   if (this->equip_type() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_equip_type());
   }
 
@@ -532,17 +532,17 @@ const char* S_EQUIP::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 layer = 2;
+      // uint32 layer = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 player_id = 3;
+      // uint32 player_id = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          player_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          player_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -555,10 +555,10 @@ const char* S_EQUIP::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 equip_type = 5;
+      // uint32 equip_type = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          equip_type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          equip_type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -601,16 +601,16 @@ failure:
         1, this->_internal_scene(), target);
   }
 
-  // int32 layer = 2;
+  // uint32 layer = 2;
   if (this->layer() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_layer(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer(), target);
   }
 
-  // int32 player_id = 3;
+  // uint32 player_id = 3;
   if (this->player_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_player_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_player_id(), target);
   }
 
   // string item_name = 4;
@@ -623,10 +623,10 @@ failure:
         4, this->_internal_item_name(), target);
   }
 
-  // int32 equip_type = 5;
+  // uint32 equip_type = 5;
   if (this->equip_type() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_equip_type(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(5, this->_internal_equip_type(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -659,24 +659,24 @@ size_t S_EQUIP::ByteSizeLong() const {
         this->_internal_item_name());
   }
 
-  // int32 layer = 2;
+  // uint32 layer = 2;
   if (this->layer() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_layer());
   }
 
-  // int32 player_id = 3;
+  // uint32 player_id = 3;
   if (this->player_id() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_player_id());
   }
 
-  // int32 equip_type = 5;
+  // uint32 equip_type = 5;
   if (this->equip_type() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_equip_type());
   }
 

@@ -144,7 +144,6 @@ namespace W
 	}
 	void Demian::LateUpdate()
 	{
-		
 		Monster::LateUpdate();
 	}
 	void Demian::Render()

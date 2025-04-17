@@ -19,7 +19,7 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace Protocol {
 constexpr C_EXIT::C_EXIT(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : playerid_(0){}
+  : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct C_EXITDefaultTypeInternal {
   constexpr C_EXITDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -43,7 +43,7 @@ struct S_EXITDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT S_EXITDefaultTypeInternal _S_EXIT_default_instance_;
 constexpr S_NEW_EXIT::S_NEW_EXIT(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : playerid_(0){}
+  : playerid_(0u){}
 struct S_NEW_EXITDefaultTypeInternal {
   constexpr S_NEW_EXITDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -64,7 +64,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Exit_2eproto::offsets[] PROTOB
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_EXIT, playerid_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_EXIT, name_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_EXIT, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -91,13 +91,13 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_Exit_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\nExit.proto\022\010Protocol\"\032\n\006C_EXIT\022\020\n\010play"
-  "erid\030\001 \001(\005\"\031\n\006S_EXIT\022\017\n\007success\030\001 \001(\010\"\036\n"
-  "\nS_NEW_EXIT\022\020\n\010playerid\030\001 \001(\005b\006proto3"
+  "\n\nExit.proto\022\010Protocol\"\026\n\006C_EXIT\022\014\n\004name"
+  "\030\001 \001(\t\"\031\n\006S_EXIT\022\017\n\007success\030\001 \001(\010\"\036\n\nS_N"
+  "EW_EXIT\022\020\n\010playerid\030\001 \001(\rb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Exit_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Exit_2eproto = {
-  false, false, 117, descriptor_table_protodef_Exit_2eproto, "Exit.proto", 
+  false, false, 113, descriptor_table_protodef_Exit_2eproto, "Exit.proto", 
   &descriptor_table_Exit_2eproto_once, nullptr, 0, 3,
   schemas, file_default_instances, TableStruct_Exit_2eproto::offsets,
   file_level_metadata_Exit_2eproto, file_level_enum_descriptors_Exit_2eproto, file_level_service_descriptors_Exit_2eproto,
@@ -125,12 +125,16 @@ C_EXIT::C_EXIT(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 C_EXIT::C_EXIT(const C_EXIT& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  playerid_ = from.playerid_;
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_name().empty()) {
+    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
+      GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:Protocol.C_EXIT)
 }
 
 void C_EXIT::SharedCtor() {
-playerid_ = 0;
+name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 C_EXIT::~C_EXIT() {
@@ -141,6 +145,7 @@ C_EXIT::~C_EXIT() {
 
 void C_EXIT::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void C_EXIT::ArenaDtor(void* object) {
@@ -159,7 +164,7 @@ void C_EXIT::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  playerid_ = 0;
+  name_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -169,10 +174,12 @@ const char* C_EXIT::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int32 playerid = 1;
+      // string name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          playerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.C_EXIT.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -205,10 +212,14 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 playerid = 1;
-  if (this->playerid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_playerid(), target);
+  // string name = 1;
+  if (!this->name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "Protocol.C_EXIT.name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -227,11 +238,11 @@ size_t C_EXIT::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 playerid = 1;
-  if (this->playerid() != 0) {
+  // string name = 1;
+  if (!this->name().empty()) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_playerid());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -265,8 +276,8 @@ void C_EXIT::MergeFrom(const C_EXIT& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.playerid() != 0) {
-    _internal_set_playerid(from._internal_playerid());
+  if (!from.name().empty()) {
+    _internal_set_name(from._internal_name());
   }
 }
 
@@ -291,7 +302,11 @@ bool C_EXIT::IsInitialized() const {
 void C_EXIT::InternalSwap(C_EXIT* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(playerid_, other->playerid_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &name_, GetArenaForAllocation(),
+      &other->name_, other->GetArenaForAllocation()
+  );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_EXIT::GetMetadata() const {
@@ -508,7 +523,7 @@ S_NEW_EXIT::S_NEW_EXIT(const S_NEW_EXIT& from)
 }
 
 void S_NEW_EXIT::SharedCtor() {
-playerid_ = 0;
+playerid_ = 0u;
 }
 
 S_NEW_EXIT::~S_NEW_EXIT() {
@@ -537,7 +552,7 @@ void S_NEW_EXIT::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  playerid_ = 0;
+  playerid_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -547,10 +562,10 @@ const char* S_NEW_EXIT::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int32 playerid = 1;
+      // uint32 playerid = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          playerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          playerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -583,10 +598,10 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 playerid = 1;
+  // uint32 playerid = 1;
   if (this->playerid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_playerid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_playerid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -605,10 +620,10 @@ size_t S_NEW_EXIT::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 playerid = 1;
+  // uint32 playerid = 1;
   if (this->playerid() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_playerid());
   }
 

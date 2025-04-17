@@ -181,15 +181,20 @@ class C_EXIT final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPlayeridFieldNumber = 1,
+    kNameFieldNumber = 1,
   };
-  // int32 playerid = 1;
-  void clear_playerid();
-  ::PROTOBUF_NAMESPACE_ID::int32 playerid() const;
-  void set_playerid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // string name = 1;
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_name();
+  void set_allocated_name(std::string* name);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_playerid() const;
-  void _internal_set_playerid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.C_EXIT)
@@ -199,7 +204,7 @@ class C_EXIT final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::int32 playerid_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Exit_2eproto;
 };
@@ -447,13 +452,13 @@ class S_NEW_EXIT final :
   enum : int {
     kPlayeridFieldNumber = 1,
   };
-  // int32 playerid = 1;
+  // uint32 playerid = 1;
   void clear_playerid();
-  ::PROTOBUF_NAMESPACE_ID::int32 playerid() const;
-  void set_playerid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 playerid() const;
+  void set_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_playerid() const;
-  void _internal_set_playerid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_playerid() const;
+  void _internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.S_NEW_EXIT)
@@ -463,7 +468,7 @@ class S_NEW_EXIT final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::int32 playerid_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 playerid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Exit_2eproto;
 };
@@ -478,24 +483,49 @@ class S_NEW_EXIT final :
 #endif  // __GNUC__
 // C_EXIT
 
-// int32 playerid = 1;
-inline void C_EXIT::clear_playerid() {
-  playerid_ = 0;
+// string name = 1;
+inline void C_EXIT::clear_name() {
+  name_.ClearToEmpty();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 C_EXIT::_internal_playerid() const {
-  return playerid_;
+inline const std::string& C_EXIT::name() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_EXIT.name)
+  return _internal_name();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 C_EXIT::playerid() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_EXIT.playerid)
-  return _internal_playerid();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void C_EXIT::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:Protocol.C_EXIT.name)
 }
-inline void C_EXIT::_internal_set_playerid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline std::string* C_EXIT::mutable_name() {
+  // @@protoc_insertion_point(field_mutable:Protocol.C_EXIT.name)
+  return _internal_mutable_name();
+}
+inline const std::string& C_EXIT::_internal_name() const {
+  return name_.Get();
+}
+inline void C_EXIT::_internal_set_name(const std::string& value) {
   
-  playerid_ = value;
+  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline void C_EXIT::set_playerid(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_playerid(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_EXIT.playerid)
+inline std::string* C_EXIT::_internal_mutable_name() {
+  
+  return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* C_EXIT::release_name() {
+  // @@protoc_insertion_point(field_release:Protocol.C_EXIT.name)
+  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void C_EXIT::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:Protocol.C_EXIT.name)
 }
 
 // -------------------------------------------------------------------
@@ -526,22 +556,22 @@ inline void S_EXIT::set_success(bool value) {
 
 // S_NEW_EXIT
 
-// int32 playerid = 1;
+// uint32 playerid = 1;
 inline void S_NEW_EXIT::clear_playerid() {
-  playerid_ = 0;
+  playerid_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_NEW_EXIT::_internal_playerid() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_NEW_EXIT::_internal_playerid() const {
   return playerid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_NEW_EXIT::playerid() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_NEW_EXIT::playerid() const {
   // @@protoc_insertion_point(field_get:Protocol.S_NEW_EXIT.playerid)
   return _internal_playerid();
 }
-inline void S_NEW_EXIT::_internal_set_playerid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_NEW_EXIT::_internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   playerid_ = value;
 }
-inline void S_NEW_EXIT::set_playerid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_NEW_EXIT::set_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_playerid(value);
   // @@protoc_insertion_point(field_set:Protocol.S_NEW_EXIT.playerid)
 }

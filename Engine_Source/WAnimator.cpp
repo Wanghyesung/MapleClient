@@ -65,15 +65,14 @@ namespace W
 	
 	void Animator::Play(const std::wstring& _strName, int _iIndex)
 	{
-		Animation* pPrevAnimation = m_pActiveAnimation;
-
 		Animation* pAnimation = FindAnimation(_strName);
 
 		if (pAnimation)
+		{
 			m_pActiveAnimation = pAnimation;
 
-	
-		m_pActiveAnimation->SetIndex(_iIndex);
+			m_pActiveAnimation->SetIndex(_iIndex);
+		}
 	}
 	void Animator::Binds()
 	{

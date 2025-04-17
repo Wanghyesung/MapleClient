@@ -20,8 +20,8 @@ namespace Protocol {
 constexpr S_TRANSFORM::S_TRANSFORM(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , layer_(0)
-  , id_(0)
+  , layer_(0u)
+  , id_(0u)
   , x_(0)
   , y_(0)
   , z_(0){}
@@ -62,8 +62,8 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_Transform_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\017Transform.proto\022\010Protocol\"X\n\013S_TRANSFO"
-  "RM\022\r\n\005scene\030\001 \001(\t\022\r\n\005layer\030\002 \001(\005\022\n\n\002id\030\003"
-  " \001(\005\022\t\n\001x\030\004 \001(\002\022\t\n\001y\030\005 \001(\002\022\t\n\001z\030\006 \001(\002b\006p"
+  "RM\022\r\n\005scene\030\001 \001(\t\022\r\n\005layer\030\002 \001(\r\022\n\n\002id\030\003"
+  " \001(\r\022\t\n\001x\030\004 \001(\002\022\t\n\001y\030\005 \001(\002\022\t\n\001z\030\006 \001(\002b\006p"
   "roto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Transform_2eproto_once;
@@ -164,17 +164,17 @@ const char* S_TRANSFORM::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 layer = 2;
+      // uint32 layer = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 id = 3;
+      // uint32 id = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -238,16 +238,16 @@ failure:
         1, this->_internal_scene(), target);
   }
 
-  // int32 layer = 2;
+  // uint32 layer = 2;
   if (this->layer() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_layer(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer(), target);
   }
 
-  // int32 id = 3;
+  // uint32 id = 3;
   if (this->id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_id(), target);
   }
 
   // float x = 4;
@@ -291,17 +291,17 @@ size_t S_TRANSFORM::ByteSizeLong() const {
         this->_internal_scene());
   }
 
-  // int32 layer = 2;
+  // uint32 layer = 2;
   if (this->layer() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_layer());
   }
 
-  // int32 id = 3;
+  // uint32 id = 3;
   if (this->id() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_id());
   }
 
