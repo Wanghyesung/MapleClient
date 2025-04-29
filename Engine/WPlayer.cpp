@@ -20,7 +20,6 @@
 namespace W
 {
 	Player::Player():
-		m_iDir(1),
 		m_ePlayerState(ePlayerState::stand),
 		m_strCurStateName(L"_jump")
 	{
@@ -134,10 +133,12 @@ namespace W
 		child_render();
 	}
 
-	void Player::UpdateState(const wstring& _strStateName)
+	void Player::UpdateState(const wstring& _strStateName, UCHAR _cDir, UCHAR _cAnimIdx)
 	{
 		m_strCurStateName = _strStateName;
 
+		m_iDir = _cDir > 0 ? 1 : -1;
+		m_iAnimIdx = _cAnimIdx;
 
 	}
 

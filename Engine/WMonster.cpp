@@ -4,8 +4,7 @@
 #include "WObjectPoolManager.h"
 namespace W
 {
-	Monster::Monster():
-		m_iDir(0)
+	Monster::Monster()
 	{
 
 	}

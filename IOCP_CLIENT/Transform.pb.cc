@@ -20,8 +20,7 @@ namespace Protocol {
 constexpr S_TRANSFORM::S_TRANSFORM(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , layer_(0u)
-  , id_(0u)
+  , layer_id_(0u)
   , x_(0)
   , y_(0)
   , z_(0){}
@@ -46,8 +45,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Transform_2eproto::offsets[] P
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, scene_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, layer_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, id_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, layer_id_),
   PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, x_),
   PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, y_),
   PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, z_),
@@ -61,14 +59,13 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_Transform_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\017Transform.proto\022\010Protocol\"X\n\013S_TRANSFO"
-  "RM\022\r\n\005scene\030\001 \001(\t\022\r\n\005layer\030\002 \001(\r\022\n\n\002id\030\003"
-  " \001(\r\022\t\n\001x\030\004 \001(\002\022\t\n\001y\030\005 \001(\002\022\t\n\001z\030\006 \001(\002b\006p"
-  "roto3"
+  "\n\017Transform.proto\022\010Protocol\"O\n\013S_TRANSFO"
+  "RM\022\r\n\005scene\030\001 \001(\t\022\020\n\010layer_id\030\002 \001(\r\022\t\n\001x"
+  "\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\022\t\n\001z\030\005 \001(\002b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Transform_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Transform_2eproto = {
-  false, false, 125, descriptor_table_protodef_Transform_2eproto, "Transform.proto", 
+  false, false, 116, descriptor_table_protodef_Transform_2eproto, "Transform.proto", 
   &descriptor_table_Transform_2eproto_once, nullptr, 0, 1,
   schemas, file_default_instances, TableStruct_Transform_2eproto::offsets,
   file_level_metadata_Transform_2eproto, file_level_enum_descriptors_Transform_2eproto, file_level_service_descriptors_Transform_2eproto,
@@ -101,18 +98,18 @@ S_TRANSFORM::S_TRANSFORM(const S_TRANSFORM& from)
     scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_scene(), 
       GetArenaForAllocation());
   }
-  ::memcpy(&layer_, &from.layer_,
+  ::memcpy(&layer_id_, &from.layer_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&z_) -
-    reinterpret_cast<char*>(&layer_)) + sizeof(z_));
+    reinterpret_cast<char*>(&layer_id_)) + sizeof(z_));
   // @@protoc_insertion_point(copy_constructor:Protocol.S_TRANSFORM)
 }
 
 void S_TRANSFORM::SharedCtor() {
 scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&layer_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&layer_id_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
-    reinterpret_cast<char*>(&layer_)) + sizeof(z_));
+    reinterpret_cast<char*>(&layer_id_)) + sizeof(z_));
 }
 
 S_TRANSFORM::~S_TRANSFORM() {
@@ -143,9 +140,9 @@ void S_TRANSFORM::Clear() {
   (void) cached_has_bits;
 
   scene_.ClearToEmpty();
-  ::memset(&layer_, 0, static_cast<size_t>(
+  ::memset(&layer_id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&z_) -
-      reinterpret_cast<char*>(&layer_)) + sizeof(z_));
+      reinterpret_cast<char*>(&layer_id_)) + sizeof(z_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -164,37 +161,30 @@ const char* S_TRANSFORM::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // uint32 layer = 2;
+      // uint32 layer_id = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          layer_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // uint32 id = 3;
+      // float x = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // float x = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
           x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
-      // float y = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
+      // float y = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
           y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
-      // float z = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 53)) {
+      // float z = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
           z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else goto handle_unusual;
@@ -238,34 +228,28 @@ failure:
         1, this->_internal_scene(), target);
   }
 
-  // uint32 layer = 2;
-  if (this->layer() != 0) {
+  // uint32 layer_id = 2;
+  if (this->layer_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer_id(), target);
   }
 
-  // uint32 id = 3;
-  if (this->id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_id(), target);
-  }
-
-  // float x = 4;
+  // float x = 3;
   if (!(this->x() <= 0 && this->x() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_x(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_x(), target);
   }
 
-  // float y = 5;
+  // float y = 4;
   if (!(this->y() <= 0 && this->y() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_y(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_y(), target);
   }
 
-  // float z = 6;
+  // float z = 5;
   if (!(this->z() <= 0 && this->z() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(6, this->_internal_z(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_z(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -291,31 +275,24 @@ size_t S_TRANSFORM::ByteSizeLong() const {
         this->_internal_scene());
   }
 
-  // uint32 layer = 2;
-  if (this->layer() != 0) {
+  // uint32 layer_id = 2;
+  if (this->layer_id() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_layer());
+        this->_internal_layer_id());
   }
 
-  // uint32 id = 3;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_id());
-  }
-
-  // float x = 4;
+  // float x = 3;
   if (!(this->x() <= 0 && this->x() >= 0)) {
     total_size += 1 + 4;
   }
 
-  // float y = 5;
+  // float y = 4;
   if (!(this->y() <= 0 && this->y() >= 0)) {
     total_size += 1 + 4;
   }
 
-  // float z = 6;
+  // float z = 5;
   if (!(this->z() <= 0 && this->z() >= 0)) {
     total_size += 1 + 4;
   }
@@ -354,11 +331,8 @@ void S_TRANSFORM::MergeFrom(const S_TRANSFORM& from) {
   if (!from.scene().empty()) {
     _internal_set_scene(from._internal_scene());
   }
-  if (from.layer() != 0) {
-    _internal_set_layer(from._internal_layer());
-  }
-  if (from.id() != 0) {
-    _internal_set_id(from._internal_id());
+  if (from.layer_id() != 0) {
+    _internal_set_layer_id(from._internal_layer_id());
   }
   if (!(from.x() <= 0 && from.x() >= 0)) {
     _internal_set_x(from._internal_x());
@@ -400,9 +374,9 @@ void S_TRANSFORM::InternalSwap(S_TRANSFORM* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(S_TRANSFORM, z_)
       + sizeof(S_TRANSFORM::z_)
-      - PROTOBUF_FIELD_OFFSET(S_TRANSFORM, layer_)>(
-          reinterpret_cast<char*>(&layer_),
-          reinterpret_cast<char*>(&other->layer_));
+      - PROTOBUF_FIELD_OFFSET(S_TRANSFORM, layer_id_)>(
+          reinterpret_cast<char*>(&layer_id_),
+          reinterpret_cast<char*>(&other->layer_id_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata S_TRANSFORM::GetMetadata() const {

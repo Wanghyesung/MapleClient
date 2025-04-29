@@ -106,7 +106,7 @@ namespace W
 
 		std::wstring strAnim = L"head" + strState;
 		
-
+		m_iAnimIdx = m_pPlayer->GetAnimIdx();
 		if (m_strCurAnim != strAnim)
 		{
 			m_strCurAnim = strAnim;

@@ -178,14 +178,12 @@ class ObjectInfo final :
 
   enum : int {
     kSceneFieldNumber = 1,
-    kStateFieldNumber = 8,
-    kLayerFieldNumber = 2,
-    kIdFieldNumber = 3,
-    kCreateIdFieldNumber = 4,
-    kXFieldNumber = 5,
-    kYFieldNumber = 6,
-    kZFieldNumber = 7,
-    kAnimIdxFieldNumber = 9,
+    kStateFieldNumber = 6,
+    kLayerCreateidIdFieldNumber = 2,
+    kXFieldNumber = 3,
+    kYFieldNumber = 4,
+    kZFieldNumber = 5,
+    kAnimFieldNumber = 7,
   };
   // string scene = 1;
   void clear_scene();
@@ -201,7 +199,7 @@ class ObjectInfo final :
   std::string* _internal_mutable_scene();
   public:
 
-  // string state = 8;
+  // string state = 6;
   void clear_state();
   const std::string& state() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -215,34 +213,16 @@ class ObjectInfo final :
   std::string* _internal_mutable_state();
   public:
 
-  // uint32 layer = 2;
-  void clear_layer();
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer() const;
-  void set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 layer_createid_id = 2;
+  void clear_layer_createid_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_id() const;
+  void set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer() const;
-  void _internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_createid_id() const;
+  void _internal_set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // uint32 id = 3;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 create_id = 4;
-  void clear_create_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 create_id() const;
-  void set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_create_id() const;
-  void _internal_set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // float x = 5;
+  // float x = 3;
   void clear_x();
   float x() const;
   void set_x(float value);
@@ -251,7 +231,7 @@ class ObjectInfo final :
   void _internal_set_x(float value);
   public:
 
-  // float y = 6;
+  // float y = 4;
   void clear_y();
   float y() const;
   void set_y(float value);
@@ -260,7 +240,7 @@ class ObjectInfo final :
   void _internal_set_y(float value);
   public:
 
-  // float z = 7;
+  // float z = 5;
   void clear_z();
   float z() const;
   void set_z(float value);
@@ -269,13 +249,13 @@ class ObjectInfo final :
   void _internal_set_z(float value);
   public:
 
-  // int32 animIdx = 9;
-  void clear_animidx();
-  ::PROTOBUF_NAMESPACE_ID::int32 animidx() const;
-  void set_animidx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 anim = 7;
+  void clear_anim();
+  ::PROTOBUF_NAMESPACE_ID::int32 anim() const;
+  void set_anim(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_animidx() const;
-  void _internal_set_animidx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_anim() const;
+  void _internal_set_anim(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.ObjectInfo)
@@ -287,13 +267,11 @@ class ObjectInfo final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr state_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 id_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 create_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_id_;
   float x_;
   float y_;
   float z_;
-  ::PROTOBUF_NAMESPACE_ID::int32 animidx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 anim_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Map_2eproto;
 };
@@ -494,67 +472,27 @@ inline void ObjectInfo::set_allocated_scene(std::string* scene) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.ObjectInfo.scene)
 }
 
-// uint32 layer = 2;
-inline void ObjectInfo::clear_layer() {
-  layer_ = 0u;
+// uint32 layer_createid_id = 2;
+inline void ObjectInfo::clear_layer_createid_id() {
+  layer_createid_id_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::_internal_layer() const {
-  return layer_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::_internal_layer_createid_id() const {
+  return layer_createid_id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::layer() const {
-  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.layer)
-  return _internal_layer();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::layer_createid_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.layer_createid_id)
+  return _internal_layer_createid_id();
 }
-inline void ObjectInfo::_internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void ObjectInfo::_internal_set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  layer_ = value;
+  layer_createid_id_ = value;
 }
-inline void ObjectInfo::set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_layer(value);
-  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.layer)
+inline void ObjectInfo::set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_layer_createid_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.layer_createid_id)
 }
 
-// uint32 id = 3;
-inline void ObjectInfo::clear_id() {
-  id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::_internal_id() const {
-  return id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::id() const {
-  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.id)
-  return _internal_id();
-}
-inline void ObjectInfo::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  id_ = value;
-}
-inline void ObjectInfo::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.id)
-}
-
-// uint32 create_id = 4;
-inline void ObjectInfo::clear_create_id() {
-  create_id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::_internal_create_id() const {
-  return create_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::create_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.create_id)
-  return _internal_create_id();
-}
-inline void ObjectInfo::_internal_set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  create_id_ = value;
-}
-inline void ObjectInfo::set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_create_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.create_id)
-}
-
-// float x = 5;
+// float x = 3;
 inline void ObjectInfo::clear_x() {
   x_ = 0;
 }
@@ -574,7 +512,7 @@ inline void ObjectInfo::set_x(float value) {
   // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.x)
 }
 
-// float y = 6;
+// float y = 4;
 inline void ObjectInfo::clear_y() {
   y_ = 0;
 }
@@ -594,7 +532,7 @@ inline void ObjectInfo::set_y(float value) {
   // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.y)
 }
 
-// float z = 7;
+// float z = 5;
 inline void ObjectInfo::clear_z() {
   z_ = 0;
 }
@@ -614,7 +552,7 @@ inline void ObjectInfo::set_z(float value) {
   // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.z)
 }
 
-// string state = 8;
+// string state = 6;
 inline void ObjectInfo::clear_state() {
   state_.ClearToEmpty();
 }
@@ -659,24 +597,24 @@ inline void ObjectInfo::set_allocated_state(std::string* state) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.ObjectInfo.state)
 }
 
-// int32 animIdx = 9;
-inline void ObjectInfo::clear_animidx() {
-  animidx_ = 0;
+// int32 anim = 7;
+inline void ObjectInfo::clear_anim() {
+  anim_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ObjectInfo::_internal_animidx() const {
-  return animidx_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 ObjectInfo::_internal_anim() const {
+  return anim_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ObjectInfo::animidx() const {
-  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.animIdx)
-  return _internal_animidx();
+inline ::PROTOBUF_NAMESPACE_ID::int32 ObjectInfo::anim() const {
+  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.anim)
+  return _internal_anim();
 }
-inline void ObjectInfo::_internal_set_animidx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ObjectInfo::_internal_set_anim(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  animidx_ = value;
+  anim_ = value;
 }
-inline void ObjectInfo::set_animidx(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_animidx(value);
-  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.animIdx)
+inline void ObjectInfo::set_anim(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_anim(value);
+  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.anim)
 }
 
 // -------------------------------------------------------------------

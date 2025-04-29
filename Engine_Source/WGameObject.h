@@ -28,7 +28,7 @@ namespace W
 		virtual void Render();
 
 		//네트워크
-		virtual void UpdateState(const wstring& _strStateName);
+		virtual void UpdateState(const wstring& _strStateName, UCHAR _cDir, UCHAR _cAnimIdx);
 
 		template <typename T>
 		T* GetComponent()
@@ -116,11 +116,21 @@ namespace W
 		void SetLayerType(eLayerType _eLayerType) { m_eLayerType = _eLayerType; }
 		eLayerType GetLayerType() { return m_eLayerType; }
 
+		void SetDir(int _iDir) { m_iDir = _iDir; }
+		int GetDir() { return m_iDir; }
+
+		void SetAnimIdx(int _iIdx) { m_iAnimIdx = _iIdx; }
+		int GetAnimIdx() { return m_iAnimIdx; }
+
 		void SetObjectID(UINT _ID) { m_iObjectID = _ID; }
 		UINT GetObjectID() { return m_iObjectID; }
 
 	private:
 		static void SetCreateID(UINT _ID) { CREATE_ID = _ID; }
+
+	protected:
+		int m_iDir;
+		int m_iAnimIdx;
 
 	private:
 		eState m_eState;
@@ -129,7 +139,6 @@ namespace W
 		eLayerType m_eLayerType;
 
 		UINT m_iObjectID;
-
 		static UINT CREATE_ID;
 
 		friend class GameObjectManager;

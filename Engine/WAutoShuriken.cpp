@@ -9,8 +9,7 @@
 #include "WEventManager.h"
 namespace W
 {
-	AutoShuriken::AutoShuriken():
-		m_iDir(1)
+	AutoShuriken::AutoShuriken()
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));

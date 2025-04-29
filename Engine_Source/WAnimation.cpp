@@ -3,6 +3,7 @@
 #include "WAnimator.h"
 #include "WRenderer.h"
 #include "WConstantBuffer.h"
+#include "WGameObject.h"
 namespace W
 {
 	Animation::Animation():
@@ -61,6 +62,9 @@ namespace W
 		std::shared_ptr<Texture> spAtlas = m_wpAtlas.lock();
 		if (!spAtlas)
 			assert(nullptr);
+
+		m_iIndex = m_pAnimator->GetOwner()->GetAnimIdx();
+
 		spAtlas->BindShaderResource(eShaderStage::PS, 12);
 
 		renderer::AnimatorCB data = {};

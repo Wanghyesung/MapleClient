@@ -46,12 +46,19 @@ namespace W
 
 		case EVENT_TYPE::UPDATE_STATE:
 		{
-			UINT ID = (UINT)_tEve.lParm;
-			eLayerType eLayer = (eLayerType)_tEve.wParm;
+			UINT iLayerID = (UINT)_tEve.lParm;
+			int iAnim = (int)_tEve.wParm;
+		
 			wstring* pStrAnimName = reinterpret_cast<wstring*>(_tEve.accParm);
 			
+			W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
+			UINT ID = iLayerID & 0x00FFFFFF;
+
+			UCHAR cDir = (iAnim >> 8) & 0xFF; 
+			UCHAR cAnimIdx = iAnim & 0xFF;        
+
 			GameObject* pObj = SceneManger::FindObject(ID, eLayer);
-			pObj->UpdateState(*pStrAnimName);
+			pObj->UpdateState(*pStrAnimName, cDir, cAnimIdx);
 
 			delete pStrAnimName;
 		}
@@ -60,12 +67,11 @@ namespace W
 		case EVENT_TYPE::CREATE_PLAYER:
 		{
 			UINT iPlayerID = (UINT)_tEve.lParm;
-			UINT iObjectID = (UINT)_tEve.wParm;
-
+		
 			Player* pPlayer = new Player();
 			pPlayer->SetName(L"Player");
 			pPlayer->m_iPlayerID = iPlayerID;
-			pPlayer->SetObjectID(iObjectID);
+			pPlayer->SetObjectID(iPlayerID);
 			pPlayer->Initialize();
 			pPlayer->SetTargetPlayer();
 
@@ -204,24 +210,22 @@ namespace W
 
 		AddEvent(eve);
 	}
-	void EventManager::AddPlayer(UINT _iPlayerID, UINT _iObjectID, vector<UINT> _vecPlayerID, vector<UINT> _vecObjectID)
+	void EventManager::AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::CREATE_PLAYER;
 		eve.lParm = (DWORD_PTR)_iPlayerID;
-		eve.wParm = (DWORD_PTR)_iObjectID;
 		AddEvent(eve);
 
 		for (int i = 0; i < _vecPlayerID.size(); ++i)
-			AddOtherPlayer(_vecPlayerID[i],_vecObjectID[i]);
+			AddOtherPlayer(_vecPlayerID[i]);
 	}
-	void EventManager::AddOtherPlayer(UINT _iPlayerID, UINT _iObjectID)
+	void EventManager::AddOtherPlayer(UINT _iPlayerID)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::CREATE_OTHER_PLAYER;
 
 		eve.lParm = (DWORD_PTR)_iPlayerID;
-		eve.wParm = (DWORD_PTR)_iObjectID;
 	
 		AddEvent(eve);
 	}
@@ -238,13 +242,13 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::UpdateState(UINT _ID, eLayerType _eLayer, const wstring& _strAnimState)
+	void EventManager::UpdateState(UINT _iLayerID, int _iAnim, const wstring& _strAnimState)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::UPDATE_STATE;
 
-		eve.lParm = (DWORD_PTR)_ID;
-		eve.wParm = (DWORD_PTR)_eLayer;
+		eve.lParm = (DWORD_PTR)_iLayerID;
+		eve.wParm = (DWORD_PTR)_iAnim;
 		eve.accParm = (DWORD_PTR)new wstring(_strAnimState);
 
 		AddEvent(eve);

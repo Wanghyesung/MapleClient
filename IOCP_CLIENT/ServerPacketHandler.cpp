@@ -20,8 +20,9 @@ bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt)
 	}
 
 	GClientService->Connected();
-	GClientService->SetPlayerID(_pkt.playerid());
-	PLAYER_ID = _pkt.playerid();
+
+	GClientService->SetPlayerID(_pkt.player_id());
+	PLAYER_ID = _pkt.player_id();
 	
 	vector<UINT> vecPlayerID;
 	vector<UINT> vecObjectID;	
@@ -29,10 +30,9 @@ bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt)
 	for (int i = 0; i < iUserSize; ++i)
 	{
 		vecPlayerID.push_back(_pkt.player_ids(i));
-		vecObjectID.push_back(_pkt.object_ids(i));
 	}
 	
-	W::EventManager::AddPlayer(_pkt.playerid(), _pkt.create_id(), vecPlayerID, vecObjectID);
+	W::EventManager::AddPlayer(PLAYER_ID, vecPlayerID);
 
 	return true;
 }
@@ -40,7 +40,7 @@ bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt)
 bool Handle_S_NEW_ENTER(shared_ptr<Session> _pSession, Protocol::S_NEW_ENTER& _pkt)
 {
 	GClientService->SetPlayerID(_pkt.playerid());
-	W::EventManager::AddOtherPlayer(_pkt.playerid(),_pkt.create_id());
+	W::EventManager::AddOtherPlayer(_pkt.playerid());
 
 	return true;
 }
@@ -57,10 +57,15 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 	{
 		const Protocol::ObjectInfo& objInfo = _pkt.objinfo(i);
 		
-		GameObject* pObj =  GameObjectManager::GetMonsterOfID(objInfo.create_id());
+		UINT iLayerCreateIdId = objInfo.layer_createid_id();
+		UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
+		UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
+		USHORT CID = iLayerCreateIdId & 0xFFFF;
+
+		GameObject* pObj =  GameObjectManager::GetMonsterOfID(cCreateid);
 	
-		eLayerType eLayerType = (W::eLayerType)objInfo.layer();
-		pObj->SetObjectID(objInfo.id());
+		eLayerType eLayerType = (W::eLayerType)cLayer;
+		pObj->SetObjectID(CID);
 		W::EventManager::CreateObject(pObj, eLayerType);	
 	}
 
@@ -69,10 +74,15 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 
 bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 {
-	GameObject* pObj = GameObjectManager::GetMonsterOfID(_pkt.create_id());
+	UINT iLayerCreateIdId = _pkt.layer_createid_id();
+	UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
+	UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
+	USHORT CID = iLayerCreateIdId & 0xFFFF;
 
-	eLayerType eLayerType = (W::eLayerType)_pkt.layer();
-	pObj->SetObjectID(_pkt.id());
+	GameObject* pObj = GameObjectManager::GetMonsterOfID(cCreateid);
+
+	eLayerType eLayerType = (W::eLayerType)cLayer;
+	pObj->SetObjectID(CID);
 
 	EventManager::CreateObject(pObj, eLayerType);
 
@@ -81,25 +91,31 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 
 bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt)
 {
-	eLayerType eLayerType = (W::eLayerType)_pkt.layer();
+	UINT iLayerDeleteId = _pkt.layer_deleteid();
+	UCHAR cLayer = (iLayerDeleteId >> 24) & 0xFF;
+	USHORT CID = iLayerDeleteId & 0xFFFF;
+
+	eLayerType eLayerType = (W::eLayerType)cLayer;
 	
-	EventManager::DeleteObject(_pkt.delete_id(), eLayerType);
+	EventManager::DeleteObject(CID, eLayerType);
 	
 	return true;
 }
 
 bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt)
 {
+	int iAnim = _pkt.anim();
+	UCHAR cAnimIdx = iAnim & 0xFF;      
+
 	//애니메이션 인덱스가 -1이면
-	if (_pkt.anim_idx() < 0)
+	if (cAnimIdx < 0)
 		return false;
 
 	std::wstring strAnimaState = StringToWString(_pkt.state());
-	
-	eLayerType eLayerType = (W::eLayerType)_pkt.layer();
-	UINT ID = _pkt.id();
 
-	EventManager::UpdateState(ID, eLayerType, strAnimaState);
+	if (iAnim >= 257)
+		int a = 10;
+	EventManager::UpdateState(_pkt.layer_id(), iAnim, strAnimaState);
 
 	return true;
 }
@@ -107,10 +123,12 @@ bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt)
 bool Handle_S_TRANSFORM(shared_ptr<Session> _pSession, Protocol::S_TRANSFORM& _pkt)
 {
 	Vector3 vPosition = Vector3{ _pkt.x(),_pkt.y(),_pkt.z() };
-	eLayerType eLayerType = (W::eLayerType)_pkt.layer();
-	UINT ID = _pkt.id();
 
-	EventManager::UpdateTransform(ID, eLayerType, vPosition);
+	UINT iLayerID = _pkt.layer_id();
+	W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
+	UINT ID = (iLayerID) & 0xFF;
+
+	EventManager::UpdateTransform(ID, eLayer, vPosition);
 	return true;
 }
 

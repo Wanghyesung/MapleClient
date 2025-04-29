@@ -85,6 +85,7 @@ namespace W
 		strState += strDir;
 		std::wstring strAnim = L"arm" + strState;
 	
+		m_iAnimIdx = m_pPlayer->GetAnimIdx();
 		if (m_strCurAnim != strAnim)
 		{
 			m_strCurAnim = strAnim;

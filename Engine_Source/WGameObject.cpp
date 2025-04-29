@@ -9,7 +9,8 @@ namespace W
 
 	GameObject::GameObject() :
 		m_eState(eState::Active),
-		m_iObjectID(0)
+		m_iObjectID(0),
+		m_iDir(1)
 	{
 		AddComponent<Transform>();
 	}
@@ -98,7 +99,7 @@ namespace W
 		}
 	}
 	
-	void GameObject::UpdateState(const wstring& _strStateName)
+	void GameObject::UpdateState(const wstring& _strStateName, UCHAR _cDir, UCHAR _cAnimIdx)
 	{
 		
 	}

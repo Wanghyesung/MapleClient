@@ -49,13 +49,7 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-		virtual void UpdateState(const wstring& _strStateName) override;
-
-		void SetDir(int _iDir) { m_iDir = _iDir; }
-		int GetDir() { return m_iDir; }
-
-		void SetAnimIdx(int _iIdx) { m_iAnimIdx = _iIdx; }
-		int GetAnimIdx() { return m_iAnimIdx; }
+		virtual void UpdateState(const wstring& _strStateName, UCHAR _cDir, UCHAR _cAnimIdx) override;
 
 		void SetPlayerCurState(ePlayerState _eState)
 		{
@@ -68,6 +62,7 @@ namespace W
 		const std::wstring& GetCurStateName() { return m_strCurStateName; }
 		void SetCurStateName(const std::wstring& _strName) { m_strCurStateName = _strName; }
 
+		//플레이어 리소스 미리 로드하고 연결하기
 		void SetEquip(Equip* _pEquip);
 		void DisableEquip(Equip* _pEquip);
 
@@ -90,8 +85,6 @@ namespace W
 
 	private:
 		std::vector<GameObject*> m_vecChildObj;
-		int m_iDir;
-		int m_iAnimIdx;
 
 		std::wstring m_strCurStateName;
 		ePlayerState m_ePlayerState;

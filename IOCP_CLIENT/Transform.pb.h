@@ -174,11 +174,10 @@ class S_TRANSFORM final :
 
   enum : int {
     kSceneFieldNumber = 1,
-    kLayerFieldNumber = 2,
-    kIdFieldNumber = 3,
-    kXFieldNumber = 4,
-    kYFieldNumber = 5,
-    kZFieldNumber = 6,
+    kLayerIdFieldNumber = 2,
+    kXFieldNumber = 3,
+    kYFieldNumber = 4,
+    kZFieldNumber = 5,
   };
   // string scene = 1;
   void clear_scene();
@@ -194,25 +193,16 @@ class S_TRANSFORM final :
   std::string* _internal_mutable_scene();
   public:
 
-  // uint32 layer = 2;
-  void clear_layer();
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer() const;
-  void set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 layer_id = 2;
+  void clear_layer_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_id() const;
+  void set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer() const;
-  void _internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_id() const;
+  void _internal_set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // uint32 id = 3;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // float x = 4;
+  // float x = 3;
   void clear_x();
   float x() const;
   void set_x(float value);
@@ -221,7 +211,7 @@ class S_TRANSFORM final :
   void _internal_set_x(float value);
   public:
 
-  // float y = 5;
+  // float y = 4;
   void clear_y();
   float y() const;
   void set_y(float value);
@@ -230,7 +220,7 @@ class S_TRANSFORM final :
   void _internal_set_y(float value);
   public:
 
-  // float z = 6;
+  // float z = 5;
   void clear_z();
   float z() const;
   void set_z(float value);
@@ -247,8 +237,7 @@ class S_TRANSFORM final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_id_;
   float x_;
   float y_;
   float z_;
@@ -311,47 +300,27 @@ inline void S_TRANSFORM::set_allocated_scene(std::string* scene) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_TRANSFORM.scene)
 }
 
-// uint32 layer = 2;
-inline void S_TRANSFORM::clear_layer() {
-  layer_ = 0u;
+// uint32 layer_id = 2;
+inline void S_TRANSFORM::clear_layer_id() {
+  layer_id_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::_internal_layer() const {
-  return layer_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::_internal_layer_id() const {
+  return layer_id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::layer() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.layer)
-  return _internal_layer();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::layer_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.layer_id)
+  return _internal_layer_id();
 }
-inline void S_TRANSFORM::_internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void S_TRANSFORM::_internal_set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  layer_ = value;
+  layer_id_ = value;
 }
-inline void S_TRANSFORM::set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_layer(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.layer)
+inline void S_TRANSFORM::set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_layer_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.layer_id)
 }
 
-// uint32 id = 3;
-inline void S_TRANSFORM::clear_id() {
-  id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::_internal_id() const {
-  return id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::id() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.id)
-  return _internal_id();
-}
-inline void S_TRANSFORM::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  id_ = value;
-}
-inline void S_TRANSFORM::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.id)
-}
-
-// float x = 4;
+// float x = 3;
 inline void S_TRANSFORM::clear_x() {
   x_ = 0;
 }
@@ -371,7 +340,7 @@ inline void S_TRANSFORM::set_x(float value) {
   // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.x)
 }
 
-// float y = 5;
+// float y = 4;
 inline void S_TRANSFORM::clear_y() {
   y_ = 0;
 }
@@ -391,7 +360,7 @@ inline void S_TRANSFORM::set_y(float value) {
   // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.y)
 }
 
-// float z = 6;
+// float z = 5;
 inline void S_TRANSFORM::clear_z() {
   z_ = 0;
 }

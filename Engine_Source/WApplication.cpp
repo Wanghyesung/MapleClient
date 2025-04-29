@@ -54,7 +54,6 @@ namespace W
 
 	void Application::Update()
 	{
-
 		Time::Update();
 		Input::Update();
 		

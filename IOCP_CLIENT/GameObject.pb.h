@@ -182,8 +182,7 @@ class C_CREATE final :
 
   enum : int {
     kSceneFieldNumber = 1,
-    kLayerFieldNumber = 2,
-    kCreateIdFieldNumber = 3,
+    kLayerCreateidFieldNumber = 2,
   };
   // string scene = 1;
   void clear_scene();
@@ -199,22 +198,13 @@ class C_CREATE final :
   std::string* _internal_mutable_scene();
   public:
 
-  // uint32 layer = 2;
-  void clear_layer();
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer() const;
-  void set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 layer_createid = 2;
+  void clear_layer_createid();
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid() const;
+  void set_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer() const;
-  void _internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 create_id = 3;
-  void clear_create_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 create_id() const;
-  void set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_create_id() const;
-  void _internal_set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_createid() const;
+  void _internal_set_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.C_CREATE)
@@ -225,8 +215,7 @@ class C_CREATE final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 create_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_GameObject_2eproto;
 };
@@ -341,11 +330,9 @@ class S_CREATE final :
 
   enum : int {
     kSceneFieldNumber = 1,
-    kStateFieldNumber = 5,
-    kLayerFieldNumber = 2,
-    kIdFieldNumber = 3,
-    kCreateIdFieldNumber = 4,
-    kAnimIdxFieldNumber = 6,
+    kStateFieldNumber = 3,
+    kLayerCreateidIdFieldNumber = 2,
+    kAnimFieldNumber = 4,
   };
   // string scene = 1;
   void clear_scene();
@@ -361,7 +348,7 @@ class S_CREATE final :
   std::string* _internal_mutable_scene();
   public:
 
-  // string state = 5;
+  // string state = 3;
   void clear_state();
   const std::string& state() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -375,40 +362,22 @@ class S_CREATE final :
   std::string* _internal_mutable_state();
   public:
 
-  // uint32 layer = 2;
-  void clear_layer();
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer() const;
-  void set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 layer_createid_id = 2;
+  void clear_layer_createid_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_id() const;
+  void set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer() const;
-  void _internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_createid_id() const;
+  void _internal_set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // uint32 id = 3;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 anim = 4;
+  void clear_anim();
+  ::PROTOBUF_NAMESPACE_ID::uint32 anim() const;
+  void set_anim(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 create_id = 4;
-  void clear_create_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 create_id() const;
-  void set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_create_id() const;
-  void _internal_set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 anim_idx = 6;
-  void clear_anim_idx();
-  ::PROTOBUF_NAMESPACE_ID::uint32 anim_idx() const;
-  void set_anim_idx(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_anim_idx() const;
-  void _internal_set_anim_idx(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_anim() const;
+  void _internal_set_anim(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.S_CREATE)
@@ -420,10 +389,8 @@ class S_CREATE final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr state_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 id_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 create_id_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 anim_idx_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 anim_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_GameObject_2eproto;
 };
@@ -538,8 +505,7 @@ class S_DELETE final :
 
   enum : int {
     kSceneFieldNumber = 1,
-    kLayerFieldNumber = 2,
-    kDeleteIdFieldNumber = 3,
+    kLayerDeleteidFieldNumber = 2,
   };
   // string scene = 1;
   void clear_scene();
@@ -555,22 +521,13 @@ class S_DELETE final :
   std::string* _internal_mutable_scene();
   public:
 
-  // uint32 layer = 2;
-  void clear_layer();
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer() const;
-  void set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 layer_deleteid = 2;
+  void clear_layer_deleteid();
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_deleteid() const;
+  void set_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer() const;
-  void _internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 delete_id = 3;
-  void clear_delete_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 delete_id() const;
-  void set_delete_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_delete_id() const;
-  void _internal_set_delete_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_deleteid() const;
+  void _internal_set_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.S_DELETE)
@@ -581,8 +538,7 @@ class S_DELETE final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 delete_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 layer_deleteid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_GameObject_2eproto;
 };
@@ -642,44 +598,24 @@ inline void C_CREATE::set_allocated_scene(std::string* scene) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.C_CREATE.scene)
 }
 
-// uint32 layer = 2;
-inline void C_CREATE::clear_layer() {
-  layer_ = 0u;
+// uint32 layer_createid = 2;
+inline void C_CREATE::clear_layer_createid() {
+  layer_createid_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_CREATE::_internal_layer() const {
-  return layer_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_CREATE::_internal_layer_createid() const {
+  return layer_createid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_CREATE::layer() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_CREATE.layer)
-  return _internal_layer();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_CREATE::layer_createid() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_CREATE.layer_createid)
+  return _internal_layer_createid();
 }
-inline void C_CREATE::_internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void C_CREATE::_internal_set_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  layer_ = value;
+  layer_createid_ = value;
 }
-inline void C_CREATE::set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_layer(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_CREATE.layer)
-}
-
-// uint32 create_id = 3;
-inline void C_CREATE::clear_create_id() {
-  create_id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_CREATE::_internal_create_id() const {
-  return create_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_CREATE::create_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_CREATE.create_id)
-  return _internal_create_id();
-}
-inline void C_CREATE::_internal_set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  create_id_ = value;
-}
-inline void C_CREATE::set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_create_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_CREATE.create_id)
+inline void C_CREATE::set_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_layer_createid(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_CREATE.layer_createid)
 }
 
 // -------------------------------------------------------------------
@@ -731,67 +667,27 @@ inline void S_CREATE::set_allocated_scene(std::string* scene) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_CREATE.scene)
 }
 
-// uint32 layer = 2;
-inline void S_CREATE::clear_layer() {
-  layer_ = 0u;
+// uint32 layer_createid_id = 2;
+inline void S_CREATE::clear_layer_createid_id() {
+  layer_createid_id_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::_internal_layer() const {
-  return layer_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::_internal_layer_createid_id() const {
+  return layer_createid_id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::layer() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.layer)
-  return _internal_layer();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::layer_createid_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.layer_createid_id)
+  return _internal_layer_createid_id();
 }
-inline void S_CREATE::_internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void S_CREATE::_internal_set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  layer_ = value;
+  layer_createid_id_ = value;
 }
-inline void S_CREATE::set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_layer(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.layer)
+inline void S_CREATE::set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_layer_createid_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.layer_createid_id)
 }
 
-// uint32 id = 3;
-inline void S_CREATE::clear_id() {
-  id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::_internal_id() const {
-  return id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::id() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.id)
-  return _internal_id();
-}
-inline void S_CREATE::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  id_ = value;
-}
-inline void S_CREATE::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.id)
-}
-
-// uint32 create_id = 4;
-inline void S_CREATE::clear_create_id() {
-  create_id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::_internal_create_id() const {
-  return create_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::create_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.create_id)
-  return _internal_create_id();
-}
-inline void S_CREATE::_internal_set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  create_id_ = value;
-}
-inline void S_CREATE::set_create_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_create_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.create_id)
-}
-
-// string state = 5;
+// string state = 3;
 inline void S_CREATE::clear_state() {
   state_.ClearToEmpty();
 }
@@ -836,24 +732,24 @@ inline void S_CREATE::set_allocated_state(std::string* state) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_CREATE.state)
 }
 
-// uint32 anim_idx = 6;
-inline void S_CREATE::clear_anim_idx() {
-  anim_idx_ = 0u;
+// uint32 anim = 4;
+inline void S_CREATE::clear_anim() {
+  anim_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::_internal_anim_idx() const {
-  return anim_idx_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::_internal_anim() const {
+  return anim_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::anim_idx() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.anim_idx)
-  return _internal_anim_idx();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::anim() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.anim)
+  return _internal_anim();
 }
-inline void S_CREATE::_internal_set_anim_idx(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void S_CREATE::_internal_set_anim(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  anim_idx_ = value;
+  anim_ = value;
 }
-inline void S_CREATE::set_anim_idx(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_anim_idx(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.anim_idx)
+inline void S_CREATE::set_anim(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_anim(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.anim)
 }
 
 // -------------------------------------------------------------------
@@ -905,44 +801,24 @@ inline void S_DELETE::set_allocated_scene(std::string* scene) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_DELETE.scene)
 }
 
-// uint32 layer = 2;
-inline void S_DELETE::clear_layer() {
-  layer_ = 0u;
+// uint32 layer_deleteid = 2;
+inline void S_DELETE::clear_layer_deleteid() {
+  layer_deleteid_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_DELETE::_internal_layer() const {
-  return layer_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_DELETE::_internal_layer_deleteid() const {
+  return layer_deleteid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_DELETE::layer() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_DELETE.layer)
-  return _internal_layer();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_DELETE::layer_deleteid() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_DELETE.layer_deleteid)
+  return _internal_layer_deleteid();
 }
-inline void S_DELETE::_internal_set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void S_DELETE::_internal_set_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  layer_ = value;
+  layer_deleteid_ = value;
 }
-inline void S_DELETE::set_layer(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_layer(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_DELETE.layer)
-}
-
-// uint32 delete_id = 3;
-inline void S_DELETE::clear_delete_id() {
-  delete_id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_DELETE::_internal_delete_id() const {
-  return delete_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_DELETE::delete_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_DELETE.delete_id)
-  return _internal_delete_id();
-}
-inline void S_DELETE::_internal_set_delete_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  delete_id_ = value;
-}
-inline void S_DELETE::set_delete_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_delete_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_DELETE.delete_id)
+inline void S_DELETE::set_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_layer_deleteid(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_DELETE.layer_deleteid)
 }
 
 #ifdef __GNUC__

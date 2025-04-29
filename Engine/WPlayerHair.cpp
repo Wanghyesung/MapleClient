@@ -107,10 +107,7 @@ namespace W
 		std::wstring strHair = L"hair";
 		std::wstring strDir;
 		std::wstring strState;
-		if (iDir > 0)
-			strDir = L"_right";
-		else
-			strDir = L"_left";
+		strDir = iDir > 0 ? L"_right" : L"_left";
 
 		strState = pPlayer->GetCurStateName();
 
@@ -121,6 +118,7 @@ namespace W
 
 		std::wstring strAnim = strHair + strState + strDir + strNum;
 
+		m_iAnimIdx = m_pPlayerHead->GetAnimIdx();
 		if (m_strCurAnim != strAnim)
 		{
 			m_strCurAnim = strAnim;

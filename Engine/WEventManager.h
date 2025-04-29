@@ -47,11 +47,11 @@ namespace W
 		static void DeleteObject(UINT _ID, eLayerType _eType);
 		static void ChangeScene(const std::wstring& _strNextScene);
 	
-		static void AddPlayer(UINT _iPlayerID, UINT _iObjectID, vector<UINT> _vecPlayerID, vector<UINT> _vecObjectID);
-		static void AddOtherPlayer(UINT _iPlayerID, UINT _iObjectID);
+		static void AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID);
+		static void AddOtherPlayer(UINT _iPlayerID);
 
 		static void UpdateTransform(UINT _ID, eLayerType _eType, Vector3 _vPosition);
-		static void UpdateState(UINT _ID, eLayerType _eType, const wstring& _strAnimState);
+		static void UpdateState(UINT _iLayerID, int _iAnim, const wstring& _strAnimState);
 	private:
 		static void excute(const tEvent& _tEve);
 
