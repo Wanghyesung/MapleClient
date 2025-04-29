@@ -49,6 +49,8 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
+		virtual void UpdateState(const wstring& _strStateName) override;
+
 		void SetDir(int _iDir) { m_iDir = _iDir; }
 		int GetDir() { return m_iDir; }
 

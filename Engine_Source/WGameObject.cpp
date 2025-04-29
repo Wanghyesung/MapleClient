@@ -98,5 +98,9 @@ namespace W
 		}
 	}
 	
+	void GameObject::UpdateState(const wstring& _strStateName)
+	{
+		
+	}
 	
 }

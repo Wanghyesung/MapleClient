@@ -48,11 +48,13 @@ namespace W
 	class Input
 	{
 	public:
+		//나중에 바뀌었는지 확인 후 던지기
 		struct Key
 		{
 			eKeyCode key;
 			eKeyState state;
 			bool bPressed;
+
 		};
 
 		static void Initialize();
@@ -86,8 +88,12 @@ namespace W
 		static __forceinline Vector2 GetMousePos() { return m_vMousePos; }
 
 	private:
+		static void send_input();
+	private:
+		static std::vector<Key> m_vecPrevKeys;
 		static std::vector<Key> m_vecKeys;
 		static std::vector<pair<UCHAR, UCHAR>> m_vecCurKeys;
+		
 		static Vector2 m_vMousePos;
 	};
 

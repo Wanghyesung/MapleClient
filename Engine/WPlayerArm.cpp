@@ -72,21 +72,19 @@ namespace W
 	{
 		Animator* pAnimator = GetComponent<Animator>();
 		Vector3 vPlayerPos = m_pPlayer->GetComponent<Transform>()->GetPosition();
-		//vPlayerPos.x += 2.f;
+	
 		GetComponent<Transform>()->SetPosition(vPlayerPos);
 
 		int iDir = m_pPlayer->GetDir();
 		std::wstring strDir;
 		std::wstring strState;
-		if (iDir > 0)
-			strDir = L"_right";
-		else
-			strDir = L"_left";
+
+		strDir = (iDir > 0) ? L"_right" : L"_left";
 
 		strState = m_pPlayer->GetCurStateName();
-
-		std::wstring strAnim = L"arm" + strState + strDir;
-
+		strState += strDir;
+		std::wstring strAnim = L"arm" + strState;
+	
 		if (m_strCurAnim != strAnim)
 		{
 			m_strCurAnim = strAnim;

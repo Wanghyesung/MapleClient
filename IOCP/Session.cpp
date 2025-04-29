@@ -54,7 +54,7 @@ void Session::DisConnect(const WCHAR* _strCause)
 	wcout << _strCause;
 
 	RegisterDisConnect();
-	//GetService()->EraseSession(shared_from_this());
+	//GetService()->EraseSession(shared_from_this());z
 
 }
 
@@ -182,6 +182,7 @@ void Session::RegisterSend()
 
 
 	DWORD sendBytes = 0;
+	//작업이 완료시 I/O 작업은 커널이 자동으로 IOCP 큐에 이벤트를 넣어줌
 	if (WSASend(m_socket, vecWsaBuf.data(), static_cast<DWORD>(vecWsaBuf.size()), &sendBytes, 0, &m_sendEvent, nullptr) != false)
 	{
 		int errorCode = WSAGetLastError();

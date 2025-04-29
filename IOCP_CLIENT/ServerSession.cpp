@@ -23,6 +23,8 @@ void ServerSession::OnConnected()
 	shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 	
 	Send(pSendBuffer);
+
+	
 }
 
 int ServerSession::OnRecvPacket(BYTE* buffer, int len)

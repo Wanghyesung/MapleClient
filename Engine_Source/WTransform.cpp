@@ -63,14 +63,6 @@ namespace W
 		if (m_pParentTransform)
 			m_vWorld *= m_pParentTransform->m_vWorld;
 
-		//-2.63 0.27
-		//for (int i = 0; i < 4; ++i)
-		//{
-		//	float x = m_vRight.x * m_vScale.x / 2.f;
-		//
-		//	int a = 10;
-		//}
-		
 	}
 	void Transform::Render()
 	{

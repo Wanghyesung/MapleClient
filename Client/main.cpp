@@ -108,7 +108,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-    // 기본 메시지 루프입니다:
+    //lock
+    while (true)
+    {
+        if (GClientService->IsConnected())
+            break;
+
+        this_thread::sleep_for(0.5s);
+    }
+
     while (true)
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
@@ -132,8 +140,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     renderer::Release();
-    //W::Resources::Release();//전부 shadered_ptr로 바꿈 알아서 해제
-
+    
     W::ThreadPool::Shutdown();
     W::SceneManger::Release();
     //W::BattleManager::Release();

@@ -134,6 +134,13 @@ namespace W
 		child_render();
 	}
 
+	void Player::UpdateState(const wstring& _strStateName)
+	{
+		m_strCurStateName = _strStateName;
+
+
+	}
+
 	void Player::SetEquip(Equip* _pEquip)
 	{
 		Equip::EquipType eType = _pEquip->GetEquipType();

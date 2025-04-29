@@ -32,6 +32,7 @@ void IOCP::Excute()
 	ULONG_PTR key = 0;
 	IOCPEvent* iocpEvnet = nullptr;
 
+	// 완료된 I/O 작업 정보를 스레드가 처리
 	if (GetQueuedCompletionStatus(m_IOCPHandle, &numOfBytes, &key, reinterpret_cast<LPOVERLAPPED*>(&iocpEvnet), INFINITE) != false)
 	{
 		if (iocpEvnet == nullptr)

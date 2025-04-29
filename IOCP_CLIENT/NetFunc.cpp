@@ -9,7 +9,17 @@ wstring StringToWString(const string& str)
     size_t llNumCvt = 0;
     mbstowcs_s(&llNumCvt, &wstr[0], llSize, str.c_str(), llSize - 1);
 
-    wstr.pop_back(); // 널 문자 제거
+    while (TRUE)
+    {
+        if (wstr.back() == L'\0')
+        {
+            //널문자 만나기 까지
+            wstr.pop_back();
+            break;
+        }   
+        wstr.pop_back();
+    }
+    
     return wstr;
 }
 

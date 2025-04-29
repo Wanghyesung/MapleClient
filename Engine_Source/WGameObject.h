@@ -27,6 +27,9 @@ namespace W
 		virtual void LateUpdate();
 		virtual void Render();
 
+		//네트워크
+		virtual void UpdateState(const wstring& _strStateName);
+
 		template <typename T>
 		T* GetComponent()
 		{

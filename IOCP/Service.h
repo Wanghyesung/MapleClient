@@ -86,6 +86,7 @@ public:
 
 public :
 	void Connected() { m_bConnected = true; }
+	bool IsConnected() { return m_bConnected.load(); }
 
 private:
 	shared_ptr<Session> m_pClientSession; 

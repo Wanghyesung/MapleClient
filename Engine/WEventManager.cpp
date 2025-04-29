@@ -46,16 +46,14 @@ namespace W
 
 		case EVENT_TYPE::UPDATE_STATE:
 		{
-			//UINT ID = (UINT)_tEve.lParm;
-			//eLayerType eLayer = (eLayerType)_tEve.wParm;
-			//wstring* pStrAnimName = reinterpret_cast<wstring*>(_tEve.accParm);
-			//
-			//GameObject* pObj = SceneManger::FindObject(ID, eLayer);
-			//if (pObj == nullptr)
-			//	assert(nullptr);
-			//
-			//pObj->GetComponent<Animator>()->Play()
+			UINT ID = (UINT)_tEve.lParm;
+			eLayerType eLayer = (eLayerType)_tEve.wParm;
+			wstring* pStrAnimName = reinterpret_cast<wstring*>(_tEve.accParm);
+			
+			GameObject* pObj = SceneManger::FindObject(ID, eLayer);
+			pObj->UpdateState(*pStrAnimName);
 
+			delete pStrAnimName;
 		}
 		break;
 

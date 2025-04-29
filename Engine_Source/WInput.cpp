@@ -49,10 +49,13 @@ namespace W
 		VK_LBUTTON, VK_RBUTTON,
 
 		//WM_VSCROLL
+
 	};
 
 
 	std::vector<Input::Key> Input::m_vecKeys;
+	std::vector<Input::Key> Input::m_vecPrevKeys;
+
 	std::vector<pair<UCHAR,UCHAR>> Input::m_vecCurKeys;
 	Vector2 Input::m_vMousePos = Vector2::Zero;
 
@@ -66,12 +69,15 @@ namespace W
 			keyInfo.bPressed = false;
 
 			m_vecKeys.push_back(keyInfo);
+			m_vecPrevKeys.push_back(keyInfo);
 		}
 	}
 
 	void Input::Update()
 	{
+		std::swap(m_vecPrevKeys, m_vecKeys);
 		m_vecCurKeys.clear();
+
 		if (GetFocus())
 		{
 			for (UINT i = 0; i < (UINT)eKeyCode::NONE; i++)
@@ -82,13 +88,15 @@ namespace W
 					if (m_vecKeys[i].bPressed)
 					{
 						m_vecKeys[i].state = eKeyState::Pressed;
-						m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Pressed));
+						if(m_vecPrevKeys[i].state != eKeyState::Pressed)
+							m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Pressed));
 					}
 						
 					else
 					{
 						m_vecKeys[i].state = eKeyState::Down;
-						m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Down));
+						if (m_vecPrevKeys[i].state != eKeyState::Down)
+							m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Down));
 					}
 
 					m_vecKeys[i].bPressed = true;
@@ -100,13 +108,15 @@ namespace W
 					if (m_vecKeys[i].bPressed)
 					{
 						m_vecKeys[i].state = eKeyState::Up;
-						m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Up));
+						if (m_vecPrevKeys[i].state != eKeyState::Up)
+							m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Up));
 					}
 						
 					else
 					{
 						m_vecKeys[i].state = eKeyState::None;
-						m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::None));
+						if (m_vecPrevKeys[i].state != eKeyState::None)
+							m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::None));
 					}
 
 					m_vecKeys[i].bPressed = false;
@@ -136,37 +146,42 @@ namespace W
 				if (eKeyState::Down == m_vecKeys[i].state
 					|| eKeyState::Pressed == m_vecKeys[i].state)
 				{
-					//m_vecKeys[i].state = eKeyState::Up;
+					m_vecKeys[i].state = eKeyState::Up;
 					m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Up));
 
 				}
 				else if (eKeyState::Up == m_vecKeys[i].state)
 				{
-					//m_vecKeys[i].state = eKeyState::None;
+					m_vecKeys[i].state = eKeyState::None;
 					m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::None));
 				}
 
 				m_vecKeys[i].bPressed = false;
 			}
-		}
+		}		
 
-		Protocol::C_INPUT pkt;
-		pkt.set_playerid(GClientService->GetPlayerID());
-
-		for (int i = 0; i < m_vecCurKeys.size(); ++i)
-		{
-		 	//눌린 키, 상태 (0~255 1바이트 표현)
-			pkt.add_inpus((m_vecCurKeys[i].first << 8) | m_vecCurKeys[i].second);
-		}
-		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
-
-		GClientService->GetClientSession()->Send(pSendBuffer);
+		send_input();
 	}	
 
 
 	void Input::Render(HDC hdc)
 	{
 
+	}
+
+	void Input::send_input()
+	{
+		Protocol::C_INPUT pkt;
+		pkt.set_playerid(GClientService->GetPlayerID());
+
+		for (int i = 0; i < m_vecCurKeys.size(); ++i)
+		{
+			//눌린 키, 상태 (0~255 1바이트 표현)
+			pkt.add_inpus((m_vecCurKeys[i].first << 8) | m_vecCurKeys[i].second);
+		}
+		
+		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+		GClientService->GetClientSession()->Send(pSendBuffer);
 	}
 }
 

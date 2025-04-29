@@ -101,17 +101,13 @@ namespace W
 		GetComponent<Transform>()->SetPosition(vPlayerPos);
 
 		int iDir = m_pPlayer->GetDir();
-		std::wstring strDir;
-		std::wstring strState;
-		if (iDir > 0)
-			strDir = L"_right";
-		else
-			strDir = L"_left";
+		std::wstring strDir = (iDir > 0) ? L"_right" : L"_left";
 
-		strState = m_pPlayer->GetCurStateName();
-
-		std::wstring strAnim = L"body" + strState + strDir;
-
+		std::wstring strState = m_pPlayer->GetCurStateName(); 
+		strState += strDir; 
+		
+		std::wstring strAnim = L"body" + strState;
+	
 		if (m_strCurAnim != strAnim)
 		{
 			m_strCurAnim = strAnim;
