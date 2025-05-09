@@ -39,7 +39,8 @@ namespace W
 	{
 	public:
 		static void Update();
-		static void AddEvent(const tEvent& _tEve) { m_vecEvent.push_back(_tEve); }
+		static void AddEvent(const tEvent& _tEve);
+		//{ m_vecEvent.push_back(_tEve); }
 		
 		static void CreateObject(GameObject* _pObj, eLayerType _eLayer);
 		static void CreateObject(UINT _ID, eLayerType _eLayer);
@@ -56,9 +57,10 @@ namespace W
 		static void excute(const tEvent& _tEve);
 
 	private:
-		static std::vector<tEvent> m_vecEvent;
+		static std::vector<tEvent> m_vecEvent[2];
+		static atomic<int> m_iActiveIdx;
 
-	
+		static RWLock m_lock;
 		static std::wstring m_strNextScene;
 	};
 }

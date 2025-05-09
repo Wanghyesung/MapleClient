@@ -105,7 +105,7 @@ bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt)
 bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt)
 {
 	int iAnim = _pkt.anim();
-	UCHAR cAnimIdx = iAnim & 0xFF;      
+	char cAnimIdx = iAnim & 0xFF;      
 
 	//애니메이션 인덱스가 -1이면
 	if (cAnimIdx < 0)
@@ -113,8 +113,6 @@ bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt)
 
 	std::wstring strAnimaState = StringToWString(_pkt.state());
 
-	if (iAnim >= 257)
-		int a = 10;
 	EventManager::UpdateState(_pkt.layer_id(), iAnim, strAnimaState);
 
 	return true;

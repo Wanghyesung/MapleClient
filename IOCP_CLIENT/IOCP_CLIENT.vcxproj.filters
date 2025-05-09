@@ -21,9 +21,9 @@
     <ClInclude Include="Exit.pb.h" />
     <ClInclude Include="GameObject.pb.h" />
     <ClInclude Include="Input.pb.h" />
-    <ClInclude Include="Map.pb.h" />
     <ClInclude Include="Transform.pb.h" />
     <ClInclude Include="Equip.pb.h" />
+    <ClInclude Include="Map.pb.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -45,9 +45,9 @@
     <ClCompile Include="Exit.pb.cc" />
     <ClCompile Include="GameObject.pb.cc" />
     <ClCompile Include="Input.pb.cc" />
-    <ClCompile Include="Map.pb.cc" />
     <ClCompile Include="Transform.pb.cc" />
     <ClCompile Include="Equip.pb.cc" />
+    <ClCompile Include="Map.pb.cc" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Net">

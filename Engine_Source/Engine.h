@@ -23,6 +23,7 @@
 #include <mswsock.h>
 #pragma comment(lib, "ws2_32.lib")
 
+#define SERVER_TICK_RATE 120.f
 #include <mutex>
 #include <atomic>
 

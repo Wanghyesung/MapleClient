@@ -1,6 +1,6 @@
 #include "WChannel.h"
 #include "WChannelNumber.h"
-
+#include "WTransform.h"
 //viewport셋팅, rendertarget deapth버퍼
 
 //월요일까지 플레이어 움직이게 (모든 로직)

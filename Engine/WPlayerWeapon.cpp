@@ -88,10 +88,8 @@ namespace W
 		std::wstring strDir;
 		std::wstring strState;
 
-		strState = iDir > 0 ? L"_right" : L"_left";
-
+		strDir = iDir > 0 ? L"_right" : L"_left";
 		strState = pPlayer->GetCurStateName();
-
 		std::wstring strAnim = m_strCurEquip + strState + strDir;
 
 		m_iAnimIdx = m_pPlayerArm->GetAnimIdx();

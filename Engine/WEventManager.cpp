@@ -12,18 +12,34 @@
 #include "..\Engine_Source\WTransform.h"
 namespace W
 {
-	std::vector<tEvent> EventManager::m_vecEvent = {};
+	std::vector<tEvent> EventManager::m_vecEvent[2] = {};
+	atomic<int> EventManager::m_iActiveIdx = 1;
 
+	RWLock EventManager::m_lock = {};
 
 	std::wstring EventManager::m_strNextScene = {};
 #define ObjectPoolPosition 2000.f
 	void EventManager::Update()
 	{
-		for (int i = 0; i < m_vecEvent.size(); ++i)
+		//더블버퍼링
 		{
-			excute(m_vecEvent[i]);
+			WLock lock_guard(m_lock);
+			m_iActiveIdx = 1 - m_iActiveIdx;
 		}
-		m_vecEvent.clear();
+
+		std::vector<tEvent>& vecActiveEvent = m_vecEvent[m_iActiveIdx];
+		for (int i = 0; i < vecActiveEvent.size(); ++i)
+		{
+			excute(vecActiveEvent[i]);
+		}
+
+		vecActiveEvent.clear();
+	}
+
+	void EventManager::AddEvent(const tEvent& _tEve)
+	{
+		WLock lock_guard(m_lock);
+		m_vecEvent[1 - m_iActiveIdx].push_back(_tEve);
 	}
 	
 	void EventManager::excute(const tEvent& _tEve)
@@ -37,8 +53,7 @@ namespace W
 			Vector3* vPosition = reinterpret_cast<Vector3*>(_tEve.accParm);
 			
 			GameObject* pObj = SceneManger::FindObject(ID, eLayer);
-			if (pObj != nullptr)
-				pObj->GetComponent<Transform>()->SetPosition(*vPosition);
+			pObj->GetComponent<Transform>()->recv_position(*vPosition);
 
 			delete vPosition;
 		}

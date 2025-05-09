@@ -43,7 +43,18 @@ namespace W
 		void SetParent(Transform* transform) { m_pParentTransform = transform; }
 		Transform* GetParent() { return m_pParentTransform; }
 		Matrix& GetMatrix() { return m_vWorld; }
+
 	private:
+		void recv_position(Vector3 _vPosition);
+		void lateupdate_position();
+	private:
+		//packet
+		Vector3 m_vNextPosition;
+		Vector3 m_vPrevPosition;
+		float m_fLerpTime;
+		float m_fCurLerpTime;
+		float m_fCurLerpRate;
+
 		Vector3 m_vPosition;
 		Vector3 m_vRotation;
 		Vector3 m_vScale;
@@ -57,6 +68,8 @@ namespace W
 		Matrix m_vWorld;
 
 		Transform* m_pParentTransform;
+
+		friend class EventManager;
 	};
 
 }

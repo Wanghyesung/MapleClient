@@ -46,7 +46,7 @@ struct TableStruct_Map_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[2]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[3]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -54,6 +54,9 @@ struct TableStruct_Map_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Map_2eproto;
 namespace Protocol {
+class C_MAP;
+struct C_MAPDefaultTypeInternal;
+extern C_MAPDefaultTypeInternal _C_MAP_default_instance_;
 class ObjectInfo;
 struct ObjectInfoDefaultTypeInternal;
 extern ObjectInfoDefaultTypeInternal _ObjectInfo_default_instance_;
@@ -62,6 +65,7 @@ struct S_MAPDefaultTypeInternal;
 extern S_MAPDefaultTypeInternal _S_MAP_default_instance_;
 }  // namespace Protocol
 PROTOBUF_NAMESPACE_OPEN
+template<> ::Protocol::C_MAP* Arena::CreateMaybeMessage<::Protocol::C_MAP>(Arena*);
 template<> ::Protocol::ObjectInfo* Arena::CreateMaybeMessage<::Protocol::ObjectInfo>(Arena*);
 template<> ::Protocol::S_MAP* Arena::CreateMaybeMessage<::Protocol::S_MAP>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -416,6 +420,154 @@ class S_MAP final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Map_2eproto;
 };
+// -------------------------------------------------------------------
+
+class C_MAP final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.C_MAP) */ {
+ public:
+  inline C_MAP() : C_MAP(nullptr) {}
+  ~C_MAP() override;
+  explicit constexpr C_MAP(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_MAP(const C_MAP& from);
+  C_MAP(C_MAP&& from) noexcept
+    : C_MAP() {
+    *this = ::std::move(from);
+  }
+
+  inline C_MAP& operator=(const C_MAP& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_MAP& operator=(C_MAP&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_MAP& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_MAP* internal_default_instance() {
+    return reinterpret_cast<const C_MAP*>(
+               &_C_MAP_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(C_MAP& a, C_MAP& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_MAP* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_MAP* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline C_MAP* New() const final {
+    return new C_MAP();
+  }
+
+  C_MAP* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<C_MAP>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const C_MAP& from);
+  void MergeFrom(const C_MAP& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_MAP* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Protocol.C_MAP";
+  }
+  protected:
+  explicit C_MAP(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSceneFieldNumber = 1,
+    kPlayerIdFieldNumber = 2,
+  };
+  // string scene = 1;
+  void clear_scene();
+  const std::string& scene() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_scene(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_scene();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scene();
+  void set_allocated_scene(std::string* scene);
+  private:
+  const std::string& _internal_scene() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scene(const std::string& value);
+  std::string* _internal_mutable_scene();
+  public:
+
+  // uint32 player_id = 2;
+  void clear_player_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 player_id() const;
+  void set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_player_id() const;
+  void _internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Protocol.C_MAP)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 player_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Map_2eproto;
+};
 // ===================================================================
 
 
@@ -660,9 +812,80 @@ S_MAP::objinfo() const {
   return objinfo_;
 }
 
+// -------------------------------------------------------------------
+
+// C_MAP
+
+// string scene = 1;
+inline void C_MAP::clear_scene() {
+  scene_.ClearToEmpty();
+}
+inline const std::string& C_MAP::scene() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MAP.scene)
+  return _internal_scene();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void C_MAP::set_scene(ArgT0&& arg0, ArgT... args) {
+ 
+ scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:Protocol.C_MAP.scene)
+}
+inline std::string* C_MAP::mutable_scene() {
+  // @@protoc_insertion_point(field_mutable:Protocol.C_MAP.scene)
+  return _internal_mutable_scene();
+}
+inline const std::string& C_MAP::_internal_scene() const {
+  return scene_.Get();
+}
+inline void C_MAP::_internal_set_scene(const std::string& value) {
+  
+  scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* C_MAP::_internal_mutable_scene() {
+  
+  return scene_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* C_MAP::release_scene() {
+  // @@protoc_insertion_point(field_release:Protocol.C_MAP.scene)
+  return scene_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void C_MAP::set_allocated_scene(std::string* scene) {
+  if (scene != nullptr) {
+    
+  } else {
+    
+  }
+  scene_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scene,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:Protocol.C_MAP.scene)
+}
+
+// uint32 player_id = 2;
+inline void C_MAP::clear_player_id() {
+  player_id_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_MAP::_internal_player_id() const {
+  return player_id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_MAP::player_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MAP.player_id)
+  return _internal_player_id();
+}
+inline void C_MAP::_internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  player_id_ = value;
+}
+inline void C_MAP::set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_player_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MAP.player_id)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 
