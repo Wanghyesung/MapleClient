@@ -90,7 +90,6 @@ namespace W
 	private:
 		static void send_input();
 	private:
-		static std::vector<Key> m_vecPrevKeys;
 		static std::vector<Key> m_vecKeys;
 		static std::vector<pair<UCHAR, UCHAR>> m_vecCurKeys;
 		

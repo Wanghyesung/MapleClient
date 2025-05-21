@@ -82,6 +82,7 @@ namespace W
 		float m_fFal;
 		float m_fSize;
 	
+		bool m_bUICamera;
 
 		//그리는 순서대로 오브젝트 정렬
 		std::bitset<(UINT)eLayerType::End> m_bitLayerMask;

@@ -16,7 +16,7 @@ namespace W
 		m_pParentUI(nullptr),
 		m_vecChildUI{}
 	{
-		
+		SetClientObject(true);
 	}
 	UI::UI(const UI& _pOrigin):
 		GameObject(_pOrigin),
@@ -25,6 +25,7 @@ namespace W
 		m_pParentUI(nullptr),
 		m_vecChildUI{}
 	{
+		SetClientObject(true);
 	}
 	UI::~UI()
 	{
@@ -163,31 +164,6 @@ namespace W
 		
 	}
 
-	//안쓰는 함수
-	//void UI::MoveToParent()
-	//{
-	//	if (m_pParentUI != nullptr)
-	//	{
-	//		Vector3 vFinalPos = {};
-	//	
-	//		Transform* pParentTransform = m_pParentUI->GetComponent<Transform>();
-	//		Vector3 vParentPos = pParentTransform->GetPosition();
-	//	
-	//		if (vParentPos != m_vParntUIPos)
-	//		{
-	//			m_vParntUIPos = vParentPos;
-	//	
-	//			Transform* pTransform = GetComponent<Transform>();
-	//			Vector3 vPos = pTransform->GetPosition();
-	//	
-	//			vFinalPos = vPos + vParentPos;
-	//			//vPos.x += vParentPos.x;
-	//			//vPos.y += vParentPos.y;
-	//			pTransform->SetPosition(vFinalPos);
-	//		}
-	//	}
-	//}
-
 	void UI::MoveUI(UI* _pUI)
 	{
 		Vector3 vFinalPos = {};
@@ -197,7 +173,7 @@ namespace W
 
 		Transform* pTransform = _pUI->GetComponent<Transform>();
 		Vector3 vPos = pTransform->GetPosition();
-
+		
 		vFinalPos = vParentPos + vPos;
 		pTransform->SetPosition(vFinalPos);
 	}

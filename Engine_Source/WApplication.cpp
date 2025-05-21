@@ -36,11 +36,14 @@ namespace W
 		LateUpdate();
 		Render();
 		UIManger::ReleaseChildUI();
+
+		EventManager::Update();
 	}
 
 
 	void Application::Initialize()
 	{
+		Time::Initiailize();
 		PathManager::Initialize();
 		ThreadPool::Initiailize(4);
 		Input::Initialize();
@@ -60,7 +63,6 @@ namespace W
 		SceneManger::Update();
 		UIManger::Update();
 	
-		EventManager::Update();
 	}
 
 	void Application::LateUpdate()

@@ -63,7 +63,8 @@ namespace W
 		{
 			UINT iLayerID = (UINT)_tEve.lParm;
 			int iAnim = (int)_tEve.wParm;
-		
+			//static_cast는 컴파일러가 타입 간 변환 규칙이 안전하다고 판단할 때만 허용
+			//reinterpret_cast는 포인터끼리 강제 변환
 			wstring* pStrAnimName = reinterpret_cast<wstring*>(_tEve.accParm);
 			
 			W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);

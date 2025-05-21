@@ -54,7 +54,6 @@ namespace W
 
 
 	std::vector<Input::Key> Input::m_vecKeys;
-	std::vector<Input::Key> Input::m_vecPrevKeys;
 
 	std::vector<pair<UCHAR,UCHAR>> Input::m_vecCurKeys;
 	Vector2 Input::m_vMousePos = Vector2::Zero;
@@ -69,13 +68,12 @@ namespace W
 			keyInfo.bPressed = false;
 
 			m_vecKeys.push_back(keyInfo);
-			m_vecPrevKeys.push_back(keyInfo);
+		
 		}
 	}
 
 	void Input::Update()
 	{
-		std::swap(m_vecPrevKeys, m_vecKeys);
 		m_vecCurKeys.clear();
 
 		if (GetFocus())
@@ -87,16 +85,18 @@ namespace W
 					// 이전 프레임에도 눌려 있었다
 					if (m_vecKeys[i].bPressed)
 					{
-						m_vecKeys[i].state = eKeyState::Pressed;
-						if(m_vecPrevKeys[i].state != eKeyState::Pressed)
+						if(m_vecKeys[i].state != eKeyState::Pressed)
 							m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Pressed));
+
+						m_vecKeys[i].state = eKeyState::Pressed;
 					}
 						
 					else
-					{
-						m_vecKeys[i].state = eKeyState::Down;
-						if (m_vecPrevKeys[i].state != eKeyState::Down)
+					{	
+						if (m_vecKeys[i].state != eKeyState::Down)
 							m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Down));
+
+						m_vecKeys[i].state = eKeyState::Down;
 					}
 
 					m_vecKeys[i].bPressed = true;
@@ -107,16 +107,16 @@ namespace W
 					// 이전 프레임에 내키가 눌려있엇다.
 					if (m_vecKeys[i].bPressed)
 					{
-						m_vecKeys[i].state = eKeyState::Up;
-						if (m_vecPrevKeys[i].state != eKeyState::Up)
+						if (m_vecKeys[i].state != eKeyState::Up)
 							m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::Up));
+						m_vecKeys[i].state = eKeyState::Up;
 					}
 						
 					else
 					{
-						m_vecKeys[i].state = eKeyState::None;
-						if (m_vecPrevKeys[i].state != eKeyState::None)
+						if (m_vecKeys[i].state != eKeyState::None)
 							m_vecCurKeys.push_back(std::make_pair(i, (UCHAR)eKeyState::None));
+						m_vecKeys[i].state = eKeyState::None;
 					}
 
 					m_vecKeys[i].bPressed = false;

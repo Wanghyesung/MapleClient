@@ -43,6 +43,8 @@ namespace W
 		void SetParent(Transform* transform) { m_pParentTransform = transform; }
 		Transform* GetParent() { return m_pParentTransform; }
 		Matrix& GetMatrix() { return m_vWorld; }
+		
+		Vector3 PositionLerp(const Vector3& _vFrom, const Vector3& _vTo, float fRate, bool bClampZ = true);
 
 	private:
 		void recv_position(Vector3 _vPosition);

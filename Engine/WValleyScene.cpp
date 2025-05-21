@@ -117,13 +117,13 @@ namespace W
 	void ValleyScene::CreateBackground()
 	{
 		GameObject* pBackGround = new GameObject();
-		std::shared_ptr<AudioClip> pAudioClip = Resources::Load<AudioClip>(L"valleysound", L"..\\Resources\\sound\\DragonNest.mp3");
-	
+		pBackGround->SetClientObject(true);
+
 		AddGameObject(eLayerType::Background, pBackGround);
 		MeshRenderer* pMeshRender = pBackGround->AddComponent<MeshRenderer>();
 		pMeshRender->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pMeshRender->SetMaterial(Resources::Find<Material>(L"dragonValleyMater"));
-		pBackGround->GetComponent<Transform>()->SetPosition(0.f, 0.f, 0.2f);
+		pBackGround->GetComponent<Transform>()->SetPosition(0.f, 0.f, 10.f);
 		//035 : 1
 		pBackGround->GetComponent<Transform>()->SetScale(25 * 0.35f,  25.f * 1.f, 1.f);
 	}

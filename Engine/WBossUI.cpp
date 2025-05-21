@@ -3,6 +3,7 @@
 #include "WBossEnterUI.h"
 #include "WInput.h"
 #include "WMonsterUI.h"
+#include "WTransform.h"
 namespace W
 {
 	BossUI::BossUI():

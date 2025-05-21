@@ -54,7 +54,8 @@ namespace W
 		m_vecCutOutGameObjects{},
 		m_vecTransparentGameObjects{},
 		m_mView{},
-		m_mProjection{}
+		m_mProjection{},
+		m_bUICamera(false)
 	{
 		//레이어 마스크 전부 true로 초기화
 		EnableLayerMasks();
@@ -89,15 +90,22 @@ namespace W
 		AlphaSortGameObjects();
 		ZSortTransparencyGameObjects();
 
+		/*
+		체력바, 미니맵, 버튼, 인벤토리 등은 카메라와는 상관없이 항상 화면에 떠 있음
+		따라서 깊이(z값) 비교할 이유가 없음
+		*/
+		if(!m_bUICamera)
+			EnableDepthStencilState();
+
 		RenderOpaque();
 
 		//불투명 먼저 그리고 같은 z값에 투명을 그리면 z값 우선순위에서 밀려서 안그려짐
 		//z버퍼 끄기
-		DisablDepthStencilState();
+		DisablDepthStencilState();	
+	
 		//불투명 -> 반투명 -> 투명
 		RenderCutOut();
 		RenderTransparent();
-		EnableDepthStencilState();
 	}
 	
 	void Camera::RegisterCameraInRenderer()
@@ -120,6 +128,7 @@ namespace W
 			m_bitLayerMask.set(i, false);
 		}
 
+		m_bUICamera = true;
 	}
 
 	void Camera::AlphaSortGameObjects()

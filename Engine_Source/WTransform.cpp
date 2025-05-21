@@ -3,6 +3,9 @@
 #include "WConstantBuffer.h"
 #include "WCamera.h"
 #include "WTime.h"
+#include "WGameObject.h"
+#include "WInput.h"
+#include "WUI.h"
 namespace W
 {
 	using namespace W;
@@ -43,15 +46,22 @@ namespace W
 	}
 	void Transform::Initialize()
 	{
+
 	}
 	void Transform::Update()
 	{
+
 	}
 	void Transform::LateUpdate()
 	{
-		if(m_fCurLerpTime / m_fLerpTime < 1.f)
-			lateupdate_position();
-
+		
+		
+		if (!GetOwner()->IsClientObject())
+		{
+			if (m_fCurLerpTime / m_fLerpTime < 1.f)
+				lateupdate_position();
+		}	
+		
 		m_vWorld = Matrix::Identity;//전지 행렬
 		
 		//크기 행렬 생성
@@ -103,11 +113,12 @@ namespace W
 		m_fCurLerpTime += Time::DeltaTime();
 
 		m_fCurLerpRate = m_fCurLerpTime/ m_fLerpTime;
+
 		//fCurRate = std::clamp
 		if (m_fCurLerpRate >= 1.f)
 			m_fCurLerpRate = 1.f;
-
-		m_vPosition = Vector3::Lerp(m_vPrevPosition, m_vNextPosition, m_fCurLerpRate);
+		
+		m_vPosition = PositionLerp(m_vPrevPosition, m_vNextPosition, m_fCurLerpRate);
 	}
 
 	void Transform::recv_position(Vector3 _vPosition)
@@ -116,5 +127,20 @@ namespace W
 		m_vNextPosition = _vPosition;
 
 		m_fCurLerpTime = 0.f;
+	}
+
+	Vector3 Transform::PositionLerp(const Vector3& _vFrom, const Vector3& _vTo, float fRate, bool bClampZ)
+	{
+		Vector3 vResult = Vector3::Zero;
+
+		vResult.x = _vFrom.x + (_vTo.x - _vFrom.x) * fRate;
+		vResult.y = _vFrom.y + (_vTo.y - _vFrom.y) * fRate;
+
+		if (bClampZ)
+			vResult.z = _vFrom.z; // z값 고정 또는 제한된 범위로만 보간
+		else
+			vResult.z = _vFrom.z + (_vTo.z - _vFrom.z) * fRate;
+	
+		return vResult;
 	}
 }
