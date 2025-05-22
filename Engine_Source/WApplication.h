@@ -13,6 +13,7 @@ namespace W
 
 		void Run();
 
+		void Start();
 		void Initialize();
 		void Update();
 		void LateUpdate();

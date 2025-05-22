@@ -18,6 +18,7 @@ namespace W
 
 	private:
 		static UI* m_pFoucseUI;
+		static UI* m_pTargetUI;
 	};
 }
 

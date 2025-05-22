@@ -30,6 +30,10 @@ namespace W
 
 	}
 
+	void Application::Start()
+	{
+		SceneManger::GetActiveScene()->OnEnter();
+	}
 	void Application::Run()
 	{
 		Update();
@@ -51,6 +55,7 @@ namespace W
 		renderer::Initialize();
 		ItemManager::Initialize();
 
+		EventManager::Initialize();
 		GameObjectManager::Initialize();
 		
 	}

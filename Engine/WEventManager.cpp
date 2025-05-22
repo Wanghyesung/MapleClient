@@ -12,6 +12,7 @@
 #include "..\Engine_Source\WTransform.h"
 namespace W
 {
+	std::function<void(DWORD_PTR, DWORD_PTR, LONG_PTR)> EventManager::m_arrFunction[(UINT)EVENT_TYPE::END] = {};
 	std::vector<tEvent> EventManager::m_vecEvent[2] = {};
 	atomic<int> EventManager::m_iActiveIdx = 1;
 
@@ -36,6 +37,24 @@ namespace W
 		vecActiveEvent.clear();
 	}
 
+	
+	void EventManager::Initialize()
+	{		
+		m_arrFunction[(UINT)EVENT_TYPE::UPDATE_STATE] = update_state;
+	
+		m_arrFunction[(UINT)EVENT_TYPE::UPDATE_TRANSFORM] = update_trasnform;
+		m_arrFunction[(UINT)EVENT_TYPE::CREATE_PLAYER] = add_player;
+		m_arrFunction[(UINT)EVENT_TYPE::CREATE_OTHER_PLAYER] = add_other_player;
+		m_arrFunction[(UINT)EVENT_TYPE::DELETE_PLAYER] = delete_player;
+		
+		m_arrFunction[(UINT)EVENT_TYPE::CREATE_OBJECT] = create_object;
+		m_arrFunction[(UINT)EVENT_TYPE::DELET_OBJECT] = delete_object;
+		m_arrFunction[(UINT)EVENT_TYPE::CREATE_OBJECT_ID] = create_object_id;
+		m_arrFunction[(UINT)EVENT_TYPE::DELET_OBJECT_ID] = delete_object_id;
+		m_arrFunction[(UINT)EVENT_TYPE::SCENE_CHANGE] = change_scene;
+		
+	}
+
 	void EventManager::AddEvent(const tEvent& _tEve)
 	{
 		WLock lock_guard(m_lock);
@@ -44,128 +63,7 @@ namespace W
 	
 	void EventManager::excute(const tEvent& _tEve)
 	{
-		switch (_tEve.eEventType)
-		{
-		case EVENT_TYPE::UPDATE_TRANSFORM:
-		{
-			UINT ID = (UINT)_tEve.lParm;
-			eLayerType eLayer = (eLayerType)_tEve.wParm;
-			Vector3* vPosition = reinterpret_cast<Vector3*>(_tEve.accParm);
-			
-			GameObject* pObj = SceneManger::FindObject(ID, eLayer);
-			pObj->GetComponent<Transform>()->recv_position(*vPosition);
-
-			delete vPosition;
-		}
-		break;
-
-		case EVENT_TYPE::UPDATE_STATE:
-		{
-			UINT iLayerID = (UINT)_tEve.lParm;
-			int iAnim = (int)_tEve.wParm;
-			//static_cast는 컴파일러가 타입 간 변환 규칙이 안전하다고 판단할 때만 허용
-			//reinterpret_cast는 포인터끼리 강제 변환
-			wstring* pStrAnimName = reinterpret_cast<wstring*>(_tEve.accParm);
-			
-			W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
-			UINT ID = iLayerID & 0x00FFFFFF;
-
-			UCHAR cDir = (iAnim >> 8) & 0xFF; 
-			UCHAR cAnimIdx = iAnim & 0xFF;        
-
-			GameObject* pObj = SceneManger::FindObject(ID, eLayer);
-			pObj->UpdateState(*pStrAnimName, cDir, cAnimIdx);
-
-			delete pStrAnimName;
-		}
-		break;
-
-		case EVENT_TYPE::CREATE_PLAYER:
-		{
-			UINT iPlayerID = (UINT)_tEve.lParm;
-		
-			Player* pPlayer = new Player();
-			pPlayer->SetName(L"Player");
-			pPlayer->m_iPlayerID = iPlayerID;
-			pPlayer->SetObjectID(iPlayerID);
-			pPlayer->Initialize();
-			pPlayer->SetTargetPlayer();
-
-			SceneManger::AddGameObject(eLayerType::Player, pPlayer);
-		}
-		break;
-
-		case EVENT_TYPE::CREATE_OTHER_PLAYER:
-		{
-			UINT iPlayerID = (UINT)_tEve.lParm;
-			UINT iObjectID = (UINT)_tEve.wParm;
-
-			Player* pPlayer = new Player();
-			pPlayer->SetName(L"Other_Player");
-			pPlayer->m_iPlayerID = iPlayerID;
-			pPlayer->SetObjectID(iObjectID);
-			pPlayer->Initialize();
-
-			SceneManger::AddGameObject(eLayerType::Player, pPlayer);
-		}
-		break;
-
-		case EVENT_TYPE::CREATE_OBJECT:
-		{
-			GameObject* pObj = (GameObject*)_tEve.lParm;
-			pObj->Initialize();
-
-			eLayerType eLyaer = (eLayerType)_tEve.wParm;
-
-			SceneManger::AddGameObject(eLyaer, pObj);
-		}
-		break;
-
-		case EVENT_TYPE::DELET_OBJECT:
-		{
-			GameObject* pObj = (GameObject*)_tEve.lParm;
-			Scene* pScene = (Scene*)_tEve.wParm;
-
-			pScene->EraseObject(pObj->GetLayerType(), pObj);
-			delete pObj;
-		}
-		break;
-
-		case EVENT_TYPE::DELET_OBJECT_ID:
-		{
-			UINT ID = (UINT)_tEve.lParm;
-			eLayerType eLayer = (eLayerType)_tEve.wParm;
-
-			GameObject* pObj = SceneManger::FindObject(ID, eLayer);
-			SceneManger::GetActiveScene()->EraseObject(eLayer, pObj);
-
-			delete pObj;
-		}
-		break;
-
-		case EVENT_TYPE::SCENE_CHANGE:
-		{
-			SceneManger::LoadScene(m_strNextScene);
-		}
-		break;
-
-		//case EVENT_TYPE::ADD_PLAYER_POOL:
-		//{
-		//	GameObject* pObj = (GameObject*)_tEve.lParm;
-		//
-		//	m_vecPlayer_Pool.push_back(pObj);
-		//}
-		//break;
-		//
-		//case EVENT_TYPE::ADD_MONSTER_POOL:
-		//{
-		//	GameObject* pObj = (GameObject*)_tEve.lParm;
-		//
-		//	m_vecMonster_Pool.push_back(pObj);
-		//}
-		//break;
-
-		}
+		m_arrFunction[(UINT)_tEve.eEventType](_tEve.lParm, _tEve.wParm, _tEve.accParm);
 	}
 	void EventManager::DeleteObject(GameObject* _pObj, Scene* _pScene)
 	{
@@ -177,7 +75,7 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::DeleteObject(UINT _ID, eLayerType _eType)
+	void EventManager::DeleteObjectID(UINT _ID, eLayerType _eType)
 	{
 		tEvent eve = {};
 		eve.lParm = (DWORD_PTR)_ID;
@@ -270,6 +168,114 @@ namespace W
 		AddEvent(eve);
 	}
 
+
+	void EventManager::create_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+		GameObject* pObj = (GameObject*)_lParm;
+		eLayerType eLyaer = (eLayerType)_wParm;
+		pObj->Initialize();
+
+		SceneManger::AddGameObject(eLyaer, pObj);
+	}
+
+	void EventManager::delete_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+		GameObject* pObj = (GameObject*)_lParm;
+		Scene* pScene = (Scene*)_wParm;
+
+		pScene->EraseObject(pObj->GetLayerType(), pObj);
+		delete pObj;
+	}
+
+	void EventManager::create_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+		
+	}
+
+	void EventManager::delete_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+		UINT ID = (UINT)_lParm;
+		eLayerType eLayer = (eLayerType)_wParm;
+
+		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
+		SceneManger::GetActiveScene()->EraseObject(eLayer, pObj);
+
+		delete pObj;
+	}
+
+	void EventManager::change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+		SceneManger::LoadScene(m_strNextScene);
+	}
+
+	void EventManager::add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+		UINT iPlayerID = (UINT)_lParm;
+
+		Player* pPlayer = new Player();
+		pPlayer->SetName(L"Player");
+		pPlayer->m_iPlayerID = iPlayerID;
+		pPlayer->SetObjectID(iPlayerID);
+		pPlayer->Initialize();
+		pPlayer->SetTargetPlayer();
+
+		SceneManger::AddGameObject(eLayerType::Player, pPlayer);
+	}
+
+	void EventManager::add_other_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+		UINT iPlayerID = (UINT)_lParm;
+		UINT iObjectID = (UINT)_wParm;
+
+		Player* pPlayer = new Player();
+		pPlayer->SetName(L"Other_Player");
+		pPlayer->m_iPlayerID = iPlayerID;
+		pPlayer->SetObjectID(iObjectID);
+		pPlayer->Initialize();
+
+		SceneManger::AddGameObject(eLayerType::Player, pPlayer);
+	}
+
+	void EventManager::delete_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+	}
+
+	void EventManager::delete_otehr_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+	}
+
+	void EventManager::update_state(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+		UINT iLayerID = (UINT)_lParm;
+		int iAnim = (int)_wParm;
+		//static_cast는 컴파일러가 타입 간 변환 규칙이 안전하다고 판단할 때만 허용
+		//reinterpret_cast는 포인터끼리 강제 변환
+		wstring* pStrAnimName = reinterpret_cast<wstring*>(_accParm);
+
+		W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
+		UINT ID = iLayerID & 0x00FFFFFF;
+
+		UCHAR cDir = (iAnim >> 8) & 0xFF;
+		UCHAR cAnimIdx = iAnim & 0xFF;
+
+		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
+		pObj->UpdateState(*pStrAnimName, cDir, cAnimIdx);
+
+		delete pStrAnimName;
+	}
+
+	void EventManager::update_trasnform(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+		UINT ID = (UINT)_lParm;
+		eLayerType eLayer = (eLayerType)_wParm;
+		Vector3* vPosition = reinterpret_cast<Vector3*>(_accParm);
+
+		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
+		pObj->GetComponent<Transform>()->recv_position(*vPosition);
+
+		delete vPosition;
+	}
+
 	void EventManager::CreateObject(GameObject* _pObj, eLayerType _eLayer)
 	{
 		tEvent eve = {};
@@ -280,7 +286,7 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::CreateObject(UINT _ID, eLayerType _eLayer)
+	void EventManager::CreateObjectID(UINT _ID, eLayerType _eLayer)
 	{
 		GameObject* pObj = GameObjectManager::GetMonsterOfID(_ID);
 

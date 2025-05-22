@@ -521,9 +521,6 @@ namespace renderer
 			pBackgroundMater->SetTexture(pTex);
 			Resources::Insert(L"LeafeMater", pBackgroundMater);
 
-			//
-			
-
 			std::shared_ptr<Texture> pValleyTex2 =
 				Resources::Load<Texture>(L"dragonValleyTex2", L"..\\Resources\\Texture\\background\\dragonValley_2.png");
 			std::shared_ptr<Material> pValleyMater2 = std::make_shared<Material>();

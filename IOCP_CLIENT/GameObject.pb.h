@@ -31,6 +31,7 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
+#include "Map.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_GameObject_2eproto
@@ -329,56 +330,25 @@ class S_CREATE final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSceneFieldNumber = 1,
-    kStateFieldNumber = 3,
-    kLayerCreateidIdFieldNumber = 2,
-    kAnimFieldNumber = 4,
+    kObjectInfoFieldNumber = 1,
   };
-  // string scene = 1;
-  void clear_scene();
-  const std::string& scene() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_scene(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_scene();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scene();
-  void set_allocated_scene(std::string* scene);
+  // .Protocol.ObjectInfo object_info = 1;
+  bool has_object_info() const;
   private:
-  const std::string& _internal_scene() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scene(const std::string& value);
-  std::string* _internal_mutable_scene();
+  bool _internal_has_object_info() const;
   public:
-
-  // string state = 3;
-  void clear_state();
-  const std::string& state() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_state(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_state();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_state();
-  void set_allocated_state(std::string* state);
+  void clear_object_info();
+  const ::Protocol::ObjectInfo& object_info() const;
+  PROTOBUF_FUTURE_MUST_USE_RESULT ::Protocol::ObjectInfo* release_object_info();
+  ::Protocol::ObjectInfo* mutable_object_info();
+  void set_allocated_object_info(::Protocol::ObjectInfo* object_info);
   private:
-  const std::string& _internal_state() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_state(const std::string& value);
-  std::string* _internal_mutable_state();
+  const ::Protocol::ObjectInfo& _internal_object_info() const;
+  ::Protocol::ObjectInfo* _internal_mutable_object_info();
   public:
-
-  // uint32 layer_createid_id = 2;
-  void clear_layer_createid_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_id() const;
-  void set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_createid_id() const;
-  void _internal_set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 anim = 4;
-  void clear_anim();
-  ::PROTOBUF_NAMESPACE_ID::uint32 anim() const;
-  void set_anim(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_anim() const;
-  void _internal_set_anim(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
+  void unsafe_arena_set_allocated_object_info(
+      ::Protocol::ObjectInfo* object_info);
+  ::Protocol::ObjectInfo* unsafe_arena_release_object_info();
 
   // @@protoc_insertion_point(class_scope:Protocol.S_CREATE)
  private:
@@ -387,10 +357,7 @@ class S_CREATE final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr state_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_id_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 anim_;
+  ::Protocol::ObjectInfo* object_info_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_GameObject_2eproto;
 };
@@ -622,134 +589,83 @@ inline void C_CREATE::set_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value) 
 
 // S_CREATE
 
-// string scene = 1;
-inline void S_CREATE::clear_scene() {
-  scene_.ClearToEmpty();
+// .Protocol.ObjectInfo object_info = 1;
+inline bool S_CREATE::_internal_has_object_info() const {
+  return this != internal_default_instance() && object_info_ != nullptr;
 }
-inline const std::string& S_CREATE::scene() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.scene)
-  return _internal_scene();
+inline bool S_CREATE::has_object_info() const {
+  return _internal_has_object_info();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void S_CREATE::set_scene(ArgT0&& arg0, ArgT... args) {
- 
- scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.scene)
+inline const ::Protocol::ObjectInfo& S_CREATE::_internal_object_info() const {
+  const ::Protocol::ObjectInfo* p = object_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::Protocol::ObjectInfo&>(
+      ::Protocol::_ObjectInfo_default_instance_);
 }
-inline std::string* S_CREATE::mutable_scene() {
-  // @@protoc_insertion_point(field_mutable:Protocol.S_CREATE.scene)
-  return _internal_mutable_scene();
+inline const ::Protocol::ObjectInfo& S_CREATE::object_info() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.object_info)
+  return _internal_object_info();
 }
-inline const std::string& S_CREATE::_internal_scene() const {
-  return scene_.Get();
-}
-inline void S_CREATE::_internal_set_scene(const std::string& value) {
-  
-  scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* S_CREATE::_internal_mutable_scene() {
-  
-  return scene_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* S_CREATE::release_scene() {
-  // @@protoc_insertion_point(field_release:Protocol.S_CREATE.scene)
-  return scene_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void S_CREATE::set_allocated_scene(std::string* scene) {
-  if (scene != nullptr) {
+inline void S_CREATE::unsafe_arena_set_allocated_object_info(
+    ::Protocol::ObjectInfo* object_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(object_info_);
+  }
+  object_info_ = object_info;
+  if (object_info) {
     
   } else {
     
   }
-  scene_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scene,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:Protocol.S_CREATE.scene)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Protocol.S_CREATE.object_info)
 }
-
-// uint32 layer_createid_id = 2;
-inline void S_CREATE::clear_layer_createid_id() {
-  layer_createid_id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::_internal_layer_createid_id() const {
-  return layer_createid_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::layer_createid_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.layer_createid_id)
-  return _internal_layer_createid_id();
-}
-inline void S_CREATE::_internal_set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline ::Protocol::ObjectInfo* S_CREATE::release_object_info() {
   
-  layer_createid_id_ = value;
+  ::Protocol::ObjectInfo* temp = object_info_;
+  object_info_ = nullptr;
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
 }
-inline void S_CREATE::set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_layer_createid_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.layer_createid_id)
-}
-
-// string state = 3;
-inline void S_CREATE::clear_state() {
-  state_.ClearToEmpty();
-}
-inline const std::string& S_CREATE::state() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.state)
-  return _internal_state();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void S_CREATE::set_state(ArgT0&& arg0, ArgT... args) {
- 
- state_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.state)
-}
-inline std::string* S_CREATE::mutable_state() {
-  // @@protoc_insertion_point(field_mutable:Protocol.S_CREATE.state)
-  return _internal_mutable_state();
-}
-inline const std::string& S_CREATE::_internal_state() const {
-  return state_.Get();
-}
-inline void S_CREATE::_internal_set_state(const std::string& value) {
+inline ::Protocol::ObjectInfo* S_CREATE::unsafe_arena_release_object_info() {
+  // @@protoc_insertion_point(field_release:Protocol.S_CREATE.object_info)
   
-  state_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  ::Protocol::ObjectInfo* temp = object_info_;
+  object_info_ = nullptr;
+  return temp;
 }
-inline std::string* S_CREATE::_internal_mutable_state() {
+inline ::Protocol::ObjectInfo* S_CREATE::_internal_mutable_object_info() {
   
-  return state_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  if (object_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::Protocol::ObjectInfo>(GetArenaForAllocation());
+    object_info_ = p;
+  }
+  return object_info_;
 }
-inline std::string* S_CREATE::release_state() {
-  // @@protoc_insertion_point(field_release:Protocol.S_CREATE.state)
-  return state_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline ::Protocol::ObjectInfo* S_CREATE::mutable_object_info() {
+  // @@protoc_insertion_point(field_mutable:Protocol.S_CREATE.object_info)
+  return _internal_mutable_object_info();
 }
-inline void S_CREATE::set_allocated_state(std::string* state) {
-  if (state != nullptr) {
+inline void S_CREATE::set_allocated_object_info(::Protocol::ObjectInfo* object_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(object_info_);
+  }
+  if (object_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(object_info));
+    if (message_arena != submessage_arena) {
+      object_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, object_info, submessage_arena);
+    }
     
   } else {
     
   }
-  state_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), state,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:Protocol.S_CREATE.state)
-}
-
-// uint32 anim = 4;
-inline void S_CREATE::clear_anim() {
-  anim_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::_internal_anim() const {
-  return anim_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_CREATE::anim() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.anim)
-  return _internal_anim();
-}
-inline void S_CREATE::_internal_set_anim(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  anim_ = value;
-}
-inline void S_CREATE::set_anim(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_anim(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.anim)
+  object_info_ = object_info;
+  // @@protoc_insertion_point(field_set_allocated:Protocol.S_CREATE.object_info)
 }
 
 // -------------------------------------------------------------------

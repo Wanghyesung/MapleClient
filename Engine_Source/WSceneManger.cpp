@@ -67,14 +67,14 @@ namespace W
 	GameObject* SceneManger::FindPlayer()
 	{		
 		std::unordered_map<UINT, GameObject*> vecObjs = 
-			m_pActiveScene->GetLayer(eLayerType::Player).GetGameObjects();
+			m_pActiveScene->GetLayer(eLayerType::Player)->GetGameObjects();
 
 		return vecObjs[PLAYER_ID];
 	}
 
 	GameObject* SceneManger::FindObject(UINT _ID, eLayerType _eLayerType)
 	{
-		GameObject* pObj = m_pActiveScene->GetLayer(_eLayerType).FindObject(_ID);
+		GameObject* pObj = m_pActiveScene->GetLayer(_eLayerType)->FindObject(_ID);
 		if(!pObj)
 			return nullptr;
 
@@ -91,7 +91,7 @@ namespace W
 
 	void SceneManger::SwapObject(Scene* _pPrevScene, Scene* _pNextScene, const std::wstring& _strGameName, eLayerType _eLayerType)
 	{
-		GameObject* pGameObject = _pPrevScene->GetLayer(_eLayerType).FindObjectByName(_strGameName);
+		GameObject* pGameObject = _pPrevScene->GetLayer(_eLayerType)->FindObjectByName(_strGameName);
 		if (pGameObject == nullptr)
 			assert(nullptr);
 
@@ -120,7 +120,7 @@ namespace W
 	{
 
 		std::unordered_map<UINT, GameObject*> hashObj =
-			m_pActiveScene->GetLayer(eLayerType::Camera).GetGameObjects();
+			m_pActiveScene->GetLayer(eLayerType::Camera)->GetGameObjects();
 		
 		////1 main , 2 UI
 		renderer::MainCamera = hashObj[0]->GetComponent<Camera>();

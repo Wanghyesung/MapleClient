@@ -62,6 +62,7 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 		UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
 		USHORT CID = iLayerCreateIdId & 0xFFFF;
 
+		//풀에서 가져올지 바로 생성할지
 		GameObject* pObj =  GameObjectManager::GetMonsterOfID(cCreateid);
 	
 		eLayerType eLayerType = (W::eLayerType)cLayer;
@@ -74,17 +75,20 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 
 bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 {
-	UINT iLayerCreateIdId = _pkt.layer_createid_id();
+	const Protocol::ObjectInfo& tInfo = _pkt.object_info();
+
+	UINT iLayerCreateIdId = tInfo.layer_createid_id();
 	UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
 	UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
 	USHORT CID = iLayerCreateIdId & 0xFFFF;
 
 	GameObject* pObj = GameObjectManager::GetMonsterOfID(cCreateid);
 
-	eLayerType eLayerType = (W::eLayerType)cLayer;
+	pObj->GetComponent<Transform>()->SetPosition(tInfo.x(), tInfo.y(), tInfo.z());
+	eLayerType eLayer = (W::eLayerType)cLayer;
 	pObj->SetObjectID(CID);
 
-	EventManager::CreateObject(pObj, eLayerType);
+	EventManager::CreateObject(pObj, eLayer);
 
 	return true;
 }
@@ -97,7 +101,7 @@ bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt)
 
 	eLayerType eLayerType = (W::eLayerType)cLayer;
 	
-	EventManager::DeleteObject(CID, eLayerType);
+	EventManager::DeleteObjectID(CID, eLayerType);
 	
 	return true;
 }

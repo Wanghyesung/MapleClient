@@ -117,6 +117,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         this_thread::sleep_for(0.5s);
     }
 
+
+
     while (true)
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))

@@ -39,13 +39,14 @@ namespace W
 	{
 	public:
 		static void Update();
+		static void Initialize();
 		static void AddEvent(const tEvent& _tEve);
 		//{ m_vecEvent.push_back(_tEve); }
 		
 		static void CreateObject(GameObject* _pObj, eLayerType _eLayer);
-		static void CreateObject(UINT _ID, eLayerType _eLayer);
+		static void CreateObjectID(UINT _ID, eLayerType _eLayer);
 		static void DeleteObject(GameObject* _pObj,  Scene* _pScene);
-		static void DeleteObject(UINT _ID, eLayerType _eType);
+		static void DeleteObjectID(UINT _ID, eLayerType _eType);
 		static void ChangeScene(const std::wstring& _strNextScene);
 	
 		static void AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID);
@@ -53,10 +54,31 @@ namespace W
 
 		static void UpdateTransform(UINT _ID, eLayerType _eType, Vector3 _vPosition);
 		static void UpdateState(UINT _iLayerID, int _iAnim, const wstring& _strAnimState);
+
+	private:
+		static void create_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void delete_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+
+		static void create_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void delete_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+
+		static void change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		
+		//static void add_pool(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+	
+		static void add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void add_other_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+
+		static void delete_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void delete_otehr_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+
+		static void update_state(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void update_trasnform(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
 	private:
 		static void excute(const tEvent& _tEve);
 
 	private:
+		static std::function<void(DWORD_PTR, DWORD_PTR, LONG_PTR)> m_arrFunction[(UINT)EVENT_TYPE::END];
 		static std::vector<tEvent> m_vecEvent[2];
 		static atomic<int> m_iActiveIdx;
 

@@ -145,9 +145,9 @@ namespace W
 			//레이어마스크 true인 오브젝트만 렌더링
 			if (m_bitLayerMask[i] == true)
 			{
-				Layer& layer = pScene->GetLayer((eLayerType)i);
+				Layer* layer = pScene->GetLayer((eLayerType)i);
 				
-				DivideAlphaBlendGameObjects(layer.GetGameObjects());
+				DivideAlphaBlendGameObjects(layer->GetGameObjects());
 			}
 		}
 	}

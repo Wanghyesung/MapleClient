@@ -24,7 +24,7 @@ namespace W
 		SceneManger::CreateScene<HelisiumBoss>(L"Helisium");
 		SceneManger::CreateScene<DemianScene>(L"DemianScene");
 		SceneManger::CreateScene<ValleyScene>(L"Valley");
-		SceneManger::GetActiveScene()->OnEnter();
+		//SceneManger::GetActiveScene()->OnEnter();
 		
 	}
 }

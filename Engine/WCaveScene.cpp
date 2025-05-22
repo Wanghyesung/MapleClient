@@ -150,6 +150,16 @@ namespace W
 		pLadderMater9_->SetTexture(pLadder9_);
 		Resources::Insert(L"LadderBaseMater9_", pLadderMater9_);	
 
+		Ladder* pLadder2 = new Ladder();
+		MeshRenderer* pLadderMeshRender2 = pLadder2->AddComponent<MeshRenderer>();
+		pLadderMeshRender2->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		pLadderMeshRender2->SetMaterial(Resources::Find<Material>(L"LadderBaseMater9"));
+		pLadder2->GetComponent<Transform>()->SetPosition(3.5f, -2.4f, -0.1f);
+		pLadder2->GetComponent<Transform>()->SetScale(1.f * 0.6f, 4.5f * 0.6f, 0.f);
+		pLadder2->Initialize();
+		AddGameObject(eLayerType::Ladder, pLadder2);
+
+
 	}
 	void CaveScene::create_effect()
 	{

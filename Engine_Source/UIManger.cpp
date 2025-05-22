@@ -9,6 +9,7 @@
 namespace W
 {
 	UI* UIManger::m_pFoucseUI = nullptr;
+	UI* UIManger::m_pTargetUI = nullptr;
 
 	void UIManger::Update()
 	{
@@ -17,36 +18,36 @@ namespace W
 		if (m_pFoucseUI == nullptr)
 			return;
 
-		UI* pTargetUI = GetTargetUI(m_pFoucseUI);
+		m_pTargetUI = GetTargetUI(m_pFoucseUI);
 
 		bool KeyDown = Input::GetKeyDown(eKeyCode::LBUTTON);
 		bool KeyUP = Input::GetKeyUp(eKeyCode::LBUTTON);
 
 
-		if (pTargetUI != nullptr)
+		if (m_pTargetUI != nullptr)
 		{
 			//누르면
-			pTargetUI->MouseOn();
+			m_pTargetUI->MouseOn();
 
 			if (KeyDown)
 			{
-				pTargetUI->MouseLbtnDown();
-				pTargetUI->m_bLbntDown = true;
+				m_pTargetUI->MouseLbtnDown();
+				m_pTargetUI->m_bLbntDown = true;
 			}
 
 			else if (KeyUP)
 			{
-				pTargetUI->MouseLbtnUp();
+				m_pTargetUI->MouseLbtnUp();
 
 				//저번 프레임에서도 down이 true였다면
-				if (pTargetUI->m_bLbntDown)
+				if (m_pTargetUI->m_bLbntDown)
 				{
-					pTargetUI->MouseLbtnClicked();
+					m_pTargetUI->MouseLbtnClicked();
 				}
-				pTargetUI->m_bLbntDown = false;
+				m_pTargetUI->m_bLbntDown = false;
 			}
 
-			pTargetUI->m_bMouseOn = false;
+			m_pTargetUI->m_bMouseOn = false;
 		}
 
 	}
@@ -59,7 +60,7 @@ namespace W
 
 	UI* UIManger::GetFoucseUI()
 	{
-		Layer& pLayer = SceneManger::GetActiveScene()->GetLayer(eLayerType::UI);
+		Layer* pLayer = SceneManger::GetActiveScene()->GetLayer(eLayerType::UI);
 
 		bool bIsLbntDown = Input::GetKeyDown(eKeyCode::LBUTTON);
 
@@ -68,7 +69,7 @@ namespace W
 		if (!bIsLbntDown)
 			return pFoucseUI;
 
-		const std::unordered_map<UINT, GameObject*>& hashUI = pLayer.GetGameObjects();
+		const std::unordered_map<UINT, GameObject*>& hashUI = pLayer->GetGameObjects();
 
 		auto targetiter = hashUI.end();
 		auto iter = hashUI.begin();
@@ -151,8 +152,8 @@ namespace W
 	}
 	void UIManger::ReleaseChildUI()
 	{
-		Layer& pLayer = SceneManger::GetActiveScene()->GetLayer(eLayerType::UI);
-		const std::unordered_map<UINT, GameObject*>& hashUI = pLayer.GetGameObjects();
+		Layer* pLayer = SceneManger::GetActiveScene()->GetLayer(eLayerType::UI);
+		const std::unordered_map<UINT, GameObject*>& hashUI = pLayer->GetGameObjects();
 		
 		auto iter = hashUI.begin();
 		for (iter; iter != hashUI.end(); ++iter)

@@ -108,7 +108,7 @@ namespace W
 	}
 	void ValleyScene::OnEnter()
 	{
-
+		SendEnter();
 	}
 	void ValleyScene::OnExit()
 	{
@@ -144,7 +144,37 @@ namespace W
 
 	void ValleyScene::setobject()
 	{
+		Ladder* pLadder0 = new Ladder();
+		pLadder0->SetClientObject(true);
+		MeshRenderer* pLadderMeshRender0 = pLadder0->AddComponent<MeshRenderer>();
+		pLadderMeshRender0->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		pLadderMeshRender0->SetMaterial(Resources::Find<Material>(L"LadderBaseMater9_"));
+		pLadder0->GetComponent<Transform>()->SetPosition(0.f, -4.4f, -0.1f);
+		pLadder0->GetComponent<Transform>()->SetScale(1.f * 0.6f, 5.5f * 0.6f, 0.f);
+		pLadder0->Initialize();
+		AddGameObject(eLayerType::Ladder, pLadder0);
 
+		Ladder* pLadder1 = new Ladder();
+		pLadder1->SetClientObject(true);
+		pLadder1->SetObjectID(1);
+		MeshRenderer* pLadderMeshRender1 = pLadder1->AddComponent<MeshRenderer>();
+		pLadderMeshRender1->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		pLadderMeshRender1->SetMaterial(Resources::Find<Material>(L"LadderBaseMater9_"));
+		pLadder1->GetComponent<Transform>()->SetPosition(2.f, 4.2f, -0.1f);
+		pLadder1->GetComponent<Transform>()->SetScale(1.f * 0.6f, 5.6f * 0.6f, 0.f);
+		pLadder1->Initialize();
+		AddGameObject(eLayerType::Ladder, pLadder1);
+
+		Ladder* pLadder2 = new Ladder();
+		pLadder2->SetClientObject(true);
+		pLadder2->SetObjectID(2);
+		MeshRenderer* pLadderMeshRender2 = pLadder2->AddComponent<MeshRenderer>();
+		pLadderMeshRender2->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		pLadderMeshRender2->SetMaterial(Resources::Find<Material>(L"LadderBaseMater9"));
+		pLadder2->GetComponent<Transform>()->SetPosition(-1.f, -0.7f, -0.1f);
+		pLadder2->GetComponent<Transform>()->SetScale(1.f * 0.6f, 4.5f * 0.6f, 0.f);
+		pLadder2->Initialize();
+		AddGameObject(eLayerType::Ladder, pLadder2);
 	}
 	void ValleyScene::setmonster()
 	{

@@ -3,6 +3,11 @@
 #include "WThreadPool.h"
 #include "..\Engine\WMonsterHP.h"
 #include "WSceneManger.h"
+#include "Map.pb.h"
+#include "NetFunc.h"
+#include "ServerPacketHandler.h"
+extern UINT PLAYER_ID;
+extern shared_ptr< ClientService> GClientService;
 namespace W
 {
 	//std::vector<eLayerType> Scene::m_vecUpdateLayer = 
@@ -10,34 +15,42 @@ namespace W
 
 	Scene::Scene()
 	{
-		m_vecLayer.resize((UINT)W::eLayerType::End);
+		for (UINT i = 0; i < (UINT)eLayerType::End; ++i)
+		{
+			m_vecLayer.push_back(new Layer());
+		}
 	}
 	Scene::~Scene()
 	{
+		for (UINT i = 0; i < (UINT)eLayerType::End; ++i)
+		{
+			delete m_vecLayer[i];
+			m_vecLayer[i] = nullptr;
+		}
 	}
 	void Scene::Initialize()
 	{
 	}
 	void Scene::Update()
 	{
-		for (Layer& layer : m_vecLayer)
+		for (Layer* layer : m_vecLayer)
 		{
-			layer.Update();
+			layer->Update();
 		}
 		
 	}
 	void Scene::LateUpdate()
 	{
-		for (Layer& layer : m_vecLayer)
+		for (Layer* layer : m_vecLayer)
 		{
-			layer.LateUpdate();
+			layer->LateUpdate();
 		}
 	}
 	void Scene::Render()
 	{
-		for (Layer& layer : m_vecLayer)
+		for (Layer* layer : m_vecLayer)
 		{
-			layer.Render();
+			layer->Render();
 		}
 	}
 
@@ -47,6 +60,8 @@ namespace W
 		{
 			ThreadPool::LoadingResource<Texture>(m_vecResource[i].first, m_vecResource[i].second);
 		}
+
+		SendEnter();
 	}
 	void Scene::OnExit()
 	{
@@ -57,9 +72,18 @@ namespace W
 	}
 	void Scene::AddGameObject(eLayerType _eType, GameObject* _pGameObj)
 	{
-		m_vecLayer[(UINT)_eType].AddGameObject(_pGameObj);
+		m_vecLayer[(UINT)_eType]->AddGameObject(_pGameObj);
 		_pGameObj->SetLayerType(_eType);
 	}
 
+	void Scene::Scene::SendEnter()
+	{
+		Protocol::C_MAP pkt;
+		pkt.set_scene(WstringToString(GetName()));
+		pkt.set_player_id(PLAYER_ID);
+
+		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+		GClientService->GetClientSession()->Send(pSendBuffer);
+	}
 	
 }

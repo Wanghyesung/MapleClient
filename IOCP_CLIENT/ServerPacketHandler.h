@@ -106,6 +106,7 @@ public:
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_CREATE _pkt) { return _MakeSendBuffer(_pkt, C_CREATE); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_INPUT _pkt) { return _MakeSendBuffer(_pkt, C_INPUT); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_EQUIP _pkt) { return _MakeSendBuffer(_pkt, C_EQUIP); }
+	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_MAP _pkt) { return _MakeSendBuffer(_pkt, C_MAP); }
 	
 };
 

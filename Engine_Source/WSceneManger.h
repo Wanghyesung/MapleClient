@@ -41,7 +41,7 @@ namespace W
 		static T* GetUI()
 		{
 			std::unordered_map<UINT, GameObject*> hashUI =
-				m_pActiveScene->GetLayer(eLayerType::UI).GetGameObjects();
+				m_pActiveScene->GetLayer(eLayerType::UI)->GetGameObjects();
 			
 			auto iter = hashUI.begin();
 			for (iter; iter != hashUI.end(); ++iter )
