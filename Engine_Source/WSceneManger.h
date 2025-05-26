@@ -16,7 +16,7 @@ namespace W
 		static void Erase(GameObject* _pGameObject);
 
 		template <typename T>
-		static bool CreateScene(std::wstring name)
+		static bool CreateScene(const std::wstring& name)
 		{
 			T* scene = new T();
 
@@ -28,6 +28,7 @@ namespace W
 
 			m_mapScene.insert(std::make_pair(name, scene));
 			m_pActiveScene = scene;
+			scene->SetName(name);
 			scene->Initialize();
 			return true;
 		}

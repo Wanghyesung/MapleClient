@@ -28,7 +28,7 @@ namespace W
 		virtual void Render();
 
 		//네트워크
-		virtual void UpdateState(const wstring& _strStateName, UCHAR _cDir, UCHAR _cAnimIdx);
+		virtual void UpdateState(const wstring& _strStateName, int _iAnim);
 
 		template <typename T>
 		T* GetComponent()

@@ -39,4 +39,9 @@ namespace W
 		GameObject::Render();
 	}
 
+	void Monster::UpdateState(const wstring& _strStateName, int _iAnim)
+	{
+
+	}
+
 }

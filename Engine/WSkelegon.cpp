@@ -4,7 +4,7 @@
 
 #include "WSceneManger.h"
 #include "WEffect.h"
-
+#include "WTransform.h"
 namespace W
 {
 	Skelegon::Skelegon()
@@ -37,6 +37,10 @@ namespace W
 		pAnimator->Create(L"skelegon_hit_right", pAtlas, Vector2(6000.0f, 600.0f), Vector2(-600.0f, 200.0f), 1, Vector2(600.f, 200.f));
 
 		Resources::Load<Texture>(L"sklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png");
+
+		GetComponent<Transform>()->SetScale(6.f, 2.f, 0.f);
+
+		pAnimator->Play(L"skelegon_stand_left", true);
 	}
 
 	Skelegon::~Skelegon()
@@ -57,10 +61,26 @@ namespace W
 	{
 		
 		Monster::LateUpdate();
+
 	}
 
 	void Skelegon::Render()
 	{
 		Monster::Render();
+	}
+
+	void Skelegon::UpdateState(const wstring& _strStateName, int _iAnim)
+	{
+		UCHAR cDir = (_iAnim >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iAnim & 0xFF;
+
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
+
+		m_iDir = cDir > 0 ? 1 : -1;
+		m_iAnimIdx = cAnimIdx;
 	}
 }

@@ -56,6 +56,7 @@ namespace W
 		float m_fLerpTime;
 		float m_fCurLerpTime;
 		float m_fCurLerpRate;
+		float m_fRecvTime;
 
 		Vector3 m_vPosition;
 		Vector3 m_vRotation;

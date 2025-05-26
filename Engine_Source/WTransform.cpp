@@ -17,6 +17,7 @@ namespace W
 		m_fLerpTime(1.f/ SERVER_TICK_RATE),
 		m_fCurLerpTime(0.f),
 		m_fCurLerpRate(0.f),
+		m_fRecvTime(0.f),
 		m_vPosition(Vector3::Zero),
 		m_vRotation(Vector3::Zero),
 		m_vScale(Vector3::One),
@@ -54,8 +55,7 @@ namespace W
 	}
 	void Transform::LateUpdate()
 	{
-		
-		
+
 		if (!GetOwner()->IsClientObject())
 		{
 			if (m_fCurLerpTime / m_fLerpTime < 1.f)
@@ -118,7 +118,7 @@ namespace W
 		if (m_fCurLerpRate >= 1.f)
 			m_fCurLerpRate = 1.f;
 		
-		m_vPosition = PositionLerp(m_vPrevPosition, m_vNextPosition, m_fCurLerpRate);
+		m_vPosition = PositionLerp(m_vPrevPosition, m_vNextPosition, m_fCurLerpRate, false);
 	}
 
 	void Transform::recv_position(Vector3 _vPosition)

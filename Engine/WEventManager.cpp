@@ -200,6 +200,7 @@ namespace W
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
 		SceneManger::GetActiveScene()->EraseObject(eLayer, pObj);
 
+		//나중에 여기서 분기처리 objectpool인지 그냥 삭제인지
 		delete pObj;
 	}
 
@@ -255,11 +256,11 @@ namespace W
 		W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
 		UINT ID = iLayerID & 0x00FFFFFF;
 
-		UCHAR cDir = (iAnim >> 8) & 0xFF;
-		UCHAR cAnimIdx = iAnim & 0xFF;
-
+		if (eLayer == eLayerType::AttackObject)
+			int a = 10;
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
-		pObj->UpdateState(*pStrAnimName, cDir, cAnimIdx);
+		if (pObj)
+			pObj->UpdateState(*pStrAnimName, iAnim);
 
 		delete pStrAnimName;
 	}

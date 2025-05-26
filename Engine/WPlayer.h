@@ -49,7 +49,7 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-		virtual void UpdateState(const wstring& _strStateName, UCHAR _cDir, UCHAR _cAnimIdx) override;
+		virtual void UpdateState(const wstring& _strStateName, int _iAnim) override;
 
 		void SetPlayerCurState(ePlayerState _eState)
 		{
@@ -91,6 +91,12 @@ namespace W
 		ePlayerState m_ePrevPlayerState;
 
 		UINT m_iPlayerID;
+
+		bool m_bAlert;
+		bool m_bActiveDark;
+	
+		float m_bAlertTime;
+		float m_fChangeTime;
 
 		friend class EventManager;
 	};

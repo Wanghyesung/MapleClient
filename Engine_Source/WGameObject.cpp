@@ -100,7 +100,7 @@ namespace W
 		}
 	}
 	
-	void GameObject::UpdateState(const wstring& _strStateName, UCHAR _cDir, UCHAR _cAnimIdx)
+	void GameObject::UpdateState(const wstring& _strStateName, int _iAnim)
 	{
 		
 	}

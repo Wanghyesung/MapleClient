@@ -51,12 +51,6 @@ namespace W
 		setobject();
 		setmonster();
 
-		/*Player* pPlayer = new Player();
-		pPlayer->SetName(L"Player");
-		AddGameObject(eLayerType::Player, pPlayer);
-		pPlayer->Initialize();*/
-
-
 		InterfaceUI* pInterUI = new InterfaceUI();
 		pInterUI->SetObjectID(0);
 		pInterUI->SetName(L"Interface");
@@ -123,23 +117,18 @@ namespace W
 		MeshRenderer* pMeshRender = pBackGround->AddComponent<MeshRenderer>();
 		pMeshRender->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pMeshRender->SetMaterial(Resources::Find<Material>(L"dragonValleyMater"));
-		pBackGround->GetComponent<Transform>()->SetPosition(0.f, 0.f, 10.f);
+		pBackGround->GetComponent<Transform>()->SetPosition(0.f, 0.f, 5.f);
 		//035 : 1
 		pBackGround->GetComponent<Transform>()->SetScale(25 * 0.35f,  25.f * 1.f, 1.f);
 	}
 
 	void ValleyScene::StartSound()
 	{
-		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
-		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->Play();*/
+		
 	}
 
 	void ValleyScene::EndSound()
 	{
-		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
-		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->Stop();*/
 	}
 
 	void ValleyScene::setobject()
@@ -178,12 +167,6 @@ namespace W
 	}
 	void ValleyScene::setmonster()
 	{
-		//Skelegon* pSkelegon = object::Instantiate<Skelegon>(Vector3(3.f, 1.2f, -1.5f), eLayerType::Monster);
-		//pSkelegon->Initialize();
-		//Light* lightComp = pSkelegon->AddComponent<Light>();
-		//lightComp->SetType(eLightType::FadeOut);
-		//lightComp->SetColor(Vector4(0.8f, 0.8f, 0.8f, 0.0f));
-		//lightComp->SetRadius(2.0f);
-
+		
 	}
 }

@@ -6,7 +6,8 @@
 #include "WEventManager.h"
 namespace W
 {
-	PlayerAttackObject::PlayerAttackObject()
+	PlayerAttackObject::PlayerAttackObject():
+		m_strCurStateName{}
 	{
 
 	}
@@ -29,6 +30,10 @@ namespace W
 	void PlayerAttackObject::Render()
 	{
 		GameObject::Render();
+	}
+
+	void PlayerAttackObject::UpdateState(const wstring& _strStateName, int _iAnim)
+	{
 	}
 	
 }

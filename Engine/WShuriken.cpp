@@ -62,5 +62,20 @@ namespace W
 
 		GameObject::Render();
 	}
+
+	void Shuriken::UpdateState(const wstring& _strStateName, int _iAnim)
+	{
+		UCHAR cDir = (_iAnim >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iAnim & 0xFF;
+
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
+
+		m_iDir = cDir > 0 ? 1 : -1;
+		m_iAnimIdx = cAnimIdx;
+	}
 	
 }

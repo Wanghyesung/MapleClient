@@ -61,10 +61,12 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 		UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
 		UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
 		USHORT CID = iLayerCreateIdId & 0xFFFF;
-
+		
 		//풀에서 가져올지 바로 생성할지
 		GameObject* pObj =  GameObjectManager::GetMonsterOfID(cCreateid);
 	
+		pObj->GetComponent<Transform>()->SetPosition(objInfo.x(), objInfo.y(), objInfo.z());
+
 		eLayerType eLayerType = (W::eLayerType)cLayer;
 		pObj->SetObjectID(CID);
 		W::EventManager::CreateObject(pObj, eLayerType);	

@@ -21,7 +21,11 @@ namespace W
 {
 	Player::Player():
 		m_ePlayerState(ePlayerState::stand),
-		m_strCurStateName(L"_jump")
+		m_strCurStateName(L"_jump"),
+		m_bAlert(false),
+		m_bActiveDark(false),
+		m_bAlertTime(2.f),
+		m_fChangeTime(0.25f)
 	{
 		SetName(L"Player");
 
@@ -118,13 +122,27 @@ namespace W
 	}
 	void Player::Render()
 	{
-		
 		renderer::PlayerCB PlayerCB;
 		PlayerCB.vDir.x = m_iDir * -1;
 		PlayerCB.vColor = Vector4::One;
+		if (m_bActiveDark)
+		{
+			PlayerCB.vColor = Vector4(0.8f, 0.8f, 0.8f, 0.7f);
+		}
+
+		else if (m_bAlert)
+		{
+			m_fChangeTime -= Time::DeltaTime();
+			if (m_fChangeTime <= 0.25f / 3.f)
+				PlayerCB.vColor = Vector4(0.5f, 0.5f, 0.5f, 1.f);
+			else
+				PlayerCB.vColor = Vector4::One;
+
+			if (m_fChangeTime <= 0.f)
+				m_fChangeTime = 0.25f;
+		}
 
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::Player];
-		//Vector4 vPosition(m_vPosition.x, m_vPosition.y, m_vPosition.z, 1.f);
 		pConstBuffer->SetData(&PlayerCB);
 		pConstBuffer->Bind(eShaderStage::PS);
 
@@ -133,12 +151,17 @@ namespace W
 		child_render();
 	}
 
-	void Player::UpdateState(const wstring& _strStateName, UCHAR _cDir, UCHAR _cAnimIdx)
+	void Player::UpdateState(const wstring& _strStateName, int _iAnim)
 	{
 		m_strCurStateName = _strStateName;
 
-		m_iDir = _cDir > 0 ? 1 : -1;
-		m_iAnimIdx = _cAnimIdx;
+		UCHAR cAlert = (_iAnim >> 16) & 0xFF;
+		UCHAR cDir = (_iAnim >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iAnim & 0xFF;
+
+		m_bAlert = cAlert > 0 ? true : false;
+		m_iDir = cDir > 0 ? 1 : -1;
+		m_iAnimIdx = cAnimIdx;
 
 	}
 
