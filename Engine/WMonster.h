@@ -20,8 +20,7 @@ namespace W
 
 		virtual void UpdateState(const wstring& _strStateName, int _iAnim) override;
 
-	protected:
-		wstring m_strCurStateName;
+	
 	};
 }
 

@@ -68,3 +68,7 @@ using namespace std::experimental::filesystem;
 #include "Enums.h"
 #include "WMath.h"
 
+#include "..\IOCP_CLIENT\NetFunc.h"
+#include "..\IOCP_CLIENT\ServerPacketHandler.h"
+extern shared_ptr< ClientService> GClientService;
+extern UINT PLAYER_ID;

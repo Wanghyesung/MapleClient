@@ -23,7 +23,7 @@ namespace W
 			float LX;
 			float RX;
 		};
-
+		
 		Scene();
 		virtual ~Scene();
 

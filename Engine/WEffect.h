@@ -13,6 +13,8 @@ namespace W
 		virtual void Update()override;
 		virtual void LateUpdate()override;
 		virtual void Render()override;
+	
+		virtual void UpdateState(const wstring& _strStateName, int _iAnim) override;
 
 		void SetOwner(GameObject* _pOwner) { m_pOwner = _pOwner; }
 		void CreateAnimation(std::shared_ptr<Texture> _pAtlas, Vector2 _vLeftTop, Vector2 _vSize, UINT _iColumnLength,

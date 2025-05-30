@@ -13,6 +13,8 @@
 
 #include "WPlayer.h"
 #include "WSKillNumber6.h"
+
+#include "Skill.pb.h"
 namespace W
 {
 	SKill::SKill() :
@@ -26,6 +28,7 @@ namespace W
 		SetIconType(eIconType::SKill);
 		SetParentUIType(eParentUI::SkillStorage);
 	}
+	
 	SKill::~SKill()
 	{
 
@@ -76,6 +79,13 @@ namespace W
 
 	void SKill::Using()
 	{
+		Protocol::C_Skill pkt;
+		pkt.set_scene(WstringToString(GetName()));
+		pkt.set_player_id(PLAYER_ID);
+		pkt.set_skill_id(static_cast<UINT>(m_eSkillType));
+
+		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+		GClientService->GetClientSession()->Send(pSendBuffer);
 	}
 
 	void SKill::create_clone()

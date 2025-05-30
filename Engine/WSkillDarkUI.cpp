@@ -8,7 +8,7 @@ namespace W
 {
 	SkillDarkUI::SkillDarkUI()
 	{
-		//SetPlayerSkill(Player::ePlayerSkill::dark);
+		SetPlayerSkill(Player::ePlayerSkill::dark);
 
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
@@ -80,10 +80,5 @@ namespace W
 
 	}
 
-	void SkillDarkUI::Using()
-	{
-		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::dark);
-	}
 	
 }

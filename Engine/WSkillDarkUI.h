@@ -18,9 +18,7 @@ namespace W
 		virtual void MouseLbtnDown();
 		virtual void MouseLbtnUp();
 		virtual void MouseLbtnClicked();
-		
-		virtual void Using();
-
+	
 	private:
 	};
 }

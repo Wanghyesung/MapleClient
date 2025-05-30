@@ -7,7 +7,7 @@ namespace W
 {
 	SkillLuckUI::SkillLuckUI()
 	{
-		//SetPlayerSkill(Player::ePlayerSkill::luck);
+		SetPlayerSkill(Player::ePlayerSkill::luck);
 
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
@@ -78,9 +78,4 @@ namespace W
 		SKill::MouseLbtnClicked();
 	}
 
-	void SkillLuckUI::Using()
-	{
-		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::luck);
-	}
 }

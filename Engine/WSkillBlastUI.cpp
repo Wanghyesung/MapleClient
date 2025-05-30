@@ -4,7 +4,7 @@ namespace W
 {
 	SkillBlastUI::SkillBlastUI()
 	{
-		//SetPlayerSkill(Player::ePlayerSkill::blast);
+		SetPlayerSkill(Player::ePlayerSkill::blast);
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
 			Resources::Load<Texture>(L"SKillBlastUI2", L"..\\Resources\\Texture\\UI\\SkillUI\\5\\blasting\\2.png");
@@ -76,9 +76,5 @@ namespace W
 
 	}
 
-	void SkillBlastUI::Using()
-	{
-		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::blast);
-	}
+	
 }

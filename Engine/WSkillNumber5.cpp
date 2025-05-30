@@ -5,6 +5,8 @@
 #include "WSkillLoadUI.h"
 #include "WSkillWindUI.h"
 #include "WSkillUltimateUI.h"
+#include "WTransform.h"
+
 namespace W
 {
 	SkillNumber5::SkillNumber5() :

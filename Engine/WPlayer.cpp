@@ -21,7 +21,6 @@ namespace W
 {
 	Player::Player():
 		m_ePlayerState(ePlayerState::stand),
-		m_strCurStateName(L"_jump"),
 		m_bAlert(false),
 		m_bActiveDark(false),
 		m_bAlertTime(2.f),

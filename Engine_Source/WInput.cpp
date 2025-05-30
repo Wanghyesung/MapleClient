@@ -10,7 +10,7 @@
 #include "..\IOCP\Service.h"
 
 extern W::Application application;
-extern shared_ptr< ClientService> GClientService;
+
 namespace W
 {
 	int ASCII[(UINT)eKeyCode::NONE] =

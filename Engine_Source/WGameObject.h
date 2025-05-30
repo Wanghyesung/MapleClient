@@ -131,8 +131,10 @@ namespace W
 		static void SetCreateID(UINT _ID) { CREATE_ID = _ID; }
 
 	protected:
+		//packet
 		int m_iDir;
 		int m_iAnimIdx;
+		std::wstring m_strCurStateName;
 
 	private:
 		eState m_eState;

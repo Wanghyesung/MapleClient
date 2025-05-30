@@ -6,7 +6,6 @@
 #include "..\Engine\WPlayerAttackObject.h"
 #include "..\Engine\WObjectPoolManager.h"
 
-extern UINT PLAYER_ID;
 namespace W
 {
 	Scene* SceneManger::m_pActiveScene = nullptr;

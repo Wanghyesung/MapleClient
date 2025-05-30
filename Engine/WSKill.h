@@ -5,6 +5,8 @@
 
 namespace W
 {
+
+
 	class SKill : public IconUI
 	{
 	public:
@@ -34,6 +36,7 @@ namespace W
 		void SetNullClone() { m_pSKillClone = nullptr; }
 		SKill* GetSkillClone() { return m_pSKillClone; }
 
+		void SetPlayerSkill(Player::ePlayerSkill _eSkillType) { m_eSkillType = _eSkillType; }
 	private:
 		void create_clone();
 
@@ -53,6 +56,7 @@ namespace W
 
 		SKillStorage::eSkillNuber m_eSkillNuber;
 		
+		Player::ePlayerSkill m_eSkillType;
 	};
 }
 

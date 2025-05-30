@@ -9,6 +9,7 @@
 #include "Transform.pb.h"
 #include "GameObject.pb.h"
 #include "ObjectState.pb.h"
+#include "Skill.pb.h"
 #include "Service.h"
 
 extern shared_ptr< ClientService> GClientService;
@@ -42,9 +43,12 @@ enum PACKET_TYPE
 
 	S_TRANSFORM = 1013,
 
-	S_EXIT = 1014,
-	C_EXIT = 1015,
-	S_NEW_EXIT = 1016,
+	S_SKILL = 1014,
+	C_SKILL = 1015,
+
+	S_EXIT = 1016,
+	C_EXIT = 1017,
+	S_NEW_EXIT = 1018,
 };
 
 
@@ -60,6 +64,7 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt);
 bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt);
 bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt);
 bool Handle_S_TRANSFORM(shared_ptr<Session> _pSession, Protocol::S_TRANSFORM& _pkt);
+bool Handle_S_SKILL(shared_ptr<Session> _pSession, Protocol::S_Skill& _pkt);
 bool Handle_S_EXIT(shared_ptr<Session> _pSession, Protocol::S_EXIT& _pkt);
 
 
@@ -88,6 +93,8 @@ public:
 			{return  HandlePacket<Protocol::S_DELETE>(Handle_S_DELETE, _pSession, _pBuffer, _iLen); };
 		GPacketHandler[S_STATE] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
 			{return  HandlePacket<Protocol::S_STATE>(Handle_S_STATE, _pSession, _pBuffer, _iLen); };
+		GPacketHandler[S_SKILL] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
+			{return  HandlePacket<Protocol::S_Skill>(Handle_S_SKILL, _pSession, _pBuffer, _iLen); };
 		GPacketHandler[S_TRANSFORM] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
 			{return  HandlePacket<Protocol::S_TRANSFORM>(Handle_S_TRANSFORM, _pSession, _pBuffer, _iLen); };
 	}
@@ -107,6 +114,7 @@ public:
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_INPUT _pkt) { return _MakeSendBuffer(_pkt, C_INPUT); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_EQUIP _pkt) { return _MakeSendBuffer(_pkt, C_EQUIP); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_MAP _pkt) { return _MakeSendBuffer(_pkt, C_MAP); }
+	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_Skill _pkt) { return _MakeSendBuffer(_pkt, C_SKILL); }
 	
 };
 

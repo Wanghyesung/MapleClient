@@ -86,7 +86,6 @@ namespace W
 	private:
 		std::vector<GameObject*> m_vecChildObj;
 
-		std::wstring m_strCurStateName;
 		ePlayerState m_ePlayerState;
 		ePlayerState m_ePrevPlayerState;
 

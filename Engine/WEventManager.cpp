@@ -174,7 +174,7 @@ namespace W
 		GameObject* pObj = (GameObject*)_lParm;
 		eLayerType eLyaer = (eLayerType)_wParm;
 		pObj->Initialize();
-
+		////나중에 여기서 분기처리 objectpool인지 그냥 삭제인지
 		SceneManger::AddGameObject(eLyaer, pObj);
 	}
 
@@ -256,8 +256,6 @@ namespace W
 		W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
 		UINT ID = iLayerID & 0x00FFFFFF;
 
-		if (eLayer == eLayerType::AttackObject)
-			int a = 10;
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
 		if (pObj)
 			pObj->UpdateState(*pStrAnimName, iAnim);

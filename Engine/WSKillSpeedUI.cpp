@@ -6,8 +6,7 @@ namespace W
 {
 	SkillSpeedUI::SkillSpeedUI()
 	{
-
-		//SetPlayerSkill(Player::ePlayerSkill::speed);
+		SetPlayerSkill(Player::ePlayerSkill::speed);
 
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
@@ -77,8 +76,4 @@ namespace W
 
 	}
 
-	void SkillSpeedUI::Using()
-	{
-		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::speed);
-	}
 }

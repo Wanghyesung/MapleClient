@@ -5,7 +5,7 @@ namespace W
 {
 	SkillAvenUI::SkillAvenUI()
 	{
-		//SetPlayerSkill(Player::ePlayerSkill::aven);
+		SetPlayerSkill(Player::ePlayerSkill::aven);
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
 			Resources::Load<Texture>(L"SKillAvenUI2", L"..\\Resources\\Texture\\UI\\SkillUI\\3\\aven\\2.png");
@@ -63,7 +63,7 @@ namespace W
 		bool bClone = IsClone();
 		if (bClone)
 			return;
-
+		
 		SKill::MouseLbtnUp();
 
 		std::shared_ptr<Material> pShMater = Resources::Find<Material>(L"SKillAvenMater");
@@ -74,9 +74,5 @@ namespace W
 	{
 
 	}
-	void SkillAvenUI::Using()
-	{
-		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::aven);
-	}
+
 }

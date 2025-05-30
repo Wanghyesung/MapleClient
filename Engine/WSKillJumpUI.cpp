@@ -8,7 +8,7 @@ namespace W
 {
 	SKillJumpUI::SKillJumpUI()
 	{
-		//SetPlayerSkill(Player::ePlayerSkill::jump);
+		SetPlayerSkill(Player::ePlayerSkill::jump);
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
 			Resources::Load<Texture>(L"SKillJumpUI2", L"..\\Resources\\Texture\\UI\\SkillUI\\2\\jump\\2.png");
@@ -77,9 +77,5 @@ namespace W
 	{
 
 	}
-	void SKillJumpUI::Using()
-	{
-		//SkillManager::SetActiveSkill(GetPlayerSkill());
-		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::jump);
-	}
+
 }

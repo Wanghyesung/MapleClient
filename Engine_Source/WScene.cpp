@@ -4,10 +4,9 @@
 #include "..\Engine\WMonsterHP.h"
 #include "WSceneManger.h"
 #include "Map.pb.h"
-#include "NetFunc.h"
-#include "ServerPacketHandler.h"
-extern UINT PLAYER_ID;
-extern shared_ptr< ClientService> GClientService;
+
+
+
 namespace W
 {
 	//std::vector<eLayerType> Scene::m_vecUpdateLayer = 

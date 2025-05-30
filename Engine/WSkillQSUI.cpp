@@ -5,7 +5,7 @@ namespace W
 {
 	SkillQSUI::SkillQSUI()
 	{
-		//SetPlayerSkill(Player::ePlayerSkill::quad);
+		SetPlayerSkill(Player::ePlayerSkill::quad);
 
 		//cool
 		std::shared_ptr<Texture> pSKillUI =
@@ -78,8 +78,4 @@ namespace W
 
 	}
 
-	void SkillQSUI::Using()
-	{
-		//EventManager::ChangePlayerSkillState(Player::ePlayerSkill::quad);
-	}
 }

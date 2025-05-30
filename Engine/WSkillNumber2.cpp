@@ -3,7 +3,7 @@
 #include "WSKillBox.h"
 #include "WSKillSpeedUI.h"
 #include "WSKillJumpUI.h"
-
+#include "WTransform.h"
 //비율좌표이기 떄문에 최대가 1
 //shader에 넘길 수 있게
 

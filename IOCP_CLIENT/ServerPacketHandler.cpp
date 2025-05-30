@@ -136,6 +136,13 @@ bool Handle_S_TRANSFORM(shared_ptr<Session> _pSession, Protocol::S_TRANSFORM& _p
 	return true;
 }
 
+bool Handle_S_SKILL(shared_ptr<Session> _pSession, Protocol::S_Skill& _pkt)
+{
+
+	return false;
+}
+
+
 bool Handle_S_EXIT(shared_ptr<Session> _pSession, Protocol::S_EXIT& _pkt)
 {
 

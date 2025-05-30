@@ -19,8 +19,7 @@ namespace W
 		virtual void MouseLbtnUp()override;
 		virtual void MouseLbtnClicked()override;
 
-		virtual void Using()override;
-
+		
 	private:
 
 	};
