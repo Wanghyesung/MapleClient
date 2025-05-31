@@ -66,6 +66,8 @@ namespace W
 		void SetEquip(Equip* _pEquip);
 		void DisableEquip(Equip* _pEquip);
 
+		bool IsAlert() { return m_bAlert; }
+
 		template <typename T>
 		T* GetPlayerChild()
 		{
@@ -83,6 +85,8 @@ namespace W
 		void child_render();
 		void child_lateupdate();
 
+		void init_attack_object();
+		void init_attack_effect();
 	private:
 		std::vector<GameObject*> m_vecChildObj;
 

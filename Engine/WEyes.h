@@ -19,7 +19,6 @@ namespace W
 
 		void SetPlayerHead(PlayerHead* _pPlayerHead) { m_pPlayerHead = _pPlayerHead; }
 
-		void SetAlert(bool _bAlert) { m_bAlert = _bAlert; }
 		void SetEye(UINT _iNum);
 
 	private:
@@ -27,8 +26,6 @@ namespace W
 
 		UINT m_iEyeNumber;
 		std::wstring m_strCurAnim;
-		bool m_bAlert;
-		
 
 	};
 }

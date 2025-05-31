@@ -7,6 +7,8 @@
 #include "..\Engine_Source\WGameObject.h"
 #include "..\Engine_Source\WTransform.h"
 #include "..\Engine_Source\WSceneManger.h"
+#include "..\Engine\WObjectPoolManager.h"
+
 shared_ptr< ClientService> GClientService;
 PacketHandlerFunc GPacketHandler[UINT16_MAX];
 extern UINT PLAYER_ID;
@@ -61,9 +63,12 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 		UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
 		UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
 		USHORT CID = iLayerCreateIdId & 0xFFFF;
-		
-		//풀에서 가져올지 바로 생성할지
-		GameObject* pObj =  GameObjectManager::GetMonsterOfID(cCreateid);
+	
+		GameObject* pObj = nullptr;
+		if (_pkt.object_name().empty())
+			pObj = GameObjectManager::GetMonsterOfID(cCreateid);
+		else
+			pObj = ObjectPoolManager::FrontObject(StringToWString(_pkt.object_name()));
 	
 		pObj->GetComponent<Transform>()->SetPosition(objInfo.x(), objInfo.y(), objInfo.z());
 
@@ -83,8 +88,13 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 	UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
 	UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
 	USHORT CID = iLayerCreateIdId & 0xFFFF;
+	wstring strName = StringToWString(_pkt.object_name());
 
-	GameObject* pObj = GameObjectManager::GetMonsterOfID(cCreateid);
+	GameObject* pObj = nullptr;
+	if (_pkt.object_name().empty())
+		pObj = GameObjectManager::GetMonsterOfID(cCreateid);
+	else
+		pObj = ObjectPoolManager::FrontObject(StringToWString(_pkt.object_name()));
 
 	pObj->GetComponent<Transform>()->SetPosition(tInfo.x(), tInfo.y(), tInfo.z());
 	eLayerType eLayer = (W::eLayerType)cLayer;
@@ -102,6 +112,7 @@ bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt)
 	USHORT CID = iLayerDeleteId & 0xFFFF;
 
 	eLayerType eLayerType = (W::eLayerType)cLayer;
+	
 	
 	EventManager::DeleteObjectID(CID, eLayerType);
 	

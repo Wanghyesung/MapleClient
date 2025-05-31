@@ -19,8 +19,6 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-
-		void SetAlert(bool _bAlert);
 		void SetEquipHat(Equip* _pEquip);
 
 		void SetPlayer(Player* _pPlayer) { m_pPlayer = _pPlayer; }

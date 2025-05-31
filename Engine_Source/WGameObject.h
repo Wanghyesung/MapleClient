@@ -122,11 +122,17 @@ namespace W
 		void SetAnimIdx(int _iIdx) { m_iAnimIdx = _iIdx; }
 		int GetAnimIdx() { return m_iAnimIdx; }
 
+		void SetPoolObject(bool _bPoolObject) { m_bObjectPool = _bPoolObject; }
+		bool IsPoolObject() { return m_bObjectPool; }
+
 		void SetObjectID(UINT _ID) { m_iObjectID = _ID; }
 		UINT GetObjectID() { return m_iObjectID; }
 
 		void SetClientObject(bool _bClientObject) { m_bClientObject = _bClientObject; }
 		bool IsClientObject() { return m_bClientObject; }
+
+
+
 	private:
 		static void SetCreateID(UINT _ID) { CREATE_ID = _ID; }
 
@@ -142,7 +148,9 @@ namespace W
 		std::vector<Script*> m_vecScript;
 		eLayerType m_eLayerType;
 
+		bool m_bObjectPool;
 		bool m_bClientObject;
+
 		UINT m_iObjectID;
 		static UINT CREATE_ID;
 

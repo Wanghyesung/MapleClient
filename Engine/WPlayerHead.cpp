@@ -128,10 +128,6 @@ namespace W
 		m_pPlayerHat->Render();
 	}
 
-	void PlayerHead::SetAlert(bool _bAlert)
-	{
-		m_pPlayerEyes->SetAlert(_bAlert);
-	}
 
 	void PlayerHead::SetEquipHat(Equip* _pEquip)
 	{

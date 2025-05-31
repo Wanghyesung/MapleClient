@@ -17,6 +17,9 @@
 #include "WSceneManger.h"
 #include "WEquipState.h"
 #include "WCameraScript.h"
+#include "WShuriken.h"
+#include "WObjectPoolManager.h"
+#include "WEffect.h"
 namespace W
 {
 	Player::Player():
@@ -107,7 +110,8 @@ namespace W
 		pPlayerArm->Initialize();
 		m_vecChildObj[2] = pPlayerArm;
 			
-		
+		init_attack_object();
+		init_attack_effect();
 	}
 	void Player::Update()
 	{
@@ -237,6 +241,40 @@ namespace W
 		{
 			pObj->LateUpdate();
 		}
+	}
+
+	void Player::init_attack_object()
+	{
+		for (int i = 0; i < 5; ++i)
+		{
+			Shuriken* pShuriken = new Shuriken();
+			pShuriken->SetName(L"shuriken");
+			ObjectPoolManager::AddObjectPool(pShuriken->GetName(), pShuriken);
+		}
+		for (int i = 0; i < 12; ++i)
+		{
+			Shuriken* pShuriken = new Shuriken();
+			pShuriken->SetName(L"luck");
+			ObjectPoolManager::AddObjectPool(pShuriken->GetName(), pShuriken);
+		}
+	}
+
+
+	void Player::init_attack_effect()
+	{
+		Effect* pEffect = nullptr;
+		for (int i = 0; i < 8; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"luckhit"), L"luck", Vector2(0.f, 0.f), Vector2(74.f, 74.f), 4, 1,
+				Vector2(90.f, 90.f), Vector2::Zero, 0.1f);
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+
+		pEffect = new Effect();
+		pEffect->CreateAnimation(Resources::Find<Texture>(L"luckeffect"), L"luckeffect", Vector2(0.f, 0.f), Vector2(112.f, 52.f), 5, 1,
+			Vector2(110.f, 110.f), Vector2(0.4f, 0.f), 0.1f);
+		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 	}
 	
 	

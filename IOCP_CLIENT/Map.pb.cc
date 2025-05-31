@@ -37,7 +37,8 @@ struct ObjectInfoDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ObjectInfoDefaultTypeInternal _ObjectInfo_default_instance_;
 constexpr S_MAP::S_MAP(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : objinfo_(){}
+  : objinfo_()
+  , object_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct S_MAPDefaultTypeInternal {
   constexpr S_MAPDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -84,6 +85,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Map_2eproto::offsets[] PROTOBU
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_MAP, objinfo_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::S_MAP, object_name_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::Protocol::C_MAP, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -95,7 +97,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Map_2eproto::offsets[] PROTOBU
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Protocol::ObjectInfo)},
   { 12, -1, sizeof(::Protocol::S_MAP)},
-  { 18, -1, sizeof(::Protocol::C_MAP)},
+  { 19, -1, sizeof(::Protocol::C_MAP)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -108,13 +110,14 @@ const char descriptor_table_protodef_Map_2eproto[] PROTOBUF_SECTION_VARIABLE(pro
   "\n\tMap.proto\022\010Protocol\"t\n\nObjectInfo\022\r\n\005s"
   "cene\030\001 \001(\t\022\031\n\021layer_createid_id\030\002 \001(\r\022\t\n"
   "\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\022\t\n\001z\030\005 \001(\002\022\r\n\005state\030"
-  "\006 \001(\t\022\014\n\004anim\030\007 \001(\005\".\n\005S_MAP\022%\n\007objInfo\030"
-  "\001 \003(\0132\024.Protocol.ObjectInfo\")\n\005C_MAP\022\r\n\005"
-  "scene\030\001 \001(\t\022\021\n\tplayer_id\030\002 \001(\rb\006proto3"
+  "\006 \001(\t\022\014\n\004anim\030\007 \001(\005\"C\n\005S_MAP\022%\n\007objInfo\030"
+  "\001 \003(\0132\024.Protocol.ObjectInfo\022\023\n\013object_na"
+  "me\030\002 \001(\t\")\n\005C_MAP\022\r\n\005scene\030\001 \001(\t\022\021\n\tplay"
+  "er_id\030\002 \001(\rb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Map_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Map_2eproto = {
-  false, false, 238, descriptor_table_protodef_Map_2eproto, "Map.proto", 
+  false, false, 259, descriptor_table_protodef_Map_2eproto, "Map.proto", 
   &descriptor_table_Map_2eproto_once, nullptr, 0, 3,
   schemas, file_default_instances, TableStruct_Map_2eproto::offsets,
   file_level_metadata_Map_2eproto, file_level_enum_descriptors_Map_2eproto, file_level_service_descriptors_Map_2eproto,
@@ -516,10 +519,16 @@ S_MAP::S_MAP(const S_MAP& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       objinfo_(from.objinfo_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_object_name().empty()) {
+    object_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_object_name(), 
+      GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:Protocol.S_MAP)
 }
 
 void S_MAP::SharedCtor() {
+object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 S_MAP::~S_MAP() {
@@ -530,6 +539,7 @@ S_MAP::~S_MAP() {
 
 void S_MAP::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  object_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void S_MAP::ArenaDtor(void* object) {
@@ -549,6 +559,7 @@ void S_MAP::Clear() {
   (void) cached_has_bits;
 
   objinfo_.Clear();
+  object_name_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -568,6 +579,15 @@ const char* S_MAP::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // string object_name = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_object_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.S_MAP.object_name"));
+          CHK_(ptr);
         } else goto handle_unusual;
         continue;
       default: {
@@ -607,6 +627,16 @@ failure:
       InternalWriteMessage(1, this->_internal_objinfo(i), target, stream);
   }
 
+  // string object_name = 2;
+  if (!this->object_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_object_name().data(), static_cast<int>(this->_internal_object_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "Protocol.S_MAP.object_name");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_object_name(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -628,6 +658,13 @@ size_t S_MAP::ByteSizeLong() const {
   for (const auto& msg : this->objinfo_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // string object_name = 2;
+  if (!this->object_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_object_name());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -662,6 +699,9 @@ void S_MAP::MergeFrom(const S_MAP& from) {
   (void) cached_has_bits;
 
   objinfo_.MergeFrom(from.objinfo_);
+  if (!from.object_name().empty()) {
+    _internal_set_object_name(from._internal_object_name());
+  }
 }
 
 void S_MAP::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -686,6 +726,11 @@ void S_MAP::InternalSwap(S_MAP* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   objinfo_.InternalSwap(&other->objinfo_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &object_name_, GetArenaForAllocation(),
+      &other->object_name_, other->GetArenaForAllocation()
+  );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata S_MAP::GetMetadata() const {

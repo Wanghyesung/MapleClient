@@ -10,6 +10,7 @@
 #include "WGameObjectManager.h"
 #include "..\Engine_Source\WAnimator.h"
 #include "..\Engine_Source\WTransform.h"
+#include "..\Engine\WObjectPoolManager.h"
 namespace W
 {
 	std::function<void(DWORD_PTR, DWORD_PTR, LONG_PTR)> EventManager::m_arrFunction[(UINT)EVENT_TYPE::END] = {};
@@ -183,8 +184,12 @@ namespace W
 		GameObject* pObj = (GameObject*)_lParm;
 		Scene* pScene = (Scene*)_wParm;
 
-		pScene->EraseObject(pObj->GetLayerType(), pObj);
-		delete pObj;
+		SceneManger::GetActiveScene()->EraseObject(pObj->GetLayerType(), pObj);
+
+		if (pObj->IsPoolObject())
+			W::ObjectPoolManager::AddObjectPool(pObj->GetName(), pObj);
+		else
+			delete pObj;
 	}
 
 	void EventManager::create_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
@@ -198,10 +203,14 @@ namespace W
 		eLayerType eLayer = (eLayerType)_wParm;
 
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
+
 		SceneManger::GetActiveScene()->EraseObject(eLayer, pObj);
 
-		//나중에 여기서 분기처리 objectpool인지 그냥 삭제인지
-		delete pObj;
+		if (pObj->IsPoolObject())
+			W::ObjectPoolManager::AddObjectPool(pObj->GetName(), pObj);
+		else
+			delete pObj;
+			
 	}
 
 	void EventManager::change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)

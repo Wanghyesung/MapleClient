@@ -8,7 +8,6 @@
 namespace W
 {
 	Eyes::Eyes():
-		m_bAlert(false),
 		m_iEyeNumber(0)
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
@@ -126,7 +125,7 @@ namespace W
 
 		strState = pPlayer->GetCurStateName();
 
-		if (m_bAlert)
+		if (pPlayer->IsAlert())
 			strEye += L"alert";
 
 		std::wstring strNum = std::to_wstring(m_iEyeNumber);

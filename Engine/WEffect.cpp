@@ -61,22 +61,25 @@ namespace W
 
 	void Effect::UpdateState(const wstring& _strStateName, int _iAnim)
 	{
-		//UCHAR cDir = (_iAnim >> 8) & 0xFF;
-		//UCHAR cAnimIdx = _iAnim & 0xFF;
-		//
-		//if (m_strCurStateName != _strStateName)
-		//{
-		//	m_strCurStateName = _strStateName;
-		//	GetComponent<Animator>()->Play(m_strCurStateName, true);
-		//}
-		//
-		//m_iDir = cDir > 0 ? 1 : -1;
-		//m_iAnimIdx = cAnimIdx;
+		UCHAR cDir = (_iAnim >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iAnim & 0xFF;
+		
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
+		
+		m_iDir = cDir > 0 ? 1 : -1;
+		m_iAnimIdx = cAnimIdx;
 	}
 
-	void Effect::CreateAnimation(std::shared_ptr<Texture> _pAtlas, Vector2 _vLeftTop, Vector2 _vSize, UINT _iColumnLength,
+	void Effect::CreateAnimation(std::shared_ptr<Texture> _pAtlas, const std::wstring& _strName, Vector2 _vLeftTop, Vector2 _vSize, UINT _iColumnLength,
 		UINT _iRowLength, Vector2 _vDivisionSize, Vector2 _vOffset, float _fDuration)
 	{
+		SetName(_strName + L"_effect");
+		SetPoolObject(true);
+
 		Vector2 vTemLeftTop = _vLeftTop;
 		Vector2 vTemSize = _vSize;
 

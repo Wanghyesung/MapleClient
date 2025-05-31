@@ -20,6 +20,7 @@ namespace Protocol {
 constexpr C_CREATE::C_CREATE(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , object_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , layer_createid_(0u){}
 struct C_CREATEDefaultTypeInternal {
   constexpr C_CREATEDefaultTypeInternal()
@@ -32,7 +33,8 @@ struct C_CREATEDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT C_CREATEDefaultTypeInternal _C_CREATE_default_instance_;
 constexpr S_CREATE::S_CREATE(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : object_info_(nullptr){}
+  : object_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , object_info_(nullptr){}
 struct S_CREATEDefaultTypeInternal {
   constexpr S_CREATEDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -45,7 +47,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT S_CREATEDefaultTypeInternal _S_
 constexpr S_DELETE::S_DELETE(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , layer_deleteid_(0u){}
+  , layer_deleteid_(0u)
+  , pool_object_(false){}
 struct S_DELETEDefaultTypeInternal {
   constexpr S_DELETEDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -68,12 +71,14 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_GameObject_2eproto::offsets[] 
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::Protocol::C_CREATE, scene_),
   PROTOBUF_FIELD_OFFSET(::Protocol::C_CREATE, layer_createid_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_CREATE, object_name_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_CREATE, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_CREATE, object_info_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::S_CREATE, object_name_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_DELETE, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -81,11 +86,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_GameObject_2eproto::offsets[] 
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_DELETE, scene_),
   PROTOBUF_FIELD_OFFSET(::Protocol::S_DELETE, layer_deleteid_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::S_DELETE, pool_object_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Protocol::C_CREATE)},
-  { 7, -1, sizeof(::Protocol::S_CREATE)},
-  { 13, -1, sizeof(::Protocol::S_DELETE)},
+  { 8, -1, sizeof(::Protocol::S_CREATE)},
+  { 15, -1, sizeof(::Protocol::S_DELETE)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -96,18 +102,19 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_GameObject_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\020GameObject.proto\022\010Protocol\032\tMap.proto\""
-  "1\n\010C_CREATE\022\r\n\005scene\030\001 \001(\t\022\026\n\016layer_crea"
-  "teid\030\002 \001(\r\"5\n\010S_CREATE\022)\n\013object_info\030\001 "
-  "\001(\0132\024.Protocol.ObjectInfo\"1\n\010S_DELETE\022\r\n"
-  "\005scene\030\001 \001(\t\022\026\n\016layer_deleteid\030\002 \001(\rb\006pr"
-  "oto3"
+  "F\n\010C_CREATE\022\r\n\005scene\030\001 \001(\t\022\026\n\016layer_crea"
+  "teid\030\002 \001(\r\022\023\n\013object_name\030\003 \001(\t\"J\n\010S_CRE"
+  "ATE\022)\n\013object_info\030\001 \001(\0132\024.Protocol.Obje"
+  "ctInfo\022\023\n\013object_name\030\002 \001(\t\"F\n\010S_DELETE\022"
+  "\r\n\005scene\030\001 \001(\t\022\026\n\016layer_deleteid\030\002 \001(\r\022\023"
+  "\n\013pool_object\030\003 \001(\010b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_GameObject_2eproto_deps[1] = {
   &::descriptor_table_Map_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_GameObject_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_GameObject_2eproto = {
-  false, false, 204, descriptor_table_protodef_GameObject_2eproto, "GameObject.proto", 
+  false, false, 267, descriptor_table_protodef_GameObject_2eproto, "GameObject.proto", 
   &descriptor_table_GameObject_2eproto_once, descriptor_table_GameObject_2eproto_deps, 1, 3,
   schemas, file_default_instances, TableStruct_GameObject_2eproto::offsets,
   file_level_metadata_GameObject_2eproto, file_level_enum_descriptors_GameObject_2eproto, file_level_service_descriptors_GameObject_2eproto,
@@ -140,12 +147,18 @@ C_CREATE::C_CREATE(const C_CREATE& from)
     scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_scene(), 
       GetArenaForAllocation());
   }
+  object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_object_name().empty()) {
+    object_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_object_name(), 
+      GetArenaForAllocation());
+  }
   layer_createid_ = from.layer_createid_;
   // @@protoc_insertion_point(copy_constructor:Protocol.C_CREATE)
 }
 
 void C_CREATE::SharedCtor() {
 scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 layer_createid_ = 0u;
 }
 
@@ -158,6 +171,7 @@ C_CREATE::~C_CREATE() {
 void C_CREATE::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   scene_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  object_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void C_CREATE::ArenaDtor(void* object) {
@@ -177,6 +191,7 @@ void C_CREATE::Clear() {
   (void) cached_has_bits;
 
   scene_.ClearToEmpty();
+  object_name_.ClearToEmpty();
   layer_createid_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -200,6 +215,15 @@ const char* C_CREATE::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           layer_createid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string object_name = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          auto str = _internal_mutable_object_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.C_CREATE.object_name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -248,6 +272,16 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer_createid(), target);
   }
 
+  // string object_name = 3;
+  if (!this->object_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_object_name().data(), static_cast<int>(this->_internal_object_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "Protocol.C_CREATE.object_name");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_object_name(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -269,6 +303,13 @@ size_t C_CREATE::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_scene());
+  }
+
+  // string object_name = 3;
+  if (!this->object_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_object_name());
   }
 
   // uint32 layer_createid = 2;
@@ -312,6 +353,9 @@ void C_CREATE::MergeFrom(const C_CREATE& from) {
   if (!from.scene().empty()) {
     _internal_set_scene(from._internal_scene());
   }
+  if (!from.object_name().empty()) {
+    _internal_set_object_name(from._internal_object_name());
+  }
   if (from.layer_createid() != 0) {
     _internal_set_layer_createid(from._internal_layer_createid());
   }
@@ -342,6 +386,11 @@ void C_CREATE::InternalSwap(C_CREATE* other) {
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &scene_, GetArenaForAllocation(),
       &other->scene_, other->GetArenaForAllocation()
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &object_name_, GetArenaForAllocation(),
+      &other->object_name_, other->GetArenaForAllocation()
   );
   swap(layer_createid_, other->layer_createid_);
 }
@@ -378,6 +427,11 @@ S_CREATE::S_CREATE(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 S_CREATE::S_CREATE(const S_CREATE& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_object_name().empty()) {
+    object_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_object_name(), 
+      GetArenaForAllocation());
+  }
   if (from._internal_has_object_info()) {
     object_info_ = new ::Protocol::ObjectInfo(*from.object_info_);
   } else {
@@ -387,6 +441,7 @@ S_CREATE::S_CREATE(const S_CREATE& from)
 }
 
 void S_CREATE::SharedCtor() {
+object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 object_info_ = nullptr;
 }
 
@@ -398,6 +453,7 @@ S_CREATE::~S_CREATE() {
 
 void S_CREATE::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  object_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete object_info_;
 }
 
@@ -417,6 +473,7 @@ void S_CREATE::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  object_name_.ClearToEmpty();
   if (GetArenaForAllocation() == nullptr && object_info_ != nullptr) {
     delete object_info_;
   }
@@ -434,6 +491,15 @@ const char* S_CREATE::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_object_info(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string object_name = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_object_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.S_CREATE.object_name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -474,6 +540,16 @@ failure:
         1, _Internal::object_info(this), target, stream);
   }
 
+  // string object_name = 2;
+  if (!this->object_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_object_name().data(), static_cast<int>(this->_internal_object_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "Protocol.S_CREATE.object_name");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_object_name(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -489,6 +565,13 @@ size_t S_CREATE::ByteSizeLong() const {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // string object_name = 2;
+  if (!this->object_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_object_name());
+  }
 
   // .Protocol.ObjectInfo object_info = 1;
   if (this->has_object_info()) {
@@ -528,6 +611,9 @@ void S_CREATE::MergeFrom(const S_CREATE& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (!from.object_name().empty()) {
+    _internal_set_object_name(from._internal_object_name());
+  }
   if (from.has_object_info()) {
     _internal_mutable_object_info()->::Protocol::ObjectInfo::MergeFrom(from._internal_object_info());
   }
@@ -554,6 +640,11 @@ bool S_CREATE::IsInitialized() const {
 void S_CREATE::InternalSwap(S_CREATE* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &object_name_, GetArenaForAllocation(),
+      &other->object_name_, other->GetArenaForAllocation()
+  );
   swap(object_info_, other->object_info_);
 }
 
@@ -583,13 +674,18 @@ S_DELETE::S_DELETE(const S_DELETE& from)
     scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_scene(), 
       GetArenaForAllocation());
   }
-  layer_deleteid_ = from.layer_deleteid_;
+  ::memcpy(&layer_deleteid_, &from.layer_deleteid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&pool_object_) -
+    reinterpret_cast<char*>(&layer_deleteid_)) + sizeof(pool_object_));
   // @@protoc_insertion_point(copy_constructor:Protocol.S_DELETE)
 }
 
 void S_DELETE::SharedCtor() {
 scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-layer_deleteid_ = 0u;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&layer_deleteid_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&pool_object_) -
+    reinterpret_cast<char*>(&layer_deleteid_)) + sizeof(pool_object_));
 }
 
 S_DELETE::~S_DELETE() {
@@ -620,7 +716,9 @@ void S_DELETE::Clear() {
   (void) cached_has_bits;
 
   scene_.ClearToEmpty();
-  layer_deleteid_ = 0u;
+  ::memset(&layer_deleteid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&pool_object_) -
+      reinterpret_cast<char*>(&layer_deleteid_)) + sizeof(pool_object_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -643,6 +741,13 @@ const char* S_DELETE::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           layer_deleteid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // bool pool_object = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          pool_object_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -691,6 +796,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer_deleteid(), target);
   }
 
+  // bool pool_object = 3;
+  if (this->pool_object() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_pool_object(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -719,6 +830,11 @@ size_t S_DELETE::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_layer_deleteid());
+  }
+
+  // bool pool_object = 3;
+  if (this->pool_object() != 0) {
+    total_size += 1 + 1;
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -758,6 +874,9 @@ void S_DELETE::MergeFrom(const S_DELETE& from) {
   if (from.layer_deleteid() != 0) {
     _internal_set_layer_deleteid(from._internal_layer_deleteid());
   }
+  if (from.pool_object() != 0) {
+    _internal_set_pool_object(from._internal_pool_object());
+  }
 }
 
 void S_DELETE::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -786,7 +905,12 @@ void S_DELETE::InternalSwap(S_DELETE* other) {
       &scene_, GetArenaForAllocation(),
       &other->scene_, other->GetArenaForAllocation()
   );
-  swap(layer_deleteid_, other->layer_deleteid_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(S_DELETE, pool_object_)
+      + sizeof(S_DELETE::pool_object_)
+      - PROTOBUF_FIELD_OFFSET(S_DELETE, layer_deleteid_)>(
+          reinterpret_cast<char*>(&layer_deleteid_),
+          reinterpret_cast<char*>(&other->layer_deleteid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata S_DELETE::GetMetadata() const {

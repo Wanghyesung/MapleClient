@@ -11,7 +11,8 @@ namespace W
 		m_eState(eState::Active),
 		m_iObjectID(0),
 		m_iDir(1),
-		m_bClientObject(false)
+		m_bClientObject(false),
+		m_bObjectPool(false)
 	{
 		AddComponent<Transform>();
 	}

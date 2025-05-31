@@ -26,6 +26,11 @@
 #include "WBossUI.h"
 #include "WAudioClip.h"
 #include "WAudioSource.h"
+#include "WObjectPoolManager.h"
+#include "WResources.h"
+#include "WEffect.h"
+
+
 namespace W
 {
 	ValleyScene::ValleyScene()
@@ -50,6 +55,7 @@ namespace W
 		CreateBackground();
 		setobject();
 		setmonster();
+		create_effect();
 
 		InterfaceUI* pInterUI = new InterfaceUI();
 		pInterUI->SetObjectID(0);
@@ -168,5 +174,22 @@ namespace W
 	void ValleyScene::setmonster()
 	{
 		
+	}
+
+	void ValleyScene::create_effect()
+	{
+		 shared_ptr<Texture> pTex =
+			 Resources::Load<Texture>(L"sklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png");
+		Effect* pEffect = new Effect();
+		pEffect->CreateAnimation(pTex, L"sklaser", Vector2(0.f, 0.f), Vector2(134.f, 97.f), 1, 1, Vector2(100.f, 100.f), Vector2::Zero, 0.2f);
+
+		pEffect->SetPoolObject(true);
+		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+
+
+		MonsterAttackObject* pLaser = new MonsterAttackObject();
+		pLaser->SetName(L"sklaser");
+		pLaser->SetPoolObject(true);
+		ObjectPoolManager::AddObjectPool(pLaser->GetName(), pLaser);
 	}
 }

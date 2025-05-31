@@ -17,7 +17,7 @@ namespace W
 		virtual void UpdateState(const wstring& _strStateName, int _iAnim) override;
 
 		void SetOwner(GameObject* _pOwner) { m_pOwner = _pOwner; }
-		void CreateAnimation(std::shared_ptr<Texture> _pAtlas, Vector2 _vLeftTop, Vector2 _vSize, UINT _iColumnLength,
+		void CreateAnimation(std::shared_ptr<Texture> _pAtlas, const std::wstring& _strName, Vector2 _vLeftTop, Vector2 _vSize, UINT _iColumnLength,
 			UINT _iRowLength, Vector2 _vDivisionSize, Vector2 _vOffset, float _fDuration);
 
 		void StartEffect(int _iDir);
