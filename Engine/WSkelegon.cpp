@@ -71,8 +71,14 @@ namespace W
 
 	void Skelegon::UpdateState(const wstring& _strStateName, int _iAnim)
 	{
+		bool bRender = (_iAnim >> 16) & 0xFF;
 		UCHAR cDir = (_iAnim >> 8) & 0xFF;
 		UCHAR cAnimIdx = _iAnim & 0xFF;
+
+		if (bRender)
+			SetState(GameObject::eState::Active);
+		else
+			SetState(GameObject::eState::Paused);
 
 		if (m_strCurStateName != _strStateName)
 		{
