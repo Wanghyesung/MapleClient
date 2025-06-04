@@ -10,10 +10,10 @@ namespace W
 	{
 		std::shared_ptr<Texture> pAtlas;
 	
-		pAtlas = Resources::Load<Texture>(L"MonBackHP", L"..\\Resources\\Texture\\MonsterUI\\energebar.png");
+		Resources::Load<Texture>(L"MonBackHP", L"..\\Resources\\Texture\\MonsterUI\\energebar.png");
 		GetComponent<Transform>()->SetScale(1.f * 0.7f, 1.f * 0.13f, 0.f);
 		
-		pAtlas = Resources::Load<Texture>(L"MonBackBossHP", L"..\\Resources\\Texture\\MonsterUI\\boss_energebar.png");
+		Resources::Load<Texture>(L"MonBackBossHP", L"..\\Resources\\Texture\\MonsterUI\\boss_energebar.png");
 		GetComponent<Transform>()->SetScale(1.2f * 8.01f, 1.2f * 0.4f, 0.f);
 		
 		
@@ -36,7 +36,21 @@ namespace W
 	}
 	void MonsterBackHP::Initialize()
 	{
+		eLayerType eType = GetLayerType();
+		shared_ptr<Texture> pTex = nullptr; 
+		if (eType == eLayerType::Object)
+		{
+			pTex = Resources::Find<Texture>(L"MonBackHP");
+			GetComponent<Transform>()->SetScale(1.f * 0.7f, 1.f * 0.13f, 0.f);
+		}
+		else
+		{
+			pTex = Resources::Find<Texture>(L"MonBackBossHP");
+			GetComponent<Transform>()->SetScale(1.2f * 8.01f, 1.2f * 0.4f, 0.f);
+		}
 
+		MeshRenderer* pRenderer = GetComponent<MeshRenderer>();
+		pRenderer->GetMaterial()->SetTexture(pTex);
 	}
 	void MonsterBackHP::Update()
 	{

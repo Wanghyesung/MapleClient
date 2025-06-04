@@ -18,12 +18,8 @@ namespace W
 
 		std::shared_ptr<Texture> spAtlas;
 		
-		spAtlas = Resources::Load<Texture>(L"MonHP", L"..\\Resources\\Texture\\MonsterUI\\energe.png");
-		GetComponent<Transform>()->SetScale(1.f * 0.66f, 1.f * 0.13f, 0.f);
-		
-		spAtlas = Resources::Load<Texture>(L"BossHP", L"..\\Resources\\Texture\\MonsterUI\\bossHP.png");
-		GetComponent<Transform>()->SetScale(1.2f * 7.6f, 1.2f * 0.4f, 0.f);
-		GetComponent<Transform>()->SetPosition(0.f, 3.5f, -2.f);
+		Resources::Load<Texture>(L"MonHP", L"..\\Resources\\Texture\\MonsterUI\\energe.png");
+		Resources::Load<Texture>(L"BossHP", L"..\\Resources\\Texture\\MonsterUI\\bossHP.png");
 		
 
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
@@ -44,7 +40,22 @@ namespace W
 	}
 	void MonsterHP::Initialize()
 	{
-		
+		eLayerType eType = GetLayerType();
+		shared_ptr<Texture> pTex = nullptr;
+		if (eType == eLayerType::Object)
+		{
+			pTex = Resources::Find<Texture>(L"MonHP");
+			GetComponent<Transform>()->SetScale(1.f * 0.66f, 1.f * 0.13f, 0.f);
+		}
+		else
+		{
+			pTex = Resources::Find<Texture>(L"BossHP");
+			GetComponent<Transform>()->SetScale(1.2f * 7.6f, 1.2f * 0.4f, 0.f);
+			GetComponent<Transform>()->SetPosition(0.f, 3.5f, -2.f);
+		}
+
+		MeshRenderer* pRenderer = GetComponent<MeshRenderer>();
+		pRenderer->GetMaterial()->SetTexture(pTex);
 	}
 	void MonsterHP::Update()
 	{
@@ -65,6 +76,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void MonsterHP::UpdateState(const wstring& _strStateName, int _iAnim)
+	{
+		m_fHP = _iAnim;
 	}
 	
 }

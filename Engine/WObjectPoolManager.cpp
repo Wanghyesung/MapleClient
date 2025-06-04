@@ -18,6 +18,8 @@ namespace W
 		}
 
 		m_hashObjectPool[_strName].push(_pGameObj);
+
+		_pGameObj->SetPoolObject(true);
 	}
 	GameObject* ObjectPoolManager::FrontObject(const std::wstring& _strName)
 	{

@@ -143,4 +143,23 @@ namespace W
 	
 		return vResult;
 	}
+
+	void Transform::SetDirectPosition(const Vector3& _vPosition)
+	{
+		m_fCurLerpTime = m_fLerpTime;
+
+		m_vNextPosition = _vPosition;
+		m_vPrevPosition = _vPosition;
+		m_vPosition = _vPosition;
+	}
+	void Transform::SetDirectPosition(float x, float y, float z)
+	{
+		Vector3 vPosition = Vector3(x, y, z);
+
+		m_fCurLerpTime = m_fLerpTime;
+
+		m_vNextPosition = vPosition;
+		m_vPrevPosition = vPosition;
+		m_vPosition = vPosition;
+	}
 }

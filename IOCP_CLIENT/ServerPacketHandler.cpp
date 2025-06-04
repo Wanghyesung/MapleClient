@@ -70,7 +70,7 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 		else
 			pObj = ObjectPoolManager::FrontObject(StringToWString(_pkt.object_name()));
 	
-		pObj->GetComponent<Transform>()->SetPosition(objInfo.x(), objInfo.y(), objInfo.z());
+		pObj->GetComponent<Transform>()->SetDirectPosition(objInfo.x(), objInfo.y(), objInfo.z());
 
 		eLayerType eLayerType = (W::eLayerType)cLayer;
 		pObj->SetObjectID(CID);
@@ -91,15 +91,18 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 	wstring strName = StringToWString(_pkt.object_name());
 
 	GameObject* pObj = nullptr;
+	
 	if (_pkt.object_name().empty())
 		pObj = GameObjectManager::GetMonsterOfID(cCreateid);
 	else
-		pObj = ObjectPoolManager::FrontObject(StringToWString(_pkt.object_name()));
+		pObj = ObjectPoolManager::FrontObject(strName);
 
-	pObj->GetComponent<Transform>()->SetPosition(tInfo.x(), tInfo.y(), tInfo.z());
+	
+	pObj->GetComponent<Transform>()->SetDirectPosition(tInfo.x(), tInfo.y(), tInfo.z());
 	eLayerType eLayer = (W::eLayerType)cLayer;
+	
 	pObj->SetObjectID(CID);
-
+	
 	EventManager::CreateObject(pObj, eLayer);
 
 	return true;
@@ -109,7 +112,7 @@ bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt)
 {
 	UINT iLayerDeleteId = _pkt.layer_deleteid();
 	UCHAR cLayer = (iLayerDeleteId >> 24) & 0xFF;
-	USHORT CID = iLayerDeleteId & 0xFFFF;
+	USHORT CID = iLayerDeleteId & 0x00FFFFFF;;
 
 	eLayerType eLayerType = (W::eLayerType)cLayer;
 	
@@ -125,8 +128,8 @@ bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt)
 	char cAnimIdx = iAnim & 0xFF;      
 
 	//애니메이션 인덱스가 -1이면
-	if (cAnimIdx < 0)
-		return false;
+	//if (cAnimIdx < 0)
+	//	return false;
 
 	std::wstring strAnimaState = StringToWString(_pkt.state());
 

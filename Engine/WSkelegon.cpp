@@ -49,7 +49,7 @@ namespace W
 	}
 	void Skelegon::Initialize()
 	{
-		
+	
 	}
 
 	void Skelegon::Update()

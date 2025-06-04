@@ -86,36 +86,6 @@ namespace W
 		AddEvent(eve);
 	}
 
-	/*void EventManager::AddPlayerPool(GameObject* _pObj)
-	{
-		tEvent eve = {};
-		eve.lParm = (DWORD_PTR)_pObj;
-	
-		eve.eEventType = EVENT_TYPE::ADD_PLAYER_POOL;
-	
-		Vector3 vPosition = _pObj->GetComponent<Transform>()->GetPosition();
-		vPosition.x += ObjectPoolPosition;
-		vPosition.y += ObjectPoolPosition;
-		_pObj->GetComponent<Transform>()->SetPosition(vPosition);
-
-		AddEvent(eve);
-	}
-
-	void EventManager::AddMonsterPool(GameObject* _pObj)
-	{
-		tEvent eve = {};
-		eve.lParm = (DWORD_PTR)_pObj;
-		
-		eve.eEventType = EVENT_TYPE::ADD_MONSTER_POOL;
-
-
-		Vector3 vPosition = _pObj->GetComponent<Transform>()->GetPosition();
-		vPosition.x += ObjectPoolPosition;
-		vPosition.y += ObjectPoolPosition;
-		_pObj->GetComponent<Transform>()->SetPosition(vPosition);
-
-		AddEvent(eve);
-	}*/
 
 	void EventManager::ChangeScene(const std::wstring& _strNextScene)
 	{
@@ -174,9 +144,10 @@ namespace W
 	{
 		GameObject* pObj = (GameObject*)_lParm;
 		eLayerType eLyaer = (eLayerType)_wParm;
-		pObj->Initialize();
-		////나중에 여기서 분기처리 objectpool인지 그냥 삭제인지
+		
 		SceneManger::AddGameObject(eLyaer, pObj);
+
+		pObj->Initialize();
 	}
 
 	void EventManager::delete_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
@@ -279,7 +250,10 @@ namespace W
 		Vector3* vPosition = reinterpret_cast<Vector3*>(_accParm);
 
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
-		pObj->GetComponent<Transform>()->recv_position(*vPosition);
+		
+		if (pObj)
+			pObj->GetComponent<Transform>()->recv_position(*vPosition);
+		
 
 		delete vPosition;
 	}
