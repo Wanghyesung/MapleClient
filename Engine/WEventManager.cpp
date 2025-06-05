@@ -16,8 +16,9 @@ namespace W
 	std::function<void(DWORD_PTR, DWORD_PTR, LONG_PTR)> EventManager::m_arrFunction[(UINT)EVENT_TYPE::END] = {};
 	std::vector<tEvent> EventManager::m_vecEvent[2] = {};
 	atomic<int> EventManager::m_iActiveIdx = 1;
-
+	
 	RWLock EventManager::m_lock = {};
+	
 
 	std::wstring EventManager::m_strNextScene = {};
 #define ObjectPoolPosition 2000.f
@@ -41,6 +42,7 @@ namespace W
 	
 	void EventManager::Initialize()
 	{		
+	
 		m_arrFunction[(UINT)EVENT_TYPE::UPDATE_STATE] = update_state;
 	
 		m_arrFunction[(UINT)EVENT_TYPE::UPDATE_TRANSFORM] = update_trasnform;
@@ -59,6 +61,7 @@ namespace W
 	void EventManager::AddEvent(const tEvent& _tEve)
 	{
 		WLock lock_guard(m_lock);
+		
 		m_vecEvent[1 - m_iActiveIdx].push_back(_tEve);
 	}
 	
@@ -181,11 +184,10 @@ namespace W
 			W::ObjectPoolManager::AddObjectPool(pObj->GetName(), pObj);
 		else
 			delete pObj;
-			
 	}
 
 	void EventManager::change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
-	{
+	{	
 		SceneManger::LoadScene(m_strNextScene);
 	}
 
@@ -219,10 +221,12 @@ namespace W
 
 	void EventManager::delete_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
 	{
+
 	}
 
 	void EventManager::delete_otehr_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
 	{
+
 	}
 
 	void EventManager::update_state(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)

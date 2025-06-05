@@ -95,16 +95,10 @@ namespace W
 	{
 		Scene::OnEnter();
 		
-		ThreadPool::Joinable();
-
-		create_monster();
-
 	}
 	void CaveScene::OnExit()
 	{
 		Scene::OnExit();//리소스 해제
-
-		ThreadPool::Joinable();
 
 	}
 	void CaveScene::CreateBackground()

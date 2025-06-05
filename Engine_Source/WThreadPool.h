@@ -20,6 +20,8 @@ namespace W
 
 		static void Joinable(); //블로킹 함수
 
+		static int GetWorkCount() { return m_iWorkCount.load(); }
+		static bool IsWork() { return m_iWorkCount.load() > 0 ? true : false; }
 	private:
 		static std::vector<std::thread> m_vecWorker;
 		static std::queue<std::function<void()>> m_queueTasks;

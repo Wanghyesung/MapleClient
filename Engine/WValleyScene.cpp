@@ -45,6 +45,8 @@ namespace W
 
 		SetMapSize(0.f, 7.f, 0.f, -7.f);
 		SetMapPossibleSize(-4.37f, 4.37f);
+
+		
 	}
 	ValleyScene::~ValleyScene()
 	{
@@ -108,7 +110,7 @@ namespace W
 	}
 	void ValleyScene::OnEnter()
 	{
-		SendEnter();
+		Scene::OnEnter();
 	}
 	void ValleyScene::OnExit()
 	{

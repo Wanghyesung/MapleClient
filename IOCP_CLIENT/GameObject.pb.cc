@@ -33,8 +33,7 @@ struct C_CREATEDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT C_CREATEDefaultTypeInternal _C_CREATE_default_instance_;
 constexpr S_CREATE::S_CREATE(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : object_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , object_info_(nullptr){}
+  : object_info_(nullptr){}
 struct S_CREATEDefaultTypeInternal {
   constexpr S_CREATEDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -78,7 +77,6 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_GameObject_2eproto::offsets[] 
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_CREATE, object_info_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::S_CREATE, object_name_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_DELETE, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -91,7 +89,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_GameObject_2eproto::offsets[] 
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Protocol::C_CREATE)},
   { 8, -1, sizeof(::Protocol::S_CREATE)},
-  { 15, -1, sizeof(::Protocol::S_DELETE)},
+  { 14, -1, sizeof(::Protocol::S_DELETE)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -103,18 +101,18 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_GameObject_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\020GameObject.proto\022\010Protocol\032\tMap.proto\""
   "F\n\010C_CREATE\022\r\n\005scene\030\001 \001(\t\022\026\n\016layer_crea"
-  "teid\030\002 \001(\r\022\023\n\013object_name\030\003 \001(\t\"J\n\010S_CRE"
+  "teid\030\002 \001(\r\022\023\n\013object_name\030\003 \001(\t\"5\n\010S_CRE"
   "ATE\022)\n\013object_info\030\001 \001(\0132\024.Protocol.Obje"
-  "ctInfo\022\023\n\013object_name\030\002 \001(\t\"F\n\010S_DELETE\022"
-  "\r\n\005scene\030\001 \001(\t\022\026\n\016layer_deleteid\030\002 \001(\r\022\023"
-  "\n\013pool_object\030\003 \001(\010b\006proto3"
+  "ctInfo\"F\n\010S_DELETE\022\r\n\005scene\030\001 \001(\t\022\026\n\016lay"
+  "er_deleteid\030\002 \001(\r\022\023\n\013pool_object\030\003 \001(\010b\006"
+  "proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_GameObject_2eproto_deps[1] = {
   &::descriptor_table_Map_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_GameObject_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_GameObject_2eproto = {
-  false, false, 267, descriptor_table_protodef_GameObject_2eproto, "GameObject.proto", 
+  false, false, 246, descriptor_table_protodef_GameObject_2eproto, "GameObject.proto", 
   &descriptor_table_GameObject_2eproto_once, descriptor_table_GameObject_2eproto_deps, 1, 3,
   schemas, file_default_instances, TableStruct_GameObject_2eproto::offsets,
   file_level_metadata_GameObject_2eproto, file_level_enum_descriptors_GameObject_2eproto, file_level_service_descriptors_GameObject_2eproto,
@@ -427,11 +425,6 @@ S_CREATE::S_CREATE(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 S_CREATE::S_CREATE(const S_CREATE& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_object_name().empty()) {
-    object_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_object_name(), 
-      GetArenaForAllocation());
-  }
   if (from._internal_has_object_info()) {
     object_info_ = new ::Protocol::ObjectInfo(*from.object_info_);
   } else {
@@ -441,7 +434,6 @@ S_CREATE::S_CREATE(const S_CREATE& from)
 }
 
 void S_CREATE::SharedCtor() {
-object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 object_info_ = nullptr;
 }
 
@@ -453,7 +445,6 @@ S_CREATE::~S_CREATE() {
 
 void S_CREATE::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  object_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete object_info_;
 }
 
@@ -473,7 +464,6 @@ void S_CREATE::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  object_name_.ClearToEmpty();
   if (GetArenaForAllocation() == nullptr && object_info_ != nullptr) {
     delete object_info_;
   }
@@ -491,15 +481,6 @@ const char* S_CREATE::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_object_info(), ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string object_name = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_object_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.S_CREATE.object_name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -540,16 +521,6 @@ failure:
         1, _Internal::object_info(this), target, stream);
   }
 
-  // string object_name = 2;
-  if (!this->object_name().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_object_name().data(), static_cast<int>(this->_internal_object_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Protocol.S_CREATE.object_name");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_object_name(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -565,13 +536,6 @@ size_t S_CREATE::ByteSizeLong() const {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
-
-  // string object_name = 2;
-  if (!this->object_name().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_object_name());
-  }
 
   // .Protocol.ObjectInfo object_info = 1;
   if (this->has_object_info()) {
@@ -611,9 +575,6 @@ void S_CREATE::MergeFrom(const S_CREATE& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from.object_name().empty()) {
-    _internal_set_object_name(from._internal_object_name());
-  }
   if (from.has_object_info()) {
     _internal_mutable_object_info()->::Protocol::ObjectInfo::MergeFrom(from._internal_object_info());
   }
@@ -640,11 +601,6 @@ bool S_CREATE::IsInitialized() const {
 void S_CREATE::InternalSwap(S_CREATE* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &object_name_, GetArenaForAllocation(),
-      &other->object_name_, other->GetArenaForAllocation()
-  );
   swap(object_info_, other->object_info_);
 }
 

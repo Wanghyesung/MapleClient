@@ -1,6 +1,6 @@
 #include "WBossEnterUI.h"
 #include "WEventManager.h"
-
+#include "WTransform.h"
 namespace W
 {
 	BossEnterUI::BossEnterUI():

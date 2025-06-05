@@ -45,21 +45,24 @@ namespace W
 	}
 	Scene* SceneManger::LoadScene(std::wstring _strName)
 	{
+		m_pActiveScene->OnExit();
+
 		std::map<std::wstring, Scene*>::iterator iter =
 			m_mapScene.find(_strName);
 
 		if (iter == m_mapScene.end())
 			return nullptr;
 
-	
 		SwapUI(m_pActiveScene, iter->second);
 		SwapPlayer(m_pActiveScene, iter->second);
 
-		m_pActiveScene->OnExit();
 		m_pActiveScene = iter->second;
 		m_pActiveScene->OnEnter();
 
 		SwapCamera();
+
+		m_pActiveScene->StartLoading();
+
 		return iter->second;
 	}
 
@@ -128,6 +131,9 @@ namespace W
 		hashObj[0]->GetScript<CameraScript>()->SetPlayer(FindPlayer());
 	}
 
-	
+	void SceneManger::SendEnter()
+	{
+		m_pActiveScene->SendEnter();
+	}
 
 }

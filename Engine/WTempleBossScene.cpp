@@ -97,9 +97,7 @@ namespace W
 	void TempleBossScene::OnEnter()
 	{
 		Scene::OnEnter();
-		ThreadPool::Joinable();
-
-		create_monster();
+		
 	}
 	void TempleBossScene::OnExit()
 	{
@@ -122,24 +120,16 @@ namespace W
 
 	void TempleBossScene::StartSound()
 	{
-		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
-		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->SetLoop(true);
-		pAudio->Play();*/
+	
 	}
 
 	void TempleBossScene::EndSound()
 	{
-		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
-		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->Stop();*/
 	}
 
 	void TempleBossScene::create_monster()
 	{
-		//PinkBean* pPinkBean = new PinkBean();
-		//pPinkBean->Initialize();
-		//AddGameObject(eLayerType::Monster, pPinkBean);
+		
 	}
 
 	void TempleBossScene::create_effect()

@@ -134,7 +134,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            // 여기서 게임 로직이 돌아가야한다.
             application.Run();
            
             application.Present();
@@ -145,9 +144,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     
     W::ThreadPool::Shutdown();
     W::SceneManger::Release();
-    //W::BattleManager::Release();
-    //W::Fmod::Release();
-   // W::FontWrapper::Release();
+ 
    
     ThreadMgr->Join();
 

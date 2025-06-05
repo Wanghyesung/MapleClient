@@ -2,6 +2,7 @@
 #include "WUI.h"
 #include "WThreadPool.h"
 #include "..\Engine\WMonsterHP.h"
+#include "..\Engine\WEventManager.h"
 #include "WSceneManger.h"
 #include "Map.pb.h"
 
@@ -12,7 +13,8 @@ namespace W
 	//std::vector<eLayerType> Scene::m_vecUpdateLayer = 
 	//{eLayerType::Camera, eLayerType::Background, eLayerType::Light,eLayerType::UI};
 
-	Scene::Scene()
+	Scene::Scene():
+		m_bLoading(false)
 	{
 		for (UINT i = 0; i < (UINT)eLayerType::End; ++i)
 		{
@@ -32,24 +34,33 @@ namespace W
 	}
 	void Scene::Update()
 	{
-		for (Layer* layer : m_vecLayer)
+		if (!m_bLoading)
 		{
-			layer->Update();
+			for (Layer* layer : m_vecLayer)
+			{
+				layer->Update();
+			}
 		}
 		
 	}
 	void Scene::LateUpdate()
 	{
-		for (Layer* layer : m_vecLayer)
+		if (!m_bLoading)
 		{
-			layer->LateUpdate();
+			for (Layer* layer : m_vecLayer)
+			{
+				layer->LateUpdate();
+			}
 		}
 	}
 	void Scene::Render()
 	{
-		for (Layer* layer : m_vecLayer)
+		if (!m_bLoading)
 		{
-			layer->Render();
+			for (Layer* layer : m_vecLayer)
+			{
+				layer->Render();
+			}
 		}
 	}
 
@@ -59,8 +70,6 @@ namespace W
 		{
 			ThreadPool::LoadingResource<Texture>(m_vecResource[i].first, m_vecResource[i].second);
 		}
-
-		SendEnter();
 	}
 	void Scene::OnExit()
 	{
@@ -75,7 +84,7 @@ namespace W
 		_pGameObj->SetLayerType(_eType);
 	}
 
-	void Scene::Scene::SendEnter()
+	void Scene::SendEnter()
 	{
 		Protocol::C_MAP pkt;
 		pkt.set_scene(WstringToString(GetName()));
@@ -84,5 +93,11 @@ namespace W
 		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 		GClientService->GetClientSession()->Send(pSendBuffer);
 	}
+
+	void Scene::RenderLoading()
+	{
+
+	}
+
 	
 }

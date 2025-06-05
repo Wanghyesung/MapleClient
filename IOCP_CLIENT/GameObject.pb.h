@@ -346,23 +346,8 @@ class S_CREATE final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kObjectNameFieldNumber = 2,
     kObjectInfoFieldNumber = 1,
   };
-  // string object_name = 2;
-  void clear_object_name();
-  const std::string& object_name() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_object_name(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_object_name();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_object_name();
-  void set_allocated_object_name(std::string* object_name);
-  private:
-  const std::string& _internal_object_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_object_name(const std::string& value);
-  std::string* _internal_mutable_object_name();
-  public:
-
   // .Protocol.ObjectInfo object_info = 1;
   bool has_object_info() const;
   private:
@@ -388,7 +373,6 @@ class S_CREATE final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr object_name_;
   ::Protocol::ObjectInfo* object_info_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_GameObject_2eproto;
@@ -754,51 +738,6 @@ inline void S_CREATE::set_allocated_object_info(::Protocol::ObjectInfo* object_i
   }
   object_info_ = object_info;
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_CREATE.object_info)
-}
-
-// string object_name = 2;
-inline void S_CREATE::clear_object_name() {
-  object_name_.ClearToEmpty();
-}
-inline const std::string& S_CREATE::object_name() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_CREATE.object_name)
-  return _internal_object_name();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void S_CREATE::set_object_name(ArgT0&& arg0, ArgT... args) {
- 
- object_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Protocol.S_CREATE.object_name)
-}
-inline std::string* S_CREATE::mutable_object_name() {
-  // @@protoc_insertion_point(field_mutable:Protocol.S_CREATE.object_name)
-  return _internal_mutable_object_name();
-}
-inline const std::string& S_CREATE::_internal_object_name() const {
-  return object_name_.Get();
-}
-inline void S_CREATE::_internal_set_object_name(const std::string& value) {
-  
-  object_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* S_CREATE::_internal_mutable_object_name() {
-  
-  return object_name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* S_CREATE::release_object_name() {
-  // @@protoc_insertion_point(field_release:Protocol.S_CREATE.object_name)
-  return object_name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void S_CREATE::set_allocated_object_name(std::string* object_name) {
-  if (object_name != nullptr) {
-    
-  } else {
-    
-  }
-  object_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), object_name,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:Protocol.S_CREATE.object_name)
 }
 
 // -------------------------------------------------------------------

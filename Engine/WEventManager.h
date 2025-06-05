@@ -35,6 +35,9 @@ namespace W
 		LONG_PTR accParm;//추가 인자
 		EVENT_TYPE eEventType;
 	};
+
+	
+
 	class EventManager
 	{
 	public:
@@ -54,7 +57,7 @@ namespace W
 
 		static void UpdateTransform(UINT _ID, eLayerType _eType, Vector3 _vPosition);
 		static void UpdateState(UINT _iLayerID, int _iAnim, const wstring& _strAnimState);
-
+	
 	private:
 		static void create_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
 		static void delete_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
@@ -82,8 +85,10 @@ namespace W
 		static std::vector<tEvent> m_vecEvent[2];
 		static atomic<int> m_iActiveIdx;
 
+		
 		static RWLock m_lock;
 		static std::wstring m_strNextScene;
+
 	};
 }
 

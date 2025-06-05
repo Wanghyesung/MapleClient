@@ -33,6 +33,7 @@ namespace W
 	void Application::Start()
 	{
 		SceneManger::GetActiveScene()->OnEnter();
+		send_start();
 	}
 	void Application::Run()
 	{
@@ -77,15 +78,27 @@ namespace W
 
 	void Application::Render()
 	{
-
 		//graphicDevice->Draw();
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
 		Time::Render();
 
-		//SceneManger::Render();
-		renderer::Render();
-		//graphicDevice->Present();
+		if (SceneManger::GetActiveScene()->IsLoading())
+		{
+			SceneManger::GetActiveScene()->RenderLoading();
+
+			if (ThreadPool::IsWork() == false) //리소스 로딩이 다 끄나면
+			{
+				SceneManger::GetActiveScene()->CompletedLoading();
+
+				SceneManger::SendEnter();
+			}
+		}
+		else
+		{
+			renderer::Render();
+		}
+	
 	}
 
 	
@@ -113,5 +126,14 @@ namespace W
 		SetWindowPos(m_hHwnd, nullptr, 0, 0, rt.right - rt.left, rt.bottom - rt.top, 0);
 		ShowWindow(m_hHwnd, true);
 		UpdateWindow(m_hHwnd);
+	}
+	void Application::send_start()
+	{
+		Protocol::C_START_MAP pkt;
+		pkt.set_scene("Valley");
+		pkt.set_player_id(PLAYER_ID);
+
+		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+		GClientService->GetClientSession()->Send(pSendBuffer);
 	}
 }

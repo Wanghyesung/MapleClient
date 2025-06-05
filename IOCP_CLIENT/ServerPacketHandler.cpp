@@ -11,6 +11,7 @@
 
 shared_ptr< ClientService> GClientService;
 PacketHandlerFunc GPacketHandler[UINT16_MAX];
+unordered_map<string, wstring> GHashObjectName = {};
 extern UINT PLAYER_ID;
 
 using namespace W;
@@ -65,16 +66,24 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 		USHORT CID = iLayerCreateIdId & 0xFFFF;
 	
 		GameObject* pObj = nullptr;
-		if (_pkt.object_name().empty())
+		if (objInfo.object_name().empty())
+		{
 			pObj = GameObjectManager::GetMonsterOfID(cCreateid);
+		}
 		else
-			pObj = ObjectPoolManager::FrontObject(StringToWString(_pkt.object_name()));
+		{
+			if (GHashObjectName.find(objInfo.object_name()) == GHashObjectName.end())
+				GHashObjectName[objInfo.object_name()] = StringToWString(objInfo.object_name());
+
+			pObj = ObjectPoolManager::FrontObject(GHashObjectName[objInfo.object_name()]);
+		}
+			
 	
 		pObj->GetComponent<Transform>()->SetDirectPosition(objInfo.x(), objInfo.y(), objInfo.z());
 
 		eLayerType eLayerType = (W::eLayerType)cLayer;
 		pObj->SetObjectID(CID);
-		W::EventManager::CreateObject(pObj, eLayerType);	
+		W::EventManager::CreateObject(pObj, eLayerType);
 	}
 
 	return true;
@@ -88,14 +97,20 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 	UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
 	UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
 	USHORT CID = iLayerCreateIdId & 0xFFFF;
-	wstring strName = StringToWString(_pkt.object_name());
-
+	
 	GameObject* pObj = nullptr;
 	
-	if (_pkt.object_name().empty())
+	if (tInfo.object_name().empty())
+	{
 		pObj = GameObjectManager::GetMonsterOfID(cCreateid);
+	}
 	else
-		pObj = ObjectPoolManager::FrontObject(strName);
+	{
+		if (GHashObjectName.find(tInfo.object_name()) == GHashObjectName.end())
+			GHashObjectName[tInfo.object_name()] = StringToWString(tInfo.object_name());
+
+		pObj = ObjectPoolManager::FrontObject(GHashObjectName[tInfo.object_name()]);
+	}
 
 	
 	pObj->GetComponent<Transform>()->SetDirectPosition(tInfo.x(), tInfo.y(), tInfo.z());
@@ -156,7 +171,10 @@ bool Handle_S_SKILL(shared_ptr<Session> _pSession, Protocol::S_Skill& _pkt)
 	return false;
 }
 
-
+bool Handle_S_START_MAP(shared_ptr<Session> _pSession, Protocol::S_START_MAP& _pkt)
+{
+	return true;
+}
 bool Handle_S_EXIT(shared_ptr<Session> _pSession, Protocol::S_EXIT& _pkt)
 {
 

@@ -81,9 +81,7 @@ namespace W
 	void HelisiumBoss::OnEnter()
 	{
 		Scene::OnEnter();
-		ThreadPool::Joinable();
-
-		create_monster();
+		
 
 	}
 	void HelisiumBoss::OnExit()
@@ -106,23 +104,16 @@ namespace W
 	}
 	void HelisiumBoss::StartSound()
 	{
-		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
-		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->SetLoop(true);
-		pAudio->Play();*/
+		
 	}
 
 	void HelisiumBoss::EndSound()
 	{
-		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
-		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->Stop();*/
+		
 	}
 	void HelisiumBoss::create_monster()
 	{
-		//Megnus* pMegnus = new Megnus();
-		//pMegnus->Initialize();
-		//AddGameObject(eLayerType::Monster, pMegnus);
+		
 	}
 
 	void HelisiumBoss::create_effect()

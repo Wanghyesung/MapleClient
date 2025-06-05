@@ -126,11 +126,8 @@ namespace W
 	void DemianScene::OnEnter()
 	{
 		Scene::OnEnter();
-		ThreadPool::Joinable();
 
-		create_monster();
-		create_event();
-
+		
 		m_bEnd = false;
 		m_iFadeCallStack = 1;
 	}
@@ -156,17 +153,11 @@ namespace W
 
 	void DemianScene::StartSound()
 	{
-		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
-		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->SetLoop(true);
-		pAudio->Play();*/
+	
 	}
 
 	void DemianScene::EndSound()
 	{
-		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
-		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->Stop();*/
 	}
 
 	void DemianScene::fadein()

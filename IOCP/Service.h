@@ -90,6 +90,8 @@ public :
 
 private:
 	shared_ptr<Session> m_pClientSession; 
+
 	atomic<bool> m_bConnected;
+	
 	UINT m_iPlayerID;
 };

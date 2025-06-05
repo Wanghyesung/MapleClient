@@ -80,6 +80,7 @@ namespace W
 		static void SwapPlayer(Scene* _pPrevScene, Scene* _pNextScene);
 		static void SwapCamera();
 	
+		static void SendEnter();
 	private:
 		static Scene* m_pActiveScene;
 		static std::map<std::wstring, Scene*> m_mapScene;
