@@ -20,6 +20,8 @@ namespace W
 		void Render();
 		void Present();
 
+		void RenderLoading();
+
 		void SetWindow(HWND _hHwnd, UINT _iWidth, UINT _iHeight);
 
 		UINT GetWidth() { return m_iWidth; }
@@ -28,8 +30,6 @@ namespace W
 
 		//std::unique_ptr<W::graphics::GraphicDevice_Dx11>& GetDevice() { return graphicDevice; }
 
-	private:
-		void send_start();
 	private:
 		bool mbInitialize = false;
 		// 오로지 한개의 객체만 만들수 있는 스마트 포인터

@@ -9,7 +9,9 @@
 namespace W
 {
 	Scene* SceneManger::m_pActiveScene = nullptr;
+	atomic<bool> SceneManger::m_bWaitForMapData = false;
 	std::map<std::wstring, Scene*> SceneManger::m_mapScene = {};
+
 	void SceneManger::Initialize()
 	{
 
@@ -60,8 +62,6 @@ namespace W
 		m_pActiveScene->OnEnter();
 
 		SwapCamera();
-
-		m_pActiveScene->StartLoading();
 
 		return iter->second;
 	}

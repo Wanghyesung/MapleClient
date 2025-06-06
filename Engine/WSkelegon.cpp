@@ -22,8 +22,7 @@ namespace W
 		mr->SetMaterial(pMater);
 
 		Animator* pAnimator = AddComponent<Animator>();
-		std::shared_ptr<Texture> pAtlas
-			= Resources::Load<Texture>(L"SkelegonTex", L"..\\Resources\\Texture\\Monster\\skelegon.png");
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SkelegonTex");
 		pAnimator->Create(L"skelegon_stand_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(600.0f, 200.0f), 6, Vector2(600.f, 200.f));
 		pAnimator->Create(L"skelegon_move_left", pAtlas, Vector2(0.0f, 200.0f), Vector2(600.0f, 200.0f), 4, Vector2(600.f, 200.f));
 		pAnimator->Create(L"skelegon_attack0_left", pAtlas, Vector2(0.0f, 400.0f), Vector2(600.0f, 200.0f), 11, Vector2(600.f, 200.f), Vector2::Zero, 0.2f);
@@ -36,7 +35,7 @@ namespace W
 		pAnimator->Create(L"skelegon_dead_right", pAtlas, Vector2(6000.0f, 600.0f), Vector2(-600.0f, 200.0f), 8, Vector2(600.f, 200.f), Vector2::Zero, 0.15f);
 		pAnimator->Create(L"skelegon_hit_right", pAtlas, Vector2(6000.0f, 600.0f), Vector2(-600.0f, 200.0f), 1, Vector2(600.f, 200.f));
 
-		Resources::Load<Texture>(L"sklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png");
+		//Resources::Load<Texture>(L"sklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png");
 
 		GetComponent<Transform>()->SetScale(6.f, 2.f, 0.f);
 

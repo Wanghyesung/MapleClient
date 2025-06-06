@@ -10,13 +10,14 @@ namespace W
 		ValleyScene();
 		virtual ~ValleyScene();
 
-		virtual void Initialize();
-		virtual void Update();
-		virtual void LateUpdate();
-		virtual void Render();
+		virtual void Initialize()override;
+		virtual void Update()override;
+		virtual void LateUpdate()override;
+		virtual void Render()override;
+		virtual void SendEnter()override;
 
-		virtual void OnEnter();
-		virtual void OnExit();
+		virtual void OnEnter()override;
+		virtual void OnExit()override;
 
 		virtual void CreateBackground() override;
 		

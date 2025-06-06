@@ -11,8 +11,11 @@
 
 shared_ptr< ClientService> GClientService;
 PacketHandlerFunc GPacketHandler[UINT16_MAX];
-unordered_map<string, wstring> GHashObjectName = {};
+unordered_map<string, wstring> GHashStringToWstring = {};
+unordered_map<wstring, string> GHashWstringToString = {};
+
 extern UINT PLAYER_ID;
+
 
 using namespace W;
 bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt)
@@ -61,30 +64,15 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 		const Protocol::ObjectInfo& objInfo = _pkt.objinfo(i);
 		
 		UINT iLayerCreateIdId = objInfo.layer_createid_id();
-		UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
-		UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
-		USHORT CID = iLayerCreateIdId & 0xFFFF;
-	
-		GameObject* pObj = nullptr;
-		if (objInfo.object_name().empty())
-		{
-			pObj = GameObjectManager::GetMonsterOfID(cCreateid);
-		}
-		else
-		{
-			if (GHashObjectName.find(objInfo.object_name()) == GHashObjectName.end())
-				GHashObjectName[objInfo.object_name()] = StringToWString(objInfo.object_name());
 
-			pObj = ObjectPoolManager::FrontObject(GHashObjectName[objInfo.object_name()]);
-		}
-			
-	
-		pObj->GetComponent<Transform>()->SetDirectPosition(objInfo.x(), objInfo.y(), objInfo.z());
-
-		eLayerType eLayerType = (W::eLayerType)cLayer;
-		pObj->SetObjectID(CID);
-		W::EventManager::CreateObject(pObj, eLayerType);
+		if (GHashStringToWstring.find(objInfo.object_name()) == GHashStringToWstring.end())
+			GHashStringToWstring[objInfo.object_name()] = StringToWString(objInfo.object_name());
+		
+		W::EventManager::CreateObjectID(iLayerCreateIdId, Vector3(objInfo.x(), objInfo.y(), objInfo.z()),
+			GHashStringToWstring[objInfo.object_name()]);
 	}
+
+	SceneManger::CompletedMapData();
 
 	return true;
 }
@@ -106,10 +94,10 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 	}
 	else
 	{
-		if (GHashObjectName.find(tInfo.object_name()) == GHashObjectName.end())
-			GHashObjectName[tInfo.object_name()] = StringToWString(tInfo.object_name());
+		if (GHashStringToWstring.find(tInfo.object_name()) == GHashStringToWstring.end())
+			GHashStringToWstring[tInfo.object_name()] = StringToWString(tInfo.object_name());
 
-		pObj = ObjectPoolManager::FrontObject(GHashObjectName[tInfo.object_name()]);
+		pObj = ObjectPoolManager::FrontObject(GHashStringToWstring[tInfo.object_name()]);
 	}
 
 	

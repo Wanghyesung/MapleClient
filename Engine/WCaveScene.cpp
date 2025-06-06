@@ -81,12 +81,12 @@ namespace W
 	{
 		Scene::Update();
 	}
+
 	void CaveScene::LateUpdate()
 	{
-		Scene::LateUpdate();
-
-		
+		Scene::LateUpdate();	
 	}
+
 	void CaveScene::Render()
 	{
 		Scene::Render();

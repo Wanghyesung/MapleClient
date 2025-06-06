@@ -16,8 +16,9 @@ extern shared_ptr< ClientService> GClientService;
 using PacketHandlerFunc = std::function<bool(shared_ptr<PacketSession>&, BYTE*, INT)>;
 extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
 
-extern unordered_map<string, wstring> GHashObjectName;
-//±âº» : ID, LAYER, SCENE
+extern unordered_map<string, wstring> GHashStringToWstring;
+extern unordered_map<wstring, string> GHashWstringToString;
+
 
 enum PACKET_TYPE
 {

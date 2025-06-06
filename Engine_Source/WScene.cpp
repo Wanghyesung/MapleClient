@@ -70,6 +70,8 @@ namespace W
 		{
 			ThreadPool::LoadingResource<Texture>(m_vecResource[i].first, m_vecResource[i].second);
 		}
+
+		StartLoading();
 	}
 	void Scene::OnExit()
 	{
@@ -87,8 +89,15 @@ namespace W
 	void Scene::SendEnter()
 	{
 		Protocol::C_MAP pkt;
-		pkt.set_scene(WstringToString(GetName()));
+
+		const wstring& strNextScenename = GetName();
+		if (GHashWstringToString.find(strNextScenename) == GHashWstringToString.end())
+			GHashWstringToString[strNextScenename] = WstringToString(strNextScenename);
+
+		pkt.set_scene(GHashWstringToString[strNextScenename]);
 		pkt.set_player_id(PLAYER_ID);
+		
+		SceneManger::StartWaitForMapData();
 
 		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 		GClientService->GetClientSession()->Send(pSendBuffer);
@@ -97,6 +106,26 @@ namespace W
 	void Scene::RenderLoading()
 	{
 
+		static shared_ptr<Mesh> pRectMesh = Resources::Find<Mesh>(L"RectMesh");
+		static shared_ptr<Material> pMtrl = Resources::Find<Material>(L"LoadingMaterial");
+		//
+		static bool bSet = false;
+		if (!bSet)
+		{
+			//텍스쳐 따로 로딩
+			wstring strFileName = L"..\\Resources\\Texture\\background\\start_logo.png";
+			//
+			bSet = true;
+			pMtrl->SetTexture(Resources::Load<Texture>(L"LoadingTex", strFileName));
+		}
+
+	
+		pRectMesh->BindBuffer();
+		pMtrl->Binds();
+
+		pRectMesh->Render();
+
+		pMtrl->Clear();
 	}
 
 	

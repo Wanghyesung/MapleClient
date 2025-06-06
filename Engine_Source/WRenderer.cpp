@@ -140,6 +140,11 @@ namespace renderer
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
 
+		pShader = W::Resources::Find<Shader>(L"LoadingShader");
+		GetDevice()->CreateInputLayout(arrLayout, 3
+			, pShader->GetVSCode()
+			, pShader->GetInputLayoutAddressOf());
+
 		pShader = W::Resources::Find<Shader>(L"ParticleShader");
 		GetDevice()->CreateInputLayout(arrLayout, 3
 			, pShader->GetVSCode()
@@ -493,6 +498,12 @@ namespace renderer
 		paritcleShader->SetBSState(eBSType::AlphaBlend);
 		paritcleShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_POINTLIST);
 		W::Resources::Insert(L"ParticleShader", paritcleShader);
+
+		std::shared_ptr<Shader> pLoadingShader = std::make_shared<Shader>();
+		pLoadingShader->Create(eShaderStage::VS, L"LoadingVS.hlsl", "main");
+		pLoadingShader->Create(eShaderStage::PS, L"LoadingPS.hlsl", "main");
+		pLoadingShader->SetDSState(eDSType::None);
+		W::Resources::Insert(L"LoadingShader", pLoadingShader);
 	}
 
 	void LoadTexture()
@@ -610,6 +621,12 @@ namespace renderer
 		material->SetShader(Resources::Find<Shader>(L"SpriteAnimationShader"));
 		material->SetRenderinMode(eRenderingMode::Transparent);
 		Resources::Insert(L"SpriteAnimaionMaterial", material);
+
+		std::shared_ptr<Shader> pLoadingShader = Resources::Find<Shader>(L"LoadingShader");
+		material = std::make_shared<Material>();
+		material->SetShader(pLoadingShader);
+		material->SetRenderinMode(eRenderingMode::Opaque);
+		Resources::Insert(L"LoadingMaterial", material);
 
 		//material = std::make_shared<Material>();
 		//material->SetShader(Resources::Find<Shader>(L"MonsterShader"));

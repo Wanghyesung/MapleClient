@@ -13,6 +13,7 @@
 #include "WPathManager.h"
 #include "WFmod.h"
 #include "WFontWrapper.h"
+
 namespace W
 {
 	//0,0의 해상도도 있음
@@ -33,16 +34,33 @@ namespace W
 	void Application::Start()
 	{
 		SceneManger::GetActiveScene()->OnEnter();
-		send_start();
 	}
 	void Application::Run()
 	{
-		Update();
-		LateUpdate();
-		Render();
-		UIManger::ReleaseChildUI();
+		if (SceneManger::GetActiveScene()->IsLoading())
+		{
+			RenderLoading();
 
-		EventManager::Update();
+			if (ThreadPool::IsWork() == false) //리소스 로딩이 다 끄나면
+			{
+				SceneManger::GetActiveScene()->CompletedLoading();
+
+				SceneManger::SendEnter();
+			}
+		}
+		else if (SceneManger::IsWaitForMapData())
+		{
+			RenderLoading();
+		}
+		else
+		{
+			Update();
+			LateUpdate();
+			Render();
+			UIManger::ReleaseChildUI();
+
+			EventManager::Update();
+		}
 	}
 
 
@@ -83,21 +101,7 @@ namespace W
 		graphicDevice->UpdateViewPort();
 		Time::Render();
 
-		if (SceneManger::GetActiveScene()->IsLoading())
-		{
-			SceneManger::GetActiveScene()->RenderLoading();
-
-			if (ThreadPool::IsWork() == false) //리소스 로딩이 다 끄나면
-			{
-				SceneManger::GetActiveScene()->CompletedLoading();
-
-				SceneManger::SendEnter();
-			}
-		}
-		else
-		{
-			renderer::Render();
-		}
+		renderer::Render();
 	
 	}
 
@@ -105,6 +109,14 @@ namespace W
 	void Application::Present()
 	{
 		graphicDevice->Present();
+	}
+
+	void Application::RenderLoading()
+	{
+		graphicDevice->ClearTarget();
+		graphicDevice->UpdateViewPort();
+
+		SceneManger::GetActiveScene()->RenderLoading();
 	}
 
 	void Application::SetWindow(HWND _hHwnd, UINT _iWidth, UINT _iHeight)
@@ -127,13 +139,6 @@ namespace W
 		ShowWindow(m_hHwnd, true);
 		UpdateWindow(m_hHwnd);
 	}
-	void Application::send_start()
-	{
-		Protocol::C_START_MAP pkt;
-		pkt.set_scene("Valley");
-		pkt.set_player_id(PLAYER_ID);
 
-		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
-		GClientService->GetClientSession()->Send(pSendBuffer);
-	}
+	
 }

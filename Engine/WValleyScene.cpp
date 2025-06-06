@@ -29,8 +29,6 @@
 #include "WObjectPoolManager.h"
 #include "WResources.h"
 #include "WEffect.h"
-
-
 namespace W
 {
 	ValleyScene::ValleyScene()
@@ -46,7 +44,8 @@ namespace W
 		SetMapSize(0.f, 7.f, 0.f, -7.f);
 		SetMapPossibleSize(-4.37f, 4.37f);
 
-		
+		m_vecResource.push_back(std::make_pair(L"SkelegonTex", L"..\\Resources\\Texture\\Monster\\skelegon.png"));
+		m_vecResource.push_back(std::make_pair(L"sklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png"));
 	}
 	ValleyScene::~ValleyScene()
 	{
@@ -108,6 +107,24 @@ namespace W
 	{
 		Scene::Render();
 	}
+
+	void ValleyScene::SendEnter()
+	{
+		Protocol::C_START_MAP pkt;
+		
+		const wstring& strNextScenename = GetName();
+		if (GHashWstringToString.find(strNextScenename) == GHashWstringToString.end())
+			GHashWstringToString[strNextScenename] = WstringToString(strNextScenename);
+
+		pkt.set_scene(GHashWstringToString[strNextScenename]);
+		pkt.set_player_id(PLAYER_ID);
+		
+		SceneManger::StartWaitForMapData();
+		
+		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+		GClientService->GetClientSession()->Send(pSendBuffer);
+	}
+
 	void ValleyScene::OnEnter()
 	{
 		Scene::OnEnter();

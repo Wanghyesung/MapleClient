@@ -1,7 +1,6 @@
 #include "WEventManager.h"
 #include "WSceneManger.h"
 #include "WTransform.h"
-#include "WObjectPoolManager.h"
 #include "..\Engine\WPlayerAttackObject.h"
 #include "..\Engine\WMonsterAttackObject.h"
 #include "..\Engine\WPlayer.h"
@@ -118,7 +117,7 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::UpdateTransform(UINT _ID, eLayerType _eType, Vector3 _vPosition)
+	void EventManager::UpdateTransform(UINT _ID, eLayerType _eType, const Vector3& _vPosition)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::UPDATE_TRANSFORM;
@@ -168,7 +167,31 @@ namespace W
 
 	void EventManager::create_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
 	{
+		UINT iLayerCreateIdId = (UINT)_lParm;
+		const Vector3& vPosition = *reinterpret_cast<Vector3*>(_wParm);
+		const wstring& strObjectName = *reinterpret_cast<wstring*>(_accParm);
+
+		UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
+		UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
+		USHORT CID = iLayerCreateIdId & 0xFFFF;
+
+		GameObject* pObj = nullptr;
+		if (strObjectName.empty())
+			pObj = GameObjectManager::GetMonsterOfID(cCreateid);
+		else
+			pObj = ObjectPoolManager::FrontObject(strObjectName);
+	
+		pObj->GetComponent<Transform>()->SetDirectPosition(vPosition);
 		
+		eLayerType eLayerType = (W::eLayerType)cLayer;
+		
+		pObj->SetObjectID(CID);
+		SceneManger::AddGameObject(eLayerType, pObj);
+
+		pObj->Initialize();
+
+		delete &vPosition;
+		delete& strObjectName;
 	}
 
 	void EventManager::delete_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
@@ -180,6 +203,8 @@ namespace W
 
 		SceneManger::GetActiveScene()->EraseObject(eLayer, pObj);
 
+		if (eLayer == eLayerType::Player)
+			int a = 10;
 		if (pObj->IsPoolObject())
 			W::ObjectPoolManager::AddObjectPool(pObj->GetName(), pObj);
 		else
@@ -272,15 +297,16 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::CreateObjectID(UINT _ID, eLayerType _eLayer)
+	void EventManager::CreateObjectID(UINT _iLayerCreateIdId, const Vector3& _vPosition, const wstring& _strObjectName)
 	{
-		GameObject* pObj = GameObjectManager::GetMonsterOfID(_ID);
+		//GameObject* pObj = GameObjectManager::GetMonsterOfID(_ID);
 
 		tEvent eve = {};
-		eve.eEventType = EVENT_TYPE::CREATE_OBJECT;
+		eve.eEventType = EVENT_TYPE::CREATE_OBJECT_ID;
 
-		eve.lParm = (DWORD_PTR)pObj;
-		eve.wParm = (DWORD_PTR)_eLayer;
+		eve.lParm = (DWORD_PTR)_iLayerCreateIdId;
+		eve.wParm = (DWORD_PTR)new Vector3(_vPosition);
+		eve.accParm = (LONG_PTR)new wstring(_strObjectName);
 
 		AddEvent(eve);
 	}

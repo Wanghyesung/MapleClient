@@ -32,7 +32,8 @@ namespace W
 		virtual void LateUpdate();
 		virtual void Render();
 		
-		
+		virtual void SendEnter();
+
 
 		virtual void OnEnter();
 		virtual void OnExit();
@@ -82,6 +83,7 @@ namespace W
 		tMapPossibleSize GetMapPossibleSize() { return m_tPossibleSize; }
 
 		bool IsLoading() { return m_bLoading.load(); }
+		
 
 		void EraseObject(eLayerType _eType, GameObject* _pGameObj){ m_vecLayer[(UINT)_eType]->EraseOnVector(_pGameObj); }
 
@@ -89,8 +91,9 @@ namespace W
 		void RenderLoading();
 		void CompletedLoading() { m_bLoading.store(false); }
 		void StartLoading() { m_bLoading.store(true); }
-		void SendEnter();
 
+
+		
 
 	protected:
 		std::vector<std::pair<std::wstring, std::wstring>> m_vecResource;
@@ -103,7 +106,7 @@ namespace W
 		tMapPossibleSize m_tPossibleSize;
 
 		atomic<bool> m_bLoading;
-
+		
 		class InterfaceUI* m_pInterface;
 		class Inventory* m_pInventory;
 		class SKillStorage* m_pSKillStorage;
