@@ -8,7 +8,8 @@ namespace W
 		m_Image{},
 		m_cpTexture(nullptr),
 		m_cpSRV(nullptr),
-		m_tDesc{}
+		m_tDesc{},
+		m_iSlotNum(0)
 	{
 	}
 	Texture::~Texture()
@@ -124,7 +125,8 @@ namespace W
 		//픽셀 셰이더와 texture(shaderResource)로 묶어주기 텍스쳐의 픽셀을 출력하기
 		//텍스쳐 좌표 uv좌표 셋팅, 이미지와 내 화편의 크기가 다르면 보간이 되어서 와야함 (샘플링) samplerstate(샘플링옵션)
 		
-		GetDevice()->BindShaderResource(_eStage, _iStartSlot, m_cpSRV.GetAddressOf());
+		m_iSlotNum = _iStartSlot;
+		GetDevice()->BindShaderResource(_eStage, m_iSlotNum, m_cpSRV.GetAddressOf());
 	}
 	void Texture::BindUnorderedAccessViews(UINT _iSlot)
 	{
@@ -142,12 +144,12 @@ namespace W
 		//전부 nullptr로 묶어서 지우기
 		ID3D11ShaderResourceView* srv = nullptr;
 
-		GetDevice()->BindShaderResource(eShaderStage::VS, 0, &srv);
-		GetDevice()->BindShaderResource(eShaderStage::DS, 0, &srv);
-		GetDevice()->BindShaderResource(eShaderStage::GS, 0, &srv);
-		GetDevice()->BindShaderResource(eShaderStage::HS, 0, &srv);
-		GetDevice()->BindShaderResource(eShaderStage::CS, 0, &srv);
-		GetDevice()->BindShaderResource(eShaderStage::PS, 0, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::VS, m_iSlotNum, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::DS, m_iSlotNum, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::GS, m_iSlotNum, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::HS, m_iSlotNum, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::CS, m_iSlotNum, &srv);
+		GetDevice()->BindShaderResource(eShaderStage::PS, m_iSlotNum, &srv);
 	}
 }
 

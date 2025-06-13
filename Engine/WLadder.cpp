@@ -6,7 +6,7 @@ namespace W
 {
 	Ladder::Ladder()
 	{
-		
+		SetClientObject(true);
 	}
 
 	Ladder::~Ladder()

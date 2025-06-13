@@ -56,7 +56,7 @@ namespace W
 		static void AddOtherPlayer(UINT _iPlayerID);
 
 		static void UpdateTransform(UINT _ID, eLayerType _eType, const Vector3& _vPosition);
-		static void UpdateState(UINT _iLayerID, int _iAnim, const wstring& _strAnimState);
+		static void UpdateState(UINT _iLayerID, int _iState, const wstring& _strAnimState);
 	
 	private:
 		static void create_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);

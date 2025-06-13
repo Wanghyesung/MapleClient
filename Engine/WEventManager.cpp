@@ -129,13 +129,13 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::UpdateState(UINT _iLayerID, int _iAnim, const wstring& _strAnimState)
+	void EventManager::UpdateState(UINT _iLayerID, int _iState, const wstring& _strAnimState)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::UPDATE_STATE;
 
 		eve.lParm = (DWORD_PTR)_iLayerID;
-		eve.wParm = (DWORD_PTR)_iAnim;
+		eve.wParm = (DWORD_PTR)_iState;
 		eve.accParm = (DWORD_PTR)new wstring(_strAnimState);
 
 		AddEvent(eve);
@@ -191,7 +191,7 @@ namespace W
 		pObj->Initialize();
 
 		delete &vPosition;
-		delete& strObjectName;
+		delete &strObjectName;
 	}
 
 	void EventManager::delete_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
@@ -200,13 +200,13 @@ namespace W
 		eLayerType eLayer = (eLayerType)_wParm;
 
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
+		if (!pObj)
+			return;
 
 		SceneManger::GetActiveScene()->EraseObject(eLayer, pObj);
 
-		if (eLayer == eLayerType::Player)
-			int a = 10;
 		if (pObj->IsPoolObject())
-			W::ObjectPoolManager::AddObjectPool(pObj->GetName(), pObj);
+			ObjectPoolManager::AddObjectPool(pObj->GetName(), pObj);
 		else
 			delete pObj;
 	}
@@ -257,7 +257,7 @@ namespace W
 	void EventManager::update_state(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
 	{
 		UINT iLayerID = (UINT)_lParm;
-		int iAnim = (int)_wParm;
+		int iState = (int)_wParm;
 		//static_cast는 컴파일러가 타입 간 변환 규칙이 안전하다고 판단할 때만 허용
 		//reinterpret_cast는 포인터끼리 강제 변환
 		wstring* pStrAnimName = reinterpret_cast<wstring*>(_accParm);
@@ -267,7 +267,7 @@ namespace W
 
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
 		if (pObj)
-			pObj->UpdateState(*pStrAnimName, iAnim);
+			pObj->UpdateState(*pStrAnimName, iState);
 
 		delete pStrAnimName;
 	}

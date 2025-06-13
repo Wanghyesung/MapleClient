@@ -154,12 +154,12 @@ namespace W
 
 	void ValleyScene::EndSound()
 	{
+
 	}
 
 	void ValleyScene::setobject()
 	{
 		Ladder* pLadder0 = new Ladder();
-		pLadder0->SetClientObject(true);
 		MeshRenderer* pLadderMeshRender0 = pLadder0->AddComponent<MeshRenderer>();
 		pLadderMeshRender0->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pLadderMeshRender0->SetMaterial(Resources::Find<Material>(L"LadderBaseMater9_"));
@@ -169,7 +169,6 @@ namespace W
 		AddGameObject(eLayerType::Ladder, pLadder0);
 
 		Ladder* pLadder1 = new Ladder();
-		pLadder1->SetClientObject(true);
 		pLadder1->SetObjectID(1);
 		MeshRenderer* pLadderMeshRender1 = pLadder1->AddComponent<MeshRenderer>();
 		pLadderMeshRender1->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -180,7 +179,6 @@ namespace W
 		AddGameObject(eLayerType::Ladder, pLadder1);
 
 		Ladder* pLadder2 = new Ladder();
-		pLadder2->SetClientObject(true);
 		pLadder2->SetObjectID(2);
 		MeshRenderer* pLadderMeshRender2 = pLadder2->AddComponent<MeshRenderer>();
 		pLadderMeshRender2->SetMesh(Resources::Find<Mesh>(L"RectMesh"));

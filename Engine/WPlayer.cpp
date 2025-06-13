@@ -154,13 +154,13 @@ namespace W
 		child_render();
 	}
 
-	void Player::UpdateState(const wstring& _strStateName, int _iAnim)
+	void Player::UpdateState(const wstring& _strStateName, int _iState)
 	{
 		m_strCurStateName = _strStateName;
 
-		UCHAR cAlert = (_iAnim >> 16) & 0xFF;
-		UCHAR cDir = (_iAnim >> 8) & 0xFF;
-		UCHAR cAnimIdx = _iAnim & 0xFF;
+		UCHAR cAlert = (_iState >> 16) & 0xFF;
+		UCHAR cDir = (_iState >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iState & 0xFF;
 
 		m_bAlert = cAlert > 0 ? true : false;
 		m_iDir = cDir > 0 ? 1 : -1;

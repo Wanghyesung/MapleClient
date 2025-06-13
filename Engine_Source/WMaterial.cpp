@@ -28,6 +28,7 @@ namespace W
 	}
 	void Material::Clear()
 	{
-		m_pTex->Clear();
+		if(m_pTex)
+			m_pTex->Clear();
 	}
 }

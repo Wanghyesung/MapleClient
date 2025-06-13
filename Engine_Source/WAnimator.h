@@ -35,12 +35,15 @@ namespace W
 	
 		Animation* GetActiveAnimation() { return m_pActiveAnimation; }
 
+		void Clear();
+
 	private:
 		std::map<std::wstring, Animation*> m_mapAnimation;
 		Animation* m_pActiveAnimation;
 
 		bool m_bLoop;
 		bool m_bStop;
+
 	};
 }
 

@@ -81,5 +81,13 @@ namespace W
 		
 		m_pActiveAnimation->Binds();
 	}
+
+	void Animator::Clear()
+	{
+		if (m_pActiveAnimation == nullptr)
+			return;
+
+		m_pActiveAnimation->Clear();
+	}
 	
 }

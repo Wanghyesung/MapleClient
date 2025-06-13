@@ -68,16 +68,13 @@ namespace W
 		Monster::Render();
 	}
 
-	void Skelegon::UpdateState(const wstring& _strStateName, int _iAnim)
+	void Skelegon::UpdateState(const wstring& _strStateName, int _iState)
 	{
-		bool bRender = (_iAnim >> 16) & 0xFF;
-		UCHAR cDir = (_iAnim >> 8) & 0xFF;
-		UCHAR cAnimIdx = _iAnim & 0xFF;
+		bool bRender = (_iState >> 16) & 0xFF;
+		UCHAR cDir = (_iState >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iState & 0xFF;
 
-		if (bRender)
-			SetState(GameObject::eState::Active);
-		else
-			SetState(GameObject::eState::Paused);
+		SetRender(bRender);
 
 		if (m_strCurStateName != _strStateName)
 		{

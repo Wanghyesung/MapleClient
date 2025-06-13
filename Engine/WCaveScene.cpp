@@ -104,13 +104,15 @@ namespace W
 	void CaveScene::CreateBackground()
 	{
 		GameObject* pBackGround = new GameObject();
-		pBackGround->SetObjectID(0);
+		pBackGround->SetClientObject(true);
 
+		pBackGround->SetObjectID(0);
+		
 		AddGameObject(eLayerType::Background, pBackGround);
 		MeshRenderer* pMeshRender = pBackGround->AddComponent<MeshRenderer>();
 		pMeshRender->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pMeshRender->SetMaterial(Resources::Find<Material>(L"WoodCaveMater"));
-		pBackGround->GetComponent<Transform>()->SetPosition(0.f, 0.f, 1.f);
+		pBackGround->GetComponent<Transform>()->SetPosition(0.f, 0.f, 5.f);
 		//14::10
 		pBackGround->GetComponent<Transform>()->SetScale(14.f * 1.f, 10.f * 1.f, 1.f);
 		

@@ -87,5 +87,23 @@ namespace W
 
 		GameObject::Render();
 	}
+
+	void Horntail::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		bool bRender = (_iState >> 16) & 0xFF;
+		UCHAR cDir = (_iState >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iState & 0xFF;
+
+		SetRender(bRender);
+
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
+
+		m_iDir = cDir > 0 ? 1 : -1;
+		m_iAnimIdx = cAnimIdx;
+	}
 	
 }

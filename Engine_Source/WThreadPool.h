@@ -11,7 +11,7 @@ namespace W
 		static void Initiailize(int _iThreadCount);
 		static void Shutdown();
 
-		static void Enqueu(std::function<void()> _func);
+		static void Enqueue(std::function<void()> _func);
 
 		template <typename T>
 		static void LoadingResource(const std::wstring& _strResourceName , const std::wstring& _strPath);
@@ -28,7 +28,7 @@ namespace W
 
 		static std::mutex m_mutex;
 		static std::condition_variable m_CV;//작업 스레드 깨우기용
-		static std::atomic<bool> m_bRunnig;
+		static std::atomic<bool> m_bRunning;
 
 		static std::mutex m_completeMutex; //외부 대기 스레드용
 		static std::condition_variable m_completeCV;

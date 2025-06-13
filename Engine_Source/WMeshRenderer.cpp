@@ -34,6 +34,7 @@ namespace W
 	}
 	void MeshRenderer::LateUpdate()
 	{
+
 	}
 	void MeshRenderer::Render()
 	{
@@ -55,6 +56,8 @@ namespace W
 
 		//텍스쳐와 묶어주고 그린 후 텍스쳐 지우기
 		m_pMaterial->Clear();
-		//GetDevice()->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
+		
+		if (pAnimation)
+			pAnimation->Clear();
 	}
 }

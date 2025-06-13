@@ -63,10 +63,10 @@ namespace W
 		GameObject::Render();
 	}
 
-	void Shuriken::UpdateState(const wstring& _strStateName, int _iAnim)
+	void Shuriken::UpdateState(const wstring& _strStateName, int _iState)
 	{
-		UCHAR cDir = (_iAnim >> 8) & 0xFF;
-		UCHAR cAnimIdx = _iAnim & 0xFF;
+		UCHAR cDir = (_iState >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iState & 0xFF;
 
 		if (m_strCurStateName != _strStateName)
 		{

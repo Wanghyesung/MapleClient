@@ -72,6 +72,7 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 			GHashStringToWstring[objInfo.object_name()]);
 	}
 
+	//맵 데이터 수신 완료
 	SceneManger::CompletedMapData();
 
 	return true;
@@ -81,32 +82,15 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 {
 	const Protocol::ObjectInfo& tInfo = _pkt.object_info();
 
+	//애님에션 상태 추가
+	int iState = tInfo.state_value();
 	UINT iLayerCreateIdId = tInfo.layer_createid_id();
-	UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
-	UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
-	USHORT CID = iLayerCreateIdId & 0xFFFF;
-	
-	GameObject* pObj = nullptr;
-	
-	if (tInfo.object_name().empty())
-	{
-		pObj = GameObjectManager::GetMonsterOfID(cCreateid);
-	}
-	else
-	{
-		if (GHashStringToWstring.find(tInfo.object_name()) == GHashStringToWstring.end())
-			GHashStringToWstring[tInfo.object_name()] = StringToWString(tInfo.object_name());
 
-		pObj = ObjectPoolManager::FrontObject(GHashStringToWstring[tInfo.object_name()]);
-	}
+	if (GHashStringToWstring.find(tInfo.object_name()) == GHashStringToWstring.end())
+		GHashStringToWstring[tInfo.object_name()] = StringToWString(tInfo.object_name());
 
-	
-	pObj->GetComponent<Transform>()->SetDirectPosition(tInfo.x(), tInfo.y(), tInfo.z());
-	eLayerType eLayer = (W::eLayerType)cLayer;
-	
-	pObj->SetObjectID(CID);
-	
-	EventManager::CreateObject(pObj, eLayer);
+	W::EventManager::CreateObjectID(iLayerCreateIdId, Vector3(tInfo.x(), tInfo.y(), tInfo.z()),
+		GHashStringToWstring[tInfo.object_name()]);
 
 	return true;
 }
@@ -127,8 +111,8 @@ bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt)
 
 bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt)
 {
-	int iAnim = _pkt.anim();
-	char cAnimIdx = iAnim & 0xFF;      
+	int iState = _pkt.state_value();
+	char cAnimIdx = iState & 0xFF;
 
 	//애니메이션 인덱스가 -1이면
 	//if (cAnimIdx < 0)
@@ -136,7 +120,7 @@ bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt)
 
 	std::wstring strAnimaState = StringToWString(_pkt.state());
 
-	EventManager::UpdateState(_pkt.layer_id(), iAnim, strAnimaState);
+	EventManager::UpdateState(_pkt.layer_id(), iState, strAnimaState);
 
 	return true;
 }

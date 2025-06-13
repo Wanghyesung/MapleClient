@@ -176,7 +176,7 @@ class S_STATE final :
     kSceneFieldNumber = 1,
     kStateFieldNumber = 3,
     kLayerIdFieldNumber = 2,
-    kAnimFieldNumber = 4,
+    kStateValueFieldNumber = 4,
   };
   // string scene = 1;
   void clear_scene();
@@ -215,13 +215,13 @@ class S_STATE final :
   void _internal_set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // int32 anim = 4;
-  void clear_anim();
-  ::PROTOBUF_NAMESPACE_ID::int32 anim() const;
-  void set_anim(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 state_value = 4;
+  void clear_state_value();
+  ::PROTOBUF_NAMESPACE_ID::int32 state_value() const;
+  void set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_anim() const;
-  void _internal_set_anim(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_state_value() const;
+  void _internal_set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.S_STATE)
@@ -234,7 +234,7 @@ class S_STATE final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr state_;
   ::PROTOBUF_NAMESPACE_ID::uint32 layer_id_;
-  ::PROTOBUF_NAMESPACE_ID::int32 anim_;
+  ::PROTOBUF_NAMESPACE_ID::int32 state_value_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ObjectState_2eproto;
 };
@@ -359,24 +359,24 @@ inline void S_STATE::set_allocated_state(std::string* state) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_STATE.state)
 }
 
-// int32 anim = 4;
-inline void S_STATE::clear_anim() {
-  anim_ = 0;
+// int32 state_value = 4;
+inline void S_STATE::clear_state_value() {
+  state_value_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_STATE::_internal_anim() const {
-  return anim_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 S_STATE::_internal_state_value() const {
+  return state_value_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 S_STATE::anim() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_STATE.anim)
-  return _internal_anim();
+inline ::PROTOBUF_NAMESPACE_ID::int32 S_STATE::state_value() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_STATE.state_value)
+  return _internal_state_value();
 }
-inline void S_STATE::_internal_set_anim(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void S_STATE::_internal_set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  anim_ = value;
+  state_value_ = value;
 }
-inline void S_STATE::set_anim(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_anim(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_STATE.anim)
+inline void S_STATE::set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_state_value(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_STATE.state_value)
 }
 
 #ifdef __GNUC__

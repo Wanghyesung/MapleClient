@@ -26,7 +26,7 @@ constexpr ObjectInfo::ObjectInfo(
   , x_(0)
   , y_(0)
   , z_(0)
-  , anim_(0){}
+  , state_value_(0){}
 struct ObjectInfoDefaultTypeInternal {
   constexpr ObjectInfoDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -103,7 +103,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Map_2eproto::offsets[] PROTOBU
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, y_),
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, z_),
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, state_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, anim_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, state_value_),
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, object_name_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_MAP, _internal_metadata_),
@@ -149,20 +149,20 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_Map_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\tMap.proto\022\010Protocol\"\211\001\n\nObjectInfo\022\r\n\005"
+  "\n\tMap.proto\022\010Protocol\"\220\001\n\nObjectInfo\022\r\n\005"
   "scene\030\001 \001(\t\022\031\n\021layer_createid_id\030\002 \001(\r\022\t"
   "\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\022\t\n\001z\030\005 \001(\002\022\r\n\005state"
-  "\030\006 \001(\t\022\014\n\004anim\030\007 \001(\005\022\023\n\013object_name\030\010 \001("
-  "\t\".\n\005S_MAP\022%\n\007objInfo\030\001 \003(\0132\024.Protocol.O"
-  "bjectInfo\")\n\005C_MAP\022\r\n\005scene\030\001 \001(\t\022\021\n\tpla"
-  "yer_id\030\002 \001(\r\"4\n\013S_START_MAP\022%\n\007objInfo\030\001"
-  " \003(\0132\024.Protocol.ObjectInfo\"/\n\013C_START_MA"
-  "P\022\r\n\005scene\030\001 \001(\t\022\021\n\tplayer_id\030\002 \001(\rb\006pro"
-  "to3"
+  "\030\006 \001(\t\022\023\n\013state_value\030\007 \001(\005\022\023\n\013object_na"
+  "me\030\010 \001(\t\".\n\005S_MAP\022%\n\007objInfo\030\001 \003(\0132\024.Pro"
+  "tocol.ObjectInfo\")\n\005C_MAP\022\r\n\005scene\030\001 \001(\t"
+  "\022\021\n\tplayer_id\030\002 \001(\r\"4\n\013S_START_MAP\022%\n\007ob"
+  "jInfo\030\001 \003(\0132\024.Protocol.ObjectInfo\"/\n\013C_S"
+  "TART_MAP\022\r\n\005scene\030\001 \001(\t\022\021\n\tplayer_id\030\002 \001"
+  "(\rb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Map_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Map_2eproto = {
-  false, false, 363, descriptor_table_protodef_Map_2eproto, "Map.proto", 
+  false, false, 370, descriptor_table_protodef_Map_2eproto, "Map.proto", 
   &descriptor_table_Map_2eproto_once, nullptr, 0, 5,
   schemas, file_default_instances, TableStruct_Map_2eproto::offsets,
   file_level_metadata_Map_2eproto, file_level_enum_descriptors_Map_2eproto, file_level_service_descriptors_Map_2eproto,
@@ -206,8 +206,8 @@ ObjectInfo::ObjectInfo(const ObjectInfo& from)
       GetArenaForAllocation());
   }
   ::memcpy(&layer_createid_id_, &from.layer_createid_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&anim_) -
-    reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(anim_));
+    static_cast<size_t>(reinterpret_cast<char*>(&state_value_) -
+    reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(state_value_));
   // @@protoc_insertion_point(copy_constructor:Protocol.ObjectInfo)
 }
 
@@ -217,8 +217,8 @@ state_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlread
 object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&layer_createid_id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&anim_) -
-    reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(anim_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&state_value_) -
+    reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(state_value_));
 }
 
 ObjectInfo::~ObjectInfo() {
@@ -254,8 +254,8 @@ void ObjectInfo::Clear() {
   state_.ClearToEmpty();
   object_name_.ClearToEmpty();
   ::memset(&layer_createid_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&anim_) -
-      reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(anim_));
+      reinterpret_cast<char*>(&state_value_) -
+      reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(state_value_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -311,10 +311,10 @@ const char* ObjectInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 anim = 7;
+      // int32 state_value = 7;
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
-          anim_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          state_value_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -400,10 +400,10 @@ failure:
         6, this->_internal_state(), target);
   }
 
-  // int32 anim = 7;
-  if (this->anim() != 0) {
+  // int32 state_value = 7;
+  if (this->state_value() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_anim(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_state_value(), target);
   }
 
   // string object_name = 8;
@@ -475,11 +475,11 @@ size_t ObjectInfo::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // int32 anim = 7;
-  if (this->anim() != 0) {
+  // int32 state_value = 7;
+  if (this->state_value() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_anim());
+        this->_internal_state_value());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -534,8 +534,8 @@ void ObjectInfo::MergeFrom(const ObjectInfo& from) {
   if (!(from.z() <= 0 && from.z() >= 0)) {
     _internal_set_z(from._internal_z());
   }
-  if (from.anim() != 0) {
-    _internal_set_anim(from._internal_anim());
+  if (from.state_value() != 0) {
+    _internal_set_state_value(from._internal_state_value());
   }
 }
 
@@ -576,8 +576,8 @@ void ObjectInfo::InternalSwap(ObjectInfo* other) {
       &other->object_name_, other->GetArenaForAllocation()
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ObjectInfo, anim_)
-      + sizeof(ObjectInfo::anim_)
+      PROTOBUF_FIELD_OFFSET(ObjectInfo, state_value_)
+      + sizeof(ObjectInfo::state_value_)
       - PROTOBUF_FIELD_OFFSET(ObjectInfo, layer_createid_id_)>(
           reinterpret_cast<char*>(&layer_createid_id_),
           reinterpret_cast<char*>(&other->layer_createid_id_));

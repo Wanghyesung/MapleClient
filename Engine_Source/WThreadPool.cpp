@@ -7,7 +7,7 @@ namespace W
 
 	std::mutex ThreadPool::m_mutex = {};
 	std::condition_variable ThreadPool::m_CV = {};
-	std::atomic<bool> ThreadPool::m_bRunnig = true;
+	std::atomic<bool> ThreadPool::m_bRunning = true;
 
 	std::mutex ThreadPool::m_completeMutex = {};
 	std::condition_variable ThreadPool::m_completeCV = {};
@@ -24,9 +24,9 @@ namespace W
 					std::function<void()> funcTask;
 					{
 						std::unique_lock<std::mutex> lock(m_mutex);
-						m_CV.wait(lock, []() {return !m_bRunnig || !m_queueTasks.empty(); });
+						m_CV.wait(lock, []() {return !m_bRunning || !m_queueTasks.empty(); });
 
-						if (!m_bRunnig)
+						if (!m_bRunning)
 							return;
 
 						funcTask = std::move(m_queueTasks.front());
@@ -44,7 +44,7 @@ namespace W
 	}
 	void ThreadPool::Shutdown()
 	{
-		m_bRunnig.store(false);
+		m_bRunning.store(false);
 	
 		m_CV.notify_all();
 
@@ -57,7 +57,7 @@ namespace W
 		m_vecWorker.clear();
 	}
 
-	void ThreadPool::Enqueu(std::function<void()> _func)
+	void ThreadPool::Enqueue(std::function<void()> _func)
 	{
 		{
 			std::lock_guard<std::mutex> lock(m_mutex);

@@ -12,7 +12,8 @@ namespace W
 		m_iObjectID(0),
 		m_iDir(1),
 		m_bClientObject(false),
-		m_bObjectPool(false)
+		m_bObjectPool(false),
+		m_bRender(true)
 	{
 		AddComponent<Transform>();
 	}
@@ -101,7 +102,7 @@ namespace W
 		}
 	}
 	
-	void GameObject::UpdateState(const wstring& _strStateName, int _iAnim)
+	void GameObject::UpdateState(const wstring& _strStateName, int _iState)
 	{
 		
 	}

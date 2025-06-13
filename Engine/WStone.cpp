@@ -47,10 +47,27 @@ namespace W
 		ObjectCB.vObjectColor = Vector4::One;
 
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::Object];
-		//Vector4 vPosition(m_vPosition.x, m_vPosition.y, m_vPosition.z, 1.f);
+		
 		pConstBuffer->SetData(&ObjectCB);
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+	void Stone::UpdateState(const wstring& _strStateName, int _iAnim)
+	{
+		bool bRender = (_iAnim >> 16) & 0xFF;
+		UCHAR cDir = (_iAnim >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iAnim & 0xFF;
+
+		SetRender(bRender);
+
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
+
+		m_iDir = cDir > 0 ? 1 : -1;
+		m_iAnimIdx = cAnimIdx;
 	}
 }

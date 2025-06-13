@@ -81,4 +81,13 @@ namespace W
 		pCB->Bind(eShaderStage::PS);
 	}
 
+	void Animation::Clear()
+	{
+		std::shared_ptr<Texture> spAtlas = m_wpAtlas.lock();
+		if (!spAtlas)
+			return;
+
+		spAtlas->Clear();
+	}
+
 }

@@ -196,7 +196,7 @@ class ObjectInfo final :
     kXFieldNumber = 3,
     kYFieldNumber = 4,
     kZFieldNumber = 5,
-    kAnimFieldNumber = 7,
+    kStateValueFieldNumber = 7,
   };
   // string scene = 1;
   void clear_scene();
@@ -276,13 +276,13 @@ class ObjectInfo final :
   void _internal_set_z(float value);
   public:
 
-  // int32 anim = 7;
-  void clear_anim();
-  ::PROTOBUF_NAMESPACE_ID::int32 anim() const;
-  void set_anim(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 state_value = 7;
+  void clear_state_value();
+  ::PROTOBUF_NAMESPACE_ID::int32 state_value() const;
+  void set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_anim() const;
-  void _internal_set_anim(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_state_value() const;
+  void _internal_set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.ObjectInfo)
@@ -299,7 +299,7 @@ class ObjectInfo final :
   float x_;
   float y_;
   float z_;
-  ::PROTOBUF_NAMESPACE_ID::int32 anim_;
+  ::PROTOBUF_NAMESPACE_ID::int32 state_value_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Map_2eproto;
 };
@@ -1062,24 +1062,24 @@ inline void ObjectInfo::set_allocated_state(std::string* state) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.ObjectInfo.state)
 }
 
-// int32 anim = 7;
-inline void ObjectInfo::clear_anim() {
-  anim_ = 0;
+// int32 state_value = 7;
+inline void ObjectInfo::clear_state_value() {
+  state_value_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ObjectInfo::_internal_anim() const {
-  return anim_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 ObjectInfo::_internal_state_value() const {
+  return state_value_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ObjectInfo::anim() const {
-  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.anim)
-  return _internal_anim();
+inline ::PROTOBUF_NAMESPACE_ID::int32 ObjectInfo::state_value() const {
+  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.state_value)
+  return _internal_state_value();
 }
-inline void ObjectInfo::_internal_set_anim(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ObjectInfo::_internal_set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  anim_ = value;
+  state_value_ = value;
 }
-inline void ObjectInfo::set_anim(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_anim(value);
-  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.anim)
+inline void ObjectInfo::set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_state_value(value);
+  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.state_value)
 }
 
 // string object_name = 8;

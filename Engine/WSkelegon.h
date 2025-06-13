@@ -14,7 +14,7 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
-		virtual void UpdateState(const wstring& _strStateName, int _iAnim) override;
+		virtual void UpdateState(const wstring& _strStateName, int _iState) override;
 	};
 }
 

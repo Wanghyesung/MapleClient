@@ -154,6 +154,7 @@ namespace W
 
 	void Camera::ZSortTransparencyGameObjects()
 	{
+
 		std::sort(m_vecCutOutGameObjects.begin(),
 			m_vecCutOutGameObjects.end(),
 			CompareZSort);
@@ -174,7 +175,7 @@ namespace W
 			MeshRenderer* pMeshRender =
 				obj->GetComponent<MeshRenderer>();
 
-			if (pMeshRender == nullptr)
+			if (pMeshRender == nullptr || obj->IsRender() == false)
 				continue;
 
 			std::shared_ptr<Material> spMater = pMeshRender->GetMaterial();

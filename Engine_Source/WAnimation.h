@@ -48,6 +48,7 @@ namespace W
 		);
 
 		void Binds();
+		void Clear();
 
 		int GetCurIndex() { return m_iIndex; }
 		void SetIndex(int _iIndex) { m_iIndex = _iIndex; }

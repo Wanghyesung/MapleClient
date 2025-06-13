@@ -28,7 +28,7 @@ namespace W
 		virtual void Render();
 
 		//네트워크
-		virtual void UpdateState(const wstring& _strStateName, int _iAnim);
+		virtual void UpdateState(const wstring& _strStateName, int _iState);
 
 		template <typename T>
 		T* GetComponent()
@@ -131,7 +131,8 @@ namespace W
 		void SetClientObject(bool _bClientObject) { m_bClientObject = _bClientObject; }
 		bool IsClientObject() { return m_bClientObject; }
 
-
+		void SetRender(bool _bRender) { m_bRender = _bRender; }
+		bool IsRender() { return m_bRender; }
 
 	private:
 		static void SetCreateID(UINT _ID) { CREATE_ID = _ID; }
@@ -147,6 +148,8 @@ namespace W
 		std::vector<Component*> m_vecComponent;
 		std::vector<Script*> m_vecScript;
 		eLayerType m_eLayerType;
+
+		bool m_bRender;
 
 		bool m_bObjectPool;
 		bool m_bClientObject;

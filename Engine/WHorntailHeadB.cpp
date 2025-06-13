@@ -33,7 +33,6 @@ namespace W
 		pAnim->Create(L"HeadB_attack2", pAtlas, Vector2(0.f, 2400.f), Vector2(500.f, 800.f), 13, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
 		pAnim->Create(L"HeadB_dead", pAtlas, Vector2(0.f, 3200.f), Vector2(500.f, 800.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
 
-		//pAnim->Play(L"HeadA_stand", true);
 	}
 
 	HorntailHeadB::~HorntailHeadB()

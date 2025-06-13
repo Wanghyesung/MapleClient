@@ -22,7 +22,7 @@ constexpr S_STATE::S_STATE(
   : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , state_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , layer_id_(0u)
-  , anim_(0){}
+  , state_value_(0){}
 struct S_STATEDefaultTypeInternal {
   constexpr S_STATEDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -46,7 +46,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ObjectState_2eproto::offsets[]
   PROTOBUF_FIELD_OFFSET(::Protocol::S_STATE, scene_),
   PROTOBUF_FIELD_OFFSET(::Protocol::S_STATE, layer_id_),
   PROTOBUF_FIELD_OFFSET(::Protocol::S_STATE, state_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::S_STATE, anim_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::S_STATE, state_value_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Protocol::S_STATE)},
@@ -57,13 +57,13 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ObjectState_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\021ObjectState.proto\022\010Protocol\"G\n\007S_STATE"
+  "\n\021ObjectState.proto\022\010Protocol\"N\n\007S_STATE"
   "\022\r\n\005scene\030\001 \001(\t\022\020\n\010layer_id\030\002 \001(\r\022\r\n\005sta"
-  "te\030\003 \001(\t\022\014\n\004anim\030\004 \001(\005b\006proto3"
+  "te\030\003 \001(\t\022\023\n\013state_value\030\004 \001(\005b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ObjectState_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ObjectState_2eproto = {
-  false, false, 110, descriptor_table_protodef_ObjectState_2eproto, "ObjectState.proto", 
+  false, false, 117, descriptor_table_protodef_ObjectState_2eproto, "ObjectState.proto", 
   &descriptor_table_ObjectState_2eproto_once, nullptr, 0, 1,
   schemas, file_default_instances, TableStruct_ObjectState_2eproto::offsets,
   file_level_metadata_ObjectState_2eproto, file_level_enum_descriptors_ObjectState_2eproto, file_level_service_descriptors_ObjectState_2eproto,
@@ -102,8 +102,8 @@ S_STATE::S_STATE(const S_STATE& from)
       GetArenaForAllocation());
   }
   ::memcpy(&layer_id_, &from.layer_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&anim_) -
-    reinterpret_cast<char*>(&layer_id_)) + sizeof(anim_));
+    static_cast<size_t>(reinterpret_cast<char*>(&state_value_) -
+    reinterpret_cast<char*>(&layer_id_)) + sizeof(state_value_));
   // @@protoc_insertion_point(copy_constructor:Protocol.S_STATE)
 }
 
@@ -112,8 +112,8 @@ scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlread
 state_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&layer_id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&anim_) -
-    reinterpret_cast<char*>(&layer_id_)) + sizeof(anim_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&state_value_) -
+    reinterpret_cast<char*>(&layer_id_)) + sizeof(state_value_));
 }
 
 S_STATE::~S_STATE() {
@@ -147,8 +147,8 @@ void S_STATE::Clear() {
   scene_.ClearToEmpty();
   state_.ClearToEmpty();
   ::memset(&layer_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&anim_) -
-      reinterpret_cast<char*>(&layer_id_)) + sizeof(anim_));
+      reinterpret_cast<char*>(&state_value_) -
+      reinterpret_cast<char*>(&layer_id_)) + sizeof(state_value_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -183,10 +183,10 @@ const char* S_STATE::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 anim = 4;
+      // int32 state_value = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          anim_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          state_value_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -245,10 +245,10 @@ failure:
         3, this->_internal_state(), target);
   }
 
-  // int32 anim = 4;
-  if (this->anim() != 0) {
+  // int32 state_value = 4;
+  if (this->state_value() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_anim(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_state_value(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -288,11 +288,11 @@ size_t S_STATE::ByteSizeLong() const {
         this->_internal_layer_id());
   }
 
-  // int32 anim = 4;
-  if (this->anim() != 0) {
+  // int32 state_value = 4;
+  if (this->state_value() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_anim());
+        this->_internal_state_value());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -335,8 +335,8 @@ void S_STATE::MergeFrom(const S_STATE& from) {
   if (from.layer_id() != 0) {
     _internal_set_layer_id(from._internal_layer_id());
   }
-  if (from.anim() != 0) {
-    _internal_set_anim(from._internal_anim());
+  if (from.state_value() != 0) {
+    _internal_set_state_value(from._internal_state_value());
   }
 }
 
@@ -372,8 +372,8 @@ void S_STATE::InternalSwap(S_STATE* other) {
       &other->state_, other->GetArenaForAllocation()
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(S_STATE, anim_)
-      + sizeof(S_STATE::anim_)
+      PROTOBUF_FIELD_OFFSET(S_STATE, state_value_)
+      + sizeof(S_STATE::state_value_)
       - PROTOBUF_FIELD_OFFSET(S_STATE, layer_id_)>(
           reinterpret_cast<char*>(&layer_id_),
           reinterpret_cast<char*>(&other->layer_id_));

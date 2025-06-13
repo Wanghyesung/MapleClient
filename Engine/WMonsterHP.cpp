@@ -78,9 +78,9 @@ namespace W
 		GameObject::Render();
 	}
 
-	void MonsterHP::UpdateState(const wstring& _strStateName, int _iAnim)
+	void MonsterHP::UpdateState(const wstring& _strStateName, int _iState)
 	{
-		m_fHP = _iAnim;
+		m_fHP = _iState;
 	}
 	
 }
