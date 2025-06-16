@@ -84,17 +84,15 @@ namespace W
 
 		bool IsLoading() { return m_bLoading.load(); }
 		
-
 		void EraseObject(eLayerType _eType, GameObject* _pGameObj){ m_vecLayer[(UINT)_eType]->EraseOnVector(_pGameObj); }
-
 
 		void RenderLoading();
 		void CompletedLoading() { m_bLoading.store(false); }
 		void StartLoading() { m_bLoading.store(true); }
 
-
-		
-
+	protected:
+		virtual void add_objectpool() {};
+		virtual void mapping_resource() {}; //생성된 리소스를 오브젝트 풀에 있는 오브젝트와 맵핑
 	protected:
 		std::vector<std::pair<std::wstring, std::wstring>> m_vecResource;
 

@@ -88,6 +88,9 @@ namespace W
 		void init_attack_object();
 		void init_attack_effect();
 	private:
+
+		Shadow* m_pShadow;
+
 		std::vector<GameObject*> m_vecChildObj;
 
 		ePlayerState m_ePlayerState;

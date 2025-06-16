@@ -29,6 +29,8 @@
 #include "WObjectPoolManager.h"
 #include "WResources.h"
 #include "WEffect.h"
+#include "WThreadPool.h"
+
 namespace W
 {
 	ValleyScene::ValleyScene()
@@ -44,8 +46,10 @@ namespace W
 		SetMapSize(0.f, 7.f, 0.f, -7.f);
 		SetMapPossibleSize(-4.37f, 4.37f);
 
+		//¸®¼Ò½º
 		m_vecResource.push_back(std::make_pair(L"SkelegonTex", L"..\\Resources\\Texture\\Monster\\skelegon.png"));
-		m_vecResource.push_back(std::make_pair(L"sklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"SklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png"));
+		
 	}
 	ValleyScene::~ValleyScene()
 	{
@@ -55,8 +59,7 @@ namespace W
 	{
 		CreateBackground();
 		setobject();
-		setmonster();
-		create_effect();
+		add_objectpool();
 
 		InterfaceUI* pInterUI = new InterfaceUI();
 		pInterUI->SetObjectID(0);
@@ -131,7 +134,7 @@ namespace W
 	}
 	void ValleyScene::OnExit()
 	{
-
+		Scene::OnExit();
 	}
 	void ValleyScene::CreateBackground()
 	{
@@ -155,6 +158,24 @@ namespace W
 	void ValleyScene::EndSound()
 	{
 
+	}
+
+	void ValleyScene::add_objectpool()
+	{
+		shared_ptr<Texture> pTex = Resources::Load<Texture>(L"SklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png");
+		Effect* pEffect = new Effect();
+		pEffect->CreateAnimation(pTex, L"sklaser_hit", Vector2(0.f, 0.f), Vector2(134.f, 97.f), 1, 1, Vector2(100.f, 100.f), Vector2::Zero, 0.2f);
+		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+
+		MonsterAttackObject* pLaser = new MonsterAttackObject();
+		pLaser->SetName(L"sklaser");
+		ObjectPoolManager::AddObjectPool(pLaser->GetName(), pLaser);
+	}
+
+	void ValleyScene::mapping_resource()
+	{
+		//shared_ptr<Texture> pTex = Resources::Find<Texture>(L"SklaserEffect");
+		//ObjectPoolManager::
 	}
 
 	void ValleyScene::setobject()
@@ -188,22 +209,5 @@ namespace W
 		pLadder2->Initialize();
 		AddGameObject(eLayerType::Ladder, pLadder2);
 	}
-	void ValleyScene::setmonster()
-	{
-		
-	}
-
-	void ValleyScene::create_effect()
-	{
-		 shared_ptr<Texture> pTex =
-			 Resources::Load<Texture>(L"sklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png");
-		Effect* pEffect = new Effect();
-		pEffect->CreateAnimation(pTex, L"sklaser", Vector2(0.f, 0.f), Vector2(134.f, 97.f), 1, 1, Vector2(100.f, 100.f), Vector2::Zero, 0.2f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-
-		MonsterAttackObject* pLaser = new MonsterAttackObject();
-		pLaser->SetName(L"sklaser");
-		ObjectPoolManager::AddObjectPool(pLaser->GetName(), pLaser);
-	}
+	
 }

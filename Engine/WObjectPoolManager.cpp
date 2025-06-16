@@ -55,7 +55,6 @@ namespace W
 				queue.pop();
 
 				delete pGameObj;
-				pGameObj = nullptr;
 			}
 		}
 	}

@@ -43,7 +43,6 @@ namespace W
 	void HorntailHeadA::Initialize()
 	{
 		
-		
 	}
 
 	void HorntailHeadA::Update()

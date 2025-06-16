@@ -77,7 +77,7 @@ namespace W
 	void Effect::CreateAnimation(std::shared_ptr<Texture> _pAtlas, const std::wstring& _strName, Vector2 _vLeftTop, Vector2 _vSize, UINT _iColumnLength,
 		UINT _iRowLength, Vector2 _vDivisionSize, Vector2 _vOffset, float _fDuration)
 	{
-		SetName(_strName + L"_effect");
+		SetName(_strName);
 		SetPoolObject(true);
 
 		Vector2 vTemLeftTop = _vLeftTop;

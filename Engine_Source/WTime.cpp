@@ -29,9 +29,10 @@ namespace W
 		QueryPerformanceCounter(&m_lCurFrequency);
 
 		double differnceFrequency = m_lCurFrequency.QuadPart - m_lPrevFrequency.QuadPart;
-
-		
+	
 		m_dDeltaTime = differnceFrequency / m_lCpuFrequency.QuadPart;
+		//m_dDeltaTime = 1 / 240.f;
+
 		if (m_dDeltaTime >= 1/120.f)
 			m_dDeltaTime = (1/120.f);
 

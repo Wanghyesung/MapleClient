@@ -25,7 +25,7 @@ namespace W
 	private:
 		void create_object();
 		void create_effect();
-		void create_monster();
+	
 	};
 }
 

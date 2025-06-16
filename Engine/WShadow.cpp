@@ -56,11 +56,10 @@ namespace W
 
 		pAnimator->Create(L"_dead", pAtlas, Vector2(150.0f, 1500.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
 
-		pAnimator->Play(L"_stand_left", true);
+		//pAnimator->Play(L"_stand_left", true);
 		GetComponent<Transform>()->SetScale(Vector3(1.5f, 1.5f, 0.f));
 
-		Resources::Load<Texture>(L"shadowe1ffect", L"..\\Resources\\Texture\\Player\\skill\\effect5.png");
-		Resources::Load<Texture>(L"shadowe2ffect", L"..\\Resources\\Texture\\Player\\skill\\effect6.png");
+		
 	}
 
 	Shadow::~Shadow()

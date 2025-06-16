@@ -16,7 +16,7 @@
 #include "WHorntail.h"
 #include "WLadder.h"
 #include "WThreadPool.h"
-
+#include "WEffect.h"
 namespace W
 {
 	CaveScene::CaveScene()
@@ -43,6 +43,26 @@ namespace W
 		m_vecResource.push_back(std::make_pair(L"ThunderTex", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack2_effect.png"));
 		m_vecResource.push_back(std::make_pair(L"HorntailStartTex", L"..\\Resources\\Texture\\Monster\\Horntail\\start.png"));
 		m_vecResource.push_back(std::make_pair(L"HorntailDead", L"..\\Resources\\Texture\\Monster\\Horntail\\dead.png"));
+
+
+		//Resources::Load<Texture>(L"icebreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack0_hit.png");
+		//
+		//Resources::Load<Texture>(L"iceEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack1_hit.png");
+		//
+		//Resources::Load<Texture>(L"firebreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack1_hit.png");
+		//
+		//Resources::Load<Texture>(L"fireEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack2_hit.png");
+		//
+		//Resources::Load<Texture>(L"thunderbreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack1_hit.png");
+		//
+		//Resources::Load<Texture>(L"thunderEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack2_hit.png");
+		//
+		//Resources::Load<Texture>(L"legattack1Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack1_hit.png");
+		//
+		//Resources::Load<Texture>(L"legattack2Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack2_hit.png");
+		//
+		//Resources::Load<Texture>(L"tailEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\tail\\attack0_hit.png");
+
 	}
 	CaveScene::~CaveScene()
 	{
@@ -159,38 +179,41 @@ namespace W
 	}
 	void CaveScene::create_effect()
 	{
-		//ThreadPool::LoadingResource<Texture>()
-		Resources::Load<Texture>(L"icebreathHit", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack0_hit.png");
-
-		Resources::Load<Texture>(L"iceHit", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack1_hit.png");
-
-		Resources::Load<Texture>(L"firebreathHit", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack1_hit.png");
-
-		Resources::Load<Texture>(L"fireHit", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack2_hit.png");
-
-		Resources::Load<Texture>(L"thunderbreathHit", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack1_hit.png");
-
-		Resources::Load<Texture>(L"thunderHit", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack2_hit.png");
-
-		Resources::Load<Texture>(L"legattack1Hit", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack1_hit.png");
-
-		Resources::Load<Texture>(L"legattack2Hit", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack2_hit.png");
-
-		Resources::Load<Texture>(L"tailHit", L"..\\Resources\\Texture\\Monster\\Horntail\\tail\\attack0_hit.png");
-
-	}
-
-	void CaveScene::create_monster()
-	{
-		//Stone* pStone = new Stone();
-		//AddGameObject(eLayerType::Box, pStone);
-		//pStone->GetComponent<Transform>()->SetPosition(4.45f, 0.f, -0.1f);
+		//std::shared_ptr<Texture> pTex = Resources::Find<Texture>(L"icebreathEffect");
+		//Effect* pEffect = new Effect();
+		//pEffect->CreateAnimation(pTex, L"icebreath", Vector2(0.f, 0.f), Vector2(110.f, 113.f), 2, 1, Vector2(100.f, 100.f), Vector2::Zero, 0.2f);
+		//ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 		//
-		//Horntail* pHorntail = new Horntail();
-		//pHorntail->Initialize();
-		//AddGameObject(eLayerType::Monster, pHorntail);
-		//pHorntail->GetComponent<Transform>()->SetPosition(-1.2f, 0.73f, -1.5f);
-		
-	}
+		//MonsterAttackObject* breath = new MonsterAttackObject();
+		//breath->SetName(L"icebreath");
+		//ObjectPoolManager::AddObjectPool(breath->GetName(), breath);
+		//
+		//pTex = Resources::Find<Texture>(L"iceEffect");
+		//pEffect = new Effect();
+		//pEffect->CreateAnimation(pTex, L"ice", Vector2(0.f, 0.f), Vector2(118.f, 87.f), 2, 1, Vector2(100.f, 100.f), Vector2::Zero, 0.2f);
+
+
+		//ThreadPool::LoadingResource<Texture>()
+		//이거도 위로 보낼지 결정;
+		Resources::Load<Texture>(L"icebreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack0_hit.png");
+
+		Resources::Load<Texture>(L"iceEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack1_hit.png");
+
+		Resources::Load<Texture>(L"firebreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack1_hit.png");
+
+		Resources::Load<Texture>(L"fireEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack2_hit.png");
+
+		Resources::Load<Texture>(L"thunderbreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack1_hit.png");
+
+		Resources::Load<Texture>(L"thunderEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack2_hit.png");
+
+		Resources::Load<Texture>(L"legattack1Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack1_hit.png");
+
+		Resources::Load<Texture>(L"legattack2Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack2_hit.png");
+
+		Resources::Load<Texture>(L"tailEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\tail\\attack0_hit.png");
+
+
+	}	
 
 }
