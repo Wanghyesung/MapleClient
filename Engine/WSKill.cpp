@@ -129,7 +129,8 @@ namespace W
 
 			if (GetParentUIType() == eParentUI::SkillStorage)
 			{
-				EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
+				m_pSKillClone->SetState(eState::Dead);
+				//EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
 			
 				Vector3 vStartPos = GetStartPosition();
 				GetComponent<Transform>()->SetPosition((vStartPos));
@@ -145,7 +146,8 @@ namespace W
 				m_pSKillClone->GetParentUI()->AddChildUI(this, false);
 				SetParentUIType(eParentUI::SkillStorage);
 
-				EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
+				m_pSKillClone->SetState(eState::Dead);
+				//EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
 			}
 		}
 			
@@ -153,7 +155,8 @@ namespace W
 		{
 			if (!changepos_interface())//실패하면
 			{
-				EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
+				m_pSKillClone->SetState(eState::Dead);
+				//EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
 
 				Vector3 vStartPos = GetStartPosition();
 				GetComponent<Transform>()->SetPosition((vStartPos));

@@ -87,11 +87,9 @@ namespace W
 
 	void Shadow::Render()
 	{
-		
-
 		renderer::ObjectCB ObjectCB;
 		
-		ObjectCB.vObjectDir.x = 1;// iDir;
+		ObjectCB.vObjectDir.x = m_iDir * -1;
 		ObjectCB.vObjectColor = Vector4::One;
 
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::Object];
