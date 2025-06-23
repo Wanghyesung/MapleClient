@@ -4,6 +4,28 @@
 
 namespace W
 {
+	struct Event
+	{
+		void operator=(std::function<void()> _func)
+		{
+			m_Event = std::move(_func);
+		}
+
+		void operator()()
+		{
+			if (m_Event)
+				m_Event();
+		}
+		std::function<void()> m_Event;
+	};
+
+	struct Events
+	{
+		Event tStartEvent;
+		Event tCompleteEvent;
+		Event tEndEvent;
+	};
+
 	class Animator : public Component
 	{
 	public:
@@ -27,21 +49,32 @@ namespace W
 		);
 
 		Animation* FindAnimation(const std::wstring& _strName);
-	
+
 		void Play(const std::wstring& _strName, int _iIndex);
 		void Stop(bool _bStop) { m_bStop = _bStop; }
+
+		void SetClientAnimation(bool _bClient) { m_bClientAnim = _bClient; }
 		bool IsStop() { return m_bStop; }
 		void Binds();
-
+	
 		void SetTexture(const wstring& _strName, shared_ptr<Texture> _pTexture);
 		void SetTexture(shared_ptr<Texture> _pTexture);
 		Animation* GetActiveAnimation() { return m_pActiveAnimation; }
 
+		Events* FindEvents(const std::wstring& _strName);
+		std::function<void()>& StartEvent(const std::wstring _strKey);
+		std::function<void()>& CompleteEvent(const std::wstring _strKey);
+		std::function<void()>& EndEvent(const std::wstring _strKey);
+
 		void Clear();
 
 	private:
-		Animation* m_pActiveAnimation;
 		std::map<wstring, Animation*> m_mapAnimtion;
+		std::map<std::wstring, Events*> m_mapEvent;
+		Animation* m_pActiveAnimation;
+
+		//클라 전용 애니메이션
+		bool m_bClientAnim;
 
 		bool m_bLoop;
 		bool m_bStop;

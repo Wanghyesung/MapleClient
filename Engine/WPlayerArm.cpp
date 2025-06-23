@@ -93,6 +93,7 @@ namespace W
 		}
 
 		GameObject::LateUpdate();
+
 		m_pPlayerWeapon->LateUpdate();
 	}
 	void PlayerArm::Render()

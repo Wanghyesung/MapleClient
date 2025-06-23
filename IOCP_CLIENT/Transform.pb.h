@@ -46,7 +46,7 @@ struct TableStruct_Transform_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[1]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[2]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -57,13 +57,204 @@ namespace Protocol {
 class S_TRANSFORM;
 struct S_TRANSFORMDefaultTypeInternal;
 extern S_TRANSFORMDefaultTypeInternal _S_TRANSFORM_default_instance_;
+class TransformInfo;
+struct TransformInfoDefaultTypeInternal;
+extern TransformInfoDefaultTypeInternal _TransformInfo_default_instance_;
 }  // namespace Protocol
 PROTOBUF_NAMESPACE_OPEN
 template<> ::Protocol::S_TRANSFORM* Arena::CreateMaybeMessage<::Protocol::S_TRANSFORM>(Arena*);
+template<> ::Protocol::TransformInfo* Arena::CreateMaybeMessage<::Protocol::TransformInfo>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace Protocol {
 
 // ===================================================================
+
+class TransformInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.TransformInfo) */ {
+ public:
+  inline TransformInfo() : TransformInfo(nullptr) {}
+  ~TransformInfo() override;
+  explicit constexpr TransformInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TransformInfo(const TransformInfo& from);
+  TransformInfo(TransformInfo&& from) noexcept
+    : TransformInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline TransformInfo& operator=(const TransformInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TransformInfo& operator=(TransformInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TransformInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TransformInfo* internal_default_instance() {
+    return reinterpret_cast<const TransformInfo*>(
+               &_TransformInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(TransformInfo& a, TransformInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TransformInfo* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TransformInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TransformInfo* New() const final {
+    return new TransformInfo();
+  }
+
+  TransformInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TransformInfo>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const TransformInfo& from);
+  void MergeFrom(const TransformInfo& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TransformInfo* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Protocol.TransformInfo";
+  }
+  protected:
+  explicit TransformInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPXFieldNumber = 1,
+    kPYFieldNumber = 2,
+    kPZFieldNumber = 3,
+    kRXFieldNumber = 4,
+    kRYFieldNumber = 5,
+    kRZFieldNumber = 6,
+  };
+  // float p_x = 1;
+  void clear_p_x();
+  float p_x() const;
+  void set_p_x(float value);
+  private:
+  float _internal_p_x() const;
+  void _internal_set_p_x(float value);
+  public:
+
+  // float p_y = 2;
+  void clear_p_y();
+  float p_y() const;
+  void set_p_y(float value);
+  private:
+  float _internal_p_y() const;
+  void _internal_set_p_y(float value);
+  public:
+
+  // float p_z = 3;
+  void clear_p_z();
+  float p_z() const;
+  void set_p_z(float value);
+  private:
+  float _internal_p_z() const;
+  void _internal_set_p_z(float value);
+  public:
+
+  // float r_x = 4;
+  void clear_r_x();
+  float r_x() const;
+  void set_r_x(float value);
+  private:
+  float _internal_r_x() const;
+  void _internal_set_r_x(float value);
+  public:
+
+  // float r_y = 5;
+  void clear_r_y();
+  float r_y() const;
+  void set_r_y(float value);
+  private:
+  float _internal_r_y() const;
+  void _internal_set_r_y(float value);
+  public:
+
+  // float r_z = 6;
+  void clear_r_z();
+  float r_z() const;
+  void set_r_z(float value);
+  private:
+  float _internal_r_z() const;
+  void _internal_set_r_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Protocol.TransformInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  float p_x_;
+  float p_y_;
+  float p_z_;
+  float r_x_;
+  float r_y_;
+  float r_z_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Transform_2eproto;
+};
+// -------------------------------------------------------------------
 
 class S_TRANSFORM final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.S_TRANSFORM) */ {
@@ -109,7 +300,7 @@ class S_TRANSFORM final :
                &_S_TRANSFORM_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    1;
 
   friend void swap(S_TRANSFORM& a, S_TRANSFORM& b) {
     a.Swap(&b);
@@ -174,10 +365,8 @@ class S_TRANSFORM final :
 
   enum : int {
     kSceneFieldNumber = 1,
+    kTransformFieldNumber = 3,
     kLayerIdFieldNumber = 2,
-    kXFieldNumber = 3,
-    kYFieldNumber = 4,
-    kZFieldNumber = 5,
   };
   // string scene = 1;
   void clear_scene();
@@ -193,6 +382,24 @@ class S_TRANSFORM final :
   std::string* _internal_mutable_scene();
   public:
 
+  // .Protocol.TransformInfo transform = 3;
+  bool has_transform() const;
+  private:
+  bool _internal_has_transform() const;
+  public:
+  void clear_transform();
+  const ::Protocol::TransformInfo& transform() const;
+  PROTOBUF_FUTURE_MUST_USE_RESULT ::Protocol::TransformInfo* release_transform();
+  ::Protocol::TransformInfo* mutable_transform();
+  void set_allocated_transform(::Protocol::TransformInfo* transform);
+  private:
+  const ::Protocol::TransformInfo& _internal_transform() const;
+  ::Protocol::TransformInfo* _internal_mutable_transform();
+  public:
+  void unsafe_arena_set_allocated_transform(
+      ::Protocol::TransformInfo* transform);
+  ::Protocol::TransformInfo* unsafe_arena_release_transform();
+
   // uint32 layer_id = 2;
   void clear_layer_id();
   ::PROTOBUF_NAMESPACE_ID::uint32 layer_id() const;
@@ -200,33 +407,6 @@ class S_TRANSFORM final :
   private:
   ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_id() const;
   void _internal_set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // float x = 3;
-  void clear_x();
-  float x() const;
-  void set_x(float value);
-  private:
-  float _internal_x() const;
-  void _internal_set_x(float value);
-  public:
-
-  // float y = 4;
-  void clear_y();
-  float y() const;
-  void set_y(float value);
-  private:
-  float _internal_y() const;
-  void _internal_set_y(float value);
-  public:
-
-  // float z = 5;
-  void clear_z();
-  float z() const;
-  void set_z(float value);
-  private:
-  float _internal_z() const;
-  void _internal_set_z(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.S_TRANSFORM)
@@ -237,10 +417,8 @@ class S_TRANSFORM final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
+  ::Protocol::TransformInfo* transform_;
   ::PROTOBUF_NAMESPACE_ID::uint32 layer_id_;
-  float x_;
-  float y_;
-  float z_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Transform_2eproto;
 };
@@ -253,6 +431,130 @@ class S_TRANSFORM final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// TransformInfo
+
+// float p_x = 1;
+inline void TransformInfo::clear_p_x() {
+  p_x_ = 0;
+}
+inline float TransformInfo::_internal_p_x() const {
+  return p_x_;
+}
+inline float TransformInfo::p_x() const {
+  // @@protoc_insertion_point(field_get:Protocol.TransformInfo.p_x)
+  return _internal_p_x();
+}
+inline void TransformInfo::_internal_set_p_x(float value) {
+  
+  p_x_ = value;
+}
+inline void TransformInfo::set_p_x(float value) {
+  _internal_set_p_x(value);
+  // @@protoc_insertion_point(field_set:Protocol.TransformInfo.p_x)
+}
+
+// float p_y = 2;
+inline void TransformInfo::clear_p_y() {
+  p_y_ = 0;
+}
+inline float TransformInfo::_internal_p_y() const {
+  return p_y_;
+}
+inline float TransformInfo::p_y() const {
+  // @@protoc_insertion_point(field_get:Protocol.TransformInfo.p_y)
+  return _internal_p_y();
+}
+inline void TransformInfo::_internal_set_p_y(float value) {
+  
+  p_y_ = value;
+}
+inline void TransformInfo::set_p_y(float value) {
+  _internal_set_p_y(value);
+  // @@protoc_insertion_point(field_set:Protocol.TransformInfo.p_y)
+}
+
+// float p_z = 3;
+inline void TransformInfo::clear_p_z() {
+  p_z_ = 0;
+}
+inline float TransformInfo::_internal_p_z() const {
+  return p_z_;
+}
+inline float TransformInfo::p_z() const {
+  // @@protoc_insertion_point(field_get:Protocol.TransformInfo.p_z)
+  return _internal_p_z();
+}
+inline void TransformInfo::_internal_set_p_z(float value) {
+  
+  p_z_ = value;
+}
+inline void TransformInfo::set_p_z(float value) {
+  _internal_set_p_z(value);
+  // @@protoc_insertion_point(field_set:Protocol.TransformInfo.p_z)
+}
+
+// float r_x = 4;
+inline void TransformInfo::clear_r_x() {
+  r_x_ = 0;
+}
+inline float TransformInfo::_internal_r_x() const {
+  return r_x_;
+}
+inline float TransformInfo::r_x() const {
+  // @@protoc_insertion_point(field_get:Protocol.TransformInfo.r_x)
+  return _internal_r_x();
+}
+inline void TransformInfo::_internal_set_r_x(float value) {
+  
+  r_x_ = value;
+}
+inline void TransformInfo::set_r_x(float value) {
+  _internal_set_r_x(value);
+  // @@protoc_insertion_point(field_set:Protocol.TransformInfo.r_x)
+}
+
+// float r_y = 5;
+inline void TransformInfo::clear_r_y() {
+  r_y_ = 0;
+}
+inline float TransformInfo::_internal_r_y() const {
+  return r_y_;
+}
+inline float TransformInfo::r_y() const {
+  // @@protoc_insertion_point(field_get:Protocol.TransformInfo.r_y)
+  return _internal_r_y();
+}
+inline void TransformInfo::_internal_set_r_y(float value) {
+  
+  r_y_ = value;
+}
+inline void TransformInfo::set_r_y(float value) {
+  _internal_set_r_y(value);
+  // @@protoc_insertion_point(field_set:Protocol.TransformInfo.r_y)
+}
+
+// float r_z = 6;
+inline void TransformInfo::clear_r_z() {
+  r_z_ = 0;
+}
+inline float TransformInfo::_internal_r_z() const {
+  return r_z_;
+}
+inline float TransformInfo::r_z() const {
+  // @@protoc_insertion_point(field_get:Protocol.TransformInfo.r_z)
+  return _internal_r_z();
+}
+inline void TransformInfo::_internal_set_r_z(float value) {
+  
+  r_z_ = value;
+}
+inline void TransformInfo::set_r_z(float value) {
+  _internal_set_r_z(value);
+  // @@protoc_insertion_point(field_set:Protocol.TransformInfo.r_z)
+}
+
+// -------------------------------------------------------------------
+
 // S_TRANSFORM
 
 // string scene = 1;
@@ -320,69 +622,94 @@ inline void S_TRANSFORM::set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.layer_id)
 }
 
-// float x = 3;
-inline void S_TRANSFORM::clear_x() {
-  x_ = 0;
+// .Protocol.TransformInfo transform = 3;
+inline bool S_TRANSFORM::_internal_has_transform() const {
+  return this != internal_default_instance() && transform_ != nullptr;
 }
-inline float S_TRANSFORM::_internal_x() const {
-  return x_;
+inline bool S_TRANSFORM::has_transform() const {
+  return _internal_has_transform();
 }
-inline float S_TRANSFORM::x() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.x)
-  return _internal_x();
+inline void S_TRANSFORM::clear_transform() {
+  if (GetArenaForAllocation() == nullptr && transform_ != nullptr) {
+    delete transform_;
+  }
+  transform_ = nullptr;
 }
-inline void S_TRANSFORM::_internal_set_x(float value) {
+inline const ::Protocol::TransformInfo& S_TRANSFORM::_internal_transform() const {
+  const ::Protocol::TransformInfo* p = transform_;
+  return p != nullptr ? *p : reinterpret_cast<const ::Protocol::TransformInfo&>(
+      ::Protocol::_TransformInfo_default_instance_);
+}
+inline const ::Protocol::TransformInfo& S_TRANSFORM::transform() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.transform)
+  return _internal_transform();
+}
+inline void S_TRANSFORM::unsafe_arena_set_allocated_transform(
+    ::Protocol::TransformInfo* transform) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(transform_);
+  }
+  transform_ = transform;
+  if (transform) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Protocol.S_TRANSFORM.transform)
+}
+inline ::Protocol::TransformInfo* S_TRANSFORM::release_transform() {
   
-  x_ = value;
+  ::Protocol::TransformInfo* temp = transform_;
+  transform_ = nullptr;
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
 }
-inline void S_TRANSFORM::set_x(float value) {
-  _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.x)
-}
-
-// float y = 4;
-inline void S_TRANSFORM::clear_y() {
-  y_ = 0;
-}
-inline float S_TRANSFORM::_internal_y() const {
-  return y_;
-}
-inline float S_TRANSFORM::y() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.y)
-  return _internal_y();
-}
-inline void S_TRANSFORM::_internal_set_y(float value) {
+inline ::Protocol::TransformInfo* S_TRANSFORM::unsafe_arena_release_transform() {
+  // @@protoc_insertion_point(field_release:Protocol.S_TRANSFORM.transform)
   
-  y_ = value;
+  ::Protocol::TransformInfo* temp = transform_;
+  transform_ = nullptr;
+  return temp;
 }
-inline void S_TRANSFORM::set_y(float value) {
-  _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.y)
-}
-
-// float z = 5;
-inline void S_TRANSFORM::clear_z() {
-  z_ = 0;
-}
-inline float S_TRANSFORM::_internal_z() const {
-  return z_;
-}
-inline float S_TRANSFORM::z() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.z)
-  return _internal_z();
-}
-inline void S_TRANSFORM::_internal_set_z(float value) {
+inline ::Protocol::TransformInfo* S_TRANSFORM::_internal_mutable_transform() {
   
-  z_ = value;
+  if (transform_ == nullptr) {
+    auto* p = CreateMaybeMessage<::Protocol::TransformInfo>(GetArenaForAllocation());
+    transform_ = p;
+  }
+  return transform_;
 }
-inline void S_TRANSFORM::set_z(float value) {
-  _internal_set_z(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.z)
+inline ::Protocol::TransformInfo* S_TRANSFORM::mutable_transform() {
+  // @@protoc_insertion_point(field_mutable:Protocol.S_TRANSFORM.transform)
+  return _internal_mutable_transform();
+}
+inline void S_TRANSFORM::set_allocated_transform(::Protocol::TransformInfo* transform) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete transform_;
+  }
+  if (transform) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Protocol::TransformInfo>::GetOwningArena(transform);
+    if (message_arena != submessage_arena) {
+      transform = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, transform, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  transform_ = transform;
+  // @@protoc_insertion_point(field_set_allocated:Protocol.S_TRANSFORM.transform)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 

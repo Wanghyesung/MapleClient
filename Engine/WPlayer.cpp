@@ -29,6 +29,8 @@
 #include "WUltimateFog.h"
 #include "WUltimateObject.h"
 #include "WUltimateShuriken.h"
+#include "WEventManager.h"
+
 
 namespace W
 {
@@ -36,6 +38,7 @@ namespace W
 		m_ePlayerState(ePlayerState::stand),
 		m_bAlert(false),
 		m_bActiveDark(false),
+		m_bActiveShadow(false),
 		m_bAlertTime(2.f),
 		m_fChangeTime(0.25f)
 	{
@@ -132,18 +135,22 @@ namespace W
 		init_attack_effect();
 
 		m_pShadow = new Shadow();
-		m_pShadow->SetRender(false);
+		m_pShadow->SetOwner(this);
 
 	}
+
 	void Player::Update()
 	{
-		
+		if (m_bActiveShadow)
+			m_pShadow->Update();
 	}
+
 	void Player::LateUpdate()
 	{
 		GameObject::LateUpdate();
 
-		m_pShadow->LateUpdate();
+		if(m_bActiveShadow)
+			m_pShadow->LateUpdate();
 
 		child_lateupdate();
 	}
@@ -175,15 +182,18 @@ namespace W
 
 		GameObject::Render();		
 
-		m_pShadow->Render();
+		if(m_bActiveShadow)
+			m_pShadow->Render();
 
 		child_render();
 	}
 
 	void Player::UpdateState(const wstring& _strStateName, int _iState)
-	{
-		m_strCurStateName = _strStateName;
+	{	
+		if (!_strStateName.empty())
+			m_strCurStateName = _strStateName;
 
+		UCHAR cShadow = (_iState >> 24) & 0xFF;
 		UCHAR cAlert = (_iState >> 16) & 0xFF;
 		UCHAR cDir = (_iState >> 8) & 0xFF;
 		UCHAR cAnimIdx = _iState & 0xFF;
@@ -191,6 +201,8 @@ namespace W
 		m_bAlert = cAlert > 0 ? true : false;
 		m_iDir = cDir > 0 ? 1 : -1;
 		m_iAnimIdx = cAnimIdx;
+
+		update_shadow(cShadow);
 
 	}
 
@@ -367,23 +379,24 @@ namespace W
 
 		pEffect = new Effect();
 		pEffect->CreateAnimation(Resources::Find<Texture>(L"jumpeffect"),L"jumpeffect", Vector2(0.f, 0.f), Vector2(235.5f, 133.f), 8, 1,
-			Vector2(200.f, 200.f), Vector2(-1.f, 0.0f), Vector2(1888.f, 133.f), 0.1f);
+			Vector2(200.f, 200.f), Vector2(-1.f, 0.0f), Vector2(1888.f, 133.f), 0.05f);
 		pEffect->GetComponent<Transform>()->SetScale(2.f, 2.f, 0.f);
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
 		pEffect = new Effect();
 		pEffect->CreateAnimation(Resources::Find<Texture>(L"shadowe1ffect"), L"shadowe1ffect", Vector2(0.f, 0.f), Vector2(158.f, 131.f), 11, 1,
-			Vector2(150.f, 150.f), Vector2(-0.6f, 0.2f), Vector2(1738.f, 131.f), 0.1f);
+			Vector2(150.f, 150.f), Vector2(-0.6f, 0.2f), Vector2(1738.f, 131.f), 0.05f);
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
 		pEffect = new Effect();
 		pEffect->CreateAnimation(Resources::Find<Texture>(L"shadowe2ffect"), L"shadowe2ffect", Vector2(0.f, 0.f), Vector2(195.f, 180.f), 16, 1,
-			Vector2(200.f, 200.f), Vector2(-0.4f, 0.2f), Vector2(3120.f, 180.f), 0.1f);
+			Vector2(200.f, 200.f), Vector2(-0.4f, 0.2f), Vector2(3120.f, 180.f), 0.05f);
+		pEffect->GetComponent<Transform>()->SetScale(2.2f, 2.2f, 0.f);
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
 		pEffect = new Effect();
 		pEffect->CreateAnimation(Resources::Find<Texture>(L"aveneffect"), L"aveneffect", Vector2(0.f, 0.f), Vector2(121.f, 71.f), 14, 1,
-			Vector2(110.f, 110.f), Vector2(0.f, 0.f), Vector2(1694.f, 72.f), 0.06f);
+			Vector2(110.f, 110.f), Vector2(0.f, 0.f), Vector2(1694.f, 72.f), 0.03f);
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
 		for (int i = 0; i < 8; ++i)
@@ -406,7 +419,7 @@ namespace W
 
 		pEffect = new Effect();
 		pEffect->CreateAnimation(Resources::Find<Texture>(L"loadeffect"), L"loadeffect", Vector2(0.f, 0.5f), Vector2(1700.f, 1200.f), 5, 3,
-			Vector2(1700.f, 1200.f), Vector2(0.5f, 3.f), Vector2(10200.f, 3600.f), 0.06f);
+			Vector2(1700.f, 1200.f), Vector2(0.5f, 3.f), Vector2(10200.f, 3600.f), 0.03f);
 		pEffect->GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
@@ -421,7 +434,7 @@ namespace W
 
 		pEffect = new Effect();
 		pEffect->CreateAnimation(Resources::Find<Texture>(L"raideffect1"), L"raideffect1", Vector2(0.f, 0.f),
-			Vector2(1060.f, 727.f), 10, 3, Vector2(1000.f, 1000.f), Vector2(0.2f, 2.f), Vector2(10600.f, 2181.f), 0.1f);
+			Vector2(1060.f, 727.f), 10, 3, Vector2(1000.f, 1000.f), Vector2(0.2f, 2.f), Vector2(10600.f, 2181.f), 0.05f);
 		pEffect->AddComponent<Light>();//빛처리 기능 넣기 패킷으로 접근
 		pEffect->GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
@@ -429,7 +442,7 @@ namespace W
 
 		pEffect = new Effect();
 		pEffect->CreateAnimation(Resources::Find<Texture>(L"raideffect2"), L"raideffect2", Vector2(0.f, 0.f), Vector2(880.f, 637.f), 10, 3,
-			Vector2(1000.f, 1000.f), Vector2(0.2f, 2.f), Vector2(8800.f, 1911.f), 0.1f);
+			Vector2(1000.f, 1000.f), Vector2(0.2f, 2.f), Vector2(8800.f, 1911.f), 0.05f);
 		pEffect->GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
@@ -467,13 +480,13 @@ namespace W
 
 		pEffect = new Effect();
 		pEffect->CreateAnimation(Resources::Find<Texture>(L"blastffect1"), L"blastffect1", Vector2(0.f, 0.f),
-			Vector2(752.f, 358.f), 13, 1, Vector2(750.f, 750.f), Vector2(0.f, 0.f), Vector2(9776.f, 358.f), 0.1f);
+			Vector2(752.f, 358.f), 13, 1, Vector2(750.f, 750.f), Vector2(0.f, 0.f), Vector2(9776.f, 358.f), 0.05f);
 		pEffect->GetComponent<Transform>()->SetScale(5.f, 5.f, 0.f);
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
 		pEffect = new Effect();
 		pEffect->CreateAnimation(Resources::Find<Texture>(L"blastffect2"), L"blastffect2", Vector2(0.f, 0.f),
-			Vector2(735.f, 673.f), 9, 1, Vector2(750.f, 750.f), Vector2(0.f, 0.f), Vector2(6615.f, 673.f), 0.1f);
+			Vector2(735.f, 673.f), 9, 1, Vector2(750.f, 750.f), Vector2(0.f, 0.f), Vector2(6615.f, 673.f), 0.05f);
 		pEffect->GetComponent<Transform>()->SetScale(5.f, 5.f, 0.f);
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
@@ -509,5 +522,18 @@ namespace W
 		pUtiObj->SetName(L"ultimate0");
 		pUtiObj->GetComponent<Transform>()->SetScale(15.5f, 15.5f, 0.f);
 		ObjectPoolManager::AddObjectPool(pUtiObj->GetName(), pUtiObj);
+	}
+
+	void Player::update_shadow(bool _bActiveShadow)
+	{
+		if (m_pShadow->IsActiveOffAnimation())
+			return;
+
+		m_bPrevShadow = m_bActiveShadow;
+
+		if (m_bPrevShadow && !_bActiveShadow)
+			m_pShadow->Off();
+		else
+			m_bActiveShadow = _bActiveShadow;
 	}
 }

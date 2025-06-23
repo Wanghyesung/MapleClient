@@ -26,10 +26,6 @@ namespace W
 		pMater->SetTexture(pAtlas);
 		mr->SetMaterial(pMater);
 
-		//Resources::Load<Texture>(L"aveneffect", L"..\\Resources\\Texture\\Player\\skill\\effect4.png");
-	
-
-
 	}
 
 	Aven::~Aven()
@@ -63,6 +59,21 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void Aven::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		UCHAR cDir = (_iState >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iState & 0xFF;
+
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
+
+		m_iDir = cDir > 0 ? 1 : -1;
+		m_iAnimIdx = cAnimIdx;
 	}
 	
 }

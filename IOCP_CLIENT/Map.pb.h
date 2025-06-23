@@ -31,6 +31,7 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
+#include "Transform.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_Map_2eproto
@@ -190,13 +191,11 @@ class ObjectInfo final :
 
   enum : int {
     kSceneFieldNumber = 1,
-    kStateFieldNumber = 6,
-    kObjectNameFieldNumber = 8,
+    kStateFieldNumber = 4,
+    kObjectNameFieldNumber = 6,
+    kTransformFieldNumber = 3,
     kLayerCreateidIdFieldNumber = 2,
-    kXFieldNumber = 3,
-    kYFieldNumber = 4,
-    kZFieldNumber = 5,
-    kStateValueFieldNumber = 7,
+    kStateValueFieldNumber = 5,
   };
   // string scene = 1;
   void clear_scene();
@@ -212,7 +211,7 @@ class ObjectInfo final :
   std::string* _internal_mutable_scene();
   public:
 
-  // string state = 6;
+  // string state = 4;
   void clear_state();
   const std::string& state() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -226,7 +225,7 @@ class ObjectInfo final :
   std::string* _internal_mutable_state();
   public:
 
-  // string object_name = 8;
+  // string object_name = 6;
   void clear_object_name();
   const std::string& object_name() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -240,6 +239,24 @@ class ObjectInfo final :
   std::string* _internal_mutable_object_name();
   public:
 
+  // .Protocol.TransformInfo transform = 3;
+  bool has_transform() const;
+  private:
+  bool _internal_has_transform() const;
+  public:
+  void clear_transform();
+  const ::Protocol::TransformInfo& transform() const;
+  PROTOBUF_FUTURE_MUST_USE_RESULT ::Protocol::TransformInfo* release_transform();
+  ::Protocol::TransformInfo* mutable_transform();
+  void set_allocated_transform(::Protocol::TransformInfo* transform);
+  private:
+  const ::Protocol::TransformInfo& _internal_transform() const;
+  ::Protocol::TransformInfo* _internal_mutable_transform();
+  public:
+  void unsafe_arena_set_allocated_transform(
+      ::Protocol::TransformInfo* transform);
+  ::Protocol::TransformInfo* unsafe_arena_release_transform();
+
   // uint32 layer_createid_id = 2;
   void clear_layer_createid_id();
   ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_id() const;
@@ -249,34 +266,7 @@ class ObjectInfo final :
   void _internal_set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // float x = 3;
-  void clear_x();
-  float x() const;
-  void set_x(float value);
-  private:
-  float _internal_x() const;
-  void _internal_set_x(float value);
-  public:
-
-  // float y = 4;
-  void clear_y();
-  float y() const;
-  void set_y(float value);
-  private:
-  float _internal_y() const;
-  void _internal_set_y(float value);
-  public:
-
-  // float z = 5;
-  void clear_z();
-  float z() const;
-  void set_z(float value);
-  private:
-  float _internal_z() const;
-  void _internal_set_z(float value);
-  public:
-
-  // int32 state_value = 7;
+  // int32 state_value = 5;
   void clear_state_value();
   ::PROTOBUF_NAMESPACE_ID::int32 state_value() const;
   void set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -295,10 +285,8 @@ class ObjectInfo final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr state_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr object_name_;
+  ::Protocol::TransformInfo* transform_;
   ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_id_;
-  float x_;
-  float y_;
-  float z_;
   ::PROTOBUF_NAMESPACE_ID::int32 state_value_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Map_2eproto;
@@ -957,67 +945,86 @@ inline void ObjectInfo::set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 va
   // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.layer_createid_id)
 }
 
-// float x = 3;
-inline void ObjectInfo::clear_x() {
-  x_ = 0;
+// .Protocol.TransformInfo transform = 3;
+inline bool ObjectInfo::_internal_has_transform() const {
+  return this != internal_default_instance() && transform_ != nullptr;
 }
-inline float ObjectInfo::_internal_x() const {
-  return x_;
+inline bool ObjectInfo::has_transform() const {
+  return _internal_has_transform();
 }
-inline float ObjectInfo::x() const {
-  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.x)
-  return _internal_x();
+inline const ::Protocol::TransformInfo& ObjectInfo::_internal_transform() const {
+  const ::Protocol::TransformInfo* p = transform_;
+  return p != nullptr ? *p : reinterpret_cast<const ::Protocol::TransformInfo&>(
+      ::Protocol::_TransformInfo_default_instance_);
 }
-inline void ObjectInfo::_internal_set_x(float value) {
+inline const ::Protocol::TransformInfo& ObjectInfo::transform() const {
+  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.transform)
+  return _internal_transform();
+}
+inline void ObjectInfo::unsafe_arena_set_allocated_transform(
+    ::Protocol::TransformInfo* transform) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(transform_);
+  }
+  transform_ = transform;
+  if (transform) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Protocol.ObjectInfo.transform)
+}
+inline ::Protocol::TransformInfo* ObjectInfo::release_transform() {
   
-  x_ = value;
+  ::Protocol::TransformInfo* temp = transform_;
+  transform_ = nullptr;
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
 }
-inline void ObjectInfo::set_x(float value) {
-  _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.x)
+inline ::Protocol::TransformInfo* ObjectInfo::unsafe_arena_release_transform() {
+  // @@protoc_insertion_point(field_release:Protocol.ObjectInfo.transform)
+  
+  ::Protocol::TransformInfo* temp = transform_;
+  transform_ = nullptr;
+  return temp;
+}
+inline ::Protocol::TransformInfo* ObjectInfo::_internal_mutable_transform() {
+  
+  if (transform_ == nullptr) {
+    auto* p = CreateMaybeMessage<::Protocol::TransformInfo>(GetArenaForAllocation());
+    transform_ = p;
+  }
+  return transform_;
+}
+inline ::Protocol::TransformInfo* ObjectInfo::mutable_transform() {
+  // @@protoc_insertion_point(field_mutable:Protocol.ObjectInfo.transform)
+  return _internal_mutable_transform();
+}
+inline void ObjectInfo::set_allocated_transform(::Protocol::TransformInfo* transform) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(transform_);
+  }
+  if (transform) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(transform));
+    if (message_arena != submessage_arena) {
+      transform = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, transform, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  transform_ = transform;
+  // @@protoc_insertion_point(field_set_allocated:Protocol.ObjectInfo.transform)
 }
 
-// float y = 4;
-inline void ObjectInfo::clear_y() {
-  y_ = 0;
-}
-inline float ObjectInfo::_internal_y() const {
-  return y_;
-}
-inline float ObjectInfo::y() const {
-  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.y)
-  return _internal_y();
-}
-inline void ObjectInfo::_internal_set_y(float value) {
-  
-  y_ = value;
-}
-inline void ObjectInfo::set_y(float value) {
-  _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.y)
-}
-
-// float z = 5;
-inline void ObjectInfo::clear_z() {
-  z_ = 0;
-}
-inline float ObjectInfo::_internal_z() const {
-  return z_;
-}
-inline float ObjectInfo::z() const {
-  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.z)
-  return _internal_z();
-}
-inline void ObjectInfo::_internal_set_z(float value) {
-  
-  z_ = value;
-}
-inline void ObjectInfo::set_z(float value) {
-  _internal_set_z(value);
-  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.z)
-}
-
-// string state = 6;
+// string state = 4;
 inline void ObjectInfo::clear_state() {
   state_.ClearToEmpty();
 }
@@ -1062,7 +1069,7 @@ inline void ObjectInfo::set_allocated_state(std::string* state) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.ObjectInfo.state)
 }
 
-// int32 state_value = 7;
+// int32 state_value = 5;
 inline void ObjectInfo::clear_state_value() {
   state_value_ = 0;
 }
@@ -1082,7 +1089,7 @@ inline void ObjectInfo::set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.state_value)
 }
 
-// string object_name = 8;
+// string object_name = 6;
 inline void ObjectInfo::clear_object_name() {
   object_name_.ClearToEmpty();
 }

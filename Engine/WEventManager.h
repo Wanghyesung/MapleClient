@@ -36,7 +36,11 @@ namespace W
 		EVENT_TYPE eEventType;
 	};
 
-	
+	struct tTransformInfo
+	{
+		Vector3 vPosition;
+		Vector3 vRotation;
+	};
 
 	class EventManager
 	{
@@ -47,7 +51,7 @@ namespace W
 		//{ m_vecEvent.push_back(_tEve); }
 		
 		static void CreateObject(GameObject* _pObj, eLayerType _eLayer);
-		static void CreateObjectID(UINT _iLayerCreateIdId, const Vector3& _vPosition, const wstring& _strObjectName);
+		static void CreateObjectID(UINT _iLayerCreateIdId, const tTransformInfo& _tTransformInfo, const wstring& _strObjectName);
 		static void DeleteObject(GameObject* _pObj,  Scene* _pScene);
 		static void DeleteObjectID(UINT _ID, eLayerType _eType);
 		static void ChangeScene(const std::wstring& _strNextScene);
@@ -55,7 +59,7 @@ namespace W
 		static void AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID);
 		static void AddOtherPlayer(UINT _iPlayerID);
 
-		static void UpdateTransform(UINT _ID, eLayerType _eType, const Vector3& _vPosition);
+		static void UpdateTransform(UINT _ID, eLayerType _eType, const tTransformInfo& _tTransformInfo);
 		static void UpdateState(UINT _iLayerID, int _iState, const wstring& _strAnimState);
 	
 	private:

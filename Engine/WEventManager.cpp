@@ -117,14 +117,14 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::UpdateTransform(UINT _ID, eLayerType _eType, const Vector3& _vPosition)
+	void EventManager::UpdateTransform(UINT _ID, eLayerType _eType, const tTransformInfo& _tTransformInfo)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::UPDATE_TRANSFORM;
 
 		eve.lParm = (DWORD_PTR)_ID;
 		eve.wParm = (DWORD_PTR)_eType;
-		eve.accParm = (DWORD_PTR)new Vector3(_vPosition);
+		eve.accParm = (DWORD_PTR)new tTransformInfo(_tTransformInfo);
 
 		AddEvent(eve);
 	}
@@ -168,7 +168,7 @@ namespace W
 	void EventManager::create_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
 	{
 		UINT iLayerCreateIdId = (UINT)_lParm;
-		const Vector3& vPosition = *reinterpret_cast<Vector3*>(_wParm);
+		const tTransformInfo& tTrInfo = *reinterpret_cast<tTransformInfo*>(_wParm);
 		const wstring& strObjectName = *reinterpret_cast<wstring*>(_accParm);
 
 		UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
@@ -180,17 +180,18 @@ namespace W
 			pObj = GameObjectManager::GetMonsterOfID(cCreateid);
 		else
 			pObj = ObjectPoolManager::PopObject(strObjectName);
-	
-		pObj->GetComponent<Transform>()->SetDirectPosition(vPosition);
+		
+		
+		pObj->GetComponent<Transform>()->SetDirectPosition(tTrInfo.vPosition);
 		
 		eLayerType eLayerType = (W::eLayerType)cLayer;
-		
+	
 		pObj->SetObjectID(CID);
 		SceneManger::AddGameObject(eLayerType, pObj);
 
 		pObj->Initialize();
 
-		delete &vPosition;
+		delete &tTrInfo;
 		delete &strObjectName;
 	}
 
@@ -276,15 +277,17 @@ namespace W
 	{
 		UINT ID = (UINT)_lParm;
 		eLayerType eLayer = (eLayerType)_wParm;
-		Vector3* vPosition = reinterpret_cast<Vector3*>(_accParm);
+		tTransformInfo* tTrInfo = reinterpret_cast<tTransformInfo*>(_accParm);
 
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
 		
 		if (pObj)
-			pObj->GetComponent<Transform>()->recv_position(*vPosition);
-		
-
-		delete vPosition;
+		{
+			Transform* pTr = pObj->GetComponent<Transform>();
+			pTr->recv_transform(tTrInfo->vPosition, tTrInfo->vRotation);
+		}
+			
+		delete tTrInfo;
 	}
 
 	void EventManager::CreateObject(GameObject* _pObj, eLayerType _eLayer)
@@ -297,7 +300,7 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::CreateObjectID(UINT _iLayerCreateIdId, const Vector3& _vPosition, const wstring& _strObjectName)
+	void EventManager::CreateObjectID(UINT _iLayerCreateIdId, const tTransformInfo& _tTransformInfo, const wstring& _strObjectName)
 	{
 		//GameObject* pObj = GameObjectManager::GetMonsterOfID(_ID);
 
@@ -305,7 +308,7 @@ namespace W
 		eve.eEventType = EVENT_TYPE::CREATE_OBJECT_ID;
 
 		eve.lParm = (DWORD_PTR)_iLayerCreateIdId;
-		eve.wParm = (DWORD_PTR)new Vector3(_vPosition);
+		eve.wParm = (DWORD_PTR)new tTransformInfo(_tTransformInfo);
 		eve.accParm = (LONG_PTR)new wstring(_strObjectName);
 
 		AddEvent(eve);

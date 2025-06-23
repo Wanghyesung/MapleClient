@@ -16,7 +16,17 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
+		void SetOwner(Player* _pPlayer) { m_pOwner = _pPlayer; }
+		void Off();
 		
+		bool IsActiveOffAnimation() {return m_bOff;}
+	private:
+		void inactive_shadow();
+
+	private:
+		Player* m_pOwner;
+		
+		bool m_bOff;
 		friend class SkillShadow;
 	};
 }

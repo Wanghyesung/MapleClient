@@ -31,6 +31,8 @@ namespace W
 			float _fDuration = 0.f
 		);
 
+		void Reset();
+
 		void Binds();
 		void Clear();
 
@@ -38,6 +40,7 @@ namespace W
 		void SetIndex(int _iIndex) { m_iIndex = _iIndex; }
 
 		void SetAnimator(Animator* _pAnim) { m_pAnimator = _pAnim; }
+		bool IsComplete() { return m_bComplete; }
 	private:
 		std::weak_ptr<Texture> m_wpAtlas;
 		Animator* m_pAnimator;
@@ -45,8 +48,11 @@ namespace W
 		Vector2 m_vAtlasSize;
 
 		vector<Sprite> m_vecSprite;
+
 		int m_iIndex;
 		float m_fTime;
+
+		bool m_bComplete;
 	};
 }
 

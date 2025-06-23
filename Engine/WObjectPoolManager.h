@@ -6,7 +6,7 @@
 namespace W
 {
 	class GameObject;
-	class Texture;
+	
 	class ObjectPoolManager
 	{
 	public:

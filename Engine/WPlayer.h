@@ -81,14 +81,19 @@ namespace W
 
 		UINT GetUserID() { return m_iPlayerID; }
 		void SetTargetPlayer();
+
+		void InActiveShadow() { m_bActiveShadow = false; }
+
 	private:
 		void child_render();
 		void child_lateupdate();
 
 		void init_attack_object();
 		void init_attack_effect();
-	private:
 
+		void update_shadow(bool _bActiveShadow);
+
+	private:
 		Shadow* m_pShadow;
 
 		std::vector<GameObject*> m_vecChildObj;
@@ -100,7 +105,10 @@ namespace W
 
 		bool m_bAlert;
 		bool m_bActiveDark;
-	
+
+		bool m_bActiveShadow;
+		bool m_bPrevShadow;
+
 		float m_bAlertTime;
 		float m_fChangeTime;
 

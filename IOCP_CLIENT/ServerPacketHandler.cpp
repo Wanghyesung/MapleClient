@@ -62,13 +62,18 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 	for (int i = 0; i < iObjSize; ++i)
 	{
 		const Protocol::ObjectInfo& objInfo = _pkt.objinfo(i);
-		
+		const Protocol::TransformInfo& trInfo = _pkt.objinfo(i).transform();
+
 		UINT iLayerCreateIdId = objInfo.layer_createid_id();
 
 		if (GHashStringToWstring.find(objInfo.object_name()) == GHashStringToWstring.end())
 			GHashStringToWstring[objInfo.object_name()] = StringToWString(objInfo.object_name());
 		
-		W::EventManager::CreateObjectID(iLayerCreateIdId, Vector3(objInfo.x(), objInfo.y(), objInfo.z()),
+		tTransformInfo tTrInfo = {};
+		tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
+		tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
+
+		W::EventManager::CreateObjectID(iLayerCreateIdId, tTrInfo,
 			GHashStringToWstring[objInfo.object_name()]);
 	}
 
@@ -81,15 +86,22 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 {
 	const Protocol::ObjectInfo& tInfo = _pkt.object_info();
+	const Protocol::TransformInfo& trInfo = _pkt.object_info().transform();
 
 	//애님에션 상태 추가
 	int iState = tInfo.state_value();
 	UINT iLayerCreateIdId = tInfo.layer_createid_id();
 
+	UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
+
 	if (GHashStringToWstring.find(tInfo.object_name()) == GHashStringToWstring.end())
 		GHashStringToWstring[tInfo.object_name()] = StringToWString(tInfo.object_name());
 
-	W::EventManager::CreateObjectID(iLayerCreateIdId, Vector3(tInfo.x(), tInfo.y(), tInfo.z()),
+	tTransformInfo tTrInfo = {};
+	tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
+	tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
+
+	W::EventManager::CreateObjectID(iLayerCreateIdId, tTrInfo,
 		GHashStringToWstring[tInfo.object_name()]);
 
 	return true;
@@ -127,13 +139,17 @@ bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt)
 
 bool Handle_S_TRANSFORM(shared_ptr<Session> _pSession, Protocol::S_TRANSFORM& _pkt)
 {
-	Vector3 vPosition = Vector3{ _pkt.x(),_pkt.y(),_pkt.z() };
-
+	const Protocol::TransformInfo& trInfo = _pkt.transform();
+	
 	UINT iLayerID = _pkt.layer_id();
 	W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
 	UINT ID = (iLayerID) & 0xFF;
 
-	EventManager::UpdateTransform(ID, eLayer, vPosition);
+	tTransformInfo tTrInfo = {};
+	tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
+	tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
+
+	EventManager::UpdateTransform(ID, eLayer, tTrInfo);
 	return true;
 }
 

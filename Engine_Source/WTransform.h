@@ -39,23 +39,28 @@ namespace W
 		const Vector3& GetRotation() { return m_vRotation; }
 		const Vector3& GetScale() { return m_vScale; }
 
-		Vector3 Foward() { return m_vFoward; }
-		Vector3 Right() { return m_vRight; }
-		Vector3 Up() { return m_vUp; }
+		const Vector3& Foward() { return m_vFoward; }
+		const Vector3& Right() { return m_vRight; }
+		const Vector3& Up() { return m_vUp; }
 
 		void SetParent(Transform* transform) { m_pParentTransform = transform; }
 		Transform* GetParent() { return m_pParentTransform; }
-		Matrix& GetMatrix() { return m_vWorld; }
+		const Matrix& GetMatrix() { return m_vWorld; }
 		
-		Vector3 PositionLerp(const Vector3& _vFrom, const Vector3& _vTo, float fRate, bool bClampZ = true);
+		const Vector3& VectorLerp(const Vector3& _vFrom, const Vector3& _vTo, float fRate, bool bClampZ = true);
 
 	private:
-		void recv_position(Vector3 _vPosition);
+		void recv_transform(const Vector3& _vPosition, const Vector3& _vRotation);
+		
 		void lateupdate_position();
 	private:
 		//packet
 		Vector3 m_vNextPosition;
 		Vector3 m_vPrevPosition;
+
+		Vector3 m_vNextRotation;
+		Vector3 m_vPrevRotation;
+
 		float m_fLerpTime;
 		float m_fCurLerpTime;
 		float m_fCurLerpRate;

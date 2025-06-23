@@ -22,10 +22,8 @@ constexpr ObjectInfo::ObjectInfo(
   : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , state_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , object_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , transform_(nullptr)
   , layer_createid_id_(0u)
-  , x_(0)
-  , y_(0)
-  , z_(0)
   , state_value_(0){}
 struct ObjectInfoDefaultTypeInternal {
   constexpr ObjectInfoDefaultTypeInternal()
@@ -99,9 +97,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Map_2eproto::offsets[] PROTOBU
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, scene_),
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, layer_createid_id_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, x_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, y_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, z_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, transform_),
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, state_),
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, state_value_),
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, object_name_),
@@ -134,10 +130,10 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Map_2eproto::offsets[] PROTOBU
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Protocol::ObjectInfo)},
-  { 13, -1, sizeof(::Protocol::S_MAP)},
-  { 19, -1, sizeof(::Protocol::C_MAP)},
-  { 26, -1, sizeof(::Protocol::S_START_MAP)},
-  { 32, -1, sizeof(::Protocol::C_START_MAP)},
+  { 11, -1, sizeof(::Protocol::S_MAP)},
+  { 17, -1, sizeof(::Protocol::C_MAP)},
+  { 24, -1, sizeof(::Protocol::S_START_MAP)},
+  { 30, -1, sizeof(::Protocol::C_START_MAP)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -149,21 +145,24 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_Map_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\tMap.proto\022\010Protocol\"\220\001\n\nObjectInfo\022\r\n\005"
-  "scene\030\001 \001(\t\022\031\n\021layer_createid_id\030\002 \001(\r\022\t"
-  "\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\022\t\n\001z\030\005 \001(\002\022\r\n\005state"
-  "\030\006 \001(\t\022\023\n\013state_value\030\007 \001(\005\022\023\n\013object_na"
-  "me\030\010 \001(\t\".\n\005S_MAP\022%\n\007objInfo\030\001 \003(\0132\024.Pro"
-  "tocol.ObjectInfo\")\n\005C_MAP\022\r\n\005scene\030\001 \001(\t"
-  "\022\021\n\tplayer_id\030\002 \001(\r\"4\n\013S_START_MAP\022%\n\007ob"
-  "jInfo\030\001 \003(\0132\024.Protocol.ObjectInfo\"/\n\013C_S"
-  "TART_MAP\022\r\n\005scene\030\001 \001(\t\022\021\n\tplayer_id\030\002 \001"
-  "(\rb\006proto3"
+  "\n\tMap.proto\022\010Protocol\032\017Transform.proto\"\233"
+  "\001\n\nObjectInfo\022\r\n\005scene\030\001 \001(\t\022\031\n\021layer_cr"
+  "eateid_id\030\002 \001(\r\022*\n\ttransform\030\003 \001(\0132\027.Pro"
+  "tocol.TransformInfo\022\r\n\005state\030\004 \001(\t\022\023\n\013st"
+  "ate_value\030\005 \001(\005\022\023\n\013object_name\030\006 \001(\t\".\n\005"
+  "S_MAP\022%\n\007objInfo\030\001 \003(\0132\024.Protocol.Object"
+  "Info\")\n\005C_MAP\022\r\n\005scene\030\001 \001(\t\022\021\n\tplayer_i"
+  "d\030\002 \001(\r\"4\n\013S_START_MAP\022%\n\007objInfo\030\001 \003(\0132"
+  "\024.Protocol.ObjectInfo\"/\n\013C_START_MAP\022\r\n\005"
+  "scene\030\001 \001(\t\022\021\n\tplayer_id\030\002 \001(\rb\006proto3"
   ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_Map_2eproto_deps[1] = {
+  &::descriptor_table_Transform_2eproto,
+};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Map_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Map_2eproto = {
-  false, false, 370, descriptor_table_protodef_Map_2eproto, "Map.proto", 
-  &descriptor_table_Map_2eproto_once, nullptr, 0, 5,
+  false, false, 398, descriptor_table_protodef_Map_2eproto, "Map.proto", 
+  &descriptor_table_Map_2eproto_once, descriptor_table_Map_2eproto_deps, 1, 5,
   schemas, file_default_instances, TableStruct_Map_2eproto::offsets,
   file_level_metadata_Map_2eproto, file_level_enum_descriptors_Map_2eproto, file_level_service_descriptors_Map_2eproto,
 };
@@ -179,8 +178,19 @@ namespace Protocol {
 
 class ObjectInfo::_Internal {
  public:
+  static const ::Protocol::TransformInfo& transform(const ObjectInfo* msg);
 };
 
+const ::Protocol::TransformInfo&
+ObjectInfo::_Internal::transform(const ObjectInfo* msg) {
+  return *msg->transform_;
+}
+void ObjectInfo::clear_transform() {
+  if (GetArenaForAllocation() == nullptr && transform_ != nullptr) {
+    delete transform_;
+  }
+  transform_ = nullptr;
+}
 ObjectInfo::ObjectInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
@@ -205,6 +215,11 @@ ObjectInfo::ObjectInfo(const ObjectInfo& from)
     object_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_object_name(), 
       GetArenaForAllocation());
   }
+  if (from._internal_has_transform()) {
+    transform_ = new ::Protocol::TransformInfo(*from.transform_);
+  } else {
+    transform_ = nullptr;
+  }
   ::memcpy(&layer_createid_id_, &from.layer_createid_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&state_value_) -
     reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(state_value_));
@@ -216,9 +231,9 @@ scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlread
 state_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&layer_createid_id_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&transform_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&state_value_) -
-    reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(state_value_));
+    reinterpret_cast<char*>(&transform_)) + sizeof(state_value_));
 }
 
 ObjectInfo::~ObjectInfo() {
@@ -232,6 +247,7 @@ void ObjectInfo::SharedDtor() {
   scene_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   state_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   object_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete transform_;
 }
 
 void ObjectInfo::ArenaDtor(void* object) {
@@ -253,6 +269,10 @@ void ObjectInfo::Clear() {
   scene_.ClearToEmpty();
   state_.ClearToEmpty();
   object_name_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && transform_ != nullptr) {
+    delete transform_;
+  }
+  transform_ = nullptr;
   ::memset(&layer_createid_id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&state_value_) -
       reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(state_value_));
@@ -281,46 +301,32 @@ const char* ObjectInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // float x = 3;
+      // .Protocol.TransformInfo transform = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
-          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_transform(), ptr);
+          CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // float y = 4;
+      // string state = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
-          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      // float z = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
-          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      // string state = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           auto str = _internal_mutable_state();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.ObjectInfo.state"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 state_value = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+      // int32 state_value = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
           state_value_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string object_name = 8;
-      case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
+      // string object_name = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
           auto str = _internal_mutable_object_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.ObjectInfo.object_name"));
@@ -372,48 +378,38 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer_createid_id(), target);
   }
 
-  // float x = 3;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
+  // .Protocol.TransformInfo transform = 3;
+  if (this->has_transform()) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_x(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::transform(this), target, stream);
   }
 
-  // float y = 4;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_y(), target);
-  }
-
-  // float z = 5;
-  if (!(this->z() <= 0 && this->z() >= 0)) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_z(), target);
-  }
-
-  // string state = 6;
+  // string state = 4;
   if (!this->state().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_state().data(), static_cast<int>(this->_internal_state().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "Protocol.ObjectInfo.state");
     target = stream->WriteStringMaybeAliased(
-        6, this->_internal_state(), target);
+        4, this->_internal_state(), target);
   }
 
-  // int32 state_value = 7;
+  // int32 state_value = 5;
   if (this->state_value() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_state_value(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_state_value(), target);
   }
 
-  // string object_name = 8;
+  // string object_name = 6;
   if (!this->object_name().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_object_name().data(), static_cast<int>(this->_internal_object_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "Protocol.ObjectInfo.object_name");
     target = stream->WriteStringMaybeAliased(
-        8, this->_internal_object_name(), target);
+        6, this->_internal_object_name(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -439,18 +435,25 @@ size_t ObjectInfo::ByteSizeLong() const {
         this->_internal_scene());
   }
 
-  // string state = 6;
+  // string state = 4;
   if (!this->state().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_state());
   }
 
-  // string object_name = 8;
+  // string object_name = 6;
   if (!this->object_name().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_object_name());
+  }
+
+  // .Protocol.TransformInfo transform = 3;
+  if (this->has_transform()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *transform_);
   }
 
   // uint32 layer_createid_id = 2;
@@ -460,22 +463,7 @@ size_t ObjectInfo::ByteSizeLong() const {
         this->_internal_layer_createid_id());
   }
 
-  // float x = 3;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
-    total_size += 1 + 4;
-  }
-
-  // float y = 4;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
-    total_size += 1 + 4;
-  }
-
-  // float z = 5;
-  if (!(this->z() <= 0 && this->z() >= 0)) {
-    total_size += 1 + 4;
-  }
-
-  // int32 state_value = 7;
+  // int32 state_value = 5;
   if (this->state_value() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -522,17 +510,11 @@ void ObjectInfo::MergeFrom(const ObjectInfo& from) {
   if (!from.object_name().empty()) {
     _internal_set_object_name(from._internal_object_name());
   }
+  if (from.has_transform()) {
+    _internal_mutable_transform()->::Protocol::TransformInfo::MergeFrom(from._internal_transform());
+  }
   if (from.layer_createid_id() != 0) {
     _internal_set_layer_createid_id(from._internal_layer_createid_id());
-  }
-  if (!(from.x() <= 0 && from.x() >= 0)) {
-    _internal_set_x(from._internal_x());
-  }
-  if (!(from.y() <= 0 && from.y() >= 0)) {
-    _internal_set_y(from._internal_y());
-  }
-  if (!(from.z() <= 0 && from.z() >= 0)) {
-    _internal_set_z(from._internal_z());
   }
   if (from.state_value() != 0) {
     _internal_set_state_value(from._internal_state_value());
@@ -578,9 +560,9 @@ void ObjectInfo::InternalSwap(ObjectInfo* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ObjectInfo, state_value_)
       + sizeof(ObjectInfo::state_value_)
-      - PROTOBUF_FIELD_OFFSET(ObjectInfo, layer_createid_id_)>(
-          reinterpret_cast<char*>(&layer_createid_id_),
-          reinterpret_cast<char*>(&other->layer_createid_id_));
+      - PROTOBUF_FIELD_OFFSET(ObjectInfo, transform_)>(
+          reinterpret_cast<char*>(&transform_),
+          reinterpret_cast<char*>(&other->transform_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ObjectInfo::GetMetadata() const {

@@ -9,7 +9,8 @@
 #include "WTransform.h"
 namespace W
 {
-	Shadow::Shadow() 
+	Shadow::Shadow() :
+		m_bOff(false)
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetShader(Resources::Find<Shader>(L"ObjectAnimShader"));
@@ -55,11 +56,10 @@ namespace W
 		pAnimator->FindAnimation(L"_swingQS_right")->Create(L"_swingQS_right", pAtlas, Vector2(0, 1200.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.14f);
 
 		pAnimator->Create(L"_dead", pAtlas, Vector2(150.0f, 1500.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->CompleteEvent(L"_dead") = std::bind(&Shadow::inactive_shadow, this);
 
 		//pAnimator->Play(L"_stand_left", true);
 		GetComponent<Transform>()->SetScale(Vector3(1.5f, 1.5f, 0.f));
-
-		
 	}
 
 	Shadow::~Shadow()
@@ -73,14 +73,42 @@ namespace W
 
 	void Shadow::Update()
 	{
-		
-
 		GameObject::Update();
 	}
 
 	void Shadow::LateUpdate()
 	{
-		
+		if (m_bOff)
+			return;
+
+		Animator* pAnimator = GetComponent<Animator>();
+		Vector3 vPlayerPos = m_pOwner->GetComponent<Transform>()->GetPosition();
+		int iDir = m_pOwner->GetDir();
+
+		vPlayerPos.z += 0.01f;
+		if (m_pOwner->GetCurStateName() == L"_ladder")
+			vPlayerPos.y -= 0.4f;
+		else
+			vPlayerPos.x -= iDir * 0.4f;
+		GetComponent<Transform>()->SetPosition(vPlayerPos);
+
+		std::wstring strDir;
+		std::wstring strState;
+		if (iDir > 0)
+			strDir = L"_right";
+		else
+			strDir = L"_left";
+
+		strState = m_pOwner->GetCurStateName();
+		std::wstring strAnim = strState + strDir;
+
+		m_iAnimIdx = m_pOwner->GetAnimIdx();
+
+		if (m_strCurStateName != strAnim)
+		{
+			m_strCurStateName = strAnim;
+			pAnimator->Play(strAnim, m_iAnimIdx);
+		}
 
 		GameObject::LateUpdate();
 	}
@@ -88,8 +116,10 @@ namespace W
 	void Shadow::Render()
 	{
 		renderer::ObjectCB ObjectCB;
-		
-		ObjectCB.vObjectDir.x = m_iDir * -1;
+		int iDir = m_pOwner->GetDir() * -1;
+		if (m_bOff)
+			iDir = 1;
+		ObjectCB.vObjectDir.x = iDir;
 		ObjectCB.vObjectColor = Vector4::One;
 
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::Object];
@@ -99,5 +129,27 @@ namespace W
 
 		GameObject::Render();
 	}
+
+	void Shadow::Off()
+	{
+		m_bOff = true;
+		//클라 애니메이션 연출
+		Animator* pAnimator = GetComponent<Animator>();
+
+		pAnimator->SetClientAnimation(true);
+		pAnimator->Play(L"_dead", 0);	
+	}
+
+	void Shadow::inactive_shadow()
+	{
+		m_bOff = false;
+		Animator* pAnimator = GetComponent<Animator>();
+
+		pAnimator->SetClientAnimation(false);
+		pAnimator->FindAnimation(L"_dead")->Reset();
+
+		m_pOwner->InActiveShadow();
+	}
+
 	
 }

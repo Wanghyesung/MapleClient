@@ -1,21 +1,30 @@
 #include "WAnimator.h"
 #include "WResources.h"
+#include "WGameObject.h"
 namespace W
 {
 	Animator::Animator() :
 		Component(eComponentType::Animator),
 		m_bStop(false),
+		m_bClientAnim(false),
+		m_bLoop(true),
 		m_pActiveAnimation(nullptr)
 	{
 
 	}
 	Animator::~Animator()
 	{
-		auto iter = m_mapAnimtion.begin();
-		for (iter; iter != m_mapAnimtion.end(); ++iter)
+		for (auto& iter : m_mapAnimtion)
 		{
-			delete iter->second;
-			iter->second = nullptr;
+			delete iter.second;
+			iter.second = nullptr;
+		}
+
+
+		for (auto& iter : m_mapEvent)
+		{
+			delete iter.second;
+			iter.second = nullptr;
 		}
 	}
 	void Animator::Initialize()
@@ -24,11 +33,28 @@ namespace W
 	}
 	void Animator::Update()
 	{
-		
+		if (m_bClientAnim == false || m_pActiveAnimation == nullptr)
+			return;
+
+		if (m_bStop)
+			return;
+
+		if (m_pActiveAnimation->IsComplete() && m_bLoop)
+		{
+			Events* pEvents =
+				FindEvents(m_pActiveAnimation->GetKey());
+
+			if (pEvents)
+				pEvents->tCompleteEvent();
+
+			m_pActiveAnimation->Reset();
+		}
+
+		m_pActiveAnimation->Update();
 	}
 	void Animator::LateUpdate()
 	{
-	
+		
 	}
 	void Animator::Render()
 	{
@@ -50,6 +76,10 @@ namespace W
 		
 
 		m_mapAnimtion.insert(make_pair(_strName, pAnimation));
+
+		Events* tEvents = new Events();
+		m_mapEvent.insert(std::make_pair(_strName, tEvents));
+
 		pAnimation->SetAnimator(this);
 	}
 	
@@ -66,18 +96,33 @@ namespace W
 	
 	void Animator::Play(const std::wstring& _strName, int _iIndex)
 	{
-		//Resources에서 락을 걸면서 가져오기 부담
 		auto iter = m_mapAnimtion.find(_strName);
 		if (iter == m_mapAnimtion.end())
 			assert(nullptr);
 
 		Animation* pAnimation = iter->second;
-	
-		if (pAnimation)
-		{
-			m_pActiveAnimation = pAnimation;
 
-			m_pActiveAnimation->SetIndex(_iIndex);
+		if (!pAnimation)
+			return;
+
+		// 이전 애니메이션 클라이언트 이벤트 종료
+		Events* pEvents = nullptr;
+		if (m_bClientAnim && m_pActiveAnimation)
+		{
+			pEvents = FindEvents(m_pActiveAnimation->GetKey());
+			if (pEvents)
+				pEvents->tEndEvent();
+		}
+
+		m_pActiveAnimation = pAnimation;
+		m_pActiveAnimation->SetIndex(_iIndex);
+
+		// 새 애니메이션 클라이언트 이벤트 시작
+		if (m_bClientAnim)
+		{
+			pEvents = FindEvents(m_pActiveAnimation->GetKey());
+			if (pEvents)
+				pEvents->tStartEvent();
 		}
 	}
 
@@ -112,6 +157,39 @@ namespace W
 			return;
 
 		m_pActiveAnimation->Clear();
+	}
+
+	Events* Animator::FindEvents(const std::wstring& _strName)
+	{
+		std::map<std::wstring, Events*>::iterator iter =
+			m_mapEvent.find(_strName);
+
+		if (iter == m_mapEvent.end())
+			return nullptr;
+
+		return iter->second;
+	}
+
+	std::function<void()>& Animator::StartEvent(const std::wstring _strKey)
+	{
+		Events* pEvents = FindEvents(_strKey);
+
+		return pEvents->tStartEvent.m_Event;
+
+	}
+
+	std::function<void()>& Animator::CompleteEvent(const std::wstring _strKey)
+	{
+		Events* pEvents = FindEvents(_strKey);
+
+		return pEvents->tCompleteEvent.m_Event;
+	}
+
+	std::function<void()>& Animator::EndEvent(const std::wstring _strKey)
+	{
+		Events* pEvents = FindEvents(_strKey);
+
+		return pEvents->tEndEvent.m_Event;
 	}
 	
 }

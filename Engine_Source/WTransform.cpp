@@ -118,18 +118,23 @@ namespace W
 		if (m_fCurLerpRate >= 1.f)
 			m_fCurLerpRate = 1.f;
 		
-		m_vPosition = PositionLerp(m_vPrevPosition, m_vNextPosition, m_fCurLerpRate, false);
+		m_vPosition = VectorLerp(m_vPrevPosition, m_vNextPosition, m_fCurLerpRate, false);
+		m_vRotation = VectorLerp(m_vPrevRotation, m_vNextRotation, m_fCurLerpRate, false);
 	}
 
-	void Transform::recv_position(Vector3 _vPosition)
+	void Transform::recv_transform(const Vector3& _vPosition, const Vector3& _vRotation)
 	{
 		m_vPrevPosition = m_vPosition;
 		m_vNextPosition = _vPosition;
 
+		m_vPrevRotation = m_vRotation;
+		m_vNextRotation = _vRotation;
+
 		m_fCurLerpTime = 0.f;
 	}
+	
 
-	Vector3 Transform::PositionLerp(const Vector3& _vFrom, const Vector3& _vTo, float fRate, bool bClampZ)
+	const Vector3& Transform::VectorLerp(const Vector3& _vFrom, const Vector3& _vTo, float fRate, bool bClampZ)
 	{
 		Vector3 vResult = Vector3::Zero;
 
@@ -150,8 +155,10 @@ namespace W
 
 		m_vNextPosition = _vPosition;
 		m_vPrevPosition = _vPosition;
+
 		m_vPosition = _vPosition;
 	}
+
 	void Transform::SetDirectPosition(float x, float y, float z)
 	{
 		Vector3 vPosition = Vector3(x, y, z);

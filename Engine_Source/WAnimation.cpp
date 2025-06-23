@@ -23,7 +23,22 @@ namespace W
 	
 	void Animation::Update()
 	{
+		if (m_bComplete)
+			return;
 
+		m_fTime += Time::DeltaTime();
+
+		if (m_vecSprite[m_iIndex].fDuration <= m_fTime)
+		{
+			++m_iIndex;
+			m_fTime = 0.f;
+
+			if (m_vecSprite.size() <= m_iIndex)
+			{
+				m_iIndex = m_vecSprite.size() - 1;
+				m_bComplete = true;
+			}
+		}
 	}
 	void Animation::LateUpdate()
 	{
@@ -69,6 +84,12 @@ namespace W
 			//AnimationManager::AddAnimationSprtie(tSprite);
 			m_vecSprite.push_back(tSprite);
 		}
+	}
+
+	void Animation::Reset()
+	{
+		m_iIndex = 0;
+		m_fTime = 0.f;
 	}
 
 	void Animation::Binds()
