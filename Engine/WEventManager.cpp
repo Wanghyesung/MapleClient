@@ -179,7 +179,7 @@ namespace W
 		if (strObjectName.empty())
 			pObj = GameObjectManager::GetMonsterOfID(cCreateid);
 		else
-			pObj = ObjectPoolManager::FrontObject(strObjectName);
+			pObj = ObjectPoolManager::PopObject(strObjectName);
 	
 		pObj->GetComponent<Transform>()->SetDirectPosition(vPosition);
 		

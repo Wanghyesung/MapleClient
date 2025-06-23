@@ -19,7 +19,7 @@ namespace W
 		std::shared_ptr<Texture> pTex = Resources::Find<Texture>(L"UltiShuriken");
 
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"shuriken", pTex, Vector2(0.f, 0.f), Vector2(581.f, 252.f), 6, Vector2(600.f, 600.f), Vector2(0.0f, 0.f), 0.1f);
+		pAnim->Create(L"shuriken", pTex, Vector2(0.f, 0.f), Vector2(581.f, 252.f), 6, Vector2(600.f, 600.f), Vector2(0.0f, 0.f), Vector2(3486.f, 252.f),0.1f);
 		pAnim->Play(L"shuriken", true);
 
 		mr->SetMaterial(pMater);

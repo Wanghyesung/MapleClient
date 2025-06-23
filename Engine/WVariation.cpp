@@ -22,7 +22,7 @@ namespace W
 		std::shared_ptr<Texture> pAtlas =
 			Resources::Load<Texture>(L"variationTex", L"..\\Resources\\Texture\\Abnormal\\variation.png");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"variation", pAtlas, Vector2(0.0f, 0.0f), Vector2(128.0f, 123.0f), 7, Vector2(130.f, 130.f), Vector2::Zero, 0.12f);
+		pAnim->Create(L"variation", pAtlas, Vector2(0.0f, 0.0f), Vector2(128.0f, 123.0f), 7, Vector2(130.f, 130.f), Vector2::Zero, Vector2(896, 123.f), 0.12f);
 		pAnim->Play(L"variation", true);
 
 		GetComponent<Transform>()->SetScale(Vector3(1.7f, 1.7f, 0.f));

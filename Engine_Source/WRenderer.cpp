@@ -580,29 +580,9 @@ namespace renderer
 #pragma endregion
 		//두 오브젝트 둘다 똑같은 메테리얼로 셋팅
 		
-		std::shared_ptr<Texture> pTex =
-			Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
-		///////////////////////////////////
-		std::shared_ptr<Material> pMater = std::make_shared<Material>();
-		pMater->SetShader(Resources::Find<Shader>(L"PlayerShader"));
-		pMater->SetTexture(pTex);
-		Resources::Insert(L"PlayerMaterial", pMater);
+		std::shared_ptr<Texture> pTex = nullptr;
+		std::shared_ptr<Material> pMater = nullptr;
 		
-
-		 pTex = Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
-		std::shared_ptr<Material> material = std::make_shared<Material>();
-		material->SetShader((Resources::Find<Shader>(L"LightShader")));
-		material->SetTexture(pTex);
-		Resources::Insert(L"SpriteMaterial", material);
-
-		
-		//pTex = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
-		pTex = Resources::Find<Texture>(L"PaintTexuture");
-		pMater = std::make_shared<Material>();
-		pMater->SetShader(Resources::Find<Shader>(L"SpriteShader"));
-		pMater->SetTexture(pTex);
-		pMater->SetRenderinMode(eRenderingMode::Transparent);
-		Resources::Insert(L"SpriteMaterial02", pMater);
 		
 		std::shared_ptr<Shader> girdShader = Resources::Find<Shader>(L"GridShader");
 		pMater = std::make_shared<Material>();
@@ -617,16 +597,16 @@ namespace renderer
 		Resources::Insert(L"DebugMaterial", pMater);
 
 
-		material = std::make_shared<Material>();
-		material->SetShader(Resources::Find<Shader>(L"SpriteAnimationShader"));
-		material->SetRenderinMode(eRenderingMode::Transparent);
-		Resources::Insert(L"SpriteAnimaionMaterial", material);
+		pMater = std::make_shared<Material>();
+		pMater->SetShader(Resources::Find<Shader>(L"SpriteAnimationShader"));
+		pMater->SetRenderinMode(eRenderingMode::Transparent);
+		Resources::Insert(L"SpriteAnimaionMaterial", pMater);
 
 		std::shared_ptr<Shader> pLoadingShader = Resources::Find<Shader>(L"LoadingShader");
-		material = std::make_shared<Material>();
-		material->SetShader(pLoadingShader);
-		material->SetRenderinMode(eRenderingMode::Opaque);
-		Resources::Insert(L"LoadingMaterial", material);
+		pMater = std::make_shared<Material>();
+		pMater->SetShader(pLoadingShader);
+		pMater->SetRenderinMode(eRenderingMode::Opaque);
+		Resources::Insert(L"LoadingMaterial", pMater);
 
 		//material = std::make_shared<Material>();
 		//material->SetShader(Resources::Find<Shader>(L"MonsterShader"));

@@ -30,7 +30,7 @@
 #include "WResources.h"
 #include "WEffect.h"
 #include "WThreadPool.h"
-
+#include "WAnimator.h"
 namespace W
 {
 	ValleyScene::ValleyScene()
@@ -113,6 +113,8 @@ namespace W
 
 	void ValleyScene::SendEnter()
 	{
+		mapping_resource();
+
 		Protocol::C_START_MAP pkt;
 		
 		const wstring& strNextScenename = GetName();
@@ -162,9 +164,11 @@ namespace W
 
 	void ValleyScene::add_objectpool()
 	{
-		shared_ptr<Texture> pTex = Resources::Load<Texture>(L"SklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png");
+		Skelegon* pSkelegon = new Skelegon();
+		ObjectPoolManager::AddObjectPool(pSkelegon->GetName(), pSkelegon);
+
 		Effect* pEffect = new Effect();
-		pEffect->CreateAnimation(pTex, L"sklaser_hit", Vector2(0.f, 0.f), Vector2(134.f, 97.f), 1, 1, Vector2(100.f, 100.f), Vector2::Zero, 0.2f);
+		pEffect->CreateAnimation(nullptr, L"sklaser_hit", Vector2(0.f, 0.f), Vector2(134.f, 97.f), 1, 1, Vector2(100.f, 100.f), Vector2::Zero, Vector2(134.f, 97.f),0.2f);
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
 		MonsterAttackObject* pLaser = new MonsterAttackObject();
@@ -174,8 +178,11 @@ namespace W
 
 	void ValleyScene::mapping_resource()
 	{
-		//shared_ptr<Texture> pTex = Resources::Find<Texture>(L"SklaserEffect");
-		//ObjectPoolManager::
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SklaserEffect");
+		auto& vec = ObjectPoolManager::GetObejcts(L"sklaser_hit");
+		
+		for (int i = 0; i < vec.size(); ++i)
+			vec[i]->GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 
 	void ValleyScene::setobject()

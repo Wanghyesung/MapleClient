@@ -23,7 +23,7 @@ namespace W
 		mr->SetMaterial(pMater);
 		Animator* pAnim = AddComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"StigmaBack");
-		pAnim->Create(L"loop", pAtlas, Vector2(0.0f, 0.0f), Vector2(80.0f, 43.0f), 11, Vector2(80.f, 80.f), Vector2::Zero, 0.13f);
+		pAnim->Create(L"loop", nullptr, Vector2(0.0f, 0.0f), Vector2(80.0f, 43.0f), 11, Vector2(80.f, 80.f), Vector2::Zero, Vector2(880.f, 44.f), 0.13f);
 
 		pAnim->Play(L"loop", true);
 	}

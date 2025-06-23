@@ -22,7 +22,7 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"MuninStoneTex");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Stone_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(145.f, 514.0f), 20, Vector2(510.f, 510.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Stone_left", nullptr, Vector2(0.0f, 0.0f), Vector2(145.f, 514.0f), 20, Vector2(510.f, 510.f), Vector2::Zero, Vector2(3045.f, 514.f), 0.15f);
 
 		pAnim->Play(L"Stone_left", true);
 

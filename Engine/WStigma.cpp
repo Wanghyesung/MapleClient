@@ -20,7 +20,7 @@ namespace W
 
 		Animator* pAnim = AddComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Stigma");
-		pAnim->Create(L"start", pAtlas, Vector2(0.0f, 0.0f), Vector2(189.0f, 187.0f), 7, Vector2(200.f, 200.f), Vector2::Zero, 0.12f);
+		pAnim->Create(L"start", nullptr, Vector2(0.0f, 0.0f), Vector2(189.0f, 187.0f), 7, Vector2(200.f, 200.f), Vector2::Zero, Vector2(2268.f, 187.f), 0.12f);
 		
 		mr->SetMaterial(pMater);
 		pAnim->Play(L"start", true);

@@ -24,8 +24,8 @@ namespace W
 		Animator* pAnimator = AddComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas
 			= Resources::Load<Texture>(L"shurikenTex", L"..\\Resources\\Texture\\Player\\shuriken\\shuriken.png");
-		pAnimator->Create(L"shuriken_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(48.0f, 9.f), 2, Vector2(100.f, 100.f), Vector2::Zero, 0.1f);
-		pAnimator->Create(L"shuriken_right", pAtlas, Vector2(48.0f, 0.0f), Vector2(-48.0f, 9.f), 2, Vector2(100.f, 100.f), Vector2::Zero, 0.1f);
+		pAnimator->Create(L"shuriken_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(48.0f, 9.f), 2, Vector2(100.f, 100.f), Vector2::Zero, Vector2(96.f, 9.f),0.1f);
+		pAnimator->Create(L"shuriken_right", pAtlas, Vector2(48.0f, 0.0f), Vector2(-48.0f, 9.f), 2, Vector2(100.f, 100.f), Vector2::Zero, Vector2(96.f, 9.f),0.1f);
 	}
 
 	Shuriken::~Shuriken()

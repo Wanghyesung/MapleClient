@@ -204,6 +204,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
     <ClInclude Include="LoadScene.h" />
     <ClInclude Include="ObjectHeader.h" />
     <ClInclude Include="WAbnormal.h" />
+    <ClInclude Include="WAnimationManager.h" />
     <ClInclude Include="WAriel.h" />
     <ClInclude Include="WArielLaser.h" />
     <ClInclude Include="WArielStone.h" />
@@ -410,6 +411,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="WAbnormal.cpp" />
+    <ClCompile Include="WAnimationManager.cpp" />
     <ClCompile Include="WAriel.cpp" />
     <ClCompile Include="WArielLaser.cpp" />
     <ClCompile Include="WArielStone.cpp" />

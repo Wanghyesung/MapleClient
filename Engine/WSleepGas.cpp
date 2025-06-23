@@ -24,8 +24,8 @@ namespace W
 		//25
 		Animator* pAnim = AddComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"sleepGas");
-		pAnim->Create(L"sleepGas_start", pAtlas, Vector2(0.0f, 0.0f), Vector2(135.0f, 210.0f), 25, Vector2(450.f, 450.f), Vector2::Zero, 0.12f);
-		pAnim->Create(L"sleepGas_end", pAtlas, Vector2(0.0f, 210.f), Vector2(420.0f, 271.0f), 6, Vector2(450.f, 450.f), Vector2::Zero, 0.12f);
+		pAnim->Create(L"sleepGas_start", nullptr, Vector2(0.0f, 0.0f), Vector2(135.0f, 210.0f), 25, Vector2(450.f, 450.f), Vector2::Zero, Vector2(11016.f, 354.f),0.12f);
+		pAnim->Create(L"sleepGas_end", nullptr, Vector2(0.0f, 210.f), Vector2(420.0f, 271.0f), 6, Vector2(450.f, 450.f), Vector2::Zero, Vector2(11016.f, 354.f), 0.12f);
 
 		mr->SetMaterial(pMater);
 	}

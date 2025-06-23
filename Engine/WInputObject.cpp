@@ -14,8 +14,8 @@ namespace W
 		{
 			std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Input" + strDir);
 			pAnim = AddComponent<Animator>();
-			pAnim->Create(L"clear", pAtlas, Vector2(0.0f, 0.0f), Vector2(80.f, 79.0f), 7, Vector2(100.f, 100.f), Vector2::Zero, 0.15f);
-			pAnim->Create(L"failed", pAtlas, Vector2(0.0f, 79.0f), Vector2(89.f, 77.0f), 4, Vector2(100.f, 100.f), Vector2::Zero, 0.15f);
+			pAnim->Create(L"clear", nullptr, Vector2(0.0f, 0.0f), Vector2(80.f, 79.0f), 7, Vector2(100.f, 100.f), Vector2::Zero, Vector2(560.f, 156.f),0.15f);
+			pAnim->Create(L"failed", nullptr, Vector2(0.0f, 79.0f), Vector2(89.f, 77.0f), 4, Vector2(100.f, 100.f), Vector2::Zero, Vector2(560.f, 156.f), 0.15f);
 		}
 		
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();

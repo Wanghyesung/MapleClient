@@ -47,6 +47,7 @@ namespace W
 		Material,
 		Mesh,
 		Animation,
+		AnimationSprtie,
 		ComputeShader,
 		AudioClip,
 		End,

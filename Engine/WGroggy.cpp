@@ -21,7 +21,7 @@ namespace W
 		std::shared_ptr<Texture> pAtlas =
 			Resources::Load<Texture>(L"groggyTex", L"..\\Resources\\Texture\\Abnormal\\groggy.png");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"groggy", pAtlas, Vector2(0.0f, 0.0f), Vector2(129.0f, 67.0f), 8, Vector2(139.f, 130.f), Vector2::Zero, 0.2f);
+		pAnim->Create(L"groggy", pAtlas, Vector2(0.0f, 0.0f), Vector2(129.0f, 67.0f), 8, Vector2(139.f, 130.f), Vector2::Zero, Vector2(1032.f, 67.f), 0.2f);
 
 		pAnim->Play(L"groggy", true);
 

@@ -22,7 +22,7 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SpearTex");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Spear_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(185.f, 160.0f), 17, Vector2(220.f, 220.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Spear_left", nullptr, Vector2(0.0f, 0.0f), Vector2(185.f, 160.0f), 17, Vector2(220.f, 220.f), Vector2::Zero, Vector2(3145.f, 160.f), 0.15f);
 
 		pAnim->Play(L"Spear_left", true);
 	}

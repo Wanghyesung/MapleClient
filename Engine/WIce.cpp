@@ -22,7 +22,7 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"IceTex");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Ice_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(216.f, 242.0f), 30, Vector2(220.f, 220.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Ice_left", nullptr, Vector2(0.0f, 0.0f), Vector2(216.f, 242.0f), 30, Vector2(220.f, 220.f), Vector2::Zero, Vector2(6480.f, 242.f), 0.15f);
 
 		pAnim->Play(L"Ice_left", true);
 

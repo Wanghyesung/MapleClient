@@ -19,13 +19,12 @@ namespace W
 
 		Animator* pAnim = AddComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"ultimate0");
-		pAnim->Create(L"ultimate", pAtlas, Vector2(0.f, 0.f), Vector2(1456.f, 860.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), 0.08f);
-		pAnim->FindAnimation(L"ultimate")->Create(L"ultimate", pAtlas, Vector2(0.f, 860.f), Vector2(1456.f, 860.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), 0.08f);
-		pAnim->FindAnimation(L"ultimate")->Create(L"ultimate", pAtlas, Vector2(0.f, 1720.f), Vector2(1456.f, 860.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), 0.08f);
-		pAnim->FindAnimation(L"ultimate")->Create(L"ultimate", pAtlas, Vector2(0.f, 2580.f), Vector2(1456.f, 860.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), 0.08f);
-		pAnim->FindAnimation(L"ultimate")->Create(L"ultimate", pAtlas, Vector2(0.f, 3440.f), Vector2(1456.f, 860.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), 0.08f);
+		pAnim->Create(L"ultimate", pAtlas, Vector2(0.f, 0.f), Vector2(1456.f, 860.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), Vector2(14560.f, 5160.f), 0.08f);
+		pAnim->FindAnimation(L"ultimate")->Create(L"ultimate", pAtlas, Vector2(0.f, 860.f), Vector2(1456.f, 860.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), Vector2(14560.f, 5160.f), 0.08f);
+		pAnim->FindAnimation(L"ultimate")->Create(L"ultimate", pAtlas, Vector2(0.f, 1720.f), Vector2(1456.f, 860.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), Vector2(14560.f, 5160.f),0.08f);
+		pAnim->FindAnimation(L"ultimate")->Create(L"ultimate", pAtlas, Vector2(0.f, 2580.f), Vector2(1456.f, 860.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), Vector2(14560.f, 5160.f),0.08f);
+		pAnim->FindAnimation(L"ultimate")->Create(L"ultimate", pAtlas, Vector2(0.f, 3440.f), Vector2(1456.f, 860.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), Vector2(14560.f, 5160.f),0.08f);
 
-		
 	}
 	UltimateObject::~UltimateObject()
 	{

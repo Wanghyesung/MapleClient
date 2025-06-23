@@ -20,7 +20,7 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demianExplode");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Explode", pAtlas, Vector2(0.0f, 0.0f), Vector2(439.f, 432.0f), 36, Vector2(440.f, 440.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Explode", nullptr, Vector2(0.0f, 0.0f), Vector2(439.f, 432.0f), 36, Vector2(440.f, 440.f), Vector2::Zero, Vector2(15804.f, 432.f), 0.15f);
 
 		pAnim->Play(L"Explode", true);
 

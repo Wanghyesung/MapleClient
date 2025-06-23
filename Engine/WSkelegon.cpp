@@ -21,23 +21,21 @@ namespace W
 
 		mr->SetMaterial(pMater);
 
-		Animator* pAnimator = AddComponent<Animator>();
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SkelegonTex");
-		pAnimator->Create(L"skelegon_stand_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(600.0f, 200.0f), 6, Vector2(600.f, 200.f));
-		pAnimator->Create(L"skelegon_move_left", pAtlas, Vector2(0.0f, 200.0f), Vector2(600.0f, 200.0f), 4, Vector2(600.f, 200.f));
-		pAnimator->Create(L"skelegon_attack0_left", pAtlas, Vector2(0.0f, 400.0f), Vector2(600.0f, 200.0f), 11, Vector2(600.f, 200.f), Vector2::Zero, 0.2f);
-		pAnimator->Create(L"skelegon_dead_left", pAtlas, Vector2(0.0f, 600.0f), Vector2(600.0f, 200.0f), 8, Vector2(600.f, 200.f), Vector2::Zero, 0.15f);
-		pAnimator->Create(L"skelegon_hit_left", pAtlas, Vector2(0.0f, 600.0f), Vector2(600.0f, 200.0f), 1, Vector2(600.f, 200.f));
-
-		pAnimator->Create(L"skelegon_stand_right", pAtlas, Vector2(6000.0f, 0.0f), Vector2(-600.0f, 200.0f), 6, Vector2(600.f, 200.f));
-		pAnimator->Create(L"skelegon_move_right", pAtlas, Vector2(6000.0f, 200.0f), Vector2(-600.0f, 200.0f), 4, Vector2(600.f, 200.f));
-		pAnimator->Create(L"skelegon_attack0_right", pAtlas, Vector2(6000.0f, 400.0f), Vector2(-600.0f, 200.0f), 11, Vector2(600.f, 200.f), Vector2::Zero, 0.2f);
-		pAnimator->Create(L"skelegon_dead_right", pAtlas, Vector2(6000.0f, 600.0f), Vector2(-600.0f, 200.0f), 8, Vector2(600.f, 200.f), Vector2::Zero, 0.15f);
-		pAnimator->Create(L"skelegon_hit_right", pAtlas, Vector2(6000.0f, 600.0f), Vector2(-600.0f, 200.0f), 1, Vector2(600.f, 200.f));
-
-		//Resources::Load<Texture>(L"sklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png");
-
 		GetComponent<Transform>()->SetScale(6.f, 2.f, 0.f);
+		Animator* pAnimator = AddComponent<Animator>();
+
+		//std::shared_ptr<Texture> pAtlas = Resources::Load<Texture>(L"SkelegonTex", L"..\\Resources\\Texture\\Monster\\skelegon.png");
+		pAnimator->Create(L"skelegon_stand_left", nullptr, Vector2(0.0f, 0.0f), Vector2(600.0f, 200.0f), 6, Vector2(600.f, 200.f), Vector2::Zero, Vector2(6600.f, 800.f));
+		pAnimator->Create(L"skelegon_move_left", nullptr, Vector2(0.0f, 200.0f), Vector2(600.0f, 200.0f), 4, Vector2(600.f, 200.f), Vector2::Zero, Vector2(6600.f, 800.f));
+		pAnimator->Create(L"skelegon_attack0_left", nullptr, Vector2(0.0f, 400.0f), Vector2(600.0f, 200.0f), 11, Vector2(600.f, 200.f), Vector2::Zero, Vector2(6600.f, 800.f), 0.2f);
+		pAnimator->Create(L"skelegon_dead_left", nullptr, Vector2(0.0f, 600.0f), Vector2(600.0f, 200.0f), 8, Vector2(600.f, 200.f), Vector2::Zero, Vector2(6600.f, 800.f), 0.15f);
+		pAnimator->Create(L"skelegon_hit_left", nullptr, Vector2(0.0f, 600.0f), Vector2(600.0f, 200.0f), 1, Vector2(600.f, 200.f), Vector2::Zero, Vector2(6600.f, 800.f));
+
+		pAnimator->Create(L"skelegon_stand_right", nullptr, Vector2(6000.0f, 0.0f), Vector2(-600.0f, 200.0f), 6, Vector2(600.f, 200.f), Vector2::Zero, Vector2(6600.f, 800.f));
+		pAnimator->Create(L"skelegon_move_right", nullptr, Vector2(6000.0f, 200.0f), Vector2(-600.0f, 200.0f), 4, Vector2(600.f, 200.f), Vector2::Zero, Vector2(6600.f, 800.f) );
+		pAnimator->Create(L"skelegon_attack0_right", nullptr, Vector2(6000.0f, 400.0f), Vector2(-600.0f, 200.0f), 11, Vector2(600.f, 200.f), Vector2::Zero, Vector2(6600.f, 800.f));
+		pAnimator->Create(L"skelegon_dead_right", nullptr, Vector2(6000.0f, 600.0f), Vector2(-600.0f, 200.0f), 8, Vector2(600.f, 200.f), Vector2::Zero, Vector2(6600.f, 800.f));
+		pAnimator->Create(L"skelegon_hit_right", nullptr, Vector2(6000.0f, 600.0f), Vector2(-600.0f, 200.0f), 1, Vector2(600.f, 200.f), Vector2::Zero,Vector2(6600.f, 800.f));
 
 		pAnimator->Play(L"skelegon_stand_left", true);
 	}
@@ -48,7 +46,10 @@ namespace W
 	}
 	void Skelegon::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SkelegonTex");
+		Animator* pAnimator = GetComponent<Animator>();
+
+		pAnimator->SetTexture(pAtlas);
 	}
 
 	void Skelegon::Update()

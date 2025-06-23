@@ -21,7 +21,7 @@ namespace W
 		std::shared_ptr<Texture> pAtlas =
 			Resources::Load<Texture>(L"faintTex", L"..\\Resources\\Texture\\Abnormal\\faint.png");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"faintSkill", pAtlas, Vector2(0.0f, 0.0f), Vector2(66.0f, 18.0f), 3, Vector2(70.f, 70.f), Vector2::Zero, 0.3f);
+		pAnim->Create(L"faintSkill", pAtlas, Vector2(0.0f, 0.0f), Vector2(66.0f, 18.0f), 3, Vector2(70.f, 70.f), Vector2::Zero, Vector2(198.f, 18.f), 0.3f);
 
 		pAnim->Play(L"faintSkill", true);
 

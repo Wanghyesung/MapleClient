@@ -23,7 +23,7 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"PinkBean_attack2");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"attack2", pAtlas, Vector2(0.0f, 0.0f), Vector2(214.f, 555.0f), 27, Vector2(550.f, 550.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"attack2", nullptr, Vector2(0.0f, 0.0f), Vector2(214.f, 555.0f), 27, Vector2(550.f, 550.f), Vector2::Zero, Vector2(5778.f, 555.f), 0.15f);
 	
 		pAnim->Play(L"attack2", true);
 

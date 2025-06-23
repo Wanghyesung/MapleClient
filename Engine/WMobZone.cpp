@@ -38,16 +38,16 @@ namespace W
 			switch (i)
 			{
 			case 0:
-				pAnim->Create(L"Megnus_Zone" + i, pAtlas, Vector2(0.0f, 0.0f), Vector2(796.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
+				pAnim->Create(L"Megnus_Zone" + i, nullptr, Vector2(0.0f, 0.0f), Vector2(796.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(6368.f, 852.f), 0.15f);
 
 			case 1:
-				pAnim->Create(L"Megnus_Zone" + i, pAtlas, Vector2(0.0f, 0.0f), Vector2(696.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
+				pAnim->Create(L"Megnus_Zone" + i, nullptr, Vector2(0.0f, 0.0f), Vector2(696.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(5568.f, 852.f), 0.15f);
 				break;
 			case 2:
-				pAnim->Create(L"Megnus_Zone" + i, pAtlas, Vector2(0.0f, 0.0f), Vector2(596.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
+				pAnim->Create(L"Megnus_Zone" + i, nullptr, Vector2(0.0f, 0.0f), Vector2(596.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(4768.f, 852.f), 0.15f);
 				break;
 			case 3:
-				pAnim->Create(L"Megnus_Zone" + i, pAtlas, Vector2(0.0f, 0.0f), Vector2(396.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, 0.15f);
+				pAnim->Create(L"Megnus_Zone" + i, nullptr, Vector2(0.0f, 0.0f), Vector2(396.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(3168.f, 852.f), 0.15f);
 				break;
 			}
 		}

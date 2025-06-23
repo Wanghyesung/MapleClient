@@ -22,7 +22,7 @@ namespace W
 		std::shared_ptr<Texture> pAtlas =
 			Resources::Load<Texture>(L"sealskillTex", L"..\\Resources\\Texture\\Abnormal\\sealskill.png");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"sealskill", pAtlas, Vector2(0.0f, 0.0f), Vector2(73.0f, 47.0f), 10, Vector2(80.f, 80.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"sealskill", pAtlas, Vector2(0.0f, 0.0f), Vector2(73.0f, 47.0f), 10, Vector2(80.f, 80.f), Vector2::Zero, Vector2(730.f, 47.f), 0.15f);
 
 	}
 	SealSkill::~SealSkill()

@@ -611,6 +611,9 @@
     <ClInclude Include="WInputPacket.h" />
     <ClInclude Include="WPacket.h" />
     <ClInclude Include="WPacketManager.h" />
+    <ClInclude Include="WAnimationManager.h">
+      <Filter>Contents\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
@@ -1217,6 +1220,9 @@
     <ClCompile Include="WInputPacket.cpp" />
     <ClCompile Include="WPacketManager.cpp" />
     <ClCompile Include="WPacket.cpp" />
+    <ClCompile Include="WAnimationManager.cpp">
+      <Filter>Contents\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

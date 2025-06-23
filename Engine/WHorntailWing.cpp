@@ -25,13 +25,13 @@ namespace W
 		pAtlas->BindShaderResource(eShaderStage::PS, 12);
 
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Wing_stand", pAtlas, Vector2(0.f, 0.f), Vector2(1000.f, 600.f), 8, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Wing_attack0", pAtlas, Vector2(0.f, 600.f), Vector2(1000.f, 600.f), 10, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->FindAnimation(L"Wing_attack0")->Create(L"Wing_attack0", pAtlas, Vector2(0.f, 1200.f), Vector2(1000.f, 600.f), 11, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Wing_stand", nullptr, Vector2(0.f, 0.f), Vector2(1000.f, 600.f), 8, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(15000.f, 3600.f), 0.15f);
+		pAnim->Create(L"Wing_attack0", nullptr, Vector2(0.f, 600.f), Vector2(1000.f, 600.f), 10, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(15000.f, 3600.f), 0.15f);
+		pAnim->FindAnimation(L"Wing_attack0")->Create(L"Wing_attack0", nullptr, Vector2(0.f, 1200.f), Vector2(1000.f, 600.f), 11, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(15000.f, 3600.f), 0.15f);
 
-		pAnim->Create(L"Wing_attack1", pAtlas, Vector2(0.f, 1800.f), Vector2(1000.f, 600.f), 10, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->FindAnimation(L"Wing_attack1")->Create(L"Wing_attack1", pAtlas, Vector2(0.f, 2400.f), Vector2(1000.f, 600.f), 9, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Wing_dead", pAtlas, Vector2(0.f, 3000.f), Vector2(1000.f, 600.f), 15, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Wing_attack1", nullptr, Vector2(0.f, 1800.f), Vector2(1000.f, 600.f), 10, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(15000.f, 3600.f), 0.15f);
+		pAnim->FindAnimation(L"Wing_attack1")->Create(L"Wing_attack1", nullptr, Vector2(0.f, 2400.f), Vector2(1000.f, 600.f), 9, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(15000.f, 3600.f), 0.15f);
+		pAnim->Create(L"Wing_dead", nullptr, Vector2(0.f, 3000.f), Vector2(1000.f, 600.f), 15, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(15000.f, 3600.f), 0.15f);
 	}
 
 	HorntailWing::~HorntailWing()

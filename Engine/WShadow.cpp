@@ -22,39 +22,39 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"shadowTex");
 		Animator* pAnimator = AddComponent<Animator>();
-		pAnimator->Create(L"_alert_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_jump_left", pAtlas, Vector2(0.0f, 150.0f), Vector2(150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_ladder_left", pAtlas, Vector2(0.0f, 300.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_pronestab_left", pAtlas, Vector2(0.0f, 450.0f), Vector2(150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_proneattack_left", pAtlas, Vector2(150.0f, 450.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
+		pAnimator->Create(L"_alert_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f),0.18f);
+		pAnimator->Create(L"_jump_left", pAtlas, Vector2(0.0f, 150.0f), Vector2(150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_ladder_left", pAtlas, Vector2(0.0f, 300.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_pronestab_left", pAtlas, Vector2(0.0f, 450.0f), Vector2(150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_proneattack_left", pAtlas, Vector2(150.0f, 450.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
 
-		pAnimator->Create(L"_stab_left", pAtlas, Vector2(0.0f, 600.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_stand_left", pAtlas, Vector2(0.0f, 750.0f), Vector2(150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_swing1_left", pAtlas, Vector2(0.0f, 900.0f), Vector2(150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_swing2_left", pAtlas, Vector2(0.0f, 1050.0f), Vector2(150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_swingOF_left", pAtlas, Vector2(0.0f, 1200.0f), Vector2(150.0f, 150.0f), 4, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_walk_left", pAtlas, Vector2(0.0f, 1350.0f), Vector2(150.0f, 150.0f), 4, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_swingQS_left", pAtlas, Vector2(0.0f, 600.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
-		pAnimator->FindAnimation(L"_swingQS_left")->Create(L"_swingQS_left", pAtlas, Vector2(0.0f, 600.0f), Vector2(150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
-		pAnimator->FindAnimation(L"_swingQS_left")->Create(L"_swingQS_left", pAtlas, Vector2(450.0f, 1200.0f), Vector2(150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
+		pAnimator->Create(L"_stab_left", pAtlas, Vector2(0.0f, 600.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_stand_left", pAtlas, Vector2(0.0f, 750.0f), Vector2(150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_swing1_left", pAtlas, Vector2(0.0f, 900.0f), Vector2(150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_swing2_left", pAtlas, Vector2(0.0f, 1050.0f), Vector2(150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_swingOF_left", pAtlas, Vector2(0.0f, 1200.0f), Vector2(150.0f, 150.0f), 4, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_walk_left", pAtlas, Vector2(0.0f, 1350.0f), Vector2(150.0f, 150.0f), 4, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_swingQS_left", pAtlas, Vector2(0.0f, 600.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.14f);
+		pAnimator->FindAnimation(L"_swingQS_left")->Create(L"_swingQS_left", pAtlas, Vector2(0.0f, 600.0f), Vector2(150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.14f);
+		pAnimator->FindAnimation(L"_swingQS_left")->Create(L"_swingQS_left", pAtlas, Vector2(450.0f, 1200.0f), Vector2(150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.14f);
 
-		pAnimator->Create(L"_alert_right", pAtlas, Vector2(450.0f, 0.0f), Vector2(-150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_jump_right", pAtlas, Vector2(450.0f, 150.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_ladder_right", pAtlas, Vector2(450.0f, 300.0f), Vector2(-150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_pronestab_right", pAtlas, Vector2(450.0f, 450.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_proneattack_right", pAtlas, Vector2(300.0f, 450.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
+		pAnimator->Create(L"_alert_right", pAtlas, Vector2(450.0f, 0.0f), Vector2(-150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_jump_right", pAtlas, Vector2(450.0f, 150.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_ladder_right", pAtlas, Vector2(450.0f, 300.0f), Vector2(-150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_pronestab_right", pAtlas, Vector2(450.0f, 450.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_proneattack_right", pAtlas, Vector2(300.0f, 450.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
 
-		pAnimator->Create(L"_stab_right", pAtlas, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_stand_right", pAtlas, Vector2(450.0f, 750.0f), Vector2(-150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_swing1_right", pAtlas, Vector2(450.0f, 900.0f), Vector2(-150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_swing2_right", pAtlas, Vector2(450.0f, 1050.0f), Vector2(-150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_swingOF_right", pAtlas, Vector2(450.0f, 1200.0f), Vector2(-150.0f, 150.0f), 4, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_walk_right", pAtlas, Vector2(450.0f, 1350.0f), Vector2(-150.0f, 150.0f), 4, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
-		pAnimator->Create(L"_swingQS_right", pAtlas, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
-		pAnimator->FindAnimation(L"_swingQS_right")->Create(L"_swingQS_right", pAtlas, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
-		pAnimator->FindAnimation(L"_swingQS_right")->Create(L"_swingQS_right", pAtlas, Vector2(0, 1200.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, 0.14f);
+		pAnimator->Create(L"_stab_right", pAtlas, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_stand_right", pAtlas, Vector2(450.0f, 750.0f), Vector2(-150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_swing1_right", pAtlas, Vector2(450.0f, 900.0f), Vector2(-150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_swing2_right", pAtlas, Vector2(450.0f, 1050.0f), Vector2(-150.0f, 150.0f), 3, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_swingOF_right", pAtlas, Vector2(450.0f, 1200.0f), Vector2(-150.0f, 150.0f), 4, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_walk_right", pAtlas, Vector2(450.0f, 1350.0f), Vector2(-150.0f, 150.0f), 4, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
+		pAnimator->Create(L"_swingQS_right", pAtlas, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.14f);
+		pAnimator->FindAnimation(L"_swingQS_right")->Create(L"_swingQS_right", pAtlas, Vector2(450.0f, 600.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.14f);
+		pAnimator->FindAnimation(L"_swingQS_right")->Create(L"_swingQS_right", pAtlas, Vector2(0, 1200.0f), Vector2(-150.0f, 150.0f), 1, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.14f);
 
-		pAnimator->Create(L"_dead", pAtlas, Vector2(150.0f, 1500.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, 0.18f);
+		pAnimator->Create(L"_dead", pAtlas, Vector2(150.0f, 1500.0f), Vector2(150.0f, 150.0f), 2, Vector2(120.f, 120.f), Vector2::Zero, Vector2(600.f, 1650.f), 0.18f);
 
 		//pAnimator->Play(L"_stand_left", true);
 		GetComponent<Transform>()->SetScale(Vector3(1.5f, 1.5f, 0.f));

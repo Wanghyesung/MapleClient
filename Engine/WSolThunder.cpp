@@ -23,7 +23,7 @@ namespace W
 		std::shared_ptr<Texture> pAtlas =
 			Resources::Find<Texture>(L"Solomon_attack1");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Thunder_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(172.f, 817.0f), 5, Vector2(800.f, 800.f), Vector2::Zero, 0.3f);
+		pAnim->Create(L"Thunder_left", nullptr, Vector2(0.0f, 0.0f), Vector2(172.f, 817.0f), 5, Vector2(800.f, 800.f), Vector2::Zero, Vector2(860.f, 817.f), 0.3f);
 	
 		pAnim->Play(L"Thunder_left", true);
 

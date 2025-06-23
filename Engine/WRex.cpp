@@ -27,12 +27,12 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"RexTex");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Rex_stand", pAtlas, Vector2(0.f, 0.f), Vector2(500.f, 1000.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Rex_start", pAtlas, Vector2(0.f, 1000.f), Vector2(500.f, 1000.f), 11, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Rex_attack0", pAtlas, Vector2(0.f, 2000.f), Vector2(500.f, 1000.f), 18, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Rex_attack1", pAtlas, Vector2(0.f, 3000.f), Vector2(500.f, 1000.f), 20, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Rex_attack2", pAtlas, Vector2(0.f, 4000.f), Vector2(500.f, 1000.f), 20, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Rex_dead", pAtlas, Vector2(0.f, 5000.f), Vector2(500.f, 1000.f), 15, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Rex_stand", nullptr, Vector2(0.f, 0.f), Vector2(500.f, 1000.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10000.f, 6000.f), 0.15f);
+		pAnim->Create(L"Rex_start", nullptr, Vector2(0.f, 1000.f), Vector2(500.f, 1000.f), 11, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10000.f, 6000.f), 0.15f);
+		pAnim->Create(L"Rex_attack0", nullptr, Vector2(0.f, 2000.f), Vector2(500.f, 1000.f), 18, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10000.f, 6000.f), 0.15f);
+		pAnim->Create(L"Rex_attack1", nullptr, Vector2(0.f, 3000.f), Vector2(500.f, 1000.f), 20, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10000.f, 6000.f), 0.15f);
+		pAnim->Create(L"Rex_attack2", nullptr, Vector2(0.f, 4000.f), Vector2(500.f, 1000.f), 20, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10000.f, 6000.f), 0.15f);
+		pAnim->Create(L"Rex_dead", nullptr, Vector2(0.f, 5000.f), Vector2(500.f, 1000.f), 15, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10000.f, 6000.f), 0.15f);
 
 	}
 	Rex::~Rex()

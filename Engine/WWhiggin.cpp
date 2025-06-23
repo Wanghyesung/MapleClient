@@ -25,14 +25,13 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"WhigginTex");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Whiggin_stand", pAtlas, Vector2(0.f, 0.f), Vector2(350.f, 500.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Whiggin_start", pAtlas, Vector2(0.f, 500.f), Vector2(350.f, 500.f), 11, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Whiggin_attack0", pAtlas, Vector2(0.f, 1000.f), Vector2(350.f, 500.f), 16, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Whiggin_attack1", pAtlas, Vector2(0.f, 1500.f), Vector2(350.f, 500.f), 23, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Whiggin_attack2", pAtlas, Vector2(0.f, 2000.f), Vector2(350.f, 500.f), 15, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Whiggin_attack3", pAtlas, Vector2(0.f, 2500.f), Vector2(350.f, 500.f), 18, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Whiggin_dead", pAtlas, Vector2(0.f, 3000.f), Vector2(350.f, 500.f), 16, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-
+		pAnim->Create(L"Whiggin_stand", nullptr, Vector2(0.f, 0.f), Vector2(350.f, 500.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(8050.f, 3500.f), 0.15f);
+		pAnim->Create(L"Whiggin_start", nullptr, Vector2(0.f, 500.f), Vector2(350.f, 500.f), 11, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(8050.f, 3500.f), 0.15f);
+		pAnim->Create(L"Whiggin_attack0", nullptr, Vector2(0.f, 1000.f), Vector2(350.f, 500.f), 16, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(8050.f, 3500.f), 0.15f);
+		pAnim->Create(L"Whiggin_attack1", nullptr, Vector2(0.f, 1500.f), Vector2(350.f, 500.f), 23, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(8050.f, 3500.f), 0.15f);
+		pAnim->Create(L"Whiggin_attack2", nullptr, Vector2(0.f, 2000.f), Vector2(350.f, 500.f), 15, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(8050.f, 3500.f), 0.15f);
+		pAnim->Create(L"Whiggin_attack3", nullptr, Vector2(0.f, 2500.f), Vector2(350.f, 500.f), 18, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(8050.f, 3500.f), 0.15f);
+		pAnim->Create(L"Whiggin_dead", nullptr, Vector2(0.f, 3000.f), Vector2(350.f, 500.f), 16, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(8050.f, 3500.f), 0.15f);
 	}
 
 

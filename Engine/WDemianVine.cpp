@@ -32,7 +32,7 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"vine");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"vine", pAtlas, Vector2(0.0f, 0.0f), Vector2(244.f, 150.f), 9, Vector2(250.f, 250.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"vine", nullptr, Vector2(0.0f, 0.0f), Vector2(244.f, 150.f), 9, Vector2(250.f, 250.f), Vector2::Zero, Vector2(2196.f, 150.f), 0.15f);
 
 
 	

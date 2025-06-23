@@ -22,24 +22,26 @@ namespace W
 			UINT _iColumnLength,
 			Vector2 _vDivisionSize,
 			Vector2 _vOffset = Vector2::Zero,
+			Vector2 _vAtlasSize = Vector2::Zero,
 			float _fDuration = 0.3f
 		);
 
-
 		Animation* FindAnimation(const std::wstring& _strName);
+	
 		void Play(const std::wstring& _strName, int _iIndex);
 		void Stop(bool _bStop) { m_bStop = _bStop; }
 		bool IsStop() { return m_bStop; }
 		void Binds();
 
-	
+		void SetTexture(const wstring& _strName, shared_ptr<Texture> _pTexture);
+		void SetTexture(shared_ptr<Texture> _pTexture);
 		Animation* GetActiveAnimation() { return m_pActiveAnimation; }
 
 		void Clear();
 
 	private:
-		std::map<std::wstring, Animation*> m_mapAnimation;
 		Animation* m_pActiveAnimation;
+		std::map<wstring, Animation*> m_mapAnimtion;
 
 		bool m_bLoop;
 		bool m_bStop;

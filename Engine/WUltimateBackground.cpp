@@ -18,8 +18,8 @@ namespace W
 		std::shared_ptr<Texture> pTex = Resources::Find<Texture>(L"ultimate1");
 
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"ultimate1", pTex, Vector2(0.f, 0.f), Vector2(1412.f, 812.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), 0.13f);
-		pAnim->FindAnimation(L"ultimate1")->Create(L"ultimate1", pTex, Vector2(0.f, 812.f), Vector2(1412.f, 812.f), 6, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), 0.13f);
+		pAnim->Create(L"ultimate1", pTex, Vector2(0.f, 0.f), Vector2(1412.f, 812.f), 10, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), Vector2(14120.f, 1624.f), 0.13f);
+		pAnim->FindAnimation(L"ultimate1")->Create(L"ultimate1", pTex, Vector2(0.f, 812.f), Vector2(1412.f, 812.f), 6, Vector2(1500.f, 1500.f), Vector2(0.0f, 0.f), Vector2(14120.f, 1624.f), 0.13f);
 
 		mr->SetMaterial(pMater);
 
@@ -27,11 +27,13 @@ namespace W
 	}
 	UltimateBackground::~UltimateBackground()
 	{
+
 	}
 	void UltimateBackground::Initialize()
 	{
 		GetComponent<Animator>()->Play(L"ultimate1", true);
 	}
+
 	void UltimateBackground::Update()
 	{
 		

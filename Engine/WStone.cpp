@@ -17,7 +17,7 @@ namespace W
 	
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"StoneTex");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"stone_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(69.0f, 106.0f), 3, Vector2(100.f, 100.f), Vector2::Zero, 0.2f);
+		pAnim->Create(L"stone_left", nullptr, Vector2(0.0f, 0.0f), Vector2(69.0f, 106.0f), 3, Vector2(100.f, 100.f), Vector2::Zero, Vector2(552.f, 106.f), 0.2f);
 
 		pAnim->Play(L"stone_left", true);
 

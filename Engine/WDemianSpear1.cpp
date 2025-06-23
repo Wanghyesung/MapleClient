@@ -23,9 +23,9 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demianspear1");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Spear", pAtlas, Vector2(0.0f, 0.0f), Vector2(258.f, 538.0f), 29, Vector2(2000.f, 2000.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Spear", nullptr, Vector2(0.0f, 0.0f), Vector2(258.f, 538.0f), 29, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(7482.f, 538.f), 0.15f);
 
-		pAnim->Play(L"Spear", true);
+		//pAnim->Play(L"Spear", true);
 
 	}
 

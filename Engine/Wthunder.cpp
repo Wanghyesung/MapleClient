@@ -23,7 +23,7 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"ThunderTex");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Thunder_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(180.f, 845.0f), 30, Vector2(800.f, 800.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Thunder_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(180.f, 845.0f), 30, Vector2(800.f, 800.f), Vector2::Zero, Vector2(5400.f, 845.f), 0.15f);
 
 		pAnim->Play(L"Thunder_left", true);
 

@@ -22,7 +22,7 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"FireTex");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Fire_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(111.f, 110.0f), 30, Vector2(110.f, 110.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Fire_left", nullptr, Vector2(0.0f, 0.0f), Vector2(111.f, 110.0f), 30, Vector2(110.f, 110.f), Vector2::Zero, Vector2(3330.f, 110.f), 0.15f);
 
 		pAnim->Play(L"Fire_left", true);
 

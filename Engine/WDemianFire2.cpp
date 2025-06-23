@@ -23,8 +23,8 @@ namespace W
 
 		Animator* pAnim = AddComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demainfire2");
-		pAnim->Create(L"fire_start", pAtlas, Vector2(0.0f, 0.0f), Vector2(62.f, 64.0f), 9, Vector2(2000.f, 2000.f), Vector2::Zero, 0.12f);
-		pAnim->Create(L"fire_end", pAtlas, Vector2(0.0f, 64.f), Vector2(167.f, 291.0f), 10, Vector2(2000.f, 2000.f), Vector2::Zero, 0.1f);
+		pAnim->Create(L"fire_start", nullptr, Vector2(0.0f, 0.0f), Vector2(62.f, 64.0f), 9, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(1670.f, 355.f), 0.12f);
+		pAnim->Create(L"fire_end", nullptr, Vector2(0.0f, 64.f), Vector2(167.f, 291.0f), 10, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(1670.f, 355.f), 0.1f);
 
 		mr->SetMaterial(pMater);
 	}

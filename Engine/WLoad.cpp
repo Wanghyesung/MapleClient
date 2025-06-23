@@ -22,13 +22,13 @@ namespace W
 
 		Animator* pAnim = AddComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"loadTex");
-		pAnim->Create(L"active", pAtlas, Vector2(0.0f, 0.0f), Vector2(1700.0f, 1200.0f), 5, Vector2(1700.f, 1700.f), Vector2::Zero, 0.1f);
-		pAnim->FindAnimation(L"active")->Create(L"active",pAtlas, Vector2(0.0f, 1200.0f), Vector2(1700.0f, 1200.0f), 5, Vector2(1700.f, 1700.f), Vector2::Zero, 0.1f);
+		pAnim->Create(L"active", pAtlas, Vector2(0.0f, 0.0f), Vector2(1700.0f, 1200.0f), 5, Vector2(1700.f, 1700.f), Vector2::Zero, Vector2(10200.f, 7200.f), 0.1f);
+		pAnim->FindAnimation(L"active")->Create(L"active",pAtlas, Vector2(0.0f, 1200.0f), Vector2(1700.0f, 1200.0f), 5, Vector2(1700.f, 1700.f), Vector2::Zero, Vector2(10200.f, 7200.f), 0.1f);
 
-		pAnim->Create(L"end", pAtlas, Vector2(0.0f, 2400.0f), Vector2(1700.0f, 1200.0f), 6, Vector2(1700.f, 1700.f), Vector2::Zero, 0.01f);
-		pAnim->FindAnimation(L"end")->Create(L"end", pAtlas, Vector2(0.0f, 3600.0f), Vector2(1700.0f, 1200.0f), 6, Vector2(1700.f, 1700.f), Vector2::Zero, 0.1f);
-		pAnim->FindAnimation(L"end")->Create(L"end", pAtlas, Vector2(0.0f, 4800.0f), Vector2(1700.0f, 1200.0f), 6, Vector2(1700.f, 1700.f), Vector2::Zero, 0.1f);
-		pAnim->FindAnimation(L"end")->Create(L"end", pAtlas, Vector2(0.0f, 6000.0f), Vector2(1700.0f, 1200.0f), 6, Vector2(1700.f, 1700.f), Vector2::Zero, 0.1f);
+		pAnim->Create(L"end", pAtlas, Vector2(0.0f, 2400.0f), Vector2(1700.0f, 1200.0f), 6, Vector2(1700.f, 1700.f), Vector2::Zero, Vector2(10200.f, 7200.f),0.01f);
+		pAnim->FindAnimation(L"end")->Create(L"end", pAtlas, Vector2(0.0f, 3600.0f), Vector2(1700.0f, 1200.0f), 6, Vector2(1700.f, 1700.f), Vector2::Zero,Vector2(10200.f, 7200.f), 0.1f);
+		pAnim->FindAnimation(L"end")->Create(L"end", pAtlas, Vector2(0.0f, 4800.0f), Vector2(1700.0f, 1200.0f), 6, Vector2(1700.f, 1700.f), Vector2::Zero,Vector2(10200.f, 7200.f), 0.1f);
+		pAnim->FindAnimation(L"end")->Create(L"end", pAtlas, Vector2(0.0f, 6000.0f), Vector2(1700.0f, 1200.0f), 6, Vector2(1700.f, 1700.f), Vector2::Zero,Vector2(10200.f, 7200.f), 0.1f);
 
 		
 		//test

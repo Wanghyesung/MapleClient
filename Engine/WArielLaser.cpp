@@ -21,7 +21,7 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Ariel_attack0");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Laser", pAtlas, Vector2(0.0f, 0.0f), Vector2(189.f, 847.0f), 20, Vector2(850.f, 850.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Laser", nullptr, Vector2(0.0f, 0.0f), Vector2(189.f, 847.0f), 20, Vector2(850.f, 850.f), Vector2::Zero, Vector2(4347.f, 847.f), 0.15f);
 
 		pAnim->Play(L"Laser", true);
 

@@ -10,6 +10,8 @@ namespace W
 {
 	Wind::Wind()
 	{
+		GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
+
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 
@@ -20,13 +22,13 @@ namespace W
 
 		Animator* pAnim = AddComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"windTex"); 
-		pAnim->Create(L"move_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(402.0f, 316.0f), 6, Vector2(600.f, 600.f), Vector2::Zero, 0.06f);
-		pAnim->Create(L"stop_left", pAtlas, Vector2(0.0f, 316.0f), Vector2(460.0f, 460.0f), 6, Vector2(600.f, 600.f), Vector2::Zero, 0.06f);
-		pAnim->Create(L"finish_left", pAtlas, Vector2(0.0f, 776.0f), Vector2(612.0f, 580.0f), 18, Vector2(600.f, 600.f), Vector2::Zero, 0.06f);
+		pAnim->Create(L"move_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(402.0f, 316.0f), 6, Vector2(600.f, 600.f), Vector2::Zero, Vector2(11016.f, 1356.f),0.06f);
+		pAnim->Create(L"stop_left", pAtlas, Vector2(0.0f, 316.0f), Vector2(460.0f, 460.0f), 6, Vector2(600.f, 600.f), Vector2::Zero, Vector2(11016.f, 1356.f), 0.06f);
+		pAnim->Create(L"finish_left", pAtlas, Vector2(0.0f, 776.0f), Vector2(612.0f, 580.0f), 18, Vector2(600.f, 600.f), Vector2::Zero, Vector2(11016.f, 1356.f), 0.06f);
 		
-		pAnim->Create(L"move_right", pAtlas, Vector2(10614.f, 0.0f), Vector2(-402.0f, 316.0f), 6, Vector2(600.f, 600.f), Vector2::Zero, 0.06f);
-		pAnim->Create(L"stop_right", pAtlas, Vector2(10556.f, 316.0f), Vector2(-460.0f, 460.0f), 6, Vector2(600.f, 600.f), Vector2::Zero, 0.06f);
-		pAnim->Create(L"finish_right", pAtlas, Vector2(10404.f, 776.0f), Vector2(-612.0f, 580.0f), 18, Vector2(600.f, 600.f), Vector2::Zero, 0.06f);
+		pAnim->Create(L"move_right", pAtlas, Vector2(10614.f, 0.0f), Vector2(-402.0f, 316.0f), 6, Vector2(600.f, 600.f), Vector2::Zero, Vector2(11016.f, 1356.f), 0.06f);
+		pAnim->Create(L"stop_right", pAtlas, Vector2(10556.f, 316.0f), Vector2(-460.0f, 460.0f), 6, Vector2(600.f, 600.f), Vector2::Zero, Vector2(11016.f, 1356.f), 0.06f);
+		pAnim->Create(L"finish_right", pAtlas, Vector2(10404.f, 776.0f), Vector2(-612.0f, 580.0f), 18, Vector2(600.f, 600.f), Vector2::Zero, Vector2(11016.f, 1356.f), 0.06f);
 
 		
 		mr->SetMaterial(pMater);
@@ -39,8 +41,6 @@ namespace W
 	void Wind::Initialize()
 	{
 		
-
-		GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
 		
 	}
 	void Wind::Update()

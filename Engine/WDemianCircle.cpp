@@ -24,9 +24,9 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"DemianCircle");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"level0", pAtlas, Vector2(0.0f, 0.0f), Vector2(260.f, 272.0f), 12, Vector2(500.f, 500.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"level1", pAtlas, Vector2(0.0f, 272.0f), Vector2(361.f, 374.0f), 11, Vector2(500.f, 500.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"level2", pAtlas, Vector2(0.0f, 646.f), Vector2(431.f, 449.0f), 12, Vector2(500.f, 500.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"level0", nullptr, Vector2(0.0f, 0.0f), Vector2(260.f, 272.0f), 12, Vector2(500.f, 500.f), Vector2::Zero, Vector2(5172, 1095.f), 0.15f);
+		pAnim->Create(L"level1", nullptr, Vector2(0.0f, 272.0f), Vector2(361.f, 374.0f), 11, Vector2(500.f, 500.f), Vector2::Zero, Vector2(5172, 1095.f),0.15f);
+		pAnim->Create(L"level2", nullptr, Vector2(0.0f, 646.f), Vector2(431.f, 449.0f), 12, Vector2(500.f, 500.f), Vector2::Zero, Vector2(5172, 1095.f), 0.15f);
 
 		pAnim->Play(L"level0", true);
 	}

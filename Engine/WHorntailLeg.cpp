@@ -27,10 +27,10 @@ namespace W
 		pAtlas->BindShaderResource(eShaderStage::PS, 12);
 
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Leg_stand", pAtlas, Vector2(0.f, 0.f), Vector2(600.f, 300.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Leg_attack0", pAtlas, Vector2(0.f, 300.f), Vector2(600.f, 300.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Leg_attack1", pAtlas, Vector2(0.f, 600.f), Vector2(600.f, 300.f), 18, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
-		pAnim->Create(L"Leg_dead", pAtlas, Vector2(0.f, 900.f), Vector2(600.f, 300.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, 0.15f);
+		pAnim->Create(L"Leg_stand", nullptr, Vector2(0.f, 0.f), Vector2(600.f, 300.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10800.f, 1200.f),0.15f);
+		pAnim->Create(L"Leg_attack0", nullptr, Vector2(0.f, 300.f), Vector2(600.f, 300.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10800.f, 1200.f), 0.15f);
+		pAnim->Create(L"Leg_attack1", nullptr, Vector2(0.f, 600.f), Vector2(600.f, 300.f), 18, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10800.f, 1200.f), 0.15f);
+		pAnim->Create(L"Leg_dead", nullptr, Vector2(0.f, 900.f), Vector2(600.f, 300.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10800.f, 1200.f), 0.15f);
 
 	}
 	HorntailLeg::~HorntailLeg()

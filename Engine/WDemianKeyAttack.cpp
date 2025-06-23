@@ -24,9 +24,9 @@ namespace W
 
 		Animator* pAnim = AddComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demainkeyAttack");
-		pAnim->Create(L"create", pAtlas, Vector2(0.0f, 0.f), Vector2(321.0f, 522.0f), 4, Vector2(2000.f, 2000.f), Vector2::Zero, 0.11f);
-		pAnim->Create(L"wait", pAtlas, Vector2(0.0f, 522.0f), Vector2(321.0f, 522.0f), 11, Vector2(2000.f, 2000.f), Vector2::Zero, 0.11f);
-		pAnim->Create(L"attack", pAtlas, Vector2(0.0f, 1044.0f), Vector2(321.0f, 522.0f), 18, Vector2(2000.f, 2000.f), Vector2::Zero, 0.1f);
+		pAnim->Create(L"create", nullptr, Vector2(0.0f, 0.f), Vector2(321.0f, 522.0f), 4, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(5778.f, 1566.f), 0.11f);
+		pAnim->Create(L"wait", nullptr, Vector2(0.0f, 522.0f), Vector2(321.0f, 522.0f), 11, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(5778.f, 1566.f), 0.11f);
+		pAnim->Create(L"attack", nullptr, Vector2(0.0f, 1044.0f), Vector2(321.0f, 522.0f), 18, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(5778.f, 1566.f), 0.1f);
 
 		mr->SetMaterial(pMater);
 
