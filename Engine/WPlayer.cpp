@@ -526,14 +526,17 @@ namespace W
 
 	void Player::update_shadow(bool _bActiveShadow)
 	{
-		if (m_pShadow->IsActiveOffAnimation())
+		//변화 없음
+		if (_bActiveShadow == m_bActiveShadow)
 			return;
 
-		m_bPrevShadow = m_bActiveShadow;
+		//애니메이션 다 종료될때까지 대기
+		if (m_pShadow->IsActiveOffAnimation())
+			return;;
 
-		if (m_bPrevShadow && !_bActiveShadow)
+		if (!_bActiveShadow)
 			m_pShadow->Off();
 		else
-			m_bActiveShadow = _bActiveShadow;
+			m_pShadow->On();
 	}
 }

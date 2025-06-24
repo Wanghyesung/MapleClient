@@ -133,22 +133,29 @@ namespace W
 	void Shadow::Off()
 	{
 		m_bOff = true;
-		//클라 애니메이션 연출
+		
 		Animator* pAnimator = GetComponent<Animator>();
+		pAnimator->PlayClientAnimation(L"_dead", true);	
+	}
 
-		pAnimator->SetClientAnimation(true);
-		pAnimator->Play(L"_dead", 0);	
+	void Shadow::On()
+	{
+		m_iAnimIdx = 0;
+		m_strCurStateName.clear();
+
+		Animator* pAnimator = GetComponent<Animator>();
+		pAnimator->SetClientAnimation(false);
+		m_pOwner->SetActiveShadow(true);
 	}
 
 	void Shadow::inactive_shadow()
 	{
 		m_bOff = false;
+
 		Animator* pAnimator = GetComponent<Animator>();
+		pAnimator->GetActiveAnimation()->Reset();
 
-		pAnimator->SetClientAnimation(false);
-		pAnimator->FindAnimation(L"_dead")->Reset();
-
-		m_pOwner->InActiveShadow();
+		m_pOwner->SetActiveShadow(false);
 	}
 
 	

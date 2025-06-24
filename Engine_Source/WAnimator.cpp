@@ -7,7 +7,7 @@ namespace W
 		Component(eComponentType::Animator),
 		m_bStop(false),
 		m_bClientAnim(false),
-		m_bLoop(true),
+		m_bLoop(false),
 		m_pActiveAnimation(nullptr)
 	{
 
@@ -37,9 +37,9 @@ namespace W
 			return;
 
 		if (m_bStop)
-			return;
+			return;	
 
-		if (m_pActiveAnimation->IsComplete() && m_bLoop)
+		if (m_pActiveAnimation->IsComplete())
 		{
 			Events* pEvents =
 				FindEvents(m_pActiveAnimation->GetKey());
@@ -47,7 +47,10 @@ namespace W
 			if (pEvents)
 				pEvents->tCompleteEvent();
 
-			m_pActiveAnimation->Reset();
+			if (m_bLoop)
+				m_pActiveAnimation->Reset();
+			else
+				m_bClientAnim = false;
 		}
 
 		m_pActiveAnimation->Update();
@@ -96,33 +99,45 @@ namespace W
 	
 	void Animator::Play(const std::wstring& _strName, int _iIndex)
 	{
+		m_bClientAnim = false;
+
 		auto iter = m_mapAnimtion.find(_strName);
 		if (iter == m_mapAnimtion.end())
 			assert(nullptr);
 
 		Animation* pAnimation = iter->second;
 
-		if (!pAnimation)
-			return;
-
-		// 이전 애니메이션 클라이언트 이벤트 종료
-		Events* pEvents = nullptr;
-		if (m_bClientAnim && m_pActiveAnimation)
+		if (pAnimation)
 		{
-			pEvents = FindEvents(m_pActiveAnimation->GetKey());
+			m_pActiveAnimation = pAnimation;
+			m_pActiveAnimation->SetIndex(_iIndex);
+		}
+	}
+
+	void Animator::PlayClientAnimation(const std::wstring& _strName, bool _bLoop)
+	{
+		Animation* pPrevAnimation = m_pActiveAnimation;
+
+		Events* pEvents;
+		if (pPrevAnimation != nullptr)
+		{
+			pEvents = FindEvents(pPrevAnimation->GetKey());
 			if (pEvents)
 				pEvents->tEndEvent();
 		}
 
-		m_pActiveAnimation = pAnimation;
-		m_pActiveAnimation->SetIndex(_iIndex);
+		m_pActiveAnimation = FindAnimation(_strName);
 
-		// 새 애니메이션 클라이언트 이벤트 시작
-		if (m_bClientAnim)
+		if (m_pActiveAnimation)
 		{
 			pEvents = FindEvents(m_pActiveAnimation->GetKey());
 			if (pEvents)
 				pEvents->tStartEvent();
+
+			m_pActiveAnimation->Reset();
+
+			m_bClientAnim = true;
+			m_bLoop = _bLoop;
 		}
 	}
 

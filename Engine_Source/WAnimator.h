@@ -51,12 +51,15 @@ namespace W
 		Animation* FindAnimation(const std::wstring& _strName);
 
 		void Play(const std::wstring& _strName, int _iIndex);
+		void PlayClientAnimation(const std::wstring& _strName, bool _bLoop);
 		void Stop(bool _bStop) { m_bStop = _bStop; }
 
-		void SetClientAnimation(bool _bClient) { m_bClientAnim = _bClient; }
 		bool IsStop() { return m_bStop; }
 		void Binds();
 	
+		bool IsClientAnimation() { return m_bClientAnim; }
+		void SetClientAnimation(bool _bClientAnim) { m_bClientAnim = _bClientAnim; }
+
 		void SetTexture(const wstring& _strName, shared_ptr<Texture> _pTexture);
 		void SetTexture(shared_ptr<Texture> _pTexture);
 		Animation* GetActiveAnimation() { return m_pActiveAnimation; }

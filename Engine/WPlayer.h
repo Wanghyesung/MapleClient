@@ -82,8 +82,7 @@ namespace W
 		UINT GetUserID() { return m_iPlayerID; }
 		void SetTargetPlayer();
 
-		void InActiveShadow() { m_bActiveShadow = false; }
-
+		void SetActiveShadow(bool _bActive) { m_bActiveShadow = _bActive; }
 	private:
 		void child_render();
 		void child_lateupdate();
@@ -107,8 +106,7 @@ namespace W
 		bool m_bActiveDark;
 
 		bool m_bActiveShadow;
-		bool m_bPrevShadow;
-
+	
 		float m_bAlertTime;
 		float m_fChangeTime;
 

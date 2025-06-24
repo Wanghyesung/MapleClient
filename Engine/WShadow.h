@@ -18,6 +18,7 @@ namespace W
 
 		void SetOwner(Player* _pPlayer) { m_pOwner = _pPlayer; }
 		void Off();
+		void On();
 		
 		bool IsActiveOffAnimation() {return m_bOff;}
 	private:

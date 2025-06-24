@@ -98,17 +98,21 @@ namespace W
 		if (!spAtlas)
 			assert(nullptr);
 
-		m_iIndex = m_pAnimator->GetOwner()->GetAnimIdx();
+		int iIndex = -1;
+		if (m_pAnimator->IsClientAnimation())
+			iIndex = m_iIndex;
+		else
+			iIndex = m_pAnimator->GetOwner()->GetAnimIdx();
 
 		spAtlas->BindShaderResource(eShaderStage::PS, 12);
 
 		renderer::AnimatorCB data = {};
 		//const vector<Sprite>& vecSprite = AnimationManager::FindAnimtionSprtie(GetKey());
 		
-		data.vSpriteLeftTop = m_vecSprite[m_iIndex].vLeftTop;
-		data.vSprteSize = m_vecSprite[m_iIndex].vSize;
-		data.vSprteOffset = m_vecSprite[m_iIndex].vOffset;
-		data.vAtlasSize = m_vecSprite[m_iIndex].vAtlasSize;
+		data.vSpriteLeftTop = m_vecSprite[iIndex].vLeftTop;
+		data.vSprteSize = m_vecSprite[iIndex].vSize;
+		data.vSprteOffset = m_vecSprite[iIndex].vOffset;
+		data.vAtlasSize = m_vecSprite[iIndex].vAtlasSize;
 		data.iAnimationType = 1;
 
 		ConstantBuffer* pCB = renderer::constantBuffer[(UINT)eCBType::Animator];
@@ -125,6 +129,11 @@ namespace W
 			return;
 
 		spAtlas->Clear();
+	}
+
+	void Animation::SetIndex(int _iIndex)
+	{
+		m_iIndex = _iIndex;
 	}
 
 }

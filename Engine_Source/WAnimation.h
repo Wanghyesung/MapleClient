@@ -37,7 +37,7 @@ namespace W
 		void Clear();
 
 		int GetCurIndex() { return m_iIndex; }
-		void SetIndex(int _iIndex) { m_iIndex = _iIndex; }
+		void SetIndex(int _iIndex);
 
 		void SetAnimator(Animator* _pAnim) { m_pAnimator = _pAnim; }
 		bool IsComplete() { return m_bComplete; }
