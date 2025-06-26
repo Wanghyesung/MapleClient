@@ -5,7 +5,7 @@
 #include "..\Engine\WEventManager.h"
 #include "WSceneManger.h"
 #include "Map.pb.h"
-
+#include "..\Engine\WObjectPoolManager.h"
 
 
 namespace W
@@ -13,7 +13,7 @@ namespace W
 	//std::vector<eLayerType> Scene::m_vecUpdateLayer = 
 	//{eLayerType::Camera, eLayerType::Background, eLayerType::Light,eLayerType::UI};
 
-	Scene::Scene():
+	Scene::Scene() :
 		m_bLoading(false)
 	{
 		for (UINT i = 0; i < (UINT)eLayerType::End; ++i)
@@ -41,7 +41,7 @@ namespace W
 				layer->Update();
 			}
 		}
-		
+
 	}
 	void Scene::LateUpdate()
 	{
@@ -95,7 +95,7 @@ namespace W
 
 		pkt.set_scene(GHashWstringToString[strNextScenename]);
 		pkt.set_player_id(PLAYER_ID);
-		
+
 		SceneManger::StartWaitForMapData();
 
 		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
@@ -106,7 +106,7 @@ namespace W
 	{
 
 		static shared_ptr<Mesh> pRectMesh = Resources::Find<Mesh>(L"RectMesh");
-		static shared_ptr<Material> pMtrl = Resources::Find<Material>(L"LoadingMaterial");
+		static shared_ptr<Material> pMtrl = Resources::Find<Material>(L"FullScreenMaterial");
 		//
 		static bool bSet = false;
 		if (!bSet)
@@ -118,7 +118,7 @@ namespace W
 			pMtrl->SetTexture(Resources::Load<Texture>(L"LoadingTex", strFileName));
 		}
 
-	
+
 		pRectMesh->BindBuffer();
 		pMtrl->Binds();
 
@@ -127,5 +127,20 @@ namespace W
 		pMtrl->Clear();
 	}
 
-	
+	void Scene::mapping_texture(const wstring& _strTexName, const wstring& _strObjectName, const wstring& _strObjectAnimName)
+	{
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(_strTexName);
+		auto& vec = ObjectPoolManager::GetObejcts(_strObjectName);
+
+		if (_strObjectAnimName.empty())
+		{
+			for (int i = 0; i < vec.size(); ++i)
+				vec[i]->GetComponent<Animator>()->SetTexture(pAtlas);
+		}
+		else
+		{
+			for (int i = 0; i < vec.size(); ++i)
+				vec[i]->GetComponent<Animator>()->SetTexture(_strObjectAnimName, pAtlas);
+		}
+	}
 }

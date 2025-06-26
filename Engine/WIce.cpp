@@ -20,7 +20,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(2.1f, 2.1f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"IceTex");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Ice_left", nullptr, Vector2(0.0f, 0.0f), Vector2(216.f, 242.0f), 30, Vector2(220.f, 220.f), Vector2::Zero, Vector2(6480.f, 242.f), 0.15f);
 
@@ -35,7 +34,10 @@ namespace W
 
 	void Ice::Initialize()
 	{
-		
+		Animator* pAnim = GetComponent<Animator>();
+
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"IceTex");
+		pAnim->SetTexture(pAtlas);
 	}
 
 	void Ice::Update()

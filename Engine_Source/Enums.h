@@ -7,7 +7,6 @@ namespace W
 	{
 		None,
 		Transform,
-		Mesh,
 		Particle,
 		MeshRenderer,
 		Animator,

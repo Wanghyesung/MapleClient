@@ -24,17 +24,22 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 
-		std::shared_ptr<Texture> pAtlas =
-			Resources::Find<Texture>(L"HeadCTex");
-		pAtlas->BindShaderResource(eShaderStage::PS, 12);
-
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"HeadC_stand", pAtlas, Vector2(0.f, 0.f), Vector2(600.f, 700.f), 10, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(13800.f, 3500.f), 0.15f);
-		pAnim->Create(L"HeadC_attack0", pAtlas, Vector2(0.f, 700.f), Vector2(600.f, 700.f), 23, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(13800.f, 3500.f), 0.15f);
-		pAnim->Create(L"HeadC_attack1", pAtlas, Vector2(0.f, 1400.f), Vector2(600.f, 700.f), 18, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(13800.f, 3500.f), 0.15f);
-		pAnim->Create(L"HeadC_attack2", pAtlas, Vector2(0.f, 2100.f), Vector2(600.f, 700.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(13800.f, 3500.f), 0.15f);
-		pAnim->Create(L"HeadC_dead", pAtlas, Vector2(0.f, 2800.f), Vector2(600.f, 700.f), 13, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(13800.f, 3500.f), 0.15f);
+		pAnim->Create(L"HeadC_stand", nullptr, Vector2(0.f, 0.f), Vector2(600.f, 700.f), 10, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(13800.f, 3500.f), 0.15f);
+		pAnim->Create(L"HeadC_attack0", nullptr, Vector2(0.f, 700.f), Vector2(600.f, 700.f), 23, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(13800.f, 3500.f), 0.15f);
+		pAnim->Create(L"HeadC_attack1", nullptr, Vector2(0.f, 1400.f), Vector2(600.f, 700.f), 18, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(13800.f, 3500.f), 0.15f);
+		pAnim->Create(L"HeadC_attack2", nullptr, Vector2(0.f, 2100.f), Vector2(600.f, 700.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(13800.f, 3500.f), 0.15f);
+		pAnim->Create(L"HeadC_dead", nullptr, Vector2(0.f, 2800.f), Vector2(600.f, 700.f), 13, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(13800.f, 3500.f), 0.15f);
 		
+		MonsterAttackObject* breath = new MonsterAttackObject();
+		breath->SetName(L"thunderbreath");
+		ObjectPoolManager::AddObjectPool(breath->GetName(), breath);
+		for (int i = 0; i < 8; ++i)
+		{
+			Thunder* pThunder = new Thunder();
+			pThunder->SetName(L"thunder");
+			ObjectPoolManager::AddObjectPool(pThunder->GetName(), pThunder);
+		}
 	}
 
 	HorntailHeadC::~HorntailHeadC()
@@ -45,7 +50,9 @@ namespace W
 	
 	void HorntailHeadC::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"HeadCTex");
+		Animator* pAnimator = GetComponent<Animator>();
+		pAnimator->SetTexture(pAtlas);
 	}
 
 	void HorntailHeadC::Update()

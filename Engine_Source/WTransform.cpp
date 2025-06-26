@@ -9,6 +9,7 @@
 namespace W
 {
 	using namespace W;
+	
 
 	Transform::Transform():
 		Component(eComponentType::Transform),

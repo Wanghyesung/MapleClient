@@ -1,7 +1,7 @@
 #include "WGameObjectManager.h"
 #include "WGameObject.h"
 #include "ObjectHeader.h"
-
+#include "ComponentHeader.h"
 #define REGISTER_OBJECT_FACTORY(name, id)               \
 {                                                       \
     name::SetCreateID(id);                              \
@@ -17,6 +17,9 @@ namespace W
 
 	void GameObjectManager::Initialize()
 	{
+	
+
+
 		REGISTER_OBJECT_FACTORY(GameObject			 , 0  )
 		REGISTER_OBJECT_FACTORY(Abnormal			 , 1  )
 		REGISTER_OBJECT_FACTORY(Ariel				 , 2  )

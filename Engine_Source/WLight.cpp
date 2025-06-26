@@ -5,6 +5,7 @@
 
 namespace W
 {
+
 	Light::Light() :
 		Component(eComponentType::Light)
 	{

@@ -49,6 +49,7 @@ namespace W
 		
 		const Vector3& VectorLerp(const Vector3& _vFrom, const Vector3& _vTo, float fRate, bool bClampZ = true);
 
+
 	private:
 		void recv_transform(const Vector3& _vPosition, const Vector3& _vRotation);
 		

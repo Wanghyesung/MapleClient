@@ -77,6 +77,12 @@ namespace renderer
 	{
 		Vector4 vSize;
 	};
+	CBUFFER(ScreenCB, CBSLOT_SCREEN)
+	{
+		Vector2 vScreenSize;
+		Vector4 vScreenColor;
+		Vector2 vPadding;
+	};
 
 
 	extern W::ConstantBuffer* constantBuffer[(UINT)eCBType::END];

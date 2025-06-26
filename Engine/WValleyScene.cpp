@@ -178,11 +178,7 @@ namespace W
 
 	void ValleyScene::mapping_resource()
 	{
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SklaserEffect");
-		auto& vec = ObjectPoolManager::GetObejcts(L"sklaser_hit");
-		
-		for (int i = 0; i < vec.size(); ++i)
-			vec[i]->GetComponent<Animator>()->SetTexture(pAtlas);
+		mapping_texture(L"SklaserEffect", L"sklaser_hit");
 	}
 
 	void ValleyScene::setobject()

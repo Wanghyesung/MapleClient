@@ -69,25 +69,15 @@ namespace W
 		
 		ID3D11Device* GetID3D11Device() { return m_cpDevice.Get(); }
 		ID3D11DeviceContext* GetID3D11DeviceContext() { return m_cpContext.Get(); }
+
+		Vector2 GetViewPortSize() { return m_vViewSize; }
 	private:
 		// 실제 그래픽카드 하드웨어 객체
 		Microsoft::WRL::ComPtr<ID3D11Device> m_cpDevice;
 
-		//  dx11에서 직접적으로 디바이스객체 접근하지않고
-		// 이객체를 이용하여 명령을 내린다.
 		Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_cpContext;
 
-		// 최종적으로 그려질 텍스처(도화지)
-		//Microsoft::WRL::ComPtr<ID3D11Texture2D> m_cpRenderTarget;
-		//
-		//// 렌더타겟에 직접접근하지 않고 레더타겟뷰를 통해서 접근한다.
-		//Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_cpRenderTargetView;
-		//
-		//// 깊이버퍼
-		//Microsoft::WRL::ComPtr<ID3D11Texture2D> m_cpDepthStencilBuffer;
-		//
-		//// 깊이버퍼에 접근할수 있는 뷰
-		//Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_cpDepthStencilView;
+		
 		std::shared_ptr<W::Texture> m_cpRenderTarget;
 		std::shared_ptr<W::Texture> m_cpDepthStencil;
 
@@ -95,6 +85,8 @@ namespace W
 		Microsoft::WRL::ComPtr<IDXGISwapChain> m_cpSwapChain;
 
 		D3D11_VIEWPORT m_tViewPort;
+
+		Vector2 m_vViewSize;
 	};
 
 	inline GraphicDevice_Dx11*& GetDevice()

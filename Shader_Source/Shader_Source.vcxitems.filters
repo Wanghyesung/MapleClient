@@ -105,11 +105,17 @@
     <FxCompile Include="$(MSBuildThisFileDirectory)ParticleCS.hlsl">
       <Filter>CS</Filter>
     </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)LoadingVS.hlsl">
+    <FxCompile Include="$(MSBuildThisFileDirectory)FullScreenVS.hlsl">
       <Filter>VS</Filter>
     </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)LoadingPS.hlsl">
+    <FxCompile Include="$(MSBuildThisFileDirectory)FullScreenPS.hlsl">
       <Filter>PS</Filter>
+    </FxCompile>
+    <FxCompile Include="$(MSBuildThisFileDirectory)FullScreenAnimPS.hlsl">
+      <Filter>PS</Filter>
+    </FxCompile>
+    <FxCompile Include="$(MSBuildThisFileDirectory)FullScreenAnimVS.hlsl">
+      <Filter>VS</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

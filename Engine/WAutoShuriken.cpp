@@ -23,6 +23,10 @@ namespace W
 		mr->SetMaterial(pMater);
 
 
+		Animator* pAnimator = AddComponent<Animator>();
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"shurikenTex");
+		pAnimator->Create(L"shuriken_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(48.0f, 9.f), 2, Vector2(100.f, 100.f), Vector2::Zero, Vector2(96.f, 9.f), 0.05f);
+		pAnimator->Create(L"shuriken_right", pAtlas, Vector2(48.0f, 0.0f), Vector2(-48.0f, 9.f), 2, Vector2(100.f, 100.f), Vector2::Zero, Vector2(96.f, 9.f), 0.05f);
 	}
 
 	AutoShuriken::~AutoShuriken()
@@ -54,6 +58,21 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void AutoShuriken::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		UCHAR cDir = (_iState >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iState & 0xFF;
+
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
+
+		m_iDir = cDir > 0 ? 1 : -1;
+		m_iAnimIdx = cAnimIdx;
 	}
 
 

@@ -3,6 +3,7 @@
 #include "WGameObject.h"
 namespace W
 {
+
 	Animator::Animator() :
 		Component(eComponentType::Animator),
 		m_bStop(false),
@@ -10,7 +11,7 @@ namespace W
 		m_bLoop(false),
 		m_pActiveAnimation(nullptr)
 	{
-
+		
 	}
 	Animator::~Animator()
 	{

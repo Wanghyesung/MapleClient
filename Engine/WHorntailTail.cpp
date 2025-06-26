@@ -23,15 +23,14 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 
-		std::shared_ptr<Texture> pAtlas =
-			Resources::Find<Texture>(L"TailTex");
-		pAtlas->BindShaderResource(eShaderStage::PS, 12);
-
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Tail_stand", nullptr, Vector2(0.f, 0.f), Vector2(550, 450.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(11000.f, 1350.f), 0.15f);
 		pAnim->Create(L"Tail_attack0", nullptr, Vector2(0.f, 450.f), Vector2(550, 450.f), 21, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(11000.f, 1350.f), 0.15f);
 		pAnim->Create(L"Tail_dead", nullptr, Vector2(0.f, 900.f), Vector2(550, 450.f), 10, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(11000.f, 1350.f), 0.15f);
-		
+	
+		MonsterAttackObject* attack1 = new MonsterAttackObject();
+		attack1->SetName(L"tailattack");
+		ObjectPoolManager::AddObjectPool(attack1->GetName(), attack1);
 	}
 	HorntailTail::~HorntailTail()
 	{
@@ -39,7 +38,9 @@ namespace W
 	}
 	void HorntailTail::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"TailTex");
+		Animator* pAnimator = GetComponent<Animator>();
+		pAnimator->SetTexture(pAtlas);
 	}
 
 	

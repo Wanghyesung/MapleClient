@@ -16,6 +16,7 @@ namespace W
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+
 	private:
 		StructedBuffer* m_pBuffer;
 		StructedBuffer* m_pSharedBuffer;

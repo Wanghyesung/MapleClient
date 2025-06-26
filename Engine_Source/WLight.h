@@ -15,6 +15,7 @@ namespace W
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+
 		LightAttribute GetAttribute() { return m_eAttribute; }
 		void SetType(eLightType _eType) { m_eAttribute.type = _eType; }
 		void SetRadius(float _fRadius) { m_eAttribute.radius = _fRadius; }

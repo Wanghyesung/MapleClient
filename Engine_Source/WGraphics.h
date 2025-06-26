@@ -23,6 +23,7 @@
 #define CBSLOT_PLAYERUI			7
 #define CBSLOT_OBJECT			8
 #define CBSLOT_NOISE			9
+#define CBSLOT_SCREEN			10
 
 namespace W
 {
@@ -50,7 +51,8 @@ namespace W
 		PlayerUI = 7,
 		Object = 8,
 		Noise = 9,
-		END = 10,
+		Screen = 10,
+		END = 11,
 	};
 
 	enum class eSamplerType

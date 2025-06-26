@@ -128,6 +128,7 @@ namespace W
 			m_iWidth = _iWidth;
 			m_iHeight = _iHeight;
 		
+			m_vWindowSize = Vector2(m_iWidth, m_iHeight);
 			graphicDevice = std::make_unique<W::GraphicDevice_Dx11>();
 			//제일먼저 호출될때 graphicDevice할당
 			W::GetDevice() = graphicDevice.get();

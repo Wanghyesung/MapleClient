@@ -1,6 +1,7 @@
 #pragma once
 #include "WEntity.h"
 
+
 namespace W
 {
 	
@@ -22,10 +23,13 @@ namespace W
 
 		GameObject* GetOwner() { return m_pOwner; }
 		void SetOwner(GameObject* _pGameObj) { m_pOwner = _pGameObj; }
+
+
+	private:
+
 	private:
 		const eComponentType m_eType;
 		GameObject* m_pOwner;
-
 	};
 }
 

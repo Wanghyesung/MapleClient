@@ -21,9 +21,8 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"ThunderTex");
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Thunder_left", pAtlas, Vector2(0.0f, 0.0f), Vector2(180.f, 845.0f), 30, Vector2(800.f, 800.f), Vector2::Zero, Vector2(5400.f, 845.f), 0.15f);
+		pAnim->Create(L"Thunder_left", nullptr, Vector2(0.0f, 0.0f), Vector2(180.f, 845.0f), 30, Vector2(800.f, 800.f), Vector2::Zero, Vector2(5400.f, 845.f), 0.15f);
 
 		pAnim->Play(L"Thunder_left", true);
 
@@ -36,7 +35,9 @@ namespace W
 
 	void Thunder::Initialize()
 	{
-		
+		Animator* pAnim = GetComponent<Animator>();
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"ThunderTex");
+		pAnim->SetTexture(pAtlas);
 	}
 
 	void Thunder::Update()

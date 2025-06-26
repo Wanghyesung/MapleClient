@@ -1,10 +1,10 @@
 #pragma once
 
 #include "WEntity.h"
-#include "WComponent.h"
-#include "WScript.h"
+#include "ComponentHeader.h"
 #include "WMaterial.h"
-#include "WMeshRenderer.h"
+
+
 
 namespace W
 {
@@ -29,6 +29,7 @@ namespace W
 
 		//네트워크
 		virtual void UpdateState(const wstring& _strStateName, int _iState);
+
 
 		template <typename T>
 		T* GetComponent()
@@ -56,7 +57,7 @@ namespace W
 		T* AddComponent()
 		{
 			T* comp = new T();
-			
+
 			Component* buff =
 				dynamic_cast<Component*>(comp);
 
@@ -77,29 +78,6 @@ namespace W
 		}
 
 		template<typename T>
-		std::vector<T*> GetComponents()
-		{
-			std::vector<T*> comps;
-
-			T* component;
-			for (Component* comp : m_vecComponent)
-			{
-				component = dynamic_cast<T*>(comp);
-				if (component != nullptr)
-					comps.push_back(component);
-			}
-
-			for (Script* script : m_vecScript)
-			{
-				component = dynamic_cast<T*>(script);
-				if (component != nullptr)
-					comps.push_back(component);
-			}
-
-			return comps;
-		}
-
-		template<typename T>
 		T* GetScript()
 		{
 			for (Script* pScript : m_vecScript)
@@ -109,7 +87,7 @@ namespace W
 					return pTarget;
 			}
 		}
-		
+
 		void SetState(eState _eState) { m_eState = _eState; }
 		eState GetState() { return m_eState; }
 
@@ -147,6 +125,7 @@ namespace W
 		eState m_eState;
 		std::vector<Component*> m_vecComponent;
 		std::vector<Script*> m_vecScript;
+
 		eLayerType m_eLayerType;
 
 		bool m_bRender;

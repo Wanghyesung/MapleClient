@@ -60,6 +60,14 @@ cbuffer Noise : register(b9)
     float4 noiseTextureSize;
 }
 
+
+cbuffer Screen : register(b10)
+{
+    float2 ScreenSize;
+    float4 ScreenColor;
+    float2 padding;
+}
+
 struct LightAtrribute
 {
     float4 color;

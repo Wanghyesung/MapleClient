@@ -29,7 +29,6 @@ namespace W
 	}
 	void UpStat::Render()
 	{
-
 		renderer::ObjectCB ObjectCB;
 		ObjectCB.vObjectDir.x = 1;
 		ObjectCB.vObjectColor = Vector4::One;

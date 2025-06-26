@@ -6,7 +6,7 @@
 namespace W
 {
 	UINT GameObject::CREATE_ID = 0;
-
+	
 	GameObject::GameObject() :
 		m_eState(eState::Active),
 		m_iObjectID(0),
@@ -24,13 +24,18 @@ namespace W
 		m_eLayerType(_pOrigin.m_eLayerType),
 		m_iObjectID(0)
 	{
+
 		for (Component* pCom : _pOrigin.m_vecComponent)
 		{
+			if (pCom == nullptr)
+				continue;
+
 			Component* pComponent = pCom->CreateClone();
 			if (!pComponent)
 				continue;
 
 			m_vecComponent.push_back(pComponent);
+
 			pComponent->SetOwner(this);
 		}
 	}
@@ -46,7 +51,7 @@ namespace W
 			comp = nullptr;
 		}
 
-		for (Script* script : m_vecScript)
+		for (Component* script : m_vecScript)
 		{
 			if (script == nullptr)
 				continue;
@@ -68,7 +73,7 @@ namespace W
 			comp->Update();
 		}
 
-		for (Script* script : m_vecScript)
+		for (Component* script : m_vecScript)
 		{
 			script->Update();
 		}
@@ -82,24 +87,14 @@ namespace W
 			comp->LateUpdate();
 		}
 
-		for (Script* script : m_vecScript)
+		for (Component* script : m_vecScript)
 		{
 			script->LateUpdate();
 		}
 	}
 	void GameObject::Render()
 	{
-
-		for (Component* comp : m_vecComponent)
-		{
-			comp->Render();
-		}
-		//상수버퍼로 위치정보 크기정보, 색깔, 업데이트 해줘야한다.
-
-		for (Script* script : m_vecScript)
-		{
-			script->Render();
-		}
+		GetComponent<MeshRenderer>()->Render();	
 	}
 	
 	void GameObject::UpdateState(const wstring& _strStateName, int _iState)

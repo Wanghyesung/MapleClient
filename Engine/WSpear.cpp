@@ -20,7 +20,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(2.1f, 2.1f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SpearTex");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Spear_left", nullptr, Vector2(0.0f, 0.0f), Vector2(185.f, 160.0f), 17, Vector2(220.f, 220.f), Vector2::Zero, Vector2(3145.f, 160.f), 0.15f);
 
@@ -34,7 +33,9 @@ namespace W
 
 	void Spear::Initialize()
 	{
-		
+		Animator* pAnim = GetComponent<Animator>();
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SpearTex");
+		pAnim->SetTexture(pAtlas);
 	}
 
 	void Spear::Update()

@@ -30,6 +30,7 @@ extern W::Application application;
 
 namespace W
 {
+
 	bool CompareZSort(GameObject* a, GameObject* b)
 	{
 		if (a->GetComponent<Transform>()->GetPosition().z

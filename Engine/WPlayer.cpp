@@ -54,6 +54,7 @@ namespace W
 		Resources::Insert(L"Player", pMater);
 		mr->SetMaterial(pMater);
 
+		ThreadPool::LoadingResource<Texture>(L"shurikenTex", L"..\\Resources\\Texture\\Player\\shuriken\\shuriken.png");
 		ThreadPool::LoadingResource<Texture>(L"darkffect", L"..\\Resources\\Texture\\Player\\skill\\effect1.png");
 		ThreadPool::LoadingResource<Texture>(L"jumpeffect", L"..\\Resources\\Texture\\Player\\skill\\effect2.png");
 		ThreadPool::LoadingResource<Texture>(L"luckeffect", L"..\\Resources\\Texture\\Player\\skill\\effect.png");
@@ -325,7 +326,6 @@ namespace W
 		{
 			AutoShuriken* pShuriken = new AutoShuriken();
 			pShuriken->SetName(L"autoSuriken");
-			pShuriken->GetComponent<Transform>()->SetScale(5.f, 5.f, 0.f);
 			ObjectPoolManager::AddObjectPool(pShuriken->GetName(), pShuriken);
 		}
 
@@ -333,6 +333,7 @@ namespace W
 		{
 			Blast* pBlast = new Blast();
 			pBlast->SetName(L"blast");
+			pBlast->GetComponent<Transform>()->SetScale(8.f, 8.f, 0.f);
 			ObjectPoolManager::AddObjectPool(pBlast->GetName(), pBlast);
 		}
 		for (int i = 0; i < 2; ++i)
@@ -342,6 +343,13 @@ namespace W
 			ObjectPoolManager::AddObjectPool(pWind->GetName(), pWind);
 		}
 
+		for (int i = 0; i < 25; ++i)
+		{
+			UltimateShuriken* pShuriken = new UltimateShuriken();
+			pShuriken->SetName(L"ultimate_suriken");
+			pShuriken->GetComponent<Transform>()->SetScale(5.f, 5.f, 0.f);
+			ObjectPoolManager::AddObjectPool(pShuriken->GetName(), pShuriken);
+		}
 
 		GameObject* spawn = new GameObject();
 		spawn->SetName(L"ultimate_spawn");
@@ -473,7 +481,7 @@ namespace W
 		{
 			pEffect = new Effect();
 			pEffect->CreateAnimation(Resources::Find<Texture>(L"windhit"), L"wind_hit", Vector2(0.f, 0.f), Vector2(249.f, 248.f), 6, 1,
-				Vector2(250.f, 250.f), Vector2(0.f, 0.2f), Vector2(1494.f, 248.f), 0.15f);
+				Vector2(250.f, 250.f), Vector2(0.f, 0.2f), Vector2(1494.f, 248.f), 0.07f);
 			pEffect->GetComponent<Transform>()->SetScale(2.5f, 2.5f, 0.f);
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 		}
@@ -494,7 +502,8 @@ namespace W
 		{
 			pEffect = new Effect();
 			pEffect->CreateAnimation(Resources::Find<Texture>(L"blasthit"), L"blast_hit", Vector2(0.f, 0.f),
-				Vector2(285.f, 284.f), 8, 1, Vector2(300.f, 300.f), Vector2(0.f, 0.f), Vector2(2280.f, 284.f), 0.1f);
+				Vector2(285.f, 284.f), 8, 1, Vector2(300.f, 300.f), Vector2(0.f, 0.f), Vector2(2280.f, 284.f), 0.05f);
+			pEffect->GetComponent<Transform>()->SetScale(5.f, 5.f, 0.f);
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 		}
 

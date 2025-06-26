@@ -2,9 +2,11 @@
 
 namespace W
 {
+
 	Component::Component(eComponentType _eType) :
 		m_eType(_eType)
 	{
+		
 	}
 	Component::Component(const Component& _pOrigin) :
 		m_eType(_pOrigin.m_eType),

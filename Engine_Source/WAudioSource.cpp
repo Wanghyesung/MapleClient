@@ -5,6 +5,7 @@
 
 namespace W
 {
+
 	AudioSource::AudioSource()
 		: Component(eComponentType::AudioSource)
 		, mAudioClip(nullptr)

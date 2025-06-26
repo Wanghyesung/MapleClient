@@ -5,6 +5,7 @@
 
 namespace W
 {
+
 	AudioListener::AudioListener()
 		: Component(eComponentType::AudioListener)
 	{

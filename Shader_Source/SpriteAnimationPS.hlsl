@@ -34,11 +34,11 @@ float4 main(VSOut In) : SV_TARGET
         float2 diff = (AtlasSize - SpriteSize) / 2.0f;
         float2 UV = (SpriteLeftTop - diff - SpriteOffset)
                 + (AtlasSize * In.UV);
-    
+        
         if (UV.x < SpriteLeftTop.x || UV.x > SpriteLeftTop.x + SpriteSize.x
             || UV.y < SpriteLeftTop.y || UV.y > SpriteLeftTop.y + SpriteSize.y)
             discard;
-      
+            
         UV.x *= Dir.x;
       
    

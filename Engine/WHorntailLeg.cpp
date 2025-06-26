@@ -22,15 +22,19 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 
-		std::shared_ptr<Texture> pAtlas =
-			Resources::Find<Texture>(L"LegTex");
-		pAtlas->BindShaderResource(eShaderStage::PS, 12);
-
 		Animator* pAnim = AddComponent<Animator>();
-		pAnim->Create(L"Leg_stand", nullptr, Vector2(0.f, 0.f), Vector2(600.f, 300.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10800.f, 1200.f),0.15f);
+		pAnim->Create(L"Leg_stand", nullptr, Vector2(0.f, 0.f), Vector2(600.f, 300.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10800.f, 1200.f), 0.15f);
 		pAnim->Create(L"Leg_attack0", nullptr, Vector2(0.f, 300.f), Vector2(600.f, 300.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10800.f, 1200.f), 0.15f);
 		pAnim->Create(L"Leg_attack1", nullptr, Vector2(0.f, 600.f), Vector2(600.f, 300.f), 18, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10800.f, 1200.f), 0.15f);
 		pAnim->Create(L"Leg_dead", nullptr, Vector2(0.f, 900.f), Vector2(600.f, 300.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10800.f, 1200.f), 0.15f);
+
+		MonsterAttackObject* attack1 = new MonsterAttackObject();
+		attack1->SetName(L"legattack1");
+		ObjectPoolManager::AddObjectPool(attack1->GetName(), attack1);
+
+		MonsterAttackObject* attack2 = new MonsterAttackObject();
+		attack2->SetName(L"legattack2");
+		ObjectPoolManager::AddObjectPool(attack2->GetName(), attack2);
 
 	}
 	HorntailLeg::~HorntailLeg()
@@ -41,7 +45,9 @@ namespace W
 
 	void HorntailLeg::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"LegTex");
+		Animator* pAnimator = GetComponent<Animator>();
+		pAnimator->SetTexture(pAtlas);
 	}
 	void HorntailLeg::Update()
 	{

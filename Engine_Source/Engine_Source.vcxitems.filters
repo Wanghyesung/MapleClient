@@ -356,6 +356,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WPathManager.h">
       <Filter>PathManager</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ComponentHeader.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)WMath.inl">

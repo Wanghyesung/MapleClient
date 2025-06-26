@@ -20,7 +20,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(1.1f, 1.1f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"FireTex");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Fire_left", nullptr, Vector2(0.0f, 0.0f), Vector2(111.f, 110.0f), 30, Vector2(110.f, 110.f), Vector2::Zero, Vector2(3330.f, 110.f), 0.15f);
 
@@ -35,7 +34,9 @@ namespace W
 
 	void Fire::Initialize()
 	{
-	
+		Animator* pAnim = GetComponent<Animator>();
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"FireTex");
+		pAnim->SetTexture(pAtlas);
 	}
 
 	void Fire::Update()

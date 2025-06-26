@@ -14,6 +14,7 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ComponentHeader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)temTex.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WPathManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WThreadPool.h" />

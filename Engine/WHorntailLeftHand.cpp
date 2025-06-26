@@ -23,8 +23,7 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"LeftHandTex");
-		pAtlas->BindShaderResource(eShaderStage::PS, 12);
+	
 
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"LeftHand_stand", nullptr, Vector2(0.f, 0.f), Vector2(500.f, 300.f), 5, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(9000.f, 1500.f), 0.15f);
@@ -32,6 +31,10 @@ namespace W
 		pAnim->Create(L"LeftHand_attack1", nullptr, Vector2(0.f, 600.f), Vector2(500.f, 300.f), 16, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(9000.f, 1500.f), 0.15f);
 		pAnim->Create(L"LeftHand_attack2", nullptr, Vector2(0.f, 900.f), Vector2(500.f, 300.f), 17, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(9000.f, 1500.f), 0.15f);
 		pAnim->Create(L"LeftHand_dead", nullptr, Vector2(0.f, 1200.f), Vector2(500.f, 300.f), 16, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(9000.f, 1500.f), 0.15f);
+
+		Spear* pSpear = new Spear();
+		pSpear->SetName(L"spear");
+		ObjectPoolManager::AddObjectPool(pSpear->GetName(), pSpear);
 
 	}
 	HorntailLeftHand::~HorntailLeftHand()
@@ -42,7 +45,9 @@ namespace W
 	
 	void HorntailLeftHand::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"LeftHandTex");
+		Animator* pAnimator = GetComponent<Animator>();
+		pAnimator->SetTexture(pAtlas);
 	}
 	void HorntailLeftHand::Update()
 	{

@@ -29,6 +29,7 @@ namespace W
 		std::shared_ptr<Material> GetMaterial() { return m_pMaterial;}
 		std::shared_ptr<Mesh> GetMesh() { return m_pMesh; }
 
+
 	private:
 		std::shared_ptr<Mesh> m_pMesh;
 		//Shader* m_pShader;

@@ -20,9 +20,6 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 
-		std::shared_ptr<Texture> pAtlas =
-			Resources::Find<Texture>(L"WingTex");
-		pAtlas->BindShaderResource(eShaderStage::PS, 12);
 
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Wing_stand", nullptr, Vector2(0.f, 0.f), Vector2(1000.f, 600.f), 8, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(15000.f, 3600.f), 0.15f);
@@ -40,7 +37,9 @@ namespace W
 	}
 	void HorntailWing::Initialize()
 	{
-	
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"WingTex");
+		Animator* pAnimator = GetComponent<Animator>();
+		pAnimator->SetTexture(pAtlas);
 	}
 	void HorntailWing::Update()
 	{

@@ -596,8 +596,11 @@ namespace W
 			, (float)(winRect.bottom - winRect.top)// + fDiffY
 			, 0.0f, 1.0f
 		};
-		BindViewPort(&m_tViewPort);
+
+		m_vViewSize.x = m_tViewPort.Width;
+		m_vViewSize.y = m_tViewPort.Height;
 		
+		BindViewPort(&m_tViewPort);
 	}
 	void GraphicDevice_Dx11::Draw()
 	{	
@@ -641,6 +644,7 @@ namespace W
 	}
 
 
+	
 	
 
 }

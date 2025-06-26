@@ -37,6 +37,7 @@ namespace W
 		virtual void LateUpdate();
 		virtual void Render();
 
+
 		void Create(const std::wstring& _strName,
 			std::shared_ptr<Texture> _pAtlas,
 			Vector2 _vLeftTop,

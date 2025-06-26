@@ -1,22 +1,29 @@
 #include "WCaveScene.h"
-#include "WShader.h"
 #include "WMeshRenderer.h"
-#include "WMesh.h"
 #include "WResources.h"
 #include "WGameObject.h"
 #include "WTransform.h"
 #include "WCamera.h"
 #include "WCameraScript.h"
-#include "WGround.h"
-#include "WInput.h"
+
 #include "WSceneManger.h"
 #include "WGround.h"
 #include "WRenderer.h"
 #include "WStone.h"
 #include "WHorntail.h"
 #include "WLadder.h"
-#include "WThreadPool.h"
 #include "WEffect.h"
+
+#include "WHorntailHeadA.h"
+#include "WHorntailHeadB.h"
+#include "WHorntailHeadC.h"
+#include "WHorntailLeftHand.h"
+#include "WHorntailRightHand.h"
+#include "WHorntailLeg.h"
+#include "WHorntailTail.h"
+#include "WHorntailWing.h"
+
+
 namespace W
 {
 	CaveScene::CaveScene()
@@ -44,24 +51,15 @@ namespace W
 		m_vecResource.push_back(std::make_pair(L"HorntailStartTex", L"..\\Resources\\Texture\\Monster\\Horntail\\start.png"));
 		m_vecResource.push_back(std::make_pair(L"HorntailDead", L"..\\Resources\\Texture\\Monster\\Horntail\\dead.png"));
 
-
-		//Resources::Load<Texture>(L"icebreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack0_hit.png");
-		//
-		//Resources::Load<Texture>(L"iceEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack1_hit.png");
-		//
-		//Resources::Load<Texture>(L"firebreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack1_hit.png");
-		//
-		//Resources::Load<Texture>(L"fireEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack2_hit.png");
-		//
-		//Resources::Load<Texture>(L"thunderbreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack1_hit.png");
-		//
-		//Resources::Load<Texture>(L"thunderEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack2_hit.png");
-		//
-		//Resources::Load<Texture>(L"legattack1Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack1_hit.png");
-		//
-		//Resources::Load<Texture>(L"legattack2Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack2_hit.png");
-		//
-		//Resources::Load<Texture>(L"tailEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\tail\\attack0_hit.png");
+		m_vecResource.push_back(std::make_pair(L"icebreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack0_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"iceEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack1_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"firebreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack1_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"fireEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack2_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"thunderbreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack1_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"thunderEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack2_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"legattack1Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack1_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"legattack2Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack2_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"tailEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\tail\\attack0_hit.png"));
 
 	}
 	CaveScene::~CaveScene()
@@ -71,7 +69,7 @@ namespace W
 	void CaveScene::Initialize()
 	{
 		create_object();
-		create_effect();
+		add_objectpool();
 
 		CreateBackground();
 		{
@@ -120,6 +118,12 @@ namespace W
 	{
 		Scene::OnExit();//리소스 해제
 
+	}
+	void CaveScene::SendEnter()
+	{
+		mapping_resource();
+
+		Scene::SendEnter();
 	}
 	void CaveScene::CreateBackground()
 	{
@@ -174,46 +178,109 @@ namespace W
 		pLadder2->GetComponent<Transform>()->SetScale(1.f * 0.6f, 4.5f * 0.6f, 0.f);
 		pLadder2->Initialize();
 		AddGameObject(eLayerType::Ladder, pLadder2);
-
-
 	}
-	void CaveScene::create_effect()
+
+
+	void CaveScene::add_objectpool()
 	{
-		//std::shared_ptr<Texture> pTex = Resources::Find<Texture>(L"icebreathEffect");
-		//Effect* pEffect = new Effect();
-		//pEffect->CreateAnimation(pTex, L"icebreath", Vector2(0.f, 0.f), Vector2(110.f, 113.f), 2, 1, Vector2(100.f, 100.f), Vector2::Zero, 0.2f);
-		//ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-		//
-		//MonsterAttackObject* breath = new MonsterAttackObject();
-		//breath->SetName(L"icebreath");
-		//ObjectPoolManager::AddObjectPool(breath->GetName(), breath);
-		//
-		//pTex = Resources::Find<Texture>(L"iceEffect");
-		//pEffect = new Effect();
-		//pEffect->CreateAnimation(pTex, L"ice", Vector2(0.f, 0.f), Vector2(118.f, 87.f), 2, 1, Vector2(100.f, 100.f), Vector2::Zero, 0.2f);
+		Horntail* pHorntail = new Horntail();
+		ObjectPoolManager::AddObjectPool(pHorntail->GetName(), pHorntail);
 
+		HorntailHeadA* pHeadA = new HorntailHeadA();
+		ObjectPoolManager::AddObjectPool(pHeadA->GetName(), pHeadA);
 
-		//ThreadPool::LoadingResource<Texture>()
-		//이거도 위로 보낼지 결정;
-		Resources::Load<Texture>(L"icebreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack0_hit.png");
+		HorntailHeadB* pHeadB = new HorntailHeadB();
+		ObjectPoolManager::AddObjectPool(pHeadB->GetName(), pHeadB);
 
-		Resources::Load<Texture>(L"iceEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\attack1_hit.png");
+		HorntailHeadC* pHeadC = new HorntailHeadC();
+		ObjectPoolManager::AddObjectPool(pHeadC->GetName(), pHeadC);
 
-		Resources::Load<Texture>(L"firebreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack1_hit.png");
+		HorntailLeftHand* pLHand = new HorntailLeftHand();
+		ObjectPoolManager::AddObjectPool(pLHand->GetName(), pLHand);
 
-		Resources::Load<Texture>(L"fireEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\attack2_hit.png");
+		HorntailRightHand* pRHand = new HorntailRightHand();
+		ObjectPoolManager::AddObjectPool(pRHand->GetName(), pRHand);
 
-		Resources::Load<Texture>(L"thunderbreathEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack1_hit.png");
+		HorntailLeg* pLeg = new HorntailLeg();
+		ObjectPoolManager::AddObjectPool(pLeg->GetName(), pLeg);
 
-		Resources::Load<Texture>(L"thunderEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\attack2_hit.png");
+		HorntailWing* pWing = new HorntailWing();
+		ObjectPoolManager::AddObjectPool(pWing->GetName(), pWing);
 
-		Resources::Load<Texture>(L"legattack1Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack1_hit.png");
+		HorntailTail* pTail = new HorntailTail();
+		ObjectPoolManager::AddObjectPool(pTail->GetName(), pTail);
 
-		Resources::Load<Texture>(L"legattack2Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack2_hit.png");
+		Effect* pEffect = nullptr;
+		
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr,L"icebreath_hit", Vector2(0.f, 0.f), Vector2(110.f, 113.f), 2, 1, Vector2(100.f, 100.f), Vector2::Zero, Vector2(220.f,113.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
 
-		Resources::Load<Texture>(L"tailEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\tail\\attack0_hit.png");
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"ice_hit", Vector2(0.f, 0.f), Vector2(118.f, 87.f), 2, 1, Vector2(100.f, 100.f), Vector2::Zero, Vector2(236.f, 87.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
 
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"firebreath_hit", Vector2(0.f, 0.f), Vector2(99.f, 107.f), 2, 1, Vector2(100.f, 100.f), Vector2::Zero, Vector2(198.f, 107.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"fire_hit", Vector2(0.f, 0.f), Vector2(92.f, 91.f), 4, 1, Vector2(100.f, 100.f), Vector2::Zero, Vector2(368.f, 91.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"thunderbreath_hit", Vector2(0.f, 0.f), Vector2(72.f, 82.f), 4, 1, Vector2(100.f, 100.f), Vector2::Zero, Vector2(288.f, 82.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"thunder_hit", Vector2(0.f, 0.f), Vector2(78.f, 75.f), 5, 1, Vector2(100.f, 100.f), Vector2::Zero, Vector2(390.f, 75.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"legattack1_hit", Vector2(0.f, 0.f), Vector2(126.f, 107.f), 5, 1, Vector2(100.f, 100.f), Vector2::Zero, Vector2(630.f, 107.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"legattack2_hit", Vector2(0.f, 0.f), Vector2(197, 119.f), 6, 1, Vector2(100.f, 100.f), Vector2(0.f, 0.3f), Vector2(1182.f, 119.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"tailattack_hit", Vector2(0.f, 0.f), Vector2(132.f, 120.f), 5, 1, Vector2(100.f, 100.f), Vector2(0.f, 0.3f), Vector2(690.f, 120.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+	}
 
-	}	
+	void CaveScene::mapping_resource()
+	{
+		mapping_texture(L"icebreathEffect", L"icebreath_hit");
+		mapping_texture(L"iceEffect", L"ice_hit");
+		mapping_texture(L"firebreathEffect", L"firebreath_hit");
+		mapping_texture(L"fireEffect", L"fire_hit");
+		mapping_texture(L"thunderbreathEffect", L"thunderbreath_hit");
+		mapping_texture(L"thunderEffect", L"thunder_hit");
+		mapping_texture(L"legattack1Effect", L"legattack1_hit");
+		mapping_texture(L"legattack2Effect", L"legattack2_hit");
+		mapping_texture(L"tailEffect", L"tailattack_hit");
+	}
 
 }

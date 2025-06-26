@@ -34,7 +34,6 @@ namespace W
 		
 		virtual void SendEnter();
 
-
 		virtual void OnEnter();
 		virtual void OnExit();
 
@@ -93,6 +92,8 @@ namespace W
 	protected:
 		virtual void add_objectpool() {};
 		virtual void mapping_resource() {}; //생성된 리소스를 오브젝트 풀에 있는 오브젝트와 맵핑
+
+		void mapping_texture(const wstring& _strTexName, const wstring& _strObjectName, const wstring& _strObjectAnimName= L"");
 	protected:
 		std::vector<std::pair<std::wstring, std::wstring>> m_vecResource;
 

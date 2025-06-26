@@ -24,7 +24,7 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"HeadATex");
+		//std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"HeadATex");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"HeadA_stand", nullptr, Vector2(0.f, 0.f), Vector2(550.f, 650.f), 10, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(11550.f, 3250.f), 0.15f);
 		pAnim->Create(L"HeadA_attack0", nullptr, Vector2(0.f, 650.f), Vector2(550.f, 650.f), 21, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(11550.f, 3250.f), 0.15f);
@@ -32,6 +32,17 @@ namespace W
 		pAnim->Create(L"HeadA_attack2", nullptr, Vector2(0.f, 1950.f), Vector2(550.f, 650.f), 16, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(11550.f, 3250.f), 0.15f);
 		pAnim->Create(L"HeadA_dead", nullptr, Vector2(0.f, 2600.f), Vector2(550.f, 650.f), 15, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(11550.f, 3250.f), 0.15f);
 
+
+		MonsterAttackObject* breath = new MonsterAttackObject();
+		breath->SetName(L"icebreath");
+		ObjectPoolManager::AddObjectPool(breath->GetName(), breath);
+
+		for (int i = 0; i < 5; ++i)
+		{
+			Ice* pIce = new Ice();
+			pIce->SetName(L"ice");
+			ObjectPoolManager::AddObjectPool(pIce->GetName(), pIce);
+		}
 	}
 
 	HorntailHeadA::~HorntailHeadA()
@@ -42,7 +53,9 @@ namespace W
 
 	void HorntailHeadA::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"HeadATex");
+		Animator* pAnimator = GetComponent<Animator>();
+		pAnimator->SetTexture(pAtlas);
 	}
 
 	void HorntailHeadA::Update()
@@ -52,7 +65,6 @@ namespace W
 
 	void HorntailHeadA::LateUpdate()
 	{
-		
 		Monster::LateUpdate();
 	}
 
