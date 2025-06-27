@@ -7,6 +7,8 @@ namespace W
 {
 	HorntailWing::HorntailWing()
 	{
+		SetRender(false);
+
 		SetName(L"Wing");
 
 		MeshRenderer* pRenderer = AddComponent<MeshRenderer>();
@@ -29,6 +31,8 @@ namespace W
 		pAnim->Create(L"Wing_attack1", nullptr, Vector2(0.f, 1800.f), Vector2(1000.f, 600.f), 10, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(15000.f, 3600.f), 0.15f);
 		pAnim->FindAnimation(L"Wing_attack1")->Create(L"Wing_attack1", nullptr, Vector2(0.f, 2400.f), Vector2(1000.f, 600.f), 9, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(15000.f, 3600.f), 0.15f);
 		pAnim->Create(L"Wing_dead", nullptr, Vector2(0.f, 3000.f), Vector2(1000.f, 600.f), 15, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(15000.f, 3600.f), 0.15f);
+
+		GetComponent<Transform>()->SetScale(11.f, 11.f, 0.f);
 	}
 
 	HorntailWing::~HorntailWing()
@@ -63,4 +67,8 @@ namespace W
 		GameObject::Render();
 	}
 	
+	void HorntailWing::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Monster::UpdateState(_strStateName, _iState);
+	}
 }

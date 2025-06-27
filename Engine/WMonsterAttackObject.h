@@ -15,6 +15,7 @@ namespace W
 		virtual void Update()override;
 		virtual void LateUpdate()override;
 		virtual void Render()override;
+		virtual void UpdateState(const wstring& _strStateName, int _iState) override;
 
 	public:
 		void SetOnwer(Monster* _pOnwer) { m_pOwner = _pOnwer; }

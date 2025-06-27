@@ -18,13 +18,10 @@ namespace W
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
 
-		GetComponent<Transform>()->SetScale(1.1f, 1.1f, 0.f);
-
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Fire_left", nullptr, Vector2(0.0f, 0.0f), Vector2(111.f, 110.0f), 30, Vector2(110.f, 110.f), Vector2::Zero, Vector2(3330.f, 110.f), 0.15f);
 
-		pAnim->Play(L"Fire_left", true);
-
+		GetComponent<Transform>()->SetScale(1.1f, 1.1f, 0.f);
 	}
 
 	Fire::~Fire()
@@ -37,6 +34,8 @@ namespace W
 		Animator* pAnim = GetComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"FireTex");
 		pAnim->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 
 	void Fire::Update()
@@ -62,4 +61,8 @@ namespace W
 		GameObject::Render();
 	}
 	
+	void Fire::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
+	}
 }

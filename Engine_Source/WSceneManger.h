@@ -47,10 +47,11 @@ namespace W
 			auto iter = hashUI.begin();
 			for (iter; iter != hashUI.end(); ++iter )
 			{
-				UI* pUI = (UI*)iter->second;
+				UI* pUI = dynamic_cast<UI*>(iter->second);
+				if (pUI == nullptr)
+					continue;
 
 				std::queue<UI*> queue;
-
 				queue.push(pUI);
 
 				while (!queue.empty())
@@ -63,7 +64,7 @@ namespace W
 						return pTargetUI;
 					else
 					{
-						std::vector<UI*> vecChildUI = pTarget->GetChildUI();
+						const std::vector<UI*>& vecChildUI = pTarget->GetChildUI();
 						for (UI* pChildUI : vecChildUI)
 						{
 							queue.push(pChildUI);

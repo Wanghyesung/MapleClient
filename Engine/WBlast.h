@@ -15,10 +15,6 @@ namespace W
 		virtual void Render() override;
 		
 		void UpdateState(const wstring& _strStateName, int _iState);
-		
-		void SetDir(int _iDir);
-	private:
-		int m_iDir;
 
 		
 	};

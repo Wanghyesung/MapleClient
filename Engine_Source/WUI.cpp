@@ -14,7 +14,8 @@ namespace W
 		m_bLbntDown(false),
 		m_bMouseOn(false),
 		m_pParentUI(nullptr),
-		m_vecChildUI{}
+		m_vecChildUI{},
+		m_iRenderOrder(0)
 	{
 		SetClientObject(true);
 	}
@@ -23,7 +24,8 @@ namespace W
 		m_bLbntDown(false),
 		m_bMouseOn(false),
 		m_pParentUI(nullptr),
-		m_vecChildUI{}
+		m_vecChildUI{},
+		m_iRenderOrder(0)
 	{
 		SetClientObject(true);
 	}
@@ -50,15 +52,7 @@ namespace W
 	}
 	void UI::LateUpdate()
 	{
-		//여기서 부모 UI랑 같이 움직이게
-		//UI* pParentUI = GetParentUI();
-		//if (pParentUI != nullptr)
-		//{
-		//	float fParentZ = pParentUI->GetComponent<Transform>()->GetPosition().z;
-		//	Vector3 vPosition = GetComponent<Transform>()->GetPosition();
-		//	GetComponent<Transform>()->SetPosition(vPosition.x, vPosition.y, (vPosition.z + fParentZ));
-		//}
-
+		
 		GameObject::LateUpdate();
 
 		MouseOnCheck();
@@ -87,26 +81,23 @@ namespace W
 	{
 
 	}
-	void UI::AddChildUI(UI* _pUI , bool _bMove)
+	void UI::AddChildUI(UI* _pUI , bool _bMove, int _iOrderIdx)
 	{
 		m_vecChildUI.push_back(_pUI);
-		_pUI->m_pParentUI = this;
+		if (_iOrderIdx == -1)
+			_pUI->m_iRenderOrder = m_vecChildUI.size() - 1;
+		else
+			_pUI->m_iRenderOrder = _iOrderIdx;
 
 		//자식으로 설정될때 딱 한번만 호출
 		//ture이면 부모 기준으로 물체 이동
+		_pUI->m_pParentUI = this;
 		if (_bMove)
-		{
 			MoveUI(_pUI);
-		}
 		else
-		{
-			Transform* pUITransform = _pUI->GetComponent<Transform>();
-			Vector3 vUITransform = pUITransform->GetPosition();
-			Transform* pTransform = GetComponent<Transform>();
-			float z = pTransform->GetPosition().z - 0.01f;
-			pUITransform->SetPosition(vUITransform.x, vUITransform.y,z);
-		}
-			
+			set_child_position(_pUI);
+		
+		sort_child();
 	}
 
 	void UI::DeleteChildUI(UI* _pUI)
@@ -201,6 +192,24 @@ namespace W
 				queue.push(ChildUI);
 		}
 
+	}
+
+	void UI::sort_child()
+	{
+		sort(m_vecChildUI.begin(), m_vecChildUI.end(),
+			[](UI* a, UI* b)
+			{
+				return a->GetRenderOrder() < b->GetRenderOrder();
+			});
+	}
+
+	void UI::set_child_position(UI* _pChildUI)
+	{
+		Transform* pUITransform = _pChildUI->GetComponent<Transform>();
+		Vector3 vUITransform = pUITransform->GetPosition();
+		Transform* pTransform = GetComponent<Transform>();
+		float z = pTransform->GetPosition().z - 0.01f;
+		pUITransform->SetPosition(vUITransform.x, vUITransform.y, z);
 	}
 	
 }

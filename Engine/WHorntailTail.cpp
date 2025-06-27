@@ -31,6 +31,8 @@ namespace W
 		MonsterAttackObject* attack1 = new MonsterAttackObject();
 		attack1->SetName(L"tailattack");
 		ObjectPoolManager::AddObjectPool(attack1->GetName(), attack1);
+
+		GetComponent<Transform>()->SetScale(11.f, 11.f, 0.f);
 	}
 	HorntailTail::~HorntailTail()
 	{
@@ -66,6 +68,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void HorntailTail::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Monster::UpdateState(_strStateName, _iState);
 	}
 	
 }

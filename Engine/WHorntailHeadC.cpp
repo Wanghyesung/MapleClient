@@ -11,6 +11,8 @@ namespace W
 {
 	HorntailHeadC::HorntailHeadC() 
 	{
+		SetRender(false);
+
 		SetName(L"HeadC");
 
 		MeshRenderer* pRenderer = AddComponent<MeshRenderer>();
@@ -40,6 +42,8 @@ namespace W
 			pThunder->SetName(L"thunder");
 			ObjectPoolManager::AddObjectPool(pThunder->GetName(), pThunder);
 		}
+
+		GetComponent<Transform>()->SetScale(11.f, 11.f, 0.f);
 	}
 
 	HorntailHeadC::~HorntailHeadC()
@@ -77,6 +81,10 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+	void HorntailHeadC::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Monster::UpdateState(_strStateName, _iState);
 	}
 
 }

@@ -11,6 +11,8 @@ namespace W
 {
 	HorntailHeadB::HorntailHeadB() 
 	{
+		SetRender(false);
+
 		SetName(L"HeadB");
 
 		MeshRenderer* pRenderer = AddComponent<MeshRenderer>();
@@ -43,6 +45,8 @@ namespace W
 			pFire->SetName(L"fire");
 			ObjectPoolManager::AddObjectPool(pFire->GetName(), pFire);
 		}
+
+		GetComponent<Transform>()->SetScale(11.f, 11.f, 0.f);
 	}
 
 	HorntailHeadB::~HorntailHeadB()
@@ -82,6 +86,9 @@ namespace W
 		GameObject::Render();
 	}
 
-
+	void HorntailHeadB::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Monster::UpdateState(_strStateName, _iState);
+	}
 	
 }

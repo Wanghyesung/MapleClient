@@ -19,13 +19,11 @@ namespace W
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
 
-		GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
 
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Thunder_left", nullptr, Vector2(0.0f, 0.0f), Vector2(180.f, 845.0f), 30, Vector2(800.f, 800.f), Vector2::Zero, Vector2(5400.f, 845.f), 0.15f);
 
-		pAnim->Play(L"Thunder_left", true);
-
+		GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
 	}
 
 	Thunder::~Thunder()
@@ -38,6 +36,8 @@ namespace W
 		Animator* pAnim = GetComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"ThunderTex");
 		pAnim->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 
 	void Thunder::Update()
@@ -52,7 +52,7 @@ namespace W
 	void Thunder::Render()
 	{
 		renderer::ObjectCB ObjectCB;
-		ObjectCB.vObjectDir.x = 1;
+		ObjectCB.vObjectDir.x = m_iDir;
 		ObjectCB.vObjectColor = Vector4::One;
 
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::Object];
@@ -61,6 +61,10 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+	void Thunder::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 	
 }

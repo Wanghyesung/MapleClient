@@ -20,7 +20,7 @@ namespace W
 			Resources::Load<Texture>(L"upattack", L"..\\Resources\\Texture\\Abnormal\\up.png");
 		pMater->SetTexture(pAtlas);
 
-		GetComponent<Transform>()->SetScale(1.f * 0.19f,1.f * 0.23f,0.f);
+		GetComponent<Transform>()->SetScale(1.f * 0.19f, 1.f * 0.23f,0.f);
 
 	}
 	AttackUp::~AttackUp()
@@ -43,4 +43,5 @@ namespace W
 	{
 		UpStat::Render();
 	}
+
 }

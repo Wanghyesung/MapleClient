@@ -21,7 +21,7 @@ namespace W
 		virtual void MouseLbtnClicked();//UI안에서 누르고 떘을 떄
 
 		UI* GetParentUI() { return m_pParentUI; }
-		void AddChildUI(UI* _pUI, bool _bMove = true);
+		void AddChildUI(UI* _pUI, bool _bMove = true, int _iOrderIdx = -1);
 
 		//내 벡터에만 지우기
 		void DeleteChildUI(UI* _pUI);
@@ -34,8 +34,13 @@ namespace W
 
 		//private -> public
 		void MouseOnCheck();
+		int GetRenderOrder() { return m_iRenderOrder; }
 
-		const std::vector<UI*> GetChildUI() { return m_vecChildUI; }
+		const std::vector<UI*>& GetChildUI() { return m_vecChildUI; }
+
+	private:
+		void sort_child();
+		void set_child_position(UI* _pChildUI);
 
 	private:
 		//자식 UI 업데이트
@@ -53,6 +58,8 @@ namespace W
 
 		bool m_bMouseOn;
 		bool m_bLbntDown;
+		//렌더링 순서
+		int m_iRenderOrder;
 
 		friend class UIManger;
 	};

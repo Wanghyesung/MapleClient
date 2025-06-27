@@ -61,5 +61,10 @@ namespace W
 		//BattleManager::Restore_move(m_pTarget, BattleManager::eAbnormalType::SealSkill);
 	}
 
+	void SealSkill::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Abnormal::UpdateState(_strStateName, _iState);
+	}
+
 
 }

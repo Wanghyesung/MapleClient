@@ -18,6 +18,12 @@ namespace W
 
 		virtual void UpdateState(const wstring& _strStateName, int _iAnim) override;
 
+		int GetDir() { return m_iDir; }
+		void SetDir(int _iDir) { m_iDir = _iDir; }
+
+	protected:
+		int m_iDir;
+
 	};
 }
 

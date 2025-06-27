@@ -9,6 +9,8 @@ namespace W
 {
 	HorntailRightHand::HorntailRightHand()
 	{
+		SetRender(false);
+
 		SetName(L"RightHand");
 
 		MeshRenderer* pRenderer = AddComponent<MeshRenderer>();
@@ -33,6 +35,8 @@ namespace W
 		Spear* pSpear = new Spear();
 		pSpear->SetName(L"spear");
 		ObjectPoolManager::AddObjectPool(pSpear->GetName(), pSpear);
+
+		GetComponent<Transform>()->SetScale(11.f, 11.f, 0.f);
 	}
 	HorntailRightHand::~HorntailRightHand()
 	{
@@ -67,6 +71,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void HorntailRightHand::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Monster::UpdateState(_strStateName, _iState);
 	}
 	
 

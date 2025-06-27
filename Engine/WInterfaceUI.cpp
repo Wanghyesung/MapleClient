@@ -82,7 +82,7 @@ namespace W
 
 			pNumber->GetComponent<Transform>()->SetPosition(2.22f + x, -3.1f + y, -8.f);
 			pNumber->GetComponent<Transform>()->SetScale(1.8f * 0.1f, 0.9f * 0.1f, 0.f);
-			AddChildUI(pNumber);
+			AddChildUI(pNumber, true, 100);
 			x += 0.34f;
 		}
 		x = 0;

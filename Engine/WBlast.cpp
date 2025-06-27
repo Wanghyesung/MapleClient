@@ -68,16 +68,5 @@ namespace W
 		m_iDir = cDir > 0 ? 1 : -1;
 		m_iAnimIdx = cAnimIdx;
 	}
-	
-	void Blast::SetDir(int _iDir)
-	{
-		Animator* pAnim = GetComponent<Animator>();
-		m_iDir = _iDir;
-		if (m_iDir > 0)
-			pAnim->Play(L"right", true);
-		else
-			pAnim->Play(L"left", true);
 
-	}
-	
 }

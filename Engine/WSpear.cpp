@@ -18,12 +18,10 @@ namespace W
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
 
-		GetComponent<Transform>()->SetScale(2.1f, 2.1f, 0.f);
-
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Spear_left", nullptr, Vector2(0.0f, 0.0f), Vector2(185.f, 160.0f), 17, Vector2(220.f, 220.f), Vector2::Zero, Vector2(3145.f, 160.f), 0.15f);
 
-		pAnim->Play(L"Spear_left", true);
+		GetComponent<Transform>()->SetScale(2.1f, 2.1f, 0.f);
 	}
 
 	Spear::~Spear()
@@ -36,6 +34,8 @@ namespace W
 		Animator* pAnim = GetComponent<Animator>();
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SpearTex");
 		pAnim->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 
 	void Spear::Update()
@@ -60,6 +60,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void Spear::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 
 }

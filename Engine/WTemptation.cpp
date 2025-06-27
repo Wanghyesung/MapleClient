@@ -53,9 +53,16 @@ namespace W
 		Abnormal::Render();
 	}
 
+	void Temptation::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Abnormal::UpdateState(_strStateName, _iState);
+	}
+
 	void Temptation::Restore()
 	{
+
 	}
+
 
 	
 }

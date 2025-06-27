@@ -9,6 +9,8 @@ namespace W
 {
 	HorntailLeg::HorntailLeg()
 	{
+		SetRender(false);
+
 		SetName(L"Leg");
 
 		MeshRenderer* pRenderer = AddComponent<MeshRenderer>();
@@ -35,6 +37,8 @@ namespace W
 		MonsterAttackObject* attack2 = new MonsterAttackObject();
 		attack2->SetName(L"legattack2");
 		ObjectPoolManager::AddObjectPool(attack2->GetName(), attack2);
+
+		GetComponent<Transform>()->SetScale(11.f, 11.f, 0.f);
 
 	}
 	HorntailLeg::~HorntailLeg()
@@ -69,6 +73,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void HorntailLeg::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Monster::UpdateState(_strStateName, _iState);
 	}
 	
 }

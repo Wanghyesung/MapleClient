@@ -6,7 +6,8 @@
 #include "WEventManager.h"
 namespace W
 {
-	PlayerAttackObject::PlayerAttackObject()
+	PlayerAttackObject::PlayerAttackObject():
+		m_iDir(1)
 	{
 
 	}

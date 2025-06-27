@@ -18,13 +18,11 @@ namespace W
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
 
-		GetComponent<Transform>()->SetScale(2.1f, 2.1f, 0.f);
 
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Ice_left", nullptr, Vector2(0.0f, 0.0f), Vector2(216.f, 242.0f), 30, Vector2(220.f, 220.f), Vector2::Zero, Vector2(6480.f, 242.f), 0.15f);
 
-		pAnim->Play(L"Ice_left", true);
-
+		GetComponent<Transform>()->SetScale(2.1f, 2.1f, 0.f);
 	}
 
 	Ice::~Ice()
@@ -38,6 +36,8 @@ namespace W
 
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"IceTex");
 		pAnim->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 
 	void Ice::Update()
@@ -56,10 +56,16 @@ namespace W
 		ObjectCB.vObjectColor = Vector4::One;
 
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::Object];
-		//Vector4 vPosition(m_vPosition.x, m_vPosition.y, m_vPosition.z, 1.f);
+		
 		pConstBuffer->SetData(&ObjectCB);
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
 	}
+
+	void Ice::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
+	}
+
 }

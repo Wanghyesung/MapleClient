@@ -21,8 +21,6 @@ namespace W
 {
 	Horntail::Horntail()
 	{
-		m_vecMonster.resize(8);
-
 		GetComponent<Transform>()->SetScale(11.f, 11.f, 0.f);
 
 		MeshRenderer* pRenderer = AddComponent<MeshRenderer>();
@@ -67,8 +65,8 @@ namespace W
 		pAtlas = Resources::Find<Texture>(L"HorntailDead");
 		pAnimator->SetTexture(L"HorntailDead", pAtlas);
 
-		GameObject* pMainCamera = renderer::MainCamera->GetOwner();
-		pMainCamera->GetScript<CameraScript>()->SetEventType(CameraScript::eCameraEventType::Wave, 4.f);
+		/*GameObject* pMainCamera = renderer::MainCamera->GetOwner();
+		pMainCamera->GetScript<CameraScript>()->SetEventType(CameraScript::eCameraEventType::Wave, 4.f);*/
 	}
 
 	void Horntail::Update()

@@ -10,6 +10,8 @@ namespace W
 {
 	HorntailLeftHand::HorntailLeftHand()
 	{
+		SetRender(false);
+
 		SetName(L"LeftHand");
 
 		MeshRenderer* pRenderer = AddComponent<MeshRenderer>();
@@ -36,6 +38,7 @@ namespace W
 		pSpear->SetName(L"spear");
 		ObjectPoolManager::AddObjectPool(pSpear->GetName(), pSpear);
 
+		GetComponent<Transform>()->SetScale(11.f, 11.f, 0.f);
 	}
 	HorntailLeftHand::~HorntailLeftHand()
 	{
@@ -72,4 +75,8 @@ namespace W
 		GameObject::Render();
 	}
 
+	void HorntailLeftHand::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Monster::UpdateState(_strStateName, _iState);
+	}
 }

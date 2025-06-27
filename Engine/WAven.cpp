@@ -7,8 +7,7 @@
 #include "WTransform.h"
 namespace W
 {
-	Aven::Aven() :
-		m_iDir(1)
+	Aven::Aven() 
 	{
 		//SetName(L"Aven");
 

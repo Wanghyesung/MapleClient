@@ -16,12 +16,6 @@ namespace W
 		virtual void UpdateState(const wstring& _strStateName, int _iState)override;
 
 
-		int GetDir() { return m_iDir; }
-		void SetDir(int _iDir) { m_iDir = _iDir; }
-
-	private:
-		int m_iDir;
-
 		//UINT m_iCount;
 		//static UINT COUNT
 	};
