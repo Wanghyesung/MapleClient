@@ -19,10 +19,11 @@ namespace W
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
 
-
+	
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Thunder_left", nullptr, Vector2(0.0f, 0.0f), Vector2(180.f, 845.0f), 30, Vector2(800.f, 800.f), Vector2::Zero, Vector2(5400.f, 845.f), 0.15f);
 
+		
 		GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
 	}
 

@@ -17,7 +17,7 @@ namespace W
 		MeshRenderer* pRenderer = AddComponent<MeshRenderer>();
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
-
+			
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Fire_left", nullptr, Vector2(0.0f, 0.0f), Vector2(111.f, 110.0f), 30, Vector2(110.f, 110.f), Vector2::Zero, Vector2(3330.f, 110.f), 0.15f);
 

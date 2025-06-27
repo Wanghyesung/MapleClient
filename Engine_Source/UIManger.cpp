@@ -8,10 +8,10 @@
 
 namespace W
 {
-	UI* UIManger::m_pFoucseUI = nullptr;
-	UI* UIManger::m_pTargetUI = nullptr;
+	UI* UIManager::m_pFoucseUI = nullptr;
+	UI* UIManager::m_pTargetUI = nullptr;
 
-	void UIManger::Update()
+	void UIManager::Update()
 	{
 		m_pFoucseUI = GetFoucseUI();
 
@@ -49,16 +49,15 @@ namespace W
 
 			m_pTargetUI->m_bMouseOn = false;
 		}
-
 	}
 
 
-	void UIManger::MoveFrontChildUI(UI* pUI)
+	void UIManager::MoveFrontChildUI(UI* pUI)
 	{
 
 	}
 
-	UI* UIManger::GetFoucseUI()
+	UI* UIManager::GetFoucseUI()
 	{
 		Layer* pLayer = SceneManger::GetActiveScene()->GetLayer(eLayerType::UI);
 
@@ -94,7 +93,7 @@ namespace W
 		return pFoucseUI;
 	}
 
-	UI* UIManger::GetTargetUI(UI* _pParentUI)
+	UI* UIManager::GetTargetUI(UI* _pParentUI)
 	{
 		bool bLbtnUP = Input::GetKeyUp(eKeyCode::LBUTTON);
 		static std::vector<UI*> vecNoeTarget;
@@ -146,11 +145,10 @@ namespace W
 				vecNoeTarget[i]->m_bLbntDown = false;
 			}
 		}
-
-
+		
 		return pTargetUI;
 	}
-	void UIManger::ReleaseChildUI()
+	void UIManager::ReleaseChildUI()
 	{
 		Layer* pLayer = SceneManger::GetActiveScene()->GetLayer(eLayerType::UI);
 		const std::unordered_map<UINT, GameObject*>& hashUI = pLayer->GetGameObjects();

@@ -5,7 +5,7 @@ namespace W
 {
 	class Scene;
 
-	class UIManger
+	class UIManager
 	{
 	public:
 		static void Update();
@@ -14,6 +14,7 @@ namespace W
 		static UI* GetFoucseUI();
 		static UI* GetTargetUI(UI* _pParentUI);
 		static void ReleaseChildUI();
+
 
 
 	private:

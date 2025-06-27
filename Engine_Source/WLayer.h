@@ -33,7 +33,7 @@ namespace W
 		std::unordered_map<UINT, GameObject*> m_hashGameObject;
 
 
-		friend class UIManger;
+		friend class UIManager;
 	};
 	template<typename T>
 	inline T* Layer::FindObject()

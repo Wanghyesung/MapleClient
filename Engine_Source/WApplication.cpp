@@ -57,7 +57,7 @@ namespace W
 			Update();
 			LateUpdate();
 			Render();
-			UIManger::ReleaseChildUI();
+			UIManager::ReleaseChildUI();
 
 			EventManager::Update();
 		}
@@ -85,7 +85,7 @@ namespace W
 		Input::Update();
 		
 		SceneManger::Update();
-		UIManger::Update();
+		UIManager::Update();
 	
 	}
 

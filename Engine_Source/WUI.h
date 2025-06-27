@@ -61,7 +61,7 @@ namespace W
 		//·»´õ¸µ ¼ø¼­
 		int m_iRenderOrder;
 
-		friend class UIManger;
+		friend class UIManager;
 	};
 
 }

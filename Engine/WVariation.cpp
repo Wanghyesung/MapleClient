@@ -26,6 +26,8 @@ namespace W
 		pAnim->Play(L"variation", true);
 
 		GetComponent<Transform>()->SetScale(Vector3(1.7f, 1.7f, 0.f));
+
+
 	}
 	Variation::~Variation()
 	{

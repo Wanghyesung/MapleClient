@@ -25,7 +25,7 @@ namespace W
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"confusion", pAtlas, Vector2(0.0f, 0.0f), Vector2(29.0f, 46.0f), 5, Vector2(40.f, 40.f), Vector2::Zero, Vector2(145.f, 46.f), 0.15f);
 
-
+		GetComponent<Transform>()->SetScale(Vector3(0.5f, 0.5f, 0.f));
 	}
 	Confusion::~Confusion()
 	{

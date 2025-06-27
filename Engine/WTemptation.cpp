@@ -23,7 +23,7 @@ namespace W
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"temptation", pAtlas, Vector2(0.0f, 0.0f), Vector2(50.0f, 63.0f), 8, Vector2(80.f, 80.f), Vector2::Zero, Vector2(400.f, 63.f), 0.2f);
 
-		pAnim->Play(L"temptation", true);
+		//pAnim->Play(L"temptation", true);
 	}
 	Temptation::~Temptation()
 	{
