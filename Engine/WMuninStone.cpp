@@ -20,7 +20,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"MuninStoneTex");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Stone_left", nullptr, Vector2(0.0f, 0.0f), Vector2(145.f, 514.0f), 20, Vector2(510.f, 510.f), Vector2::Zero, Vector2(3045.f, 514.f), 0.15f);
 
@@ -32,7 +31,9 @@ namespace W
 	}
 	void MuninStone::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"MuninStoneTex");
+		GetComponent<Animator>()->SetTexture(pAtlas);
+
 	}
 	void MuninStone::Update()
 	{
@@ -55,6 +56,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void MuninStone::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 
 }

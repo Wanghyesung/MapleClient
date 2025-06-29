@@ -18,11 +18,12 @@ namespace W
 		virtual void Render()override;
 		virtual void UpdateState(const wstring& _strStateName, int _iState)override;
 
+	protected:
+		float m_fHP;
+
 	private:
 		UINT m_iHPCount;
 		static UINT HP_COUNT;
-
-		float m_fHP;
 		bool m_bBoss;
 
 		friend class MonsterManager;

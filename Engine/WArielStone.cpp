@@ -19,7 +19,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Ariel_attack1");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Stone", nullptr, Vector2(0.0f, 0.0f), Vector2(306.f, 512.0f), 18, Vector2(510.f, 510.f), Vector2::Zero, Vector2(5814.f, 512.f), 0.15f);
 
@@ -32,7 +31,9 @@ namespace W
 
 	void ArielStone::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Ariel_attack1");
+		GetComponent<Animator>()->SetTexture(pAtlas);
+
 	}
 	void ArielStone::Update()
 	{
@@ -55,6 +56,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void ArielStone::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 
 

@@ -14,6 +14,7 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
+		virtual void SendEnter()override;
 		virtual void OnEnter()override;
 		virtual void OnExit()override;
 
@@ -22,9 +23,13 @@ namespace W
 		virtual void StartSound()override;
 		virtual void EndSound()override;
 
+	protected:
+		virtual void add_objectpool()override;
+		virtual void mapping_resource()override;
+
 	private:
 		void create_monster();
-		void create_effect();
+	
 	};
 
 }

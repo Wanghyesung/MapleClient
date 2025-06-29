@@ -13,8 +13,9 @@
 
 #include "WPlayer.h"
 #include "WSKillNumber6.h"
-
+#include "UIManager.h"
 #include "Skill.pb.h"
+
 namespace W
 {
 	SKill::SKill() :
@@ -71,6 +72,7 @@ namespace W
 		check_interface();
 
 		IconUI::MouseLbtnUp();
+
 	}
 	void SKill::MouseLbtnClicked()
 	{

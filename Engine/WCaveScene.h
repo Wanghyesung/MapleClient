@@ -27,6 +27,7 @@ namespace W
 	protected:
 		virtual void add_objectpool()override;
 		virtual void mapping_resource()override;
+
 	private:
 		void create_object();
 		

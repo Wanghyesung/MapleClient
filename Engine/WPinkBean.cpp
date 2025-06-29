@@ -32,16 +32,11 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 
-		std::shared_ptr<Texture> pAtlas1 = Resources::Find<Texture>(L"PinkBean1");
-		std::shared_ptr<Texture> pAtlas2 = Resources::Find<Texture>(L"PinkBean2");
-
-		Animator* pAnim = AddComponent<Animator>();
-		
+	
+		Animator* pAnim = AddComponent<Animator>();	
 		pAnim->Create(L"PinkBean_start_left", nullptr, Vector2(0.f, 7200.f), Vector2(750.f, 600.f), 4, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10500.f, 7800.f), 0.15f);
 		pAnim->Create(L"PinkBean_start_right", nullptr, Vector2(9750.f, 7200.f), Vector2(-750.f, 600.f), 4, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10500.f, 7800.f), 0.15f);
-		//pAnim->StartEvent(L"PinkBean_start_left") = std::bind(&PinkBean::start, this);
-		//pAnim->StartEvent(L"PinkBean_start_right") = std::bind(&PinkBean::start, this);
-
+		
 		pAnim->Create(L"PinkBean_stand_left", nullptr, Vector2(0.f, 0.f), Vector2(750.f, 600.f), 6, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10500.f, 7200.f), 0.15f);
 		pAnim->Create(L"PinkBean_move_left", nullptr, Vector2(0.f, 600.f), Vector2(750.f, 600.f), 8, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10500.f, 7200.f), 0.15f);
 		pAnim->Create(L"PinkBean_attack0_left", nullptr,  Vector2(0.f, 1200.f), Vector2(750.f, 600.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10500.f, 7200.f),0.15f);
@@ -97,6 +92,39 @@ namespace W
 		pAnim->FindAnimation(L"PinkBean_attack9_right")->Create(L"PinkBean_attack9_right", nullptr, Vector2(9750.f, 6600.f), Vector2(-750.f, 600.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10500.f, 7800.f), 0.15f);
 		pAnim->Create(L"PinkBean_attack10_right", nullptr, Vector2(9750.f, 7200.f), Vector2(-750.f, 600.f), 14, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10500.f, 7800.f), 0.15f);
 
+
+		MonsterAttackObject* breath = new MonsterAttackObject();
+		breath->SetName(L"icebreath");
+		ObjectPoolManager::AddObjectPool(breath->GetName(), breath);
+
+		for (int i = 0; i < 4; ++i)
+		{
+			Jenesis* pJenesis = new Jenesis();
+			pJenesis->SetName(L"PinkBean_attack0");
+			ObjectPoolManager::AddObjectPool(pJenesis->GetName(), pJenesis);
+		}
+
+		MonsterAttackObject* attack1 = new MonsterAttackObject();
+		attack1->SetName(L"PinkBean_attack1");
+		ObjectPoolManager::AddObjectPool(attack1->GetName(), attack1);
+
+		for (int i = 0; i < 4; ++i)
+		{
+			PinkBeanStone* pStone = new PinkBeanStone();
+			pStone->SetName(L"PinkBean_attack2");
+			ObjectPoolManager::AddObjectPool(pStone->GetName(), pStone);
+		}
+
+		//4
+		for (int i = 0; i < 4; ++i)
+		{
+			RoccatBean* pRoccat = new RoccatBean();
+			pRoccat->SetName(L"PinkBean_attack3");
+			ObjectPoolManager::AddObjectPool(pRoccat->GetName(), pRoccat);
+		}
+
+		GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
+		GetComponent<Transform>()->SetPosition(0.1f, -0.4f, -1.5f);
 	}
 	PinkBean::~PinkBean()
 	{
@@ -104,7 +132,19 @@ namespace W
 	}
 	void PinkBean::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas1 = Resources::Find<Texture>(L"PinkBean1");
+		std::shared_ptr<Texture> pAtlas2 = Resources::Find<Texture>(L"PinkBean2");
+
+		Animator* pAnim = GetComponent<Animator>();
+		pAnim->SetTextureBothDir(L"PinkBean_stand", pAtlas1);
+		pAnim->SetTextureBothDir(L"PinkBean_move", pAtlas1);
+		pAnim->SetTextureBothDir(L"PinkBean_dead", pAtlas1);
+
+		for (int i = 0; i <= 3; ++i)
+			pAnim->SetTextureBothDir(L"PinkBean_attack" + to_wstring(i), pAtlas1);
+
+		for (int i = 4; i <= 10; ++i)
+			pAnim->SetTextureBothDir(L"PinkBean_attack" + to_wstring(i), pAtlas2);
 	}
 	void PinkBean::Update()
 	{
@@ -121,5 +161,9 @@ namespace W
 		Monster::Render();
 	}
 
+	void PinkBean::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Monster::UpdateState(_strStateName, _iState);
+	}
 
 }

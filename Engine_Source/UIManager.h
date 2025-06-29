@@ -17,6 +17,7 @@ namespace W
 		static UI* GetFoucseUI();
 		static UI* GetTargetUI(UI* _pParentUI);
 		static void SetLateRenderUI();
+		static void ReleaseLateRenderUI();
 
 	private:
 		static void ReleaseChildUI();

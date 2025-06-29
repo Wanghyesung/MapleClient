@@ -150,6 +150,19 @@ namespace W
 		m_pActiveAnimation->Binds();
 	}
 
+	void Animator::SetTextureBothDir(const wstring& _strName, shared_ptr<Texture> _pTexture)
+	{
+		auto iterLeft = m_mapAnimtion.find(_strName + L"_left");
+		auto iterRight = m_mapAnimtion.find(_strName + L"_right");
+
+		if (iterLeft == m_mapAnimtion.end() || iterRight == m_mapAnimtion.end())
+			return;
+
+		iterLeft->second->SetTexture(_pTexture);
+		iterRight->second->SetTexture(_pTexture);
+	}
+
+
 	void Animator::SetTexture(const wstring& _strName, shared_ptr<Texture> _pTexture)
 	{
 		auto iter =m_mapAnimtion.find(_strName);
@@ -166,6 +179,8 @@ namespace W
 		for (iter; iter != m_mapAnimtion.end(); ++iter)
 			iter->second->SetTexture(_pTexture);
 	}
+
+
 
 	void Animator::Clear()
 	{

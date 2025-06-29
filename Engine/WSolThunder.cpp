@@ -60,4 +60,9 @@ namespace W
 
 		GameObject::Render();
 	}
+
+	void SolThunder::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
+	}
 }

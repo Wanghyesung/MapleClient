@@ -185,7 +185,7 @@ namespace W
 		pObj->GetComponent<Transform>()->SetDirectPosition(tTrInfo.vPosition);
 		
 		eLayerType eLayerType = (W::eLayerType)cLayer;
-	
+
 		pObj->SetObjectID(CID);
 		SceneManger::AddGameObject(eLayerType, pObj);
 

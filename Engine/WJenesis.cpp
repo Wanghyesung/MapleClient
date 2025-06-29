@@ -19,7 +19,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"PinkBean_attack0");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"attack0", nullptr, Vector2(0.0f, 0.0f), Vector2(844.f, 820.0f), 11, Vector2(850.f, 850.f), Vector2::Zero, Vector2(9284.f, 1640.f), 0.15f);
 		pAnim->FindAnimation(L"attack0")->Create(L"attack0", nullptr, Vector2(0.0f, 820.0f), Vector2(844.f, 820.0f), 11, Vector2(850.f, 850.f), Vector2::Zero, Vector2(9284.f, 1640.f), 0.15f);
@@ -33,6 +32,8 @@ namespace W
 	}
 	void Jenesis::Initialize()
 	{
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"PinkBean_attack0");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void Jenesis::Update()
 	{
@@ -54,5 +55,10 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void Jenesis::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 }

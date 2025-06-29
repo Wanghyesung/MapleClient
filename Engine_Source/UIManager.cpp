@@ -49,6 +49,7 @@ namespace W
 					m_pTargetUI->MouseLbtnClicked();
 				}
 				m_pTargetUI->m_bLbntDown = false;
+
 			}
 
 			m_pTargetUI->m_bMouseOn = false;
@@ -221,6 +222,12 @@ namespace W
 			m_pLateRenderUI = m_pTargetUI;
 			m_pLateRenderUI->m_bTargetOn = true;
 		}
+	}
+
+	void UIManager::ReleaseLateRenderUI()
+	{
+		m_pLateRenderUI->m_bLbntDown = false;
+		m_pLateRenderUI = nullptr;
 	}
 
 	void UIManager::TargetUIDraw()

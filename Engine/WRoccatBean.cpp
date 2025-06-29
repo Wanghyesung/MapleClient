@@ -24,8 +24,7 @@ namespace W
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"attack3", nullptr, Vector2(0.0f, 0.0f), Vector2(109.f, 159.0f), 6, Vector2(150.f, 150.f), Vector2::Zero, Vector2(763.f, 159.f), 0.15f);
 
-		pAnim->Play(L"attack3", true);
-
+		
 	}
 
 	RoccatBean::~RoccatBean()
@@ -56,6 +55,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void RoccatBean::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 	
 }

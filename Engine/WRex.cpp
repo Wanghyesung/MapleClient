@@ -25,7 +25,6 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"RexTex");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Rex_stand", nullptr, Vector2(0.f, 0.f), Vector2(500.f, 1000.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10000.f, 6000.f), 0.15f);
 		pAnim->Create(L"Rex_start", nullptr, Vector2(0.f, 1000.f), Vector2(500.f, 1000.f), 11, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10000.f, 6000.f), 0.15f);
@@ -34,6 +33,21 @@ namespace W
 		pAnim->Create(L"Rex_attack2", nullptr, Vector2(0.f, 4000.f), Vector2(500.f, 1000.f), 20, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10000.f, 6000.f), 0.15f);
 		pAnim->Create(L"Rex_dead", nullptr, Vector2(0.f, 5000.f), Vector2(500.f, 1000.f), 15, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(10000.f, 6000.f), 0.15f);
 
+		MonsterAttackObject* attack1 = new MonsterAttackObject();
+		attack1->SetName(L"Rex_attack0");
+		ObjectPoolManager::AddObjectPool(attack1->GetName(), attack1);
+
+		RexThunder* pThunder = new RexThunder();
+		pThunder->SetName(L"Rex_attack1");
+		ObjectPoolManager::AddObjectPool(pThunder->GetName(), pThunder);
+
+		MonsterAttackObject* attack3 = new MonsterAttackObject();
+		attack3->SetName(L"Rex_attack2");
+		ObjectPoolManager::AddObjectPool(attack3->GetName(), attack3);
+
+
+		GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
+		GetComponent<Transform>()->SetPosition(5.55f, 2.05f, -1.3f);
 	}
 	Rex::~Rex()
 	{
@@ -43,9 +57,8 @@ namespace W
 
 	void Rex::Initialize()
 	{
-		GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
-		GetComponent<Transform>()->SetPosition(5.55f, 2.05f, -1.3f);
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"RexTex");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void Rex::Update()
 	{
@@ -69,4 +82,8 @@ namespace W
 		GameObject::Render();
 	}
 	
+	void Rex::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Monster::UpdateState(_strStateName, _iState);
+	}
 }

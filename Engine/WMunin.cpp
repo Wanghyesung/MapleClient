@@ -25,7 +25,6 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"MuninTex");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Munin_stand", nullptr, Vector2(0.f, 0.f), Vector2(350.f, 500.f), 1, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(8200.f, 3500.f), 0.15f);
 		pAnim->Create(L"Munin_start", nullptr, Vector2(0.f, 500.f), Vector2(350.f, 500.f), 11, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(8200.f, 3500.f), 0.15f);
@@ -35,6 +34,17 @@ namespace W
 		pAnim->Create(L"Munin_attack3", nullptr, Vector2(0.f, 2500.f), Vector2(350.f, 500.f), 17, Vector2(1000.f, 1000.f), Vector2::Zero,  Vector2(8200.f, 3500.f),0.15f);
 		pAnim->Create(L"Munin_dead", nullptr, Vector2(0.f, 3000.f), Vector2(350.f, 500.f), 17, Vector2(1000.f, 1000.f), Vector2::Zero, Vector2(8200.f, 3500.f), 0.15f);
 
+		MonsterAttackObject* attack1 = new MonsterAttackObject();
+		attack1->SetName(L"Munin_attack0");
+		ObjectPoolManager::AddObjectPool(attack1->GetName(), attack1);
+
+		MuninStone* pStone = new MuninStone();
+		pStone->SetName(L"Munin_attack1");
+		ObjectPoolManager::AddObjectPool(pStone->GetName(), pStone);
+
+
+		GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
+		GetComponent<Transform>()->SetPosition(2.7f, -0.75f, -1.3f);
 	}
 	Munin::~Munin()
 	{
@@ -43,7 +53,8 @@ namespace W
 
 	void Munin::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"MuninTex");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void Munin::Update()
 	{
@@ -67,5 +78,9 @@ namespace W
 		GameObject::Render();
 	}
 
+	void Munin::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		Monster::UpdateState(_strStateName, _iState);
+	}
 	
 }

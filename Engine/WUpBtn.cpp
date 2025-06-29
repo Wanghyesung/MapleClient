@@ -57,6 +57,7 @@ namespace W
 		std::wstring strNum = std::to_wstring(m_iNumber);
 		std::shared_ptr<Material> pShMater = Resources::Find<Material>(L"UpBtnMater" + strNum);
 		pShMater->SetTexture(Resources::Find<Texture>(L"UpBtnTex1"));
+
 	}
 	void UpBtn::MouseLbtnUp()
 	{

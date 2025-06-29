@@ -1,6 +1,7 @@
 #include "WBossEnterUI.h"
 #include "WEventManager.h"
 #include "WTransform.h"
+#include "UIManager.h"
 namespace W
 {
 	BossEnterUI::BossEnterUI():
@@ -72,6 +73,8 @@ namespace W
 		dynamic_cast<BossUI*>(GetParentUI())->SetRender(false);
 
 		EventManager::ChangeScene(m_strNextScene);
+
+		UIManager::ReleaseLateRenderUI();
 	}
 	void BossEnterUI::set_nextscene(BossUI::eBossUnber _eNumber)
 	{

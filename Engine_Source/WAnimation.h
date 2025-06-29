@@ -28,7 +28,7 @@ namespace W
 			Vector2 _vDivisionSize,
 			Vector2 _vOffset = Vector2::Zero,
 			Vector2 _vAtlasSize = Vector2::Zero,
-			float _fDuration = 0.f
+			float _fDuration = 0.3f
 		);
 
 		void Reset();

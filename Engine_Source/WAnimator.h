@@ -61,8 +61,10 @@ namespace W
 		bool IsClientAnimation() { return m_bClientAnim; }
 		void SetClientAnimation(bool _bClientAnim) { m_bClientAnim = _bClientAnim; }
 
+		void SetTextureBothDir(const wstring& _strName, shared_ptr<Texture> _pTexture);
 		void SetTexture(const wstring& _strName, shared_ptr<Texture> _pTexture);
 		void SetTexture(shared_ptr<Texture> _pTexture);
+
 		Animation* GetActiveAnimation() { return m_pActiveAnimation; }
 
 		Events* FindEvents(const std::wstring& _strName);

@@ -8,16 +8,17 @@
 namespace W
 {
 	
-	SharHP::SharHP():
-		m_fHP(100.f)
+	SharHP::SharHP()
 	{
 	
 	}
 	SharHP::~SharHP()
 	{
+
 	}
 	void SharHP::Initialize()
 	{
+
 	}
 	void SharHP::Update()
 	{
@@ -25,12 +26,10 @@ namespace W
 	}
 	void SharHP::LateUpdate()
 	{
-		
 		GameObject::LateUpdate();
 	}
 	void SharHP::Render()
-	{
-		
+	{	
 		renderer::PlayerUICB PlayerUICB;
 		PlayerUICB.vSize.x = m_fHP;
 
@@ -40,5 +39,9 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+	void SharHP::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterHP::UpdateState(_strStateName, _iState);
 	}
 }

@@ -63,4 +63,9 @@ namespace W
 
 		GameObject::Render();
 	}
+
+	void RexThunder::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
+	}
 }

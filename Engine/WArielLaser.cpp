@@ -19,7 +19,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(8.5f, 8.5f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Ariel_attack0");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Laser", nullptr, Vector2(0.0f, 0.0f), Vector2(189.f, 847.0f), 20, Vector2(850.f, 850.f), Vector2::Zero, Vector2(4347.f, 847.f), 0.15f);
 
@@ -32,7 +31,8 @@ namespace W
 	}
 	void ArielLaser::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Ariel_attack0");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void ArielLaser::Update()
 	{
@@ -54,6 +54,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void ArielLaser::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 	
 }

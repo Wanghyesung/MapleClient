@@ -21,12 +21,9 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"PinkBean_attack2");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"attack2", nullptr, Vector2(0.0f, 0.0f), Vector2(214.f, 555.0f), 27, Vector2(550.f, 550.f), Vector2::Zero, Vector2(5778.f, 555.f), 0.15f);
 	
-		pAnim->Play(L"attack2", true);
-
 	}
 	PinkBeanStone::~PinkBeanStone()
 	{
@@ -34,7 +31,8 @@ namespace W
 	}
 	void PinkBeanStone::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"PinkBean_attack2");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void PinkBeanStone::Update()
 	{
@@ -58,5 +56,9 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+	void PinkBeanStone::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 }
