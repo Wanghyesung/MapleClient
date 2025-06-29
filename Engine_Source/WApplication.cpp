@@ -4,7 +4,7 @@
 #include "WInput.h"
 #include "WRenderer.h"
 #include "WSceneManger.h"
-#include "UIManger.h"
+#include "UIManager.h"
 #include "..\Engine\WEventManager.h"
 
 #include "..\Engine\WItemManager.h"
@@ -57,7 +57,7 @@ namespace W
 			Update();
 			LateUpdate();
 			Render();
-			UIManager::ReleaseChildUI();
+			UIManager::LateUpdate();
 
 			EventManager::Update();
 		}

@@ -34,7 +34,7 @@
 
 namespace W
 {
-	Player::Player():
+	Player::Player() :
 		m_ePlayerState(ePlayerState::stand),
 		m_bAlert(false),
 		m_bActiveDark(false),
@@ -43,6 +43,7 @@ namespace W
 		m_fChangeTime(0.25f)
 	{
 		SetName(L"Player");
+		//m_strCurStateName = L"_jump";
 
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));

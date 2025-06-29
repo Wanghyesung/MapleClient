@@ -174,7 +174,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WUI.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)UIManger.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIManager.cpp">
       <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)WAnimation.cpp">
@@ -305,7 +305,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WUI.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)UIManger.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIManager.h">
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WAnimation.h">

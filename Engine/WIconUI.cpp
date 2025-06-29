@@ -7,7 +7,7 @@
 #include "WTransform.h"
 #include "WEquip.h"
 #include "WEquipState.h"
-#include "UIManger.h"
+#include "UIManager.h"
 #include "WTime.h"
 namespace W
 {

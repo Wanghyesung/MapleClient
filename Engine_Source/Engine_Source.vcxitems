@@ -19,7 +19,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WPathManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WThreadPool.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WFadeInOut.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)UIManger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WComputeShader.h" />
@@ -75,7 +75,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)UIManger.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIManager.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>

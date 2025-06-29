@@ -42,13 +42,12 @@ namespace W
 		void sort_child();
 		void set_child_position(UI* _pChildUI);
 
+		void render_post();
 	private:
 		//자식 UI 업데이트
 		void ChildUpdate();
 		void ChildRender();
 		void ChildLateupdate();
-
-		//void MoveToParent();
 
 	private:
 		//내 자식 UI
@@ -58,6 +57,8 @@ namespace W
 
 		bool m_bMouseOn;
 		bool m_bLbntDown;
+
+		bool m_bTargetOn;
 		//렌더링 순서
 		int m_iRenderOrder;
 

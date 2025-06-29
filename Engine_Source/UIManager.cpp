@@ -1,4 +1,4 @@
-#include "UIManger.h"
+#include "UIManager.h"
 #include "WSceneManger.h"
 #include "WLayer.h"
 #include "WInput.h"
@@ -10,6 +10,7 @@ namespace W
 {
 	UI* UIManager::m_pFoucseUI = nullptr;
 	UI* UIManager::m_pTargetUI = nullptr;
+	UI* UIManager::m_pLateRenderUI = nullptr;
 
 	void UIManager::Update()
 	{
@@ -26,12 +27,15 @@ namespace W
 
 		if (m_pTargetUI != nullptr)
 		{
-			//´©¸£¸é
+			
 			m_pTargetUI->MouseOn();
 
 			if (KeyDown)
 			{
 				m_pTargetUI->MouseLbtnDown();
+
+				SetLateRenderUI();
+
 				m_pTargetUI->m_bLbntDown = true;
 			}
 
@@ -49,6 +53,13 @@ namespace W
 
 			m_pTargetUI->m_bMouseOn = false;
 		}
+	}
+
+	void UIManager::LateUpdate()
+	{
+		ReleaseChildUI();
+
+		TargetUIDraw();
 	}
 
 
@@ -99,6 +110,7 @@ namespace W
 		static std::vector<UI*> vecNoeTarget;
 		static std::list<UI*> queue;
 
+
 		UI* pTargetUI = nullptr;
 
 		queue.clear();
@@ -148,6 +160,7 @@ namespace W
 		
 		return pTargetUI;
 	}
+	
 	void UIManager::ReleaseChildUI()
 	{
 		Layer* pLayer = SceneManger::GetActiveScene()->GetLayer(eLayerType::UI);
@@ -196,6 +209,27 @@ namespace W
 				}
 			}
 		}
+	}
+
+	void UIManager::SetLateRenderUI()
+	{
+		if (m_pLateRenderUI != m_pTargetUI)
+		{
+			if (m_pLateRenderUI)
+				m_pLateRenderUI->m_bTargetOn = false;
+
+			m_pLateRenderUI = m_pTargetUI;
+			m_pLateRenderUI->m_bTargetOn = true;
+		}
+	}
+
+	void UIManager::TargetUIDraw()
+	{
+		if (m_pLateRenderUI == nullptr)
+			return;
+
+		m_pLateRenderUI->render_post();
+
 	}
 	
 }

@@ -5,7 +5,7 @@
 #include "WInput.h"
 #include "WTransform.h"
 #include "WNumber.h"
-#include "UIManger.h"
+#include "UIManager.h"
 #include "WTransform.h"
 
 namespace W

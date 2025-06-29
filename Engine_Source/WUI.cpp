@@ -13,6 +13,7 @@ namespace W
 	UI::UI():
 		m_bLbntDown(false),
 		m_bMouseOn(false),
+		m_bTargetOn(false),
 		m_pParentUI(nullptr),
 		m_vecChildUI{},
 		m_iRenderOrder(0)
@@ -61,6 +62,9 @@ namespace W
 	}
 	void UI::Render()
 	{
+		if (m_bTargetOn)
+			return;
+
 		GameObject::Render();
 
 		ChildRender();
@@ -138,6 +142,15 @@ namespace W
 		}
 	}
 
+	void UI::render_post()
+	{
+		if (!m_bTargetOn)
+			return;
+
+		GameObject::Render();
+
+		ChildRender();
+	}
 
 	void UI::MouseOnCheck()
 	{
@@ -211,5 +224,7 @@ namespace W
 		float z = pTransform->GetPosition().z - 0.01f;
 		pUITransform->SetPosition(vUITransform.x, vUITransform.y, z);
 	}
+
+
 	
 }

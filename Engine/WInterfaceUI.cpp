@@ -20,7 +20,7 @@
 #include "WEquipState.h"
 #include "WStat.h"
 #include "WSceneManger.h"
-#include "UIManger.h"
+#include "UIManager.h"
 #include "WQuestState.h"
 #include "WNumber.h"
 

@@ -3,7 +3,7 @@
 #include "WEquipState.h"
 #include "WTransform.h"
 #include "WInventory.h"
-#include "UIManger.h"
+#include "UIManager.h"
 
 namespace W
 {
