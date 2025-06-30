@@ -10,7 +10,8 @@
 #include "WTransform.h"
 namespace W
 {
-	MobZone::MobZone()
+	MobZone::MobZone():
+		m_iLevel(0)
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetRenderinMode(eRenderingMode::Transparent);
@@ -23,39 +24,15 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Megnus_Zone0");
-		Resources::Find<Texture>(L"Megnus_Zone1");
-		Resources::Find<Texture>(L"Megnus_Zone2");
-		Resources::Find<Texture>(L"Megnus_Zone3");
-
 		Animator* pAnim = AddComponent<Animator>();		
+		pAnim->Create(L"Megnus_Zone0", nullptr, Vector2(0.0f, 0.0f), Vector2(796.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(6368.f, 852.f), 0.15f);
 		
-		for (int i = 0; i < 4; ++i)
-		{
-			std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Megnus_Zone" + i);
-
-			Animator* pAnim = GetComponent<Animator>();
-			switch (i)
-			{
-			case 0:
-				pAnim->Create(L"Megnus_Zone" + i, nullptr, Vector2(0.0f, 0.0f), Vector2(796.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(6368.f, 852.f), 0.15f);
-
-			case 1:
-				pAnim->Create(L"Megnus_Zone" + i, nullptr, Vector2(0.0f, 0.0f), Vector2(696.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(5568.f, 852.f), 0.15f);
-				break;
-			case 2:
-				pAnim->Create(L"Megnus_Zone" + i, nullptr, Vector2(0.0f, 0.0f), Vector2(596.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(4768.f, 852.f), 0.15f);
-				break;
-			case 3:
-				pAnim->Create(L"Megnus_Zone" + i, nullptr, Vector2(0.0f, 0.0f), Vector2(396.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(3168.f, 852.f), 0.15f);
-				break;
-			}
-		}
-
-		pAnim->Play(L"Megnus_Zone0", true);
-
+		pAnim->Create(L"Megnus_Zone1", nullptr, Vector2(0.0f, 0.0f), Vector2(696.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(5568.f, 852.f), 0.15f);
 		
-
+		pAnim->Create(L"Megnus_Zone2", nullptr, Vector2(0.0f, 0.0f), Vector2(596.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(4768.f, 852.f), 0.15f);
+		
+		pAnim->Create(L"Megnus_Zone3", nullptr, Vector2(0.0f, 0.0f), Vector2(396.f, 852.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(3168.f, 852.f), 0.15f);
+				
 	}
 	MobZone::~MobZone()
 	{
@@ -63,7 +40,8 @@ namespace W
 	}
 	void MobZone::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Megnus_Zone0");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void MobZone::Update()
 	{
@@ -84,6 +62,31 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void MobZone::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		UCHAR cLevel = (_iState >> 8) & 0xFF;
+		UCHAR cAnimIdx = _iState & 0xFF;
+
+		m_iAnimIdx = cAnimIdx;
+
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+
+			if (cLevel != m_iLevel)
+			{
+				shared_ptr<Texture> pTex = Resources::Find<Texture>(L"Megnus_Zone" + to_wstring(m_iLevel));
+				GetComponent<Animator>()->SetTexture(pTex);
+
+				if (m_iLevel == 4)
+					SetRender(false);
+			}
+
+			m_iLevel = cLevel;
+		}
 	}
 	
 }

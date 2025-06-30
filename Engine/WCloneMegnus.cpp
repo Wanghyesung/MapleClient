@@ -21,19 +21,19 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Megnus_attack1_effect");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Clone_Megnus", nullptr, Vector2(0.0f, 0.0f), Vector2(408.f, 354.0f), 27, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(11016.f, 354.f), 0.15f);
 
-		pAnim->Play(L"Clone_Megnus", true);
+		//pAnim->Play(L"Clone_Megnus", true);
 	}
 	CloneMegnus::~CloneMegnus()
 	{
-
+		
 	}
 	void CloneMegnus::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"Megnus_attack1_effect");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void CloneMegnus::Update()
 	{
@@ -56,6 +56,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void CloneMegnus::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 	
 }

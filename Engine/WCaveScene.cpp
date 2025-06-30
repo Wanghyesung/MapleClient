@@ -215,7 +215,7 @@ namespace W
 		for (int i = 0; i < 5; ++i)
 		{
 			pEffect = new Effect();
-			pEffect->CreateAnimation(nullptr,L"icebreath_hit", Vector2(0.f, 0.f), Vector2(110.f, 113.f), 2, 1, Vector2(100.f, 100.f), Vector2::Zero, Vector2(220.f,113.f));
+			pEffect->CreateAnimation(nullptr, L"icebreath_hit", Vector2(0.f, 0.f), Vector2(110.f, 113.f), 2, 1, Vector2(100.f, 100.f), Vector2::Zero, Vector2(220.f,113.f));
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 		}
 

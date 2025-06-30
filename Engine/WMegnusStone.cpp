@@ -11,8 +11,6 @@ namespace W
 {
 	MegnusStone::MegnusStone() 
 	{
-		//기본적으로 제공하는 script를 제거하고 전용 script로
-
 		GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
 
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
@@ -28,8 +26,7 @@ namespace W
 		}
 
 		Animator* pAnim = AddComponent<Animator>();
-		std::shared_ptr<Texture> pAtlas
-			= Resources::Find<Texture>(L"magnus_stone");
+	
 		pAnim->Create(L"stone_start", nullptr, Vector2(0.0f, 0.0f), Vector2(350.0f, 350.0f), 7, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(2800.f, 1050.f), 0.12f);
 		pAnim->Create(L"stone_move", nullptr, Vector2(0.0f, 350.0f), Vector2(350.0f, 350.0f), 8, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(2800.f, 1050.f), 0.12f);
 		pAnim->Create(L"stone_end", nullptr, Vector2(0.0f, 700.f), Vector2(350.0f, 350.0f), 6, Vector2(1100.f, 1100.f), Vector2::Zero, Vector2(2800.f, 1050.f), 0.1f);
@@ -40,9 +37,11 @@ namespace W
 	{
 
 	}
+
 	void MegnusStone::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"magnus_stone");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void MegnusStone::Update()
 	{
@@ -52,6 +51,7 @@ namespace W
 	{
 		GameObject::LateUpdate();
 	}
+
 	void MegnusStone::Render()
 	{
 		renderer::ObjectCB ObjcetCB;
@@ -63,6 +63,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void MegnusStone::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 	
 }

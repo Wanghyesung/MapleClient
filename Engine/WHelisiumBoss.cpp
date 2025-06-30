@@ -6,6 +6,7 @@
 #include "WMegnus.h"
 #include "WThreadPool.h"
 #include "WTransform.h"
+#include "WEffect.h"
 
 namespace W
 {
@@ -33,6 +34,12 @@ namespace W
 
 		m_vecResource.push_back(std::make_pair(L"sleepGas", L"..\\Resources\\Texture\\Monster\\megnus\\gas\\sleepGas.png"));
 
+		m_vecResource.push_back(std::make_pair(L"Megnus_attack0_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack0_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Megnus_attack1_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack1_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Megnus_attack2_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack2_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Megnus_attack3_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack3_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Megnus_attack4_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack4_hit.png"));
+
 	}
 	HelisiumBoss::~HelisiumBoss()
 	{
@@ -41,7 +48,7 @@ namespace W
 	void HelisiumBoss::Initialize()
 	{
 		CreateBackground();
-
+		add_objectpool();
 		{
 			GameObject* pCamera = new GameObject();
 			pCamera->SetObjectID(0);
@@ -89,6 +96,14 @@ namespace W
 		Scene::OnExit();
 
 	}
+
+	void HelisiumBoss::SendEnter()
+	{
+		mapping_resource();
+
+		Scene::SendEnter();
+	}
+
 	void HelisiumBoss::CreateBackground()
 	{
 		GameObject* pBackGround = new GameObject();
@@ -111,6 +126,55 @@ namespace W
 	{
 		
 	}
+	void HelisiumBoss::add_objectpool()
+	{
+		Megnus* pMegnus = new Megnus();
+		ObjectPoolManager::AddObjectPool(pMegnus->GetName(), pMegnus);
+
+		Effect* pEffect = nullptr;
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"Megnus_attack0_hit", Vector2(0.f, 0.f), Vector2(320.f, 244.f), 5, 1, Vector2(320.f, 320.f), Vector2::Zero, Vector2(1600.f, 244.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+		
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"Megnus_attack1_hit", Vector2(0.f, 0.f), Vector2(256.f, 196.f), 5, 1, Vector2(250.f, 250.f), Vector2(0.f, 0.f), Vector2(1280.f, 192.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+		
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"Megnus_attack2_hit", Vector2(0.f, 0.f), Vector2(236.f, 229.f), 7, 1, Vector2(240.f, 240.f), Vector2(0.f, 0.f), Vector2(1652.f, 229.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"Megnus_attack3_hit", Vector2(0.f, 0.f), Vector2(228.f, 231.f), 7, 1, Vector2(230.f, 230.f), Vector2(0.f, 0.f), Vector2(1596.f, 231.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+		for (int i = 0; i < 5; ++i)
+		{
+			pEffect = new Effect();
+			pEffect->CreateAnimation(nullptr, L"Megnus_attack4_hit", Vector2(0.f, 0.f), Vector2(165.f, 168.f), 7, 1, Vector2(170.f, 170.f), Vector2(0.f, 0.f), Vector2(825.f, 168.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+		}
+	}
+	void HelisiumBoss::mapping_resource()
+	{
+		
+		mapping_texture(L"Megnus_attack0_hit", L"Megnus_attack0_hit");
+		mapping_texture(L"Megnus_attack1_hit", L"Megnus_attack1_hit");
+		mapping_texture(L"Megnus_attack2_hit", L"Megnus_attack2_hit");
+		mapping_texture(L"Megnus_attack3_hit", L"Megnus_attack3_hit");
+		mapping_texture(L"Megnus_attack4_hit", L"Megnus_attack4_hit");
+	}
+	
 	void HelisiumBoss::create_monster()
 	{
 		
@@ -119,15 +183,7 @@ namespace W
 	void HelisiumBoss::create_effect()
 	{
 		
-		Resources::Load<Texture>(L"Megnus_attack0_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack0_hit.png");
 		
-		Resources::Load<Texture>(L"Megnus_attack1_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack1_hit.png");
-		
-		Resources::Load<Texture>(L"Megnus_attack2_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack2_hit.png");
-
-		Resources::Load<Texture>(L"Megnus_attack3_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack3_hit.png");
-
-		Resources::Load<Texture>(L"Megnus_attack4_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack4_hit.png");
 		
 	}
 }

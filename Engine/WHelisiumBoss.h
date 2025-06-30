@@ -15,11 +15,16 @@ namespace W
 
 		virtual void OnEnter()override;
 		virtual void OnExit()override;
+		virtual void SendEnter()override;
 
 		virtual void CreateBackground() override;
 
 		virtual void StartSound()override;
 		virtual void EndSound()override;
+
+	protected:
+		virtual void add_objectpool()override;
+		virtual void mapping_resource()override;
 
 	private:
 		void create_monster();
