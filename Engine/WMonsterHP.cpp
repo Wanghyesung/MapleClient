@@ -31,8 +31,6 @@ namespace W
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
 
-		pMater->SetTexture(spAtlas);
-
 	}
 	MonsterHP::~MonsterHP()
 	{
@@ -71,7 +69,6 @@ namespace W
 		PlayerUICB.vSize.x = m_fHP;
 		
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::PlayerUI];
-		//Vector4 vPosition(m_vPosition.x, m_vPosition.y, m_vPosition.z, 1.f);
 		pConstBuffer->SetData(&PlayerUICB);
 		pConstBuffer->Bind(eShaderStage::PS);
 

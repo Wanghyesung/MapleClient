@@ -138,6 +138,8 @@ namespace W
 		Vector3 vPosition = pTransform->GetPosition();
 		vPosition.z = -6.5f;
 		pTransform->SetPosition(vPosition);
+
+		UI::MouseLbtnDown();
 	}
 
 	void IconUI::MouseLbtnUp()
@@ -150,6 +152,8 @@ namespace W
 
 		vPosition.z = m_vStartPos.z;
 		pTransform->SetPosition(vPosition);
+
+		UI::MouseLbtnUp();
 	}
 	void IconUI::MouseLbtnClicked()
 	{

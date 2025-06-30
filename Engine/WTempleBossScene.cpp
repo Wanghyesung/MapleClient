@@ -45,19 +45,19 @@ namespace W
 		m_vecResource.push_back(std::make_pair(L"ArielTex", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Ariel\\Ariel.png"));
 		m_vecResource.push_back(std::make_pair(L"Ariel_attack0", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Ariel\\attack0_effect.png"));
 		m_vecResource.push_back(std::make_pair(L"Ariel_attack1", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Ariel\\attack1_effect.png"));
-
+		
 		m_vecResource.push_back(std::make_pair(L"PinkBean_attack0_hit", L"..\\Resources\\Texture\\Monster\\PinkBean\\PinkBean\\attack0_hit.png"));
 		m_vecResource.push_back(std::make_pair(L"PinkBean_attack1_hit", L"..\\Resources\\Texture\\Monster\\PinkBean\\PinkBean\\attack1_hit.png"));
 		m_vecResource.push_back(std::make_pair(L"PinkBean_attack2_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\PinkBean\\attack2_hit.png"));
 		m_vecResource.push_back(std::make_pair(L"PinkBean_attack3_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\PinkBean\\attack3_hit.png"));
-		m_vecResource.push_back(std::make_pair(L"MiniBean_attack0", L"..\\Resources\\Texture\\Monster\\PinkBean\\PinkBean\\minibean_attack0_hit.png"));
-		m_vecResource.push_back(std::make_pair(L"Solomon_attack0", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Solomon\\attack0_hit.png"));
-		m_vecResource.push_back(std::make_pair(L"Solomon_attack2", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Solomon\\attack2_hit.png"));
-		m_vecResource.push_back(std::make_pair(L"Rex_attack0", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Rex\\attack0_hit.png"));
-		m_vecResource.push_back(std::make_pair(L"Rex_attack2", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Rex\\attack2_hit.png"));
-		m_vecResource.push_back(std::make_pair(L"Munin_attack0", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Munin\\attack0_hit.png"));
-		m_vecResource.push_back(std::make_pair(L"Munin_attack1", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Munin\\attack1_hit.png"));
-		m_vecResource.push_back(std::make_pair(L"Whiggin_attack0", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Whiggin\\attack0_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"MiniBean_attack0_hit", L"..\\Resources\\Texture\\Monster\\PinkBean\\PinkBean\\minibean_attack0_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Solomon_attack0_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Solomon\\attack0_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Solomon_attack2_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Solomon\\attack2_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Rex_attack0_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Rex\\attack0_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Rex_attack2_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Rex\\attack2_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Munin_attack0_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Munin\\attack0_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Munin_attack1_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Munin\\attack1_hit.png"));
+		m_vecResource.push_back(std::make_pair(L"Whiggin_attack0_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Whiggin\\attack0_hit.png"));
 
 	}
 	TempleBossScene::~TempleBossScene()

@@ -18,7 +18,11 @@ namespace W
 	}
 	void SharHP::Initialize()
 	{
+		GetComponent<Transform>()->SetScale(1.2f * 7.6f, 1.2f * 0.4f, 0.f);
+		GetComponent<Transform>()->SetPosition(0.f, 3.5f, -2.f);
 
+		MeshRenderer* pRenderer = GetComponent<MeshRenderer>();
+		pRenderer->GetMaterial()->SetTexture(Resources::Find<Texture>(L"BossHP"));
 	}
 	void SharHP::Update()
 	{
@@ -30,15 +34,7 @@ namespace W
 	}
 	void SharHP::Render()
 	{	
-		renderer::PlayerUICB PlayerUICB;
-		PlayerUICB.vSize.x = m_fHP;
-
-		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::PlayerUI];
-		//Vector4 vPosition(m_vPosition.x, m_vPosition.y, m_vPosition.z, 1.f);
-		pConstBuffer->SetData(&PlayerUICB);
-		pConstBuffer->Bind(eShaderStage::PS);
-
-		GameObject::Render();
+		MonsterHP::Render();
 	}
 	void SharHP::UpdateState(const wstring& _strStateName, int _iState)
 	{

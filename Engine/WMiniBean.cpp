@@ -44,6 +44,7 @@ namespace W
 		attack1->SetName(L"MiniBean_attack0");
 		ObjectPoolManager::AddObjectPool(attack1->GetName(), attack1);
 
+		GetComponent<Transform>()->SetScale(3.f, 3.f, 0.f);
 	}
 	MiniBean::~MiniBean()
 	{

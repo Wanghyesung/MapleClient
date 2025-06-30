@@ -34,8 +34,6 @@ namespace W
 			{
 				m_pTargetUI->MouseLbtnDown();
 
-				SetLateRenderUI();
-
 				m_pTargetUI->m_bLbntDown = true;
 			}
 
@@ -212,21 +210,24 @@ namespace W
 		}
 	}
 
-	void UIManager::SetLateRenderUI()
+	void UIManager::SetLateRenderUI(UI* _pTarget)
 	{
-		if (m_pLateRenderUI != m_pTargetUI)
+		if (m_pLateRenderUI != _pTarget)
 		{
 			if (m_pLateRenderUI)
 				m_pLateRenderUI->m_bTargetOn = false;
 
-			m_pLateRenderUI = m_pTargetUI;
+			m_pLateRenderUI = _pTarget;
 			m_pLateRenderUI->m_bTargetOn = true;
 		}
 	}
 
-	void UIManager::ReleaseLateRenderUI()
+	void UIManager::ReleaseLateRenderUI(UI* _pTarget)
 	{
-		m_pLateRenderUI->m_bLbntDown = false;
+		if (m_pLateRenderUI != _pTarget)
+			return;
+
+		m_pLateRenderUI->m_bTargetOn = false;
 		m_pLateRenderUI = nullptr;
 	}
 

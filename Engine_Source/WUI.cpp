@@ -5,7 +5,7 @@
 #include "WSceneManger.h"
 #include "WApplication.h"
 #include "..\\Engine\\WIconUI.h"
-
+#include "UIManager.h"
 extern W::Application application;
 
 namespace W
@@ -75,11 +75,11 @@ namespace W
 	}
 	void UI::MouseLbtnDown()
 	{
-
+		UIManager::SetLateRenderUI(this);
 	}
 	void UI::MouseLbtnUp()
 	{
-
+		UIManager::ReleaseLateRenderUI(this);
 	}
 	void UI::MouseLbtnClicked()
 	{

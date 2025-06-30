@@ -64,7 +64,7 @@ namespace W
 	}
 	void BossEnterUI::MouseLbtnUp()
 	{
-
+		UI::MouseLbtnUp();
 	}
 
 	void BossEnterUI::MouseLbtnClicked()
@@ -73,8 +73,6 @@ namespace W
 		dynamic_cast<BossUI*>(GetParentUI())->SetRender(false);
 
 		EventManager::ChangeScene(m_strNextScene);
-
-		UIManager::ReleaseLateRenderUI();
 	}
 	void BossEnterUI::set_nextscene(BossUI::eBossUnber _eNumber)
 	{

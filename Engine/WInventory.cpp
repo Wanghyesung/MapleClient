@@ -176,10 +176,13 @@ namespace W
 
 		m_vDragStartPos = Input::GetMousePos();
 
+		UI::MouseLbtnDown();
 	}
 	void Inventory::MouseLbtnUp()
 	{
 		m_bTargetOn = false;
+
+		UI::MouseLbtnUp();
 
 		//m_vUIEndPosition = Input::GetMousePos();
 	}

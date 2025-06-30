@@ -136,6 +136,7 @@ namespace W
 		std::shared_ptr<Texture> pAtlas2 = Resources::Find<Texture>(L"PinkBean2");
 
 		Animator* pAnim = GetComponent<Animator>();
+		pAnim->SetTextureBothDir(L"PinkBean_start", pAtlas1);
 		pAnim->SetTextureBothDir(L"PinkBean_stand", pAtlas1);
 		pAnim->SetTextureBothDir(L"PinkBean_move", pAtlas1);
 		pAnim->SetTextureBothDir(L"PinkBean_dead", pAtlas1);
