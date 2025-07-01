@@ -22,10 +22,8 @@ namespace W
 		Resources::Insert(L"StigamBackMater", pMater);
 		mr->SetMaterial(pMater);
 		Animator* pAnim = AddComponent<Animator>();
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"StigmaBack");
 		pAnim->Create(L"loop", nullptr, Vector2(0.0f, 0.0f), Vector2(80.0f, 43.0f), 11, Vector2(80.f, 80.f), Vector2::Zero, Vector2(880.f, 44.f), 0.13f);
 
-		pAnim->Play(L"loop", true);
 	}
 	StigmaBack::~StigmaBack()
 	{
@@ -33,7 +31,8 @@ namespace W
 	}
 	void StigmaBack::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"StigmaBack");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void StigmaBack::Update()
 	{
@@ -56,5 +55,17 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+	void StigmaBack::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		UCHAR cAnimIdx = _iState & 0xFF;
+
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
+
+		m_iAnimIdx = cAnimIdx;
 	}
 }

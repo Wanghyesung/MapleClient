@@ -1,6 +1,7 @@
 #pragma once
 
 #include "WInput.h"
+#include "WGameObject.h"
 namespace W
 {
 	class InputBackground;
@@ -14,7 +15,7 @@ namespace W
 		virtual void Update()override;
 		virtual void LateUpdate()override;
 		virtual void Render()override;
-
+		virtual void UpdateState(const wstring& _strStateName, int _iState)override;
 	
 	};
 }

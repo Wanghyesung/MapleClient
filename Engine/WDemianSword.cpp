@@ -25,13 +25,12 @@ namespace W
 		mr->SetMaterial(pMater);
 
 		Animator* pAnim = AddComponent<Animator>();
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"DemianSword");
 		pAnim->Create(L"sword_start", nullptr, Vector2(0.0f, 0.0f), Vector2(419.0f, 342.0f), 13, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(5447.f, 1026.f), 0.12f);
 		pAnim->Create(L"sword_move", nullptr, Vector2(0.0f, 342.0f), Vector2(419.0f, 342.0f), 8, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(5447.f, 1026.f), 0.12f);
 		pAnim->Create(L"sword_end", nullptr, Vector2(0.0f, 684.f), Vector2(419.0f, 342.0f), 11, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(5447.f, 1026.f), 0.12f);
 
 	
-		pAnim->Play(L"sword_start", true);
+		//pAnim->Play(L"sword_start", true);
 	}
 
 	DemianSword::~DemianSword()
@@ -41,6 +40,8 @@ namespace W
 
 	void DemianSword::Initialize()
 	{
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"DemianSword");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void DemianSword::Update()
 	{
@@ -61,6 +62,11 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void DemianSword::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 
 

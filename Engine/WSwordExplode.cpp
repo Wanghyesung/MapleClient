@@ -24,7 +24,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(18.f, 18.f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"swordExplodeTex");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"start", nullptr, Vector2(0.0f, 0.0f), Vector2(614.f, 557.0f), 3, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14122.f, 1114.f), 0.15f);
 		pAnim->Create(L"explode", nullptr, Vector2(0.0f, 557.0f), Vector2(614.f, 557.0f), 23, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14122.f, 1114.f), 0.1f);
@@ -37,7 +36,8 @@ namespace W
 
 	void SwordExplode::Initialize()
 	{
-		GetComponent<Animator>()->Play(L"start", true);
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"swordExplodeTex");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 
 	void SwordExplode::Update()
@@ -62,5 +62,10 @@ namespace W
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void SwordExplode::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
 	}
 }

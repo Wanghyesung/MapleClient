@@ -4,6 +4,7 @@
 #include "WRenderer.h"
 #include "WInput.h"
 #include "WResources.h"
+
 namespace W
 {
 	InputObject::InputObject()
@@ -65,4 +66,19 @@ namespace W
 
 		GameObject::Render();
 	}
+
+	void InputObject::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		UCHAR cAnimIdx = _iState & 0xFF;
+
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
+
+		m_iAnimIdx = cAnimIdx;
+	}
+
+	
 }

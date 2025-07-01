@@ -22,14 +22,17 @@ namespace W
 		virtual void StartSound()override;
 		virtual void EndSound()override;
 
+		virtual void SendEnter()override;
+
+	protected:
+		virtual void add_objectpool()override;
+		virtual void mapping_resource()override;
+
 	private:
 		void fadein();
 		void phase2();
-		void check_stigma();
 	private:
 		void create_monster();
-		void create_effect();
-		void create_event();
 
 	private:
 		class SharHP* m_pSharHP;

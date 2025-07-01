@@ -7,7 +7,8 @@
 #include "WTransform.h"
 namespace W
 {
-	White::White()
+	White::White():
+		m_vColor(Vector4::One)
 	{
 		std::shared_ptr<Material> pMater = std::make_shared<Material>();
 		pMater->SetRenderinMode(eRenderingMode::Transparent);
@@ -22,7 +23,6 @@ namespace W
 		pMater->SetTexture(pAtlas);
 
 		GetComponent<Transform>()->SetScale(12.f * 1.52f, 22.f * 1.f, 0.f);
-		GetComponent<Transform>()->SetPosition(0.f,0.f,-3.f);
 	}
 
 	White::~White()
@@ -49,13 +49,19 @@ namespace W
 	{
 		renderer::ObjectCB ObjectCB;
 		ObjectCB.vObjectDir.x = 1;
-		//ObjectCB.vObjectColor = m_vColor;
+		ObjectCB.vObjectColor = m_vColor;
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::Object];
 		//Vector4 vPosition(m_vPosition.x, m_vPosition.y, m_vPosition.z, 1.f);
 		pConstBuffer->SetData(&ObjectCB);
 		pConstBuffer->Bind(eShaderStage::PS);
 
 		GameObject::Render();
+	}
+
+	void White::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		m_vColor.w =  _iState /10000;
+		
 	}
 	
 }

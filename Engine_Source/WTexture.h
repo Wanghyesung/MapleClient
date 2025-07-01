@@ -56,6 +56,8 @@ namespace W
 		D3D11_TEXTURE2D_DESC m_tDesc;
 
 		UINT m_iSlotNum;
+
+		static RWLock m_lock;
 	};
 
 	//텍스쳐(uv좌표)의 픽셀을 하나하나 옮겨가져옴(2dTexture)

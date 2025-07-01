@@ -20,7 +20,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(18.f, 18.f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demianspear0");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Spear", nullptr, Vector2(0.0f, 0.0f), Vector2(258.f, 538.0f), 29, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(7482.f, 538.f), 0.15f);
 
@@ -35,7 +34,8 @@ namespace W
 
 	void DemianSpear0::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demianspear0");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 
 	void DemianSpear0::Update()
@@ -61,4 +61,8 @@ namespace W
 		GameObject::Render();
 	}
 	
+	void DemianSpear0::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
+	}
 }

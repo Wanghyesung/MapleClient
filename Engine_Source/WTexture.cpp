@@ -3,6 +3,7 @@
 
 namespace W
 {
+	RWLock Texture::m_lock = {};
 	Texture::Texture():
 		Resource(eResourceType::Texture),
 		m_Image{},
@@ -97,11 +98,17 @@ namespace W
 			if (FAILED(LoadFromTGAFile(_strPath.c_str(), nullptr, m_Image)))
 				return S_FALSE;
 		}
+		/*
+		COM이 초기화되지 않은 스레드에서 호출되거나
+		전역 WIC 팩토리가 스레드 간 동시에 접근되어 내부 자료구조가 깨지기 때문
+		//WLock lock(m_lock);
+		*/
 		else // WIC (png, jpg, jpeg, bmp )
 		{
+			
 			if (FAILED(LoadFromWICFile(_strPath.c_str(), WIC_FLAGS::WIC_FLAGS_IGNORE_SRGB, nullptr, m_Image)))
 				assert(false);
-				
+			
 			//WIC_FLAGS_IGNORE_SRGB
 		}
 

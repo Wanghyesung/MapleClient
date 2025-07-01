@@ -21,6 +21,7 @@ namespace W
 
 	std::wstring EventManager::m_strNextScene = {};
 #define ObjectPoolPosition 2000.f
+
 	void EventManager::Update()
 	{
 		//더블버퍼링

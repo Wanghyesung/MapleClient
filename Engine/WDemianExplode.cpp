@@ -18,11 +18,10 @@ namespace W
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demianExplode");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Explode", nullptr, Vector2(0.0f, 0.0f), Vector2(439.f, 432.0f), 36, Vector2(440.f, 440.f), Vector2::Zero, Vector2(15804.f, 432.f), 0.15f);
 
-		pAnim->Play(L"Explode", true);
+		//pAnim->Play(L"Explode", true);
 
 	}
 	DemianExplode::~DemianExplode()
@@ -31,7 +30,8 @@ namespace W
 	}
 	void DemianExplode::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demianExplode");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void DemianExplode::Update()
 	{
@@ -55,4 +55,9 @@ namespace W
 		GameObject::Render();
 	}
 	
+	void DemianExplode::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
+	}
+
 }

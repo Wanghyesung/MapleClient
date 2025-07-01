@@ -21,7 +21,6 @@ namespace W
 		Resources::Insert(L"demainfire1", pMater);
 
 		Animator* pAnim = AddComponent<Animator>();
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demainfire1");
 		pAnim->Create(L"fire1", nullptr, Vector2(0.0f, 0.0f), Vector2(78.f, 78.0f), 6, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(468.f, 78.f), 0.12f);
 
 		pAnim->Play(L"fire1", true);
@@ -34,7 +33,8 @@ namespace W
 	}
 	void DemianFire1::Initialize()
 	{
-	
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demainfire1");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void DemianFire1::Update()
 	{
@@ -56,4 +56,8 @@ namespace W
 		GameObject::Render();
 	}
 
+	void DemianFire1::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		MonsterAttackObject::UpdateState(_strStateName, _iState);
+	}
 }

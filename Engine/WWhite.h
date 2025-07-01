@@ -15,8 +15,10 @@ namespace W
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();
+		virtual void UpdateState(const wstring& _strStateName, int _iState);
 
-		
+	private:
+		Vector4 m_vColor;
 	};
 }
 
