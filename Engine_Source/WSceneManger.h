@@ -83,14 +83,16 @@ namespace W
 	
 		static void SendEnter();
 
-		static void CompletedMapData() { m_bWaitForMapData.store(false); }
-		static void StartWaitForMapData() { m_bWaitForMapData.store(true); }
+		static void CompletedMapData() { ++te; m_bWaitForMapData.store(false); }
+		static void StartWaitForMapData() { ++te2; m_bWaitForMapData.store(true); }
 
 		static bool IsWaitForMapData() { return m_bWaitForMapData.load(); }
 	private:
 		static Scene* m_pActiveScene;
 		static std::map<std::wstring, Scene*> m_mapScene;
 
+		static int te;
+		static int te2;
 		static atomic<bool> m_bWaitForMapData;
 
 	};

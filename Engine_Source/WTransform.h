@@ -27,6 +27,10 @@ namespace W
 		void SetDirectPosition(const Vector3& _vPosition);
 		void SetDirectPosition(float x, float y, float z);
 
+		void SetDirectRotation(const Vector3& _vRotation);
+		void SetDirectRotation(float x, float y, float z);
+
+
 		void SetPosition(const Vector3& _vPosition) { m_vPosition = _vPosition; }
 		void SetRotation(const Vector3& _vRotation) { m_vRotation = _vRotation; }
 		void SetScale(const Vector3& _vScale) { m_vScale = _vScale; }

@@ -12,6 +12,8 @@
 #include "WSwordExplode.h"
 #include "WTime.h"
 #include "WObjectPoolManager.h"
+#include "WInput.h"
+#include "WInputObject.h"
 namespace W
 {
 	Demian::Demian()
@@ -29,6 +31,8 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 	
+		GetComponent<Transform>()->SetScale(18.f, 18.f, 0.f);
+
 		//pAttack0->BindShaderResource(eShaderStage::PS, 12);
 		//pAttack1->BindShaderResource(eShaderStage::PS, 12);
 		//pAttack2->BindShaderResource(eShaderStage::PS, 12);
@@ -121,6 +125,16 @@ namespace W
 		pAnim->FindAnimation(L"Demian1_attack3_right")->Create(L"Demian1_attack3_right", nullptr, Vector2(12000.f, 3900.f), Vector2(-2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 6500.f), 0.15f);
 		pAnim->FindAnimation(L"Demian1_attack3_right")->Create(L"Demian1_attack3_right", nullptr, Vector2(12000.f, 5200.f), Vector2(-2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 6500.f), 0.15f);
 
+
+		for (int i = 0; i < 6; ++i)
+		{
+			for (int j = (int)eKeyCode::UP; j <= (int)eKeyCode::RIGHT; ++j)
+			{
+				InputObject* pInputObj = new InputObject();
+				pInputObj->CreateInputObject((eKeyCode)j);
+				ObjectPoolManager::AddObjectPool(pInputObj->GetName(), pInputObj);
+			}
+		}
 
 		DemianSword* pSword = new DemianSword();
 		pSword->SetName(L"demianSword");

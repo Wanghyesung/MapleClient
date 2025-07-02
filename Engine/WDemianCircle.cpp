@@ -22,7 +22,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(4.f, 4.f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"DemianCircle");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"level0", nullptr, Vector2(0.0f, 0.0f), Vector2(260.f, 272.0f), 12, Vector2(500.f, 500.f), Vector2::Zero, Vector2(5172, 1095.f), 0.15f);
 		pAnim->Create(L"level1", nullptr, Vector2(0.0f, 272.0f), Vector2(361.f, 374.0f), 11, Vector2(500.f, 500.f), Vector2::Zero, Vector2(5172, 1095.f),0.15f);
@@ -37,7 +36,8 @@ namespace W
 	}
 	void DemianCircle::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"DemianCircle");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void DemianCircle::Update()
 	{

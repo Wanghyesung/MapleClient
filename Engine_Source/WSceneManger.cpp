@@ -10,6 +10,8 @@ namespace W
 {
 	Scene* SceneManger::m_pActiveScene = nullptr;
 	atomic<bool> SceneManger::m_bWaitForMapData = false;
+	int SceneManger::te = 0;
+	int SceneManger::te2 = 0;
 	std::map<std::wstring, Scene*> SceneManger::m_mapScene = {};
 
 	void SceneManger::Initialize()

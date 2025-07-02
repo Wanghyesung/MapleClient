@@ -156,7 +156,6 @@ namespace W
 
 		m_vNextPosition = _vPosition;
 		m_vPrevPosition = _vPosition;
-
 		m_vPosition = _vPosition;
 	}
 
@@ -169,5 +168,23 @@ namespace W
 		m_vNextPosition = vPosition;
 		m_vPrevPosition = vPosition;
 		m_vPosition = vPosition;
+	}
+	void Transform::SetDirectRotation(const Vector3& _vRotation)
+	{
+		m_fCurLerpTime = m_fLerpTime;
+
+		m_vNextRotation = _vRotation;
+		m_vPrevRotation = _vRotation;
+		m_vRotation = _vRotation;
+	}
+	void Transform::SetDirectRotation(float x, float y, float z)
+	{
+		Vector3 vRotation = Vector3(x, y, z);
+
+		m_fCurLerpTime = m_fLerpTime;
+
+		m_vNextRotation = vRotation;
+		m_vPrevRotation = vRotation;
+		m_vRotation = vRotation;
 	}
 }

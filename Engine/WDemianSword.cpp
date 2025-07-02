@@ -66,7 +66,18 @@ namespace W
 
 	void DemianSword::UpdateState(const wstring& _strStateName, int _iState)
 	{
-		MonsterAttackObject::UpdateState(_strStateName, _iState);
+		UCHAR cAnimIdx = _iState & 0xFF;
+		bool bRender = (_iState >> 8) & 0xFF;
+
+		if (m_strCurStateName != _strStateName)
+		{
+			m_strCurStateName = _strStateName;
+			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
+
+		SetRender(bRender);
+
+		m_iAnimIdx = cAnimIdx;
 	}
 
 

@@ -69,7 +69,6 @@ namespace W
 		for (int i = 0; i < m_vecResource.size(); ++i)
 			ThreadPool::LoadingResource<Texture>(m_vecResource[i].first, m_vecResource[i].second);
 
-
 		StartLoading();
 	}
 	void Scene::OnExit()

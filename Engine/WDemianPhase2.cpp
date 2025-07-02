@@ -41,6 +41,8 @@ namespace W
 
 		Animator* pAnim = AddComponent<Animator>();
 	
+		GetComponent<Transform>()->SetScale(18.f, 18.f, 0.f);
+
 		pAnim->Create(L"Demian2_stand_left", nullptr, Vector2(0.f, 0.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 1300.f),0.15f);
 
 		pAnim->Create(L"Demian2_dead_left", nullptr, Vector2(0.f, 0.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 5200.f), 0.15f);

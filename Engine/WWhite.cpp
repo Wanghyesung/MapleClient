@@ -62,6 +62,7 @@ namespace W
 	{
 		m_vColor.w =  _iState /10000;
 		
+		int a = 10;
 	}
 	
 }

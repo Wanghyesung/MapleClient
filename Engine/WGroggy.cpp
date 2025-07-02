@@ -22,6 +22,7 @@ namespace W
 			Resources::Load<Texture>(L"groggyTex", L"..\\Resources\\Texture\\Abnormal\\groggy.png");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"groggy", pAtlas, Vector2(0.0f, 0.0f), Vector2(129.0f, 67.0f), 8, Vector2(139.f, 130.f), Vector2::Zero, Vector2(1032.f, 67.f), 0.2f);
+
 		GetComponent<Transform>()->SetScale(2.f, 2.f, 0.f);
 
 	}
@@ -31,7 +32,7 @@ namespace W
 	}
 	void Groggy::Initialize()
 	{
-		
+		m_strCurStateName.clear();
 	}
 	void Groggy::Update()
 	{
@@ -50,7 +51,6 @@ namespace W
 		ObjectCB.vObjectColor = Vector4::One;
 
 		ConstantBuffer* pConstBuffer = renderer::constantBuffer[(UINT)eCBType::Object];
-		//Vector4 vPosition(m_vPosition.x, m_vPosition.y, m_vPosition.z, 1.f);
 		pConstBuffer->SetData(&ObjectCB);
 		pConstBuffer->Bind(eShaderStage::PS);
 

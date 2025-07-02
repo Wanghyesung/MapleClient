@@ -41,7 +41,7 @@ namespace W
 		m_vecResource.push_back(std::make_pair(L"Demian_attack2", L"..\\Resources\\Texture\\Monster\\demian\\attack2.png"));
 		m_vecResource.push_back(std::make_pair(L"Demian_attack3", L"..\\Resources\\Texture\\Monster\\demian\\attack3.png"));
 
-		m_vecResource.push_back(std::make_pair(L"demainfire0", L"..\\Resources\\Texture\\Monster\\demian\\demainfire0.png"));
+		m_vecResource.push_back(std::make_pair(L"demianfire0", L"..\\Resources\\Texture\\Monster\\demian\\demainfire0.png"));
 		m_vecResource.push_back(std::make_pair(L"demianExplode", L"..\\Resources\\Texture\\Monster\\demian\\demain_explode.png"));
 		m_vecResource.push_back(std::make_pair(L"demainkeyAttack", L"..\\Resources\\Texture\\Monster\\demian\\keyAttack.png"));
 		m_vecResource.push_back(std::make_pair(L"demainInputBack", L"..\\Resources\\Texture\\Monster\\demian\\inputbackground.png"));
@@ -65,8 +65,8 @@ namespace W
 		m_vecResource.push_back(std::make_pair(L"Demian2_attack4", L"..\\Resources\\Texture\\Monster\\demian\\attack14.png"));
 		m_vecResource.push_back(std::make_pair(L"Demian2_attack5", L"..\\Resources\\Texture\\Monster\\demian\\attack15.png"));
 
-		m_vecResource.push_back(std::make_pair(L"demainfire1", L"..\\Resources\\Texture\\Monster\\demian\\demianfire1.png"));
-		m_vecResource.push_back(std::make_pair(L"demainfire2", L"..\\Resources\\Texture\\Monster\\demian\\demainfire2.png"));
+		m_vecResource.push_back(std::make_pair(L"demianfire1", L"..\\Resources\\Texture\\Monster\\demian\\demianfire1.png"));
+		m_vecResource.push_back(std::make_pair(L"demianfire2", L"..\\Resources\\Texture\\Monster\\demian\\demainfire2.png"));
 		
 		m_vecResource.push_back(std::make_pair(L"demianspear0", L"..\\Resources\\Texture\\Monster\\demian\\demianspear0.png"));
 		m_vecResource.push_back(std::make_pair(L"demianspear1", L"..\\Resources\\Texture\\Monster\\demian\\demianspear1.png"));
@@ -196,17 +196,20 @@ namespace W
 			Effect* pClone1 = new Effect();
 			pClone1->GetComponent<Transform>()->SetScale(Vector3(18.f, 18.f, 0.f));
 			pClone1->CreateAnimation(nullptr, L"DemianClone0", Vector2(0.f, 0.f), Vector2(515.f, 318.f), 8, 1, Vector2(2000.f, 2000.f), Vector2(0.f, 0.f), Vector2(5172.f, 1095.f));
+			ObjectPoolManager::AddObjectPool(pClone1->GetName(), pClone1);
 		}
 
 		Effect* pClone2 = new Effect();
 		pClone2->GetComponent<Transform>()->SetScale(Vector3(18.f, 18.f, 0.f));
 		pClone2->CreateAnimation(nullptr, L"DemianClone1", Vector2(0.f, 0.f), Vector2(679.f, 542.f), 8, 1, Vector2(1800.f, 1800.f), Vector2(0.f, 0.f), Vector2(5172.f, 1095.f));
+		ObjectPoolManager::AddObjectPool(pClone2->GetName(), pClone2);
 
 		for (int i = 0; i < 3; ++i)
 		{
 			Effect* pEffect = new Effect();
 			pEffect->GetComponent<Transform>()->SetScale(3.5f, 3.5f, 0.f);
-			pEffect->CreateAnimation(nullptr, L"DemianTarget_hit", Vector2(0.f, 0.f), Vector2(286.f, 288.f), 14, 1, Vector2(300.f, 300.f), Vector2::Zero, Vector2(2268.f, 187.f));
+			pEffect->CreateAnimation(nullptr, L"DemianTarget", Vector2(0.f, 0.f), Vector2(286.f, 288.f), 14, 1, Vector2(300.f, 300.f), Vector2::Zero, Vector2(4004.f, 288.f));
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 		}
 	}
 
@@ -216,7 +219,7 @@ namespace W
 		mapping_texture(L"DemianAttack0Effect", L"DemianAttack0Effect_hit");
 		mapping_texture(L"demianClone0", L"demianClone0");
 		mapping_texture(L"demianClone1", L"demianClone1");
-		mapping_texture(L"DemianTarget", L"DemianTarget_hit");
+		mapping_texture(L"DemianTarget", L"DemianTarget");
 	}
 
 	void DemianScene::fadein()

@@ -24,11 +24,6 @@ namespace W
 		pMater->SetTexture(pAtlas);
 
 		GetComponent<Transform>()->SetScale(2.5f * 1.8f, 2.5f * 0.5f, 0.f);
-
-		Vector3 vTargetPos = Vector3(0.f, 0.f, -10.f);
-		vTargetPos.y += 1.f;
-		vTargetPos.z += 1.f;
-		GetComponent<Transform>()->SetPosition(vTargetPos);
 	}
 	InputBackground::~InputBackground()
 	{
@@ -36,7 +31,12 @@ namespace W
 	}
 	void InputBackground::Initialize()
 	{
-		
+		Vector3 vTargetPos = renderer::MainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
+		vTargetPos.y += 1.f;
+		vTargetPos.z += 1.1f;
+
+		GetComponent<Transform>()->SetPosition(vTargetPos);
+
 	}
 	void InputBackground::Update()
 	{

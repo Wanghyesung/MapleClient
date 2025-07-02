@@ -16,7 +16,9 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 		virtual void UpdateState(const wstring& _strStateName, int _iState)override;
-	
+		
+		void CreateInputObject(eKeyCode _eKeyCode);
+		wstring GetWDir(eKeyCode _eKeyCode);
 	};
 }
 

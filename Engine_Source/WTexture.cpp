@@ -12,7 +12,9 @@ namespace W
 		m_tDesc{},
 		m_iSlotNum(0)
 	{
+
 	}
+
 	Texture::~Texture()
 	{
 		

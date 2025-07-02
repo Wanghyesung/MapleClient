@@ -31,7 +31,7 @@ namespace W
 	}
 	void DemianFire0::Initialize()
 	{
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demainfire0");
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"demianfire0");
 		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void DemianFire0::Update()

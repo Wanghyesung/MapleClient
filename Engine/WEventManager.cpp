@@ -184,6 +184,7 @@ namespace W
 		
 		
 		pObj->GetComponent<Transform>()->SetDirectPosition(tTrInfo.vPosition);
+		pObj->GetComponent<Transform>()->SetDirectRotation(tTrInfo.vRotation);
 		
 		eLayerType eLayerType = (W::eLayerType)cLayer;
 		pObj->SetObjectID(CID);
