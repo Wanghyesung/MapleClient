@@ -25,6 +25,7 @@ namespace W
 		pMeshRender->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pMeshRender->SetMaterial(pMater);
 
+		GetComponent<Transform>()->SetScale(0.14f * 1.4f, 0.16f * 1.4f, 0.f);
 	}
 	StigmaCount::~StigmaCount()
 	{
@@ -45,6 +46,12 @@ namespace W
 	void StigmaCount::Render()
 	{
 		GameObject::Render();
+	}
+
+	void StigmaCount::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(
+			Resources::Find<Texture>(L"stigma" + std::to_wstring(_iState)));
 	}
 
 }

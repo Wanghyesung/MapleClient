@@ -15,13 +15,7 @@
 #include "WEffect.h"
 namespace W
 {
-	DemianScene::DemianScene():
-		m_pWhite(nullptr),
-		m_bEnd(false),
-		m_pStigmaBack(nullptr),
-		m_iFadeCallStack(1),
-		m_fStigmaTime(30.f),
-		m_fCurStigmaTime(0.f)
+	DemianScene::DemianScene()
 	{
 	
 		SetMapSize(-1.9f, -1.f, 1.9f, -1.f);
@@ -134,15 +128,10 @@ namespace W
 	{
 		Scene::OnEnter();
 
-		
-		m_bEnd = false;
-		m_iFadeCallStack = 1;
 	}
 	void DemianScene::OnExit()
 	{
 		Scene::OnExit();
-
-		m_pWhite = nullptr;
 
 	}
 	void DemianScene::CreateBackground()
@@ -198,13 +187,13 @@ namespace W
 		{
 			Effect* pClone1 = new Effect();
 			pClone1->GetComponent<Transform>()->SetScale(Vector3(18.f, 18.f, 0.f));
-			pClone1->CreateAnimation(nullptr, L"DemianClone0", Vector2(0.f, 0.f), Vector2(515.f, 318.f), 8, 1, Vector2(2000.f, 2000.f), Vector2(0.f, 0.f), Vector2(5172.f, 1095.f));
+			pClone1->CreateAnimation(nullptr, L"DemianClone0", Vector2(0.f, 0.f), Vector2(515.f, 318.f), 8, 1, Vector2(2000.f, 2000.f), Vector2(0.f, 0.f), Vector2(4120.f, 318.f));
 			ObjectPoolManager::AddObjectPool(pClone1->GetName(), pClone1);
 		}
 
 		Effect* pClone2 = new Effect();
 		pClone2->GetComponent<Transform>()->SetScale(Vector3(18.f, 18.f, 0.f));
-		pClone2->CreateAnimation(nullptr, L"DemianClone1", Vector2(0.f, 0.f), Vector2(679.f, 542.f), 8, 1, Vector2(1800.f, 1800.f), Vector2(0.f, 0.f), Vector2(5172.f, 1095.f));
+		pClone2->CreateAnimation(nullptr, L"DemianClone1", Vector2(0.f, 0.f), Vector2(679.f, 542.f), 8, 1, Vector2(1800.f, 1800.f), Vector2(0.f, 0.f), Vector2(5432.f, 542.f));
 		ObjectPoolManager::AddObjectPool(pClone2->GetName(), pClone2);
 
 		for (int i = 0; i < 3; ++i)
@@ -225,21 +214,5 @@ namespace W
 		mapping_texture(L"DemianTarget", L"DemianTarget");
 	}
 
-	void DemianScene::fadein()
-	{
-		m_bEnd = true;
-		m_iFadeCallStack = 0;
-		
-	}
-	void DemianScene::phase2()
-	{
-	
-	}
 
-
-
-	void DemianScene::create_monster()
-	{
-		
-	}
 }

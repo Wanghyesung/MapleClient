@@ -143,8 +143,6 @@ namespace W
 
 	void SceneManger::SendEnter()
 	{
-		LOG_PACKET_SEND(Send_Enter);
-
 		m_pActiveScene->SendEnter();
 	}
 

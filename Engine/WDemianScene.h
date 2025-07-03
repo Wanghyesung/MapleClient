@@ -34,17 +34,6 @@ namespace W
 	private:
 		void create_monster();
 
-	private:
-		class SharHP* m_pSharHP;
-
-		class White* m_pWhite;
-		class StigmaBack* m_pStigmaBack;
-
-		float m_fStigmaTime;
-		float m_fCurStigmaTime;
-		
-		bool m_bEnd;
-		UINT m_iFadeCallStack;
 	};
 }
 

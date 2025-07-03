@@ -45,10 +45,6 @@ namespace W
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"vine");
 		GetComponent<Animator>()->SetTexture(pAtlas);
 
-		Vector3 vPosition = renderer::MainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
-		vPosition.y -= 1.5f;
-		vPosition.z = -3.f;
-		GetComponent<Transform>()->SetPosition(vPosition);
 	}
 	void DemianVine::Update()
 	{
@@ -57,6 +53,11 @@ namespace W
 	void DemianVine::LateUpdate()
 	{
 		GameObject::LateUpdate();
+
+		Vector3 vPosition = renderer::MainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
+		vPosition.y -= 1.5f;
+		vPosition.z = -3.f;
+		GetComponent<Transform>()->SetPosition(vPosition);
 	}
 
 	void DemianVine::Render()
