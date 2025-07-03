@@ -53,14 +53,14 @@ namespace W
 		static void CreateObject(GameObject* _pObj, eLayerType _eLayer);
 		static void CreateObjectID(UINT _iLayerCreateIdId, const tTransformInfo& _tTransformInfo, const wstring& _strObjectName);
 		static void DeleteObject(GameObject* _pObj,  Scene* _pScene);
-		static void DeleteObjectID(UINT _ID, eLayerType _eType);
+		static void DeleteObjectID(UINT _ID, eLayerType _eType, const wstring& _strSceneName);
 		static void ChangeScene(const std::wstring& _strNextScene);
 	
 		static void AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID);
 		static void AddOtherPlayer(UINT _iPlayerID);
 
 		static void UpdateTransform(UINT _ID, eLayerType _eType, const tTransformInfo& _tTransformInfo);
-		static void UpdateState(UINT _iLayerID, int _iState, const wstring& _strAnimState);
+		static void UpdateState(UINT _iLayerID, int _iState, const wstring& _strState);
 	
 	private:
 		static void create_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);

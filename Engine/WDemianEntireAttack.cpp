@@ -35,4 +35,8 @@ namespace W
 		GameObject::Render();
 	}
 
+	void DemianEntireAttack::UpdateState(const wstring& _strStateName, int _iState)
+	{
+	}
+
 }

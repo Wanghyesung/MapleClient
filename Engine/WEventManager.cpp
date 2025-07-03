@@ -79,12 +79,13 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::DeleteObjectID(UINT _ID, eLayerType _eType)
+	void EventManager::DeleteObjectID(UINT _ID, eLayerType _eType, const wstring& _strSceneName)
 	{
 		tEvent eve = {};
 		eve.lParm = (DWORD_PTR)_ID;
 		eve.wParm = (DWORD_PTR)_eType;
-		
+		eve.accParm = (DWORD_PTR)new wstring(_strSceneName);
+
 		eve.eEventType = EVENT_TYPE::DELET_OBJECT_ID;
 		AddEvent(eve);
 	}
@@ -130,14 +131,14 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::UpdateState(UINT _iLayerID, int _iState, const wstring& _strAnimState)
+	void EventManager::UpdateState(UINT _iLayerID, int _iState, const wstring& _strState)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::UPDATE_STATE;
 
 		eve.lParm = (DWORD_PTR)_iLayerID;
 		eve.wParm = (DWORD_PTR)_iState;
-		eve.accParm = (DWORD_PTR)new wstring(_strAnimState);
+		eve.accParm = (DWORD_PTR)new wstring(_strState);
 
 		AddEvent(eve);
 	}
@@ -205,12 +206,19 @@ namespace W
 		if (!pObj)
 			return;
 
-		SceneManger::GetActiveScene()->EraseObject(eLayer, pObj);
+		const wstring& strSceneName = *reinterpret_cast<wstring*>(_accParm);
+		Scene* pScene = SceneManger::FindScene(strSceneName);
+		if (pScene == nullptr)
+			assert(nullptr);
+
+		pScene->EraseObject(eLayer, pObj);
 
 		if (pObj->IsPoolObject())
 			ObjectPoolManager::AddObjectPool(pObj->GetName(), pObj);
 		else
 			delete pObj;
+
+		delete &strSceneName;
 	}
 
 	void EventManager::change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)

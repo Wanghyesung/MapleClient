@@ -66,15 +66,15 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 
 		UINT iLayerCreateIdId = objInfo.layer_createid_id();
 
-		if (GHashStringToWstring.find(objInfo.object_name()) == GHashStringToWstring.end())
-			GHashStringToWstring[objInfo.object_name()] = StringToWString(objInfo.object_name());
+		//if (GHashStringToWstring.find(objInfo.object_name()) == GHashStringToWstring.end())
+		//	GHashStringToWstring[objInfo.object_name()] = StringToWString(objInfo.object_name());
 		
 		tTransformInfo tTrInfo = {};
 		tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
 		tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
 
 		W::EventManager::CreateObjectID(iLayerCreateIdId, tTrInfo,
-			GHashStringToWstring[objInfo.object_name()]);
+			StringToWString(objInfo.object_name()));
 	}
 
 	//맵 데이터 수신 완료
@@ -86,6 +86,10 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 {
 	const Protocol::ObjectInfo& tInfo = _pkt.object_info();
+	//scene ID로 변경
+	if (SceneManger::GetActiveScene()->GetName() != StringToWString(tInfo.scene()))
+		return false;
+
 	const Protocol::TransformInfo& trInfo = _pkt.object_info().transform();
 
 	//애님에션 상태 추가
@@ -94,15 +98,15 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 
 	UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
 
-	if (GHashStringToWstring.find(tInfo.object_name()) == GHashStringToWstring.end())
-		GHashStringToWstring[tInfo.object_name()] = StringToWString(tInfo.object_name());
-
+	//if (GHashStringToWstring.find(tInfo.object_name()) == GHashStringToWstring.end())
+	//	GHashStringToWstring[tInfo.object_name()] = StringToWString(tInfo.object_name());
+	
 	tTransformInfo tTrInfo = {};
 	tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
 	tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
 
 	W::EventManager::CreateObjectID(iLayerCreateIdId, tTrInfo,
-		GHashStringToWstring[tInfo.object_name()]);
+		StringToWString(tInfo.object_name()));
 
 	return true;
 }
@@ -115,8 +119,7 @@ bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt)
 
 	eLayerType eLayerType = (W::eLayerType)cLayer;
 	
-	
-	EventManager::DeleteObjectID(CID, eLayerType);
+	EventManager::DeleteObjectID(CID, eLayerType, StringToWString(_pkt.scene()));
 	
 	return true;
 }

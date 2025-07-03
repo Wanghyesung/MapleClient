@@ -75,6 +75,8 @@ namespace W
 			return nullptr;
 		}
 
+		static Scene* FindScene(const wstring& _strSceneName);
+
 		static void SwapObject(Scene* _pPrevScene, Scene* _pNextScene, GameObject* _pGameObject);
 		static void SwapObject(Scene* _pPrevScene, Scene* _pNextScene, const std::wstring& _strGameName, eLayerType _eLayerType);
 		static void SwapUI(Scene* _pPrevScene, Scene* _pNextScene);
@@ -83,16 +85,15 @@ namespace W
 	
 		static void SendEnter();
 
-		static void CompletedMapData() { ++te; m_bWaitForMapData.store(false); }
-		static void StartWaitForMapData() { ++te2; m_bWaitForMapData.store(true); }
+		static void CompletedMapData() {m_bWaitForMapData.store(false); }
+		static void StartWaitForMapData() {m_bWaitForMapData.store(true); }
 
 		static bool IsWaitForMapData() { return m_bWaitForMapData.load(); }
+
 	private:
 		static Scene* m_pActiveScene;
 		static std::map<std::wstring, Scene*> m_mapScene;
 
-		static int te;
-		static int te2;
 		static atomic<bool> m_bWaitForMapData;
 
 	};

@@ -60,7 +60,7 @@ namespace W
 
 	void White::UpdateState(const wstring& _strStateName, int _iState)
 	{
-		m_vColor.w =  _iState /10000;
+		m_vColor.w =  (_iState /10000.f);
 		
 		int a = 10;
 	}

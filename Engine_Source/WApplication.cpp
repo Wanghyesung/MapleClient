@@ -10,6 +10,7 @@
 #include "..\Engine\WItemManager.h"
 #include "..\Engine_Source\WThreadPool.h"
 #include "..\Engine\WGameObjectManager.h"
+#include "..\IOCP_CLIENT\ServerPacketHandler.h"
 #include "WPathManager.h"
 #include "WFmod.h"
 #include "WFontWrapper.h"
@@ -117,6 +118,16 @@ namespace W
 		graphicDevice->UpdateViewPort();
 
 		SceneManger::GetActiveScene()->RenderLoading();
+
+		//리소스 로딩시간이 길이져 소켓인 끊기지 않기를 방지
+		static auto last = chrono::steady_clock::now();
+		if (chrono::steady_clock::now() - last >= chrono::seconds(2))
+		{
+			Protocol::C_EXIT pkt;
+			shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+			GClientService->GetClientSession()->Send(pSendBuffer);
+			last = chrono::steady_clock::now();
+		}
 	}
 
 	void Application::SetWindow(HWND _hHwnd, UINT _iWidth, UINT _iHeight)

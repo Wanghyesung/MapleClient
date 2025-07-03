@@ -182,13 +182,16 @@ namespace W
 		DemianPhase2* pDemian2 = new DemianPhase2();
 		ObjectPoolManager::AddObjectPool(pDemian2->GetName(), pDemian2);
 
-		Effect* pAttack_hit1 = new Effect();
-		pAttack_hit1->CreateAnimation(nullptr, L"Demian2_attack1_hit", Vector2(0.f, 0.f), Vector2(227.f, 228.f), 5, 1, Vector2(250.f, 250.f), Vector2(0.f, 0.f), Vector2(1362.f,228.f));
-		ObjectPoolManager::AddObjectPool(pAttack_hit1->GetName(), pAttack_hit1);
-
+		for (int i = 0; i < 5; ++i)
+		{
+			Effect* pAttack_hit1 = new Effect();
+			pAttack_hit1->CreateAnimation(nullptr, L"Demian2_attack1_hit", Vector2(0.f, 0.f), Vector2(227.f, 228.f), 5, 1, Vector2(250.f, 250.f), Vector2(0.f, 0.f), Vector2(1362.f, 228.f));
+			ObjectPoolManager::AddObjectPool(pAttack_hit1->GetName(), pAttack_hit1);
+		}
+		
 		Effect* pEffect = new Effect();
 		pEffect->GetComponent<Transform>()->SetScale(Vector3(18.f, 18.f, 0.f));
-		pEffect->CreateAnimation(nullptr,L"DemianAttack0Effect_hit", Vector2(0.f, 0.f), Vector2(1122.f, 382.f), 9, 1, Vector2(2000.f, 2000.f), Vector2(0.f, 0.f), Vector2(10098.f,382.f));
+		pEffect->CreateAnimation(nullptr,L"DemianAttack0Effect", Vector2(0.f, 0.f), Vector2(1122.f, 382.f), 9, 1, Vector2(2000.f, 2000.f), Vector2(0.f, 0.f), Vector2(10098.f,382.f));
 		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
 		for (int i = 0; i < 2; ++i)
@@ -216,9 +219,9 @@ namespace W
 	void DemianScene::mapping_resource()
 	{
 		mapping_texture(L"demianfire1hit", L"Demian2_attack1_hit");
-		mapping_texture(L"DemianAttack0Effect", L"DemianAttack0Effect_hit");
-		mapping_texture(L"demianClone0", L"demianClone0");
-		mapping_texture(L"demianClone1", L"demianClone1");
+		mapping_texture(L"DemianAttack0Effect", L"DemianAttack0Effect");
+		mapping_texture(L"demianClone0", L"DemianClone0");
+		mapping_texture(L"demianClone1", L"DemianClone1");
 		mapping_texture(L"DemianTarget", L"DemianTarget");
 	}
 

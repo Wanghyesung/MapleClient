@@ -38,7 +38,6 @@ namespace W
 
 		pRenderer->SetMaterial(pMater);
 	
-
 		Animator* pAnim = AddComponent<Animator>();
 	
 		GetComponent<Transform>()->SetScale(18.f, 18.f, 0.f);
@@ -52,7 +51,7 @@ namespace W
 
 
 		pAnim->Create(L"Demian2_attack0_left", nullptr, Vector2(0.f, 0.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 2600.f), 0.15f);
-		pAnim->FindAnimation(L"Demian2_attack0_left")->Create(L"Demian2_attack0_left", nullptr, Vector2(0.f, 1300.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 1300.f), 0.15f);
+		pAnim->FindAnimation(L"Demian2_attack0_left")->Create(L"Demian2_attack0_left", nullptr, Vector2(0.f, 1300.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 2600.f), 0.15f);
 
 		pAnim->Create(L"Demian2_attack1_left", nullptr, Vector2(0.f, 0.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 3900.f), 0.15f);
 		for (int i = 0; i < 8; ++i)
@@ -101,8 +100,8 @@ namespace W
 		pAnim->FindAnimation(L"Demian2_dead_right")->Create(L"Demian2_dead_right", nullptr, Vector2(12000.f, 3900.f), Vector2(-2000.f, 2000.f), 5, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 5200.f), 0.15f);
 
 
-		pAnim->Create(L"Demian2_attack0_right", nullptr, Vector2(12000.f, 0.f), Vector2(-2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 1300.f), 0.15f);
-		pAnim->FindAnimation(L"Demian2_attack0_right")->Create(L"Demian2_attack0_right", nullptr, Vector2(12000.f, 1300.f), Vector2(-2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 1300.f), 0.15f);
+		pAnim->Create(L"Demian2_attack0_right", nullptr, Vector2(12000.f, 0.f), Vector2(-2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 2600.f), 0.15f);
+		pAnim->FindAnimation(L"Demian2_attack0_right")->Create(L"Demian2_attack0_right", nullptr, Vector2(12000.f, 1300.f), Vector2(-2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 2600.f), 0.15f);
 
 		pAnim->Create(L"Demian2_attack1_right", nullptr, Vector2(12000.f, 0.f), Vector2(-2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 3900.f), 0.15f);
 		for (int i = 0; i < 8; ++i)

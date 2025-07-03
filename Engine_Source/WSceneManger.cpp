@@ -10,8 +10,7 @@ namespace W
 {
 	Scene* SceneManger::m_pActiveScene = nullptr;
 	atomic<bool> SceneManger::m_bWaitForMapData = false;
-	int SceneManger::te = 0;
-	int SceneManger::te2 = 0;
+
 	std::map<std::wstring, Scene*> SceneManger::m_mapScene = {};
 
 	void SceneManger::Initialize()
@@ -85,6 +84,15 @@ namespace W
 		return pObj;
 	}
 
+	Scene* SceneManger::FindScene(const wstring& _strSceneName)
+	{
+		auto iter = m_mapScene.find(_strSceneName);
+		if (iter == m_mapScene.end())
+			return nullptr;
+
+		return iter->second;
+	}
+
 	void SceneManger::SwapObject(Scene* _pPrevScene, Scene* _pNextScene, GameObject* _pGameObject)
 	{
 		eLayerType eType = _pGameObject->GetLayerType();
@@ -135,6 +143,8 @@ namespace W
 
 	void SceneManger::SendEnter()
 	{
+		LOG_PACKET_SEND(Send_Enter);
+
 		m_pActiveScene->SendEnter();
 	}
 

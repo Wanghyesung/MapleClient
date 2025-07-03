@@ -43,11 +43,11 @@ namespace W
 		pAnim->Create(L"Demian1_stand_left", nullptr, Vector2(0.f, 0.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 1300.f),0.15f);
 
 		pAnim->Create(L"Demian1_dead_left", nullptr, Vector2(0.f, 0.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000, 5200.f),0.15f);
-		pAnim->FindAnimation(L"Demian1_dead_left")->Create(L"Demian1_dead_left", nullptr, Vector2(0.f, 1300.f), Vector2(2000.f, 2000.f), 6, Vector2(2000.f, 2000.f), Vector2(14000, 5200.f), Vector2::Zero, 0.15f);
+		pAnim->FindAnimation(L"Demian1_dead_left")->Create(L"Demian1_dead_left", nullptr, Vector2(0.f, 1300.f), Vector2(2000.f, 2000.f), 6, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000, 5200.f), 0.15f);
 		for (int i = 0; i < 3; ++i)
 		{
-			pAnim->FindAnimation(L"Demian1_dead_left")->Create(L"Demian1_dead_left", nullptr, Vector2(0.f, 2600.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2(14000, 5200.f),Vector2::Zero, 0.15f);
-			pAnim->FindAnimation(L"Demian1_dead_left")->Create(L"Demian1_dead_left", nullptr, Vector2(0.f, 3900.f), Vector2(2000.f, 2000.f), 5, Vector2(2000.f, 2000.f), Vector2(14000, 5200.f),Vector2::Zero, 0.15f);
+			pAnim->FindAnimation(L"Demian1_dead_left")->Create(L"Demian1_dead_left", nullptr, Vector2(0.f, 2600.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000, 5200.f), 0.15f);
+			pAnim->FindAnimation(L"Demian1_dead_left")->Create(L"Demian1_dead_left", nullptr, Vector2(0.f, 3900.f), Vector2(2000.f, 2000.f), 5, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000, 5200.f), 0.15f);
 		}
 
 		pAnim->Create(L"Demian1_attack0_left", nullptr, Vector2(0.f, 0.f), Vector2(2000.f, 2000.f), 7, Vector2(2000.f, 2000.f), Vector2::Zero, Vector2(14000.f, 6500.f), 0.15f);

@@ -19,6 +19,14 @@ extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
 extern unordered_map<string, wstring> GHashStringToWstring;
 extern unordered_map<wstring, string> GHashWstringToString;
 
+#define LOG_PACKET_SEND(name) \
+    do { \
+        char buf[256]; \
+        std::snprintf(buf, sizeof(buf), \
+            "[Client] Packet sent: %s (%s:%d)\n", \
+            #name, __FILE__, __LINE__); \
+        OutputDebugStringA(buf); \
+    } while(0)
 
 enum PACKET_TYPE
 {
@@ -125,6 +133,7 @@ public:
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_MAP _pkt) { return _MakeSendBuffer(_pkt, C_MAP); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_Skill _pkt) { return _MakeSendBuffer(_pkt, C_SKILL); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_START_MAP _pkt) { return _MakeSendBuffer(_pkt, C_START_MAP); }
+	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_EXIT _pkt) { return _MakeSendBuffer(_pkt, C_EXIT); }
 	
 };
 

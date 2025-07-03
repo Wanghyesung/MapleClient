@@ -97,6 +97,7 @@ namespace W
 
 		SceneManger::StartWaitForMapData();
 
+		LOG_PACKET_SEND(TO_SERVER);
 		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 		GClientService->GetClientSession()->Send(pSendBuffer);
 	}
