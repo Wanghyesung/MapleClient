@@ -90,6 +90,7 @@ namespace W
 		void CompletedLoading() { m_bLoading.store(false); }
 		void StartLoading() { m_bLoading.store(true); }
 
+		void PushObjectPool();
 	protected:
 		virtual void add_objectpool() {};
 		virtual void mapping_resource() {}; //생성된 리소스를 오브젝트 풀에 있는 오브젝트와 맵핑

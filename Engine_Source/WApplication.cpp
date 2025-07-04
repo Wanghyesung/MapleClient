@@ -49,7 +49,7 @@ namespace W
 				SceneManger::SendEnter();
 			}
 		}
-		else if (SceneManger::IsWaitForMapData())
+		else if (SceneManger::IsWaitForMapData()) //맵에 필요한 데이터를 로딩
 		{
 			RenderLoading();
 		}
@@ -87,7 +87,6 @@ namespace W
 		
 		SceneManger::Update();
 		UIManager::Update();
-	
 	}
 
 	void Application::LateUpdate()
@@ -103,7 +102,6 @@ namespace W
 		Time::Render();
 
 		renderer::Render();
-	
 	}
 
 	

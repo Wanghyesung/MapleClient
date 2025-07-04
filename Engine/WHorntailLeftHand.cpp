@@ -51,6 +51,8 @@ namespace W
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"LeftHandTex");
 		Animator* pAnimator = GetComponent<Animator>();
 		pAnimator->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 	void HorntailLeftHand::Update()
 	{

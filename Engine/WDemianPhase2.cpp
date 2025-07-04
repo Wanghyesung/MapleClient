@@ -210,6 +210,8 @@ namespace W
 		pAnim->SetTextureBothDir(L"Demian2_attack3", pAttack23);
 		pAnim->SetTextureBothDir(L"Demian2_attack4", pAttack24);
 		pAnim->SetTextureBothDir(L"Demian2_attack5", pAttack25);
+
+		m_strCurStateName.clear();
 	}
 	void DemianPhase2::Update()
 	{

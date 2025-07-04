@@ -64,6 +64,8 @@ namespace W
 		std::shared_ptr<Texture> pAtlas =
 			Resources::Load<Texture>(L"ArielTex", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Ariel\\Ariel.png");
 		GetComponent<Animator>()->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 
 	void Ariel::Update()

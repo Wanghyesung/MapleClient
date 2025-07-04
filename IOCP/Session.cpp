@@ -54,6 +54,8 @@ void Session::DisConnect(const WCHAR* _strCause)
 	wcout << _strCause;
 
 	RegisterDisConnect();
+
+	assert(nullptr);
 	//GetService()->EraseSession(shared_from_this());z
 
 }
@@ -192,6 +194,7 @@ void Session::RegisterSend()
 			m_sendEvent.SetOwner(nullptr);
 			m_sendEvent.m_vecSendBuffer.clear();
 			m_atRegisterSend.store(false);
+			assert(nullptr);
 		}
 	}
 }
@@ -234,6 +237,7 @@ void Session::RegisterRecv()
 		{
 			HandleError(errorCode);
 			m_recvEvent.SetOwner(nullptr);
+			assert(nullptr);
 			//assert(nullptr);
 		}
 	}

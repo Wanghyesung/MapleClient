@@ -162,7 +162,7 @@ namespace W
 		GameObject* pObj = (GameObject*)_lParm;
 		Scene* pScene = (Scene*)_wParm;
 
-		SceneManger::GetActiveScene()->EraseObject(pObj->GetLayerType(), pObj);
+		pScene->EraseObject(pObj->GetLayerType(), pObj);
 
 		if (pObj->IsPoolObject())
 			W::ObjectPoolManager::AddObjectPool(pObj->GetName(), pObj);
@@ -172,30 +172,33 @@ namespace W
 
 	void EventManager::create_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
 	{
-		UINT iLayerCreateIdId = (UINT)_lParm;
+		UINT iSceneLayerCreateIdId = (UINT)_lParm;
 		const tTransformInfo& tTrInfo = *reinterpret_cast<tTransformInfo*>(_wParm);
 		const wstring& strObjectName = *reinterpret_cast<wstring*>(_accParm);
 
-		UCHAR cLayer = (iLayerCreateIdId >> 16) & 0xFF;
-		UCHAR cCreateid = (iLayerCreateIdId >> 8) & 0xFF;
-		USHORT CID = iLayerCreateIdId & 0xFF;
+		UCHAR cSceneID = (iSceneLayerCreateIdId >> 24) & 0xFF;
+		if (cSceneID == SceneManger::GetActiveScene()->GetSceneID())
+		{
+			UCHAR cLayer = (iSceneLayerCreateIdId >> 16) & 0xFF;
+			UCHAR cCreateid = (iSceneLayerCreateIdId >> 8) & 0xFF;
+			UCHAR CID = iSceneLayerCreateIdId & 0xFF;
 
-		GameObject* pObj = nullptr;
-		if (strObjectName.empty())
-			pObj = GameObjectManager::GetMonsterOfID(cCreateid);
-		else
-			pObj = ObjectPoolManager::PopObject(strObjectName);
-		
-		
-		pObj->GetComponent<Transform>()->SetDirectPosition(tTrInfo.vPosition);
-		pObj->GetComponent<Transform>()->SetDirectRotation(tTrInfo.vRotation);
-		
-		eLayerType eLayerType = (W::eLayerType)cLayer;
-		pObj->SetObjectID(CID);
-		SceneManger::AddGameObject(eLayerType, pObj);
+			GameObject* pObj = nullptr;
+			if (strObjectName.empty())
+				pObj = GameObjectManager::GetMonsterOfID(cCreateid);
+			else
+				pObj = ObjectPoolManager::PopObject(strObjectName);
 
-		pObj->Initialize();
 
+			pObj->GetComponent<Transform>()->SetDirectPosition(tTrInfo.vPosition);
+			pObj->GetComponent<Transform>()->SetDirectRotation(tTrInfo.vRotation);
+
+			eLayerType eLayerType = (W::eLayerType)cLayer;
+			pObj->SetObjectID(CID);
+			SceneManger::AddGameObject(eLayerType, pObj);
+
+			pObj->Initialize();
+		}
 		delete &tTrInfo;
 		delete &strObjectName;
 	}

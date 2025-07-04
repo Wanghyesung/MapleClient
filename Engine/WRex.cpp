@@ -59,6 +59,8 @@ namespace W
 	{
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"RexTex");
 		GetComponent<Animator>()->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 	void Rex::Update()
 	{

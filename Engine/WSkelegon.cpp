@@ -50,6 +50,8 @@ namespace W
 		Animator* pAnimator = GetComponent<Animator>();
 
 		pAnimator->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 
 	void Skelegon::Update()

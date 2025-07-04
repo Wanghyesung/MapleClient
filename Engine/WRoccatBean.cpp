@@ -20,7 +20,6 @@ namespace W
 
 		GetComponent<Transform>()->SetScale(1.5f, 1.5f, 0.f);
 
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"PinkBean_attack3");
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"attack3", nullptr, Vector2(0.0f, 0.0f), Vector2(109.f, 159.0f), 6, Vector2(150.f, 150.f), Vector2::Zero, Vector2(763.f, 159.f), 0.15f);
 
@@ -33,7 +32,8 @@ namespace W
 	}
 	void RoccatBean::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"PinkBean_attack3");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void RoccatBean::Update()
 	{

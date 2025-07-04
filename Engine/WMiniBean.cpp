@@ -54,6 +54,8 @@ namespace W
 	{
 		std::shared_ptr<Texture> pminiBean = Resources::Find<Texture>(L"miniBean");
 		GetComponent<Animator>()->SetTexture(pminiBean);
+
+		m_strCurStateName.clear();
 	}
 	void MiniBean::Update()
 	{

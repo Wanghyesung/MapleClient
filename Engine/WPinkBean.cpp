@@ -146,6 +146,8 @@ namespace W
 
 		for (int i = 4; i <= 10; ++i)
 			pAnim->SetTextureBothDir(L"PinkBean_attack" + to_wstring(i), pAtlas2);
+
+		m_strCurStateName.clear();
 	}
 	void PinkBean::Update()
 	{

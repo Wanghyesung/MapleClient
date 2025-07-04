@@ -179,6 +179,9 @@ namespace W
 			pAttack3->SetName(L"Demian_attack3");
 			ObjectPoolManager::AddObjectPool(pAttack3->GetName(), pAttack3);
 		}
+
+		m_strCurStateName.clear();
+
 	}
 
 	Demian::~Demian()

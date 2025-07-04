@@ -20,11 +20,8 @@ namespace W
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		pRenderer->SetMaterial(pMater);
 
-		
 		GetComponent<Transform>()->SetScale(8.f, 8.f, 0.f);
-
-		std::shared_ptr<Texture> pAtlas =
-			Resources::Find<Texture>(L"Rex_attack1");
+		
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Thunder_left", nullptr, Vector2(0.0f, 0.0f), Vector2(174.f, 821.0f), 5, Vector2(800.f, 800.f), Vector2::Zero, Vector2(870.f, 821.f), 0.3f);
 
@@ -39,7 +36,9 @@ namespace W
 
 	void RexThunder::Initialize()
 	{
-		
+		std::shared_ptr<Texture> pAtlas =
+			Resources::Find<Texture>(L"Rex_attack1");
+		GetComponent<Animator>()->SetTexture(pAtlas);
 	}
 	void RexThunder::Update()
 	{

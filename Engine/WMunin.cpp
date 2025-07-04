@@ -55,6 +55,8 @@ namespace W
 	{
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"MuninTex");
 		GetComponent<Animator>()->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 	void Munin::Update()
 	{

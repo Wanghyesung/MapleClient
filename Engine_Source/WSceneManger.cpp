@@ -58,6 +58,8 @@ namespace W
 		SwapUI(m_pActiveScene, iter->second);
 		SwapPlayer(m_pActiveScene, iter->second);
 
+		PushObjectPool(m_pActiveScene);
+
 		m_pActiveScene = iter->second;
 		m_pActiveScene->OnEnter();
 
@@ -90,6 +92,11 @@ namespace W
 		if (!pObj)
 			return nullptr;
 		return pObj;
+	}
+
+	void SceneManger::PushObjectPool(Scene* _pScene)
+	{	
+		_pScene->PushObjectPool();
 	}
 
 	Scene* SceneManger::FindScene(UINT _iSceneID)

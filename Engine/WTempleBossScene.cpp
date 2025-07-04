@@ -260,7 +260,7 @@ namespace W
 		mapping_texture(L"Munin_attack0_hit", L"Munin_attack0_hit");
 		mapping_texture(L"Munin_attack1_hit", L"Munin_attack1_hit");
 		mapping_texture(L"Whiggin_attack0_hit", L"Whiggin_attack0_hit");
-		mapping_texture(L"Whiggin_attack1_hit", L"Whiggin_attack1_hit");
+		mapping_texture(L"Munin_attack1_hit", L"Whiggin_attack1_hit");
 	}
 
 	void TempleBossScene::create_monster()

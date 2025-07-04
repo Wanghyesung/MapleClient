@@ -94,7 +94,7 @@ namespace W
 	}
 	void Transform::BindConstantBuffer()
 	{
-		renderer::TransformCB trCB = {};
+			renderer::TransformCB trCB = {};
 		trCB.m_mWorld = m_vWorld;
 		trCB.m_mView = Camera::GetGpuViewMatrix();
 		trCB.m_mProjection = Camera::GetGpuProjectionMatrix();

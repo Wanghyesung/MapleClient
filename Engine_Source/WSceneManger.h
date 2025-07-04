@@ -72,6 +72,8 @@ namespace W
 			return nullptr;
 		}
 
+		static void PushObjectPool(Scene* _pScene);
+
 		static Scene* FindScene(UINT _iSceneID);
 		static Scene* FindScene(const wstring& _strSceneName);
 

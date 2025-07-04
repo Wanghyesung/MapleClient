@@ -70,7 +70,7 @@ namespace W
 	void BossEnterUI::MouseLbtnClicked()
 	{
 		m_bDown = false;
-		dynamic_cast<BossUI*>(GetParentUI())->SetRender(false);
+		static_cast<BossUI*>(GetParentUI())->SetRender(false);
 
 		EventManager::ChangeScene(m_strNextScene);
 	}

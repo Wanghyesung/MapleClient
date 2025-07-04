@@ -154,6 +154,8 @@ namespace W
 			pAnim->SetTextureBothDir(L"Megnus_attack" + to_wstring(i), pAtlas2);
 
 		pAnim->SetTextureBothDir(L"Megnus_dead", pAtlas2);
+
+		m_strCurStateName.clear();
 	}
 
 	void Megnus::Update()

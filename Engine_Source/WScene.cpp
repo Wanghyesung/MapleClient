@@ -126,6 +126,25 @@ namespace W
 		pMtrl->Clear();
 	}
 
+	void Scene::PushObjectPool()
+	{
+		std::vector<unordered_map<UINT, GameObject*>> vecPoolObj;
+		vecPoolObj.reserve(5);
+
+		vecPoolObj.push_back(GetLayer(eLayerType::MonsterAttack)->GetGameObjects());
+		vecPoolObj.push_back(GetLayer(eLayerType::Monster)->GetGameObjects());
+		vecPoolObj.push_back(GetLayer(eLayerType::Player)->GetGameObjects());
+		vecPoolObj.push_back(GetLayer(eLayerType::Object)->GetGameObjects());
+		vecPoolObj.push_back(GetLayer(eLayerType::UI)->GetGameObjects());
+
+		for (int i = 0; i < 5; ++i)
+		{
+			auto& mp = vecPoolObj[i];
+			for (auto iter = mp.begin(); iter != mp.end(); ++iter)
+				EventManager::DeleteObject(iter->second, this);
+		}
+	}
+
 	void Scene::mapping_texture(const wstring& _strTexName, const wstring& _strObjectName, const wstring& _strObjectAnimName)
 	{
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(_strTexName);

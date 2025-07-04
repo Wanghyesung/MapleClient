@@ -52,6 +52,8 @@ namespace W
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"LegTex");
 		Animator* pAnimator = GetComponent<Animator>();
 		pAnimator->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 	void HorntailLeg::Update()
 	{

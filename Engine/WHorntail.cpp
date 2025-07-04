@@ -65,6 +65,7 @@ namespace W
 		pAtlas = Resources::Find<Texture>(L"HorntailDead");
 		pAnimator->SetTexture(L"HorntailDead", pAtlas);
 
+		m_strCurStateName.clear();
 		/*GameObject* pMainCamera = renderer::MainCamera->GetOwner();
 		pMainCamera->GetScript<CameraScript>()->SetEventType(CameraScript::eCameraEventType::Wave, 4.f);*/
 	}

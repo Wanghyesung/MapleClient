@@ -60,6 +60,8 @@ namespace W
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"HeadBTex");
 		Animator* pAnimator = GetComponent<Animator>();
 		pAnimator->SetTexture(pAtlas);
+
+		m_strCurStateName.clear();
 	}
 
 	void HorntailHeadB::Update()
