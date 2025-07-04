@@ -20,24 +20,21 @@ namespace W
 		{
 			T* scene = new T();
 
-			std::map<std::wstring, Scene*>::iterator iter
-				= m_mapScene.find(name);
+			m_hashSceneID.insert(std::make_pair(scene->GetSceneID(), scene));
 
-			if (iter != m_mapScene.end())
-				return false;
-
-			m_mapScene.insert(std::make_pair(name, scene));
 			m_pActiveScene = scene;
 			scene->SetName(name);
 			scene->Initialize();
+
 			return true;
 		}
 		static Scene* GetActiveScene() { return m_pActiveScene; }
-		static Scene* LoadScene(std::wstring _strName);
+		static Scene* LoadScene(UINT _iSceneID);
 
 		static void AddGameObject(eLayerType _eType, GameObject* _pGameObj){ m_pActiveScene->AddGameObject(_eType, _pGameObj);}
 		static GameObject* FindPlayer();
 		static GameObject* FindObject(UINT _ID, eLayerType _eLayerType);
+		static GameObject* FindObject(Scene* _pScene, UINT _ID, eLayerType _eLayerType);
 		template <typename T>
 		static T* GetUI()
 		{
@@ -75,6 +72,7 @@ namespace W
 			return nullptr;
 		}
 
+		static Scene* FindScene(UINT _iSceneID);
 		static Scene* FindScene(const wstring& _strSceneName);
 
 		static void SwapObject(Scene* _pPrevScene, Scene* _pNextScene, GameObject* _pGameObject);
@@ -92,7 +90,7 @@ namespace W
 
 	private:
 		static Scene* m_pActiveScene;
-		static std::map<std::wstring, Scene*> m_mapScene;
+		static std::unordered_map<UINT, Scene*> m_hashSceneID;
 
 		static atomic<bool> m_bWaitForMapData;
 

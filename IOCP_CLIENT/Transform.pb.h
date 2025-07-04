@@ -364,25 +364,10 @@ class S_TRANSFORM final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSceneFieldNumber = 1,
-    kTransformFieldNumber = 3,
-    kLayerIdFieldNumber = 2,
+    kTransformFieldNumber = 2,
+    kSceneLayerIdFieldNumber = 1,
   };
-  // string scene = 1;
-  void clear_scene();
-  const std::string& scene() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_scene(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_scene();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scene();
-  void set_allocated_scene(std::string* scene);
-  private:
-  const std::string& _internal_scene() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scene(const std::string& value);
-  std::string* _internal_mutable_scene();
-  public:
-
-  // .Protocol.TransformInfo transform = 3;
+  // .Protocol.TransformInfo transform = 2;
   bool has_transform() const;
   private:
   bool _internal_has_transform() const;
@@ -400,13 +385,13 @@ class S_TRANSFORM final :
       ::Protocol::TransformInfo* transform);
   ::Protocol::TransformInfo* unsafe_arena_release_transform();
 
-  // uint32 layer_id = 2;
-  void clear_layer_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_id() const;
-  void set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 scene_layer_id = 1;
+  void clear_scene_layer_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_id() const;
+  void set_scene_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_id() const;
-  void _internal_set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_layer_id() const;
+  void _internal_set_scene_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.S_TRANSFORM)
@@ -416,9 +401,8 @@ class S_TRANSFORM final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
   ::Protocol::TransformInfo* transform_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Transform_2eproto;
 };
@@ -557,72 +541,27 @@ inline void TransformInfo::set_r_z(float value) {
 
 // S_TRANSFORM
 
-// string scene = 1;
-inline void S_TRANSFORM::clear_scene() {
-  scene_.ClearToEmpty();
+// uint32 scene_layer_id = 1;
+inline void S_TRANSFORM::clear_scene_layer_id() {
+  scene_layer_id_ = 0u;
 }
-inline const std::string& S_TRANSFORM::scene() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.scene)
-  return _internal_scene();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::_internal_scene_layer_id() const {
+  return scene_layer_id_;
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void S_TRANSFORM::set_scene(ArgT0&& arg0, ArgT... args) {
- 
- scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.scene)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::scene_layer_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.scene_layer_id)
+  return _internal_scene_layer_id();
 }
-inline std::string* S_TRANSFORM::mutable_scene() {
-  // @@protoc_insertion_point(field_mutable:Protocol.S_TRANSFORM.scene)
-  return _internal_mutable_scene();
-}
-inline const std::string& S_TRANSFORM::_internal_scene() const {
-  return scene_.Get();
-}
-inline void S_TRANSFORM::_internal_set_scene(const std::string& value) {
+inline void S_TRANSFORM::_internal_set_scene_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  scene_layer_id_ = value;
 }
-inline std::string* S_TRANSFORM::_internal_mutable_scene() {
-  
-  return scene_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* S_TRANSFORM::release_scene() {
-  // @@protoc_insertion_point(field_release:Protocol.S_TRANSFORM.scene)
-  return scene_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void S_TRANSFORM::set_allocated_scene(std::string* scene) {
-  if (scene != nullptr) {
-    
-  } else {
-    
-  }
-  scene_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scene,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:Protocol.S_TRANSFORM.scene)
+inline void S_TRANSFORM::set_scene_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_layer_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.scene_layer_id)
 }
 
-// uint32 layer_id = 2;
-inline void S_TRANSFORM::clear_layer_id() {
-  layer_id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::_internal_layer_id() const {
-  return layer_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_TRANSFORM::layer_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.layer_id)
-  return _internal_layer_id();
-}
-inline void S_TRANSFORM::_internal_set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  layer_id_ = value;
-}
-inline void S_TRANSFORM::set_layer_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_layer_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.layer_id)
-}
-
-// .Protocol.TransformInfo transform = 3;
+// .Protocol.TransformInfo transform = 2;
 inline bool S_TRANSFORM::_internal_has_transform() const {
   return this != internal_default_instance() && transform_ != nullptr;
 }

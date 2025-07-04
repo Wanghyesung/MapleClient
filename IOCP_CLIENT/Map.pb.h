@@ -190,28 +190,13 @@ class ObjectInfo final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSceneFieldNumber = 1,
-    kStateFieldNumber = 4,
-    kObjectNameFieldNumber = 6,
-    kTransformFieldNumber = 3,
-    kLayerCreateidIdFieldNumber = 2,
-    kStateValueFieldNumber = 5,
+    kStateFieldNumber = 3,
+    kObjectNameFieldNumber = 5,
+    kTransformFieldNumber = 2,
+    kSceneLayerCreateidIdFieldNumber = 1,
+    kStateValueFieldNumber = 4,
   };
-  // string scene = 1;
-  void clear_scene();
-  const std::string& scene() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_scene(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_scene();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scene();
-  void set_allocated_scene(std::string* scene);
-  private:
-  const std::string& _internal_scene() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scene(const std::string& value);
-  std::string* _internal_mutable_scene();
-  public:
-
-  // string state = 4;
+  // string state = 3;
   void clear_state();
   const std::string& state() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -225,7 +210,7 @@ class ObjectInfo final :
   std::string* _internal_mutable_state();
   public:
 
-  // string object_name = 6;
+  // string object_name = 5;
   void clear_object_name();
   const std::string& object_name() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -239,7 +224,7 @@ class ObjectInfo final :
   std::string* _internal_mutable_object_name();
   public:
 
-  // .Protocol.TransformInfo transform = 3;
+  // .Protocol.TransformInfo transform = 2;
   bool has_transform() const;
   private:
   bool _internal_has_transform() const;
@@ -257,16 +242,16 @@ class ObjectInfo final :
       ::Protocol::TransformInfo* transform);
   ::Protocol::TransformInfo* unsafe_arena_release_transform();
 
-  // uint32 layer_createid_id = 2;
-  void clear_layer_createid_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_id() const;
-  void set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 scene_layer_createid_id = 1;
+  void clear_scene_layer_createid_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_createid_id() const;
+  void set_scene_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_createid_id() const;
-  void _internal_set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_layer_createid_id() const;
+  void _internal_set_scene_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // int32 state_value = 5;
+  // int32 state_value = 4;
   void clear_state_value();
   ::PROTOBUF_NAMESPACE_ID::int32 state_value() const;
   void set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -282,11 +267,10 @@ class ObjectInfo final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr state_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr object_name_;
   ::Protocol::TransformInfo* transform_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_createid_id_;
   ::PROTOBUF_NAMESPACE_ID::int32 state_value_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Map_2eproto;
@@ -542,30 +526,15 @@ class C_MAP final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSceneFieldNumber = 1,
-    kPlayerIdFieldNumber = 2,
+    kScenePlayerIdFieldNumber = 1,
   };
-  // string scene = 1;
-  void clear_scene();
-  const std::string& scene() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_scene(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_scene();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scene();
-  void set_allocated_scene(std::string* scene);
+  // uint32 scene_player_id = 1;
+  void clear_scene_player_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_player_id() const;
+  void set_scene_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  const std::string& _internal_scene() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scene(const std::string& value);
-  std::string* _internal_mutable_scene();
-  public:
-
-  // uint32 player_id = 2;
-  void clear_player_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 player_id() const;
-  void set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_player_id() const;
-  void _internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_player_id() const;
+  void _internal_set_scene_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.C_MAP)
@@ -575,8 +544,7 @@ class C_MAP final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 player_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_player_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Map_2eproto;
 };
@@ -831,30 +799,15 @@ class C_START_MAP final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSceneFieldNumber = 1,
-    kPlayerIdFieldNumber = 2,
+    kScenePlayerIdFieldNumber = 1,
   };
-  // string scene = 1;
-  void clear_scene();
-  const std::string& scene() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_scene(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_scene();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scene();
-  void set_allocated_scene(std::string* scene);
+  // uint32 scene_player_id = 1;
+  void clear_scene_player_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_player_id() const;
+  void set_scene_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  const std::string& _internal_scene() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scene(const std::string& value);
-  std::string* _internal_mutable_scene();
-  public:
-
-  // uint32 player_id = 2;
-  void clear_player_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 player_id() const;
-  void set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_player_id() const;
-  void _internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_player_id() const;
+  void _internal_set_scene_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.C_START_MAP)
@@ -864,8 +817,7 @@ class C_START_MAP final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 player_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_player_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Map_2eproto;
 };
@@ -880,72 +832,27 @@ class C_START_MAP final :
 #endif  // __GNUC__
 // ObjectInfo
 
-// string scene = 1;
-inline void ObjectInfo::clear_scene() {
-  scene_.ClearToEmpty();
+// uint32 scene_layer_createid_id = 1;
+inline void ObjectInfo::clear_scene_layer_createid_id() {
+  scene_layer_createid_id_ = 0u;
 }
-inline const std::string& ObjectInfo::scene() const {
-  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.scene)
-  return _internal_scene();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::_internal_scene_layer_createid_id() const {
+  return scene_layer_createid_id_;
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ObjectInfo::set_scene(ArgT0&& arg0, ArgT... args) {
- 
- scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.scene)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::scene_layer_createid_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.scene_layer_createid_id)
+  return _internal_scene_layer_createid_id();
 }
-inline std::string* ObjectInfo::mutable_scene() {
-  // @@protoc_insertion_point(field_mutable:Protocol.ObjectInfo.scene)
-  return _internal_mutable_scene();
-}
-inline const std::string& ObjectInfo::_internal_scene() const {
-  return scene_.Get();
-}
-inline void ObjectInfo::_internal_set_scene(const std::string& value) {
+inline void ObjectInfo::_internal_set_scene_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  scene_layer_createid_id_ = value;
 }
-inline std::string* ObjectInfo::_internal_mutable_scene() {
-  
-  return scene_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ObjectInfo::release_scene() {
-  // @@protoc_insertion_point(field_release:Protocol.ObjectInfo.scene)
-  return scene_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ObjectInfo::set_allocated_scene(std::string* scene) {
-  if (scene != nullptr) {
-    
-  } else {
-    
-  }
-  scene_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scene,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:Protocol.ObjectInfo.scene)
+inline void ObjectInfo::set_scene_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_layer_createid_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.scene_layer_createid_id)
 }
 
-// uint32 layer_createid_id = 2;
-inline void ObjectInfo::clear_layer_createid_id() {
-  layer_createid_id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::_internal_layer_createid_id() const {
-  return layer_createid_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ObjectInfo::layer_createid_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.ObjectInfo.layer_createid_id)
-  return _internal_layer_createid_id();
-}
-inline void ObjectInfo::_internal_set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  layer_createid_id_ = value;
-}
-inline void ObjectInfo::set_layer_createid_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_layer_createid_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.layer_createid_id)
-}
-
-// .Protocol.TransformInfo transform = 3;
+// .Protocol.TransformInfo transform = 2;
 inline bool ObjectInfo::_internal_has_transform() const {
   return this != internal_default_instance() && transform_ != nullptr;
 }
@@ -1024,7 +931,7 @@ inline void ObjectInfo::set_allocated_transform(::Protocol::TransformInfo* trans
   // @@protoc_insertion_point(field_set_allocated:Protocol.ObjectInfo.transform)
 }
 
-// string state = 4;
+// string state = 3;
 inline void ObjectInfo::clear_state() {
   state_.ClearToEmpty();
 }
@@ -1069,7 +976,7 @@ inline void ObjectInfo::set_allocated_state(std::string* state) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.ObjectInfo.state)
 }
 
-// int32 state_value = 5;
+// int32 state_value = 4;
 inline void ObjectInfo::clear_state_value() {
   state_value_ = 0;
 }
@@ -1089,7 +996,7 @@ inline void ObjectInfo::set_state_value(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:Protocol.ObjectInfo.state_value)
 }
 
-// string object_name = 6;
+// string object_name = 5;
 inline void ObjectInfo::clear_object_name() {
   object_name_.ClearToEmpty();
 }
@@ -1181,69 +1088,24 @@ S_MAP::objinfo() const {
 
 // C_MAP
 
-// string scene = 1;
-inline void C_MAP::clear_scene() {
-  scene_.ClearToEmpty();
+// uint32 scene_player_id = 1;
+inline void C_MAP::clear_scene_player_id() {
+  scene_player_id_ = 0u;
 }
-inline const std::string& C_MAP::scene() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_MAP.scene)
-  return _internal_scene();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_MAP::_internal_scene_player_id() const {
+  return scene_player_id_;
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void C_MAP::set_scene(ArgT0&& arg0, ArgT... args) {
- 
- scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Protocol.C_MAP.scene)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_MAP::scene_player_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MAP.scene_player_id)
+  return _internal_scene_player_id();
 }
-inline std::string* C_MAP::mutable_scene() {
-  // @@protoc_insertion_point(field_mutable:Protocol.C_MAP.scene)
-  return _internal_mutable_scene();
-}
-inline const std::string& C_MAP::_internal_scene() const {
-  return scene_.Get();
-}
-inline void C_MAP::_internal_set_scene(const std::string& value) {
+inline void C_MAP::_internal_set_scene_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  scene_player_id_ = value;
 }
-inline std::string* C_MAP::_internal_mutable_scene() {
-  
-  return scene_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* C_MAP::release_scene() {
-  // @@protoc_insertion_point(field_release:Protocol.C_MAP.scene)
-  return scene_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void C_MAP::set_allocated_scene(std::string* scene) {
-  if (scene != nullptr) {
-    
-  } else {
-    
-  }
-  scene_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scene,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:Protocol.C_MAP.scene)
-}
-
-// uint32 player_id = 2;
-inline void C_MAP::clear_player_id() {
-  player_id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_MAP::_internal_player_id() const {
-  return player_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_MAP::player_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_MAP.player_id)
-  return _internal_player_id();
-}
-inline void C_MAP::_internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  player_id_ = value;
-}
-inline void C_MAP::set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_player_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_MAP.player_id)
+inline void C_MAP::set_scene_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_player_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MAP.scene_player_id)
 }
 
 // -------------------------------------------------------------------
@@ -1293,69 +1155,24 @@ S_START_MAP::objinfo() const {
 
 // C_START_MAP
 
-// string scene = 1;
-inline void C_START_MAP::clear_scene() {
-  scene_.ClearToEmpty();
+// uint32 scene_player_id = 1;
+inline void C_START_MAP::clear_scene_player_id() {
+  scene_player_id_ = 0u;
 }
-inline const std::string& C_START_MAP::scene() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_START_MAP.scene)
-  return _internal_scene();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_START_MAP::_internal_scene_player_id() const {
+  return scene_player_id_;
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void C_START_MAP::set_scene(ArgT0&& arg0, ArgT... args) {
- 
- scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Protocol.C_START_MAP.scene)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_START_MAP::scene_player_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_START_MAP.scene_player_id)
+  return _internal_scene_player_id();
 }
-inline std::string* C_START_MAP::mutable_scene() {
-  // @@protoc_insertion_point(field_mutable:Protocol.C_START_MAP.scene)
-  return _internal_mutable_scene();
-}
-inline const std::string& C_START_MAP::_internal_scene() const {
-  return scene_.Get();
-}
-inline void C_START_MAP::_internal_set_scene(const std::string& value) {
+inline void C_START_MAP::_internal_set_scene_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  scene_player_id_ = value;
 }
-inline std::string* C_START_MAP::_internal_mutable_scene() {
-  
-  return scene_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* C_START_MAP::release_scene() {
-  // @@protoc_insertion_point(field_release:Protocol.C_START_MAP.scene)
-  return scene_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void C_START_MAP::set_allocated_scene(std::string* scene) {
-  if (scene != nullptr) {
-    
-  } else {
-    
-  }
-  scene_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scene,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:Protocol.C_START_MAP.scene)
-}
-
-// uint32 player_id = 2;
-inline void C_START_MAP::clear_player_id() {
-  player_id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_START_MAP::_internal_player_id() const {
-  return player_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_START_MAP::player_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_START_MAP.player_id)
-  return _internal_player_id();
-}
-inline void C_START_MAP::_internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  player_id_ = value;
-}
-inline void C_START_MAP::set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_player_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_START_MAP.player_id)
+inline void C_START_MAP::set_scene_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_player_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_START_MAP.scene_player_id)
 }
 
 #ifdef __GNUC__

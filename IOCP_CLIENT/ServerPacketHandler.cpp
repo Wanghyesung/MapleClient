@@ -64,7 +64,7 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 		const Protocol::ObjectInfo& objInfo = _pkt.objinfo(i);
 		const Protocol::TransformInfo& trInfo = _pkt.objinfo(i).transform();
 
-		UINT iLayerCreateIdId = objInfo.layer_createid_id();
+		UINT iSceneLayerCreateIdId = objInfo.scene_layer_createid_id();
 
 		//if (GHashStringToWstring.find(objInfo.object_name()) == GHashStringToWstring.end())
 		//	GHashStringToWstring[objInfo.object_name()] = StringToWString(objInfo.object_name());
@@ -73,7 +73,7 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 		tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
 		tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
 
-		W::EventManager::CreateObjectID(iLayerCreateIdId, tTrInfo,
+		W::EventManager::CreateObjectID(iSceneLayerCreateIdId, tTrInfo,
 			StringToWString(objInfo.object_name()));
 	}
 
@@ -86,17 +86,14 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 {
 	const Protocol::ObjectInfo& tInfo = _pkt.object_info();
-	//scene ID로 변경
-	if (SceneManger::GetActiveScene()->GetName() != StringToWString(tInfo.scene()))
-		return false;
 
 	const Protocol::TransformInfo& trInfo = _pkt.object_info().transform();
 
 	//애님에션 상태 추가
 	int iState = tInfo.state_value();
-	UINT iLayerCreateIdId = tInfo.layer_createid_id();
+	UINT iSceneLayerCreateIdId = tInfo.scene_layer_createid_id();
 
-	UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
+	UCHAR cLayer = (iSceneLayerCreateIdId >> 16) & 0xFF;
 
 	//if (GHashStringToWstring.find(tInfo.object_name()) == GHashStringToWstring.end())
 	//	GHashStringToWstring[tInfo.object_name()] = StringToWString(tInfo.object_name());
@@ -105,7 +102,7 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 	tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
 	tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
 
-	W::EventManager::CreateObjectID(iLayerCreateIdId, tTrInfo,
+	W::EventManager::CreateObjectID(iSceneLayerCreateIdId, tTrInfo,
 		StringToWString(tInfo.object_name()));
 
 	return true;
@@ -113,13 +110,14 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 
 bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt)
 {
-	UINT iLayerDeleteId = _pkt.layer_deleteid();
-	UCHAR cLayer = (iLayerDeleteId >> 24) & 0xFF;
-	USHORT CID = iLayerDeleteId & 0x00FFFFFF;;
+	UINT iSceneLayerDeleteId = _pkt.scene_layer_deleteid();
+	UCHAR CSceneID = (iSceneLayerDeleteId >> 24) & 0xFF;;
+	UCHAR cLayer = (iSceneLayerDeleteId >> 16) & 0xFF;
+	USHORT CID = iSceneLayerDeleteId & 0xFFFF;;
 
 	eLayerType eLayerType = (W::eLayerType)cLayer;
 	
-	EventManager::DeleteObjectID(CID, eLayerType, StringToWString(_pkt.scene()));
+	EventManager::DeleteObjectID(CID, eLayerType, CSceneID);
 	
 	return true;
 }
@@ -127,12 +125,7 @@ bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt)
 bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt)
 {
 	int iState = _pkt.state_value();
-	char cAnimIdx = iState & 0xFF;
-
-	//애니메이션 인덱스가 -1이면
-	//if (cAnimIdx < 0)
-	//	return false;
-
+	
 	std::wstring strAnimaState = StringToWString(_pkt.state());
 
 	EventManager::UpdateState(_pkt.layer_id(), iState, strAnimaState);
@@ -144,7 +137,7 @@ bool Handle_S_TRANSFORM(shared_ptr<Session> _pSession, Protocol::S_TRANSFORM& _p
 {
 	const Protocol::TransformInfo& trInfo = _pkt.transform();
 	
-	UINT iLayerID = _pkt.layer_id();
+	UINT iLayerID = _pkt.scene_layer_id();
 	W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
 	UINT ID = (iLayerID) & 0xFF;
 

@@ -36,9 +36,8 @@ struct TransformInfoDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT TransformInfoDefaultTypeInternal _TransformInfo_default_instance_;
 constexpr S_TRANSFORM::S_TRANSFORM(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , transform_(nullptr)
-  , layer_id_(0u){}
+  : transform_(nullptr)
+  , scene_layer_id_(0u){}
 struct S_TRANSFORMDefaultTypeInternal {
   constexpr S_TRANSFORMDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -70,8 +69,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Transform_2eproto::offsets[] P
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, scene_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, layer_id_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, scene_layer_id_),
   PROTOBUF_FIELD_OFFSET(::Protocol::S_TRANSFORM, transform_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -88,13 +86,13 @@ const char descriptor_table_protodef_Transform_2eproto[] PROTOBUF_SECTION_VARIAB
   "\n\017Transform.proto\022\010Protocol\"]\n\rTransform"
   "Info\022\013\n\003p_x\030\001 \001(\002\022\013\n\003p_y\030\002 \001(\002\022\013\n\003p_z\030\003 "
   "\001(\002\022\013\n\003r_x\030\004 \001(\002\022\013\n\003r_y\030\005 \001(\002\022\013\n\003r_z\030\006 \001"
-  "(\002\"Z\n\013S_TRANSFORM\022\r\n\005scene\030\001 \001(\t\022\020\n\010laye"
-  "r_id\030\002 \001(\r\022*\n\ttransform\030\003 \001(\0132\027.Protocol"
-  ".TransformInfob\006proto3"
+  "(\002\"Q\n\013S_TRANSFORM\022\026\n\016scene_layer_id\030\001 \001("
+  "\r\022*\n\ttransform\030\002 \001(\0132\027.Protocol.Transfor"
+  "mInfob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Transform_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Transform_2eproto = {
-  false, false, 222, descriptor_table_protodef_Transform_2eproto, "Transform.proto", 
+  false, false, 213, descriptor_table_protodef_Transform_2eproto, "Transform.proto", 
   &descriptor_table_Transform_2eproto_once, nullptr, 0, 2,
   schemas, file_default_instances, TableStruct_Transform_2eproto::offsets,
   file_level_metadata_Transform_2eproto, file_level_enum_descriptors_Transform_2eproto, file_level_service_descriptors_Transform_2eproto,
@@ -432,26 +430,20 @@ S_TRANSFORM::S_TRANSFORM(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 S_TRANSFORM::S_TRANSFORM(const S_TRANSFORM& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_scene().empty()) {
-    scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_scene(), 
-      GetArenaForAllocation());
-  }
   if (from._internal_has_transform()) {
     transform_ = new ::Protocol::TransformInfo(*from.transform_);
   } else {
     transform_ = nullptr;
   }
-  layer_id_ = from.layer_id_;
+  scene_layer_id_ = from.scene_layer_id_;
   // @@protoc_insertion_point(copy_constructor:Protocol.S_TRANSFORM)
 }
 
 void S_TRANSFORM::SharedCtor() {
-scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&transform_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&layer_id_) -
-    reinterpret_cast<char*>(&transform_)) + sizeof(layer_id_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&scene_layer_id_) -
+    reinterpret_cast<char*>(&transform_)) + sizeof(scene_layer_id_));
 }
 
 S_TRANSFORM::~S_TRANSFORM() {
@@ -462,7 +454,6 @@ S_TRANSFORM::~S_TRANSFORM() {
 
 void S_TRANSFORM::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  scene_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete transform_;
 }
 
@@ -482,12 +473,11 @@ void S_TRANSFORM::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  scene_.ClearToEmpty();
   if (GetArenaForAllocation() == nullptr && transform_ != nullptr) {
     delete transform_;
   }
   transform_ = nullptr;
-  layer_id_ = 0u;
+  scene_layer_id_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -497,25 +487,16 @@ const char* S_TRANSFORM::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // string scene = 1;
+      // uint32 scene_layer_id = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_scene();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.S_TRANSFORM.scene"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          scene_layer_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // uint32 layer_id = 2;
+      // .Protocol.TransformInfo transform = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          layer_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // .Protocol.TransformInfo transform = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_transform(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -549,28 +530,18 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string scene = 1;
-  if (!this->scene().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_scene().data(), static_cast<int>(this->_internal_scene().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Protocol.S_TRANSFORM.scene");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_scene(), target);
-  }
-
-  // uint32 layer_id = 2;
-  if (this->layer_id() != 0) {
+  // uint32 scene_layer_id = 1;
+  if (this->scene_layer_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_scene_layer_id(), target);
   }
 
-  // .Protocol.TransformInfo transform = 3;
+  // .Protocol.TransformInfo transform = 2;
   if (this->has_transform()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        3, _Internal::transform(this), target, stream);
+        2, _Internal::transform(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -589,25 +560,18 @@ size_t S_TRANSFORM::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string scene = 1;
-  if (!this->scene().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_scene());
-  }
-
-  // .Protocol.TransformInfo transform = 3;
+  // .Protocol.TransformInfo transform = 2;
   if (this->has_transform()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *transform_);
   }
 
-  // uint32 layer_id = 2;
-  if (this->layer_id() != 0) {
+  // uint32 scene_layer_id = 1;
+  if (this->scene_layer_id() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_layer_id());
+        this->_internal_scene_layer_id());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -641,14 +605,11 @@ void S_TRANSFORM::MergeFrom(const S_TRANSFORM& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from.scene().empty()) {
-    _internal_set_scene(from._internal_scene());
-  }
   if (from.has_transform()) {
     _internal_mutable_transform()->::Protocol::TransformInfo::MergeFrom(from._internal_transform());
   }
-  if (from.layer_id() != 0) {
-    _internal_set_layer_id(from._internal_layer_id());
+  if (from.scene_layer_id() != 0) {
+    _internal_set_scene_layer_id(from._internal_scene_layer_id());
   }
 }
 
@@ -673,14 +634,9 @@ bool S_TRANSFORM::IsInitialized() const {
 void S_TRANSFORM::InternalSwap(S_TRANSFORM* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &scene_, GetArenaForAllocation(),
-      &other->scene_, other->GetArenaForAllocation()
-  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(S_TRANSFORM, layer_id_)
-      + sizeof(S_TRANSFORM::layer_id_)
+      PROTOBUF_FIELD_OFFSET(S_TRANSFORM, scene_layer_id_)
+      + sizeof(S_TRANSFORM::scene_layer_id_)
       - PROTOBUF_FIELD_OFFSET(S_TRANSFORM, transform_)>(
           reinterpret_cast<char*>(&transform_),
           reinterpret_cast<char*>(&other->transform_));

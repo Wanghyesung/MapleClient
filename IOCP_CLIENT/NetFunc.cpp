@@ -4,7 +4,7 @@
 unordered_map<string, wstring> GHashWstringName = {};
 unordered_map<wstring, string> GHashStringName = {};
 
-wstring StringToWString(const string& str)
+const wstring& StringToWString(const string& str)
 {
     if (GHashWstringName.find(str) != GHashWstringName.end())
         return GHashWstringName[str];
@@ -27,10 +27,10 @@ wstring StringToWString(const string& str)
     }
     
     GHashWstringName[str] = wstr;
-    return wstr;
+    return GHashWstringName[str];
 }
 
-string WstringToString(const wstring& _str)
+const string& WstringToString(const wstring& _str)
 {
     if (GHashStringName.find(_str) != GHashStringName.end())
         return GHashStringName[_str];
@@ -41,5 +41,5 @@ string WstringToString(const wstring& _str)
 
     GHashStringName[_str] = str;
 
-    return str;
+    return GHashStringName[_str];
 }

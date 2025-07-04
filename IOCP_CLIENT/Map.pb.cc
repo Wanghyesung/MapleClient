@@ -19,11 +19,10 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace Protocol {
 constexpr ObjectInfo::ObjectInfo(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , state_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  : state_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , object_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , transform_(nullptr)
-  , layer_createid_id_(0u)
+  , scene_layer_createid_id_(0u)
   , state_value_(0){}
 struct ObjectInfoDefaultTypeInternal {
   constexpr ObjectInfoDefaultTypeInternal()
@@ -48,8 +47,7 @@ struct S_MAPDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT S_MAPDefaultTypeInternal _S_MAP_default_instance_;
 constexpr C_MAP::C_MAP(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , player_id_(0u){}
+  : scene_player_id_(0u){}
 struct C_MAPDefaultTypeInternal {
   constexpr C_MAPDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -73,8 +71,7 @@ struct S_START_MAPDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT S_START_MAPDefaultTypeInternal _S_START_MAP_default_instance_;
 constexpr C_START_MAP::C_START_MAP(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , player_id_(0u){}
+  : scene_player_id_(0u){}
 struct C_START_MAPDefaultTypeInternal {
   constexpr C_START_MAPDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -95,8 +92,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Map_2eproto::offsets[] PROTOBU
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, scene_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, layer_createid_id_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, scene_layer_createid_id_),
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, transform_),
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, state_),
   PROTOBUF_FIELD_OFFSET(::Protocol::ObjectInfo, state_value_),
@@ -112,8 +108,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Map_2eproto::offsets[] PROTOBU
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_MAP, scene_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_MAP, player_id_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_MAP, scene_player_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_START_MAP, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -125,15 +120,14 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Map_2eproto::offsets[] PROTOBU
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_START_MAP, scene_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_START_MAP, player_id_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_START_MAP, scene_player_id_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Protocol::ObjectInfo)},
-  { 11, -1, sizeof(::Protocol::S_MAP)},
-  { 17, -1, sizeof(::Protocol::C_MAP)},
-  { 24, -1, sizeof(::Protocol::S_START_MAP)},
-  { 30, -1, sizeof(::Protocol::C_START_MAP)},
+  { 10, -1, sizeof(::Protocol::S_MAP)},
+  { 16, -1, sizeof(::Protocol::C_MAP)},
+  { 22, -1, sizeof(::Protocol::S_START_MAP)},
+  { 28, -1, sizeof(::Protocol::C_START_MAP)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -145,23 +139,23 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_Map_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\tMap.proto\022\010Protocol\032\017Transform.proto\"\233"
-  "\001\n\nObjectInfo\022\r\n\005scene\030\001 \001(\t\022\031\n\021layer_cr"
-  "eateid_id\030\002 \001(\r\022*\n\ttransform\030\003 \001(\0132\027.Pro"
-  "tocol.TransformInfo\022\r\n\005state\030\004 \001(\t\022\023\n\013st"
-  "ate_value\030\005 \001(\005\022\023\n\013object_name\030\006 \001(\t\".\n\005"
-  "S_MAP\022%\n\007objInfo\030\001 \003(\0132\024.Protocol.Object"
-  "Info\")\n\005C_MAP\022\r\n\005scene\030\001 \001(\t\022\021\n\tplayer_i"
-  "d\030\002 \001(\r\"4\n\013S_START_MAP\022%\n\007objInfo\030\001 \003(\0132"
-  "\024.Protocol.ObjectInfo\"/\n\013C_START_MAP\022\r\n\005"
-  "scene\030\001 \001(\t\022\021\n\tplayer_id\030\002 \001(\rb\006proto3"
+  "\n\tMap.proto\022\010Protocol\032\017Transform.proto\"\222"
+  "\001\n\nObjectInfo\022\037\n\027scene_layer_createid_id"
+  "\030\001 \001(\r\022*\n\ttransform\030\002 \001(\0132\027.Protocol.Tra"
+  "nsformInfo\022\r\n\005state\030\003 \001(\t\022\023\n\013state_value"
+  "\030\004 \001(\005\022\023\n\013object_name\030\005 \001(\t\".\n\005S_MAP\022%\n\007"
+  "objInfo\030\001 \003(\0132\024.Protocol.ObjectInfo\" \n\005C"
+  "_MAP\022\027\n\017scene_player_id\030\001 \001(\r\"4\n\013S_START"
+  "_MAP\022%\n\007objInfo\030\001 \003(\0132\024.Protocol.ObjectI"
+  "nfo\"&\n\013C_START_MAP\022\027\n\017scene_player_id\030\001 "
+  "\001(\rb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_Map_2eproto_deps[1] = {
   &::descriptor_table_Transform_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Map_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Map_2eproto = {
-  false, false, 398, descriptor_table_protodef_Map_2eproto, "Map.proto", 
+  false, false, 371, descriptor_table_protodef_Map_2eproto, "Map.proto", 
   &descriptor_table_Map_2eproto_once, descriptor_table_Map_2eproto_deps, 1, 5,
   schemas, file_default_instances, TableStruct_Map_2eproto::offsets,
   file_level_metadata_Map_2eproto, file_level_enum_descriptors_Map_2eproto, file_level_service_descriptors_Map_2eproto,
@@ -200,11 +194,6 @@ ObjectInfo::ObjectInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 ObjectInfo::ObjectInfo(const ObjectInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_scene().empty()) {
-    scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_scene(), 
-      GetArenaForAllocation());
-  }
   state_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_state().empty()) {
     state_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_state(), 
@@ -220,14 +209,13 @@ ObjectInfo::ObjectInfo(const ObjectInfo& from)
   } else {
     transform_ = nullptr;
   }
-  ::memcpy(&layer_createid_id_, &from.layer_createid_id_,
+  ::memcpy(&scene_layer_createid_id_, &from.scene_layer_createid_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&state_value_) -
-    reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(state_value_));
+    reinterpret_cast<char*>(&scene_layer_createid_id_)) + sizeof(state_value_));
   // @@protoc_insertion_point(copy_constructor:Protocol.ObjectInfo)
 }
 
 void ObjectInfo::SharedCtor() {
-scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 state_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 object_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
@@ -244,7 +232,6 @@ ObjectInfo::~ObjectInfo() {
 
 void ObjectInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  scene_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   state_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   object_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete transform_;
@@ -266,16 +253,15 @@ void ObjectInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  scene_.ClearToEmpty();
   state_.ClearToEmpty();
   object_name_.ClearToEmpty();
   if (GetArenaForAllocation() == nullptr && transform_ != nullptr) {
     delete transform_;
   }
   transform_ = nullptr;
-  ::memset(&layer_createid_id_, 0, static_cast<size_t>(
+  ::memset(&scene_layer_createid_id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&state_value_) -
-      reinterpret_cast<char*>(&layer_createid_id_)) + sizeof(state_value_));
+      reinterpret_cast<char*>(&scene_layer_createid_id_)) + sizeof(state_value_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -285,48 +271,39 @@ const char* ObjectInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // string scene = 1;
+      // uint32 scene_layer_createid_id = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_scene();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.ObjectInfo.scene"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          scene_layer_createid_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // uint32 layer_createid_id = 2;
+      // .Protocol.TransformInfo transform = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          layer_createid_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // .Protocol.TransformInfo transform = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_transform(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string state = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+      // string state = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           auto str = _internal_mutable_state();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.ObjectInfo.state"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 state_value = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+      // int32 state_value = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           state_value_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string object_name = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+      // string object_name = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
           auto str = _internal_mutable_object_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.ObjectInfo.object_name"));
@@ -362,54 +339,44 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string scene = 1;
-  if (!this->scene().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_scene().data(), static_cast<int>(this->_internal_scene().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Protocol.ObjectInfo.scene");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_scene(), target);
-  }
-
-  // uint32 layer_createid_id = 2;
-  if (this->layer_createid_id() != 0) {
+  // uint32 scene_layer_createid_id = 1;
+  if (this->scene_layer_createid_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_layer_createid_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_scene_layer_createid_id(), target);
   }
 
-  // .Protocol.TransformInfo transform = 3;
+  // .Protocol.TransformInfo transform = 2;
   if (this->has_transform()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        3, _Internal::transform(this), target, stream);
+        2, _Internal::transform(this), target, stream);
   }
 
-  // string state = 4;
+  // string state = 3;
   if (!this->state().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_state().data(), static_cast<int>(this->_internal_state().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "Protocol.ObjectInfo.state");
     target = stream->WriteStringMaybeAliased(
-        4, this->_internal_state(), target);
+        3, this->_internal_state(), target);
   }
 
-  // int32 state_value = 5;
+  // int32 state_value = 4;
   if (this->state_value() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_state_value(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_state_value(), target);
   }
 
-  // string object_name = 6;
+  // string object_name = 5;
   if (!this->object_name().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_object_name().data(), static_cast<int>(this->_internal_object_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "Protocol.ObjectInfo.object_name");
     target = stream->WriteStringMaybeAliased(
-        6, this->_internal_object_name(), target);
+        5, this->_internal_object_name(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -428,42 +395,35 @@ size_t ObjectInfo::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string scene = 1;
-  if (!this->scene().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_scene());
-  }
-
-  // string state = 4;
+  // string state = 3;
   if (!this->state().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_state());
   }
 
-  // string object_name = 6;
+  // string object_name = 5;
   if (!this->object_name().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_object_name());
   }
 
-  // .Protocol.TransformInfo transform = 3;
+  // .Protocol.TransformInfo transform = 2;
   if (this->has_transform()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *transform_);
   }
 
-  // uint32 layer_createid_id = 2;
-  if (this->layer_createid_id() != 0) {
+  // uint32 scene_layer_createid_id = 1;
+  if (this->scene_layer_createid_id() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_layer_createid_id());
+        this->_internal_scene_layer_createid_id());
   }
 
-  // int32 state_value = 5;
+  // int32 state_value = 4;
   if (this->state_value() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -501,9 +461,6 @@ void ObjectInfo::MergeFrom(const ObjectInfo& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from.scene().empty()) {
-    _internal_set_scene(from._internal_scene());
-  }
   if (!from.state().empty()) {
     _internal_set_state(from._internal_state());
   }
@@ -513,8 +470,8 @@ void ObjectInfo::MergeFrom(const ObjectInfo& from) {
   if (from.has_transform()) {
     _internal_mutable_transform()->::Protocol::TransformInfo::MergeFrom(from._internal_transform());
   }
-  if (from.layer_createid_id() != 0) {
-    _internal_set_layer_createid_id(from._internal_layer_createid_id());
+  if (from.scene_layer_createid_id() != 0) {
+    _internal_set_scene_layer_createid_id(from._internal_scene_layer_createid_id());
   }
   if (from.state_value() != 0) {
     _internal_set_state_value(from._internal_state_value());
@@ -542,11 +499,6 @@ bool ObjectInfo::IsInitialized() const {
 void ObjectInfo::InternalSwap(ObjectInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &scene_, GetArenaForAllocation(),
-      &other->scene_, other->GetArenaForAllocation()
-  );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &state_, GetArenaForAllocation(),
@@ -781,18 +733,12 @@ C_MAP::C_MAP(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 C_MAP::C_MAP(const C_MAP& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_scene().empty()) {
-    scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_scene(), 
-      GetArenaForAllocation());
-  }
-  player_id_ = from.player_id_;
+  scene_player_id_ = from.scene_player_id_;
   // @@protoc_insertion_point(copy_constructor:Protocol.C_MAP)
 }
 
 void C_MAP::SharedCtor() {
-scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-player_id_ = 0u;
+scene_player_id_ = 0u;
 }
 
 C_MAP::~C_MAP() {
@@ -803,7 +749,6 @@ C_MAP::~C_MAP() {
 
 void C_MAP::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  scene_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void C_MAP::ArenaDtor(void* object) {
@@ -822,8 +767,7 @@ void C_MAP::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  scene_.ClearToEmpty();
-  player_id_ = 0u;
+  scene_player_id_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -833,19 +777,10 @@ const char* C_MAP::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // string scene = 1;
+      // uint32 scene_player_id = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_scene();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.C_MAP.scene"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // uint32 player_id = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          player_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          scene_player_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -878,20 +813,10 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string scene = 1;
-  if (!this->scene().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_scene().data(), static_cast<int>(this->_internal_scene().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Protocol.C_MAP.scene");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_scene(), target);
-  }
-
-  // uint32 player_id = 2;
-  if (this->player_id() != 0) {
+  // uint32 scene_player_id = 1;
+  if (this->scene_player_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_player_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_scene_player_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -910,18 +835,11 @@ size_t C_MAP::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string scene = 1;
-  if (!this->scene().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_scene());
-  }
-
-  // uint32 player_id = 2;
-  if (this->player_id() != 0) {
+  // uint32 scene_player_id = 1;
+  if (this->scene_player_id() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_player_id());
+        this->_internal_scene_player_id());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -955,11 +873,8 @@ void C_MAP::MergeFrom(const C_MAP& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from.scene().empty()) {
-    _internal_set_scene(from._internal_scene());
-  }
-  if (from.player_id() != 0) {
-    _internal_set_player_id(from._internal_player_id());
+  if (from.scene_player_id() != 0) {
+    _internal_set_scene_player_id(from._internal_scene_player_id());
   }
 }
 
@@ -984,12 +899,7 @@ bool C_MAP::IsInitialized() const {
 void C_MAP::InternalSwap(C_MAP* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &scene_, GetArenaForAllocation(),
-      &other->scene_, other->GetArenaForAllocation()
-  );
-  swap(player_id_, other->player_id_);
+  swap(scene_player_id_, other->scene_player_id_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_MAP::GetMetadata() const {
@@ -1208,18 +1118,12 @@ C_START_MAP::C_START_MAP(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 C_START_MAP::C_START_MAP(const C_START_MAP& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_scene().empty()) {
-    scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_scene(), 
-      GetArenaForAllocation());
-  }
-  player_id_ = from.player_id_;
+  scene_player_id_ = from.scene_player_id_;
   // @@protoc_insertion_point(copy_constructor:Protocol.C_START_MAP)
 }
 
 void C_START_MAP::SharedCtor() {
-scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-player_id_ = 0u;
+scene_player_id_ = 0u;
 }
 
 C_START_MAP::~C_START_MAP() {
@@ -1230,7 +1134,6 @@ C_START_MAP::~C_START_MAP() {
 
 void C_START_MAP::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  scene_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void C_START_MAP::ArenaDtor(void* object) {
@@ -1249,8 +1152,7 @@ void C_START_MAP::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  scene_.ClearToEmpty();
-  player_id_ = 0u;
+  scene_player_id_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1260,19 +1162,10 @@ const char* C_START_MAP::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // string scene = 1;
+      // uint32 scene_player_id = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_scene();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.C_START_MAP.scene"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // uint32 player_id = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          player_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          scene_player_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1305,20 +1198,10 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string scene = 1;
-  if (!this->scene().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_scene().data(), static_cast<int>(this->_internal_scene().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Protocol.C_START_MAP.scene");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_scene(), target);
-  }
-
-  // uint32 player_id = 2;
-  if (this->player_id() != 0) {
+  // uint32 scene_player_id = 1;
+  if (this->scene_player_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_player_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_scene_player_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1337,18 +1220,11 @@ size_t C_START_MAP::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string scene = 1;
-  if (!this->scene().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_scene());
-  }
-
-  // uint32 player_id = 2;
-  if (this->player_id() != 0) {
+  // uint32 scene_player_id = 1;
+  if (this->scene_player_id() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_player_id());
+        this->_internal_scene_player_id());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1382,11 +1258,8 @@ void C_START_MAP::MergeFrom(const C_START_MAP& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from.scene().empty()) {
-    _internal_set_scene(from._internal_scene());
-  }
-  if (from.player_id() != 0) {
-    _internal_set_player_id(from._internal_player_id());
+  if (from.scene_player_id() != 0) {
+    _internal_set_scene_player_id(from._internal_scene_player_id());
   }
 }
 
@@ -1411,12 +1284,7 @@ bool C_START_MAP::IsInitialized() const {
 void C_START_MAP::InternalSwap(C_START_MAP* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &scene_, GetArenaForAllocation(),
-      &other->scene_, other->GetArenaForAllocation()
-  );
-  swap(player_id_, other->player_id_);
+  swap(scene_player_id_, other->scene_player_id_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_START_MAP::GetMetadata() const {

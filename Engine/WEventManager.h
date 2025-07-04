@@ -48,12 +48,11 @@ namespace W
 		static void Update();
 		static void Initialize();
 		static void AddEvent(const tEvent& _tEve);
-		//{ m_vecEvent.push_back(_tEve); }
 		
 		static void CreateObject(GameObject* _pObj, eLayerType _eLayer);
-		static void CreateObjectID(UINT _iLayerCreateIdId, const tTransformInfo& _tTransformInfo, const wstring& _strObjectName);
+		static void CreateObjectID(UINT _iSceneLayerCreateIdId, const tTransformInfo& _tTransformInfo, const wstring& _strObjectName);
 		static void DeleteObject(GameObject* _pObj,  Scene* _pScene);
-		static void DeleteObjectID(UINT _ID, eLayerType _eType, const wstring& _strSceneName);
+		static void DeleteObjectID(UINT _ID, eLayerType _eType, UINT _iSceneID);
 		static void ChangeScene(const std::wstring& _strNextScene);
 	
 		static void AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID);
@@ -91,7 +90,7 @@ namespace W
 
 		
 		static RWLock m_lock;
-		static std::wstring m_strNextScene;
+		static UINT m_iNextScene;
 
 	};
 }

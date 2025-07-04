@@ -81,6 +81,7 @@ namespace W
 		tMapSize GetMapSize() { return m_tMapSize; }
 		tMapPossibleSize GetMapPossibleSize() { return m_tPossibleSize; }
 
+		UINT GetSceneID() { return m_iSceneID; }
 		bool IsLoading() { return m_bLoading.load(); }
 		
 		void EraseObject(eLayerType _eType, GameObject* _pGameObj){ m_vecLayer[(UINT)_eType]->EraseOnVector(_pGameObj); }
@@ -104,8 +105,11 @@ namespace W
 		tMapSize m_tMapSize;
 		tMapPossibleSize m_tPossibleSize;
 
+		static UINT SCENE_ID;
+		UINT m_iSceneID;
 		atomic<bool> m_bLoading;
 		
+
 		class InterfaceUI* m_pInterface;
 		class Inventory* m_pInventory;
 		class SKillStorage* m_pSKillStorage;

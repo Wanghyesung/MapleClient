@@ -112,7 +112,6 @@ namespace W
 
 	void Player::Initialize()
 	{
-		
 		GetComponent<Transform>()->SetScale(1.5f, 1.5f, 0.f);
 		GetComponent<Transform>()->SetPosition(0.f, -5.f, -2.f);
 
@@ -138,7 +137,6 @@ namespace W
 
 		m_pShadow = new Shadow();
 		m_pShadow->SetOwner(this);
-
 	}
 
 	void Player::Update()
@@ -205,7 +203,6 @@ namespace W
 		m_iAnimIdx = cAnimIdx;
 
 		update_shadow(cShadow);
-
 	}
 
 	void Player::SetEquip(Equip* _pEquip)

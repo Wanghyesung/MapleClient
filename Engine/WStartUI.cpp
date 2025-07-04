@@ -68,6 +68,6 @@ namespace W
 
 	void StartUI::MouseLbtnClicked()
 	{
-		SceneManger::LoadScene(m_strNextScene);
+		//SceneManger::LoadScene(m_strNextScene);
 	}
 }

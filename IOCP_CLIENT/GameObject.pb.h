@@ -182,25 +182,10 @@ class C_CREATE final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSceneFieldNumber = 1,
-    kObjectNameFieldNumber = 3,
-    kLayerCreateidFieldNumber = 2,
+    kObjectNameFieldNumber = 2,
+    kSceneLayerCreateidFieldNumber = 1,
   };
-  // string scene = 1;
-  void clear_scene();
-  const std::string& scene() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_scene(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_scene();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scene();
-  void set_allocated_scene(std::string* scene);
-  private:
-  const std::string& _internal_scene() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scene(const std::string& value);
-  std::string* _internal_mutable_scene();
-  public:
-
-  // string object_name = 3;
+  // string object_name = 2;
   void clear_object_name();
   const std::string& object_name() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -214,13 +199,13 @@ class C_CREATE final :
   std::string* _internal_mutable_object_name();
   public:
 
-  // uint32 layer_createid = 2;
-  void clear_layer_createid();
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid() const;
-  void set_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 scene_layer_createid = 1;
+  void clear_scene_layer_createid();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_createid() const;
+  void set_scene_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_createid() const;
-  void _internal_set_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_layer_createid() const;
+  void _internal_set_scene_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.C_CREATE)
@@ -230,9 +215,8 @@ class C_CREATE final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr object_name_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_createid_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_createid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_GameObject_2eproto;
 };
@@ -487,31 +471,16 @@ class S_DELETE final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSceneFieldNumber = 1,
-    kLayerDeleteidFieldNumber = 2,
+    kSceneLayerDeleteidFieldNumber = 2,
     kPoolObjectFieldNumber = 3,
   };
-  // string scene = 1;
-  void clear_scene();
-  const std::string& scene() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_scene(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_scene();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scene();
-  void set_allocated_scene(std::string* scene);
+  // uint32 scene_layer_deleteid = 2;
+  void clear_scene_layer_deleteid();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_deleteid() const;
+  void set_scene_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  const std::string& _internal_scene() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scene(const std::string& value);
-  std::string* _internal_mutable_scene();
-  public:
-
-  // uint32 layer_deleteid = 2;
-  void clear_layer_deleteid();
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_deleteid() const;
-  void set_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_layer_deleteid() const;
-  void _internal_set_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_layer_deleteid() const;
+  void _internal_set_scene_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // bool pool_object = 3;
@@ -530,8 +499,7 @@ class S_DELETE final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 layer_deleteid_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_deleteid_;
   bool pool_object_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_GameObject_2eproto;
@@ -547,72 +515,27 @@ class S_DELETE final :
 #endif  // __GNUC__
 // C_CREATE
 
-// string scene = 1;
-inline void C_CREATE::clear_scene() {
-  scene_.ClearToEmpty();
+// uint32 scene_layer_createid = 1;
+inline void C_CREATE::clear_scene_layer_createid() {
+  scene_layer_createid_ = 0u;
 }
-inline const std::string& C_CREATE::scene() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_CREATE.scene)
-  return _internal_scene();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_CREATE::_internal_scene_layer_createid() const {
+  return scene_layer_createid_;
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void C_CREATE::set_scene(ArgT0&& arg0, ArgT... args) {
- 
- scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Protocol.C_CREATE.scene)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_CREATE::scene_layer_createid() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_CREATE.scene_layer_createid)
+  return _internal_scene_layer_createid();
 }
-inline std::string* C_CREATE::mutable_scene() {
-  // @@protoc_insertion_point(field_mutable:Protocol.C_CREATE.scene)
-  return _internal_mutable_scene();
-}
-inline const std::string& C_CREATE::_internal_scene() const {
-  return scene_.Get();
-}
-inline void C_CREATE::_internal_set_scene(const std::string& value) {
+inline void C_CREATE::_internal_set_scene_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  scene_layer_createid_ = value;
 }
-inline std::string* C_CREATE::_internal_mutable_scene() {
-  
-  return scene_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* C_CREATE::release_scene() {
-  // @@protoc_insertion_point(field_release:Protocol.C_CREATE.scene)
-  return scene_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void C_CREATE::set_allocated_scene(std::string* scene) {
-  if (scene != nullptr) {
-    
-  } else {
-    
-  }
-  scene_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scene,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:Protocol.C_CREATE.scene)
+inline void C_CREATE::set_scene_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_layer_createid(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_CREATE.scene_layer_createid)
 }
 
-// uint32 layer_createid = 2;
-inline void C_CREATE::clear_layer_createid() {
-  layer_createid_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_CREATE::_internal_layer_createid() const {
-  return layer_createid_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_CREATE::layer_createid() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_CREATE.layer_createid)
-  return _internal_layer_createid();
-}
-inline void C_CREATE::_internal_set_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  layer_createid_ = value;
-}
-inline void C_CREATE::set_layer_createid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_layer_createid(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_CREATE.layer_createid)
-}
-
-// string object_name = 3;
+// string object_name = 2;
 inline void C_CREATE::clear_object_name() {
   object_name_.ClearToEmpty();
 }
@@ -744,69 +667,24 @@ inline void S_CREATE::set_allocated_object_info(::Protocol::ObjectInfo* object_i
 
 // S_DELETE
 
-// string scene = 1;
-inline void S_DELETE::clear_scene() {
-  scene_.ClearToEmpty();
+// uint32 scene_layer_deleteid = 2;
+inline void S_DELETE::clear_scene_layer_deleteid() {
+  scene_layer_deleteid_ = 0u;
 }
-inline const std::string& S_DELETE::scene() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_DELETE.scene)
-  return _internal_scene();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_DELETE::_internal_scene_layer_deleteid() const {
+  return scene_layer_deleteid_;
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void S_DELETE::set_scene(ArgT0&& arg0, ArgT... args) {
- 
- scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Protocol.S_DELETE.scene)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_DELETE::scene_layer_deleteid() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_DELETE.scene_layer_deleteid)
+  return _internal_scene_layer_deleteid();
 }
-inline std::string* S_DELETE::mutable_scene() {
-  // @@protoc_insertion_point(field_mutable:Protocol.S_DELETE.scene)
-  return _internal_mutable_scene();
-}
-inline const std::string& S_DELETE::_internal_scene() const {
-  return scene_.Get();
-}
-inline void S_DELETE::_internal_set_scene(const std::string& value) {
+inline void S_DELETE::_internal_set_scene_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  scene_layer_deleteid_ = value;
 }
-inline std::string* S_DELETE::_internal_mutable_scene() {
-  
-  return scene_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* S_DELETE::release_scene() {
-  // @@protoc_insertion_point(field_release:Protocol.S_DELETE.scene)
-  return scene_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void S_DELETE::set_allocated_scene(std::string* scene) {
-  if (scene != nullptr) {
-    
-  } else {
-    
-  }
-  scene_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scene,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:Protocol.S_DELETE.scene)
-}
-
-// uint32 layer_deleteid = 2;
-inline void S_DELETE::clear_layer_deleteid() {
-  layer_deleteid_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_DELETE::_internal_layer_deleteid() const {
-  return layer_deleteid_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_DELETE::layer_deleteid() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_DELETE.layer_deleteid)
-  return _internal_layer_deleteid();
-}
-inline void S_DELETE::_internal_set_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  layer_deleteid_ = value;
-}
-inline void S_DELETE::set_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_layer_deleteid(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_DELETE.layer_deleteid)
+inline void S_DELETE::set_scene_layer_deleteid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_layer_deleteid(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_DELETE.scene_layer_deleteid)
 }
 
 // bool pool_object = 3;

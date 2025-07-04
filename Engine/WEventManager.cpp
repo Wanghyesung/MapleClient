@@ -19,7 +19,7 @@ namespace W
 	RWLock EventManager::m_lock = {};
 	
 
-	std::wstring EventManager::m_strNextScene = {};
+	UINT EventManager::m_iNextScene = 0;
 #define ObjectPoolPosition 2000.f
 
 	void EventManager::Update()
@@ -79,12 +79,12 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::DeleteObjectID(UINT _ID, eLayerType _eType, const wstring& _strSceneName)
+	void EventManager::DeleteObjectID(UINT _ID, eLayerType _eType, UINT _iSceneID)
 	{
 		tEvent eve = {};
 		eve.lParm = (DWORD_PTR)_ID;
 		eve.wParm = (DWORD_PTR)_eType;
-		eve.accParm = (DWORD_PTR)new wstring(_strSceneName);
+		eve.accParm = (LONG_PTR)_iSceneID;
 
 		eve.eEventType = EVENT_TYPE::DELET_OBJECT_ID;
 		AddEvent(eve);
@@ -95,7 +95,10 @@ namespace W
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::SCENE_CHANGE;
-		m_strNextScene = _strNextScene;
+
+		Scene* pScene = SceneManger::FindScene(_strNextScene);
+		if (pScene)
+			m_iNextScene = pScene->GetSceneID();
 
 		AddEvent(eve);
 	}
@@ -173,9 +176,9 @@ namespace W
 		const tTransformInfo& tTrInfo = *reinterpret_cast<tTransformInfo*>(_wParm);
 		const wstring& strObjectName = *reinterpret_cast<wstring*>(_accParm);
 
-		UCHAR cLayer = (iLayerCreateIdId >> 24) & 0xFF;
-		UCHAR cCreateid = (iLayerCreateIdId >> 16) & 0xFF;
-		USHORT CID = iLayerCreateIdId & 0xFFFF;
+		UCHAR cLayer = (iLayerCreateIdId >> 16) & 0xFF;
+		UCHAR cCreateid = (iLayerCreateIdId >> 8) & 0xFF;
+		USHORT CID = iLayerCreateIdId & 0xFF;
 
 		GameObject* pObj = nullptr;
 		if (strObjectName.empty())
@@ -201,15 +204,15 @@ namespace W
 	{
 		UINT ID = (UINT)_lParm;
 		eLayerType eLayer = (eLayerType)_wParm;
+		UINT iSceneID = (UINT)_accParm;
 
-		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
-		if (!pObj)
-			return;
-
-		const wstring& strSceneName = *reinterpret_cast<wstring*>(_accParm);
-		Scene* pScene = SceneManger::FindScene(strSceneName);
+		Scene* pScene = SceneManger::FindScene(iSceneID);
 		if (pScene == nullptr)
 			assert(nullptr);
+
+		GameObject* pObj = SceneManger::FindObject(pScene, ID, eLayer);
+		if (!pObj)
+			return;
 
 		pScene->EraseObject(eLayer, pObj);
 
@@ -217,13 +220,11 @@ namespace W
 			ObjectPoolManager::AddObjectPool(pObj->GetName(), pObj);
 		else
 			delete pObj;
-
-		delete &strSceneName;
 	}
 
 	void EventManager::change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
 	{	
-		SceneManger::LoadScene(m_strNextScene);
+		SceneManger::LoadScene(m_iNextScene);
 	}
 
 	void EventManager::add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
@@ -309,14 +310,14 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::CreateObjectID(UINT _iLayerCreateIdId, const tTransformInfo& _tTransformInfo, const wstring& _strObjectName)
+	void EventManager::CreateObjectID(UINT _iSceneLayerCreateIdId, const tTransformInfo& _tTransformInfo, const wstring& _strObjectName)
 	{
 		//GameObject* pObj = GameObjectManager::GetMonsterOfID(_ID);
 
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::CREATE_OBJECT_ID;
 
-		eve.lParm = (DWORD_PTR)_iLayerCreateIdId;
+		eve.lParm = (DWORD_PTR)_iSceneLayerCreateIdId;
 		eve.wParm = (DWORD_PTR)new tTransformInfo(_tTransformInfo);
 		eve.accParm = (LONG_PTR)new wstring(_strObjectName);
 

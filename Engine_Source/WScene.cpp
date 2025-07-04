@@ -12,9 +12,11 @@ namespace W
 {
 	//std::vector<eLayerType> Scene::m_vecUpdateLayer = 
 	//{eLayerType::Camera, eLayerType::Background, eLayerType::Light,eLayerType::UI};
+	UINT Scene::SCENE_ID = 0;
 
 	Scene::Scene() :
-		m_bLoading(false)
+		m_bLoading(false),
+		m_iSceneID(SCENE_ID++)
 	{
 		for (UINT i = 0; i < (UINT)eLayerType::End; ++i)
 		{
@@ -88,12 +90,9 @@ namespace W
 	{
 		Protocol::C_MAP pkt;
 
-		const wstring& strNextScenename = GetName();
-		if (GHashWstringToString.find(strNextScenename) == GHashWstringToString.end())
-			GHashWstringToString[strNextScenename] = WstringToString(strNextScenename);
+		UINT iSceneID = GetSceneID();
 
-		pkt.set_scene(GHashWstringToString[strNextScenename]);
-		pkt.set_player_id(PLAYER_ID);
+		pkt.set_scene_player_id((iSceneID << 16) | PLAYER_ID);
 
 		SceneManger::StartWaitForMapData();
 

@@ -11,7 +11,7 @@ namespace W
 	Scene* SceneManger::m_pActiveScene = nullptr;
 	atomic<bool> SceneManger::m_bWaitForMapData = false;
 
-	std::map<std::wstring, Scene*> SceneManger::m_mapScene = {};
+	std::unordered_map<UINT, Scene*> SceneManger::m_hashSceneID = {};
 
 	void SceneManger::Initialize()
 	{
@@ -32,7 +32,7 @@ namespace W
 
 	void SceneManger::Release()
 	{
-		for (auto &iter : m_mapScene)
+		for (auto &iter : m_hashSceneID)
 		{
 			delete iter.second;
 			iter.second = nullptr;
@@ -46,14 +46,13 @@ namespace W
 	{
 		m_pActiveScene->EraseObject(_pGameObject->GetLayerType(),_pGameObject);
 	}
-	Scene* SceneManger::LoadScene(std::wstring _strName)
+	Scene* SceneManger::LoadScene(UINT _iSceneID)
 	{
 		m_pActiveScene->OnExit();
 
-		std::map<std::wstring, Scene*>::iterator iter =
-			m_mapScene.find(_strName);
+		auto iter = m_hashSceneID.find(_iSceneID);
 
-		if (iter == m_mapScene.end())
+		if (iter == m_hashSceneID.end())
 			return nullptr;
 
 		SwapUI(m_pActiveScene, iter->second);
@@ -84,13 +83,35 @@ namespace W
 		return pObj;
 	}
 
-	Scene* SceneManger::FindScene(const wstring& _strSceneName)
+	GameObject* SceneManger::FindObject(Scene* _pScene, UINT _ID, eLayerType _eLayerType)
 	{
-		auto iter = m_mapScene.find(_strSceneName);
-		if (iter == m_mapScene.end())
+		GameObject* pObj = _pScene->GetLayer(_eLayerType)->FindObject(_ID);
+
+		if (!pObj)
+			return nullptr;
+		return pObj;
+	}
+
+	Scene* SceneManger::FindScene(UINT _iSceneID)
+	{
+		auto iter = m_hashSceneID.find(_iSceneID);
+		if (iter == m_hashSceneID.end())
 			return nullptr;
 
 		return iter->second;
+	}
+
+	Scene* SceneManger::FindScene(const wstring& _strSceneName)
+	{
+		auto iter = m_hashSceneID.begin();
+
+		for(iter; iter!= m_hashSceneID.end(); ++iter)
+		{
+			if(iter->second->GetName() == _strSceneName)
+				return iter->second;
+
+		}
+		return nullptr;
 	}
 
 	void SceneManger::SwapObject(Scene* _pPrevScene, Scene* _pNextScene, GameObject* _pGameObject)
