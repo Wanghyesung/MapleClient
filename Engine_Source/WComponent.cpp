@@ -2,6 +2,7 @@
 
 namespace W
 {
+	UINT Component::COMPONENT_ID = 0;
 
 	Component::Component(eComponentType _eType) :
 		m_eType(_eType)

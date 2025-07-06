@@ -8,7 +8,7 @@
 #include "WGameObject.h"
 namespace W
 {
-
+	UINT ParticleSystem::COMPONENT_ID = 0;
 	ParticleSystem::ParticleSystem():
 		m_iCount(0),
 		m_vStartColor(Vector4::One),

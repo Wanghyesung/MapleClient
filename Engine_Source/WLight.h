@@ -7,6 +7,8 @@ namespace W
 	class Light : public Component
 	{
 	public:
+		DECLARE_COMPONENT_ID;
+
 		Light();
 		virtual ~Light();
 

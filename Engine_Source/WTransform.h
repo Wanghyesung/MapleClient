@@ -10,6 +10,8 @@ namespace W
 
 	class Transform : public Component
 	{
+		DECLARE_COMPONENT_ID;
+
 	public:
 		Transform();
 		Transform(const Transform& _pOrigin);

@@ -9,6 +9,7 @@ namespace W
 
 	class Component
 	{
+		DECLARE_COMPONENT_ID;
 	public:
 		Component(eComponentType _eType);
 		Component(const Component& _pOrigin);
@@ -24,12 +25,11 @@ namespace W
 		GameObject* GetOwner() { return m_pOwner; }
 		void SetOwner(GameObject* _pGameObj) { m_pOwner = _pGameObj; }
 
-
-	private:
-
+		const eComponentType GetComponentType() { return m_eType; }
 	private:
 		const eComponentType m_eType;
 		GameObject* m_pOwner;
+
 	};
 }
 

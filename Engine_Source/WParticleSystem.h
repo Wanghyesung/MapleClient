@@ -7,6 +7,8 @@ namespace W
 {
 	class ParticleSystem : public MeshRenderer
 	{
+		DECLARE_COMPONENT_ID;
+
 	public:
 		ParticleSystem();
 		virtual ~ParticleSystem();

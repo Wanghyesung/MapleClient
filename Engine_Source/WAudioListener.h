@@ -6,6 +6,8 @@ namespace W
 {
 	class AudioListener : public Component
 	{
+		DECLARE_COMPONENT_ID;
+
 	public:
 		AudioListener();
 		~AudioListener();

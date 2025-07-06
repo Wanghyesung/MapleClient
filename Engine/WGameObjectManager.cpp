@@ -10,6 +10,11 @@
     };                                                  \
 };
 
+#define REGISTER_COMPONENT_ID(name, id)	                \
+{                                                       \
+    name::SetComponentID(id);}                          \
+    
+
 
 namespace W
 {
@@ -17,6 +22,17 @@ namespace W
 
 	void GameObjectManager::Initialize()
 	{
+		REGISTER_COMPONENT_ID(Component, (UINT)eComponentType::None)
+		REGISTER_COMPONENT_ID(Transform, (UINT)eComponentType::Transform)
+		REGISTER_COMPONENT_ID(ParticleSystem, (UINT)eComponentType::Particle)
+		REGISTER_COMPONENT_ID(MeshRenderer, (UINT)eComponentType::MeshRenderer)
+		REGISTER_COMPONENT_ID(Script, (UINT)eComponentType::Script)
+		REGISTER_COMPONENT_ID(Light, (UINT)eComponentType::Light)
+		REGISTER_COMPONENT_ID(Camera, (UINT)eComponentType::Camera)
+		REGISTER_COMPONENT_ID(AudioListener, (UINT)eComponentType::AudioListener)
+		REGISTER_COMPONENT_ID(AudioSource, (UINT)eComponentType::AudioSource)
+
+
 		REGISTER_OBJECT_FACTORY(GameObject			 , 0  )
 		REGISTER_OBJECT_FACTORY(Abnormal			 , 1  )
 		REGISTER_OBJECT_FACTORY(Ariel				 , 2  )

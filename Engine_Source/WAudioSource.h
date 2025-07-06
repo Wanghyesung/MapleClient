@@ -6,6 +6,8 @@ namespace W
 {
 	class AudioSource : public Component
 	{
+		DECLARE_COMPONENT_ID;
+
 	public:
 		AudioSource();
 		~AudioSource();

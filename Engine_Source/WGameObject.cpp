@@ -15,6 +15,7 @@ namespace W
 		m_bObjectPool(false),
 		m_bRender(true)
 	{
+		m_vecComponent.resize((UINT)eComponentType::End);
 		AddComponent<Transform>();
 	}
 
@@ -24,6 +25,7 @@ namespace W
 		m_eLayerType(_pOrigin.m_eLayerType),
 		m_iObjectID(0)
 	{
+		m_vecComponent.resize((UINT)eComponentType::End);
 
 		for (Component* pCom : _pOrigin.m_vecComponent)
 		{
@@ -34,8 +36,8 @@ namespace W
 			if (!pComponent)
 				continue;
 
-			m_vecComponent.push_back(pComponent);
-
+			UINT iComponentID = (UINT)pComponent->GetComponentType();
+			m_vecComponent[iComponentID] = pComponent;
 			pComponent->SetOwner(this);
 		}
 	}
@@ -48,7 +50,6 @@ namespace W
 				continue;
 
 			delete comp;
-			comp = nullptr;
 		}
 
 		for (Component* script : m_vecScript)
@@ -57,7 +58,6 @@ namespace W
 				continue;
 
 			delete script;
-			script = nullptr;
 		}
 	}
 	void GameObject::Initialize()
@@ -66,11 +66,10 @@ namespace W
 	}
 	void GameObject::Update()
 	{
-		//생성위치 기록
-
 		for (Component* comp : m_vecComponent)
 		{
-			comp->Update();
+			if(comp)
+				comp->Update();
 		}
 
 		for (Component* script : m_vecScript)
@@ -81,10 +80,10 @@ namespace W
 
 	void GameObject::LateUpdate()
 	{
-
 		for (Component* comp : m_vecComponent)
 		{
-			comp->LateUpdate();
+			if (comp)
+				comp->LateUpdate();
 		}
 
 		for (Component* script : m_vecScript)

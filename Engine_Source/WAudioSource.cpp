@@ -5,6 +5,7 @@
 
 namespace W
 {
+	UINT AudioSource::COMPONENT_ID = 0;
 
 	AudioSource::AudioSource()
 		: Component(eComponentType::AudioSource)

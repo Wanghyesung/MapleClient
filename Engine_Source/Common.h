@@ -6,6 +6,23 @@
 #include <cstdint>
 #include <type_traits>
 
+#define DECLARE_COMPONENT_ID                        \
+public:                                             \
+    static void SetComponentID(UINT _iID)           \
+    {                                               \
+        if (COMPONENT_ID != 0)                      \
+            assert(nullptr);                        \
+        COMPONENT_ID = _iID;                        \
+    }                                               \
+                                                    \
+    static UINT COMPONENT_ID;                       \
+                                                    \
+    static UINT GetComponentID()                    \
+    {                                               \
+        return COMPONENT_ID;                        \
+    }
+
+
 #define arraysize(a) (sizeof(a) / sizeof(a[0]))
 
 //enum enumclass처럼 쓸수있게

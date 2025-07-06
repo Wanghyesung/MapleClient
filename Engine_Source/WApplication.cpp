@@ -73,11 +73,11 @@ namespace W
 		Input::Initialize();
 	
 		renderer::Initialize();
-		ItemManager::Initialize();
 
 		EventManager::Initialize();
 		GameObjectManager::Initialize();
-		
+
+		ItemManager::Initialize();
 	}
 
 	void Application::Update()

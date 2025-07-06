@@ -28,6 +28,8 @@ namespace W
 
 	class Animator : public Component
 	{
+		DECLARE_COMPONENT_ID;
+
 	public:
 		Animator();
 		virtual ~Animator();

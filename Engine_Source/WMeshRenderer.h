@@ -12,6 +12,8 @@ namespace W
 	class MeshRenderer : public Component
 	{
 	public:
+		DECLARE_COMPONENT_ID;
+
 		MeshRenderer();
 		MeshRenderer(const MeshRenderer& _pOrigin);
 		virtual ~MeshRenderer();

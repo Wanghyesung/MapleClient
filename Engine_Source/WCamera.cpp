@@ -30,6 +30,7 @@ extern W::Application application;
 
 namespace W
 {
+	UINT Camera::COMPONENT_ID = 0;
 
 	bool CompareZSort(GameObject* a, GameObject* b)
 	{

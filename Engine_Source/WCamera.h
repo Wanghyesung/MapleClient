@@ -18,6 +18,8 @@ namespace W
 {
 	class Camera : public Component
 	{
+		DECLARE_COMPONENT_ID;
+
 	public:
 		enum class eProjectionType
 		{

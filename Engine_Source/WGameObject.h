@@ -34,53 +34,36 @@ namespace W
 		template <typename T>
 		T* GetComponent()
 		{
-			T* component;
-			for (Component* comp : m_vecComponent)
-			{
-				component = dynamic_cast<T*>(comp);
-				if (component != nullptr)
-					return component;
-			}
+			UINT iComponentID = T::GetComponentID();
 
-			for (Component* script : m_vecScript)
-			{
-				component = dynamic_cast<T*>(script);
-				if (component != nullptr)
-					return component;
-			}
+			if (m_vecComponent[iComponentID] == nullptr)
+				return nullptr;
 
-
-			return nullptr;
+			return static_cast<T*>(m_vecComponent[iComponentID]);
 		}
 
 		template<typename T>
 		T* AddComponent()
 		{
+			UINT iComponentID = T::GetComponentID();
+
+			if (m_vecComponent[iComponentID] != nullptr)
+				assert(nullptr);
+			
 			T* comp = new T();
-
-			Component* buff =
-				dynamic_cast<Component*>(comp);
-
-			Script* script =
-				dynamic_cast<Script*>(buff);
-
-			if (buff == nullptr)
-				return nullptr;
-
-			if (script == nullptr)
-				m_vecComponent.push_back(buff);
+			if (iComponentID == (UINT)eComponentType::Script)
+				m_vecScript.push_back(comp);
 			else
-				m_vecScript.push_back(script);
-
+				m_vecComponent[iComponentID] = comp;
+			
 			comp->SetOwner(this);
-
 			return comp;
 		}
 
 		template<typename T>
 		T* GetScript()
 		{
-			for (Script* pScript : m_vecScript)
+			for (Component* pScript : m_vecScript)
 			{
 				T* pTarget = dynamic_cast<T*>(pScript);
 				if (pTarget != nullptr)
@@ -124,7 +107,7 @@ namespace W
 	private:
 		eState m_eState;
 		std::vector<Component*> m_vecComponent;
-		std::vector<Script*> m_vecScript;
+		std::vector<Component*> m_vecScript;
 
 		eLayerType m_eLayerType;
 

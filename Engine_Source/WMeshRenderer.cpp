@@ -5,6 +5,8 @@
 #include "WAnimator.h"
 namespace W
 {
+	UINT MeshRenderer::COMPONENT_ID = 0;
+
 	MeshRenderer::MeshRenderer():
 		Component(eComponentType::MeshRenderer)
 	{

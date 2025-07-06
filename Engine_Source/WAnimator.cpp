@@ -3,6 +3,7 @@
 #include "WGameObject.h"
 namespace W
 {
+	UINT Animator::COMPONENT_ID = 0;
 
 	Animator::Animator() :
 		Component(eComponentType::Animator),

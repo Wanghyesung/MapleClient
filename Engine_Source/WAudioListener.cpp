@@ -5,6 +5,7 @@
 
 namespace W
 {
+	UINT AudioListener::COMPONENT_ID = 0;
 
 	AudioListener::AudioListener()
 		: Component(eComponentType::AudioListener)
