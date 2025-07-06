@@ -57,10 +57,11 @@ namespace W
 
 	void Rex::Initialize()
 	{
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"RexTex");
-		GetComponent<Animator>()->SetTexture(pAtlas);
+		Animator* pAnim = GetComponent<Animator>();
 
-		m_strCurStateName.clear();
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"RexTex");
+		pAnim->SetTexture(pAtlas);
+		pAnim->Play(L"Rex_stand", true);
 	}
 	void Rex::Update()
 	{

@@ -53,11 +53,14 @@ namespace W
 
 	void Munin::Initialize()
 	{
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"MuninTex");
-		GetComponent<Animator>()->SetTexture(pAtlas);
+		Animator* pAnim = GetComponent<Animator>();
 
-		m_strCurStateName.clear();
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"MuninTex");
+		pAnim->SetTexture(pAtlas);
+
+		pAnim->Play(L"Munin_stand", true);
 	}
+
 	void Munin::Update()
 	{
 		

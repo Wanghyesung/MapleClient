@@ -31,9 +31,7 @@ struct S_SkillDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT S_SkillDefaultTypeInternal _S_Skill_default_instance_;
 constexpr C_Skill::C_Skill(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : scene_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , player_id_(0u)
-  , skill_id_(0u){}
+  : scene_playerid_skill_id_(0u){}
 struct C_SkillDefaultTypeInternal {
   constexpr C_SkillDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -60,9 +58,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Skill_2eproto::offsets[] PROTO
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_Skill, player_id_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_Skill, scene_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_Skill, skill_id_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_Skill, scene_playerid_skill_id_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Protocol::S_Skill)},
@@ -76,13 +72,12 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_Skill_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\013Skill.proto\022\010Protocol\"\032\n\007S_Skill\022\017\n\007su"
-  "ccess\030\001 \001(\010\"=\n\007C_Skill\022\021\n\tplayer_id\030\001 \001("
-  "\r\022\r\n\005scene\030\002 \001(\t\022\020\n\010skill_id\030\003 \001(\rb\006prot"
-  "o3"
+  "ccess\030\001 \001(\010\"*\n\007C_Skill\022\037\n\027scene_playerid"
+  "_skill_id\030\001 \001(\rb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Skill_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Skill_2eproto = {
-  false, false, 122, descriptor_table_protodef_Skill_2eproto, "Skill.proto", 
+  false, false, 103, descriptor_table_protodef_Skill_2eproto, "Skill.proto", 
   &descriptor_table_Skill_2eproto_once, nullptr, 0, 2,
   schemas, file_default_instances, TableStruct_Skill_2eproto::offsets,
   file_level_metadata_Skill_2eproto, file_level_enum_descriptors_Skill_2eproto, file_level_service_descriptors_Skill_2eproto,
@@ -298,23 +293,12 @@ C_Skill::C_Skill(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 C_Skill::C_Skill(const C_Skill& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_scene().empty()) {
-    scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_scene(), 
-      GetArenaForAllocation());
-  }
-  ::memcpy(&player_id_, &from.player_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&skill_id_) -
-    reinterpret_cast<char*>(&player_id_)) + sizeof(skill_id_));
+  scene_playerid_skill_id_ = from.scene_playerid_skill_id_;
   // @@protoc_insertion_point(copy_constructor:Protocol.C_Skill)
 }
 
 void C_Skill::SharedCtor() {
-scene_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&player_id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&skill_id_) -
-    reinterpret_cast<char*>(&player_id_)) + sizeof(skill_id_));
+scene_playerid_skill_id_ = 0u;
 }
 
 C_Skill::~C_Skill() {
@@ -325,7 +309,6 @@ C_Skill::~C_Skill() {
 
 void C_Skill::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  scene_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void C_Skill::ArenaDtor(void* object) {
@@ -344,10 +327,7 @@ void C_Skill::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  scene_.ClearToEmpty();
-  ::memset(&player_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&skill_id_) -
-      reinterpret_cast<char*>(&player_id_)) + sizeof(skill_id_));
+  scene_playerid_skill_id_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -357,26 +337,10 @@ const char* C_Skill::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // uint32 player_id = 1;
+      // uint32 scene_playerid_skill_id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          player_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string scene = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_scene();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Protocol.C_Skill.scene"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // uint32 skill_id = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          skill_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          scene_playerid_skill_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -409,26 +373,10 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 player_id = 1;
-  if (this->player_id() != 0) {
+  // uint32 scene_playerid_skill_id = 1;
+  if (this->scene_playerid_skill_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_player_id(), target);
-  }
-
-  // string scene = 2;
-  if (!this->scene().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_scene().data(), static_cast<int>(this->_internal_scene().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Protocol.C_Skill.scene");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_scene(), target);
-  }
-
-  // uint32 skill_id = 3;
-  if (this->skill_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_skill_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_scene_playerid_skill_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -447,25 +395,11 @@ size_t C_Skill::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string scene = 2;
-  if (!this->scene().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_scene());
-  }
-
-  // uint32 player_id = 1;
-  if (this->player_id() != 0) {
+  // uint32 scene_playerid_skill_id = 1;
+  if (this->scene_playerid_skill_id() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_player_id());
-  }
-
-  // uint32 skill_id = 3;
-  if (this->skill_id() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_skill_id());
+        this->_internal_scene_playerid_skill_id());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -499,14 +433,8 @@ void C_Skill::MergeFrom(const C_Skill& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from.scene().empty()) {
-    _internal_set_scene(from._internal_scene());
-  }
-  if (from.player_id() != 0) {
-    _internal_set_player_id(from._internal_player_id());
-  }
-  if (from.skill_id() != 0) {
-    _internal_set_skill_id(from._internal_skill_id());
+  if (from.scene_playerid_skill_id() != 0) {
+    _internal_set_scene_playerid_skill_id(from._internal_scene_playerid_skill_id());
   }
 }
 
@@ -531,17 +459,7 @@ bool C_Skill::IsInitialized() const {
 void C_Skill::InternalSwap(C_Skill* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &scene_, GetArenaForAllocation(),
-      &other->scene_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(C_Skill, skill_id_)
-      + sizeof(C_Skill::skill_id_)
-      - PROTOBUF_FIELD_OFFSET(C_Skill, player_id_)>(
-          reinterpret_cast<char*>(&player_id_),
-          reinterpret_cast<char*>(&other->player_id_));
+  swap(scene_playerid_skill_id_, other->scene_playerid_skill_id_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_Skill::GetMetadata() const {

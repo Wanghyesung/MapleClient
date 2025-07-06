@@ -65,9 +65,6 @@ bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 		const Protocol::TransformInfo& trInfo = _pkt.objinfo(i).transform();
 
 		UINT iSceneLayerCreateIdId = objInfo.scene_layer_createid_id();
-
-		//if (GHashStringToWstring.find(objInfo.object_name()) == GHashStringToWstring.end())
-		//	GHashStringToWstring[objInfo.object_name()] = StringToWString(objInfo.object_name());
 		
 		tTransformInfo tTrInfo = {};
 		tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());

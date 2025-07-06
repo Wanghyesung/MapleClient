@@ -47,7 +47,7 @@ struct TableStruct_Map_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -58,6 +58,9 @@ namespace Protocol {
 class C_MAP;
 struct C_MAPDefaultTypeInternal;
 extern C_MAPDefaultTypeInternal _C_MAP_default_instance_;
+class C_MAP_LOADING;
+struct C_MAP_LOADINGDefaultTypeInternal;
+extern C_MAP_LOADINGDefaultTypeInternal _C_MAP_LOADING_default_instance_;
 class C_START_MAP;
 struct C_START_MAPDefaultTypeInternal;
 extern C_START_MAPDefaultTypeInternal _C_START_MAP_default_instance_;
@@ -73,6 +76,7 @@ extern S_START_MAPDefaultTypeInternal _S_START_MAP_default_instance_;
 }  // namespace Protocol
 PROTOBUF_NAMESPACE_OPEN
 template<> ::Protocol::C_MAP* Arena::CreateMaybeMessage<::Protocol::C_MAP>(Arena*);
+template<> ::Protocol::C_MAP_LOADING* Arena::CreateMaybeMessage<::Protocol::C_MAP_LOADING>(Arena*);
 template<> ::Protocol::C_START_MAP* Arena::CreateMaybeMessage<::Protocol::C_START_MAP>(Arena*);
 template<> ::Protocol::ObjectInfo* Arena::CreateMaybeMessage<::Protocol::ObjectInfo>(Arena*);
 template<> ::Protocol::S_MAP* Arena::CreateMaybeMessage<::Protocol::S_MAP>(Arena*);
@@ -277,6 +281,138 @@ class ObjectInfo final :
 };
 // -------------------------------------------------------------------
 
+class C_MAP_LOADING final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.C_MAP_LOADING) */ {
+ public:
+  inline C_MAP_LOADING() : C_MAP_LOADING(nullptr) {}
+  ~C_MAP_LOADING() override;
+  explicit constexpr C_MAP_LOADING(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_MAP_LOADING(const C_MAP_LOADING& from);
+  C_MAP_LOADING(C_MAP_LOADING&& from) noexcept
+    : C_MAP_LOADING() {
+    *this = ::std::move(from);
+  }
+
+  inline C_MAP_LOADING& operator=(const C_MAP_LOADING& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_MAP_LOADING& operator=(C_MAP_LOADING&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_MAP_LOADING& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_MAP_LOADING* internal_default_instance() {
+    return reinterpret_cast<const C_MAP_LOADING*>(
+               &_C_MAP_LOADING_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(C_MAP_LOADING& a, C_MAP_LOADING& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_MAP_LOADING* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_MAP_LOADING* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline C_MAP_LOADING* New() const final {
+    return new C_MAP_LOADING();
+  }
+
+  C_MAP_LOADING* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<C_MAP_LOADING>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const C_MAP_LOADING& from);
+  void MergeFrom(const C_MAP_LOADING& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_MAP_LOADING* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Protocol.C_MAP_LOADING";
+  }
+  protected:
+  explicit C_MAP_LOADING(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPlayerIdFieldNumber = 1,
+  };
+  // uint32 player_id = 1;
+  void clear_player_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 player_id() const;
+  void set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_player_id() const;
+  void _internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Protocol.C_MAP_LOADING)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 player_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Map_2eproto;
+};
+// -------------------------------------------------------------------
+
 class S_MAP final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.S_MAP) */ {
  public:
@@ -321,7 +457,7 @@ class S_MAP final :
                &_S_MAP_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(S_MAP& a, S_MAP& b) {
     a.Swap(&b);
@@ -462,7 +598,7 @@ class C_MAP final :
                &_C_MAP_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(C_MAP& a, C_MAP& b) {
     a.Swap(&b);
@@ -594,7 +730,7 @@ class S_START_MAP final :
                &_S_START_MAP_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(S_START_MAP& a, S_START_MAP& b) {
     a.Swap(&b);
@@ -735,7 +871,7 @@ class C_START_MAP final :
                &_C_START_MAP_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(C_START_MAP& a, C_START_MAP& b) {
     a.Swap(&b);
@@ -1043,6 +1179,30 @@ inline void ObjectInfo::set_allocated_object_name(std::string* object_name) {
 
 // -------------------------------------------------------------------
 
+// C_MAP_LOADING
+
+// uint32 player_id = 1;
+inline void C_MAP_LOADING::clear_player_id() {
+  player_id_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_MAP_LOADING::_internal_player_id() const {
+  return player_id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_MAP_LOADING::player_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MAP_LOADING.player_id)
+  return _internal_player_id();
+}
+inline void C_MAP_LOADING::_internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  player_id_ = value;
+}
+inline void C_MAP_LOADING::set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_player_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MAP_LOADING.player_id)
+}
+
+// -------------------------------------------------------------------
+
 // S_MAP
 
 // repeated .Protocol.ObjectInfo objInfo = 1;
@@ -1178,6 +1338,8 @@ inline void C_START_MAP::set_scene_player_id(::PROTOBUF_NAMESPACE_ID::uint32 val
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

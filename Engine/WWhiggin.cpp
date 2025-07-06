@@ -51,10 +51,12 @@ namespace W
 	}
 	void Whiggin::Initialize()
 	{
+		Animator* pAnim = GetComponent<Animator>();
+
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"WhigginTex");
-		GetComponent<Animator>()->SetTexture(pAtlas);
-	
-		m_strCurStateName.clear();
+
+		pAnim->SetTexture(pAtlas);	
+		pAnim->Play(L"Whiggin_stand", true);
 	}
 	void Whiggin::Update()
 	{

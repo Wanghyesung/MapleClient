@@ -110,7 +110,7 @@ namespace W
 
 			pNumber->GetComponent<Transform>()->SetPosition(3.65f + x, -3.1f + y, -8.f);
 			pNumber->GetComponent<Transform>()->SetScale(1.f * 0.1f, 1.f * 0.1f, 0.f);
-			AddChildUI(pNumber);
+			AddChildUI(pNumber, true, 100);
 			x += 0.34f;
 		}
 #pragma endregion

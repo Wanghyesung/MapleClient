@@ -309,40 +309,15 @@ class C_Skill final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSceneFieldNumber = 2,
-    kPlayerIdFieldNumber = 1,
-    kSkillIdFieldNumber = 3,
+    kScenePlayeridSkillIdFieldNumber = 1,
   };
-  // string scene = 2;
-  void clear_scene();
-  const std::string& scene() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_scene(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_scene();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scene();
-  void set_allocated_scene(std::string* scene);
+  // uint32 scene_playerid_skill_id = 1;
+  void clear_scene_playerid_skill_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_playerid_skill_id() const;
+  void set_scene_playerid_skill_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  const std::string& _internal_scene() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scene(const std::string& value);
-  std::string* _internal_mutable_scene();
-  public:
-
-  // uint32 player_id = 1;
-  void clear_player_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 player_id() const;
-  void set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_player_id() const;
-  void _internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 skill_id = 3;
-  void clear_skill_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 skill_id() const;
-  void set_skill_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_skill_id() const;
-  void _internal_set_skill_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_playerid_skill_id() const;
+  void _internal_set_scene_playerid_skill_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.C_Skill)
@@ -352,9 +327,7 @@ class C_Skill final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scene_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 player_id_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 skill_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_playerid_skill_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Skill_2eproto;
 };
@@ -393,89 +366,24 @@ inline void S_Skill::set_success(bool value) {
 
 // C_Skill
 
-// uint32 player_id = 1;
-inline void C_Skill::clear_player_id() {
-  player_id_ = 0u;
+// uint32 scene_playerid_skill_id = 1;
+inline void C_Skill::clear_scene_playerid_skill_id() {
+  scene_playerid_skill_id_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_Skill::_internal_player_id() const {
-  return player_id_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_Skill::_internal_scene_playerid_skill_id() const {
+  return scene_playerid_skill_id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_Skill::player_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_Skill.player_id)
-  return _internal_player_id();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_Skill::scene_playerid_skill_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_Skill.scene_playerid_skill_id)
+  return _internal_scene_playerid_skill_id();
 }
-inline void C_Skill::_internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void C_Skill::_internal_set_scene_playerid_skill_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  player_id_ = value;
+  scene_playerid_skill_id_ = value;
 }
-inline void C_Skill::set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_player_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_Skill.player_id)
-}
-
-// string scene = 2;
-inline void C_Skill::clear_scene() {
-  scene_.ClearToEmpty();
-}
-inline const std::string& C_Skill::scene() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_Skill.scene)
-  return _internal_scene();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void C_Skill::set_scene(ArgT0&& arg0, ArgT... args) {
- 
- scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Protocol.C_Skill.scene)
-}
-inline std::string* C_Skill::mutable_scene() {
-  // @@protoc_insertion_point(field_mutable:Protocol.C_Skill.scene)
-  return _internal_mutable_scene();
-}
-inline const std::string& C_Skill::_internal_scene() const {
-  return scene_.Get();
-}
-inline void C_Skill::_internal_set_scene(const std::string& value) {
-  
-  scene_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* C_Skill::_internal_mutable_scene() {
-  
-  return scene_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* C_Skill::release_scene() {
-  // @@protoc_insertion_point(field_release:Protocol.C_Skill.scene)
-  return scene_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void C_Skill::set_allocated_scene(std::string* scene) {
-  if (scene != nullptr) {
-    
-  } else {
-    
-  }
-  scene_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scene,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:Protocol.C_Skill.scene)
-}
-
-// uint32 skill_id = 3;
-inline void C_Skill::clear_skill_id() {
-  skill_id_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_Skill::_internal_skill_id() const {
-  return skill_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_Skill::skill_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_Skill.skill_id)
-  return _internal_skill_id();
-}
-inline void C_Skill::_internal_set_skill_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  skill_id_ = value;
-}
-inline void C_Skill::set_skill_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_skill_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_Skill.skill_id)
+inline void C_Skill::set_scene_playerid_skill_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_playerid_skill_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_Skill.scene_playerid_skill_id)
 }
 
 #ifdef __GNUC__

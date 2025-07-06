@@ -57,7 +57,6 @@ namespace W
 
 		SwapUI(m_pActiveScene, iter->second);
 		SwapPlayer(m_pActiveScene, iter->second);
-
 		PushObjectPool(m_pActiveScene);
 
 		m_pActiveScene = iter->second;

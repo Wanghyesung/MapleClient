@@ -102,7 +102,8 @@ namespace W
 	}
 	void PlayerTop::Render()
 	{
-		
+		if (m_strCurEquip.size() == 0)
+			return;
 		GameObject::Render();
 	}
 

@@ -212,35 +212,28 @@ namespace W
 
 	void Inventory::AddItem(IconUI* _pItem , std::wstring _strName)
 	{
-		//-3.6 -0.8
 		//내 인터페이스랑 인벤토리 둘다 확인
-		bool bClear = false;
 		IconUI* pItem = FindItem(_strName);
-		IconUI* pInterfaceItem = SceneManger::GetUI<InterfaceUI>()->FindItem(_strName);
 		if (pItem != nullptr)
 		{
 			dynamic_cast<ItemUI*>(pItem)->AddItemNumber(1);
-			bClear = true;
-		}
-		else if (pInterfaceItem != nullptr)
-		{
-			dynamic_cast<ItemUI*>(pInterfaceItem)->AddItemNumber(1);
-			bClear = true;
-		}
-		if (bClear)
-		{
 			delete _pItem;
-			_pItem = nullptr;
 			return;
 		}
-
+		IconUI* pInterfaceItem = SceneManger::GetUI<InterfaceUI>()->FindItem(_strName);
+		if (pInterfaceItem != nullptr)
+		{
+			dynamic_cast<ItemUI*>(pInterfaceItem)->AddItemNumber(1);
+			delete _pItem;
+			return;
+		}
 
 		//새로운 아이템
 		if (SetItemPosition(_pItem))
 		{
 			AddChildUI(_pItem, false);
 			_pItem->Initialize();
-			//새로운 이름으로 초기화(중복아이템 이름 겹치지않게)
+		
 			std::wstring strName = _pItem->GetName();
 			m_mapItems.insert(make_pair(strName, _pItem));
 			_pItem->SetParentUIType(eParentUI::Inventory);
@@ -269,17 +262,9 @@ namespace W
 			for (UINT x = 0; x < 4; ++x)
 			{
 				vComaprePos.x = vStartPosition.x + x * m_vUIDiffPosition.x;
-				std::map<std::wstring, IconUI*>::iterator iter = m_mapItems.begin();
-				
-				//처음 들어온 아이템이라면
-				if (iter == m_mapItems.end())
-				{
-					PItemTranform->SetPosition(vComaprePos.x, vComaprePos.y, vItemPosition.z);
-					_pItem->SetItemIndex(x, y);
-					return true;
-				}
 
 				IconUI* pITem = FindItemOnPosition(x, y, _pItem);
+
 				//빈칸
 				if (pITem == nullptr)
 				{
@@ -290,96 +275,83 @@ namespace W
 			}
 		}
 
-
 		return false;
 	}
 
-	bool Inventory::ChangeItemPosition(IconUI* _pItem, Vector2 _vSetPosition)
-	{	
-		Vector3 vPosition = GetComponent<Transform>()->GetPosition();
+	bool Inventory::ChangeItemPosition(IconUI* item, Vector2 newPos)
+	{
+		// 현재 인벤토리 위치와 슬롯 그리드 오프셋 기반으로 가장 가까운 슬롯 계산
+		Vector3 invPos = GetComponent<Transform>()->GetPosition();
+		Vector2 gridStart(invPos.x + m_vUIStartPosition.x,
+			invPos.y + m_vUIStartPosition.y);
 
-		Transform* pItemTransform = _pItem->GetComponent<Transform>();
-
-		Vector2 vStartPosition = Vector2(m_vUIStartPosition.x + vPosition.x, m_vUIStartPosition.y + vPosition.y);
-		Vector2 vComaprePos = {};
-
-		Vector2 vMinValue = Vector2(2000.f, 2000.f); 
-		float fMinLen = 2000.f;
-		UINT iMinX = 0; 
-        UINT iMinY = 0;
+		float bestDist = FLT_MAX;
+		Vector2 closestSlot;
+		UINT targetX = 0, targetY = 0;
 
 		for (UINT y = 0; y < 6; ++y)
 		{
-			vComaprePos.y = vStartPosition.y + y * m_vUIDiffPosition.y;
 			for (UINT x = 0; x < 4; ++x)
 			{
-				vComaprePos.x = vStartPosition.x + x * m_vUIDiffPosition.x;
-
-				Vector2 vDiff = _vSetPosition - vComaprePos;
-				float fLen = abs(vDiff.Length());
-
-				if (fLen <= fMinLen)
+				Vector2 slotPos = gridStart + Vector2(x * m_vUIDiffPosition.x,
+					y * m_vUIDiffPosition.y);
+				float dist = (newPos - slotPos).Length();
+				if (dist < bestDist)
 				{
-					fMinLen = fLen;
-					vMinValue = vComaprePos;
-					iMinX = x;
-					iMinY = y;
+					bestDist = dist;
+					closestSlot = slotPos;
+					targetX = x;
+					targetY = y;
 				}
 			}
 		}
+		targetY += m_iScrollCurY;
 
-		
-		iMinY += m_iScrollCurY;
-		IconUI* pFindItem = FindItemOnPosition(iMinX, iMinY, _pItem);
+		// 타겟 슬롯에 기존 아이템이 있는지 확인
+		IconUI* existing = FindItemOnPosition(targetX, targetY, item);
+		int oldX = item->GetItemindexX();
+		int oldY = item->GetItemIndexY();
+		Vector3 oldWorldPos = item->GetComponent<Transform>()->GetPosition();
 
-		Vector3 vItemPosition = pItemTransform->GetPosition();
-		
-		if (_pItem->GetParentUIType() != eParentUI::Inventory)
+		// 다른 UI에서 Inventory로 이동하는 경우 처리
+		if (item->GetParentUIType() != eParentUI::Inventory)
 		{
-			if (pFindItem != nullptr)
+			if (existing)
 			{
-				eParentUI eParentType = _pItem->GetParentUIType();
-				switch (eParentType)
+				// 예: Interface UI에서 이동
+				if (item->GetParentUIType() == eParentUI::Interface &&
+					existing->GetIconType() != IconUI::eIconType::Equip)
 				{
-				case W::eParentUI::Interface:
-				{
-					if (pFindItem->GetIconType() == IconUI::eIconType::Equip)
-						return false;
-					pFindItem->GetComponent<Transform>()->SetPosition(_pItem->GetStartPosition());
-					pFindItem->SetItemIndex(_pItem->GetItemindexX(), _pItem->GetItemIndexY());
-					pFindItem->DeleteParent();
-					SceneManger::GetUI<InterfaceUI>()->InsertItem(pFindItem, pFindItem->GetName());
+					// 기존 아이템 되돌리기
+					existing->GetComponent<Transform>()->SetPosition(item->GetStartPosition());
+					existing->SetItemIndex(oldX, oldY);
+					existing->DeleteParent();
+					SceneManger::GetUI<InterfaceUI>()->InsertItem(existing, existing->GetName());
 				}
-				break;
-				case W::eParentUI::EquipState:
+				else if (item->GetParentUIType() == eParentUI::EquipState)
+				{
 					return false;
-				break;
 				}
 			}
-			pItemTransform->SetPosition(vMinValue.x, vMinValue.y, vItemPosition.z);
-			_pItem->SetItemIndex(iMinX, iMinY);
-			_pItem->DeleteParent();
-			InsertItem(_pItem, _pItem->GetName());
+			// 새 위치 설정 및 Inventory에 삽입
+			item->GetComponent<Transform>()->SetPosition(closestSlot.x, closestSlot.y, oldWorldPos.z);
+			item->SetItemIndex(targetX, targetY);
+			item->DeleteParent();
+			InsertItem(item, item->GetName());
+			return true;
 		}
 
-		else
+		// Inventory 내 이동
+		if (existing)
 		{
-			if (pFindItem != nullptr)
-			{
-				Transform* pFItemTr = pFindItem->GetComponent<Transform>();
-				Vector3 vFItemPos = pFItemTr->GetPosition();
-
-				Vector3 vItemStartPos = _pItem->GetStartPosition();
-				int x = _pItem->GetItemindexX();
-				int y = _pItem->GetItemIndexY();
-				pFindItem->SetItemIndex(x, y);
-				pFItemTr->SetPosition(vItemStartPos);
-			}
-
-			pItemTransform->SetPosition(vMinValue.x, vMinValue.y, vItemPosition.z);
-			_pItem->SetItemIndex(iMinX, iMinY);
+			// 슬롯 교체: 기존 아이템을 원위치
+			existing->GetComponent<Transform>()->SetPosition(item->GetStartPosition());
+			existing->SetItemIndex(oldX, oldY);
 		}
 
+		// 선택 아이템 위치 갱신
+		item->GetComponent<Transform>()->SetPosition(closestSlot.x, closestSlot.y, oldWorldPos.z);
+		item->SetItemIndex(targetX, targetY);
 		return true;
 	}
 

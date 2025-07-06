@@ -28,41 +28,43 @@ extern unordered_map<wstring, string> GHashWstringToString;
         OutputDebugStringA(buf); \
     } while(0)
 
+
 enum PACKET_TYPE
 {
 	S_ENTER = 1000,
-	C_ENTER = 1001, //클라가 서버에게
+	C_ENTER = 1001,
 	S_NEW_ENTER = 1002,
 
 	S_COLLISION = 1003,
 
 	S_EQUIP = 1004,
-	C_EQUIP = 1005, //클라가 서버에게
+	C_EQUIP = 1005,
 
 	C_INPUT = 1006,
 
 	S_MAP = 1007,
 	C_MAP = 1008,
+	C_MAP_LOADING = 1009,
 
-	S_START_MAP = 1009,
-	C_START_MAP = 1010,
+	S_START_MAP = 1010,
+	C_START_MAP = 1011,
 
-	S_CREATE = 1011,
-	C_CREATE = 1012,
-	S_DELETE = 1013,
+	S_CREATE = 1012,
+	C_CREATE = 1013,
+	S_DELETE = 1014,
 
 
 	//물체 위치
-	S_STATE = 1014,
+	S_STATE = 1015,
 
-	S_TRANSFORM = 1015,
+	S_TRANSFORM = 1016,
 
-	S_SKILL = 1016,
-	C_SKILL = 1017,
+	S_SKILL = 1017,
+	C_SKILL = 1018,
 
-	S_EXIT = 1018,
-	C_EXIT = 1019,
-	S_NEW_EXIT = 1020,
+	S_EXIT = 1019,
+	C_EXIT = 1020,
+	S_NEW_EXIT = 1021,
 };
 
 
@@ -131,6 +133,7 @@ public:
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_INPUT _pkt) { return _MakeSendBuffer(_pkt, C_INPUT); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_EQUIP _pkt) { return _MakeSendBuffer(_pkt, C_EQUIP); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_MAP _pkt) { return _MakeSendBuffer(_pkt, C_MAP); }
+	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_MAP_LOADING _pkt) { return _MakeSendBuffer(_pkt, C_MAP_LOADING); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_Skill _pkt) { return _MakeSendBuffer(_pkt, C_SKILL); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_START_MAP _pkt) { return _MakeSendBuffer(_pkt, C_START_MAP); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_EXIT _pkt) { return _MakeSendBuffer(_pkt, C_EXIT); }

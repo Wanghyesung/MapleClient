@@ -166,7 +166,7 @@ namespace W
 		case W::eParentUI::Interface:
 		{
 			UI* pParentUI = GetParentUI();
-			InterfaceUI* pInter = dynamic_cast<InterfaceUI*>(pParentUI);
+			InterfaceUI* pInter = static_cast<InterfaceUI*>(pParentUI);
 			//interface map
 			pInter->DeleteItem(this);
 			//vector
@@ -177,7 +177,7 @@ namespace W
 		case W::eParentUI::Inventory:
 		{
 			UI* pParentUI = GetParentUI();
-			Inventory* pInven = dynamic_cast<Inventory*>(pParentUI);
+			Inventory* pInven = static_cast<Inventory*>(pParentUI);
 			pInven->DeleteItem(this);
 			pInven->DeleteChildUI(this);
 		}
@@ -191,8 +191,8 @@ namespace W
 		case W::eParentUI::EquipState:
 		{
 			UI* pParentUI = GetParentUI();
-			Equip* pEquip = dynamic_cast<Equip*>(this);
-			dynamic_cast<EquipState*>(pParentUI)->DisableEquip(pEquip);
+			Equip* pEquip = static_cast<Equip*>(this);
+			static_cast<EquipState*>(pParentUI)->DisableEquip(pEquip);
 			pParentUI->DeleteChildUI(this);
 		}
 		break;

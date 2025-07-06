@@ -55,10 +55,12 @@ namespace W
 
 	void Solomon::Initialize()
 	{
-		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SolomonTex");
-		GetComponent<Animator>()->SetTexture(pAtlas);
+		Animator* pAnim = GetComponent<Animator>();
 
-		m_strCurStateName.clear();
+		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SolomonTex");
+		pAnim->SetTexture(pAtlas);
+
+		pAnim->Play(L"Solomon_stand", true);
 	}
 	void Solomon::Update()
 	{

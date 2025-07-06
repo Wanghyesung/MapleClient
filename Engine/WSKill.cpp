@@ -82,10 +82,9 @@ namespace W
 	void SKill::Using()
 	{
 		Protocol::C_Skill pkt;
-		pkt.set_scene(WstringToString(GetName()));
-		pkt.set_player_id(PLAYER_ID);
-		pkt.set_skill_id(static_cast<UINT>(m_eSkillType));
-
+		
+		
+		pkt.set_scene_playerid_skill_id((PLAYER_ID << 8) | ((UINT)(m_eSkillType)));
 		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 		GClientService->GetClientSession()->Send(pSendBuffer);
 	}

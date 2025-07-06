@@ -95,6 +95,7 @@ namespace W
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::SCENE_CHANGE;
+		eve.lParm = (DWORD_PTR)PLAYER_ID;
 
 		Scene* pScene = SceneManger::FindScene(_strNextScene);
 		if (pScene)
@@ -227,6 +228,13 @@ namespace W
 
 	void EventManager::change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
 	{	
+		UINT iPlayerID = (UINT)_lParm;
+
+		Protocol::C_MAP_LOADING pkt;
+		pkt.set_player_id(iPlayerID);
+		shared_ptr<SendBuffer> pBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+		GClientService->GetClientSession()->Send(pBuffer);
+
 		SceneManger::LoadScene(m_iNextScene);
 	}
 
