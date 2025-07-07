@@ -12,7 +12,7 @@
 #include "..\Engine\WObjectPoolManager.h"
 namespace W
 {
-	std::function<void(DWORD_PTR, DWORD_PTR, LONG_PTR)> EventManager::m_arrFunction[(UINT)EVENT_TYPE::END] = {};
+	std::function<void(DWORD_PTR, DWORD_PTR, LONG_PTR, OBJECT_DATA)> EventManager::m_arrFunction[(UINT)EVENT_TYPE::END] = {};
 	std::vector<tEvent> EventManager::m_vecEvent[2] = {};
 	
 	atomic<int> EventManager::m_iActiveIdx = 1;
@@ -65,20 +65,14 @@ namespace W
 	{
 		WLock lock_guard(m_lock);
 		
-		m_vecEvent[1 - m_iActiveIdx].push_back(_tEve);
+		m_vecEvent[1 - m_iActiveIdx].emplace_back(_tEve);
 	}
 	
 	void EventManager::excute(const tEvent& _tEve)
 	{
-		m_arrFunction[(UINT)_tEve.eEventType](_tEve.lParm, _tEve.wParm, _tEve.accParm);
+		m_arrFunction[(UINT)_tEve.eEventType](_tEve.lParm, _tEve.wParm, _tEve.accParm, _tEve.tObjectData);
 	}
 
-	UINT64 EventManager::make_key(UINT _lParm, UINT _wParm)
-	{
-		// sceneID(상위 32bit) | eventType(하위 32bit)
-		return (static_cast<UINT64>(_lParm) << 32)
-			| static_cast<UINT64>(_wParm);
-	}
 
 	void EventManager::DeleteObject(GameObject* _pObj, Scene* _pScene)
 	{
@@ -107,7 +101,7 @@ namespace W
 		eve.eEventType = EVENT_TYPE::CHANGE_PLAYER_EQUIP;
 
 		eve.lParm = (DWORD_PTR)_iPlayerInfo;
-		eve.accParm = (LONG_PTR)new wstring(_strEquipName);
+		eve.tObjectData.stringData = _strEquipName;
 
 		AddEvent(eve);
 	}
@@ -148,10 +142,10 @@ namespace W
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::UPDATE_TRANSFORM;
-
 		eve.lParm = (DWORD_PTR)_ID;
 		eve.wParm = (DWORD_PTR)_eType;
-		eve.accParm = (DWORD_PTR)new tTransformInfo(_tTransformInfo);
+		
+		eve.tObjectData.tTransformData = _tTransformInfo;
 
 		AddEvent(eve);
 	}
@@ -163,13 +157,13 @@ namespace W
 
 		eve.lParm = (DWORD_PTR)_iLayerID;
 		eve.wParm = (DWORD_PTR)_iState;
-		eve.accParm = (DWORD_PTR)new wstring(_strState);
+		eve.tObjectData.stringData = _strState;
 
 		AddEvent(eve);
 	}
 
 
-	void EventManager::create_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::create_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		GameObject* pObj = (GameObject*)_lParm;
 		eLayerType eLyaer = (eLayerType)_wParm;
@@ -179,7 +173,7 @@ namespace W
 		pObj->Initialize();
 	}
 
-	void EventManager::delete_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::delete_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		GameObject* pObj = (GameObject*)_lParm;
 		Scene* pScene = (Scene*)_wParm;
@@ -192,12 +186,10 @@ namespace W
 			delete pObj;
 	}
 
-	void EventManager::create_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::create_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT iSceneLayerCreateIdId = (UINT)_lParm;
-		const tTransformInfo& tTrInfo = *reinterpret_cast<tTransformInfo*>(_wParm);
-		const wstring& strObjectName = *reinterpret_cast<wstring*>(_accParm);
-
+		
 		UCHAR cSceneID = (iSceneLayerCreateIdId >> 24) & 0xFF;
 		if (cSceneID == SceneManger::GetActiveScene()->GetSceneID())
 		{
@@ -206,14 +198,14 @@ namespace W
 			UCHAR CID = iSceneLayerCreateIdId & 0xFF;
 
 			GameObject* pObj = nullptr;
-			if (strObjectName.empty())
+			if (_tObjData.stringData.empty())
 				pObj = GameObjectManager::GetMonsterOfID(cCreateid);
 			else
-				pObj = ObjectPoolManager::PopObject(strObjectName);
+				pObj = ObjectPoolManager::PopObject(_tObjData.stringData);
 
 
-			pObj->GetComponent<Transform>()->SetDirectPosition(tTrInfo.vPosition);
-			pObj->GetComponent<Transform>()->SetDirectRotation(tTrInfo.vRotation);
+			pObj->GetComponent<Transform>()->SetDirectPosition(_tObjData.tTransformData.vPosition);
+			pObj->GetComponent<Transform>()->SetDirectRotation(_tObjData.tTransformData.vRotation);
 
 			eLayerType eLayerType = (W::eLayerType)cLayer;
 			pObj->SetObjectID(CID);
@@ -221,11 +213,10 @@ namespace W
 
 			pObj->Initialize();
 		}
-		delete &tTrInfo;
-		delete &strObjectName;
+		
 	}
 
-	void EventManager::delete_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::delete_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT ID = (UINT)_lParm;
 		eLayerType eLayer = (eLayerType)_wParm;
@@ -247,7 +238,7 @@ namespace W
 			delete pObj;
 	}
 
-	void EventManager::change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{	
 		UINT iPlayerID = (UINT)_lParm;
 
@@ -259,7 +250,7 @@ namespace W
 		SceneManger::LoadScene(m_iNextScene);
 	}
 
-	void EventManager::change_player_equip(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::change_player_equip(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT iPlayerInfo = (UINT)_lParm;
 
@@ -268,19 +259,17 @@ namespace W
 		UCHAR cPlayerID = (iPlayerInfo >> 8) & 0xFF;
 		UCHAR cEquipID = iPlayerInfo & 0xFF;
 
-		wstring& strEquipName = *reinterpret_cast<wstring*>(_accParm);
 
 		GameObject* pObj = SceneManger::FindObject(cPlayerID, (eLayerType)cLayer);
 		if (pObj)
 		{
 			Player* pPlayer = static_cast<Player*>(pObj);
-			pPlayer->SetEquip((Equip::EquipType)cEquipID, strEquipName);
+			pPlayer->SetEquip((Equip::EquipType)cEquipID, _tObjData.stringData);
 		}
 
-		delete& strEquipName;
 	}
 
-	void EventManager::add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT iPlayerID = (UINT)_lParm;
 
@@ -294,7 +283,7 @@ namespace W
 		SceneManger::AddGameObject(eLayerType::Player, pPlayer);
 	}
 
-	void EventManager::add_other_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::add_other_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT iPlayerID = (UINT)_lParm;
 		UINT iObjectID = (UINT)_wParm;
@@ -308,49 +297,45 @@ namespace W
 		SceneManger::AddGameObject(eLayerType::Player, pPlayer);
 	}
 
-	void EventManager::delete_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::delete_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 
 	}
 
-	void EventManager::delete_otehr_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::delete_otehr_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 
 	}
 
-	void EventManager::update_state(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::update_state(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT iLayerID = (UINT)_lParm;
 		int iState = (int)_wParm;
 		//static_cast는 컴파일러가 타입 간 변환 규칙이 안전하다고 판단할 때만 허용
 		//reinterpret_cast는 포인터끼리 강제 변환
-		wstring* pStrAnimName = reinterpret_cast<wstring*>(_accParm);
 
 		W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
 		UINT ID = iLayerID & 0x00FFFFFF;
 
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
 		if (pObj)
-			pObj->UpdateState(*pStrAnimName, iState);
+			pObj->UpdateState(_tObjData.stringData, iState);
 
-		delete pStrAnimName;
 	}
 
-	void EventManager::update_trasnform(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	void EventManager::update_trasnform(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT ID = (UINT)_lParm;
 		eLayerType eLayer = (eLayerType)_wParm;
-		tTransformInfo* tTrInfo = reinterpret_cast<tTransformInfo*>(_accParm);
-
+		
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
 		
 		if (pObj)
 		{
 			Transform* pTr = pObj->GetComponent<Transform>();
-			pTr->recv_transform(tTrInfo->vPosition, tTrInfo->vRotation);
+			pTr->recv_transform(_tObjData.tTransformData.vPosition, _tObjData.tTransformData.vRotation);
 		}
-			
-		delete tTrInfo;
+	
 	}
 
 	void EventManager::CreateObject(GameObject* _pObj, eLayerType _eLayer)
@@ -369,8 +354,8 @@ namespace W
 		eve.eEventType = EVENT_TYPE::CREATE_OBJECT_ID;
 
 		eve.lParm = (DWORD_PTR)_iSceneLayerCreateIdId;
-		eve.wParm = (DWORD_PTR)new tTransformInfo(_tTransformInfo);
-		eve.accParm = (LONG_PTR)new wstring(_strObjectName);
+		eve.tObjectData.stringData = _strObjectName;
+		eve.tObjectData.tTransformData = _tTransformInfo;
 
 		AddEvent(eve);
 	}

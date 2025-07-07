@@ -35,20 +35,21 @@ namespace W
 		Vector3 vRotation;
 	};
 
-	struct tObjectData
+	struct OBJECT_DATA
 	{
-		wstring strData;
+		wstring stringData;
 		tTransformInfo tTransformData;
 	};
 
 	struct tEvent
 	{
+		EVENT_TYPE eEventType;
+
 		DWORD_PTR wParm;
 		DWORD_PTR lParm;
 		LONG_PTR accParm;//추가 인자
-		EVENT_TYPE eEventType;
 
-		tObjectData tObjectData; 
+		OBJECT_DATA tObjectData; 
 	};
 	
 	class EventManager
@@ -73,30 +74,29 @@ namespace W
 		static void UpdateState(UINT _iLayerID, int _iState, const wstring& _strState);
 		
 	private:
-		static void create_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
-		static void delete_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void create_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
+		static void delete_object(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
 
-		static void create_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
-		static void delete_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void create_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
+		static void delete_object_id(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
 
-		static void change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
-		static void change_player_equip(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
+		static void change_player_equip(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
 
-		static void add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
-		static void add_other_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
+		static void add_other_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
 
-		static void delete_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
-		static void delete_otehr_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void delete_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
+		static void delete_otehr_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
 
-		static void update_state(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
-		static void update_trasnform(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm);
+		static void update_state(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
+		static void update_trasnform(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
 
 	private:
 		static void excute(const tEvent& _tEve);
-		static UINT64 make_key(UINT _lParm, UINT _wParm = 0);
 
 	private:
-		static std::function<void(DWORD_PTR, DWORD_PTR, LONG_PTR)> m_arrFunction[(UINT)EVENT_TYPE::END];
+		static std::function<void(DWORD_PTR, DWORD_PTR, LONG_PTR, OBJECT_DATA)> m_arrFunction[(UINT)EVENT_TYPE::END];
 		static std::vector<tEvent> m_vecEvent[2];
 		
 		static atomic<int> m_iActiveIdx;

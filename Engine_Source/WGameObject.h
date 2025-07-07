@@ -52,6 +52,7 @@ namespace W
 		{
 			UINT iComponentID = T::GetComponentID();
 
+			//Áßº¹¾ÈµÊ
 			if (m_vecComponent[iComponentID] != nullptr)
 				assert(nullptr);
 			
