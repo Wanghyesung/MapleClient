@@ -1,5 +1,6 @@
 #pragma once
 #include "WGameObject.h"
+#include "WEquip.h"
 namespace W
 {
 	class Equip;
@@ -64,6 +65,8 @@ namespace W
 
 		//플레이어 리소스 미리 로드하고 연결하기
 		void SetEquip(Equip* _pEquip);
+		void SetEquip(Equip::EquipType _eType, const std::wstring& _strEquipName);
+		
 		void DisableEquip(Equip* _pEquip);
 
 		bool IsAlert() { return m_bAlert; }
@@ -83,6 +86,7 @@ namespace W
 		void SetTargetPlayer();
 
 		void SetActiveShadow(bool _bActive) { m_bActiveShadow = _bActive; }
+
 	private:
 		void child_render();
 		void child_lateupdate();
@@ -90,8 +94,8 @@ namespace W
 		void init_attack_object();
 		void init_attack_effect();
 
+		void send_equip(Equip* _pEquip, Equip::EquipType _eType);
 		void update_shadow(bool _bActiveShadow);
-
 	private:
 		Shadow* m_pShadow;
 

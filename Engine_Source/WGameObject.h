@@ -36,6 +36,11 @@ namespace W
 		{
 			UINT iComponentID = T::GetComponentID();
 
+			//this->나 Base<T>:: 등 의존된 컨텍스트에서 멤버 템플릿을 호출할 때 
+			// (지금은 굳이 안 붙여도 됨 template함수임을 알리기 위해서 붙임)
+			if (iComponentID == (UINT)eComponentType::Script)
+				return this->template GetScript<T>();
+
 			if (m_vecComponent[iComponentID] == nullptr)
 				return nullptr;
 
@@ -55,7 +60,7 @@ namespace W
 				m_vecScript.push_back(comp);
 			else
 				m_vecComponent[iComponentID] = comp;
-			
+		
 			comp->SetOwner(this);
 			return comp;
 		}

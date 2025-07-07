@@ -178,8 +178,7 @@ class C_EQUIP final :
 
   enum : int {
     kItemNameFieldNumber = 2,
-    kSceneLayerPlayeridFieldNumber = 1,
-    kEquipTypeFieldNumber = 3,
+    kSceneLayerPlayeridEquipidFieldNumber = 1,
   };
   // string item_name = 2;
   void clear_item_name();
@@ -195,22 +194,13 @@ class C_EQUIP final :
   std::string* _internal_mutable_item_name();
   public:
 
-  // uint32 scene_layer_playerid = 1;
-  void clear_scene_layer_playerid();
-  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_playerid() const;
-  void set_scene_layer_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 scene_layer_playerid_equipid = 1;
+  void clear_scene_layer_playerid_equipid();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_playerid_equipid() const;
+  void set_scene_layer_playerid_equipid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_layer_playerid() const;
-  void _internal_set_scene_layer_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 equip_type = 3;
-  void clear_equip_type();
-  ::PROTOBUF_NAMESPACE_ID::uint32 equip_type() const;
-  void set_equip_type(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_equip_type() const;
-  void _internal_set_equip_type(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_layer_playerid_equipid() const;
+  void _internal_set_scene_layer_playerid_equipid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.C_EQUIP)
@@ -221,8 +211,7 @@ class C_EQUIP final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr item_name_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_playerid_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 equip_type_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_playerid_equipid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Equip_2eproto;
 };
@@ -337,8 +326,7 @@ class S_EQUIP final :
 
   enum : int {
     kItemNameFieldNumber = 2,
-    kSceneLayerPlayeridFieldNumber = 1,
-    kEquipTypeFieldNumber = 3,
+    kSceneLayerPlayeridEquipidFieldNumber = 1,
   };
   // string item_name = 2;
   void clear_item_name();
@@ -354,22 +342,13 @@ class S_EQUIP final :
   std::string* _internal_mutable_item_name();
   public:
 
-  // uint32 scene_layer_playerid = 1;
-  void clear_scene_layer_playerid();
-  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_playerid() const;
-  void set_scene_layer_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 scene_layer_playerid_equipid = 1;
+  void clear_scene_layer_playerid_equipid();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_playerid_equipid() const;
+  void set_scene_layer_playerid_equipid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_layer_playerid() const;
-  void _internal_set_scene_layer_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 equip_type = 3;
-  void clear_equip_type();
-  ::PROTOBUF_NAMESPACE_ID::uint32 equip_type() const;
-  void set_equip_type(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_equip_type() const;
-  void _internal_set_equip_type(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_layer_playerid_equipid() const;
+  void _internal_set_scene_layer_playerid_equipid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.S_EQUIP)
@@ -380,8 +359,7 @@ class S_EQUIP final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr item_name_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_playerid_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 equip_type_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_playerid_equipid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Equip_2eproto;
 };
@@ -396,24 +374,24 @@ class S_EQUIP final :
 #endif  // __GNUC__
 // C_EQUIP
 
-// uint32 scene_layer_playerid = 1;
-inline void C_EQUIP::clear_scene_layer_playerid() {
-  scene_layer_playerid_ = 0u;
+// uint32 scene_layer_playerid_equipid = 1;
+inline void C_EQUIP::clear_scene_layer_playerid_equipid() {
+  scene_layer_playerid_equipid_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_EQUIP::_internal_scene_layer_playerid() const {
-  return scene_layer_playerid_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_EQUIP::_internal_scene_layer_playerid_equipid() const {
+  return scene_layer_playerid_equipid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_EQUIP::scene_layer_playerid() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_EQUIP.scene_layer_playerid)
-  return _internal_scene_layer_playerid();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_EQUIP::scene_layer_playerid_equipid() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_EQUIP.scene_layer_playerid_equipid)
+  return _internal_scene_layer_playerid_equipid();
 }
-inline void C_EQUIP::_internal_set_scene_layer_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void C_EQUIP::_internal_set_scene_layer_playerid_equipid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  scene_layer_playerid_ = value;
+  scene_layer_playerid_equipid_ = value;
 }
-inline void C_EQUIP::set_scene_layer_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_scene_layer_playerid(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_EQUIP.scene_layer_playerid)
+inline void C_EQUIP::set_scene_layer_playerid_equipid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_layer_playerid_equipid(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_EQUIP.scene_layer_playerid_equipid)
 }
 
 // string item_name = 2;
@@ -461,48 +439,28 @@ inline void C_EQUIP::set_allocated_item_name(std::string* item_name) {
   // @@protoc_insertion_point(field_set_allocated:Protocol.C_EQUIP.item_name)
 }
 
-// uint32 equip_type = 3;
-inline void C_EQUIP::clear_equip_type() {
-  equip_type_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_EQUIP::_internal_equip_type() const {
-  return equip_type_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_EQUIP::equip_type() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_EQUIP.equip_type)
-  return _internal_equip_type();
-}
-inline void C_EQUIP::_internal_set_equip_type(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  equip_type_ = value;
-}
-inline void C_EQUIP::set_equip_type(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_equip_type(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_EQUIP.equip_type)
-}
-
 // -------------------------------------------------------------------
 
 // S_EQUIP
 
-// uint32 scene_layer_playerid = 1;
-inline void S_EQUIP::clear_scene_layer_playerid() {
-  scene_layer_playerid_ = 0u;
+// uint32 scene_layer_playerid_equipid = 1;
+inline void S_EQUIP::clear_scene_layer_playerid_equipid() {
+  scene_layer_playerid_equipid_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_EQUIP::_internal_scene_layer_playerid() const {
-  return scene_layer_playerid_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_EQUIP::_internal_scene_layer_playerid_equipid() const {
+  return scene_layer_playerid_equipid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_EQUIP::scene_layer_playerid() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_EQUIP.scene_layer_playerid)
-  return _internal_scene_layer_playerid();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_EQUIP::scene_layer_playerid_equipid() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_EQUIP.scene_layer_playerid_equipid)
+  return _internal_scene_layer_playerid_equipid();
 }
-inline void S_EQUIP::_internal_set_scene_layer_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void S_EQUIP::_internal_set_scene_layer_playerid_equipid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  scene_layer_playerid_ = value;
+  scene_layer_playerid_equipid_ = value;
 }
-inline void S_EQUIP::set_scene_layer_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_scene_layer_playerid(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_EQUIP.scene_layer_playerid)
+inline void S_EQUIP::set_scene_layer_playerid_equipid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_layer_playerid_equipid(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_EQUIP.scene_layer_playerid_equipid)
 }
 
 // string item_name = 2;
@@ -548,26 +506,6 @@ inline void S_EQUIP::set_allocated_item_name(std::string* item_name) {
   item_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), item_name,
       GetArenaForAllocation());
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_EQUIP.item_name)
-}
-
-// uint32 equip_type = 3;
-inline void S_EQUIP::clear_equip_type() {
-  equip_type_ = 0u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_EQUIP::_internal_equip_type() const {
-  return equip_type_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_EQUIP::equip_type() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_EQUIP.equip_type)
-  return _internal_equip_type();
-}
-inline void S_EQUIP::_internal_set_equip_type(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  equip_type_ = value;
-}
-inline void S_EQUIP::set_equip_type(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_equip_type(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_EQUIP.equip_type)
 }
 
 #ifdef __GNUC__

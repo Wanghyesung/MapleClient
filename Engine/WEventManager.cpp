@@ -14,6 +14,7 @@ namespace W
 {
 	std::function<void(DWORD_PTR, DWORD_PTR, LONG_PTR)> EventManager::m_arrFunction[(UINT)EVENT_TYPE::END] = {};
 	std::vector<tEvent> EventManager::m_vecEvent[2] = {};
+	
 	atomic<int> EventManager::m_iActiveIdx = 1;
 	
 	RWLock EventManager::m_lock = {};
@@ -36,6 +37,7 @@ namespace W
 			excute(vecActiveEvent[i]);
 		}
 
+
 		vecActiveEvent.clear();
 	}
 
@@ -49,6 +51,7 @@ namespace W
 		m_arrFunction[(UINT)EVENT_TYPE::CREATE_PLAYER] = add_player;
 		m_arrFunction[(UINT)EVENT_TYPE::CREATE_OTHER_PLAYER] = add_other_player;
 		m_arrFunction[(UINT)EVENT_TYPE::DELETE_PLAYER] = delete_player;
+		m_arrFunction[(UINT)EVENT_TYPE::CHANGE_PLAYER_EQUIP] = change_player_equip;
 		
 		m_arrFunction[(UINT)EVENT_TYPE::CREATE_OBJECT] = create_object;
 		m_arrFunction[(UINT)EVENT_TYPE::DELET_OBJECT] = delete_object;
@@ -69,6 +72,14 @@ namespace W
 	{
 		m_arrFunction[(UINT)_tEve.eEventType](_tEve.lParm, _tEve.wParm, _tEve.accParm);
 	}
+
+	UINT64 EventManager::make_key(UINT _lParm, UINT _wParm)
+	{
+		// sceneID(상위 32bit) | eventType(하위 32bit)
+		return (static_cast<UINT64>(_lParm) << 32)
+			| static_cast<UINT64>(_wParm);
+	}
+
 	void EventManager::DeleteObject(GameObject* _pObj, Scene* _pScene)
 	{
 		tEvent eve = {};
@@ -90,6 +101,16 @@ namespace W
 		AddEvent(eve);
 	}
 
+	void EventManager::ChanagePlayerEquip(UINT _iPlayerInfo, const wstring& _strEquipName)
+	{
+		tEvent eve = {};
+		eve.eEventType = EVENT_TYPE::CHANGE_PLAYER_EQUIP;
+
+		eve.lParm = (DWORD_PTR)_iPlayerInfo;
+		eve.accParm = (LONG_PTR)new wstring(_strEquipName);
+
+		AddEvent(eve);
+	}
 
 	void EventManager::ChangeScene(const std::wstring& _strNextScene)
 	{
@@ -238,6 +259,27 @@ namespace W
 		SceneManger::LoadScene(m_iNextScene);
 	}
 
+	void EventManager::change_player_equip(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
+	{
+		UINT iPlayerInfo = (UINT)_lParm;
+
+		UCHAR cSceneID = (iPlayerInfo >> 24) & 0xFF;
+		UCHAR cLayer = (iPlayerInfo >> 16) & 0xFF;
+		UCHAR cPlayerID = (iPlayerInfo >> 8) & 0xFF;
+		UCHAR cEquipID = iPlayerInfo & 0xFF;
+
+		wstring& strEquipName = *reinterpret_cast<wstring*>(_accParm);
+
+		GameObject* pObj = SceneManger::FindObject(cPlayerID, (eLayerType)cLayer);
+		if (pObj)
+		{
+			Player* pPlayer = static_cast<Player*>(pObj);
+			pPlayer->SetEquip((Equip::EquipType)cEquipID, strEquipName);
+		}
+
+		delete& strEquipName;
+	}
+
 	void EventManager::add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm)
 	{
 		UINT iPlayerID = (UINT)_lParm;
@@ -323,8 +365,6 @@ namespace W
 
 	void EventManager::CreateObjectID(UINT _iSceneLayerCreateIdId, const tTransformInfo& _tTransformInfo, const wstring& _strObjectName)
 	{
-		//GameObject* pObj = GameObjectManager::GetMonsterOfID(_ID);
-
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::CREATE_OBJECT_ID;
 

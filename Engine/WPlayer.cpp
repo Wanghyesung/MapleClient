@@ -30,7 +30,7 @@
 #include "WUltimateObject.h"
 #include "WUltimateShuriken.h"
 #include "WEventManager.h"
-
+#include "..\IOCP_CLIENT\Equip.pb.h"
 
 namespace W
 {
@@ -226,6 +226,7 @@ namespace W
 			GetPlayerChild<PlayerArm>()->SetEquipWeapon(_pEquip);
 			break;
 		}
+		send_equip(_pEquip, eType);
 	}
 
 	void Player::DisableEquip(Equip* _pEquip)
@@ -249,8 +250,30 @@ namespace W
 			GetPlayerChild<PlayerArm>()->SetEquipWeapon(nullptr);
 			break;
 		}
+		send_equip(nullptr,eType);
 	}
 
+	void Player::SetEquip(Equip::EquipType _eType, const std::wstring& _strEquipName)
+	{
+		switch (_eType)
+		{
+		case Equip::EquipType::Hat:
+			GetPlayerChild<PlayerHead>()->SetEquipHat(_strEquipName);
+			break;
+		case Equip::EquipType::Top:
+			GetPlayerChild<PlayerBody>()->SetEquipTop(_strEquipName);
+			break;
+		case Equip::EquipType::Bottom:
+			GetPlayerChild<PlayerBody>()->SetEquipBottom(_strEquipName);
+			break;
+		case Equip::EquipType::Shoes:
+			GetPlayerChild<PlayerBody>()->SetEquipShoes(_strEquipName);
+			break;
+		case Equip::EquipType::Weapon:
+			GetPlayerChild<PlayerArm>()->SetEquipWeapon(_strEquipName);
+			break;
+		}
+	}
 	void Player::SetTargetPlayer()
 	{
 		renderer::MainCamera->GetOwner()->GetScript<CameraScript>()->SetPlayer(this);
@@ -529,6 +552,26 @@ namespace W
 		pUtiObj->SetName(L"ultimate0");
 		pUtiObj->GetComponent<Transform>()->SetScale(15.5f, 15.5f, 0.f);
 		ObjectPoolManager::AddObjectPool(pUtiObj->GetName(), pUtiObj);
+	}
+
+	void Player::send_equip(Equip* _pEquip, Equip::EquipType _eType)
+	{
+		Protocol::C_EQUIP pkt;
+		UCHAR cScene = SceneManger::GetActiveScene()->GetSceneID();
+		UCHAR cLayer = (UCHAR)eLayerType::Player;
+		UCHAR cPlayerID = PLAYER_ID;
+		UCHAR cEquipID = (UCHAR)_eType;
+		pkt.set_scene_layer_playerid_equipid((cScene << 24) | (cLayer << 16) | (cPlayerID << 8) | cEquipID);
+		if (_pEquip != nullptr)
+		{
+			const wstring& strName = _pEquip->GetEquipName();
+			pkt.set_item_name(WstringToString(strName));
+		}
+		else
+			pkt.set_item_name("");
+
+		shared_ptr<SendBuffer> pBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+		GClientService->GetClientSession()->Send(pBuffer);
 	}
 
 	void Player::update_shadow(bool _bActiveShadow)

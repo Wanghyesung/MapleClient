@@ -25,6 +25,10 @@ namespace W
 		void SetEquipBottom(Equip* _pEquip);
 		void SetEquipShoes(Equip* _pEquip);
 
+		void SetEquipTop(const wstring& _strEquipName);
+		void SetEquipBottom(const wstring& _strEquipName);
+		void SetEquipShoes(const wstring& _strEquipName);
+
 	private:
 		Player* m_pPlayer;
 

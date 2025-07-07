@@ -107,5 +107,10 @@ namespace W
 	{
 		m_pPlayerWeapon->SetPlayerEquip(_pEquip);
 	}
+
+	void PlayerArm::SetEquipWeapon(const wstring& _strEquipName)
+	{
+		m_pPlayerWeapon->SetPlayerEquip(_strEquipName);
+	}
 	
 }

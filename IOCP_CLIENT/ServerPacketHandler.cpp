@@ -8,7 +8,7 @@
 #include "..\Engine_Source\WTransform.h"
 #include "..\Engine_Source\WSceneManger.h"
 #include "..\Engine\WObjectPoolManager.h"
-
+//#include "..\Engine\WPlayer.h"
 shared_ptr< ClientService> GClientService;
 PacketHandlerFunc GPacketHandler[UINT16_MAX];
 unordered_map<string, wstring> GHashStringToWstring = {};
@@ -53,7 +53,12 @@ bool Handle_S_NEW_ENTER(shared_ptr<Session> _pSession, Protocol::S_NEW_ENTER& _p
 
 bool Handle_S_EQUIP(shared_ptr<Session> _pSession, Protocol::S_EQUIP& _pkt)
 {
-	return false;
+	UINT iPlayerInfo = _pkt.scene_layer_playerid_equipid();
+
+	const wstring& strEquipName = StringToWString(_pkt.item_name());
+	EventManager::ChanagePlayerEquip(iPlayerInfo, strEquipName);
+
+	return true;
 }
 
 bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
@@ -92,9 +97,6 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 
 	UCHAR cLayer = (iSceneLayerCreateIdId >> 16) & 0xFF;
 
-	//if (GHashStringToWstring.find(tInfo.object_name()) == GHashStringToWstring.end())
-	//	GHashStringToWstring[tInfo.object_name()] = StringToWString(tInfo.object_name());
-	
 	tTransformInfo tTrInfo = {};
 	tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
 	tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());

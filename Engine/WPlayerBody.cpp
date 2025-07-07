@@ -146,4 +146,19 @@ namespace W
 		m_pPlayerShoes->SetPlayerEquip(_pEquip);
 	}
 
+	void PlayerBody::SetEquipTop(const wstring& _strEquipName)
+	{
+		m_pPlayerTop->SetPlayerEquip(_strEquipName);
+	}
+
+	void PlayerBody::SetEquipBottom(const wstring& _strEquipName)
+	{
+		m_pPlayerBottom->SetPlayerEquip(_strEquipName);
+	}
+
+	void PlayerBody::SetEquipShoes(const wstring& _strEquipName)
+	{
+		m_pPlayerShoes->SetPlayerEquip(_strEquipName);
+	}
+
 }

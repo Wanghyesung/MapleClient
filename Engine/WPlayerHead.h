@@ -20,6 +20,7 @@ namespace W
 		virtual void Render()override;
 
 		void SetEquipHat(Equip* _pEquip);
+		void SetEquipHat(const wstring& _strEquipName);
 
 		void SetPlayer(Player* _pPlayer) { m_pPlayer = _pPlayer; }
 		Player* GetPlayer() { return m_pPlayer; }

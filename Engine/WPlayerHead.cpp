@@ -139,6 +139,16 @@ namespace W
 		m_pPlayerHat->SetPlayerEquip(_pEquip);
 	}
 
+	void PlayerHead::SetEquipHat(const wstring& _strEquipName)
+	{
+		if(_strEquipName.empty())
+			m_pPlayerHair->SetHairDown(false);
+		else
+			m_pPlayerHair->SetHairDown(true);
+
+		m_pPlayerHat->SetPlayerEquip(_strEquipName);
+	}
+
 	void PlayerHead::SetHair(UINT _iHairNum)
 	{
 		m_pPlayerHair->SetHair(_iHairNum);

@@ -19,6 +19,7 @@ namespace W
 		Player* GetPlayer() { return m_pPlayer; }
 
 		void SetEquipWeapon(Equip* _pEquip);
+		void SetEquipWeapon(const wstring& _strEquipName);
 
 	private:
 		Player* m_pPlayer;
