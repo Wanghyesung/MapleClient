@@ -35,6 +35,8 @@ namespace W
 	void Application::Start()
 	{
 		SceneManger::GetActiveScene()->OnEnter();
+
+		SceneManger::Initialize();
 	}
 	void Application::Run()
 	{

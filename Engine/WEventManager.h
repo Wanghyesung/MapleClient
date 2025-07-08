@@ -69,6 +69,7 @@ namespace W
 	
 		static void AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID);
 		static void AddOtherPlayer(UINT _iPlayerID);
+		static void DeletePlayer(UINT _iPlayerID);
 
 		static void UpdateTransform(UINT _ID, eLayerType _eType, const tTransformInfo& _tTransformInfo);
 		static void UpdateState(UINT _iLayerID, int _iState, const wstring& _strState);

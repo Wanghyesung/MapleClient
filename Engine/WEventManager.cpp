@@ -125,8 +125,8 @@ namespace W
 		eve.lParm = (DWORD_PTR)_iPlayerID;
 		AddEvent(eve);
 
-		for (int i = 0; i < _vecPlayerID.size(); ++i)
-			AddOtherPlayer(_vecPlayerID[i]);
+		//for (int i = 0; i < _vecPlayerID.size(); ++i)
+		//	AddOtherPlayer(_vecPlayerID[i]);
 	}
 	void EventManager::AddOtherPlayer(UINT _iPlayerID)
 	{
@@ -135,6 +135,16 @@ namespace W
 
 		eve.lParm = (DWORD_PTR)_iPlayerID;
 	
+		AddEvent(eve);
+	}
+
+	void EventManager::DeletePlayer(UINT _iPlayerID)
+	{
+		tEvent eve = {};
+		eve.eEventType = EVENT_TYPE::DELETE_PLAYER;
+
+		eve.lParm = (DWORD_PTR)_iPlayerID;
+
 		AddEvent(eve);
 	}
 
@@ -273,11 +283,11 @@ namespace W
 	{
 		UINT iPlayerID = (UINT)_lParm;
 
-		Player* pPlayer = new Player();
-		pPlayer->SetName(L"Player");
+		Player* pPlayer = static_cast<Player*>(ObjectPoolManager::PopObject(L"Player")); //new Player();
+		//pPlayer->SetName(L"Player");
+		//pPlayer->Initialize();
 		pPlayer->m_iPlayerID = iPlayerID;
 		pPlayer->SetObjectID(iPlayerID);
-		pPlayer->Initialize();
 		pPlayer->SetTargetPlayer();
 
 		SceneManger::AddGameObject(eLayerType::Player, pPlayer);
@@ -299,7 +309,10 @@ namespace W
 
 	void EventManager::delete_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
+		UINT iPlayerID = (UINT)_lParm;
+		UINT iSceneID = SceneManger::GetActiveScene()->GetSceneID();
 
+		delete_object(_lParm, iSceneID, 0, {});
 	}
 
 	void EventManager::delete_otehr_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)

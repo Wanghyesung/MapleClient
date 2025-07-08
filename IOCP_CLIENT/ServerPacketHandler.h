@@ -83,6 +83,7 @@ bool Handle_S_TRANSFORM(shared_ptr<Session> _pSession, Protocol::S_TRANSFORM& _p
 bool Handle_S_SKILL(shared_ptr<Session> _pSession, Protocol::S_Skill& _pkt);
 bool Handle_S_START_MAP(shared_ptr<Session> _pSession, Protocol::S_START_MAP& _pkt);
 bool Handle_S_EXIT(shared_ptr<Session> _pSession, Protocol::S_EXIT& _pkt);
+bool Handle_S_NEW_EXIT(shared_ptr<Session> _pSession, Protocol::S_NEW_EXIT& _pkt);
 
 
 class ServerPacketHandler
@@ -116,6 +117,8 @@ public:
 			{return  HandlePacket<Protocol::S_START_MAP>(Handle_S_START_MAP, _pSession, _pBuffer, _iLen); };
 		GPacketHandler[S_TRANSFORM] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
 			{return  HandlePacket<Protocol::S_TRANSFORM>(Handle_S_TRANSFORM, _pSession, _pBuffer, _iLen); };
+		GPacketHandler[S_NEW_EXIT] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
+			{return  HandlePacket<Protocol::S_NEW_EXIT>(Handle_S_NEW_EXIT, _pSession, _pBuffer, _iLen); };
 	}
 
 	template <typename T, typename Func>

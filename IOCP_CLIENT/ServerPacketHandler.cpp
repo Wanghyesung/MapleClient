@@ -156,10 +156,19 @@ bool Handle_S_SKILL(shared_ptr<Session> _pSession, Protocol::S_Skill& _pkt)
 
 bool Handle_S_START_MAP(shared_ptr<Session> _pSession, Protocol::S_START_MAP& _pkt)
 {
+
 	return true;
 }
 bool Handle_S_EXIT(shared_ptr<Session> _pSession, Protocol::S_EXIT& _pkt)
 {
 
 	return false;
+}
+
+//여기까지 왔다는건 현제 같은 씬 (만약 간발의 차이로 다른맵으로 갔다면 무시)
+bool Handle_S_NEW_EXIT(shared_ptr<Session> _pSession, Protocol::S_NEW_EXIT& _pkt)
+{
+	UINT iPlayerID = _pkt.playerid();
+	EventManager::DeletePlayer(iPlayerID);
+	return true;
 }

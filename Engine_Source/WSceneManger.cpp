@@ -1,11 +1,12 @@
 #include "WSceneManger.h"
 #include "WCamera.h"
 #include "WRenderer.h"
+#include "..\Engine\WPlayer.h"
 #include "..\Engine\WCameraScript.h"
 #include "..\Engine\WItemManager.h"
 #include "..\Engine\WPlayerAttackObject.h"
 #include "..\Engine\WObjectPoolManager.h"
-
+#include "..\Engine_Source\WThreadPool.h"
 namespace W
 {
 	Scene* SceneManger::m_pActiveScene = nullptr;
@@ -15,7 +16,52 @@ namespace W
 
 	void SceneManger::Initialize()
 	{
+		ThreadPool::LoadingResource<Texture>(L"shurikenTex", L"..\\Resources\\Texture\\Player\\shuriken\\shuriken.png");
+		ThreadPool::LoadingResource<Texture>(L"darkffect", L"..\\Resources\\Texture\\Player\\skill\\effect1.png");
+		ThreadPool::LoadingResource<Texture>(L"jumpeffect", L"..\\Resources\\Texture\\Player\\skill\\effect2.png");
+		ThreadPool::LoadingResource<Texture>(L"luckeffect", L"..\\Resources\\Texture\\Player\\skill\\effect.png");
+		ThreadPool::LoadingResource<Texture>(L"luckhit", L"..\\Resources\\Texture\\Player\\skill\\hit.png");
+		ThreadPool::LoadingResource<Texture>(L"quadhit", L"..\\Resources\\Texture\\Player\\skill\\hit1.png");
+		ThreadPool::LoadingResource<Texture>(L"quadffect", L"..\\Resources\\Texture\\Player\\skill\\effect7.png");
+		ThreadPool::LoadingResource<Texture>(L"raideffect1", L"..\\Resources\\Texture\\Player\\skill\\effect8.png");
+		ThreadPool::LoadingResource<Texture>(L"raideffect2", L"..\\Resources\\Texture\\Player\\skill\\effect9.png");
+		ThreadPool::LoadingResource<Texture>(L"raidhit", L"..\\Resources\\Texture\\Player\\skill\\hit2.png");
+		ThreadPool::LoadingResource<Texture>(L"speedffect", L"..\\Resources\\Texture\\Player\\skill\\effect3.png");
+		ThreadPool::LoadingResource<Texture>(L"ultimate0", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\ultimate0.png");
+		ThreadPool::LoadingResource<Texture>(L"UltiShuriken", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\s1.png");
+		ThreadPool::LoadingResource<Texture>(L"windffect1", L"..\\Resources\\Texture\\Player\\skill\\shuriken\\effect_0.png");
+		ThreadPool::LoadingResource<Texture>(L"windffect2", L"..\\Resources\\Texture\\Player\\skill\\shuriken\\effect_1.png");
+		ThreadPool::LoadingResource<Texture>(L"windhit", L"..\\Resources\\Texture\\Player\\skill\\shuriken\\hit.png");
+		ThreadPool::LoadingResource<Texture>(L"windTex", L"..\\Resources\\Texture\\Player\\skill\\shuriken\\windshuriken.png");
+		ThreadPool::LoadingResource<Texture>(L"avenTex", L"..\\Resources\\Texture\\Player\\skill\\ball.png");
+		ThreadPool::LoadingResource<Texture>(L"aveneffect", L"..\\Resources\\Texture\\Player\\skill\\effect4.png");
+		ThreadPool::LoadingResource<Texture>(L"blastffect1", L"..\\Resources\\Texture\\Player\\skill\\blast\\effect_0.png");
+		ThreadPool::LoadingResource<Texture>(L"blastffect2", L"..\\Resources\\Texture\\Player\\skill\\blast\\effect_1.png");
+		ThreadPool::LoadingResource<Texture>(L"blasthit", L"..\\Resources\\Texture\\Player\\skill\\blast\\hit.png");
+		ThreadPool::LoadingResource<Texture>(L"blast", L"..\\Resources\\Texture\\Player\\skill\\blast\\effect_2.png");
+		ThreadPool::LoadingResource<Texture>(L"loadeffect", L"..\\Resources\\Texture\\Player\\skill\\load\\start.png");
+		ThreadPool::LoadingResource<Texture>(L"loadhit", L"..\\Resources\\Texture\\Player\\skill\\load\\hit.png");
+		ThreadPool::LoadingResource<Texture>(L"loadTex", L"..\\Resources\\Texture\\Player\\skill\\load\\load.png");
+		ThreadPool::LoadingResource<Texture>(L"shadowTex", L"..\\Resources\\Texture\\Player\\skill\\shadow\\shadow.png");
+		ThreadPool::LoadingResource<Texture>(L"ultimate1", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\ultimate1.png");
+		ThreadPool::LoadingResource<Texture>(L"ultimate2", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\ultimate2.png");
+		ThreadPool::LoadingResource<Texture>(L"ultimate0", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\ultimate0.png");
+		ThreadPool::LoadingResource<Texture>(L"UltiShuriken", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\s1.png");
+		ThreadPool::LoadingResource<Texture>(L"ultimate_hit", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\hit.png");
 
+		ThreadPool::LoadingResource<Texture>(L"shadowe1ffect", L"..\\Resources\\Texture\\Player\\skill\\effect5.png");
+		ThreadPool::LoadingResource<Texture>(L"shadowe2ffect", L"..\\Resources\\Texture\\Player\\skill\\effect6.png");
+
+		//block
+		ThreadPool::Joinable();
+
+		//최대 동접자의 3/5만 미리 할당
+		for (int i = 0; i < 3; ++i)
+		{
+			Player* pPlayer = new Player();
+			pPlayer->SetName(L"Player");
+			ObjectPoolManager::AddObjectPool(pPlayer->GetName(), pPlayer);
+		}
 	}
 	void SceneManger::Update()
 	{

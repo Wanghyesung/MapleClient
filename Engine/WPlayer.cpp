@@ -42,7 +42,7 @@ namespace W
 		m_bAlertTime(2.f),
 		m_fChangeTime(0.25f)
 	{
-		SetName(L"Player");
+		//SetName(L"Player");
 		//m_strCurStateName = L"_jump";
 
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
@@ -55,63 +55,7 @@ namespace W
 		Resources::Insert(L"Player", pMater);
 		mr->SetMaterial(pMater);
 
-		ThreadPool::LoadingResource<Texture>(L"shurikenTex", L"..\\Resources\\Texture\\Player\\shuriken\\shuriken.png");
-		ThreadPool::LoadingResource<Texture>(L"darkffect", L"..\\Resources\\Texture\\Player\\skill\\effect1.png");
-		ThreadPool::LoadingResource<Texture>(L"jumpeffect", L"..\\Resources\\Texture\\Player\\skill\\effect2.png");
-		ThreadPool::LoadingResource<Texture>(L"luckeffect", L"..\\Resources\\Texture\\Player\\skill\\effect.png");
-		ThreadPool::LoadingResource<Texture>(L"luckhit", L"..\\Resources\\Texture\\Player\\skill\\hit.png");
-		ThreadPool::LoadingResource<Texture>(L"quadhit", L"..\\Resources\\Texture\\Player\\skill\\hit1.png");
-		ThreadPool::LoadingResource<Texture>(L"quadffect", L"..\\Resources\\Texture\\Player\\skill\\effect7.png");
-		ThreadPool::LoadingResource<Texture>(L"raideffect1", L"..\\Resources\\Texture\\Player\\skill\\effect8.png");
-		ThreadPool::LoadingResource<Texture>(L"raideffect2", L"..\\Resources\\Texture\\Player\\skill\\effect9.png");
-		ThreadPool::LoadingResource<Texture>(L"raidhit", L"..\\Resources\\Texture\\Player\\skill\\hit2.png");
-		ThreadPool::LoadingResource<Texture>(L"speedffect", L"..\\Resources\\Texture\\Player\\skill\\effect3.png");
-		ThreadPool::LoadingResource<Texture>(L"ultimate0", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\ultimate0.png");
-		ThreadPool::LoadingResource<Texture>(L"UltiShuriken", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\s1.png");
-		ThreadPool::LoadingResource<Texture>(L"windffect1", L"..\\Resources\\Texture\\Player\\skill\\shuriken\\effect_0.png");
-		ThreadPool::LoadingResource<Texture>(L"windffect2", L"..\\Resources\\Texture\\Player\\skill\\shuriken\\effect_1.png");
-		ThreadPool::LoadingResource<Texture>(L"windhit", L"..\\Resources\\Texture\\Player\\skill\\shuriken\\hit.png");
-		ThreadPool::LoadingResource<Texture>(L"windTex", L"..\\Resources\\Texture\\Player\\skill\\shuriken\\windshuriken.png");
-		ThreadPool::LoadingResource<Texture>(L"avenTex", L"..\\Resources\\Texture\\Player\\skill\\ball.png");
-		ThreadPool::LoadingResource<Texture>(L"aveneffect", L"..\\Resources\\Texture\\Player\\skill\\effect4.png");
-		ThreadPool::LoadingResource<Texture>(L"blastffect1", L"..\\Resources\\Texture\\Player\\skill\\blast\\effect_0.png");
-		ThreadPool::LoadingResource<Texture>(L"blastffect2", L"..\\Resources\\Texture\\Player\\skill\\blast\\effect_1.png");
-		ThreadPool::LoadingResource<Texture>(L"blasthit", L"..\\Resources\\Texture\\Player\\skill\\blast\\hit.png");
-		ThreadPool::LoadingResource<Texture>(L"blast", L"..\\Resources\\Texture\\Player\\skill\\blast\\effect_2.png");
-		ThreadPool::LoadingResource<Texture>(L"loadeffect", L"..\\Resources\\Texture\\Player\\skill\\load\\start.png");
-		ThreadPool::LoadingResource<Texture>(L"loadhit", L"..\\Resources\\Texture\\Player\\skill\\load\\hit.png");
-		ThreadPool::LoadingResource<Texture>(L"loadTex", L"..\\Resources\\Texture\\Player\\skill\\load\\load.png");
-		ThreadPool::LoadingResource<Texture>(L"shadowTex", L"..\\Resources\\Texture\\Player\\skill\\shadow\\shadow.png");
-		ThreadPool::LoadingResource<Texture>(L"ultimate1", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\ultimate1.png");
-		ThreadPool::LoadingResource<Texture>(L"ultimate2", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\ultimate2.png");
-		ThreadPool::LoadingResource<Texture>(L"ultimate0", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\ultimate0.png");
-		ThreadPool::LoadingResource<Texture>(L"UltiShuriken", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\s1.png");
-		ThreadPool::LoadingResource<Texture>(L"ultimate_hit", L"..\\Resources\\Texture\\Player\\skill\\ultimate\\hit.png");
 
-		ThreadPool::LoadingResource<Texture>(L"shadowe1ffect", L"..\\Resources\\Texture\\Player\\skill\\effect5.png");
-		ThreadPool::LoadingResource<Texture>(L"shadowe2ffect", L"..\\Resources\\Texture\\Player\\skill\\effect6.png");
-
-		//block
-		ThreadPool::Joinable();
-	}
-
-	Player::~Player()
-	{
-		for (GameObject* pChildObj : m_vecChildObj)
-		{
-			delete pChildObj;
-			pChildObj = nullptr;
-		}
-
-		if (m_pShadow)
-		{
-			delete m_pShadow;
-			m_pShadow = nullptr;
-		}
-	}
-
-	void Player::Initialize()
-	{
 		GetComponent<Transform>()->SetScale(1.5f, 1.5f, 0.f);
 		GetComponent<Transform>()->SetPosition(0.f, -5.f, -2.f);
 
@@ -131,12 +75,32 @@ namespace W
 		pPlayerArm->SetPlayer(this);
 		pPlayerArm->Initialize();
 		m_vecChildObj[2] = pPlayerArm;
-			
+
 		init_attack_object();
 		init_attack_effect();
 
 		m_pShadow = new Shadow();
 		m_pShadow->SetOwner(this);
+	}
+
+	Player::~Player()
+	{
+		for (GameObject* pChildObj : m_vecChildObj)
+		{
+			delete pChildObj;
+			pChildObj = nullptr;
+		}
+
+		if (m_pShadow)
+		{
+			delete m_pShadow;
+			m_pShadow = nullptr;
+		}
+	}
+
+	void Player::Initialize()
+	{
+
 	}
 
 	void Player::Update()
