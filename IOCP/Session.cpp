@@ -56,7 +56,6 @@ void Session::DisConnect(const WCHAR* _strCause)
 	RegisterDisConnect();
 
 	assert(nullptr);
-	//GetService()->EraseSession(shared_from_this());z
 
 }
 

@@ -206,7 +206,7 @@ namespace W
 			UCHAR cLayer = (iSceneLayerCreateIdId >> 16) & 0xFF;
 			UCHAR cCreateid = (iSceneLayerCreateIdId >> 8) & 0xFF;
 			UCHAR CID = iSceneLayerCreateIdId & 0xFF;
-
+			
 			GameObject* pObj = nullptr;
 			if (_tObjData.stringData.empty())
 				pObj = GameObjectManager::GetMonsterOfID(cCreateid);
@@ -239,7 +239,8 @@ namespace W
 		GameObject* pObj = SceneManger::FindObject(pScene, ID, eLayer);
 		if (!pObj)
 			return;
-
+		if (pObj->GetName() == L"wind")
+			int a = 10;
 		pScene->EraseObject(eLayer, pObj);
 
 		if (pObj->IsPoolObject())
