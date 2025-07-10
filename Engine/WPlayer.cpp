@@ -43,7 +43,7 @@ namespace W
 		m_fChangeTime(0.25f)
 	{
 		//SetName(L"Player");
-		//m_strCurStateName = L"_jump";
+		m_strCurStateName = L"_jump";
 
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -100,7 +100,11 @@ namespace W
 
 	void Player::Initialize()
 	{
-
+		SetEquip(Equip::EquipType::Top, L"10_top");
+		SetEquip(Equip::EquipType::Bottom, L"10_bottom");
+		SetEquip(Equip::EquipType::Hat, L"10_hat");
+		SetEquip(Equip::EquipType::Shoes, L"10_shoes");
+		SetEquip(Equip::EquipType::Weapon, L"10_weapon");
 	}
 
 	void Player::Update()

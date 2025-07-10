@@ -11,7 +11,7 @@ namespace W
 	PlayerHat::PlayerHat():
 		m_pPlayerHead(nullptr),
 		m_strCurAnim{},
-		m_strCurEquip{}
+		m_strCurEquip()
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -80,7 +80,7 @@ namespace W
 
 		Animator* pAnimator = GetComponent<Animator>();
 		Vector3 vPlayerPos = m_pPlayerHead->GetComponent<Transform>()->GetPosition();
-		vPlayerPos.z -= 0.02f;
+		vPlayerPos.z -= 0.1f;
 		GetComponent<Transform>()->SetPosition(vPlayerPos);
 
 		Player* pPlayer = m_pPlayerHead->GetPlayer();

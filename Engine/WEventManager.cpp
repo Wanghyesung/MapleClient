@@ -239,8 +239,7 @@ namespace W
 		GameObject* pObj = SceneManger::FindObject(pScene, ID, eLayer);
 		if (!pObj)
 			return;
-		if (pObj->GetName() == L"wind")
-			int a = 10;
+
 		pScene->EraseObject(eLayer, pObj);
 
 		if (pObj->IsPoolObject())

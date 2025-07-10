@@ -7,7 +7,8 @@
 #include "WTransform.h"
 namespace W
 {
-	PlayerHair::PlayerHair()
+	PlayerHair::PlayerHair():
+		m_bHairDown(true)
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));

@@ -10,7 +10,7 @@ namespace W
 {
 	PlayerWeapon::PlayerWeapon():
 		m_pPlayerArm(nullptr),
-		m_strCurEquip{},
+		m_strCurEquip(),
 		m_strCurAnim{}
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
@@ -80,7 +80,7 @@ namespace W
 
 		Animator* pAnimator = GetComponent<Animator>();
 		Vector3 vPlayerPos = m_pPlayerArm->GetComponent<Transform>()->GetPosition();
-		vPlayerPos.z -= 0.01f;
+		vPlayerPos.z -= 0.1f;
 		GetComponent<Transform>()->SetPosition(vPlayerPos);
 
 		Player* pPlayer = m_pPlayerArm->GetPlayer();

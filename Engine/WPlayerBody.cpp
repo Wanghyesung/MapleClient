@@ -122,6 +122,11 @@ namespace W
 		m_pPlayerTop->LateUpdate();
 		m_pPlayerShoes->LateUpdate();
 
+		Vector3 vPos1 = m_pPlayerBottom->GetComponent<Transform>()->GetPosition();
+		Vector3 vPos2 = m_pPlayerTop->GetComponent<Transform>()->GetPosition();
+		Vector3 vPos3 = m_pPlayerShoes->GetComponent<Transform>()->GetPosition();
+
+		int a = 10;
 	}
 	void PlayerBody::Render()
 	{

@@ -145,14 +145,16 @@ namespace W
 	}
 	void EquipState::MouseLbtnClicked()
 	{
+
 	}
+
 	void EquipState::SetEquipPosition(IconUI* _pITem)
 	{
 		_pITem->DeleteParent();
 		_pITem->SetParentUIType(eParentUI::EquipState);
 
 		//이미 장비창에 있는 아이템인지 확인
-		Equip* pEquip = dynamic_cast<Equip*>(_pITem);
+		Equip* pEquip = static_cast<Equip*>(_pITem);
 		Equip::EquipType eType = pEquip->GetEquipType();
 		if (eType == Equip::EquipType::None || m_pPlayer == nullptr)
 			return;
