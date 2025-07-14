@@ -21,6 +21,7 @@ namespace W
 		void SetHairDown(bool _bDown) { m_bHairDown = _bDown; }
 
 		void SetHair(UINT _iNum);
+		UINT GetHairID() { return m_iHairNum; }
 
 	private:
 		PlayerHead* m_pPlayerHead;

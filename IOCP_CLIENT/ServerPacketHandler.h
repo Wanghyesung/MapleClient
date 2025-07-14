@@ -51,21 +51,23 @@ enum PACKET_TYPE
 
 	S_CREATE = 1012,
 	C_CREATE = 1013,
-	S_DELETE = 1014,
+	S_PLAYER_CREATE = 1014,
+	S_DELETE = 1015,
 
 
 	//물체 위치
-	S_STATE = 1015,
+	S_STATE = 1016,
 
-	S_TRANSFORM = 1016,
+	S_TRANSFORM = 1017,
 
-	S_SKILL = 1017,
-	C_SKILL = 1018,
+	S_SKILL = 1018,
+	C_SKILL = 1019,
 
-	S_EXIT = 1019,
-	C_EXIT = 1020,
-	S_NEW_EXIT = 1021,
+	S_EXIT = 1020,
+	C_EXIT = 1021,
+	S_NEW_EXIT = 1022,
 };
+
 
 
 template <typename T>
@@ -77,6 +79,7 @@ bool Handle_S_NEW_ENTER(shared_ptr<Session> _pSession, Protocol::S_NEW_ENTER& _p
 bool Handle_S_EQUIP(shared_ptr<Session> _pSession, Protocol::S_EQUIP& _pkt);
 bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt);
 bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt);
+bool Handle_S_PLAYER_CREATE(shared_ptr<Session> _pSession, Protocol::S_PLAYER_CREATE& _pkt);
 bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt);
 bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt);
 bool Handle_S_TRANSFORM(shared_ptr<Session> _pSession, Protocol::S_TRANSFORM& _pkt);
@@ -107,6 +110,10 @@ public:
 			{return  HandlePacket<Protocol::S_MAP>(Handle_S_MAP, _pSession, _pBuffer, _iLen); };
 		GPacketHandler[S_CREATE] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
 			{return  HandlePacket<Protocol::S_CREATE>(Handle_S_CREATE, _pSession, _pBuffer, _iLen); };
+
+		GPacketHandler[S_PLAYER_CREATE] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
+			{return  HandlePacket<Protocol::S_PLAYER_CREATE>(Handle_S_PLAYER_CREATE, _pSession, _pBuffer, _iLen); };
+
 		GPacketHandler[S_DELETE] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
 			{return  HandlePacket<Protocol::S_DELETE>(Handle_S_DELETE, _pSession, _pBuffer, _iLen); };
 		GPacketHandler[S_STATE] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)

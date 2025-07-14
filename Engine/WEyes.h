@@ -20,7 +20,7 @@ namespace W
 		void SetPlayerHead(PlayerHead* _pPlayerHead) { m_pPlayerHead = _pPlayerHead; }
 
 		void SetEye(UINT _iNum);
-
+		UINT GetEyeID() { return m_iEyeNumber; }
 	private:
 		PlayerHead* m_pPlayerHead;
 

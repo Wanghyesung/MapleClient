@@ -22,7 +22,9 @@ namespace W
 		m_iClickCount(0),
 		m_fDoubleClickTime(0.5f),
 		m_fCurClickTime(0.f),
-		m_eType(eIconType::None),
+		m_iItemLevel(0),
+		m_iItemID(-1),
+		m_eType(eIconType::End),
 		m_eParentType(eParentUI::None),
 		m_ePrevParentType(eParentUI::None),
 		m_eKeyCode(eKeyCode::NONE)
@@ -42,15 +44,20 @@ namespace W
 		m_fDoubleClickTime(0.5f),
 		m_fCurClickTime(0.f),
 		m_eType(_pIcon.m_eType),
+		m_iItemLevel(_pIcon.m_iItemLevel),
+		m_iItemID(_pIcon.m_iItemID),
 		m_eParentType(eParentUI::None),
 		m_ePrevParentType(eParentUI::None),
 		m_eKeyCode(eKeyCode::NONE)
 	{
+
 	}
 
 	IconUI::~IconUI()
 	{
+
 	}
+
 	void IconUI::Initialize()
 	{
 

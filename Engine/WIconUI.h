@@ -12,7 +12,7 @@ namespace W
 		{
 			Equip,
 			Item,
-			None,
+			Another,
 			Install,
 			Cash,
 			SKill,
@@ -61,6 +61,13 @@ namespace W
 		Vector2 GetDragStartPos() { return m_vDragStartPos; }
 		void DeleteParent();
 
+		UINT GetLevel() { return m_iItemLevel; }
+		int GetItemID() { return m_iItemID; }
+
+	protected:
+		UINT m_iItemLevel;
+		int m_iItemID;
+
 	private:
 		void check_doubleclick();
 
@@ -88,6 +95,8 @@ namespace W
 		int m_iClickCount;
 		float m_fDoubleClickTime;
 		float m_fCurClickTime;
+
+		friend class ItemManager;
 	};
 }
 

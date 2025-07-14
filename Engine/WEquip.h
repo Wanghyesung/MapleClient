@@ -42,6 +42,7 @@ namespace W
 		const std::wstring& GetEquipName() { return m_strEquipName; }
 		void SetEquipName(const std::wstring& _strName) { m_strEquipName = _strName; }
 
+
 	private:
 		bool changepos_equipstate();
 		bool changepos_inventory();

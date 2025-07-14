@@ -22,6 +22,8 @@ namespace W
 		SetEquipType(EquipType::Shoes);
 		SetIconType(eIconType::Equip);
 		SetEquipName(L"10_shoes");
+		m_iItemLevel = 10;
+
 	}
 	Shoes_10::~Shoes_10()
 	{

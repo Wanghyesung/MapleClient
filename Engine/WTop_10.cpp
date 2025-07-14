@@ -22,6 +22,8 @@ namespace W
 		SetEquipType(EquipType::Top);
 		SetIconType(eIconType::Equip);
 		SetEquipName(L"10_top");
+
+		m_iItemLevel = 10;
 	}
 
 	Top_10::~Top_10()

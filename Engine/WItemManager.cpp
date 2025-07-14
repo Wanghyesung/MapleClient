@@ -21,122 +21,105 @@
 #include "WPlayer.h"
 #include "WSceneManger.h"
 
+#include "WPathManager.h"
+#include <nlohmann/json.hpp>
+#include <fstream>
 namespace W
 {
-#define HashItems std::unordered_map<std::wstring, IconUI*>
+	using json = nlohmann::json;
 
-	HashItems ItemManager::m_hashItems = {};
+	map<wstring, IconUI*> ItemManager::m_mapItems = {};
+	map<UINT, wstring> ItemManager::m_mapItemID = {};
+	unordered_map<string, function<IconUI*()>> ItemManager::m_hashItemFactory = {};
+
 	void ItemManager::Initialize()
 	{
-		//아이템 텍스쳐, 객체 이름, 보관이름 전부 동일하게
-#pragma region Item
-		AlixirUI* pAlixir = new AlixirUI();
-		pAlixir->Initialize();
-		pAlixir->SetName(L"alixir");
-		AddItem(pAlixir);
+		initialize_factory();
 
-		HairItem* pHairItem = new HairItem();
-		pHairItem->Initialize();
-		pHairItem->SetFunction(ItemManager::chanage_hair);
-		pHairItem->SetName(L"hairitem");
-		AddItem(pHairItem);
+		unordered_map<string, UINT> hashItem =
+		{
+			{"Equip", (UINT)IconUI::eIconType::Equip},
+			{"Item", (UINT)IconUI::eIconType::Item},
+			{"Install", (UINT)IconUI::eIconType::Install},
+			{"Cash", (UINT)IconUI::eIconType::Cash},
+			{"Another", (UINT)IconUI::eIconType::Another},
+			{"SKill", (UINT)IconUI::eIconType::SKill},
 
-		EyeItem* pEyeItem = new EyeItem();
-		pEyeItem->Initialize();
-		pEyeItem->SetFunction(ItemManager::chanage_eye);
-		pEyeItem->SetName(L"eyeitem");
-		AddItem(pEyeItem);
+		};
 
-		HorntailItem* pHorntailItem = new HorntailItem();
-		pHorntailItem->SetName(L"horntailItem");
-		AddItem(pHorntailItem);
+		wstring strPath = PathManager::GetContentPath();
+		strPath += L"\\Resources\\GameData\\Item.json";
 
-		Weapon_10* pWeapon10 = new Weapon_10();
-		pWeapon10->SetName(L"10_weapon");
-		AddItem(pWeapon10);
+		std::ifstream ifs(strPath.c_str());
+		if (!ifs.is_open())
+			assert(nullptr);
 
-		Hat_10* pHat10 = new Hat_10();
-		pHat10->SetName(L"10_hat");
-		AddItem(pHat10);
+		json jFile;
+		ifs >> jFile;
 
-		Top_10* pTop10 = new Top_10();
-		pTop10->SetName(L"10_top");
-		AddItem(pTop10);
+		for (auto& jData : jFile.at("items"))
+		{
+			const string& strItemName = jData.at("name").get<std::string>();
+			const string& strClassName = jData.at("class").get<std::string>();
 
-		Bottom_10* pBottom10 = new Bottom_10();
-		pBottom10->SetName(L"10_bottom");
-		AddItem(pBottom10);
+			IconUI* pItem = m_hashItemFactory[strClassName]();
 
-		Shoes_10* pShoes10 = new Shoes_10();
-		pShoes10->SetName(L"10_shoes");
-		AddItem(pShoes10);
+			pItem->m_iItemID = jData.at("id").get<uint32_t>();
+			pItem->m_iItemLevel = jData.at("level").get<uint32_t>();
+			pItem->m_eType = (IconUI::eIconType)hashItem[jData.at("iconType").get<std::string>()];
 
-		Weapon_25* pWeapon25 = new Weapon_25();
-		pWeapon25->SetName(L"25_weapon");
-		AddItem(pWeapon25);
+			pItem->Initialize();
+			pItem->SetName(StringToWString(strItemName));
+			AddItem(pItem);
 
-		Hat_40* pHat40 = new Hat_40();
-		pHat40->SetName(L"40_hat");
-		AddItem(pHat40);
-
-		Top_40* pTop40 = new Top_40();
-		pTop40->SetName(L"40_top");
-		AddItem(pTop40);
-
-		Bottom_40* pBottom40 = new Bottom_40();
-		pBottom40->SetName(L"40_bottom");
-		AddItem(pBottom40);
-
-		Shoes_40* pShoes40 = new Shoes_40();
-		pShoes40->SetName(L"40_shoes");
-		AddItem(pShoes40);
-
-		Hat_80* pHat80 = new Hat_80();
-		pHat80->SetName(L"80_hat");
-		AddItem(pHat80);
-
-		Top_80* pTop80 = new Top_80();
-		pTop80->SetName(L"80_top");
-		AddItem(pTop80);
-
-		Bottom_80* pBottom80 = new Bottom_80();
-		pBottom80->SetName(L"80_bottom");
-		AddItem(pBottom80);
-
-		Shoes_80* pShoes80 = new Shoes_80();
-		pShoes80->SetName(L"80_shoes");
-		AddItem(pShoes80);
-
-		Weapon_63* pWeapon63 = new Weapon_63();
-		pWeapon63->SetName(L"63_weapon");
-		AddItem(pWeapon63);
-#pragma endregion
+			m_mapItemID.insert(make_pair(pItem->m_iItemID, StringToWString(strItemName)));
+		}
+		//HairItem* pHairItem = new HairItem();
+		//pHairItem->Initialize();
+		//pHairItem->SetFunction(ItemManager::chanage_hair);
+		//pHairItem->SetName(L"hairitem");
+		//AddItem(pHairItem);
+		//
+		//EyeItem* pEyeItem = new EyeItem();
+		//pEyeItem->Initialize();
+		//pEyeItem->SetFunction(ItemManager::chanage_eye);
+		//pEyeItem->SetName(L"eyeitem");
+		//AddItem(pEyeItem);
 
 	}
 	void ItemManager::Release()
 	{
-		HashItems::iterator iter = m_hashItems.begin();
-
-		for (iter; iter != m_hashItems.end(); ++iter)
+		auto iter = m_mapItems.begin();
+		for (iter; iter != m_mapItems.end(); ++iter)
 		{
 			delete iter->second;
 			iter->second = nullptr;
 		}
+
 	}
-	void ItemManager::AddItem(IconUI* pItem)
+	void ItemManager::AddItem(IconUI* _pItem)
 	{
-		const IconUI* pIcon = find_item(pItem->GetName());
+		IconUI* pIcon = find_item(_pItem->GetName());
 		if (pIcon != nullptr)
 			return;
 
-		m_hashItems.insert(std::make_pair(pItem->GetName(), pItem));
+		m_mapItems.insert(std::make_pair(_pItem->GetName(), _pItem));
 	}
-	IconUI* ItemManager::find_item(const std::wstring& _strName)
-	{
-		HashItems::iterator iter =
-			m_hashItems.find(_strName);
 
-		if (iter == m_hashItems.end())
+	int ItemManager::GetItemID(const wstring& _strName)
+	{
+		IconUI* pIcon = find_item(_strName);
+		if (pIcon == nullptr)
+			return -1;
+	
+		return pIcon->m_iItemID;
+	}
+
+	IconUI* ItemManager::find_item(const wstring& _strItemName)
+	{
+		auto iter = m_mapItems.find(_strItemName);
+	
+		if (iter == m_mapItems.end())
 			return nullptr;
 		
 		return iter->second;
@@ -149,7 +132,6 @@ namespace W
 		int iHairNum = disX(en);
 		//임시
 		iHairNum = 1;
-		//dynamic_cast<Player*>(SceneManger::FindPlayer())->SetHair(iHairNum);
 	}
 	void ItemManager::chanage_eye()
 	{
@@ -160,16 +142,58 @@ namespace W
 
 		//임시
 		iEyeNum = 1;
-		//dynamic_cast<Player*>(SceneManger::FindPlayer())->SetEye(iEyeNum);
 	}
-	IconUI* ItemManager::GetClone(const std::wstring& _strName)
+	IconUI* ItemManager::GetClone(const wstring& _strName)
 	{
-		IconUI* pIcon = find_item(_strName);
-
-		if (pIcon == nullptr)
+		auto iter = m_mapItems.find(_strName);
+		if (iter == m_mapItems.end())
 			return nullptr;
 
-		return pIcon->Create_Clone();
+		return iter->second->Create_Clone();
+	}
+
+	IconUI* ItemManager::GetItem(UINT _iID)
+	{
+		auto iter = m_mapItemID.find(_iID);
+		if (iter == m_mapItemID.end())
+			return nullptr;
+	
+		auto itemIter = m_mapItems.find(iter->second);
+		if (itemIter != m_mapItems.end())
+			return itemIter->second;
+	}
+
+	const wstring& ItemManager::GetItemName(UINT _iID)
+	{
+		auto iter = m_mapItemID.find(_iID);
+		if (iter == m_mapItemID.end())
+			return {};
+	
+		return iter->second;
+	}
+
+
+	void ItemManager::initialize_factory()
+	{
+		m_hashItemFactory["AlixirUI"] = []() {return new AlixirUI(); };
+		m_hashItemFactory["HairItem"] = []() {return new HairItem(); };
+		m_hashItemFactory["EyeItem"] = []() {return new EyeItem(); };
+		m_hashItemFactory["HorntailItem"] = []() {return new HorntailItem(); };
+		m_hashItemFactory["Hat_10"] = []() {return new Hat_10(); };
+		m_hashItemFactory["Top_10"] = []() {return new Top_10(); };
+		m_hashItemFactory["Weapon_10"] = []() {return new Weapon_10(); };
+		m_hashItemFactory["Bottom_10"] = []() {return new Bottom_10(); };
+		m_hashItemFactory["Shoes_10"] = []() {return new Shoes_10(); };
+		m_hashItemFactory["Weapon_25"] = []() {return new Weapon_25(); };
+		m_hashItemFactory["Hat_40"] = []() {return new Hat_40(); };
+		m_hashItemFactory["Top_40"] = []() {return new Top_40(); };
+		m_hashItemFactory["Bottom_40"] = []() {return new Bottom_40(); };
+		m_hashItemFactory["Shoes_40"] = []() {return new Shoes_40(); };
+		m_hashItemFactory["Hat_80"] = []() {return new Hat_80(); };
+		m_hashItemFactory["Top_80"] = []() {return new Top_80(); };
+		m_hashItemFactory["Bottom_80"] = []() {return new Bottom_80(); };
+		m_hashItemFactory["Shoes_80"] = []() {return new Shoes_80(); };
+		m_hashItemFactory["Weapon_63"] = []() {return new Weapon_63(); };
 	}
 
 

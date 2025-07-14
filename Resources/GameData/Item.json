@@ -1,0 +1,137 @@
+{
+  "items": [
+    {
+      "id": 0,
+      "class": "AlixirUI",
+      "name": "alixir",
+      "iconType": "Item",
+      "level": 0
+    },
+    {
+      "id": 1,
+      "class": "HairItem",
+      "name": "hairitem",
+      "iconType": "Cash",
+      "level": 0
+    },
+    {
+      "id": 2,
+      "class": "EyeItem",
+      "name": "eyeitem",
+      "iconType": "Cash",
+      "level": 0
+    },
+    {
+      "id": 3,
+      "class": "HorntailItem",
+      "name": "horntailItem",
+      "iconType": "Equip",
+      "level": 130
+    },
+    {
+      "id": 4,
+      "class": "Hat_10",
+      "name": "10_hat",
+      "iconType": "Equip",
+      "level": 10
+    },
+    {
+      "id": 5,
+      "class": "Top_10",
+      "name": "10_top",
+      "iconType": "Equip",
+      "level": 10
+    },
+    {
+      "id": 6,
+      "class": "Bottom_10",
+      "name": "10_bottom",
+      "iconType": "Equip",
+      "level": 10
+    },
+    {
+      "id": 7,
+      "class": "Shoes_10",
+      "name": "10_shoes",
+      "iconType": "Equip",
+      "level": 10
+    },
+    {
+      "id": 8,
+      "class": "Weapon_25",
+      "name": "25_weapon",
+      "iconType": "Equip",
+      "level": 25
+    },
+    {
+      "id": 9,
+      "class": "Hat_40",
+      "name": "40_hat",
+      "iconType": "Equip",
+      "level": 40
+    },
+    {
+      "id": 10,
+      "class": "Top_40",
+      "name": "40_top",
+      "iconType": "Equip",
+      "level": 40
+    },
+    {
+      "id": 11,
+      "class": "Bottom_40",
+      "name": "40_bottom",
+      "iconType": "Equip",
+      "level": 40
+    },
+    {
+      "id": 12,
+      "class": "Shoes_40",
+      "name": "40_shoes",
+      "iconType": "Equip",
+      "level": 40
+    },
+    {
+      "id": 13,
+      "class": "Hat_80",
+      "name": "80_hat",
+      "iconType": "Equip",
+      "level": 80
+    },
+    {
+      "id": 14,
+      "class": "Top_80",
+      "name": "80_top",
+      "iconType": "Equip",
+      "level": 80
+    },
+    {
+      "id": 15,
+      "class": "Bottom_80",
+      "name": "80_bottom",
+      "iconType": "Equip",
+      "level": 80
+    },
+    {
+      "id": 16,
+      "class": "Shoes_80",
+      "name": "80_shoes",
+      "iconType": "Equip",
+      "level": 80
+    },
+    {
+      "id": 17,
+      "class": "Weapon_63",
+      "name": "63_weapon",
+      "iconType": "Equip",
+      "level": 63
+    },
+    {
+      "id": 18,
+      "class": "Weapon_10",
+      "name": "10_weapon",
+      "iconType": "Equip",
+      "level": 10
+    }
+  ]
+}

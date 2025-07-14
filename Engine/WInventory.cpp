@@ -192,7 +192,7 @@ namespace W
 
 	}
 
-	IconUI* Inventory::FindItem(std::wstring _strName)
+	IconUI* Inventory::FindItem(const std::wstring& _strName)
 	{
 		std::map<std::wstring, IconUI*>::iterator iter = m_mapItems.find(_strName);
 
@@ -201,7 +201,7 @@ namespace W
 
 		return iter->second;
 	}
-	void Inventory::InsertItem(IconUI* _pItem, std::wstring _strName)
+	void Inventory::InsertItem(IconUI* _pItem, const std::wstring& _strName)
 	{
 		AddChildUI(_pItem, false);
 
@@ -210,7 +210,7 @@ namespace W
 		_pItem->SetParentUIType(eParentUI::Inventory);
 	}
 
-	void Inventory::AddItem(IconUI* _pItem , std::wstring _strName)
+	void Inventory::AddItem(IconUI* _pItem , const std::wstring& _strName)
 	{
 		//내 인터페이스랑 인벤토리 둘다 확인
 		IconUI* pItem = FindItem(_strName);

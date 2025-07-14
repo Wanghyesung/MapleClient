@@ -15,7 +15,7 @@ namespace W
 		{
 			Equip,
 			Item,
-			None,
+			Another,
 			Install,
 			Cash,
 			End,
@@ -37,9 +37,9 @@ namespace W
 		void RenderOn(bool _bOn) { m_bRenderOn = _bOn; }
 		bool IsRender() { return m_bRenderOn; }
 
-		IconUI* FindItem(std::wstring _strName);
-		void InsertItem(IconUI* _pItem, std::wstring _strName);
-		void AddItem(IconUI* _pItem, std::wstring _strName);
+		IconUI* FindItem(const std::wstring& _strName);
+		void InsertItem(IconUI* _pItem, const std::wstring& _strName);
+		void AddItem(IconUI* _pItem, const std::wstring& _strName);
 		void DeleteItem(IconUI* _pItem) { m_mapItems.erase(_pItem->GetName()); }
 
 		bool SetItemPosition(IconUI* _pItem);

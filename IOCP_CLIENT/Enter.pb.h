@@ -318,32 +318,10 @@ class S_ENTER final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPlayerIdsFieldNumber = 3,
     kSuccessFieldNumber = 1,
     kPlayerIdFieldNumber = 2,
+    kPlayerEquipIdsFieldNumber = 3,
   };
-  // repeated uint32 player_ids = 3;
-  int player_ids_size() const;
-  private:
-  int _internal_player_ids_size() const;
-  public:
-  void clear_player_ids();
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_player_ids(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-      _internal_player_ids() const;
-  void _internal_add_player_ids(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-      _internal_mutable_player_ids();
-  public:
-  ::PROTOBUF_NAMESPACE_ID::uint32 player_ids(int index) const;
-  void set_player_ids(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
-  void add_player_ids(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-      player_ids() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-      mutable_player_ids();
-
   // bool success = 1;
   void clear_success();
   bool success() const;
@@ -362,6 +340,15 @@ class S_ENTER final :
   void _internal_set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
+  // int64 player_equip_ids = 3;
+  void clear_player_equip_ids();
+  ::PROTOBUF_NAMESPACE_ID::int64 player_equip_ids() const;
+  void set_player_equip_ids(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_player_equip_ids() const;
+  void _internal_set_player_equip_ids(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.S_ENTER)
  private:
   class _Internal;
@@ -369,10 +356,9 @@ class S_ENTER final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > player_ids_;
-  mutable std::atomic<int> _player_ids_cached_byte_size_;
   bool success_;
   ::PROTOBUF_NAMESPACE_ID::uint32 player_id_;
+  ::PROTOBUF_NAMESPACE_ID::int64 player_equip_ids_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Enter_2eproto;
 };
@@ -487,6 +473,7 @@ class S_NEW_ENTER final :
 
   enum : int {
     kPlayeridFieldNumber = 1,
+    kItemIdFieldNumber = 2,
   };
   // uint32 playerid = 1;
   void clear_playerid();
@@ -497,6 +484,15 @@ class S_NEW_ENTER final :
   void _internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
+  // uint32 item_id = 2;
+  void clear_item_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 item_id() const;
+  void set_item_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_item_id() const;
+  void _internal_set_item_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.S_NEW_ENTER)
  private:
   class _Internal;
@@ -505,6 +501,7 @@ class S_NEW_ENTER final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::uint32 playerid_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 item_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Enter_2eproto;
 };
@@ -608,51 +605,24 @@ inline void S_ENTER::set_player_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   // @@protoc_insertion_point(field_set:Protocol.S_ENTER.player_id)
 }
 
-// repeated uint32 player_ids = 3;
-inline int S_ENTER::_internal_player_ids_size() const {
-  return player_ids_.size();
+// int64 player_equip_ids = 3;
+inline void S_ENTER::clear_player_equip_ids() {
+  player_equip_ids_ = int64_t{0};
 }
-inline int S_ENTER::player_ids_size() const {
-  return _internal_player_ids_size();
+inline ::PROTOBUF_NAMESPACE_ID::int64 S_ENTER::_internal_player_equip_ids() const {
+  return player_equip_ids_;
 }
-inline void S_ENTER::clear_player_ids() {
-  player_ids_.Clear();
+inline ::PROTOBUF_NAMESPACE_ID::int64 S_ENTER::player_equip_ids() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_ENTER.player_equip_ids)
+  return _internal_player_equip_ids();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_ENTER::_internal_player_ids(int index) const {
-  return player_ids_.Get(index);
+inline void S_ENTER::_internal_set_player_equip_ids(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  player_equip_ids_ = value;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_ENTER::player_ids(int index) const {
-  // @@protoc_insertion_point(field_get:Protocol.S_ENTER.player_ids)
-  return _internal_player_ids(index);
-}
-inline void S_ENTER::set_player_ids(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  player_ids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Protocol.S_ENTER.player_ids)
-}
-inline void S_ENTER::_internal_add_player_ids(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  player_ids_.Add(value);
-}
-inline void S_ENTER::add_player_ids(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_add_player_ids(value);
-  // @@protoc_insertion_point(field_add:Protocol.S_ENTER.player_ids)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-S_ENTER::_internal_player_ids() const {
-  return player_ids_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-S_ENTER::player_ids() const {
-  // @@protoc_insertion_point(field_list:Protocol.S_ENTER.player_ids)
-  return _internal_player_ids();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-S_ENTER::_internal_mutable_player_ids() {
-  return &player_ids_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-S_ENTER::mutable_player_ids() {
-  // @@protoc_insertion_point(field_mutable_list:Protocol.S_ENTER.player_ids)
-  return _internal_mutable_player_ids();
+inline void S_ENTER::set_player_equip_ids(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_player_equip_ids(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_ENTER.player_equip_ids)
 }
 
 // -------------------------------------------------------------------
@@ -677,6 +647,26 @@ inline void S_NEW_ENTER::_internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint32 
 inline void S_NEW_ENTER::set_playerid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_playerid(value);
   // @@protoc_insertion_point(field_set:Protocol.S_NEW_ENTER.playerid)
+}
+
+// uint32 item_id = 2;
+inline void S_NEW_ENTER::clear_item_id() {
+  item_id_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_NEW_ENTER::_internal_item_id() const {
+  return item_id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_NEW_ENTER::item_id() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_NEW_ENTER.item_id)
+  return _internal_item_id();
+}
+inline void S_NEW_ENTER::_internal_set_item_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  item_id_ = value;
+}
+inline void S_NEW_ENTER::set_item_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_item_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_NEW_ENTER.item_id)
 }
 
 #ifdef __GNUC__

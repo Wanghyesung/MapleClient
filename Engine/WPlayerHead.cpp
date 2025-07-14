@@ -78,11 +78,11 @@ namespace W
 
 		m_pPlayerEyes = new Eyes();
 		m_pPlayerEyes->SetPlayerHead(this);
-		m_pPlayerEyes->Initialize();
+		//m_pPlayerEyes->Initialize();
 
 		m_pPlayerHair = new PlayerHair();
 		m_pPlayerHair->SetPlayerHead(this);
-		m_pPlayerHair->Initialize();
+		//m_pPlayerHair->Initialize();
 	}
 
 	void PlayerHead::Update()

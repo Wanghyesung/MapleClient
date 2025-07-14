@@ -22,6 +22,8 @@ namespace W
 		SetEquipType(EquipType::Weapon);
 		SetIconType(eIconType::Equip);
 		SetEquipName(L"25_weapon");
+		m_iItemLevel = 25;
+
 	}
 	Weapon_25::~Weapon_25()
 	{

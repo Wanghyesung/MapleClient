@@ -22,6 +22,8 @@ namespace W
 		virtual void MouseLbtnUp();
 		virtual void MouseLbtnClicked();
 
+		void AddPlayerEquip(UINT _iID);
+
 		void RenderOn(bool _bOn) { m_bRenderOn = _bOn; }
 		bool IsRender() { return m_bRenderOn; }
 

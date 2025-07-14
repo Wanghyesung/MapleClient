@@ -2,6 +2,8 @@
 
 #include "WGameObject.h"
 #include "WPlayer.h"
+#include "WPlayerHair.h"
+#include "WEyes.h"
 
 namespace W
 {
@@ -27,6 +29,9 @@ namespace W
 
 		void SetHair(UINT _iHairNum);
 		void SetEye(UINT _iEyeNum);
+
+		UINT GetHairID() { return m_pPlayerHair->GetHairID(); }
+		UINT GetEyeID() { return m_pPlayerEyes->GetEyeID(); }
 		
 	private:
 		Player* m_pPlayer;

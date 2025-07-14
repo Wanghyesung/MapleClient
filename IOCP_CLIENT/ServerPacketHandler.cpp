@@ -29,24 +29,16 @@ bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt)
 
 	GClientService->SetPlayerID(_pkt.player_id());
 	PLAYER_ID = _pkt.player_id();
-	
-	vector<UINT> vecPlayerID;
-	vector<UINT> vecObjectID;	
-	int iUserSize = _pkt.player_ids_size();
-	for (int i = 0; i < iUserSize; ++i)
-	{
-		vecPlayerID.push_back(_pkt.player_ids(i));
-	}
-	
-	W::EventManager::AddPlayer(PLAYER_ID, vecPlayerID);
+	ULONGLONG iPlayerEquips = _pkt.player_equip_ids();
+	W::EventManager::AddPlayer(PLAYER_ID, iPlayerEquips);
 
 	return true;
 }
 
 bool Handle_S_NEW_ENTER(shared_ptr<Session> _pSession, Protocol::S_NEW_ENTER& _pkt)
 {
-	GClientService->SetPlayerID(_pkt.playerid());
-	W::EventManager::AddOtherPlayer(_pkt.playerid());
+	//GClientService->SetPlayerID(_pkt.playerid());
+	//W::EventManager::AddOtherPlayer(_pkt.playerid());
 
 	return true;
 }
@@ -54,9 +46,9 @@ bool Handle_S_NEW_ENTER(shared_ptr<Session> _pSession, Protocol::S_NEW_ENTER& _p
 bool Handle_S_EQUIP(shared_ptr<Session> _pSession, Protocol::S_EQUIP& _pkt)
 {
 	UINT iPlayerInfo = _pkt.scene_layer_playerid_equipid();
+	UINT iItemID = _pkt.item_id();
 
-	const wstring& strEquipName = StringToWString(_pkt.item_name());
-	EventManager::ChanagePlayerEquip(iPlayerInfo, strEquipName);
+	EventManager::ChanagePlayerEquip(iPlayerInfo, iItemID);
 
 	return true;
 }
@@ -104,6 +96,28 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 	W::EventManager::CreateObjectID(iSceneLayerCreateIdId, tTrInfo,
 		StringToWString(tInfo.object_name()));
 
+	return true;
+}
+
+bool Handle_S_PLAYER_CREATE(shared_ptr<Session> _pSession, Protocol::S_PLAYER_CREATE& _pkt)
+{
+	int iPlayerSize = _pkt.player_info_size();
+	for (int i = 0; i < iPlayerSize; ++i)
+	{
+		const Protocol::PlayerInfo& plyerInfo = _pkt.player_info(i);
+		const Protocol::TransformInfo& trInfo = _pkt.player_info(i).transform();
+
+		UINT iSceneLayerCreateIdId = plyerInfo.scene_layer_createid_id();
+		UINT iPlayerState = plyerInfo.state_value();
+		
+		const wstring& strStateName = StringToWString(plyerInfo.state());
+		tTransformInfo tTrInfo = {};
+		tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
+		tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
+
+		W::EventManager::AddOtherPlayer(iSceneLayerCreateIdId, iPlayerState, plyerInfo.player_equip_ids(),
+			tTrInfo, strStateName);
+	}
 	return true;
 }
 

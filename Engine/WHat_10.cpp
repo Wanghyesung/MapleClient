@@ -22,6 +22,8 @@ namespace W
 		SetEquipType(EquipType::Hat);
 		SetIconType(eIconType::Equip);
 		SetEquipName(L"10_hat");
+		m_iItemLevel = 10;
+
 	}
 	Hat_10::~Hat_10()
 	{

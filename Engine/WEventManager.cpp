@@ -10,6 +10,7 @@
 #include "..\Engine_Source\WAnimator.h"
 #include "..\Engine_Source\WTransform.h"
 #include "..\Engine\WObjectPoolManager.h"
+#include "..\Engine\WItemManager.h"
 namespace W
 {
 	std::function<void(DWORD_PTR, DWORD_PTR, LONG_PTR, OBJECT_DATA)> EventManager::m_arrFunction[(UINT)EVENT_TYPE::END] = {};
@@ -95,13 +96,13 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::ChanagePlayerEquip(UINT _iPlayerInfo, const wstring& _strEquipName)
+	void EventManager::ChanagePlayerEquip(UINT _iPlayerInfo, UINT _iItemID)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::CHANGE_PLAYER_EQUIP;
 
 		eve.lParm = (DWORD_PTR)_iPlayerInfo;
-		eve.tObjectData.stringData = _strEquipName;
+		eve.wParm = (DWORD_PTR)_iItemID;
 
 		AddEvent(eve);
 	}
@@ -118,23 +119,29 @@ namespace W
 
 		AddEvent(eve);
 	}
-	void EventManager::AddPlayer(UINT _iPlayerID, vector<UINT> _vecPlayerID)
+	void EventManager::AddPlayer(UINT _iPlayerID, ULONGLONG _llPlayerEquip)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::CREATE_PLAYER;
 		eve.lParm = (DWORD_PTR)_iPlayerID;
-		AddEvent(eve);
+		eve.wParm = _llPlayerEquip;
 
-		//for (int i = 0; i < _vecPlayerID.size(); ++i)
-		//	AddOtherPlayer(_vecPlayerID[i]);
+		AddEvent(eve);
 	}
-	void EventManager::AddOtherPlayer(UINT _iPlayerID)
+
+	void EventManager::AddOtherPlayer(UINT _iSceneLayerCreateIdId, UINT _iPlayerState, UINT64 _llPlayerEquips,
+		const tTransformInfo& _tTransformInfo, const wstring& _strState)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::CREATE_OTHER_PLAYER;
 
-		eve.lParm = (DWORD_PTR)_iPlayerID;
-	
+		eve.lParm = (DWORD_PTR)_iSceneLayerCreateIdId;
+		eve.wParm = (DWORD_PTR)_iPlayerState;
+		eve.accParm = (LONG_PTR)_llPlayerEquips;
+
+		eve.tObjectData.tTransformData = _tTransformInfo;
+		eve.tObjectData.stringData = _strState;
+
 		AddEvent(eve);
 	}
 
@@ -267,14 +274,23 @@ namespace W
 		UCHAR cSceneID = (iPlayerInfo >> 24) & 0xFF;
 		UCHAR cLayer = (iPlayerInfo >> 16) & 0xFF;
 		UCHAR cPlayerID = (iPlayerInfo >> 8) & 0xFF;
-		UCHAR cEquipID = iPlayerInfo & 0xFF;
+		//UCHAR cEquipID = iPlayerInfo & 0xFF;
 
 
-		GameObject* pObj = SceneManger::FindObject(cPlayerID, (eLayerType)cLayer);
+		GameObject* pObj = SceneManger::FindObject(cPlayerID,(eLayerType)cLayer);
 		if (pObj)
 		{
 			Player* pPlayer = static_cast<Player*>(pObj);
-			pPlayer->SetEquip((Equip::EquipType)cEquipID, _tObjData.stringData);
+
+			UINT iItemID = (_wParm & 0xFF);
+			bool bClearEquip = ((_wParm << 8) & 0xFF);
+			UINT iPlayerPartID = (_wParm << 16) & 0xFF;
+			//UINT iItemEquipID = (_wParm << 24) & 0xFF;
+
+			if (bClearEquip)
+				pPlayer->SetEquip((Equip::EquipType)iPlayerPartID,L"");
+			else
+				pPlayer->SetEquip((Equip::EquipType)iPlayerPartID, iItemID);
 		}
 
 	}
@@ -282,29 +298,43 @@ namespace W
 	void EventManager::add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT iPlayerID = (UINT)_lParm;
+		ULONGLONG iPlayerEquips = (ULONGLONG)_wParm;
 
-		Player* pPlayer = static_cast<Player*>(ObjectPoolManager::PopObject(L"Player")); //new Player();
-		//pPlayer->SetName(L"Player");
-		//pPlayer->Initialize();
+		Player* pPlayer = static_cast<Player*>(ObjectPoolManager::PopObject(L"Player"));
 		pPlayer->m_iPlayerID = iPlayerID;
 		pPlayer->SetObjectID(iPlayerID);
-		pPlayer->SetTargetPlayer();
 
 		SceneManger::AddGameObject(eLayerType::Player, pPlayer);
+		pPlayer->SetTargetPlayer(iPlayerEquips);
+
 	}
 
 	void EventManager::add_other_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
-		UINT iPlayerID = (UINT)_lParm;
-		UINT iObjectID = (UINT)_wParm;
+		UINT iSceneLayerCreateIdId = (UINT)_lParm;
+		UINT iPlayerState = (UINT)_wParm;
 
-		Player* pPlayer = new Player();
-		pPlayer->SetName(L"Other_Player");
-		pPlayer->m_iPlayerID = iPlayerID;
-		pPlayer->SetObjectID(iObjectID);
-		pPlayer->Initialize();
+		UCHAR cSceneID = (iSceneLayerCreateIdId >> 24) & 0xFF;
+		if (cSceneID == SceneManger::GetActiveScene()->GetSceneID())
+		{
+			UCHAR cLayer = (iSceneLayerCreateIdId >> 16) & 0xFF;
+			UCHAR cCreateid = (iSceneLayerCreateIdId >> 8) & 0xFF;
+			UCHAR CID = iSceneLayerCreateIdId & 0xFF;
 
-		SceneManger::AddGameObject(eLayerType::Player, pPlayer);
+			Player* pPlayer = static_cast<Player*>(ObjectPoolManager::PopObject(L"Player"));
+
+			pPlayer->GetComponent<Transform>()->SetDirectPosition(_tObjData.tTransformData.vPosition);
+			pPlayer->GetComponent<Transform>()->SetDirectRotation(_tObjData.tTransformData.vRotation);
+
+			eLayerType eLayerType = (W::eLayerType)cLayer;
+			pPlayer->SetObjectID(CID);
+			pPlayer->m_iPlayerID = CID;
+			pPlayer->SetCurStateName(_tObjData.stringData);
+
+			pPlayer->SetPlayerEquips((UINT64)_accParm);
+			SceneManger::AddGameObject(eLayerType, pPlayer);
+
+		}
 	}
 
 	void EventManager::delete_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)

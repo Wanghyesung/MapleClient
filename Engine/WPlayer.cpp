@@ -31,6 +31,7 @@
 #include "WUltimateShuriken.h"
 #include "WEventManager.h"
 #include "..\IOCP_CLIENT\Equip.pb.h"
+#include "WItemManager.h"
 
 namespace W
 {
@@ -59,22 +60,22 @@ namespace W
 		GetComponent<Transform>()->SetScale(1.5f, 1.5f, 0.f);
 		GetComponent<Transform>()->SetPosition(0.f, -5.f, -2.f);
 
-		m_vecChildObj.resize(3);
+		m_vecChildObj.resize(ePlayerPart::End);
 
 		PlayerBody* pPlayerBody = new PlayerBody();
 		pPlayerBody->SetPlayer(this);
 		pPlayerBody->Initialize();
-		m_vecChildObj[0] = pPlayerBody;
+		m_vecChildObj[ePlayerPart::Body] = pPlayerBody;
 
 		PlayerHead* pPlayerHead = new PlayerHead();
 		pPlayerHead->SetPlayer(this);
 		pPlayerHead->Initialize();
-		m_vecChildObj[1] = pPlayerHead;
+		m_vecChildObj[ePlayerPart::Head] = pPlayerHead;
 
 		PlayerArm* pPlayerArm = new PlayerArm();
 		pPlayerArm->SetPlayer(this);
 		pPlayerArm->Initialize();
-		m_vecChildObj[2] = pPlayerArm;
+		m_vecChildObj[ePlayerPart::Arm] = pPlayerArm;
 
 		init_attack_object();
 		init_attack_effect();
@@ -100,11 +101,7 @@ namespace W
 
 	void Player::Initialize()
 	{
-		SetEquip(Equip::EquipType::Top, L"10_top");
-		SetEquip(Equip::EquipType::Bottom, L"10_bottom");
-		SetEquip(Equip::EquipType::Hat, L"10_hat");
-		SetEquip(Equip::EquipType::Shoes, L"10_shoes");
-		SetEquip(Equip::EquipType::Weapon, L"10_weapon");
+		
 	}
 
 	void Player::Update()
@@ -176,49 +173,65 @@ namespace W
 	void Player::SetEquip(Equip* _pEquip)
 	{
 		Equip::EquipType eType = _pEquip->GetEquipType();
+		UINT iPlayerPartID = 0; //머리 , 몸, 팔
+		UINT iPlayerEquipID = 0; 
+
 		switch (eType)
 		{
 		case W::Equip::EquipType::Hat:
-			GetPlayerChild<PlayerHead>()->SetEquipHat(_pEquip);
+			GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetEquipHat(_pEquip);
+			iPlayerPartID = (UINT)Equip::EquipType::Hat; iPlayerEquipID = 2;
 			break;
 		case W::Equip::EquipType::Top:
-			GetPlayerChild<PlayerBody>()->SetEquipTop(_pEquip);
+			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipTop(_pEquip);
+			iPlayerPartID = (UINT)Equip::EquipType::Top; iPlayerEquipID = 0;
 			break;
 		case W::Equip::EquipType::Bottom:
-			GetPlayerChild<PlayerBody>()->SetEquipBottom(_pEquip);
+			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipBottom(_pEquip);
+			iPlayerPartID = (UINT)Equip::EquipType::Bottom; iPlayerEquipID = 1;
 			break;
 		case W::Equip::EquipType::Shoes:
-			GetPlayerChild<PlayerBody>()->SetEquipShoes(_pEquip);
+			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipShoes(_pEquip);
+			iPlayerPartID = (UINT)Equip::EquipType::Shoes; iPlayerEquipID = 2;
 			break;
 		case W::Equip::EquipType::Weapon:
-			GetPlayerChild<PlayerArm>()->SetEquipWeapon(_pEquip);
+			GetPlayerChild<PlayerArm>(ePlayerPart::Arm)->SetEquipWeapon(_pEquip);
+			iPlayerPartID = (UINT)Equip::EquipType::Weapon; iPlayerEquipID = 0;
 			break;
 		}
-		send_equip(_pEquip, eType);
+		send_equip(_pEquip, iPlayerPartID, iPlayerEquipID);
 	}
 
 	void Player::DisableEquip(Equip* _pEquip)
 	{
 		Equip::EquipType eType = _pEquip->GetEquipType();
+		UINT iPlayerPartID = 0; //머리 , 몸, 팔
+		UINT iPlayerEquipID = 0;
 		switch (eType)
 		{
 		case W::Equip::EquipType::Hat:
-			GetPlayerChild<PlayerHead>()->SetEquipHat(nullptr);
+			GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetEquipHat(nullptr);
+			iPlayerPartID = (UINT)Equip::EquipType::Hat; iPlayerEquipID = 2;
 			break;
 		case W::Equip::EquipType::Top:
-			GetPlayerChild<PlayerBody>()->SetEquipTop(nullptr);
+			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipTop(nullptr);
+			iPlayerPartID = (UINT)Equip::EquipType::Top; iPlayerEquipID = 0;
 			break;
 		case W::Equip::EquipType::Bottom:
-			GetPlayerChild<PlayerBody>()->SetEquipBottom(nullptr);
+			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipBottom(nullptr);
+			iPlayerPartID = (UINT)Equip::EquipType::Bottom; iPlayerEquipID = 1;
 			break;
 		case W::Equip::EquipType::Shoes:
-			GetPlayerChild<PlayerBody>()->SetEquipShoes(nullptr);
+			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipShoes(nullptr);
+			iPlayerPartID = (UINT)Equip::EquipType::Shoes; iPlayerEquipID = 2;
 			break;
 		case W::Equip::EquipType::Weapon:
-			GetPlayerChild<PlayerArm>()->SetEquipWeapon(nullptr);
+			GetPlayerChild<PlayerArm>(ePlayerPart::Arm)->SetEquipWeapon(nullptr);
+			iPlayerPartID = (UINT)Equip::EquipType::Weapon; iPlayerEquipID = 0;
 			break;
 		}
-		send_equip(nullptr,eType);
+
+		send_equip(nullptr,iPlayerPartID,iPlayerEquipID);
 	}
 
 	void Player::SetEquip(Equip::EquipType _eType, const std::wstring& _strEquipName)
@@ -226,23 +239,32 @@ namespace W
 		switch (_eType)
 		{
 		case Equip::EquipType::Hat:
-			GetPlayerChild<PlayerHead>()->SetEquipHat(_strEquipName);
+			GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetEquipHat(_strEquipName);
 			break;
 		case Equip::EquipType::Top:
-			GetPlayerChild<PlayerBody>()->SetEquipTop(_strEquipName);
+			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipTop(_strEquipName);
 			break;
 		case Equip::EquipType::Bottom:
-			GetPlayerChild<PlayerBody>()->SetEquipBottom(_strEquipName);
+			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipBottom(_strEquipName);
 			break;
 		case Equip::EquipType::Shoes:
-			GetPlayerChild<PlayerBody>()->SetEquipShoes(_strEquipName);
+			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipShoes(_strEquipName);
 			break;
 		case Equip::EquipType::Weapon:
-			GetPlayerChild<PlayerArm>()->SetEquipWeapon(_strEquipName);
+			GetPlayerChild<PlayerArm>(ePlayerPart::Arm)->SetEquipWeapon(_strEquipName);
 			break;
 		}
 	}
-	void Player::SetTargetPlayer()
+
+	void Player::SetEquip(Equip::EquipType _eType, UINT _iEquipID)
+	{
+		const wstring& strItemName = ItemManager::GetItemName(_iEquipID);
+		if (!strItemName.empty())
+			SetEquip(_eType, strItemName);
+	}
+	
+	
+	void Player::SetTargetPlayer(UINT64 _llEquipIDs)
 	{
 		renderer::MainCamera->GetOwner()->GetScript<CameraScript>()->SetPlayer(this);
 
@@ -253,6 +275,40 @@ namespace W
 		pEquipState->SetPlayer(this);
 
 		pEquipState->Initialize();
+
+		UINT iHairID = ((_llEquipIDs >> (0 * 8)) & 0xFF);
+		UINT iEyeID = ((_llEquipIDs >> (1 * 8)) & 0xFF);
+
+		GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetHair(iHairID);
+		GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetEye(iEyeID);
+
+		for (UINT i = 2; i < 7; ++i)
+		{
+			UINT iItemID = ((_llEquipIDs >> (i * 8)) & 0xFF);
+			if (iItemID == 0)
+				continue;
+
+			pEquipState->AddPlayerEquip(iItemID);
+		}
+	}
+
+	void Player::SetPlayerEquips(UINT64 _llEquipIDs)
+	{
+		UINT iEquipNum = 0;
+		UINT iHairID = ((_llEquipIDs >> (iEquipNum++ * 8)) & 0xFF);
+		UINT iEyeID = ((_llEquipIDs >> (iEquipNum++ * 8)) & 0xFF);
+
+		GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetHair(iHairID);
+		GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetEye(iEyeID);
+	
+		for (UINT i = (UINT)Equip::EquipType::Hat; i <= (UINT)Equip::EquipType::Weapon; ++i)
+		{
+			UINT iEquipID = ((_llEquipIDs >> (iEquipNum++ * 8)) & 0xFF);
+			if (iEquipID == 0)
+				continue;
+
+			SetEquip((Equip::EquipType)i, iEquipID);
+		}
 	}
 
 	void Player::child_render()
@@ -522,21 +578,23 @@ namespace W
 		ObjectPoolManager::AddObjectPool(pUtiObj->GetName(), pUtiObj);
 	}
 
-	void Player::send_equip(Equip* _pEquip, Equip::EquipType _eType)
+	void Player::send_equip(Equip* _pEquip, UINT _iPlayerPartID, UINT _iPlayerEquipID)
 	{
 		Protocol::C_EQUIP pkt;
 		UCHAR cScene = SceneManger::GetActiveScene()->GetSceneID();
 		UCHAR cLayer = (UCHAR)eLayerType::Player;
-		UCHAR cPlayerID = PLAYER_ID;
-		UCHAR cEquipID = (UCHAR)_eType;
-		pkt.set_scene_layer_playerid_equipid((cScene << 24) | (cLayer << 16) | (cPlayerID << 8) | cEquipID);
+		UCHAR cPlayerID = GetObjectID();
+		//UCHAR cEquipType = (UCHAR)_iPlayerPart;
+		pkt.set_scene_layer_playerid_equipid((cScene << 24) | (cLayer << 16) | (cPlayerID << 8));
+		//아이템 부위 , 장비 부위, 입는건지 해제하는건지, 아이템 아이디
 		if (_pEquip != nullptr)
 		{
-			const wstring& strName = _pEquip->GetEquipName();
-			pkt.set_item_name(WstringToString(strName));
+			UINT iItemID = _pEquip->GetItemID();
+			pkt.set_item_id((_iPlayerPartID << 24) | (_iPlayerEquipID << 16) | 0 | iItemID);
 		}
 		else
-			pkt.set_item_name("");
+			pkt.set_item_id((_iPlayerPartID << 24) | (_iPlayerEquipID << 16) | (1<<8) | 0);
+		
 
 		shared_ptr<SendBuffer> pBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 		GClientService->GetClientSession()->Send(pBuffer);

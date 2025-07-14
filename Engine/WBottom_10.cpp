@@ -23,6 +23,8 @@ namespace W
 		SetIconType(eIconType::Equip);
 
 		SetEquipName(L"10_bottom");
+		m_iItemLevel = 10;
+
 	}
 	Bottom_10::~Bottom_10()
 	{

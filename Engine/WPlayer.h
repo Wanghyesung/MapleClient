@@ -3,7 +3,6 @@
 #include "WEquip.h"
 namespace W
 {
-	class Equip;
 	class Shadow;
 	class Player : public GameObject
 	{
@@ -42,6 +41,14 @@ namespace W
 			end
 		};
 
+		enum ePlayerPart
+		{
+			Body,
+			Head,
+			Arm,
+			End,
+		};
+
 		Player();
 		virtual ~Player();
 
@@ -63,30 +70,25 @@ namespace W
 		const std::wstring& GetCurStateName() { return m_strCurStateName; }
 		void SetCurStateName(const std::wstring& _strName) { m_strCurStateName = _strName; }
 
-		//플레이어 리소스 미리 로드하고 연결하기
 		void SetEquip(Equip* _pEquip);
 		void SetEquip(Equip::EquipType _eType, const std::wstring& _strEquipName);
-		
+		void SetEquip(Equip::EquipType _eType, UINT _iEquipID);
+
 		void DisableEquip(Equip* _pEquip);
 
 		bool IsAlert() { return m_bAlert; }
 
 		template <typename T>
-		T* GetPlayerChild()
+		T* GetPlayerChild(ePlayerPart _ePart)
 		{
-			for (GameObject* pObj : m_vecChildObj)
-			{
-				T* pTarget = dynamic_cast<T*>(pObj);
-				if (pTarget != nullptr)
-					return pTarget;
-			}
+			return static_cast<T*>(m_vecChildObj[_ePart]);
 		}
 
 		UINT GetUserID() { return m_iPlayerID; }
-		void SetTargetPlayer();
-
+		void SetTargetPlayer(UINT64 _llEquipIDs);
 		void SetActiveShadow(bool _bActive) { m_bActiveShadow = _bActive; }
 
+		void SetPlayerEquips(UINT64 _llEquipIDs);
 	private:
 		void child_render();
 		void child_lateupdate();
@@ -94,7 +96,7 @@ namespace W
 		void init_attack_object();
 		void init_attack_effect();
 
-		void send_equip(Equip* _pEquip, Equip::EquipType _eType);
+		void send_equip(Equip* _pEquip, UINT _iPlayerPartID, UINT _iPlayerEquipID);
 		void update_shadow(bool _bActiveShadow);
 	private:
 		Shadow* m_pShadow;

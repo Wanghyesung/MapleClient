@@ -21,6 +21,7 @@ namespace W
 
 		SetEquipType(EquipType::Pandant);
 		SetIconType(eIconType::Equip);
+		m_iItemLevel = 130;
 	}
 	HorntailItem::~HorntailItem()
 	{
