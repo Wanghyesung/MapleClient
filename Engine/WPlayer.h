@@ -70,11 +70,11 @@ namespace W
 		const std::wstring& GetCurStateName() { return m_strCurStateName; }
 		void SetCurStateName(const std::wstring& _strName) { m_strCurStateName = _strName; }
 
-		void SetEquip(Equip* _pEquip);
+		void SetEquip(Equip* _pEquip, bool _bSend = true);
 		void SetEquip(Equip::EquipType _eType, const std::wstring& _strEquipName);
 		void SetEquip(Equip::EquipType _eType, UINT _iEquipID);
 
-		void DisableEquip(Equip* _pEquip);
+		void DisableEquip(Equip* _pEquip, bool _bSend = true);
 
 		bool IsAlert() { return m_bAlert; }
 

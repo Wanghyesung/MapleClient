@@ -270,6 +270,7 @@ namespace W
 	void EventManager::change_player_equip(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT iPlayerInfo = (UINT)_lParm;
+		UINT iEquipID = (UINT)_wParm;
 
 		UCHAR cSceneID = (iPlayerInfo >> 24) & 0xFF;
 		UCHAR cLayer = (iPlayerInfo >> 16) & 0xFF;
@@ -282,9 +283,9 @@ namespace W
 		{
 			Player* pPlayer = static_cast<Player*>(pObj);
 
-			UINT iItemID = (_wParm & 0xFF);
-			bool bClearEquip = ((_wParm << 8) & 0xFF);
-			UINT iPlayerPartID = (_wParm << 16) & 0xFF;
+			UINT iItemID = (iEquipID & 0xFF);
+			bool bClearEquip = ((iEquipID >> 8) & 0xFF);
+			UINT iPlayerPartID = (iEquipID >> 24) & 0xFF;
 			//UINT iItemEquipID = (_wParm << 24) & 0xFF;
 
 			if (bClearEquip)
@@ -332,6 +333,17 @@ namespace W
 			pPlayer->SetCurStateName(_tObjData.stringData);
 
 			pPlayer->SetPlayerEquips((UINT64)_accParm);
+
+			UCHAR cShadow = (iPlayerState >> 24) & 0xFF;
+			UCHAR cAlert = (iPlayerState >> 16) & 0xFF;
+			UCHAR cDir = (iPlayerState >> 8) & 0xFF;
+			UCHAR cAnimIdx = iPlayerState & 0xFF;
+
+			pPlayer->m_bAlert = cAlert > 0 ? true : false;
+			pPlayer->m_iDir = cDir > 0 ? 1 : -1;
+			pPlayer->m_iAnimIdx = cAnimIdx;
+			pPlayer->update_shadow(cShadow);
+
 			SceneManger::AddGameObject(eLayerType, pPlayer);
 
 		}

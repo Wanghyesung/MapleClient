@@ -134,6 +134,7 @@ namespace W
 	void Animation::SetIndex(int _iIndex)
 	{
 		m_iIndex = _iIndex;
+		m_pAnimator->GetOwner()->SetAnimIdx(_iIndex);
 	}
 
 }

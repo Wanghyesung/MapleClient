@@ -170,7 +170,7 @@ namespace W
 		update_shadow(cShadow);
 	}
 
-	void Player::SetEquip(Equip* _pEquip)
+	void Player::SetEquip(Equip* _pEquip, bool _bSend)
 	{
 		Equip::EquipType eType = _pEquip->GetEquipType();
 		UINT iPlayerPartID = 0; //赣府 , 个, 迫
@@ -199,10 +199,12 @@ namespace W
 			iPlayerPartID = (UINT)Equip::EquipType::Weapon; iPlayerEquipID = 0;
 			break;
 		}
-		send_equip(_pEquip, iPlayerPartID, iPlayerEquipID);
+
+		if(_bSend)
+			send_equip(_pEquip, iPlayerPartID, iPlayerEquipID);
 	}
 
-	void Player::DisableEquip(Equip* _pEquip)
+	void Player::DisableEquip(Equip* _pEquip, bool _bSend)
 	{
 		Equip::EquipType eType = _pEquip->GetEquipType();
 		UINT iPlayerPartID = 0; //赣府 , 个, 迫
@@ -231,7 +233,8 @@ namespace W
 			break;
 		}
 
-		send_equip(nullptr,iPlayerPartID,iPlayerEquipID);
+		if(_bSend)
+			send_equip(nullptr,iPlayerPartID,iPlayerEquipID);
 	}
 
 	void Player::SetEquip(Equip::EquipType _eType, const std::wstring& _strEquipName)

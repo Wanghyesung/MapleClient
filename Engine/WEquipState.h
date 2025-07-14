@@ -27,7 +27,7 @@ namespace W
 		void RenderOn(bool _bOn) { m_bRenderOn = _bOn; }
 		bool IsRender() { return m_bRenderOn; }
 
-		void SetEquipPosition(IconUI* _pITem);
+		void SetEquipPosition(IconUI* _pITem, bool _bSend = true);
 		void DisableEquip(Equip* _pEquip);
 
 		Vector2 GetStartPosition() {return m_vUIStartPosition;}

@@ -154,10 +154,10 @@ namespace W
 		IconUI* pItem = ItemManager::GetClone(strEquip);
 		pItem->Initialize();
 		pItem->GetComponent<Transform>()->SetPosition(Vector3(m_vHatPosition.x, m_vHatPosition.y, 0.f));
-		SetEquipPosition(pItem);
+		SetEquipPosition(pItem, false);
 	}
 
-	void EquipState::SetEquipPosition(IconUI* _pITem)
+	void EquipState::SetEquipPosition(IconUI* _pITem, bool _bSend)
 	{
 		_pITem->DeleteParent();
 		_pITem->SetParentUIType(eParentUI::EquipState);
@@ -200,7 +200,7 @@ namespace W
 			break;
 		}		
 
-		m_pPlayer->SetEquip(pEquip);
+		m_pPlayer->SetEquip(pEquip, _bSend);
 	}
 
 	void EquipState::DisableEquip(Equip* _pEquip)
@@ -214,7 +214,7 @@ namespace W
 
 		for (UI* pUI : m_vecUI)
 		{
-			Equip* pEquip = dynamic_cast<Equip*>(pUI);
+			Equip* pEquip = static_cast<Equip*>(pUI);
 			if (pEquip == nullptr)
 				continue;
 

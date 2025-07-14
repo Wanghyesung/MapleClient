@@ -101,8 +101,8 @@ namespace W
 		if (iter == m_hashSceneID.end())
 			return nullptr;
 
-		SwapUI(m_pActiveScene, iter->second);
-		SwapPlayer(m_pActiveScene, iter->second);
+		SwapUI(m_pActiveScene, iter->second);	
+		SwapObject(m_pActiveScene, iter->second, FindPlayer());
 		PushObjectPool(m_pActiveScene);
 
 		m_pActiveScene = iter->second;
@@ -194,12 +194,6 @@ namespace W
 		SwapObject(_pPrevScene, _pNextScene, L"Inven", eLayerType::UI);
 		SwapObject(_pPrevScene, _pNextScene, L"Skill", eLayerType::UI);	
 	}
-
-	void SceneManger::SwapPlayer(Scene* _pPrevScene, Scene* _pNextScene)
-	{
-		SwapObject(_pPrevScene, _pNextScene, L"Player", eLayerType::Player);
-	}
-
 	
 	void SceneManger::SwapCamera()
 	{
