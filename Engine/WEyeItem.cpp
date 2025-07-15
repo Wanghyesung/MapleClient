@@ -23,6 +23,10 @@ namespace W
 		GetComponent<Transform>()->SetScale(0.1f * 3.5f, 0.1f * 2.9f, 0.f);
 		SetIconType(eIconType::Cash);
 	}
+	EyeItem::EyeItem(const EyeItem& _pItem):
+		ItemUI(_pItem)
+	{
+	}
 	EyeItem::~EyeItem()
 	{
 	}
@@ -52,11 +56,33 @@ namespace W
 	}
 	void EyeItem::MouseLbtnUp()
 	{
-		ItemUI::MouseLbtnUp();
+		IconUI::MouseLbtnUp();
 	}
 	void EyeItem::MouseLbtnClicked()
 	{
 		ItemUI::MouseLbtnClicked();
+	}
+
+	EyeItem* EyeItem::Create_Clone()
+	{
+		return new EyeItem(*this);
+	}
+
+	void EyeItem::Using()
+	{
+		Protocol::C_ITEM pkt;
+
+		GameObject* pObj = SceneManger::FindPlayer();
+
+		UINT iSceneID = SceneManger::GetActiveScene()->GetSceneID();
+		int iITemID = GetItemID();
+
+		pkt.set_scene_playerid_item_id((iSceneID << 24) | (PLAYER_ID << 16) | iITemID);
+		shared_ptr<SendBuffer> pBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+		GClientService->GetClientSession()->Send(pBuffer);
+
+		DeleteParent();
+		SetState(eState::Dead);
 	}
 
 }

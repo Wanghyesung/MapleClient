@@ -31,7 +31,6 @@ namespace W
 		void SetItemNumber();
 		void AddItemNumber(UINT _iAccNumber);
 
-		void SetFunction(std::function<void()> _func) { m_pFunction = std::move(_func); }
 	private:
 		bool changepos_interface();
 		bool changepos_inventory();
@@ -41,8 +40,7 @@ namespace W
 		bool check_interface();
 
 		bool active_item();
-		bool active_cash();
-
+		
 
 	protected:
 		float m_fAccHP;
@@ -55,9 +53,6 @@ namespace W
 		
 		class Number* m_pNumber;
 		Vector2 m_vNumberOffset;
-
-		//눌렀을 때 사용되는 템 ex : 헤어
-		std::function<void()> m_pFunction;
 	};
 }
 

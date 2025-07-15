@@ -31,10 +31,12 @@ namespace W
 	map<wstring, IconUI*> ItemManager::m_mapItems = {};
 	map<UINT, wstring> ItemManager::m_mapItemID = {};
 	unordered_map<string, function<IconUI*()>> ItemManager::m_hashItemFactory = {};
+	vector<std::function<void(UINT, UINT)>> ItemManager::m_vecItemEvent = {};
 
 	void ItemManager::Initialize()
 	{
 		initialize_factory();
+		initialize_function();
 
 		unordered_map<string, UINT> hashItem =
 		{
@@ -67,25 +69,12 @@ namespace W
 			pItem->m_iItemID = jData.at("id").get<uint32_t>();
 			pItem->m_iItemLevel = jData.at("level").get<uint32_t>();
 			pItem->m_eType = (IconUI::eIconType)hashItem[jData.at("iconType").get<std::string>()];
-
 			pItem->Initialize();
 			pItem->SetName(StringToWString(strItemName));
 			AddItem(pItem);
 
 			m_mapItemID.insert(make_pair(pItem->m_iItemID, StringToWString(strItemName)));
 		}
-		//HairItem* pHairItem = new HairItem();
-		//pHairItem->Initialize();
-		//pHairItem->SetFunction(ItemManager::chanage_hair);
-		//pHairItem->SetName(L"hairitem");
-		//AddItem(pHairItem);
-		//
-		//EyeItem* pEyeItem = new EyeItem();
-		//pEyeItem->Initialize();
-		//pEyeItem->SetFunction(ItemManager::chanage_eye);
-		//pEyeItem->SetName(L"eyeitem");
-		//AddItem(pEyeItem);
-
 	}
 	void ItemManager::Release()
 	{
@@ -115,6 +104,14 @@ namespace W
 		return pIcon->m_iItemID;
 	}
 
+	void ItemManager::ExcuteItem(UINT _iItemInfo, UINT _iItemValue)
+	{
+		USHORT sFuncID = _iItemInfo & 0xFFFF;
+		UCHAR cPlayerID = (_iItemInfo >> 16) & 0xFF;
+
+		m_vecItemEvent[sFuncID](cPlayerID, _iItemValue);
+	}
+
 	IconUI* ItemManager::find_item(const wstring& _strItemName)
 	{
 		auto iter = m_mapItems.find(_strItemName);
@@ -124,25 +121,27 @@ namespace W
 		
 		return iter->second;
 	}
-	void ItemManager::chanage_hair()
-	{
-		std::random_device rDiv;
-		std::mt19937 en(rDiv());
-		std::uniform_int_distribution<int> disX(0, 1);
-		int iHairNum = disX(en);
-		//임시
-		iHairNum = 1;
-	}
-	void ItemManager::chanage_eye()
-	{
-		std::random_device rDiv;
-		std::mt19937 en(rDiv());
-		std::uniform_int_distribution<int> disX(0, 2);
-		int iEyeNum = disX(en);
 
-		//임시
-		iEyeNum = 1;
+	void ItemManager::chanage_hair(UINT _iPlayerID, UINT _iPlayerValue)
+	{
+		GameObject* pObj = SceneManger::FindObject(_iPlayerID, eLayerType::Player);
+		if (pObj)
+		{
+			Player* pPlayer = static_cast<Player*>(pObj);
+			pPlayer->SetHair(_iPlayerValue);
+		}
 	}
+
+	void ItemManager::chanage_eye(UINT _iPlayerID, UINT _iPlayerValue)
+	{
+		GameObject* pObj = SceneManger::FindObject(_iPlayerID, eLayerType::Player);
+		if (pObj)
+		{
+			Player* pPlayer = static_cast<Player*>(pObj);
+			pPlayer->SetEye(_iPlayerValue);
+		}
+	}
+
 	IconUI* ItemManager::GetClone(const wstring& _strName)
 	{
 		auto iter = m_mapItems.find(_strName);
@@ -194,6 +193,15 @@ namespace W
 		m_hashItemFactory["Bottom_80"] = []() {return new Bottom_80(); };
 		m_hashItemFactory["Shoes_80"] = []() {return new Shoes_80(); };
 		m_hashItemFactory["Weapon_63"] = []() {return new Weapon_63(); };
+	}
+
+	void ItemManager::initialize_function()
+	{
+		m_vecItemEvent.resize(20);
+
+		//ID = Function;
+		m_vecItemEvent[1] = chanage_hair;
+		m_vecItemEvent[2] = chanage_eye;
 	}
 
 

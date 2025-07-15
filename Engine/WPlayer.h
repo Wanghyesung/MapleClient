@@ -89,6 +89,9 @@ namespace W
 		void SetActiveShadow(bool _bActive) { m_bActiveShadow = _bActive; }
 
 		void SetPlayerEquips(UINT64 _llEquipIDs);
+		void SetHair(UINT _iHairID);
+		void SetEye(UINT _iEyeID);
+
 	private:
 		void child_render();
 		void child_lateupdate();

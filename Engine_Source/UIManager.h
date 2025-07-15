@@ -28,6 +28,8 @@ namespace W
 		static UI* m_pTargetUI;
 
 		static UI* m_pLateRenderUI;
+
+		static vector<UI*> m_vecDeleteUI;
 	};
 }
 

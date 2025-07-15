@@ -11,6 +11,7 @@ namespace W
 	UI* UIManager::m_pFoucseUI = nullptr;
 	UI* UIManager::m_pTargetUI = nullptr;
 	UI* UIManager::m_pLateRenderUI = nullptr;
+	vector<UI*> UIManager::m_vecDeleteUI = {};
 
 	void UIManager::Update()
 	{
@@ -184,20 +185,11 @@ namespace W
 				if (pChildUI->GetState() == GameObject::eState::Dead)
 				{
 					UI* pParentUI = pChildUI->GetParentUI();
-					//가장 위에 부모라면
-					if (pParentUI == nullptr)
-					{
-						delete pChildUI;
-						pChildUI = nullptr;
-					}
+					if(pParentUI)
+						pParentUI->DeleteChildUI(pChildUI);
 
-					else
-					{
-						//벡터에서 지우고 메모리 해제
-						pChildUI->GetParentUI()->DeleteChildUI(pChildUI);
-						delete pChildUI;
-						pChildUI = nullptr;
-					}
+					delete pChildUI;
+					pChildUI = nullptr;
 				}
 				else
 				{

@@ -25,6 +25,7 @@
     <ClInclude Include="GameObject.pb.h" />
     <ClInclude Include="Map.pb.h" />
     <ClInclude Include="ObjectState.pb.h" />
+    <ClInclude Include="Item.pb.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -50,6 +51,7 @@
     <ClCompile Include="GameObject.pb.cc" />
     <ClCompile Include="Map.pb.cc" />
     <ClCompile Include="ObjectState.pb.cc" />
+    <ClCompile Include="Item.pb.cc" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Net">

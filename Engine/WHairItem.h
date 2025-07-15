@@ -8,6 +8,7 @@ namespace W
 	{
 	public:
 		HairItem();
+		HairItem(const HairItem& _pItem);
 		virtual ~HairItem();
 
 		virtual void Initialize() override;
@@ -20,8 +21,8 @@ namespace W
 		virtual void MouseLbtnUp()override;
 		virtual void MouseLbtnClicked()override;
 
-		//복사생성자로 받을 때 itemui까지만 만들 수 있으서 여기까지 상속이 안됨
-		virtual void Using()final {};
+		virtual HairItem* Create_Clone()override;
+		virtual void Using()override;
 	private:
 	};
 }

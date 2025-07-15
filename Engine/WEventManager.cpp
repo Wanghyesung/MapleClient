@@ -53,6 +53,7 @@ namespace W
 		m_arrFunction[(UINT)EVENT_TYPE::CREATE_OTHER_PLAYER] = add_other_player;
 		m_arrFunction[(UINT)EVENT_TYPE::DELETE_PLAYER] = delete_player;
 		m_arrFunction[(UINT)EVENT_TYPE::CHANGE_PLAYER_EQUIP] = change_player_equip;
+		m_arrFunction[(UINT)EVENT_TYPE::UING_PLAYER_ITEM] = using_player_item;
 		
 		m_arrFunction[(UINT)EVENT_TYPE::CREATE_OBJECT] = create_object;
 		m_arrFunction[(UINT)EVENT_TYPE::DELET_OBJECT] = delete_object;
@@ -103,6 +104,17 @@ namespace W
 
 		eve.lParm = (DWORD_PTR)_iPlayerInfo;
 		eve.wParm = (DWORD_PTR)_iItemID;
+
+		AddEvent(eve);
+	}
+
+	void EventManager::UsingItem(UINT _iItemInfo, UINT _iItemValue)
+	{
+		tEvent eve = {};
+		eve.eEventType = EVENT_TYPE::UING_PLAYER_ITEM;
+
+		eve.lParm = (DWORD_PTR)_iItemInfo;
+		eve.wParm = (DWORD_PTR)_iItemValue;
 
 		AddEvent(eve);
 	}
@@ -294,6 +306,14 @@ namespace W
 				pPlayer->SetEquip((Equip::EquipType)iPlayerPartID, iItemID);
 		}
 
+	}
+
+	void EventManager::using_player_item(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
+	{
+		UINT iItemInfo = (UINT)_lParm;
+		UINT iItemID = (UINT)_wParm;
+
+		ItemManager::ExcuteItem(iItemInfo, iItemID);
 	}
 
 	void EventManager::add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)

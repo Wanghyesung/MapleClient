@@ -155,6 +155,7 @@
     <ClInclude Include="GameObject.pb.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="Input.pb.h" />
+    <ClInclude Include="Item.pb.h" />
     <ClInclude Include="Map.pb.h" />
     <ClInclude Include="NetFunc.h" />
     <ClInclude Include="ObjectState.pb.h" />
@@ -187,6 +188,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="IOCP_CLIENT.cpp" />
+    <ClCompile Include="Item.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Map.pb.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>

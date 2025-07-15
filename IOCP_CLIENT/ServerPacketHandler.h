@@ -10,6 +10,7 @@
 #include "GameObject.pb.h"
 #include "ObjectState.pb.h"
 #include "Skill.pb.h"
+#include "Item.pb.h"
 #include "Service.h"
 
 extern shared_ptr< ClientService> GClientService;
@@ -40,34 +41,36 @@ enum PACKET_TYPE
 	S_EQUIP = 1004,
 	C_EQUIP = 1005,
 
-	C_INPUT = 1006,
+	S_ITEM = 1006,
+	C_ITEM = 1007,
 
-	S_MAP = 1007,
-	C_MAP = 1008,
-	C_MAP_LOADING = 1009,
+	C_INPUT = 1008,
 
-	S_START_MAP = 1010,
-	C_START_MAP = 1011,
+	S_MAP = 1009,
+	C_MAP = 1010,
+	C_MAP_LOADING = 1011,
 
-	S_CREATE = 1012,
-	C_CREATE = 1013,
-	S_PLAYER_CREATE = 1014,
-	S_DELETE = 1015,
+	S_START_MAP = 1012,
+	C_START_MAP = 1013,
+
+	S_CREATE = 1014,
+	C_CREATE = 1015,
+	S_PLAYER_CREATE = 1016,
+	S_DELETE = 1017,
 
 
 	//물체 위치
-	S_STATE = 1016,
+	S_STATE = 1018,
 
-	S_TRANSFORM = 1017,
+	S_TRANSFORM = 1019,
 
-	S_SKILL = 1018,
-	C_SKILL = 1019,
+	S_SKILL = 1020,
+	C_SKILL = 1021,
 
-	S_EXIT = 1020,
-	C_EXIT = 1021,
-	S_NEW_EXIT = 1022,
+	S_EXIT = 1022,
+	C_EXIT = 1023,
+	S_NEW_EXIT = 1024,
 };
-
 
 
 template <typename T>
@@ -77,6 +80,7 @@ shared_ptr<SendBuffer> _MakeSendBuffer(T& _pkt, UINT _ID);
 bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt);
 bool Handle_S_NEW_ENTER(shared_ptr<Session> _pSession, Protocol::S_NEW_ENTER& _pkt);
 bool Handle_S_EQUIP(shared_ptr<Session> _pSession, Protocol::S_EQUIP& _pkt);
+bool Handle_S_ITEM(shared_ptr<Session> _pSession, Protocol::S_ITEM& _pkt);
 bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt);
 bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt);
 bool Handle_S_PLAYER_CREATE(shared_ptr<Session> _pSession, Protocol::S_PLAYER_CREATE& _pkt);
@@ -110,10 +114,10 @@ public:
 			{return  HandlePacket<Protocol::S_MAP>(Handle_S_MAP, _pSession, _pBuffer, _iLen); };
 		GPacketHandler[S_CREATE] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
 			{return  HandlePacket<Protocol::S_CREATE>(Handle_S_CREATE, _pSession, _pBuffer, _iLen); };
-
+		GPacketHandler[S_ITEM] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
+			{return  HandlePacket<Protocol::S_ITEM>(Handle_S_ITEM, _pSession, _pBuffer, _iLen); };
 		GPacketHandler[S_PLAYER_CREATE] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
 			{return  HandlePacket<Protocol::S_PLAYER_CREATE>(Handle_S_PLAYER_CREATE, _pSession, _pBuffer, _iLen); };
-
 		GPacketHandler[S_DELETE] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
 			{return  HandlePacket<Protocol::S_DELETE>(Handle_S_DELETE, _pSession, _pBuffer, _iLen); };
 		GPacketHandler[S_STATE] = [](shared_ptr<PacketSession>& _pSession, BYTE* _pBuffer, INT _iLen)
@@ -145,6 +149,7 @@ public:
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_MAP _pkt) { return _MakeSendBuffer(_pkt, C_MAP); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_MAP_LOADING _pkt) { return _MakeSendBuffer(_pkt, C_MAP_LOADING); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_Skill _pkt) { return _MakeSendBuffer(_pkt, C_SKILL); }
+	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_ITEM _pkt) { return _MakeSendBuffer(_pkt, C_ITEM); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_START_MAP _pkt) { return _MakeSendBuffer(_pkt, C_START_MAP); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_EXIT _pkt) { return _MakeSendBuffer(_pkt, C_EXIT); }
 	

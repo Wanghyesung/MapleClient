@@ -21,6 +21,7 @@ namespace W
 		DELET_OBJECT_ID,
 
 		CHANGE_PLAYER_EQUIP,
+		UING_PLAYER_ITEM,
 		SCENE_CHANGE,
 
 		ADD_PLAYER_POOL,
@@ -66,6 +67,7 @@ namespace W
 
 		static void ChangeScene(const std::wstring& _strNextScene);
 		static void ChanagePlayerEquip(UINT _iPlayerInfo, UINT _iItemID);
+		static void UsingItem(UINT _iItemInfo, UINT _iItemValue);
 	
 		static void AddPlayer(UINT _iPlayerID, ULONGLONG _llPlayerEquip);
 		static void AddOtherPlayer(UINT _iSceneLayerCreateIdId,UINT _iPlayerState, UINT64 _llPlayerEquips,
@@ -84,6 +86,7 @@ namespace W
 
 		static void change_scene(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
 		static void change_player_equip(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
+		static void using_player_item(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
 
 		static void add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);
 		static void add_other_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData);

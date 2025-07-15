@@ -314,6 +314,16 @@ namespace W
 		}
 	}
 
+	void Player::SetHair(UINT _iHairID)
+	{
+		GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetHair(_iHairID);
+	}
+
+	void Player::SetEye(UINT _iEyeID)
+	{
+		GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetEye(_iEyeID);
+	}
+
 	void Player::child_render()
 	{
 		for (GameObject* pObj : m_vecChildObj)

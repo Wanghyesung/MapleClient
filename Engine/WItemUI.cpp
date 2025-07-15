@@ -26,15 +26,14 @@ namespace W
 		m_iItemCount(0),
 		m_fAccHP(_pItem.m_fAccHP),
 		m_fAccMP(_pItem.m_fAccMP),
-		m_iAccCount(_pItem.m_iAccCount),
-		m_pFunction(_pItem.m_pFunction)
+		m_iAccCount(_pItem.m_iAccCount)
 	{
 		//SetIconType(eIconType::Item);
 	}
 
 	ItemUI::~ItemUI()
 	{
-		int a = 10;
+	
 	}
 
 	void ItemUI::Initialize()
@@ -124,15 +123,7 @@ namespace W
 		IconUI::eIconType eType = GetIconType();
 
 		bool bActive = false;
-		switch (eType)
-		{
-		case W::IconUI::eIconType::Item:
-			bActive = active_item();
-			break;
-		case W::IconUI::eIconType::Cash:
-			bActive = active_cash();
-			break;
-		}
+		bActive = active_item();
 
 		if (bActive)
 		{
@@ -230,17 +221,9 @@ namespace W
 			pTarget->GetState() != GameObject::eState::Active)
 			return false;
 
+		return true;
 	}
 
-	bool ItemUI::active_cash()
-	{
-		if (m_pFunction)
-		{
-			m_pFunction();
-			return true;
-		}
-		return false;
-	}
 
 	void ItemUI::SetItemNumber()
 	{

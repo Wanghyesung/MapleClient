@@ -53,6 +53,15 @@ bool Handle_S_EQUIP(shared_ptr<Session> _pSession, Protocol::S_EQUIP& _pkt)
 	return true;
 }
 
+bool Handle_S_ITEM(shared_ptr<Session> _pSession, Protocol::S_ITEM& _pkt)
+{
+	UINT iItemInfo = _pkt.scene_playerid_itemid();
+	UINT iItemValue = _pkt.item_value();
+
+	EventManager::UsingItem(iItemInfo, iItemValue);
+	return true;
+}
+
 bool Handle_S_MAP(shared_ptr<Session> _pSession, Protocol::S_MAP& _pkt)
 {
 	int iObjSize = _pkt.objinfo_size();
