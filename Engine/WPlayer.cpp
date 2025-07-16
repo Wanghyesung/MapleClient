@@ -174,67 +174,67 @@ namespace W
 	{
 		Equip::EquipType eType = _pEquip->GetEquipType();
 		UINT iPlayerPartID = 0; //赣府 , 个, 迫
-		UINT iPlayerEquipID = 0; 
+		
 
 		switch (eType)
 		{
 		case W::Equip::EquipType::Hat:
 			GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetEquipHat(_pEquip);
-			iPlayerPartID = (UINT)Equip::EquipType::Hat; iPlayerEquipID = 2;
+			iPlayerPartID = (UINT)Equip::EquipType::Hat; 
 			break;
 		case W::Equip::EquipType::Top:
 			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipTop(_pEquip);
-			iPlayerPartID = (UINT)Equip::EquipType::Top; iPlayerEquipID = 0;
+			iPlayerPartID = (UINT)Equip::EquipType::Top;
 			break;
 		case W::Equip::EquipType::Bottom:
 			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipBottom(_pEquip);
-			iPlayerPartID = (UINT)Equip::EquipType::Bottom; iPlayerEquipID = 1;
+			iPlayerPartID = (UINT)Equip::EquipType::Bottom; 
 			break;
 		case W::Equip::EquipType::Shoes:
 			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipShoes(_pEquip);
-			iPlayerPartID = (UINT)Equip::EquipType::Shoes; iPlayerEquipID = 2;
+			iPlayerPartID = (UINT)Equip::EquipType::Shoes; 
 			break;
 		case W::Equip::EquipType::Weapon:
 			GetPlayerChild<PlayerArm>(ePlayerPart::Arm)->SetEquipWeapon(_pEquip);
-			iPlayerPartID = (UINT)Equip::EquipType::Weapon; iPlayerEquipID = 0;
+			iPlayerPartID = (UINT)Equip::EquipType::Weapon; 
 			break;
 		}
 
 		if(_bSend)
-			send_equip(_pEquip, iPlayerPartID, iPlayerEquipID);
+			send_equip(_pEquip, iPlayerPartID);
 	}
 
 	void Player::DisableEquip(Equip* _pEquip, bool _bSend)
 	{
 		Equip::EquipType eType = _pEquip->GetEquipType();
 		UINT iPlayerPartID = 0; //赣府 , 个, 迫
-		UINT iPlayerEquipID = 0;
+	
 		switch (eType)
 		{
 		case W::Equip::EquipType::Hat:
 			GetPlayerChild<PlayerHead>(ePlayerPart::Head)->SetEquipHat(nullptr);
-			iPlayerPartID = (UINT)Equip::EquipType::Hat; iPlayerEquipID = 2;
+			iPlayerPartID = (UINT)Equip::EquipType::Hat; 
 			break;
 		case W::Equip::EquipType::Top:
 			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipTop(nullptr);
-			iPlayerPartID = (UINT)Equip::EquipType::Top; iPlayerEquipID = 0;
+			iPlayerPartID = (UINT)Equip::EquipType::Top; 
 			break;
 		case W::Equip::EquipType::Bottom:
 			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipBottom(nullptr);
-			iPlayerPartID = (UINT)Equip::EquipType::Bottom; iPlayerEquipID = 1;
+			iPlayerPartID = (UINT)Equip::EquipType::Bottom; 
 			break;
 		case W::Equip::EquipType::Shoes:
 			GetPlayerChild<PlayerBody>(ePlayerPart::Body)->SetEquipShoes(nullptr);
-			iPlayerPartID = (UINT)Equip::EquipType::Shoes; iPlayerEquipID = 2;
+			iPlayerPartID = (UINT)Equip::EquipType::Shoes;
 			break;
 		case W::Equip::EquipType::Weapon:
 			GetPlayerChild<PlayerArm>(ePlayerPart::Arm)->SetEquipWeapon(nullptr);
-			iPlayerPartID = (UINT)Equip::EquipType::Weapon; iPlayerEquipID = 0;
+			iPlayerPartID = (UINT)Equip::EquipType::Weapon; 
 			break;
 		}
 
 		if(_bSend)
-			send_equip(nullptr,iPlayerPartID,iPlayerEquipID);
+			send_equip(nullptr,iPlayerPartID);
 	}
 
 	void Player::SetEquip(Equip::EquipType _eType, const std::wstring& _strEquipName)
@@ -261,9 +261,15 @@ namespace W
 
 	void Player::SetEquip(Equip::EquipType _eType, UINT _iEquipID)
 	{
-		const wstring& strItemName = ItemManager::GetItemName(_iEquipID);
-		if (!strItemName.empty())
-			SetEquip(_eType, strItemName);
+		if (_iEquipID == 0)
+			SetEquip(_eType, L"");
+		else
+		{
+			const wstring& strItemName = ItemManager::GetItemName(_iEquipID);
+			if (!strItemName.empty())
+				SetEquip(_eType, strItemName);
+		}
+	
 	}
 	
 	
@@ -307,9 +313,7 @@ namespace W
 		for (UINT i = (UINT)Equip::EquipType::Hat; i <= (UINT)Equip::EquipType::Weapon; ++i)
 		{
 			UINT iEquipID = ((_llEquipIDs >> (iEquipNum++ * 8)) & 0xFF);
-			if (iEquipID == 0)
-				continue;
-
+			
 			SetEquip((Equip::EquipType)i, iEquipID);
 		}
 	}
@@ -591,7 +595,7 @@ namespace W
 		ObjectPoolManager::AddObjectPool(pUtiObj->GetName(), pUtiObj);
 	}
 
-	void Player::send_equip(Equip* _pEquip, UINT _iPlayerPartID, UINT _iPlayerEquipID)
+	void Player::send_equip(Equip* _pEquip, UINT _iPlayerPartID)
 	{
 		Protocol::C_EQUIP pkt;
 		UCHAR cScene = SceneManger::GetActiveScene()->GetSceneID();
@@ -603,10 +607,10 @@ namespace W
 		if (_pEquip != nullptr)
 		{
 			UINT iItemID = _pEquip->GetItemID();
-			pkt.set_item_id((_iPlayerPartID << 24) | (_iPlayerEquipID << 16) | 0 | iItemID);
+			pkt.set_item_id((_iPlayerPartID << 24) |  iItemID);
 		}
 		else
-			pkt.set_item_id((_iPlayerPartID << 24) | (_iPlayerEquipID << 16) | (1<<8) | 0);
+			pkt.set_item_id((_iPlayerPartID << 24) | 0);
 		
 
 		shared_ptr<SendBuffer> pBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
