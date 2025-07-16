@@ -142,6 +142,7 @@ namespace W
 		REGISTER_OBJECT_FACTORY(Whiggin				 , 106)
 		REGISTER_OBJECT_FACTORY(White				 , 107)
 		REGISTER_OBJECT_FACTORY(Wind				 , 108)
+		REGISTER_OBJECT_FACTORY(DamageFont		     , 109)
 	}
 
 	GameObject* GameObjectManager::GetMonsterOfID(UINT _ID)

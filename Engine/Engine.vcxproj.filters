@@ -614,6 +614,9 @@
     <ClInclude Include="WAnimationManager.h">
       <Filter>Contents\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="WDamageFont.h">
+      <Filter>Contents\Object\DamageFont</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
@@ -1223,6 +1226,9 @@
     <ClCompile Include="WAnimationManager.cpp">
       <Filter>Contents\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="WDamageFont.cpp">
+      <Filter>Contents\Object\DamageFont</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -1656,6 +1662,9 @@
     </Filter>
     <Filter Include="Contents\Manager\ObjectManager">
       <UniqueIdentifier>{6339027a-5aaa-4d38-8906-ef716d59473a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\DamageFont">
+      <UniqueIdentifier>{6264b7c6-de23-451c-a9d5-89f43a646e5e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -108,12 +108,12 @@ namespace W
 		AddEvent(eve);
 	}
 
-	void EventManager::UsingItem(UINT _iItemInfo, UINT _iItemValue)
+	void EventManager::UsingItem(UINT _iFuncInfo, UINT _iItemValue)
 	{
 		tEvent eve = {};
 		eve.eEventType = EVENT_TYPE::UING_PLAYER_ITEM;
 
-		eve.lParm = (DWORD_PTR)_iItemInfo;
+		eve.lParm = (DWORD_PTR)_iFuncInfo;
 		eve.wParm = (DWORD_PTR)_iItemValue;
 
 		AddEvent(eve);
@@ -287,7 +287,6 @@ namespace W
 		UCHAR cSceneID = (iPlayerInfo >> 24) & 0xFF;
 		UCHAR cLayer = (iPlayerInfo >> 16) & 0xFF;
 		UCHAR cPlayerID = (iPlayerInfo >> 8) & 0xFF;
-		//UCHAR cEquipID = iPlayerInfo & 0xFF;
 
 
 		GameObject* pObj = SceneManger::FindObject(cPlayerID,(eLayerType)cLayer);
@@ -310,10 +309,10 @@ namespace W
 
 	void EventManager::using_player_item(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
-		UINT iItemInfo = (UINT)_lParm;
+		UINT iFuncInfo = (UINT)_lParm;
 		UINT iItemID = (UINT)_wParm;
 
-		ItemManager::ExcuteItem(iItemInfo, iItemID);
+		ItemManager::ExcuteItem(iFuncInfo, iItemID);
 	}
 
 	void EventManager::add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)

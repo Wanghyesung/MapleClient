@@ -67,7 +67,7 @@ namespace W
 
 		static void ChangeScene(const std::wstring& _strNextScene);
 		static void ChanagePlayerEquip(UINT _iPlayerInfo, UINT _iItemID);
-		static void UsingItem(UINT _iItemInfo, UINT _iItemValue);
+		static void UsingItem(UINT _iFuncInfo, UINT _iItemValue);
 	
 		static void AddPlayer(UINT _iPlayerID, ULONGLONG _llPlayerEquip);
 		static void AddOtherPlayer(UINT _iSceneLayerCreateIdId,UINT _iPlayerState, UINT64 _llPlayerEquips,

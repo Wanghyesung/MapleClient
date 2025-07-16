@@ -1,6 +1,7 @@
 #include "WSceneManger.h"
 #include "WCamera.h"
 #include "WRenderer.h"
+#include "..\Engine\WDamageFont.h"
 #include "..\Engine\WPlayer.h"
 #include "..\Engine\WCameraScript.h"
 #include "..\Engine\WItemManager.h"
@@ -52,6 +53,12 @@ namespace W
 		ThreadPool::LoadingResource<Texture>(L"shadowe1ffect", L"..\\Resources\\Texture\\Player\\skill\\effect5.png");
 		ThreadPool::LoadingResource<Texture>(L"shadowe2ffect", L"..\\Resources\\Texture\\Player\\skill\\effect6.png");
 
+		for (int i = 0; i <= 9; ++i)
+		{
+			wstring strNum = to_wstring(i);
+			ThreadPool::LoadingResource<Texture>(L"Number_" + strNum, L"..\\Resources\\Texture\\Damage\\" + strNum + L".png");
+		}
+
 		//block
 		ThreadPool::Joinable();
 
@@ -61,6 +68,14 @@ namespace W
 			Player* pPlayer = new Player();
 			pPlayer->SetName(L"Player");
 			ObjectPoolManager::AddObjectPool(pPlayer->GetName(), pPlayer);
+		}
+
+		
+		for (int i = 0; i < 150; ++i)
+		{
+			DamageFont* pDamage = new DamageFont();
+			pDamage->SetName(L"DamageFont");
+			ObjectPoolManager::AddObjectPool(pDamage->GetName(), pDamage);
 		}
 	}
 	void SceneManger::Update()

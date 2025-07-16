@@ -77,7 +77,7 @@ namespace W
 		UINT iSceneID = SceneManger::GetActiveScene()->GetSceneID();
 		int iITemID = GetItemID();
 
-		pkt.set_scene_playerid_item_id((iSceneID << 24) | (PLAYER_ID << 16) | iITemID);
+		pkt.set_scene_playerid_itemid((iSceneID << 24) | (PLAYER_ID << 16) | iITemID);
 		shared_ptr<SendBuffer> pBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 		GClientService->GetClientSession()->Send(pBuffer);
 

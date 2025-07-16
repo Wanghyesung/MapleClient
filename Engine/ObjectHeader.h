@@ -109,3 +109,4 @@
 #include "WWhiggin.h"
 #include "WWhite.h"
 #include "WWind.h"
+#include "WDamageFont.h"

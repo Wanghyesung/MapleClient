@@ -601,7 +601,6 @@ namespace W
 		UCHAR cScene = SceneManger::GetActiveScene()->GetSceneID();
 		UCHAR cLayer = (UCHAR)eLayerType::Player;
 		UCHAR cPlayerID = GetObjectID();
-		//UCHAR cEquipType = (UCHAR)_iPlayerPart;
 		pkt.set_scene_layer_playerid_equipid((cScene << 24) | (cLayer << 16) | (cPlayerID << 8));
 		//아이템 부위 , 장비 부위, 입는건지 해제하는건지, 아이템 아이디
 		if (_pEquip != nullptr)

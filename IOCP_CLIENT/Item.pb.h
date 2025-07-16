@@ -177,15 +177,15 @@ class C_ITEM final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kScenePlayeridItemIdFieldNumber = 1,
+    kScenePlayeridItemidFieldNumber = 1,
   };
-  // uint32 scene_playerid_item_id = 1;
-  void clear_scene_playerid_item_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 scene_playerid_item_id() const;
-  void set_scene_playerid_item_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 scene_playerid_itemid = 1;
+  void clear_scene_playerid_itemid();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_playerid_itemid() const;
+  void set_scene_playerid_itemid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_playerid_item_id() const;
-  void _internal_set_scene_playerid_item_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_playerid_itemid() const;
+  void _internal_set_scene_playerid_itemid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.C_ITEM)
@@ -195,7 +195,7 @@ class C_ITEM final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 scene_playerid_item_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_playerid_itemid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Item_2eproto;
 };
@@ -309,16 +309,16 @@ class S_ITEM final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kScenePlayeridItemidFieldNumber = 1,
+    kScenePlayeridFuncidFieldNumber = 1,
     kItemValueFieldNumber = 2,
   };
-  // uint32 scene_playerid_itemid = 1;
-  void clear_scene_playerid_itemid();
-  ::PROTOBUF_NAMESPACE_ID::uint32 scene_playerid_itemid() const;
-  void set_scene_playerid_itemid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 scene_playerid_funcid = 1;
+  void clear_scene_playerid_funcid();
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_playerid_funcid() const;
+  void set_scene_playerid_funcid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_playerid_itemid() const;
-  void _internal_set_scene_playerid_itemid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_scene_playerid_funcid() const;
+  void _internal_set_scene_playerid_funcid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // uint32 item_value = 2;
@@ -337,7 +337,7 @@ class S_ITEM final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 scene_playerid_itemid_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 scene_playerid_funcid_;
   ::PROTOBUF_NAMESPACE_ID::uint32 item_value_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Item_2eproto;
@@ -353,48 +353,48 @@ class S_ITEM final :
 #endif  // __GNUC__
 // C_ITEM
 
-// uint32 scene_playerid_item_id = 1;
-inline void C_ITEM::clear_scene_playerid_item_id() {
-  scene_playerid_item_id_ = 0u;
+// uint32 scene_playerid_itemid = 1;
+inline void C_ITEM::clear_scene_playerid_itemid() {
+  scene_playerid_itemid_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_ITEM::_internal_scene_playerid_item_id() const {
-  return scene_playerid_item_id_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_ITEM::_internal_scene_playerid_itemid() const {
+  return scene_playerid_itemid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 C_ITEM::scene_playerid_item_id() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_ITEM.scene_playerid_item_id)
-  return _internal_scene_playerid_item_id();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 C_ITEM::scene_playerid_itemid() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_ITEM.scene_playerid_itemid)
+  return _internal_scene_playerid_itemid();
 }
-inline void C_ITEM::_internal_set_scene_playerid_item_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void C_ITEM::_internal_set_scene_playerid_itemid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  scene_playerid_item_id_ = value;
+  scene_playerid_itemid_ = value;
 }
-inline void C_ITEM::set_scene_playerid_item_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_scene_playerid_item_id(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_ITEM.scene_playerid_item_id)
+inline void C_ITEM::set_scene_playerid_itemid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_playerid_itemid(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_ITEM.scene_playerid_itemid)
 }
 
 // -------------------------------------------------------------------
 
 // S_ITEM
 
-// uint32 scene_playerid_itemid = 1;
-inline void S_ITEM::clear_scene_playerid_itemid() {
-  scene_playerid_itemid_ = 0u;
+// uint32 scene_playerid_funcid = 1;
+inline void S_ITEM::clear_scene_playerid_funcid() {
+  scene_playerid_funcid_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_ITEM::_internal_scene_playerid_itemid() const {
-  return scene_playerid_itemid_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_ITEM::_internal_scene_playerid_funcid() const {
+  return scene_playerid_funcid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 S_ITEM::scene_playerid_itemid() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_ITEM.scene_playerid_itemid)
-  return _internal_scene_playerid_itemid();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 S_ITEM::scene_playerid_funcid() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_ITEM.scene_playerid_funcid)
+  return _internal_scene_playerid_funcid();
 }
-inline void S_ITEM::_internal_set_scene_playerid_itemid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void S_ITEM::_internal_set_scene_playerid_funcid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  scene_playerid_itemid_ = value;
+  scene_playerid_funcid_ = value;
 }
-inline void S_ITEM::set_scene_playerid_itemid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_scene_playerid_itemid(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_ITEM.scene_playerid_itemid)
+inline void S_ITEM::set_scene_playerid_funcid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_scene_playerid_funcid(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_ITEM.scene_playerid_funcid)
 }
 
 // uint32 item_value = 2;

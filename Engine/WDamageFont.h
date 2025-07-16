@@ -14,20 +14,17 @@ namespace W
 		virtual void LateUpdate()override;
 		virtual void Render()override;
 
+		virtual void UpdateState(const wstring& _strStateName, int _iState);
+
 		void CheckDamage(UINT _iDamage);
 
 	private:
-		bool m_bActive;
-
-		float m_fCurTime;
-		float m_fDeleteTime;
-
 		Vector4 m_vColor;
-		UINT m_iCount;
-		static UINT FontCount;
+		int m_iDamage;
 
-	friend class BattleManager;
+		static UINT FONTCOUNT;
 	};
 }
+
 
 

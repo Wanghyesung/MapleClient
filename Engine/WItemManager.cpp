@@ -104,10 +104,10 @@ namespace W
 		return pIcon->m_iItemID;
 	}
 
-	void ItemManager::ExcuteItem(UINT _iItemInfo, UINT _iItemValue)
+	void ItemManager::ExcuteItem(UINT _iFuncInfo, UINT _iItemValue)
 	{
-		USHORT sFuncID = _iItemInfo & 0xFFFF;
-		UCHAR cPlayerID = (_iItemInfo >> 16) & 0xFF;
+		USHORT sFuncID = _iFuncInfo & 0xFFFF;
+		UCHAR cPlayerID = (_iFuncInfo >> 16) & 0xFF;
 
 		m_vecItemEvent[sFuncID](cPlayerID, _iItemValue);
 	}

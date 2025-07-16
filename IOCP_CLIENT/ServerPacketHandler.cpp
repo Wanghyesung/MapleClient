@@ -55,10 +55,10 @@ bool Handle_S_EQUIP(shared_ptr<Session> _pSession, Protocol::S_EQUIP& _pkt)
 
 bool Handle_S_ITEM(shared_ptr<Session> _pSession, Protocol::S_ITEM& _pkt)
 {
-	UINT iItemInfo = _pkt.scene_playerid_itemid();
+	UINT iFuncInfo = _pkt.scene_playerid_funcid();
 	UINT iItemValue = _pkt.item_value();
 
-	EventManager::UsingItem(iItemInfo, iItemValue);
+	EventManager::UsingItem(iFuncInfo, iItemValue);
 	return true;
 }
 

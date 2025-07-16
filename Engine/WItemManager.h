@@ -15,7 +15,7 @@ namespace W
 		static const wstring& GetItemName(UINT _iID);
 		static int GetItemID(const wstring& _strName);
 
-		static void ExcuteItem(UINT _iItemInfo, UINT _iItemValue);
+		static void ExcuteItem(UINT _iFuncInfo, UINT _iItemValue);
 	private:
 		static void initialize_factory();
 		static void initialize_function();

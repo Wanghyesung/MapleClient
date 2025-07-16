@@ -15,19 +15,7 @@ namespace renderer
 	using namespace W;
 	W::ConstantBuffer* constantBuffer[(UINT)eCBType::END] = {};
 
-	
-	
-	//텍스쳐 이미지 없으면 albedo
-	//출력병합단계에서 깊이테스트, 알파테스트 과정
-	//레스터라이저 (컬링 모드 : 물체가 뒷면(메쉬제외 앞면제거할지 뒷면제거할지) solidback 뒷면제거 , front앞 none(제거 x), wireframeNone(mesh보이게)
-	// 스카이박스 (ex::front 앞면을 지움 카메라와같은 방향이지만 뒷면이 보임)
-	//뎁스 스테이트 (깊이 ex: z값이 작은수로할지 큰수로할지 앞뒤판별, 반투명물체 석을때) (less더 작은걸 앞에, greater 큰거, none X 
-	// 런더타켓의 픽셀들의 깊이정보를 비교하여 픽셀셰이더에서 작은걸로 비교(less) (스텐실버퍼 -> 공판화 틀?)
-	//블렌드 스테이트 (알파 블렌딩) default , alphablend(투명값적용) 
-	//bindpixle 때 어떤 레스터라이저, 뎁스, 블랜드 스테이더로 할지 결정
-	//셰이더에서 상태값 변수로
-	//om->깊이상태,블랜드
-	//텍스쳐에서 샘플러 
+
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> m_cpSamplerState[(UINT)eSamplerType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> m_cpRasterizerStates[(UINT)eRSType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> m_cpDepthStencilStates[(UINT)eDSType::End] = {};
@@ -626,6 +614,7 @@ namespace renderer
 		pMater->SetShader(pUtimateShader);
 		Resources::Insert(L"UltimateMaterial", pMater);
 
+	
 	}
 	
 

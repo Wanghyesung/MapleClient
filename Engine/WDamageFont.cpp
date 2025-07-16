@@ -3,21 +3,19 @@
 #include "WSceneManger.h"
 #include "WTexture.h"
 #include "WRenderer.h"
-#include "WBattleManager.h"
 #include "WTransform.h"
 
 namespace W
 {
-	UINT DamageFont::FontCount = 0;
-
+	UINT DamageFont::FONTCOUNT = 0;
 	DamageFont::DamageFont():
-		m_bActive(false),
-		m_fCurTime(0.f),
-		m_fDeleteTime(2.3f),
-		m_iCount(FontCount++),
-		m_vColor(Vector4(1.f,1.f,1.f,0.2f))
+		m_vColor(Vector4(1.f,1.f,1.f,0.2f)),
+		m_iDamage(-1)
 	{
-		std::shared_ptr<Material> pMater = Resources::Find<Material>(L"DamageMater");
+		shared_ptr<Material> pMater = std::make_shared<Material>();
+		pMater->SetShader(Resources::Find<Shader>(L"ObjectShader"));
+		pMater->SetRenderinMode(eRenderingMode::Transparent);
+		Resources::Insert(L"DamageMater" + to_wstring(FONTCOUNT++), pMater);
 
 		MeshRenderer* pMeshRender = AddComponent<MeshRenderer>();
 		pMeshRender->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -30,48 +28,22 @@ namespace W
 	}
 	void DamageFont::Initialize()
 	{
-
+		m_iDamage = -1;
 	}
 	void DamageFont::Update()
 	{
-		if (!m_bActive)
-			return;
-
-		m_fCurTime+= Time::DeltaTime();
-
-		m_vColor.w += Time::DeltaTime();
-
-		if (m_vColor.w >= 1.f)
-			m_vColor.w = 1.f;
 	
-
-		if (m_fCurTime >= m_fDeleteTime)
-		{
-			m_bActive = false;
-			m_fCurTime = 0.f;
-			SceneManger::Erase(this);
-			BattleManager::PushFont(this);
-			return;
-		}
-
-		GameObject::Update();
 	}
 	void DamageFont::LateUpdate()
-	{
-		if (!m_bActive)
+	{	
+		if (m_iDamage == -1)
 			return;
-
-		Transform* pTr = GetComponent<Transform>();
-
-		Vector3 vPosition = pTr->GetPosition();
-		vPosition.y += (0.4f * Time::DeltaTime());
-		pTr->SetPosition(vPosition);
 
 		GameObject::LateUpdate();
 	}
 	void DamageFont::Render()
 	{
-		if (!m_bActive)
+		if (m_iDamage == -1)
 			return;
 
 		renderer::ObjectCB ObjectCB;
@@ -86,6 +58,14 @@ namespace W
 		GameObject::Render();
 	}
 
+	void DamageFont::UpdateState(const wstring& _strStateName, int _iState)
+	{
+		m_vColor.w = (_iState / 10000.f);
+		
+		if (m_iDamage == -1)
+			CheckDamage((_iState >> 16));
+	}
+
 	void DamageFont::CheckDamage(UINT _iDamage)
 	{	
 		std::wstring strNum = std::to_wstring(_iDamage);
@@ -97,5 +77,6 @@ namespace W
 		GetComponent<Transform>()->SetScale(0.01f * spTex->GetWidth() , 0.01f * spTex->GetHeight() , 0.f);
 
 		m_vColor = Vector4(1.f, 1.f, 1.f, 0.2f);
+		m_iDamage = _iDamage;
 	}
 }
