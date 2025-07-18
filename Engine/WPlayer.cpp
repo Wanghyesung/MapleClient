@@ -158,7 +158,8 @@ namespace W
 		if (!_strStateName.empty())
 			m_strCurStateName = _strStateName;
 
-		UCHAR cShadow = (_iState >> 24) & 0xFF;
+		UCHAR cDark = (_iState >> 28) & 0x0F;
+		UCHAR cShadow = (_iState >> 24) & 0x0F;
 		UCHAR cAlert = (_iState >> 16) & 0xFF;
 		UCHAR cDir = (_iState >> 8) & 0xFF;
 		UCHAR cAnimIdx = _iState & 0xFF;
@@ -166,6 +167,7 @@ namespace W
 		m_bAlert = cAlert > 0 ? true : false;
 		m_iDir = cDir > 0 ? 1 : -1;
 		m_iAnimIdx = cAnimIdx;
+		m_bActiveDark = cDark;
 
 		update_shadow(cShadow);
 	}

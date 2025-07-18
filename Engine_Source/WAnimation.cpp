@@ -4,7 +4,6 @@
 #include "WRenderer.h"
 #include "WConstantBuffer.h"
 #include "WGameObject.h"
-#include "..\Engine\WAnimationManager.h"
 namespace W
 {
 	Animation::Animation():
@@ -48,7 +47,7 @@ namespace W
 	{
 
 	}
-	void Animation::Create(std::wstring _strName, std::shared_ptr<Texture> _pAtlas, Vector2 _vLeftTop, 
+	void Animation::Create(const std::wstring& _strName, std::shared_ptr<Texture> _pAtlas, Vector2 _vLeftTop, 
 		Vector2 _vSize, UINT _iColumnLength, Vector2 _vDivisionSize, Vector2 _vOffset, Vector2 _vAtlasSize ,float _fDuration)
 	{
 		SetKey(_strName);
@@ -71,7 +70,7 @@ namespace W
 		{
 			//전부 uv좌표 기준으로
 			Sprite tSprite = {};
-			tSprite.SetKey(_strName);
+		
 			//x값은 가운데 y는 그대로 uv좌표계를 기준으로하기 때문에 0~1값으로
 			tSprite.vLeftTop.x = (_vLeftTop.x + (i * _vSize.x)) / fWidth;
 			tSprite.vLeftTop.y = _vLeftTop.y / fHeight;
@@ -81,7 +80,6 @@ namespace W
 			tSprite.vAtlasSize = Vector2(_vDivisionSize.x/fWidth, _vDivisionSize.y/ fHeight);
 			tSprite.fDuration = _fDuration;
 
-			//AnimationManager::AddAnimationSprtie(tSprite);
 			m_vecSprite.push_back(tSprite);
 		}
 	}
@@ -107,7 +105,6 @@ namespace W
 		spAtlas->BindShaderResource(eShaderStage::PS, 12);
 
 		renderer::AnimatorCB data = {};
-		//const vector<Sprite>& vecSprite = AnimationManager::FindAnimtionSprtie(GetKey());
 		
 		data.vSpriteLeftTop = m_vecSprite[iIndex].vLeftTop;
 		data.vSprteSize = m_vecSprite[iIndex].vSize;

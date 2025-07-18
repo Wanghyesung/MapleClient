@@ -21,10 +21,8 @@ namespace W
 	{
 		Resources::Find<Texture>(L"vine");
 
-		std::shared_ptr<Material> pMater = std::make_shared<Material>();
+		std::shared_ptr<Material> pMater = Resources::Find<Material>(L"FullScreenAnimMaterial");
 		pMater->SetRenderinMode(eRenderingMode::Transparent);
-		pMater->SetShader(Resources::Find<Shader>(L"SpriteAnimationShader"));
-		Resources::Insert(L"DemianVineMater", pMater);
 
 		MeshRenderer* pRenderer = AddComponent<MeshRenderer>();
 		pRenderer->SetMesh(Resources::Find<Mesh>(L"RectMesh"));

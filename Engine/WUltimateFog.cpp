@@ -10,7 +10,7 @@ namespace W
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 
-		std::shared_ptr<Material> pMater = Resources::Find<Material>(L"UltimateMaterial");
+		std::shared_ptr<Material> pMater = Resources::Find<Material>(L"FullScreenAnimMaterial");
 		pMater->SetRenderinMode(eRenderingMode::Transparent);
 		mr->SetMaterial(pMater);
 

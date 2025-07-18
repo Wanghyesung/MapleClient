@@ -611,9 +611,6 @@
     <ClInclude Include="WInputPacket.h" />
     <ClInclude Include="WPacket.h" />
     <ClInclude Include="WPacketManager.h" />
-    <ClInclude Include="WAnimationManager.h">
-      <Filter>Contents\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="WDamageFont.h">
       <Filter>Contents\Object\DamageFont</Filter>
     </ClInclude>
@@ -1223,9 +1220,6 @@
     <ClCompile Include="WInputPacket.cpp" />
     <ClCompile Include="WPacketManager.cpp" />
     <ClCompile Include="WPacket.cpp" />
-    <ClCompile Include="WAnimationManager.cpp">
-      <Filter>Contents\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="WDamageFont.cpp">
       <Filter>Contents\Object\DamageFont</Filter>
     </ClCompile>

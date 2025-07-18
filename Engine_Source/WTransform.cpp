@@ -57,7 +57,6 @@ namespace W
 	}
 	void Transform::LateUpdate()
 	{
-
 		if (!GetOwner()->IsClientObject())
 		{
 			if (m_fCurLerpTime / m_fLerpTime < 1.f)
@@ -93,6 +92,7 @@ namespace W
 	{
 
 	}
+
 	void Transform::BindConstantBuffer()
 	{
 			renderer::TransformCB trCB = {};

@@ -133,7 +133,7 @@ namespace renderer
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
 
-		pShader = W::Resources::Find<Shader>(L"UltimateShader");
+		pShader = W::Resources::Find<Shader>(L"FullScreenAnimShader");
 		GetDevice()->CreateInputLayout(arrLayout, 3
 			, pShader->GetVSCode()
 			, pShader->GetInputLayoutAddressOf());
@@ -504,7 +504,7 @@ namespace renderer
 		std::shared_ptr<Shader> pUltimateShader = std::make_shared<Shader>();
 		pUltimateShader->Create(eShaderStage::VS, L"FullScreenVS.hlsl", "main");
 		pUltimateShader->Create(eShaderStage::PS, L"FullScreenAnimPS.hlsl", "main");
-		W::Resources::Insert(L"UltimateShader", pUltimateShader);
+		W::Resources::Insert(L"FullScreenAnimShader", pUltimateShader);
 	}
 
 	void LoadTexture()
@@ -609,12 +609,10 @@ namespace renderer
 		pMater->SetRenderinMode(eRenderingMode::Opaque);
 		Resources::Insert(L"FullScreenMaterial", pMater);
 
-		std::shared_ptr<Shader> pUtimateShader = Resources::Find<Shader>(L"UltimateShader");
+		std::shared_ptr<Shader> pUtimateShader = Resources::Find<Shader>(L"FullScreenAnimShader");
 		pMater = std::make_shared<Material>();
 		pMater->SetShader(pUtimateShader);
-		Resources::Insert(L"UltimateMaterial", pMater);
-
-	
+		Resources::Insert(L"FullScreenAnimMaterial", pMater);
 	}
 	
 

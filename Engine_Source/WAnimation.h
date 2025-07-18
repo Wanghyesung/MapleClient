@@ -1,11 +1,28 @@
 #pragma once
 #include "WResource.h"
 #include "WTexture.h"
-#include "..\Engine\WAnimationManager.h"
 
 namespace W
 {
-	
+	struct Sprite 
+	{
+		Vector2 vLeftTop;
+		Vector2 vSize;
+		Vector2 vOffset;
+		Vector2 vAtlasSize;
+		float fDuration;
+
+		Sprite() :
+			vLeftTop(Vector2::Zero),
+			vSize(Vector2::Zero),
+			vOffset(Vector2::Zero),
+			vAtlasSize(Vector2::Zero),
+			fDuration(0.f)
+		{
+
+		}
+	};
+
 	class Animator;
 	class Animation : public Resource
 	{
@@ -20,7 +37,7 @@ namespace W
 		void LateUpdate();
 		void Render();
 
-		void Create(std::wstring _strName,
+		void Create(const std::wstring& _strName,
 			std::shared_ptr<Texture> _pAtlas,
 			Vector2 _vLeftTop,
 			Vector2 _vSize,
