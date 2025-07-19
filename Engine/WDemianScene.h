@@ -19,20 +19,12 @@ namespace W
 
 		virtual void CreateBackground() override;
 
-		virtual void StartSound()override;
-		virtual void EndSound()override;
-
 		virtual void SendEnter()override;
 
 	protected:
 		virtual void add_objectpool()override;
 		virtual void mapping_resource()override;
 
-	private:
-		void fadein();
-		void phase2();
-	private:
-		void create_monster();
 
 	};
 }

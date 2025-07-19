@@ -33,12 +33,10 @@ namespace W
 		template <typename T>
 		static std::shared_ptr<T> Load(const std::wstring& _strKey, const std::wstring& _strPath)
 		{
-			// 키값으로 탐색
 			std::shared_ptr<T> resource = Resources::Find<T>(_strKey);
 			if (resource != nullptr)
 				return resource;
 
-			// 해당 리소스가 없다면
 			resource = std::make_shared<T>();
 			if (FAILED(resource->Load(_strPath)))
 			{
@@ -51,7 +49,6 @@ namespace W
 
 			{
 				std::lock_guard<mutex> lock(m_mutex);
-				//WLock lock(m_lock);
 				m_mapResources.insert(std::make_pair(_strKey, resource));
 			}
 

@@ -2,6 +2,7 @@
 #include "WAudioClip.h"
 #include "WTransform.h"
 #include "WGameObject.h"
+#include "WSoundManager.h"
 
 namespace W
 {
@@ -9,7 +10,7 @@ namespace W
 
 	AudioSource::AudioSource()
 		: Component(eComponentType::AudioSource)
-		, mAudioClip(nullptr)
+		, m_wpAudioClip{}
 	{
 
 	}
@@ -33,23 +34,34 @@ namespace W
 		Vector3 pos = tr->GetPosition();
 		Vector3 foward = tr->Foward();
 
-		mAudioClip->Set3DAttributes(pos, foward);
+		if(auto spClip = m_wpAudioClip.lock())
+			spClip->Set3DAttributes(pos, foward);
 	}
 
 	void AudioSource::Render()
 	{
+
 	}
 
 	void AudioSource::Play()
 	{
-		mAudioClip->Play();
+		if (auto spClip = m_wpAudioClip.lock())
+		{
+			spClip->SetSoundType(eSoundType::Play);
+			SoundManager::Push(spClip);
+		}
 	}
 	void AudioSource::Stop()
 	{
-		mAudioClip->Stop();
+		if (auto spClip = m_wpAudioClip.lock())
+		{
+			spClip->SetSoundType(eSoundType::Stop);
+			SoundManager::Push(spClip);
+		}
 	}
 	void AudioSource::SetLoop(bool loop)
 	{
-		mAudioClip->SetLoop(loop);
+		if (auto spClip = m_wpAudioClip.lock())
+			spClip->SetLoop(loop);
 	}
 }

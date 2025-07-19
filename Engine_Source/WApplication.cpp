@@ -73,7 +73,8 @@ namespace W
 		PathManager::Initialize();
 		ThreadPool::Initiailize(4);
 		Input::Initialize();
-	
+		Fmod::Initialize();
+
 		renderer::Initialize();
 
 		EventManager::Initialize();

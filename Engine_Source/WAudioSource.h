@@ -10,7 +10,7 @@ namespace W
 
 	public:
 		AudioSource();
-		~AudioSource();
+		virtual ~AudioSource();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -22,10 +22,10 @@ namespace W
 		void Stop();
 		void SetLoop(bool loop);
 
-		void SetClip(std::shared_ptr<AudioClip> clip) { mAudioClip = clip; }
-		std::shared_ptr<AudioClip> GetClip() { return mAudioClip; }
+		void SetClip(std::shared_ptr<AudioClip> clip) { m_wpAudioClip = clip; }
+		std::weak_ptr<AudioClip> GetClip() { return m_wpAudioClip; }
 
 	private:
-		std::shared_ptr<AudioClip> mAudioClip;
+		std::weak_ptr<AudioClip> m_wpAudioClip;
 	};
 }

@@ -53,6 +53,7 @@ namespace W
 		ThreadPool::LoadingResource<Texture>(L"shadowe1ffect", L"..\\Resources\\Texture\\Player\\skill\\effect5.png");
 		ThreadPool::LoadingResource<Texture>(L"shadowe2ffect", L"..\\Resources\\Texture\\Player\\skill\\effect6.png");
 
+
 		for (int i = 0; i <= 9; ++i)
 		{
 			wstring strNum = to_wstring(i);

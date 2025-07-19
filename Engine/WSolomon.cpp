@@ -60,7 +60,7 @@ namespace W
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"SolomonTex");
 		pAnim->SetTexture(pAtlas);
 
-		pAnim->Play(L"Solomon_stand", true);
+		m_strCurStateName.clear();
 	}
 	void Solomon::Update()
 	{

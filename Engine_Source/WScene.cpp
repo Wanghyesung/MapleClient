@@ -71,14 +71,37 @@ namespace W
 		for (int i = 0; i < m_vecResource.size(); ++i)
 			ThreadPool::LoadingResource<Texture>(m_vecResource[i].first, m_vecResource[i].second);
 
+		for (int i = 0; i < m_vecSoundResource.size(); ++i)
+			ThreadPool::LoadingResource<AudioClip>(m_vecSoundResource[i].first, m_vecSoundResource[i].second);
+
 		StartLoading();
 	}
 	void Scene::OnExit()
 	{
+		EndSound();
+
 		for (int i = 0; i < m_vecResource.size(); ++i)
-		{
 			ThreadPool::DeleteResource<Texture>(m_vecResource[i].first);
+
+		for (int i = 0; i < m_vecSoundResource.size(); ++i)
+			ThreadPool::DeleteResource<AudioClip>(m_vecSoundResource[i].first);
+	}
+	void Scene::StartSound()
+	{
+		for (int i = 0; i < m_vecSoundResource.size(); ++i)
+		{
+			ThreadPool::Enqueue([=]()
+				{
+					auto spClip = Resources::Find<AudioClip>(m_vecSoundResource[i].first);
+					spClip->SetLoop(true);
+					spClip->Play();
+				});
 		}
+	}
+	void Scene::EndSound()
+	{
+		for (int i = 0; i < m_vecSoundResource.size(); ++i)
+			Resources::Find<AudioClip>(m_vecSoundResource[i].first)->Stop();
 	}
 	void Scene::AddGameObject(eLayerType _eType, GameObject* _pGameObj)
 	{
@@ -99,6 +122,8 @@ namespace W
 		
 		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 		GClientService->GetClientSession()->Send(pSendBuffer);
+
+		StartSound();
 	}
 
 	void Scene::RenderLoading()

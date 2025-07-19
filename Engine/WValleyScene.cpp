@@ -49,7 +49,8 @@ namespace W
 		//¸®¼Ò½º
 		m_vecResource.push_back(std::make_pair(L"SkelegonTex", L"..\\Resources\\Texture\\Monster\\skelegon.png"));
 		m_vecResource.push_back(std::make_pair(L"SklaserEffect", L"..\\Resources\\Texture\\Monster\\attack1_hit.png"));
-		
+
+		m_vecSoundResource.push_back(std::make_pair(L"valleysound", L"..\\Resources\\sound\\DragonNest.mp3"));
 	}
 	ValleyScene::~ValleyScene()
 	{
@@ -57,6 +58,7 @@ namespace W
 	}
 	void ValleyScene::Initialize()
 	{
+	
 		CreateBackground();
 		setobject();
 		add_objectpool();
@@ -118,13 +120,14 @@ namespace W
 		Protocol::C_START_MAP pkt;
 		
 		UINT iSceneID = GetSceneID();
-
 		pkt.set_scene_player_id((iSceneID<<16) | PLAYER_ID);
 		
 		SceneManger::StartWaitForMapData();
 		
 		shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 		GClientService->GetClientSession()->Send(pSendBuffer);
+
+		Scene::StartSound();
 	}
 
 	void ValleyScene::OnEnter()
@@ -149,15 +152,7 @@ namespace W
 		pBackGround->GetComponent<Transform>()->SetScale(25 * 0.35f,  25.f * 1.f, 1.f);
 	}
 
-	void ValleyScene::StartSound()
-	{
-		
-	}
 
-	void ValleyScene::EndSound()
-	{
-
-	}
 
 	void ValleyScene::add_objectpool()
 	{

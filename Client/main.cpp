@@ -16,7 +16,7 @@
 #include "..\Engine_Source\WFontWrapper.h"
 #include "..\Engine\LoadScene.h"
 #include "..\Engine_Source\WThreadPool.h"
-
+#include "..\Engine_Source\WSoundManager.h"
 /*/////////////////////
         IOCP
 *//////////////////////
@@ -84,12 +84,19 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
+    thread tSoundThread = thread([=]()
+        {
+            while (bIsRunning.load())
+                W::SoundManager::Update();
+        });
+
     GClientService = make_shared<ClientService>(NetAddress(L"127.0.0.1", 7777),
         make_shared<IOCP>(), MakeSharedSesion, 1);
-    
+
     ServerPacketHandler::Initialize();
     GClientService->Start();
     GClientService->Connect();
+
     for (int i = 0; i < 4; ++i)
     {
         ThreadMgr->Excute(
@@ -143,8 +150,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     renderer::Release();
     
     W::ThreadPool::Shutdown();
+    tSoundThread.join();
     W::SceneManger::Release();
-    
+    W::Fmod::Release();
    
     ThreadMgr->Join();
 

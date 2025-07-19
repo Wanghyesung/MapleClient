@@ -10,7 +10,7 @@ namespace W
 
 	public:
 		AudioListener();
-		~AudioListener();
+		virtual ~AudioListener();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -19,5 +19,7 @@ namespace W
 
 
 	private:
+
+		friend class SoundManager;
 	};
 }

@@ -222,6 +222,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WPathManager.cpp">
       <Filter>PathManager</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WRingBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WSoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)WEntity.h">
@@ -359,6 +361,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ComponentHeader.h">
       <Filter>GameObject\Component</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WRingBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WSoundManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)WMath.inl">

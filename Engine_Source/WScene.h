@@ -39,8 +39,8 @@ namespace W
 
 		virtual void CreateBackground() {};
 
-		virtual void StartSound() {};
-		virtual void EndSound() {};
+		void StartSound();
+		void EndSound();
 
 		void AddGameObject(eLayerType _eType, GameObject* _pGameObj);
 		
@@ -96,8 +96,10 @@ namespace W
 		virtual void mapping_resource() {}; //생성된 리소스를 오브젝트 풀에 있는 오브젝트와 맵핑
 
 		void mapping_texture(const wstring& _strTexName, const wstring& _strObjectName, const wstring& _strObjectAnimName= L"");
+		
 	protected:
 		std::vector<std::pair<std::wstring, std::wstring>> m_vecResource;
+		std::vector<std::pair<std::wstring, std::wstring>> m_vecSoundResource;
 
 	private:
 		static std::vector<eLayerType> m_vecUpdateLayer;

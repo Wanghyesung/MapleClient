@@ -13,7 +13,8 @@ namespace W
 		m_iDir(1),
 		m_bClientObject(false),
 		m_bObjectPool(false),
-		m_bRender(true)
+		m_bRender(true),
+		m_iAnimIdx(0)
 	{
 		m_vecComponent.resize((UINT)eComponentType::End);
 		AddComponent<Transform>();

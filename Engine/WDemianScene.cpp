@@ -75,6 +75,8 @@ namespace W
 		m_vecResource.push_back(std::make_pair(L"demianClone1", L"..\\Resources\\Texture\\Monster\\demian\\demianclone1.png"));
 		m_vecResource.push_back(std::make_pair(L"DemianTarget", L"..\\Resources\\Texture\\Monster\\demian\\target.png"));
 
+		m_vecSoundResource.push_back(std::make_pair(L"Helisiumsound", L"..\\Resources\\sound\\thefinalWar.mp3"));
+
 	}
 	DemianScene::~DemianScene()
 	{
@@ -147,14 +149,6 @@ namespace W
 		pBackGround->GetComponent<Transform>()->SetScale(2.2372f * 8.f, 1.f * 8.f, 1.f);
 	}
 
-	void DemianScene::StartSound()
-	{
-	
-	}
-
-	void DemianScene::EndSound()
-	{
-	}
 
 	void DemianScene::SendEnter()
 	{

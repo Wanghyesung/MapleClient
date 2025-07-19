@@ -40,6 +40,8 @@ namespace W
 		m_vecResource.push_back(std::make_pair(L"Megnus_attack3_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack3_hit.png"));
 		m_vecResource.push_back(std::make_pair(L"Megnus_attack4_hit", L"..\\Resources\\Texture\\Monster\\megnus\\attack4_hit.png"));
 
+		m_vecSoundResource.push_back(std::make_pair(L"Helisiumsound", L"..\\Resources\\sound\\thefinalWar.mp3"));
+
 	}
 	HelisiumBoss::~HelisiumBoss()
 	{
@@ -117,15 +119,7 @@ namespace W
 		pBackGround->GetComponent<Transform>()->SetScale(3.65f * 8.f, 1.f * 8.f, 1.f);
 
 	}
-	void HelisiumBoss::StartSound()
-	{
-		
-	}
 
-	void HelisiumBoss::EndSound()
-	{
-		
-	}
 	void HelisiumBoss::add_objectpool()
 	{
 		Megnus* pMegnus = new Megnus();

@@ -20,9 +20,6 @@ namespace W
 
 		virtual void CreateBackground() override;
 
-		virtual void StartSound()override;
-		virtual void EndSound()override;
-
 	protected:
 		virtual void add_objectpool()override;
 		virtual void mapping_resource()override;

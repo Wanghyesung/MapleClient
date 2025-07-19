@@ -31,11 +31,11 @@ namespace W
 	void AudioListener::LateUpdate()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-		Vector3 pos = tr->GetPosition();
-		Vector3 foward = tr->Foward();
-		Vector3 up = tr->Up();
+		const Vector3& pos = tr->GetPosition();
+		const Vector3& foward = tr->Foward();
+		const Vector3& up = tr->Up();
 
-		Vector3 vel = { 0.0f, 0.0f, 0.0f };
+		const Vector3& vel = { 0.0f, 0.0f, 0.0f };
 		Fmod::Set3DListenerAttributes(&pos, &vel, &foward, &up);
 	}
 

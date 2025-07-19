@@ -1,6 +1,9 @@
 #include "WAudioClip.h"
 #include "WTransform.h"
 
+#include <codecvt>
+#include <locale>
+
 namespace W
 {
 	AudioClip::AudioClip()
@@ -25,7 +28,7 @@ namespace W
 		std::string cPath(path.begin(), path.end());
 		if (!Fmod::CreateSound(cPath, &mSound))
 			return S_FALSE;
-
+	
 		mSound->set3DMinMaxDistance(mMinDistance, mMaxDistance);
 
 		return S_OK;

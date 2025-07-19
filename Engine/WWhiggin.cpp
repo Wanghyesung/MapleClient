@@ -56,7 +56,8 @@ namespace W
 		std::shared_ptr<Texture> pAtlas = Resources::Find<Texture>(L"WhigginTex");
 
 		pAnim->SetTexture(pAtlas);	
-		pAnim->Play(L"Whiggin_stand", true);
+
+		m_strCurStateName.clear();
 	}
 	void Whiggin::Update()
 	{

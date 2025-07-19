@@ -6,6 +6,8 @@
 #include "..\\External\\Fmod\\Include\\fmod.hpp"
 #include "..\\External\\Fmod\\Include\\fmod_common.h"
 #include "..\\External\\Fmod\\Include\\fmod_codec.h"
+#include "..\\External\\Fmod\\Include\\fmod_errors.h"
+
 //#include "..\\External\\Include\\Fmod\\common_platform.h"
 
 #ifdef _DEBUG

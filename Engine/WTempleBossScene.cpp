@@ -59,6 +59,8 @@ namespace W
 		m_vecResource.push_back(std::make_pair(L"Munin_attack1_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Munin\\attack1_hit.png"));
 		m_vecResource.push_back(std::make_pair(L"Whiggin_attack0_hit", L"..\\Resources\\Texture\\Monster\\Pinkbean\\Whiggin\\attack0_hit.png"));
 
+		m_vecSoundResource.push_back(std::make_pair(L"pinkbeansound", L"..\\Resources\\sound\\FightingPinkBeen.mp3"));
+
 	}
 	TempleBossScene::~TempleBossScene()
 	{
@@ -132,15 +134,6 @@ namespace W
 		mapping_resource();
 
 		Scene::SendEnter();
-	}
-
-	void TempleBossScene::StartSound()
-	{
-	
-	}
-
-	void TempleBossScene::EndSound()
-	{
 	}
 
 	void TempleBossScene::add_objectpool()

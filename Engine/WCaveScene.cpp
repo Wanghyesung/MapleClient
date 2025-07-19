@@ -61,6 +61,7 @@ namespace W
 		m_vecResource.push_back(std::make_pair(L"legattack2Effect", L"..\\Resources\\Texture\\Monster\\Horntail\\Leg\\attack2_hit.png"));
 		m_vecResource.push_back(std::make_pair(L"tailEffect", L"..\\Resources\\Texture\\Monster\\Horntail\\tail\\attack0_hit.png"));
 
+		m_vecSoundResource.push_back(std::make_pair(L"cavesound", L"..\\Resources\\sound\\HonTale.mp3"));
 	}
 	CaveScene::~CaveScene()
 	{
@@ -141,20 +142,7 @@ namespace W
 		pBackGround->GetComponent<Transform>()->SetScale(14.f * 1.f, 10.f * 1.f, 1.f);
 		
 	}
-	void CaveScene::StartSound()
-	{
-		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
-		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->SetLoop(true);
-		pAudio->Play();*/
-	}
-
-	void CaveScene::EndSound()
-	{
-		/*const std::vector<GameObject*> m_vecBackGround = GetLayer(eLayerType::Background).GetGameObjects();
-		AudioSource* pAudio = m_vecBackGround[0]->GetComponent<AudioSource>();
-		pAudio->Stop();*/
-	}
+	
 	void CaveScene::create_object()
 	{	
 		std::shared_ptr<Texture> pLadder9 = Resources::Load<Texture>(L"Ladder9BaseTex", L"..\\Resources\\Texture\\Object\\ladder\\9_base.png");
