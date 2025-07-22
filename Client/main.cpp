@@ -47,6 +47,7 @@ atomic<bool> bIsRunning = true;
 W::Application application;
 extern shared_ptr< ClientService> GClientService;
 UINT PLAYER_ID;
+string PLAYER_NAME = "";
 
 #define MAX_LOADSTRING 100
 
@@ -77,6 +78,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_CLIENT, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
+
+    //게임 아이디를 파일에 등록후 입장
+    ifstream ifs(L"..\\Resources\\GameData\\LoginID.txt");
+    if (ifs.is_open() == false)
+    {
+        assert(nullptr);
+    }
+
+    PLAYER_NAME = "";
+    ifs >> PLAYER_NAME;
+    if (PLAYER_NAME.empty())
+        assert(nullptr);
+
+    ifs.close();
+
 
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))

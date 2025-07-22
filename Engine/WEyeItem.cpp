@@ -32,7 +32,6 @@ namespace W
 	}
 	void EyeItem::Initialize()
 	{
-
 	}
 	void EyeItem::Update()
 	{
@@ -76,8 +75,9 @@ namespace W
 
 		UINT iSceneID = SceneManger::GetActiveScene()->GetSceneID();
 		int iITemID = GetItemID();
+		UINT iAppearID = (UINT)eAppearance::Eye;
 
-		pkt.set_scene_playerid_itemid((iSceneID << 24) | (PLAYER_ID << 16) | iITemID);
+		pkt.set_scene_playerid_itemid((iSceneID << 24) | (PLAYER_ID << 16) | (iAppearID <<8) | iITemID);
 		shared_ptr<SendBuffer> pBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 		GClientService->GetClientSession()->Send(pBuffer);
 

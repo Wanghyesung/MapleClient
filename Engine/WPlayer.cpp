@@ -602,8 +602,9 @@ namespace W
 		Protocol::C_EQUIP pkt;
 		UCHAR cScene = SceneManger::GetActiveScene()->GetSceneID();
 		UCHAR cLayer = (UCHAR)eLayerType::Player;
-		UCHAR cPlayerID = GetObjectID();
-		pkt.set_scene_layer_playerid_equipid((cScene << 24) | (cLayer << 16) | (cPlayerID << 8));
+		UCHAR cPlayerID = (UCHAR)GetObjectID();
+		UCHAR cEquipID = (UCHAR)_pEquip->GetEquipType();
+		pkt.set_scene_layer_playerid_equipid((cScene << 24) | (cLayer << 16) | (cPlayerID << 8) | cEquipID);
 		//아이템 부위 , 장비 부위, 입는건지 해제하는건지, 아이템 아이디
 		if (_pEquip != nullptr)
 		{

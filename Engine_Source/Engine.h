@@ -57,6 +57,7 @@
 
 
 // FileSystem
+#include <fstream>
 #define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 #include <experimental/filesystem>
 using namespace std::experimental;
@@ -72,3 +73,4 @@ using namespace std::experimental::filesystem;
 #include "..\IOCP_CLIENT\ServerPacketHandler.h"
 extern shared_ptr< ClientService> GClientService;
 extern UINT PLAYER_ID;
+extern string PLAYER_NAME;

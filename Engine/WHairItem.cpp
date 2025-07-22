@@ -73,18 +73,16 @@ namespace W
 
 	void HairItem::Using()
 	{
-	
 		Protocol::C_ITEM pkt;
 
 		GameObject* pObj = SceneManger::FindPlayer();
 		
 		UINT iSceneID = SceneManger::GetActiveScene()->GetSceneID();
 		int iITemID = GetItemID();
-
-		pkt.set_scene_playerid_itemid((iSceneID<< 24) | (PLAYER_ID << 16) | iITemID);
+		UINT iAppearID = (UINT)eAppearance::Hair;
+		pkt.set_scene_playerid_itemid((iSceneID<< 24) | (PLAYER_ID << 16) | (iAppearID <<8)| iITemID);
 		shared_ptr<SendBuffer> pBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
 		GClientService->GetClientSession()->Send(pBuffer);
-
 
 		DeleteParent();
 		SetState(eState::Dead);

@@ -68,24 +68,24 @@ namespace W
 	{
 		UCHAR cLevel = (_iState >> 8) & 0xFF;
 		UCHAR cAnimIdx = _iState & 0xFF;
-
+	
 		m_iAnimIdx = cAnimIdx;
 
 		if (m_strCurStateName != _strStateName)
 		{
 			m_strCurStateName = _strStateName;
 			GetComponent<Animator>()->Play(m_strCurStateName, true);
+		}
 
-			if (cLevel != m_iLevel)
-			{
-				shared_ptr<Texture> pTex = Resources::Find<Texture>(L"Megnus_Zone" + to_wstring(m_iLevel));
-				GetComponent<Animator>()->SetTexture(pTex);
-
-				if (m_iLevel == 4)
-					SetRender(false);
-			}
-
+		if (cLevel != m_iLevel)
+		{
 			m_iLevel = cLevel;
+
+			shared_ptr<Texture> pTex = Resources::Find<Texture>(L"Megnus_Zone" + to_wstring(m_iLevel));
+			GetComponent<Animator>()->SetTexture(pTex);
+
+			if (m_iLevel == 4)
+				SetRender(false);
 		}
 	}
 	

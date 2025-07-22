@@ -23,7 +23,7 @@
 
 #include "WPathManager.h"
 #include <nlohmann/json.hpp>
-#include <fstream>
+
 namespace W
 {
 	using json = nlohmann::json;

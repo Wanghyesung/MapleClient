@@ -231,7 +231,8 @@ namespace W
 				pObj = GameObjectManager::GetMonsterOfID(cCreateid);
 			else
 				pObj = ObjectPoolManager::PopObject(_tObjData.stringData);
-
+			if (pObj == nullptr)
+				return;
 
 			pObj->GetComponent<Transform>()->SetDirectPosition(_tObjData.tTransformData.vPosition);
 			pObj->GetComponent<Transform>()->SetDirectRotation(_tObjData.tTransformData.vRotation);

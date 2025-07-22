@@ -3,6 +3,14 @@
 
 namespace W
 {
+	enum class eAppearance
+	{
+		None,
+		Hair,
+		Eye,
+		End,
+	};
+
 	class ItemUI : public IconUI
 	{
 	public:
