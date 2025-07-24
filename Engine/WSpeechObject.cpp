@@ -9,7 +9,8 @@ namespace W
 		m_strSpeech{},
 		m_tSpeechInfo{},
 		m_fFontSize(20.f),
-		m_iFontColor(FONT_RGBA(0.f, 0.f, 0.f, 255))
+		m_iFontColor(FONT_RGBA(0.f, 0.f, 0.f, 255)),
+		m_vOffsetPos{}
 	{
 
 	}
@@ -36,7 +37,6 @@ namespace W
 	void SpeechObject::MouseLbtnDown()
 	{
 		UI::MouseLbtnDown();
-
 	}
 	void SpeechObject::MouseLbtnUp()
 	{
@@ -49,8 +49,14 @@ namespace W
 	}
 	Vector2 SpeechObject::GetOffsetPosition()
 	{
-		//지금은 윈도우 해상도 중앙만 리턴
-		return application.GetWindowSize() / 2.f;
+		Vector2 vWindoPosition = application.GetWindowSize() / 2.f;
+
+		float fX = vWindoPosition.x + m_vOffsetPos.x;
+		float fY = vWindoPosition.y + m_vOffsetPos.y;
+
+		Vector2 vWindowPos = Vector2{ fX,fY };
+	
+		return vWindowPos;
 	}
 	void SpeechObject::Speech(const wstring& _strSpeech)
 	{

@@ -22,7 +22,6 @@ namespace W
 
 	public:
 		void SetBaseSpeech(const wstring& _strBaseSpeech) { m_strBaseSpeech = _strBaseSpeech; }
-		void SetSendPktFunc(std::function<void(void)> _pFunc) { m_pSendPktFunc = _pFunc; }
 
 		void SetMaxSpeechSize(UINT _iSize) { m_iMaxSpeechSize = _iSize; }
 		UINT GetMaxSpeechSize() { return m_iMaxSpeechSize; }
@@ -34,7 +33,6 @@ namespace W
 		void repeat_startbar();
 
 		void check_key();
-		void enter();
 
 	private:
 		wstring m_strBaseSpeech;
@@ -47,6 +45,5 @@ namespace W
 
 		UINT m_iMaxSpeechSize;
 
-		std::function<void(void)> m_pSendPktFunc;
 	};
 }

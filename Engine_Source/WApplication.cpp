@@ -115,7 +115,7 @@ namespace W
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
 
-		SceneManger::GetActiveScene()->RenderLoading();
+		SceneManger::RenderLoading();
 
 		//리소스 로딩시간이 길이져 소켓인 끊기지 않기를 방지
 		//static auto last = chrono::steady_clock::now();

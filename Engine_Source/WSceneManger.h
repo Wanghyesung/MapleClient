@@ -84,6 +84,7 @@ namespace W
 		static void SwapCamera();
 	
 		static void SendEnter();
+		static void RenderLoading();
 
 		static void CompletedMapData() {m_bWaitForMapData.store(false); }
 		static void StartWaitForMapData() {m_bWaitForMapData.store(true); }

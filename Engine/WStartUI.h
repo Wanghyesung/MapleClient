@@ -20,10 +20,10 @@ namespace W
 		virtual void MouseLbtnUp()override;
 		virtual void MouseLbtnClicked()override;
 
-		void SetNextScene(const std::wstring _strNextScene) { m_strNextScene = _strNextScene; }
+		void SetFunction(function<void()> _pFunc) { m_pFunction = _pFunc; }
 
 	private:
-		std::wstring m_strNextScene;
+		function<void()> m_pFunction;
 
 		UINT m_iBtnNumber;
 		static UINT COUNT;

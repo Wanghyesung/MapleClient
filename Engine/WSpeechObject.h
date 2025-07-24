@@ -24,9 +24,9 @@ namespace W
 		void SetFontColor(float r, float g, float b, float a) { m_iFontColor = FONT_RGBA(r, g, b, a); }
 		void SetFontSize(float _fSize) { m_fFontSize = _fSize; }
 		void SetSpeech(const wstring& _strSpeech) { m_strSpeech = _strSpeech; };
+		void SetOffsetPosition(Vector2 _vPosition) { m_vOffsetPos = _vPosition; }
 
 		const wstring& GetSpeech() { return m_strSpeech; }
-
 		float GetFontSize() { return m_fFontSize; }
 
 	protected:
@@ -39,6 +39,7 @@ namespace W
 		wstring m_strSpeech;
 		tFontInfo m_tSpeechInfo;
 
+		Vector2 m_vOffsetPos;
 		UINT m_iFontColor;
 		float m_fFontSize;
 	};

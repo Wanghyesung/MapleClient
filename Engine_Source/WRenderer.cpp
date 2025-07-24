@@ -501,10 +501,10 @@ namespace renderer
 		pLoadingShader->SetDSState(eDSType::None);
 		W::Resources::Insert(L"FullScreenShader", pLoadingShader);
 
-		std::shared_ptr<Shader> pUltimateShader = std::make_shared<Shader>();
-		pUltimateShader->Create(eShaderStage::VS, L"FullScreenVS.hlsl", "main");
-		pUltimateShader->Create(eShaderStage::PS, L"FullScreenAnimPS.hlsl", "main");
-		W::Resources::Insert(L"FullScreenAnimShader", pUltimateShader);
+		std::shared_ptr<Shader> pFullScreenhader = std::make_shared<Shader>();
+		pFullScreenhader->Create(eShaderStage::VS, L"FullScreenVS.hlsl", "main");
+		pFullScreenhader->Create(eShaderStage::PS, L"FullScreenAnimPS.hlsl", "main");
+		W::Resources::Insert(L"FullScreenAnimShader", pFullScreenhader);
 	}
 
 	void LoadTexture()

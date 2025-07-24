@@ -86,7 +86,6 @@ namespace W
 		
 		void EraseObject(eLayerType _eType, GameObject* _pGameObj){ m_vecLayer[(UINT)_eType]->EraseOnVector(_pGameObj); }
 
-		void RenderLoading();
 		void CompletedLoading() { m_bLoading.store(false); }
 		void StartLoading() { m_bLoading.store(true); }
 

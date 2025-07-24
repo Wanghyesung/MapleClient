@@ -126,31 +126,6 @@ namespace W
 		StartSound();
 	}
 
-	void Scene::RenderLoading()
-	{
-
-		static shared_ptr<Mesh> pRectMesh = Resources::Find<Mesh>(L"RectMesh");
-		static shared_ptr<Material> pMtrl = Resources::Find<Material>(L"FullScreenMaterial");
-		//
-		static bool bSet = false;
-		if (!bSet)
-		{
-			//텍스쳐 따로 로딩
-			wstring strFileName = L"..\\Resources\\Texture\\background\\start_logo.png";
-			//
-			bSet = true;
-			pMtrl->SetTexture(Resources::Load<Texture>(L"LoadingTex", strFileName));
-		}
-
-
-		pRectMesh->BindBuffer();
-		pMtrl->Binds();
-
-		pRectMesh->Render();
-
-		pMtrl->Clear();
-	}
-
 	void Scene::PushObjectPool()
 	{
 		std::vector<unordered_map<UINT, GameObject*>> vecPoolObj;

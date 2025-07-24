@@ -49,7 +49,7 @@ namespace W
 
 	void StartUI::MouseOn()
 	{
-
+		UI::MouseOn();
 	}
 
 	void StartUI::MouseLbtnDown()
@@ -63,11 +63,14 @@ namespace W
 	{
 		std::wstring strNum = std::to_wstring(m_iBtnNumber);
 		std::shared_ptr<Material> pMater = Resources::Find<Material>(L"startUIMater"+ strNum);
-		pMater->SetTexture(Resources::Find<Texture>(L"start_1Tex"));
+		pMater->SetTexture(Resources::Find<Texture>(L"start_0Tex"));
 	}
 
 	void StartUI::MouseLbtnClicked()
 	{
-		//SceneManger::LoadScene(m_strNextScene);
+		if (m_pFunction)
+			m_pFunction();
+
+
 	}
 }

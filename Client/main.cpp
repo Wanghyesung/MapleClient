@@ -79,20 +79,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     LoadStringW(hInstance, IDC_CLIENT, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
-    //게임 아이디를 파일에 등록후 입장
-    //ifstream ifs(L"..\\Resources\\GameData\\LoginID.txt");
-    //if (ifs.is_open() == false)
-    //{
-    //    assert(nullptr);
-    //}
-    //
-    //PLAYER_NAME = "";
-    //ifs >> PLAYER_NAME;
-    //if (PLAYER_NAME.empty())
-    //    assert(nullptr);
-    //
-    //ifs.close();
-
+ 
 
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
@@ -111,7 +98,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     ServerPacketHandler::Initialize();
     GClientService->Start();
-    //GClientService->Connect(); //나중에 로그인 Enter눌렀을 떄 변경
+    //GClientService->Connect(); //로그인 Enter로 변경
 
     for (int i = 0; i < 4; ++i)
     {

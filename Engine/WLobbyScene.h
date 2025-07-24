@@ -22,6 +22,7 @@ namespace W
 
 	private:
 		void start();
+		void create_object();
 	};
 }
 

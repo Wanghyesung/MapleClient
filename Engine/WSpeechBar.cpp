@@ -27,15 +27,16 @@ namespace W
 	}
 	void SpeechBar::LateUpdate()
 	{
-		if (m_strSpeech.empty() && m_bStartBar == false)
-		{
+		if (m_bStartBar == false)
 			base_speech();
-		}
 		else
 		{
 			check_key();
 
-			Speech(m_strSpeech, false, true, Vector2{ 30.f,0.f });
+			if (m_strSpeech.empty())
+				repeat_startbar();
+			else
+				Speech(m_strSpeech, false, true, Vector2{ 30.f,0.f });
 		}
 
 		UI::LateUpdate();
@@ -74,11 +75,7 @@ namespace W
 	}
 	void SpeechBar::base_speech()
 	{
-		if (m_strBaseSpeech.empty())
-			repeat_startbar();
-		else
-			Speech(m_strBaseSpeech, false, true, Vector2{ 30.f,0.f });
-
+		Speech(m_strBaseSpeech, false, true, Vector2{ 30.f,0.f });
 	}
 	void SpeechBar::repeat_startbar()
 	{
@@ -102,18 +99,7 @@ namespace W
 		
 		if (Input::GetKeyDown(eKeyCode::BACK_SPACE) && m_strSpeech.empty() == false)
 			m_strSpeech.pop_back();
-		
-		if (Input::GetKeyDown(eKeyCode::ENTER))
-			enter();
-	}
-	void SpeechBar::enter()
-	{
-		if (m_strSpeech.empty() || m_bStartBar == false)
-			return;
-
-		//패킷 전송
-		if (m_pSendPktFunc)
-			m_pSendPktFunc();
+	
 	}
 
 }

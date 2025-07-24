@@ -22,6 +22,13 @@ namespace W
 		const UINT iStartScene = 4; 
 		m_pActiveScene = m_hashSceneID[iStartScene];
 
+		std::unordered_map<UINT, GameObject*> hashObj =
+			m_pActiveScene->GetLayer(eLayerType::Camera)->GetGameObjects();
+
+		////1 main , 2 UI
+		renderer::MainCamera = hashObj[0]->GetComponent<Camera>();
+		renderer::UICamera = hashObj[1]->GetComponent<Camera>();
+
 		m_pActiveScene->OnEnter();
 		Initialize();
 	}
@@ -224,7 +231,6 @@ namespace W
 	
 	void SceneManger::SwapCamera()
 	{
-
 		std::unordered_map<UINT, GameObject*> hashObj =
 			m_pActiveScene->GetLayer(eLayerType::Camera)->GetGameObjects();
 		
@@ -240,4 +246,27 @@ namespace W
 		m_pActiveScene->SendEnter();
 	}
 
+	void SceneManger::RenderLoading()
+	{
+		static shared_ptr<Mesh> pRectMesh = Resources::Find<Mesh>(L"RectMesh");
+		static shared_ptr<Material> pMtrl = Resources::Find<Material>(L"FullScreenMaterial");
+		//
+		static bool bSet = false;
+		if (!bSet)
+		{
+			//텍스쳐 따로 로딩
+			wstring strFileName = L"..\\Resources\\Texture\\background\\start_logo.png";
+			//
+			bSet = true;
+			pMtrl->SetTexture(Resources::Load<Texture>(L"LoadingTex", strFileName));
+		}
+
+
+		pRectMesh->BindBuffer();
+		pMtrl->Binds();
+
+		pRectMesh->Render();
+
+		pMtrl->Clear();
+	}
 }
