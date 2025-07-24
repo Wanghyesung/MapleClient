@@ -5,6 +5,7 @@ namespace W
 {
 	IFW1Factory* FontWrapper::mFW1Factory = nullptr;
 	IFW1FontWrapper* FontWrapper::mFontWrapper = nullptr;
+	vector<tFontInfo> FontWrapper::m_vecFont = {};
 
 	bool FontWrapper::Initialize()
 	{
@@ -16,6 +17,16 @@ namespace W
 			return false;
 
 		return true;
+	}
+
+	void FontWrapper::Render()
+	{
+		for (int i = 0; i < m_vecFont.size(); ++i)
+		{
+			DrawFont(m_vecFont[i].Str.c_str(), m_vecFont[i].fPosX, m_vecFont[i].fPosY, m_vecFont[i].fFontSize, m_vecFont[i].Color);
+		}
+
+		m_vecFont.clear();
 	}
 
 	void FontWrapper::DrawFont(const wchar_t* str, float x, float y, float size, UINT rgb)
@@ -40,5 +51,16 @@ namespace W
 
 		mFontWrapper->Release();
 		mFontWrapper = nullptr;
+	}
+
+	void FontWrapper::AddFont(const wstring& _strString, float _fPosX, float _fPosY, float _fFontSize, UINT _Color)
+	{
+		tFontInfo tFont = {};
+		tFont.Str = _strString;
+		tFont.fPosX = _fPosX;
+		tFont.fPosY = _fPosY;
+		tFont.fFontSize = _fFontSize;
+		tFont.Color = _Color;
+		m_vecFont.emplace_back(tFont);
 	}
 }

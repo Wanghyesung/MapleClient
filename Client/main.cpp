@@ -80,18 +80,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MyRegisterClass(hInstance);
 
     //게임 아이디를 파일에 등록후 입장
-    ifstream ifs(L"..\\Resources\\GameData\\LoginID.txt");
-    if (ifs.is_open() == false)
-    {
-        assert(nullptr);
-    }
-
-    PLAYER_NAME = "";
-    ifs >> PLAYER_NAME;
-    if (PLAYER_NAME.empty())
-        assert(nullptr);
-
-    ifs.close();
+    //ifstream ifs(L"..\\Resources\\GameData\\LoginID.txt");
+    //if (ifs.is_open() == false)
+    //{
+    //    assert(nullptr);
+    //}
+    //
+    //PLAYER_NAME = "";
+    //ifs >> PLAYER_NAME;
+    //if (PLAYER_NAME.empty())
+    //    assert(nullptr);
+    //
+    //ifs.close();
 
 
     // 애플리케이션 초기화를 수행합니다:
@@ -107,11 +107,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         });
 
     GClientService = make_shared<ClientService>(NetAddress(L"127.0.0.1", 7777),
-        make_shared<IOCP>(), MakeSharedSesion, 1);
+        make_shared<IOCP>(), MakeSharedSesion, 1)   ;
 
     ServerPacketHandler::Initialize();
     GClientService->Start();
-    GClientService->Connect();
+    //GClientService->Connect(); //나중에 로그인 Enter눌렀을 떄 변경
 
     for (int i = 0; i < 4; ++i)
     {
@@ -130,17 +130,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
 
     MSG msg;
-
-    //lock
-    while (true)
-    {
-        if (GClientService->IsConnected())
-            break;
-
-        this_thread::sleep_for(0.5s);
-    }
-
-    application.Start();
 
     while (true)
     {
@@ -169,7 +158,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     tSoundThread.join();
     W::SceneManger::Release();
     W::Fmod::Release();
-   
+    W::FontWrapper::Release();
+
     ThreadMgr->Join();
 
     return (int)msg.wParam;

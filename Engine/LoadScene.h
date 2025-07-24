@@ -5,6 +5,7 @@
 #include "WTempleBossScene.h"
 #include "WHelisiumBoss.h"
 #include "WDemianScene.h"
+#include "WLobbyScene.h"
 #ifdef _DEBUG
 #pragma comment (lib,"..\\x64\\Debug\\Engine.lib")
 
@@ -17,13 +18,12 @@ namespace W
 {
 	void InitializeScenes()
 	{
-
 		SceneManger::CreateScene<CaveScene>(L"Cave");
-	
 		SceneManger::CreateScene<TempleBossScene>(L"TempleBoss");
 		SceneManger::CreateScene<HelisiumBoss>(L"Helisium");
 		SceneManger::CreateScene<DemianScene>(L"DemianScene");
 		SceneManger::CreateScene<ValleyScene>(L"Valley");
+		SceneManger::CreateScene<LobbyScene>(L"Lobby");
 		//SceneManger::GetActiveScene()->OnEnter();
 		
 	}

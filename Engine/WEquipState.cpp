@@ -63,31 +63,6 @@ namespace W
 
 
 #pragma region Items
-		//IconUI* pHat = ItemManager::GetClone(L"10_hat");
-		//pHat->Initialize();
-		//pHat->GetComponent<Transform>()->SetPosition(Vector3(m_vHatPosition.x, m_vHatPosition.y, 0.f));
-		//SetEquipPosition(pHat);
-		//
-		//IconUI* pTop10 = ItemManager::GetClone(L"10_top");
-		//pTop10->Initialize();
-		//pTop10->GetComponent<Transform>()->SetPosition(Vector3(m_vTopPosition.x, m_vTopPosition.y, 0.f));
-		//SetEquipPosition(pTop10);
-		//
-		//IconUI* pBottom10 = ItemManager::GetClone(L"10_bottom");
-		//pBottom10->Initialize();
-		//pBottom10->GetComponent<Transform>()->SetPosition(Vector3(m_vBottomPosition.x, m_vBottomPosition.y, 0.f));
-		//SetEquipPosition(pBottom10);
-		//
-		//IconUI* pShoes10 = ItemManager::GetClone(L"10_shoes");
-		//pShoes10->Initialize();
-		//pShoes10->GetComponent<Transform>()->SetPosition(Vector3(m_vShoesPosition.x, m_vShoesPosition.y, 0.f));
-		//SetEquipPosition(pShoes10);
-		//
-		//IconUI* pWeapon10 = ItemManager::GetClone(L"10_weapon");
-		//pWeapon10->Initialize();
-		//pWeapon10->GetComponent<Transform>()->SetPosition(Vector3(m_vWeaponPosition.x, m_vWeaponPosition.y, 0.f));
-		//SetEquipPosition(pWeapon10);
-
 
 		
 #pragma endregion
@@ -133,16 +108,19 @@ namespace W
 			m_vDragStartPos = Input::GetMousePos();
 		}
 	}
+
 	void EquipState::MouseLbtnDown()
 	{
 		m_bTargetOn = true;
 
 		m_vDragStartPos = Input::GetMousePos();
 	}
+
 	void EquipState::MouseLbtnUp()
 	{
 		m_bTargetOn = false;
 	}
+
 	void EquipState::MouseLbtnClicked()
 	{
 

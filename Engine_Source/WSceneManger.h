@@ -8,6 +8,7 @@ namespace W
 	class SceneManger
 	{
 	public:
+		static void Start();
 		static void Initialize();
 		static void Update();
 		static void LateUpdate();

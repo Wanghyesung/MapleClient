@@ -8,7 +8,7 @@
 namespace W
 {
 	PlayerHair::PlayerHair():
-		m_bHairDown(true)
+		m_bHairDown(false)
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -125,7 +125,6 @@ namespace W
 			m_strCurAnim = strAnim;
 			pAnimator->Play(strAnim, pPlayer->GetAnimIdx());
 		}
-
 
 		GameObject::LateUpdate();
 	}

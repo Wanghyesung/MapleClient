@@ -53,7 +53,6 @@ namespace W
 	}
 	void UI::LateUpdate()
 	{
-		
 		GameObject::LateUpdate();
 
 		MouseOnCheck();

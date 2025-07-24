@@ -51,7 +51,7 @@ void Session::DisConnect(const WCHAR* _strCause)
 	if (m_bConnected.exchange(false) == false)
 		return;
 
-	wcout << _strCause;
+	//wcout << _strCause;
 
 	RegisterDisConnect();
 
@@ -66,6 +66,9 @@ void Session::Connect()
 
 void Session::Send(shared_ptr<SendBuffer> _pBuffer)
 {
+	if (m_bConnected == false)
+		return;
+
 	WLock lockguard(m_lock);
 	m_qSendBuffer.push(_pBuffer); 
 

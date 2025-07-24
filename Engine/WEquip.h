@@ -7,14 +7,14 @@ namespace W
 	public:
 		enum class EquipType
 		{
-			//목걸이 모자 신발 바지 장비
+			None,
 			Pandant,
 			Hat,
 			Top,
 			Bottom,
 			Shoes,
 			Weapon,
-			None,
+			End,
 		};
 
 		Equip();

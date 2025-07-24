@@ -94,7 +94,8 @@ namespace W
 	}
 	void GameObject::Render()
 	{
-		GetComponent<MeshRenderer>()->Render();	
+		if (MeshRenderer* pRenderer = GetComponent<MeshRenderer>())
+			pRenderer->Render();
 	}
 	
 	void GameObject::UpdateState(const wstring& _strStateName, int _iState)

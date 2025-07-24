@@ -95,22 +95,22 @@ namespace W
 		switch (m_eSkillNuber)
 		{
 		case W::SKillStorage::eSkillNuber::First:
-			m_pSKillClone = dynamic_cast<SkillNumber1*>(pParentUI)->CreateClone(this);//클론만들고 반환받기
+			m_pSKillClone = static_cast<SkillNumber1*>(pParentUI)->CreateClone(this);//클론만들고 반환받기
 			break;
 		case W::SKillStorage::eSkillNuber::Second:
-			m_pSKillClone = dynamic_cast<SkillNumber2*>(pParentUI)->CreateClone(this);
+			m_pSKillClone = static_cast<SkillNumber2*>(pParentUI)->CreateClone(this);
 			break;
 		case W::SKillStorage::eSkillNuber::Third:
-			m_pSKillClone = dynamic_cast<SkillNumber3*>(pParentUI)->CreateClone(this);
+			m_pSKillClone = static_cast<SkillNumber3*>(pParentUI)->CreateClone(this);
 			break;
 		case W::SKillStorage::eSkillNuber::Four:
-			m_pSKillClone = dynamic_cast<SkillNumber4*>(pParentUI)->CreateClone(this);
+			m_pSKillClone = static_cast<SkillNumber4*>(pParentUI)->CreateClone(this);
 			break;
 		case W::SKillStorage::eSkillNuber::Five:
-			m_pSKillClone = dynamic_cast<SkillNumber5*>(pParentUI)->CreateClone(this);
+			m_pSKillClone = static_cast<SkillNumber5*>(pParentUI)->CreateClone(this);
 			break;
 		case W::SKillStorage::eSkillNuber::Six:
-			m_pSKillClone = dynamic_cast<SkillNumber6*>(pParentUI)->CreateClone(this);
+			m_pSKillClone = static_cast<SkillNumber6*>(pParentUI)->CreateClone(this);
 			break;
 		}
 	}
@@ -133,7 +133,7 @@ namespace W
 				m_pSKillClone->SetState(eState::Dead);
 				//EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
 			
-				Vector3 vStartPos = GetStartPosition();
+				const Vector3& vStartPos = GetStartPosition();
 				GetComponent<Transform>()->SetPosition((vStartPos));
 			}
 			else
@@ -159,7 +159,7 @@ namespace W
 				m_pSKillClone->SetState(eState::Dead);
 				//EventManager::DeleteObject(m_pSKillClone, SceneManger::GetActiveScene());
 
-				Vector3 vStartPos = GetStartPosition();
+				const Vector3& vStartPos = GetStartPosition();
 				GetComponent<Transform>()->SetPosition((vStartPos));
 			}
 		}
@@ -169,7 +169,7 @@ namespace W
 
 	bool SKill::changepos_interface()
 	{
-		Vector3 vSKillPosition = GetComponent<Transform>()->GetPosition();
+		const Vector3& vSKillPosition = GetComponent<Transform>()->GetPosition();
 		bool bSuccess = SceneManger::GetUI<InterfaceUI>()->ChangeItemPosition(this, Vector2(vSKillPosition.x, vSKillPosition.y));
 
 		return bSuccess;

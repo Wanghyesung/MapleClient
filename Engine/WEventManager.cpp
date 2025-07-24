@@ -319,7 +319,7 @@ namespace W
 	void EventManager::add_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT iPlayerID = (UINT)_lParm;
-		ULONGLONG iPlayerEquips = (ULONGLONG)_wParm;
+		UINT64 iPlayerEquips = (UINT64)_wParm;
 
 		Player* pPlayer = static_cast<Player*>(ObjectPoolManager::PopObject(L"Player"));
 		pPlayer->m_iPlayerID = iPlayerID;

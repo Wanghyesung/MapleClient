@@ -27,7 +27,7 @@ namespace W
 		m_eType(eIconType::End),
 		m_eParentType(eParentUI::None),
 		m_ePrevParentType(eParentUI::None),
-		m_eKeyCode(eKeyCode::NONE)
+		m_eKeyCode(eKeyCode::END)
 	{
 	
 	}
@@ -48,7 +48,7 @@ namespace W
 		m_iItemID(_pIcon.m_iItemID),
 		m_eParentType(eParentUI::None),
 		m_ePrevParentType(eParentUI::None),
-		m_eKeyCode(eKeyCode::NONE)
+		m_eKeyCode(eKeyCode::END)
 	{
 
 	}

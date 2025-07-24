@@ -24,6 +24,9 @@ namespace W
 
 		Z, X, C, V, B, N, M,
 
+		Y, U, I, O, P,
+		H, J, K, L,
+
 		ENTER,
 		ALT,
 		ESC,
@@ -33,8 +36,9 @@ namespace W
 		LBUTTON, RBUTTON,
 
 		//SCROLL,
+		BACK_SPACE,
 
-		NONE = 46,
+		NONE 
 	};
 
 	enum class eKeyState

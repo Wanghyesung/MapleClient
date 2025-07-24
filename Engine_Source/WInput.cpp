@@ -40,6 +40,10 @@ namespace W
 
 		'Z', 'X', 'C', 'V', 'B', 'N', 'M',
 
+
+		'Y', 'U', 'I', 'O', 'P',
+		'H', 'J', 'K', 'L',
+
 		VK_RETURN,//ENTER,
 		VK_LMENU,//ALT,
 		VK_ESCAPE,//ESC,
@@ -49,7 +53,7 @@ namespace W
 		VK_LBUTTON, VK_RBUTTON,
 
 		//WM_VSCROLL
-
+		 VK_BACK,
 	};
 
 

@@ -26,9 +26,9 @@ bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt)
 	}
 
 	GClientService->Connected();
-
 	GClientService->SetPlayerID(_pkt.player_id());
 	PLAYER_ID = _pkt.player_id();
+
 	UINT64 iPlayerEquips = _pkt.player_equip_ids();
 	W::EventManager::AddPlayer(PLAYER_ID, iPlayerEquips);
 

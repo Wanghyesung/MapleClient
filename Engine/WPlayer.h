@@ -99,7 +99,7 @@ namespace W
 		void init_attack_object();
 		void init_attack_effect();
 
-		void send_equip(Equip* _pEquip, UINT _iPlayerPartID);
+		void send_equip(Equip* _pEquip, UINT _iEquipType);
 		void update_shadow(bool _bActiveShadow);
 	private:
 		Shadow* m_pShadow;

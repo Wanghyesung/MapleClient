@@ -152,8 +152,6 @@ namespace W
 		pBackGround->GetComponent<Transform>()->SetScale(25 * 0.35f,  25.f * 1.f, 1.f);
 	}
 
-
-
 	void ValleyScene::add_objectpool()
 	{
 		Skelegon* pSkelegon = new Skelegon();

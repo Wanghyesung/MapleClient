@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -241,6 +241,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
     <ClInclude Include="WHat_40.h" />
     <ClInclude Include="WHat_80.h" />
     <ClInclude Include="WInputPacket.h" />
+    <ClInclude Include="WLobbyScene.h" />
     <ClInclude Include="WObjectPoolManager.h" />
     <ClInclude Include="WPacket.h" />
     <ClInclude Include="WPacketManager.h" />
@@ -248,6 +249,8 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
     <ClInclude Include="WShoes_80.h" />
     <ClInclude Include="WSKillNumber6.h" />
     <ClInclude Include="WSkillUltimateUI.h" />
+    <ClInclude Include="WSpeechBar.h" />
+    <ClInclude Include="WSpeechObject.h" />
     <ClInclude Include="WStigma.h" />
     <ClInclude Include="WEffect.h" />
     <ClInclude Include="WEventManager.h" />
@@ -448,6 +451,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
     <ClCompile Include="WHat_40.cpp" />
     <ClCompile Include="WHat_80.cpp" />
     <ClCompile Include="WInputPacket.cpp" />
+    <ClCompile Include="WLobbyScene.cpp" />
     <ClCompile Include="WObjectPoolManager.cpp" />
     <ClCompile Include="WPacket.cpp" />
     <ClCompile Include="WPacketManager.cpp" />
@@ -455,6 +459,8 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll"  "$(SolutionDir)x64\Debug"</
     <ClCompile Include="WShoes_80.cpp" />
     <ClCompile Include="WSKillNumber6.cpp" />
     <ClCompile Include="WSkillUltimateUI.cpp" />
+    <ClCompile Include="WSpeechBar.cpp" />
+    <ClCompile Include="WSpeechObject.cpp" />
     <ClCompile Include="WStigma.cpp" />
     <ClCompile Include="WEffect.cpp" />
     <ClCompile Include="WEventManager.cpp" />

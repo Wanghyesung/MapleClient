@@ -16,18 +16,31 @@
 
 namespace W
 {
+	struct tFontInfo
+	{
+		wstring Str;
+		float fPosX; float fPosY;
+		float fFontSize;
+		UINT Color;
+	};
+
 #define FONT_RGBA(r, g, b, a) (((((BYTE)a << 24 ) | (BYTE)b << 16) | (BYTE)g << 8) | (BYTE)r)
 
 	class FontWrapper
 	{
 	public:
 		static bool Initialize();
+		static void Render();
 		static void DrawFont(const wchar_t* str, float x, float y, float size, UINT rgb);
 		static void Release();
-
+		static void AddFont(const wstring& _strString, float _fPosX, float _fPosY, float _fFontSize, UINT _Color);
+		
 
 	private:
 		static IFW1Factory* mFW1Factory;
 		static IFW1FontWrapper* mFontWrapper;
+
+
+		static vector<tFontInfo> m_vecFont;
 	};
 }

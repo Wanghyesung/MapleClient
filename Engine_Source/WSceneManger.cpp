@@ -8,12 +8,23 @@
 #include "..\Engine\WPlayerAttackObject.h"
 #include "..\Engine\WObjectPoolManager.h"
 #include "..\Engine_Source\WThreadPool.h"
+
 namespace W
 {
+
 	Scene* SceneManger::m_pActiveScene = nullptr;
 	atomic<bool> SceneManger::m_bWaitForMapData = false;
 
 	std::unordered_map<UINT, Scene*> SceneManger::m_hashSceneID = {};
+
+	void SceneManger::Start()
+	{
+		const UINT iStartScene = 4; 
+		m_pActiveScene = m_hashSceneID[iStartScene];
+
+		m_pActiveScene->OnEnter();
+		Initialize();
+	}
 
 	void SceneManger::Initialize()
 	{

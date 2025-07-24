@@ -32,12 +32,7 @@ namespace W
 
 	}
 
-	void Application::Start()
-	{
-		SceneManger::GetActiveScene()->OnEnter();
-
-		SceneManger::Initialize();
-	}
+	
 	void Application::Run()
 	{
 		if (SceneManger::GetActiveScene()->IsLoading())
@@ -73,6 +68,7 @@ namespace W
 		PathManager::Initialize();
 		ThreadPool::Initiailize(4);
 		Input::Initialize();
+		FontWrapper::Initialize();
 		Fmod::Initialize();
 
 		renderer::Initialize();
@@ -102,9 +98,10 @@ namespace W
 		//graphicDevice->Draw();
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
-		Time::Render();
 
+		Time::Render();
 		renderer::Render();
+		FontWrapper::Render();
 	}
 
 	

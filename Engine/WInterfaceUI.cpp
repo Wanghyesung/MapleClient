@@ -418,7 +418,7 @@ namespace W
 
 	void InterfaceUI::SetItemKeyCode(IconUI* _pItem, UINT _iX, UINT _iY)
 	{
-		//오른쪽 인터페이스
+		//왼쪽 인터페이스
 		UINT iStart = 0;
 		
 		if (_iX >= 4)
