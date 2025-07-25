@@ -288,22 +288,18 @@ namespace W
 		UCHAR cSceneID = (iPlayerInfo >> 24) & 0xFF;
 		UCHAR cLayer = (iPlayerInfo >> 16) & 0xFF;
 		UCHAR cPlayerID = (iPlayerInfo >> 8) & 0xFF;
+		UCHAR cEquipType = (iPlayerInfo) & 0xFF;
 
 
 		GameObject* pObj = SceneManger::FindObject(cPlayerID,(eLayerType)cLayer);
 		if (pObj)
 		{
 			Player* pPlayer = static_cast<Player*>(pObj);
-
-			UINT iItemID = (iEquipID & 0xFF);
-			bool bClearEquip = ((iEquipID >> 8) & 0xFF);
-			UINT iPlayerPartID = (iEquipID >> 24) & 0xFF;
-			//UINT iItemEquipID = (_wParm << 24) & 0xFF;
-
-			if (bClearEquip)
-				pPlayer->SetEquip((Equip::EquipType)iPlayerPartID,L"");
+			
+			if (iEquipID == 0)
+				pPlayer->SetEquip((Equip::EquipType)cEquipType,L"");
 			else
-				pPlayer->SetEquip((Equip::EquipType)iPlayerPartID, iItemID);
+				pPlayer->SetEquip((Equip::EquipType)cEquipType, iEquipID);
 		}
 
 	}

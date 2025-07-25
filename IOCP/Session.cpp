@@ -232,7 +232,7 @@ void Session::RegisterRecv()
 	DWORD numOfBytes = 0;
 	DWORD flag = 0;
 
-	if(WSARecv(m_socket, &wsaBuf, 1, &numOfBytes, &flag, &m_recvEvent, nullptr) != false)
+	if (WSARecv(m_socket, &wsaBuf, 1, &numOfBytes, &flag, &m_recvEvent, nullptr) != false)
 	{
 		int errorCode = WSAGetLastError();
 		if (errorCode != WSA_IO_PENDING)
@@ -264,8 +264,13 @@ void Session::ProcessRecv(int _iNumOfBytes)
 
 	int proccessLen = OnRecv(m_recvBuffer.GetReadPos(), _iNumOfBytes);
 
-	if (proccessLen < 0 || proccessLen < m_recvBuffer.DataSize() ||
-		m_recvBuffer.Read(_iNumOfBytes) == false)
+	if (proccessLen < 0 || proccessLen > m_recvBuffer.DataSize())
+	{
+		DisConnect(L"RecvRead Overflow");
+		return;
+	}
+
+	if (m_recvBuffer.Read(_iNumOfBytes) == false)
 	{
 		DisConnect(L"RecvRead Overflow");
 		return;
