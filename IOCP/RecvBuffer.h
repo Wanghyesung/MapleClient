@@ -1,6 +1,8 @@
 #pragma once
 class RecvBuffer
 {
+	enum { BUFFER_COUNT = 10 };
+
 public:
 	RecvBuffer(int _iBufferSize);
 	~RecvBuffer();

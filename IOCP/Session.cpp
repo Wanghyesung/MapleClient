@@ -262,17 +262,11 @@ void Session::ProcessRecv(int _iNumOfBytes)
 		return;
 	}
 
-	int proccessLen = OnRecv(m_recvBuffer.GetReadPos(), _iNumOfBytes);
-
-	if (proccessLen < 0 || proccessLen > m_recvBuffer.DataSize())
+	int iDataSize = m_recvBuffer.DataSize();
+	int iProcessLen = OnRecv(m_recvBuffer.GetReadPos(), iDataSize); // 컨텐츠 코드에서 재정의
+	if (iProcessLen < 0 || iDataSize < iProcessLen || m_recvBuffer.Read(iProcessLen) == false)
 	{
-		DisConnect(L"RecvRead Overflow");
-		return;
-	}
-
-	if (m_recvBuffer.Read(_iNumOfBytes) == false)
-	{
-		DisConnect(L"RecvRead Overflow");
+		DisConnect(L"OnRead Overflow");
 		return;
 	}
 

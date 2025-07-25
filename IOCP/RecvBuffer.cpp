@@ -6,7 +6,7 @@ RecvBuffer::RecvBuffer(int _iBufferSize):
     m_iWritePos(0),
     m_iBufferSize(_iBufferSize)
 {
-    m_iCapacity = m_iBufferSize * 1.2;
+    m_iCapacity = m_iBufferSize * BUFFER_COUNT;
     m_vecRecvBuffer.resize(m_iCapacity);
 }
 
@@ -38,7 +38,7 @@ bool RecvBuffer::Clear()
             m_iWritePos = iDataSize;
         }
     }
-    return false;
+    return true;
 }
 
 bool RecvBuffer::Read(int _iNumOfBytes)
