@@ -93,7 +93,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 W::SoundManager::Update();
         });
 
-    GClientService = make_shared<ClientService>(NetAddress(L"172.30.1.70", 7777),
+    GClientService = make_shared<ClientService>(NetAddress(L"172.30.1.67", 7777),
         make_shared<IOCP>(), MakeSharedSesion, 1)   ;
 
     ServerPacketHandler::Initialize();

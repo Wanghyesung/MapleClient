@@ -368,9 +368,10 @@ namespace W
 	void EventManager::delete_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
 	{
 		UINT iPlayerID = (UINT)_lParm;
-		UINT iSceneID = SceneManger::GetActiveScene()->GetSceneID();
-
-		delete_object(_lParm, iSceneID, 0, {});
+	
+		auto hashPlayer = SceneManger::GetActiveScene()->GetLayer(eLayerType::Player)->GetGameObjects();
+		GameObject* pPlayer = hashPlayer[iPlayerID];
+		delete_object((DWORD_PTR)pPlayer, (DWORD_PTR)SceneManger::GetActiveScene(), 0, {});
 	}
 
 	void EventManager::delete_otehr_player(DWORD_PTR _lParm, DWORD_PTR _wParm, LONG_PTR _accParm, const OBJECT_DATA& _tObjData)
