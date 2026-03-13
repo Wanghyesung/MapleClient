@@ -102,10 +102,13 @@ namespace W
 		else
 			iIndex = m_pAnimator->GetOwner()->GetAnimIdx();
 
+		if (iIndex >= m_vecSprite.size())
+			return;
+
 		spAtlas->BindShaderResource(eShaderStage::PS, 12);
 
 		renderer::AnimatorCB data = {};
-		
+
 		data.vSpriteLeftTop = m_vecSprite[iIndex].vLeftTop;
 		data.vSprteSize = m_vecSprite[iIndex].vSize;
 		data.vSprteOffset = m_vecSprite[iIndex].vOffset;

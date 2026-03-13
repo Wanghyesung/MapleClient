@@ -25,6 +25,7 @@ namespace W
 	Stone::~Stone()
 	{
 
+
 	}
 
 	void Stone::Initialize()

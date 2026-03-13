@@ -12,14 +12,10 @@ namespace W
 	
 	UINT Transform::COMPONENT_ID = 0;
 
-	Transform::Transform():
+	Transform::Transform() :
 		Component(eComponentType::Transform),
-		m_vNextPosition(Vector3::Zero), 
+		m_vNextPosition(Vector3::Zero),
 		m_vPrevPosition(Vector3::Zero),
-		m_fLerpTime(1.f/ SERVER_TICK_RATE),
-		m_fCurLerpTime(0.f),
-		m_fCurLerpRate(0.f),
-		m_fRecvTime(0.f),
 		m_vPosition(Vector3::Zero),
 		m_vRotation(Vector3::Zero),
 		m_vScale(Vector3::One),
@@ -31,8 +27,6 @@ namespace W
 		Component(eComponentType::Transform),
 		m_vNextPosition(Vector3::Zero),
 		m_vPrevPosition(Vector3::Zero),
-		m_fLerpTime(SERVER_TICK_RATE / 1.f),
-		m_fCurLerpTime(0.f),
 		m_vPosition(_pOrigin.m_vPosition),
 		m_vRotation(_pOrigin.m_vRotation),
 		m_vScale(_pOrigin.m_vScale),
@@ -49,7 +43,6 @@ namespace W
 	}
 	void Transform::Initialize()
 	{
-
 	}
 	void Transform::Update()
 	{
@@ -59,7 +52,7 @@ namespace W
 	{
 		if (!GetOwner()->IsClientObject())
 		{
-			if (m_fCurLerpTime / m_fLerpTime < 1.f)
+			if(m_bLerp)
 				lateupdate_position();
 		}	
 		
@@ -95,7 +88,7 @@ namespace W
 
 	void Transform::BindConstantBuffer()
 	{
-			renderer::TransformCB trCB = {};
+		renderer::TransformCB trCB = {};
 		trCB.m_mWorld = m_vWorld;
 		trCB.m_mView = Camera::GetGpuViewMatrix();
 		trCB.m_mProjection = Camera::GetGpuProjectionMatrix();
@@ -112,80 +105,139 @@ namespace W
 
 	void Transform::lateupdate_position()
 	{
-		m_fCurLerpTime += Time::DeltaTime();
+		if (m_deqSnapshots.size() == 0)
+		{
+			return;
+		}
 
-		m_fCurLerpRate = m_fCurLerpTime/ m_fLerpTime;
+		double currentServerTime = Time::AccTime();
+		double dRenderTime = currentServerTime - m_dInterpolationBackTime;
 
-		//fCurRate = std::clamp
-		if (m_fCurLerpRate >= 1.f)
-			m_fCurLerpRate = 1.f;
-		
-		m_vPosition = VectorLerp(m_vPrevPosition, m_vNextPosition, m_fCurLerpRate, false);
-		m_vRotation = VectorLerp(m_vPrevRotation, m_vNextRotation, m_fCurLerpRate, false);
+		while (m_deqSnapshots.size() >= 2)
+		{
+			if (m_deqSnapshots[1].dServerTime > dRenderTime)
+				break;
+
+			m_deqSnapshots.pop_front();
+		}
+
+		if (m_deqSnapshots.size() >= 2)
+		{
+			TransformSnapshot& prevSnapshot = m_deqSnapshots[0];
+			TransformSnapshot& nextSnapshot = m_deqSnapshots[1];
+
+			double totalTime = nextSnapshot.dServerTime - prevSnapshot.dServerTime;
+			double currentTime = dRenderTime - prevSnapshot.dServerTime;
+
+			float ratio = 0.f;
+
+			if (totalTime > 0.0)
+			{
+				ratio = (float)(currentTime / totalTime);
+			}
+
+			if (ratio < 0.f)
+			{
+				ratio = 0.f;
+			}
+
+			if (ratio > 1.f)
+			{
+				ratio = 1.f;
+			}
+			
+			m_vPosition = VectorLerp(prevSnapshot.vPosition, nextSnapshot.vPosition, ratio, false);
+			m_vRotation = VectorLerp(prevSnapshot.vRotation, nextSnapshot.vRotation, ratio, false);
+		}
+		else
+		{
+			m_vPosition = m_deqSnapshots[0].vPosition;
+			m_vRotation = m_deqSnapshots[0].vRotation;
+		}
 	}
 
-	void Transform::recv_transform(const Vector3& _vPosition, const Vector3& _vRotation)
-	{
-		m_vPrevPosition = m_vPosition;
-		m_vNextPosition = _vPosition;
-
-		m_vPrevRotation = m_vRotation;
-		m_vNextRotation = _vRotation;
-
-		m_fCurLerpTime = 0.f;
-	}
-	
-
-	const Vector3& Transform::VectorLerp(const Vector3& _vFrom, const Vector3& _vTo, float fRate, bool bClampZ)
+	Vector3 Transform::VectorLerp(const Vector3& _vFrom, const Vector3& _vTo, float _fRate, bool _bClampZ)
 	{
 		Vector3 vResult = Vector3::Zero;
 
-		vResult.x = _vFrom.x + (_vTo.x - _vFrom.x) * fRate;
-		vResult.y = _vFrom.y + (_vTo.y - _vFrom.y) * fRate;
+		vResult.x = _vFrom.x + (_vTo.x - _vFrom.x) * _fRate;
+		vResult.y = _vFrom.y + (_vTo.y - _vFrom.y) * _fRate;
 
-		if (bClampZ)
-			vResult.z = _vFrom.z; // z값 고정 또는 제한된 범위로만 보간
+		if (_bClampZ)
+			vResult.z = _vFrom.z;
 		else
-			vResult.z = _vFrom.z + (_vTo.z - _vFrom.z) * fRate;
-	
+			vResult.z = _vFrom.z + (_vTo.z - _vFrom.z) * _fRate;
+
 		return vResult;
 	}
 
+	void Transform::recv_transform(const Vector3& _vPosition, const Vector3& _vRotation, double _dServerTime)
+	{
+		TransformSnapshot tSnapShot;
+		tSnapShot.vPosition = _vPosition;
+		tSnapShot.vRotation = _vRotation;
+		tSnapShot.dServerTime = Time::AccTime();
+
+		m_deqSnapshots.push_back(tSnapShot);
+
+		while (m_deqSnapshots.size() > 10)
+			m_deqSnapshots.pop_front();
+
+		m_dServerTimeOffest = _dServerTime - Time::AccTime();
+		m_bLerp = true;
+	}
+	
+
 	void Transform::SetDirectPosition(const Vector3& _vPosition)
 	{
-		m_fCurLerpTime = m_fLerpTime;
+		m_bLerp = false;
+		TransformSnapshot tSnapShot;
+		tSnapShot.vPosition = _vPosition;
+		tSnapShot.vRotation = m_vRotation;
+		tSnapShot.dServerTime = Time::AccTime();
 
-		m_vNextPosition = _vPosition;
-		m_vPrevPosition = _vPosition;
+		m_deqSnapshots.push_back(tSnapShot);
+
 		m_vPosition = _vPosition;
 	}
 
 	void Transform::SetDirectPosition(float x, float y, float z)
 	{
+		m_bLerp = false;
 		Vector3 vPosition = Vector3(x, y, z);
 
-		m_fCurLerpTime = m_fLerpTime;
+		TransformSnapshot tSnapShot;
+		tSnapShot.vPosition = vPosition;
+		tSnapShot.dServerTime = Time::AccTime();
 
-		m_vNextPosition = vPosition;
-		m_vPrevPosition = vPosition;
+		m_deqSnapshots.push_back(tSnapShot);
 		m_vPosition = vPosition;
+
 	}
 	void Transform::SetDirectRotation(const Vector3& _vRotation)
 	{
-		m_fCurLerpTime = m_fLerpTime;
+		m_bLerp = false;
+		TransformSnapshot tSnapShot;
+		tSnapShot.vPosition = m_vPosition;
+		tSnapShot.vRotation = _vRotation;
+		tSnapShot.dServerTime = Time::AccTime();
 
-		m_vNextRotation = _vRotation;
-		m_vPrevRotation = _vRotation;
+		m_deqSnapshots.push_back(tSnapShot);
+
 		m_vRotation = _vRotation;
 	}
 	void Transform::SetDirectRotation(float x, float y, float z)
 	{
+		m_bLerp = false;
 		Vector3 vRotation = Vector3(x, y, z);
 
-		m_fCurLerpTime = m_fLerpTime;
+		TransformSnapshot tSnapShot;
+		tSnapShot.vPosition = m_vPosition;
+		tSnapShot.vRotation = vRotation;
+		tSnapShot.dServerTime = Time::AccTime();
 
-		m_vNextRotation = vRotation;
-		m_vPrevRotation = vRotation;
+		m_deqSnapshots.push_back(tSnapShot);
+
 		m_vRotation = vRotation;
 	}
 }

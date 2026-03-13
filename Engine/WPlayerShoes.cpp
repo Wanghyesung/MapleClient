@@ -103,7 +103,8 @@ namespace W
 	}
 	void PlayerShoes::Render()
 	{
-		
+		if (m_strCurEquip.size() == 0)
+			return;
 		GameObject::Render();
 	}
 	void PlayerShoes::SetPlayerEquip(Equip* _pEquip)

@@ -614,6 +614,9 @@
     <ClInclude Include="WDamageFont.h">
       <Filter>Contents\Object\DamageFont</Filter>
     </ClInclude>
+    <ClInclude Include="WLobbyScene.h" />
+    <ClInclude Include="WSpeechBar.h" />
+    <ClInclude Include="WSpeechObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
@@ -1223,6 +1226,9 @@
     <ClCompile Include="WDamageFont.cpp">
       <Filter>Contents\Object\DamageFont</Filter>
     </ClCompile>
+    <ClCompile Include="WLobbyScene.cpp" />
+    <ClCompile Include="WSpeechBar.cpp" />
+    <ClCompile Include="WSpeechObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

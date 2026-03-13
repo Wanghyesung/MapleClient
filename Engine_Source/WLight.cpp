@@ -28,7 +28,6 @@ namespace W
 		Vector3 vPos = pTr->GetPosition();
 		m_eAttribute.position = Vector4(vPos.x, vPos.y, vPos.z, 1.f);
 		m_eAttribute.direction = Vector4(pTr->Foward().x, pTr->Foward().y, pTr->Foward().z, 1.f);
-
 	}
 	void Light::Render()
 	{

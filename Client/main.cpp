@@ -93,8 +93,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 W::SoundManager::Update();
         });
 
-    GClientService = make_shared<ClientService>(NetAddress(L"172.30.1.67", 7777),
-        make_shared<IOCP>(), MakeSharedSesion, 1)   ;
+    GClientService = make_shared<ClientService>(NetAddress(L"127.0.0.1", 7777),
+        make_shared<IOCP>(), MakeSharedSesion, 1);
 
     ServerPacketHandler::Initialize();
     GClientService->Start();
@@ -136,6 +136,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             application.Run();
            
             application.Present();
+
+
         }
     }
 

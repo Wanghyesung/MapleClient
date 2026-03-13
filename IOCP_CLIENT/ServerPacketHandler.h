@@ -67,9 +67,7 @@ enum PACKET_TYPE
 	S_SKILL = 1020,
 	C_SKILL = 1021,
 
-	S_EXIT = 1022,
-	C_EXIT = 1023,
-	S_NEW_EXIT = 1024,
+	S_NEW_EXIT = 1022,
 };
 
 
@@ -89,7 +87,6 @@ bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt);
 bool Handle_S_TRANSFORM(shared_ptr<Session> _pSession, Protocol::S_TRANSFORM& _pkt);
 bool Handle_S_SKILL(shared_ptr<Session> _pSession, Protocol::S_Skill& _pkt);
 bool Handle_S_START_MAP(shared_ptr<Session> _pSession, Protocol::S_START_MAP& _pkt);
-bool Handle_S_EXIT(shared_ptr<Session> _pSession, Protocol::S_EXIT& _pkt);
 bool Handle_S_NEW_EXIT(shared_ptr<Session> _pSession, Protocol::S_NEW_EXIT& _pkt);
 
 
@@ -151,7 +148,6 @@ public:
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_Skill _pkt) { return _MakeSendBuffer(_pkt, C_SKILL); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_ITEM _pkt) { return _MakeSendBuffer(_pkt, C_ITEM); }
 	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_START_MAP _pkt) { return _MakeSendBuffer(_pkt, C_START_MAP); }
-	static shared_ptr<SendBuffer> MakeSendBuffer(Protocol::C_EXIT _pkt) { return _MakeSendBuffer(_pkt, C_EXIT); }
 	
 };
 

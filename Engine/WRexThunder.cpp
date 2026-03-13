@@ -25,7 +25,6 @@ namespace W
 		Animator* pAnim = AddComponent<Animator>();
 		pAnim->Create(L"Thunder_left", nullptr, Vector2(0.0f, 0.0f), Vector2(174.f, 821.0f), 5, Vector2(800.f, 800.f), Vector2::Zero, Vector2(870.f, 821.f), 0.3f);
 
-		pAnim->Play(L"Thunder_left", true);
 
 	}
 

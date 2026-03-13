@@ -628,6 +628,8 @@ namespace renderer
 	}
 	void BindLights()
 	{
+		m_pLightsBuffer->Clear();
+
 		std::vector<LightAttribute> vecLightsAttributes = {};
 		for (Light* light : m_vecLights)
 		{

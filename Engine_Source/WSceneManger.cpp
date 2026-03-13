@@ -82,7 +82,7 @@ namespace W
 		ThreadPool::Joinable();
 
 		//최대 동접자의 3/5만 미리 할당
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < 15; ++i)
 		{
 			Player* pPlayer = new Player();
 			pPlayer->SetName(L"Player");

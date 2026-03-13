@@ -34,7 +34,6 @@ namespace W
 	
 		//내가 할당할 리소스들
 		m_vecResource.push_back(std::make_pair(L"StoneTex", L"..\\Resources\\Texture\\Monster\\Horntail\\stone.png"));
-		m_vecResource.push_back(std::make_pair(L"HorntailStartTex", L"..\\Resources\\Texture\\Monster\\Horntail\\start.png"));
 		m_vecResource.push_back(std::make_pair(L"HeadATex", L"..\\Resources\\Texture\\Monster\\Horntail\\headA\\headA.png"));
 		m_vecResource.push_back(std::make_pair(L"HeadBTex", L"..\\Resources\\Texture\\Monster\\Horntail\\headB\\headB.png"));
 		m_vecResource.push_back(std::make_pair(L"HeadCTex", L"..\\Resources\\Texture\\Monster\\Horntail\\headC\\headC.png"));
@@ -269,6 +268,10 @@ namespace W
 		mapping_texture(L"legattack1Effect", L"legattack1_hit");
 		mapping_texture(L"legattack2Effect", L"legattack2_hit");
 		mapping_texture(L"tailEffect", L"tailattack_hit");
+
+
+		Resources::Find<Texture>(L"HorntailStartTex")->BindShaderResource(eShaderStage::PS, 12);
+		Resources::Find<Texture>(L"HorntailDead")->BindShaderResource(eShaderStage::PS, 12);
 	}
 
 }

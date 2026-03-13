@@ -19,12 +19,9 @@ ServerSession::~ServerSession()
 void ServerSession::OnConnected()
 {
 	Protocol::C_ENTER pkt;
-	
-	//const wstring& strClientName = to_wstring();
 	pkt.set_name(PLAYER_NAME);
 
 	shared_ptr<SendBuffer> pSendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
-	
 	Send(pSendBuffer);
 }
 

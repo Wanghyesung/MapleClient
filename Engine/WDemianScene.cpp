@@ -206,6 +206,21 @@ namespace W
 		mapping_texture(L"demianClone0", L"DemianClone0");
 		mapping_texture(L"demianClone1", L"DemianClone1");
 		mapping_texture(L"DemianTarget", L"DemianTarget");
+
+
+		Resources::Find<Texture>(L"DemianDead")->BindShaderResource(eShaderStage::PS, 12);
+		Resources::Find<Texture>(L"Demian_attack0")->BindShaderResource(eShaderStage::PS,12);
+		Resources::Find<Texture>(L"Demian_attack1")->BindShaderResource(eShaderStage::PS,12);
+		Resources::Find<Texture>(L"Demian_attack2")->BindShaderResource(eShaderStage::PS,12);
+		Resources::Find<Texture>(L"Demian_attack3")->BindShaderResource(eShaderStage::PS,12);
+
+		Resources::Find<Texture>(L"Demian2Dead")->BindShaderResource(eShaderStage::PS,12);
+		Resources::Find<Texture>(L"Demian2_attack0")->BindShaderResource(eShaderStage::PS,12);
+		Resources::Find<Texture>(L"Demian2_attack1")->BindShaderResource(eShaderStage::PS,12);
+		Resources::Find<Texture>(L"Demian2_attack2")->BindShaderResource(eShaderStage::PS,12);
+		Resources::Find<Texture>(L"Demian2_attack3")->BindShaderResource(eShaderStage::PS,12);
+		Resources::Find<Texture>(L"Demian2_attack4")->BindShaderResource(eShaderStage::PS,12);
+		Resources::Find<Texture>(L"Demian2_attack5")->BindShaderResource(eShaderStage::PS,12);
 	}
 
 

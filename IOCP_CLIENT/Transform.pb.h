@@ -365,6 +365,7 @@ class S_TRANSFORM final :
 
   enum : int {
     kTransformFieldNumber = 2,
+    kServerTimeFieldNumber = 3,
     kSceneLayerIdFieldNumber = 1,
   };
   // .Protocol.TransformInfo transform = 2;
@@ -385,6 +386,15 @@ class S_TRANSFORM final :
       ::Protocol::TransformInfo* transform);
   ::Protocol::TransformInfo* unsafe_arena_release_transform();
 
+  // double server_time = 3;
+  void clear_server_time();
+  double server_time() const;
+  void set_server_time(double value);
+  private:
+  double _internal_server_time() const;
+  void _internal_set_server_time(double value);
+  public:
+
   // uint32 scene_layer_id = 1;
   void clear_scene_layer_id();
   ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_id() const;
@@ -402,6 +412,7 @@ class S_TRANSFORM final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::Protocol::TransformInfo* transform_;
+  double server_time_;
   ::PROTOBUF_NAMESPACE_ID::uint32 scene_layer_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Transform_2eproto;
@@ -642,6 +653,26 @@ inline void S_TRANSFORM::set_allocated_transform(::Protocol::TransformInfo* tran
   }
   transform_ = transform;
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_TRANSFORM.transform)
+}
+
+// double server_time = 3;
+inline void S_TRANSFORM::clear_server_time() {
+  server_time_ = 0;
+}
+inline double S_TRANSFORM::_internal_server_time() const {
+  return server_time_;
+}
+inline double S_TRANSFORM::server_time() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_TRANSFORM.server_time)
+  return _internal_server_time();
+}
+inline void S_TRANSFORM::_internal_set_server_time(double value) {
+  
+  server_time_ = value;
+}
+inline void S_TRANSFORM::set_server_time(double value) {
+  _internal_set_server_time(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_TRANSFORM.server_time)
 }
 
 #ifdef __GNUC__

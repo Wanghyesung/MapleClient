@@ -117,6 +117,7 @@ namespace W
 		if(m_bActiveShadow)
 			m_pShadow->LateUpdate();
 
+
 		child_lateupdate();
 	}
 	void Player::Render()
@@ -340,28 +341,30 @@ namespace W
 
 	void Player::child_lateupdate()
 	{
+
 		for (GameObject* pObj : m_vecChildObj)
 		{
+			//pObj->GetComponent<Transform>()->SetDirectPosition(GetComponent<Transform>()->GetPosition());
 			pObj->LateUpdate();
 		}
 	}
 
 	void Player::init_attack_object()
 	{
-		for (int i = 0; i < 5; ++i)
+		for (int i = 0; i < 25; ++i)
 		{
 			Shuriken* pShuriken = new Shuriken();
 			pShuriken->SetName(L"shuriken");
 			ObjectPoolManager::AddObjectPool(pShuriken->GetName(), pShuriken);
 		}
-		for (int i = 0; i < 12; ++i)
+		for (int i = 0; i < 30; ++i)
 		{
 			Shuriken* pShuriken = new Shuriken();
 			pShuriken->SetName(L"luck");
 			ObjectPoolManager::AddObjectPool(pShuriken->GetName(), pShuriken);
 		}
 
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < 10; ++i)
 		{
 			Aven* pAven = new Aven();
 			pAven->SetName(L"Aven");
@@ -372,21 +375,21 @@ namespace W
 		pAttackObj->SetName(L"raid");
 		ObjectPoolManager::AddObjectPool(pAttackObj->GetName(), pAttackObj);
 
-		for (int i = 0; i < 24; ++i)
+		for (int i = 0; i < 40; ++i)
 		{
 			Shuriken* pShuriken = new Shuriken();
 			pShuriken->SetName(L"quad");
 			ObjectPoolManager::AddObjectPool(pShuriken->GetName(), pShuriken);
 		}
 
-		for (int i = 0; i < 2; ++i)
+		for (int i = 0; i < 10; ++i)
 		{
 			Load* pLoad = new Load();
 			pLoad->SetName(L"load");
 			ObjectPoolManager::AddObjectPool(pLoad->GetName(), pLoad);
 		}
 
-		for (int i = 0; i < 50; ++i)
+		for (int i = 0; i < 100; ++i)
 		{
 			AutoShuriken* pShuriken = new AutoShuriken();
 			pShuriken->SetName(L"autoSuriken");
@@ -400,7 +403,7 @@ namespace W
 			pBlast->GetComponent<Transform>()->SetScale(8.f, 8.f, 0.f);
 			ObjectPoolManager::AddObjectPool(pBlast->GetName(), pBlast);
 		}
-		for (int i = 0; i < 2; ++i)
+		for (int i = 0; i < 15; ++i)
 		{
 			Wind* pWind = new Wind();
 			pWind->SetName(L"wind");
@@ -423,161 +426,168 @@ namespace W
 
 	void Player::init_attack_effect()
 	{
-		Effect* pEffect = nullptr;
-		for (int i = 0; i < 8; ++i)
+		for (int i = 0; i < 5; ++i)
 		{
+			Effect* pEffect = nullptr;
+			for (int i = 0; i < 8; ++i)
+			{
+				pEffect = new Effect();
+				pEffect->CreateAnimation(Resources::Find<Texture>(L"luckhit"), L"luck_hit", Vector2(0.f, 0.f), Vector2(74.f, 74.f), 4, 1,
+					Vector2(90.f, 90.f), Vector2::Zero, Vector2(296.f, 74.f), 0.1f);
+				ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+			}
+
 			pEffect = new Effect();
-			pEffect->CreateAnimation(Resources::Find<Texture>(L"luckhit"), L"luck_hit", Vector2(0.f, 0.f), Vector2(74.f, 74.f), 4, 1,
-				Vector2(90.f, 90.f), Vector2::Zero, Vector2(296.f, 74.f), 0.1f);
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"luckeffect"), L"luckeffect", Vector2(0.f, 0.f), Vector2(112.f, 52.f), 5, 1,
+				Vector2(110.f, 110.f), Vector2(0.4f, 0.f), Vector2(560.f, 52.f), 0.1f);
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-		}
-
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"luckeffect"), L"luckeffect", Vector2(0.f, 0.f), Vector2(112.f, 52.f), 5, 1,
-			Vector2(110.f, 110.f), Vector2(0.4f, 0.f), Vector2(560.f, 52.f), 0.1f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
 
 
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"darkffect"), L"darkffect", Vector2(0.f, 0.f), Vector2(126.f, 129.f), 8, 1,
-			Vector2(110.f, 110.f), Vector2(-0.15f, 0.1f), Vector2(1008.f, 129.f), 1.5f / 16.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"speedffect"),L"speedffect", Vector2(0.f, 0.f), Vector2(122.f, 64.f), 9, 1,
-			Vector2(200.f, 200.f), Vector2(0.f, 0.0f), Vector2(1098.f, 64.f), 1.f / 18.f);
-		pEffect->GetComponent<Transform>()->SetScale(2.f, 2.f, 0.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"jumpeffect"),L"jumpeffect", Vector2(0.f, 0.f), Vector2(235.5f, 133.f), 8, 1,
-			Vector2(200.f, 200.f), Vector2(-1.f, 0.0f), Vector2(1888.f, 133.f), 0.05f);
-		pEffect->GetComponent<Transform>()->SetScale(2.f, 2.f, 0.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"shadowe1ffect"), L"shadowe1ffect", Vector2(0.f, 0.f), Vector2(158.f, 131.f), 11, 1,
-			Vector2(150.f, 150.f), Vector2(-0.6f, 0.2f), Vector2(1738.f, 131.f), 0.05f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"shadowe2ffect"), L"shadowe2ffect", Vector2(0.f, 0.f), Vector2(195.f, 180.f), 16, 1,
-			Vector2(200.f, 200.f), Vector2(-0.4f, 0.2f), Vector2(3120.f, 180.f), 0.05f);
-		pEffect->GetComponent<Transform>()->SetScale(2.2f, 2.2f, 0.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"aveneffect"), L"aveneffect", Vector2(0.f, 0.f), Vector2(121.f, 71.f), 14, 1,
-			Vector2(110.f, 110.f), Vector2(0.f, 0.f), Vector2(1694.f, 72.f), 0.03f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-		for (int i = 0; i < 8; ++i)
-		{
 			pEffect = new Effect();
-			pEffect->CreateAnimation(Resources::Find<Texture>(L"quadhit"), L"quad_hit", Vector2(0.f, 0.f), Vector2(146.f, 146.f), 9, 1,
-				Vector2(150.f, 150.f), Vector2::Zero, Vector2(1314, 146.f), 0.06f);
-			pEffect->GetComponent<Transform>()->SetScale(1.5f, 1.5f, 0.f);
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"darkffect"), L"darkffect", Vector2(0.f, 0.f), Vector2(126.f, 129.f), 8, 1,
+				Vector2(110.f, 110.f), Vector2(-0.15f, 0.1f), Vector2(1008.f, 129.f), 1.5f / 16.f);
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-		}
 
-		for (int i = 0; i < 3; ++i)
-		{			
 			pEffect = new Effect();
-			pEffect->CreateAnimation(Resources::Find<Texture>(L"quadffect"), L"quadffect", Vector2(0.f, 0.f), Vector2(299, 196.f), 9, 1,
-				Vector2(300.f, 300.f), Vector2(0.4f, 0.f), Vector2(2691.f, 196.f), 0.06f);
-			pEffect->GetComponent<Transform>()->SetScale(4.f, 4.f, 0.f);
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"speedffect"), L"speedffect", Vector2(0.f, 0.f), Vector2(122.f, 64.f), 9, 1,
+				Vector2(200.f, 200.f), Vector2(0.f, 0.0f), Vector2(1098.f, 64.f), 1.f / 18.f);
+			pEffect->GetComponent<Transform>()->SetScale(2.f, 2.f, 0.f);
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-		}
 
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"loadeffect"), L"loadeffect", Vector2(0.f, 0.5f), Vector2(1700.f, 1200.f), 5, 3,
-			Vector2(1700.f, 1200.f), Vector2(0.5f, 3.f), Vector2(10200.f, 3600.f), 0.03f);
-		pEffect->GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-		for (int i = 0; i < 30; ++i)
-		{
 			pEffect = new Effect();
-			pEffect->CreateAnimation(Resources::Find<Texture>(L"loadhit"), L"load_hit", Vector2(0.f, 0.f), Vector2(315.f, 204.f), 14, 1,
-				Vector2(300.f, 300.f), Vector2(0.f, 0.f), Vector2(4410.f, 204.f), 0.07f);
-			pEffect->GetComponent<Transform>()->SetScale(3.f, 3.f, 0.f);
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"jumpeffect"), L"jumpeffect", Vector2(0.f, 0.f), Vector2(235.5f, 133.f), 8, 1,
+				Vector2(200.f, 200.f), Vector2(-1.f, 0.0f), Vector2(1888.f, 133.f), 0.05f);
+			pEffect->GetComponent<Transform>()->SetScale(2.f, 2.f, 0.f);
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-		}
 
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"raideffect1"), L"raideffect1", Vector2(0.f, 0.f),
-			Vector2(1060.f, 727.f), 10, 3, Vector2(1000.f, 1000.f), Vector2(0.2f, 2.f), Vector2(10600.f, 2181.f), 0.05f);
-		pEffect->AddComponent<Light>();//빛처리 기능 넣기 패킷으로 접근
-		pEffect->GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"raideffect2"), L"raideffect2", Vector2(0.f, 0.f), Vector2(880.f, 637.f), 10, 3,
-			Vector2(1000.f, 1000.f), Vector2(0.2f, 2.f), Vector2(8800.f, 1911.f), 0.05f);
-		pEffect->GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-
-		for (int i = 0; i < 7; ++i)
-		{
 			pEffect = new Effect();
-			pEffect->CreateAnimation(Resources::Find<Texture>(L"raidhit"), L"raid_hit", Vector2(0.f, 0.f), Vector2(276.f, 252.f), 6, 1,
-				Vector2(300.f, 300.f), Vector2(0.f, 0.f), Vector2(1656.f, 252.f), 0.2f);
-			pEffect->GetComponent<Transform>()->SetScale(3.5f, 3.5f, 0.f);
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"shadowe1ffect"), L"shadowe1ffect", Vector2(0.f, 0.f), Vector2(158.f, 131.f), 11, 1,
+				Vector2(150.f, 150.f), Vector2(-0.6f, 0.2f), Vector2(1738.f, 131.f), 0.05f);
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-		}
 
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"windffect1"), L"windffect1", Vector2(0.f, 0.5f), Vector2(626.f, 508.f), 7, 1,
-			Vector2(600.f, 600.f), Vector2(0.5f, 0.f), Vector2(4382.f, 508.f), 0.06f);
-		pEffect->GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"windffect2"), L"windffect2", Vector2(0.f, 0.f),
-			Vector2(572.f, 413.f), 11, 1, Vector2(580.f, 580.f), Vector2(0.5f, 0.5f), Vector2(6292.f, 413.f), 0.06f);
-		pEffect->GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-		for (int i = 0; i < 7; ++i)
-		{
 			pEffect = new Effect();
-			pEffect->CreateAnimation(Resources::Find<Texture>(L"windhit"), L"wind_hit", Vector2(0.f, 0.f), Vector2(249.f, 248.f), 6, 1,
-				Vector2(250.f, 250.f), Vector2(0.f, 0.2f), Vector2(1494.f, 248.f), 0.07f);
-			pEffect->GetComponent<Transform>()->SetScale(2.5f, 2.5f, 0.f);
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"shadowe2ffect"), L"shadowe2ffect", Vector2(0.f, 0.f), Vector2(195.f, 180.f), 16, 1,
+				Vector2(200.f, 200.f), Vector2(-0.4f, 0.2f), Vector2(3120.f, 180.f), 0.05f);
+			pEffect->GetComponent<Transform>()->SetScale(2.2f, 2.2f, 0.f);
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-		}
 
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"blastffect1"), L"blastffect1", Vector2(0.f, 0.f),
-			Vector2(752.f, 358.f), 13, 1, Vector2(750.f, 750.f), Vector2(0.f, 0.f), Vector2(9776.f, 358.f), 0.05f);
-		pEffect->GetComponent<Transform>()->SetScale(5.f, 5.f, 0.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-		pEffect = new Effect();
-		pEffect->CreateAnimation(Resources::Find<Texture>(L"blastffect2"), L"blastffect2", Vector2(0.f, 0.f),
-			Vector2(735.f, 673.f), 9, 1, Vector2(750.f, 750.f), Vector2(0.f, 0.f), Vector2(6615.f, 673.f), 0.05f);
-		pEffect->GetComponent<Transform>()->SetScale(5.f, 5.f, 0.f);
-		ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-
-		for (int i = 0; i < 25; ++i)
-		{
 			pEffect = new Effect();
-			pEffect->CreateAnimation(Resources::Find<Texture>(L"blasthit"), L"blast_hit", Vector2(0.f, 0.f),
-				Vector2(285.f, 284.f), 8, 1, Vector2(300.f, 300.f), Vector2(0.f, 0.f), Vector2(2280.f, 284.f), 0.05f);
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"aveneffect"), L"aveneffect", Vector2(0.f, 0.f), Vector2(121.f, 71.f), 14, 1,
+				Vector2(110.f, 110.f), Vector2(0.f, 0.f), Vector2(1694.f, 72.f), 0.03f);
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+
+			for (int i = 0; i < 8; ++i)
+			{
+				pEffect = new Effect();
+				pEffect->CreateAnimation(Resources::Find<Texture>(L"quadhit"), L"quad_hit", Vector2(0.f, 0.f), Vector2(146.f, 146.f), 9, 1,
+					Vector2(150.f, 150.f), Vector2::Zero, Vector2(1314, 146.f), 0.06f);
+				pEffect->GetComponent<Transform>()->SetScale(1.5f, 1.5f, 0.f);
+				ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+			}
+
+			for (int i = 0; i < 3; ++i)
+			{
+				pEffect = new Effect();
+				pEffect->CreateAnimation(Resources::Find<Texture>(L"quadffect"), L"quadffect", Vector2(0.f, 0.f), Vector2(299, 196.f), 9, 1,
+					Vector2(300.f, 300.f), Vector2(0.4f, 0.f), Vector2(2691.f, 196.f), 0.06f);
+				pEffect->GetComponent<Transform>()->SetScale(4.f, 4.f, 0.f);
+				ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+			}
+
+			pEffect = new Effect();
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"loadeffect"), L"loadeffect", Vector2(0.f, 0.5f), Vector2(1700.f, 1200.f), 5, 3,
+				Vector2(1700.f, 1200.f), Vector2(0.5f, 3.f), Vector2(10200.f, 3600.f), 0.03f);
+			pEffect->GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+
+			for (int i = 0; i < 30; ++i)
+			{
+				pEffect = new Effect();
+				pEffect->CreateAnimation(Resources::Find<Texture>(L"loadhit"), L"load_hit", Vector2(0.f, 0.f), Vector2(315.f, 204.f), 14, 1,
+					Vector2(300.f, 300.f), Vector2(0.f, 0.f), Vector2(4410.f, 204.f), 0.07f);
+				pEffect->GetComponent<Transform>()->SetScale(3.f, 3.f, 0.f);
+				ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+			}
+
+			pEffect = new Effect();
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"raideffect1"), L"raideffect1", Vector2(0.f, 0.f),
+				Vector2(1060.f, 727.f), 10, 3, Vector2(1000.f, 1000.f), Vector2(0.2f, 2.f), Vector2(10600.f, 2181.f), 0.05f);
+			Light* pLight = pEffect->AddComponent<Light>();
+			pLight->SetType(eLightType::FadeOut);
+			pLight->SetColor(Vector4(0.8f, 0.8f, 0.8f, 0.0f));
+			pLight->SetRadius(10.0f);
+
+			pEffect->GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+
+
+			pEffect = new Effect();
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"raideffect2"), L"raideffect2", Vector2(0.f, 0.f), Vector2(880.f, 637.f), 10, 3,
+				Vector2(1000.f, 1000.f), Vector2(0.2f, 2.f), Vector2(8800.f, 1911.f), 0.05f);
+			pEffect->GetComponent<Transform>()->SetScale(10.f, 10.f, 0.f);
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+
+
+			for (int i = 0; i < 7; ++i)
+			{
+				pEffect = new Effect();
+				pEffect->CreateAnimation(Resources::Find<Texture>(L"raidhit"), L"raid_hit", Vector2(0.f, 0.f), Vector2(276.f, 252.f), 6, 1,
+					Vector2(300.f, 300.f), Vector2(0.f, 0.f), Vector2(1656.f, 252.f), 0.2f);
+				pEffect->GetComponent<Transform>()->SetScale(3.5f, 3.5f, 0.f);
+				ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+			}
+
+			pEffect = new Effect();
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"windffect1"), L"windffect1", Vector2(0.f, 0.5f), Vector2(626.f, 508.f), 7, 1,
+				Vector2(600.f, 600.f), Vector2(0.5f, 0.f), Vector2(4382.f, 508.f), 0.06f);
+			pEffect->GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+
+
+			pEffect = new Effect();
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"windffect2"), L"windffect2", Vector2(0.f, 0.f),
+				Vector2(572.f, 413.f), 11, 1, Vector2(580.f, 580.f), Vector2(0.5f, 0.5f), Vector2(6292.f, 413.f), 0.06f);
+			pEffect->GetComponent<Transform>()->SetScale(6.f, 6.f, 0.f);
+			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+
+			for (int i = 0; i < 7; ++i)
+			{
+				pEffect = new Effect();
+				pEffect->CreateAnimation(Resources::Find<Texture>(L"windhit"), L"wind_hit", Vector2(0.f, 0.f), Vector2(249.f, 248.f), 6, 1,
+					Vector2(250.f, 250.f), Vector2(0.f, 0.2f), Vector2(1494.f, 248.f), 0.07f);
+				pEffect->GetComponent<Transform>()->SetScale(2.5f, 2.5f, 0.f);
+				ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+			}
+
+			pEffect = new Effect();
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"blastffect1"), L"blastffect1", Vector2(0.f, 0.f),
+				Vector2(752.f, 358.f), 13, 1, Vector2(750.f, 750.f), Vector2(0.f, 0.f), Vector2(9776.f, 358.f), 0.05f);
 			pEffect->GetComponent<Transform>()->SetScale(5.f, 5.f, 0.f);
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
-		}
 
-		for (int i = 0; i < 30; ++i)
-		{
 			pEffect = new Effect();
-			pEffect->CreateAnimation(Resources::Find<Texture>(L"ultimate_hit"), L"ultimate_suriken_hit", Vector2(0.f, 0.f), Vector2(219.f, 209.f), 8, 1,
-				Vector2(250.f, 250.f), Vector2(0.f, 0.f), Vector2(1752.f, 209.f), 0.1f);
-			pEffect->GetComponent<Transform>()->SetScale(2.5f, 2.5f, 0.f);
+			pEffect->CreateAnimation(Resources::Find<Texture>(L"blastffect2"), L"blastffect2", Vector2(0.f, 0.f),
+				Vector2(735.f, 673.f), 9, 1, Vector2(750.f, 750.f), Vector2(0.f, 0.f), Vector2(6615.f, 673.f), 0.05f);
+			pEffect->GetComponent<Transform>()->SetScale(5.f, 5.f, 0.f);
 			ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+
+			for (int i = 0; i < 25; ++i)
+			{
+				pEffect = new Effect();
+				pEffect->CreateAnimation(Resources::Find<Texture>(L"blasthit"), L"blast_hit", Vector2(0.f, 0.f),
+					Vector2(285.f, 284.f), 8, 1, Vector2(300.f, 300.f), Vector2(0.f, 0.f), Vector2(2280.f, 284.f), 0.05f);
+				pEffect->GetComponent<Transform>()->SetScale(5.f, 5.f, 0.f);
+				ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+			}
+
+			for (int i = 0; i < 30; ++i)
+			{
+				pEffect = new Effect();
+				pEffect->CreateAnimation(Resources::Find<Texture>(L"ultimate_hit"), L"ultimate_suriken_hit", Vector2(0.f, 0.f), Vector2(219.f, 209.f), 8, 1,
+					Vector2(250.f, 250.f), Vector2(0.f, 0.f), Vector2(1752.f, 209.f), 0.1f);
+				pEffect->GetComponent<Transform>()->SetScale(2.5f, 2.5f, 0.f);
+				ObjectPoolManager::AddObjectPool(pEffect->GetName(), pEffect);
+			}
 		}
 
 		UltimateBackground* pBackGround = new UltimateBackground();

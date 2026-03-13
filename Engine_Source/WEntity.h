@@ -11,7 +11,7 @@ namespace W
 		~Entity();
 
 		void SetName(const std::wstring& name) { m_strName = name; }
-		std::wstring& GetName() { return m_strName; }
+		const std::wstring& GetName() { return m_strName; }
 
 	private:
 		std::wstring m_strName;

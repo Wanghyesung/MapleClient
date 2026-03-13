@@ -9,8 +9,10 @@ extern W::Application application;
 
 namespace W
 {
-	double Time::m_dDeltaTime = 0.l;
+	double Time::m_dDeltaTime = 0.f;
 	double Time::m_dSecond = 0.f;
+	double Time::m_dAccTime = 0.f;
+	float Time::m_fFPS = 0.0f;
 	LARGE_INTEGER Time::m_lCpuFrequency = {};
 	LARGE_INTEGER Time::m_lPrevFrequency = {};
 	LARGE_INTEGER Time::m_lCurFrequency = {};
@@ -26,6 +28,7 @@ namespace W
 
 	void Time::Update()
 	{
+		
 		QueryPerformanceCounter(&m_lCurFrequency);
 
 		double differnceFrequency = m_lCurFrequency.QuadPart - m_lPrevFrequency.QuadPart;
@@ -33,10 +36,12 @@ namespace W
 		m_dDeltaTime = differnceFrequency / m_lCpuFrequency.QuadPart;
 		//m_dDeltaTime = 1 / 240.f;
 
-		if (m_dDeltaTime >= 1/120.f)
-			m_dDeltaTime = (1/120.f);
+		//if (m_dDeltaTime >= 1/120.f)
+		//	m_dDeltaTime = (1/120.f);
 
 		m_lPrevFrequency.QuadPart = m_lCurFrequency.QuadPart;
+
+		m_dAccTime += m_dDeltaTime;
 	}
 
 	void Time::Render()
@@ -52,8 +57,8 @@ namespace W
 			Vector2 vMousePos = Input::GetMousePos();
 			
 			wchar_t szFloat[50] = {};
-			float FPS = 1.0f / (float)m_dDeltaTime;
-			swprintf_s(szFloat, 50, L"FPS : %d, X : %f , Y : %f", (UINT)FPS, vMousePos.x , vMousePos.y);
+			m_fFPS = 1.0f / (float)m_dDeltaTime;
+			swprintf_s(szFloat, 50, L"FPS : %d, X : %f , Y : %f", (UINT)m_fFPS, vMousePos.x , vMousePos.y);
 			//int iLen = wcsnlen_s(szFloat, 50);
 			SetWindowText(hWnd, szFloat);
 

@@ -8,6 +8,13 @@ namespace W
 	//	위치 컴포넌트는 제일먼저 호출
 	//	위치 컴포넌트(상수버퍼셋팅(호출용 위치관련된, 여러개의 상수버퍼 셋팅 vector4(*3)))
 
+	struct TransformSnapshot
+	{
+		Vector3 vPosition;
+		Vector3 vRotation;
+		double dServerTime;
+	};
+
 	class Transform : public Component
 	{
 		DECLARE_COMPONENT_ID;
@@ -53,11 +60,11 @@ namespace W
 		Transform* GetParent() { return m_pParentTransform; }
 		const Matrix& GetMatrix() { return m_vWorld; }
 		
-		const Vector3& VectorLerp(const Vector3& _vFrom, const Vector3& _vTo, float fRate, bool bClampZ = true);
+		Vector3 VectorLerp(const Vector3& _vFrom, const Vector3& _vTo, float fRate, bool bClampZ = true);
 
 
 	private:
-		void recv_transform(const Vector3& _vPosition, const Vector3& _vRotation);
+		void recv_transform(const Vector3& _vPosition, const Vector3& _vRotation, double _dServerTime);
 		
 		void lateupdate_position();
 	private:
@@ -68,10 +75,10 @@ namespace W
 		Vector3 m_vNextRotation;
 		Vector3 m_vPrevRotation;
 
-		float m_fLerpTime;
-		float m_fCurLerpTime;
-		float m_fCurLerpRate;
-		float m_fRecvTime;
+		bool m_bLerp = false;
+		deque<TransformSnapshot> m_deqSnapshots;
+		double m_dInterpolationBackTime = 0.08;
+		double m_dServerTimeOffest;
 
 		Vector3 m_vPosition;
 		Vector3 m_vRotation;

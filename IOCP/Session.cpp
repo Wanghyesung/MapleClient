@@ -89,20 +89,23 @@ void Session::RegisterConnect()
 	if (GetService()->GetServiceType() != eServiceType::Client)
 		return;
 
-
 	if (SockHelper::SetReuseAddress(m_socket, true) == false)
 		assert(nullptr);
 
-	//누락하면 에러
 	if (SockHelper::BindAny(m_socket, 0/*남는 포트, 주소번호로*/) == false)
 		assert(nullptr);
 
 	m_ConnectEvent.init();
 	m_ConnectEvent.SetOwner(shared_from_this());
 
+	/*
+	OVERLAPPED는 비동기 I/O 요청을 식별하기 위한 컨텍스트 구조체로, 
+	GetQueuedCompletionStatus 호출 시 완료된 작업을 식별하는 포인터로 전달됩니다.
+	*/
 	DWORD iNumOfBytes = 0;
 	SOCKADDR_IN sockAddr = GetService()->GetAddress().GetAddr();
-	if (false == SockHelper::ConnectEx(m_socket, reinterpret_cast<SOCKADDR*>(&sockAddr), sizeof(sockAddr), nullptr, 0, &iNumOfBytes, &m_ConnectEvent))
+	if (false == SockHelper::ConnectEx(m_socket, reinterpret_cast<SOCKADDR*>(&sockAddr), 
+		sizeof(sockAddr), nullptr, 0, &iNumOfBytes, &m_ConnectEvent))
 	{
 		int errorCode = WSAGetLastError();
 		if (errorCode != WSA_IO_PENDING)

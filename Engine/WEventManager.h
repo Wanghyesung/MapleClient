@@ -34,6 +34,7 @@ namespace W
 	{
 		Vector3 vPosition;
 		Vector3 vRotation;
+		double dServerTime;
 	};
 
 	struct OBJECT_DATA

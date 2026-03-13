@@ -222,22 +222,25 @@ namespace W
 		UCHAR cSceneID = (iSceneLayerCreateIdId >> 24) & 0xFF;
 		if (cSceneID == SceneManger::GetActiveScene()->GetSceneID())
 		{
-			UCHAR cLayer = (iSceneLayerCreateIdId >> 16) & 0xFF;
-			UCHAR cCreateid = (iSceneLayerCreateIdId >> 8) & 0xFF;
 			UCHAR CID = iSceneLayerCreateIdId & 0xFF;
-			
+			UCHAR cCreateid = (iSceneLayerCreateIdId >> 8) & 0xFF;
+			eLayerType eLayerType = (W::eLayerType)((iSceneLayerCreateIdId >> 16) & 0xFF);
+			GameObject* pFindObject = SceneManger::FindObject(CID, eLayerType);
+			if (pFindObject != nullptr)
+				return;
+
 			GameObject* pObj = nullptr;
 			if (_tObjData.stringData.empty())
 				pObj = GameObjectManager::GetMonsterOfID(cCreateid);
 			else
 				pObj = ObjectPoolManager::PopObject(_tObjData.stringData);
+
 			if (pObj == nullptr)
 				return;
 
 			pObj->GetComponent<Transform>()->SetDirectPosition(_tObjData.tTransformData.vPosition);
 			pObj->GetComponent<Transform>()->SetDirectRotation(_tObjData.tTransformData.vRotation);
 
-			eLayerType eLayerType = (W::eLayerType)cLayer;
 			pObj->SetObjectID(CID);
 			SceneManger::AddGameObject(eLayerType, pObj);
 
@@ -386,8 +389,12 @@ namespace W
 		//static_cast는 컴파일러가 타입 간 변환 규칙이 안전하다고 판단할 때만 허용
 		//reinterpret_cast는 포인터끼리 강제 변환
 
+		UINT iSceneID = (iLayerID >> 16) & 0xFF;
+		if (iSceneID != SceneManger::GetActiveScene()->GetSceneID())
+			return;
+
 		W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
-		UINT ID = iLayerID & 0x00FFFFFF;
+		UINT ID = iLayerID & 0x0000FFFF;
 
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
 		if (pObj)
@@ -401,15 +408,13 @@ namespace W
 		eLayerType eLayer = (eLayerType)_wParm;
 		
 		GameObject* pObj = SceneManger::FindObject(ID, eLayer);
-		
 		if (pObj)
 		{
 			Transform* pTr = pObj->GetComponent<Transform>();
-			pTr->recv_transform(_tObjData.tTransformData.vPosition, _tObjData.tTransformData.vRotation);
+			pTr->recv_transform(_tObjData.tTransformData.vPosition, _tObjData.tTransformData.vRotation, _tObjData.tTransformData.dServerTime);
 		}
-	
 	}
-
+		
 	void EventManager::CreateObject(GameObject* _pObj, eLayerType _eLayer)
 	{
 		tEvent eve = {};

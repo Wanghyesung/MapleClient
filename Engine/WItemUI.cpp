@@ -111,11 +111,14 @@ namespace W
 
 		pTr->SetPosition(vPosition);
 
-		Vector3 vNumberPosition = m_pNumber->GetComponent<Transform>()->GetPosition();
+		if (m_pNumber)
+		{
+			Vector3 vNumberPosition = m_pNumber->GetComponent<Transform>()->GetPosition();
 
-		//인벤토리에 옮겨졌을 때 숫자도 같이 옮겨지게
-		Vector3 vDiff = vPosition - vNumberPosition;
-		MoveToParent(Vector2(vDiff.x - 0.08f, vDiff.y - 0.07f));
+			//인벤토리에 옮겨졌을 때 숫자도 같이 옮겨지게
+			Vector3 vDiff = vPosition - vNumberPosition;
+			MoveToParent(Vector2(vDiff.x - 0.08f, vDiff.y - 0.07f));
+		}
 	}
 
 	void ItemUI::Using()

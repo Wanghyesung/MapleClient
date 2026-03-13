@@ -30,7 +30,7 @@ bool Handle_S_ENTER(shared_ptr<Session> _pSession, Protocol::S_ENTER& _pkt)
 	PLAYER_ID = _pkt.player_id();
 
 	UINT64 iPlayerEquips = _pkt.player_equip_ids();
-	W::EventManager::AddPlayer(PLAYER_ID, iPlayerEquips);
+	EventManager::AddPlayer(PLAYER_ID, iPlayerEquips);
 
 	return true;
 }
@@ -102,7 +102,7 @@ bool Handle_S_CREATE(shared_ptr<Session> _pSession, Protocol::S_CREATE& _pkt)
 	tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
 	tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
 
-	W::EventManager::CreateObjectID(iSceneLayerCreateIdId, tTrInfo,
+	EventManager::CreateObjectID(iSceneLayerCreateIdId, tTrInfo,
 		StringToWString(tInfo.object_name()));
 
 	return true;
@@ -124,7 +124,7 @@ bool Handle_S_PLAYER_CREATE(shared_ptr<Session> _pSession, Protocol::S_PLAYER_CR
 		tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
 		tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
 
-		W::EventManager::AddOtherPlayer(iSceneLayerCreateIdId, iPlayerState, plyerInfo.player_equip_ids(),
+		EventManager::AddOtherPlayer(iSceneLayerCreateIdId, iPlayerState, plyerInfo.player_equip_ids(),
 			tTrInfo, strStateName);
 	}
 	return true;
@@ -147,9 +147,9 @@ bool Handle_S_DELETE(shared_ptr<Session> _pSession, Protocol::S_DELETE& _pkt)
 bool Handle_S_STATE(shared_ptr<Session> _pSession, Protocol::S_STATE& _pkt)
 {
 	int iState = _pkt.state_value();
-	
-	std::wstring strAnimaState = StringToWString(_pkt.state());
 
+	const std::wstring& strAnimaState = StringToWString(_pkt.state());
+	
 	EventManager::UpdateState(_pkt.layer_id(), iState, strAnimaState);
 
 	return true;
@@ -160,13 +160,15 @@ bool Handle_S_TRANSFORM(shared_ptr<Session> _pSession, Protocol::S_TRANSFORM& _p
 	const Protocol::TransformInfo& trInfo = _pkt.transform();
 	
 	UINT iLayerID = _pkt.scene_layer_id();
-	W::eLayerType eLayer = (W::eLayerType)((iLayerID >> 24) & 0xFF);
+	eLayerType eLayer = (eLayerType)((iLayerID >> 24) & 0xFF);
 	UINT ID = (iLayerID) & 0xFF;
 
 	tTransformInfo tTrInfo = {};
 	tTrInfo.vPosition = Vector3(trInfo.p_x(), trInfo.p_y(), trInfo.p_z());
 	tTrInfo.vRotation = Vector3(trInfo.r_x(), trInfo.r_y(), trInfo.r_z());
-
+	tTrInfo.dServerTime = _pkt.server_time();
+	
+	//tTrInfo.vVelocity = Vector2(trInfo.veclotu)
 	EventManager::UpdateTransform(ID, eLayer, tTrInfo);
 	return true;
 }
@@ -182,11 +184,7 @@ bool Handle_S_START_MAP(shared_ptr<Session> _pSession, Protocol::S_START_MAP& _p
 
 	return true;
 }
-bool Handle_S_EXIT(shared_ptr<Session> _pSession, Protocol::S_EXIT& _pkt)
-{
 
-	return false;
-}
 
 //여기까지 왔다는건 현제 같은 씬 (만약 간발의 차이로 다른맵으로 갔다면 무시)
 bool Handle_S_NEW_EXIT(shared_ptr<Session> _pSession, Protocol::S_NEW_EXIT& _pkt)

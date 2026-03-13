@@ -38,6 +38,7 @@ namespace W
 	}
 	void Temptation::LateUpdate()
 	{
+		Abnormal::LateUpdate();
 	}
 	void Temptation::Render()
 	{

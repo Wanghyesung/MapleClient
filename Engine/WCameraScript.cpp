@@ -141,8 +141,8 @@ namespace W
 		Transform* pPlayerTr = m_pPlayer->GetComponent<Transform>();
 		Transform* pTr = GetOwner()->GetComponent<Transform>();
 
-		Vector3 vPlayerPos = pPlayerTr->GetPosition();
-		Vector3 vStartPos = pTr->GetPosition();
+		const Vector3& vPlayerPos = pPlayerTr->GetPosition();
+		const Vector3& vStartPos = pTr->GetPosition();
 
 		Vector2 PlayerPos = Vector2(vPlayerPos.x, vPlayerPos.y);
 		Vector2 StartPos = Vector2(vStartPos.x, vStartPos.y);

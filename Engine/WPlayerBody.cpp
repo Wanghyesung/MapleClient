@@ -126,7 +126,6 @@ namespace W
 		Vector3 vPos2 = m_pPlayerTop->GetComponent<Transform>()->GetPosition();
 		Vector3 vPos3 = m_pPlayerShoes->GetComponent<Transform>()->GetPosition();
 
-		int a = 10;
 	}
 	void PlayerBody::Render()
 	{
